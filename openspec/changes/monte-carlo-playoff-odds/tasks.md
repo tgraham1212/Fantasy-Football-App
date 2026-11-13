@@ -52,5 +52,5 @@
 ## 7. Scheduled job and deployment
 
 - [x] 7.1 Implement `refresh` (sync → projections → simulate → export, stopping at the first failure with a non-zero exit). Verify a test where a stubbed projections failure stops before simulate and leaves `data/` unchanged.
-- [ ] 7.2 Add `.github/workflows/refresh.yml`: daily cron at 11:00 UTC plus `workflow_dispatch`, concurrency group, Python setup, `pytest`, `refresh`, commit and push `data/` only if changed, deploy `site/` to GitHub Pages. Verify with a manual `workflow_dispatch` run that succeeds and publishes the site.
-- [ ] 7.3 Integration check: after the manual run, open the published Pages URL on desktop and phone and confirm both leagues show current as-of odds, the trend chart and the correct freshness label. Then confirm the next scheduled run commits only changed files under `data/`.
+- [x] 7.2 Add `.github/workflows/refresh.yml`: daily cron at 11:00 UTC plus `workflow_dispatch`, concurrency group, Python setup, `pytest`, `refresh`, commit and push `data/` only if changed, deploy `site/` to GitHub Pages. Verify with a manual `workflow_dispatch` run that succeeds and publishes the site.
+- [x] 7.3 Integration check: after the manual run, open the published Pages URL on desktop and phone and confirm both leagues show current as-of odds, the trend chart and the correct freshness label. Then confirm the next scheduled run commits only changed files under `data/`.
