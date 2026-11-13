@@ -1,0 +1,25 @@
+# Leagues tracked by ffapp.
+#
+# Each key is a stable short name used in data/ paths and on the website.
+# `league_id` is the CURRENT season's Sleeper league ID. Earlier seasons are
+# discovered automatically through Sleeper's previous_league_id chain, so when
+# a league renews for a new season, replace only the league_id here.
+leagues:
+  dynasty:
+    league_id: "1339662153812025344"
+    name: Taco Tuesdays
+  redraft:
+    league_id: "1389347876550770688"
+    name: Chris Carter's Fall Guys
+
+# Manual scoring overrides for changes Sleeper did not keep (Sleeper stores
+# only each season's final settings). Each entry replaces the listed scoring
+# keys for one league-season from `from_week` onward. Example:
+#
+# overrides:
+#   - league: redraft
+#     season: "2023"
+#     from_week: 6
+#     scoring:
+#       fgm_yds: 0.1
+overrides: []

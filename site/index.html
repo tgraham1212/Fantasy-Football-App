@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Playoff Odds</title>
+  <meta name="description" content="Monte Carlo playoff odds for our Sleeper fantasy football leagues, updated after every week.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <h1>Playoff Odds</h1>
+      <p class="sub">Monte Carlo projections for our Sleeper leagues</p>
+    </div>
+    <nav class="leagues" id="league-switcher" aria-label="League"></nav>
+    <button class="theme" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span aria-hidden="true">&#9680;</span>
+    </button>
+  </header>
+
+  <main id="main" hidden>
+    <section class="card summary">
+      <h2 id="league-title"></h2>
+      <p class="fresh" id="freshness"></p>
+      <p class="explain">
+        Every remaining week is simulated 10,000 times using each team's current roster, the real schedule,
+        Sleeper's player projections and how far real scores have strayed from projections in the past.
+        The playoffs and losers bracket are played out with the league's actual rules. These are chances,
+        not predictions: a team at 70% misses roughly three times in ten.
+      </p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Current odds</h2>
+        <p class="hint">Sorted by playoff chance. Click a team to highlight it in the chart.</p>
+      </div>
+      <div class="table-wrap">
+        <table id="odds-table">
+          <thead>
+            <tr>
+              <th scope="col" class="team-col">Team</th>
+              <th scope="col" class="num" title="Record">W-L</th>
+              <th scope="col" class="num" title="Points scored">PF</th>
+              <th scope="col" class="num" title="Projected final record">Proj</th>
+              <th scope="col" class="num">Playoffs</th>
+              <th scope="col" class="num" title="Change since last week">&Delta;</th>
+              <th scope="col" class="num">Bye</th>
+              <th scope="col" class="num">Final</th>
+              <th scope="col" class="num">Title</th>
+              <th scope="col" class="num" title="Losers bracket">Losers</th>
+              <th scope="col" class="num" title="Finish with the worst record">Last</th>
+            </tr>
+          </thead>
+          <tbody id="odds-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2 id="chart-title">Playoff chances by week</h2>
+        <div class="metrics" id="metric-switcher" role="group" aria-label="Chart metric"></div>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="odds-chart" role="img" aria-label="Line chart of each team's chances after each week of the season"></canvas>
+      </div>
+      <p class="hint" id="chart-note"></p>
+    </section>
+  </main>
+
+  <p class="status" id="status">Loading&hellip;</p>
+
+  <footer>
+    <p>Data from the Sleeper API. Projections by Rotowire via Sleeper. Rebuilt daily.</p>
+  </footer>
+
+  <script src="vendor/chart.umd.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
