@@ -1,0 +1,6 @@
+# The scheduled job writes data files on Linux; keep every text file LF so
+# Windows checkouts and the daily commits never disagree on line endings.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.ico binary
