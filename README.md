@@ -118,8 +118,24 @@ forever and only replaced when Sleeper publishes a newer version.
 `site/` is static: `index.html`, `styles.css`, `app.js`, a pinned copy of Chart.js
 in `site/vendor/`, and the exported data. It is deployed to GitHub Pages by the
 workflow. URL options: `#dynasty` / `#redraft` picks the league, `?team=<roster_id>`
-highlights a team, `?metric=bye|final|title` picks the chart, `?theme=dark|light`
-forces a theme.
+highlights a team, `?metric=playoffs|bye|title|avoid_losers_bye|last` picks the
+chart, `?theme=dark|light` forces a theme.
+
+The odds table follows the FiveThirtyEight layout: ELO and 1-week ELO change
+(empty until the ELO feature ships), owner with team name and record, projected
+record, then four chance columns filled on a white-to-blue ramp. The first chance
+column depends on the league: a toilet-bowl league shows **Avoid Loser's Bye**
+(finishing outside the bottom two), a dynasty league with a consolation bracket
+shows **#1 Pick** (finishing last). The export decides this from Sleeper's
+`playoff_type` and `type` settings (`bottom_column` in `site/data/<league>.json`).
+Rows start in standings order; clicking a header sorts descending, clicking again
+ascending. Hovering a chance shows its change since the previous week. Each team
+has a fixed colour (the dot beside the owner name) that matches its line in the
+chart; the palette comes from `tools/team_palette.py`.
+
+After `git pull`, run `python -m ffapp export` before opening the site locally:
+`site/data/` is whatever the last export wrote, and an older export may lack
+fields the page expects.
 
 ## Scheduled job
 

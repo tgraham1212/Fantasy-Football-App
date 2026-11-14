@@ -34,23 +34,24 @@
     <section class="card">
       <div class="card-head">
         <h2>Current odds</h2>
-        <p class="hint">Sorted by playoff chance. Click a team to highlight it in the chart.</p>
+        <p class="hint">In standings order. Click a header to sort, a team to highlight it in the chart; hover a chance for its change since last week.</p>
       </div>
       <div class="table-wrap">
         <table id="odds-table">
           <thead>
-            <tr>
-              <th scope="col" class="team-col">Team</th>
-              <th scope="col" class="num" title="Record">W-L</th>
-              <th scope="col" class="num" title="Points scored">PF</th>
-              <th scope="col" class="num" title="Projected final record">Proj</th>
-              <th scope="col" class="num">Playoffs</th>
-              <th scope="col" class="num" title="Change since last week">&Delta;</th>
-              <th scope="col" class="num">Bye</th>
-              <th scope="col" class="num">Final</th>
-              <th scope="col" class="num">Title</th>
-              <th scope="col" class="num" title="Losers bracket">Losers</th>
-              <th scope="col" class="num" title="Finish with the worst record">Last</th>
+            <tr class="group-row">
+              <td colspan="4" class="group-blank"></td>
+              <th colspan="4" scope="colgroup" class="group">Playoff chances</th>
+            </tr>
+            <tr class="head-row">
+              <th scope="col" class="num col-elo" data-col="elo"><span class="label">ELO</span></th>
+              <th scope="col" class="num col-elo-change" data-col="elo_change"><span class="label">1-week<br>change</span></th>
+              <th scope="col" class="col-owner" data-col="owner"><button type="button" class="sort">Owner</button></th>
+              <th scope="col" class="num col-proj" data-col="proj"><button type="button" class="sort">Projected<br>record</button></th>
+              <th scope="col" class="num col-chance" data-col="bottom"><button type="button" class="sort" id="bottom-head">Avoid<br>Loser's Bye</button></th>
+              <th scope="col" class="num col-chance" data-col="playoffs"><button type="button" class="sort">Make<br>playoffs</button></th>
+              <th scope="col" class="num col-chance" data-col="bye"><button type="button" class="sort">First-round<br>bye</button></th>
+              <th scope="col" class="num col-chance" data-col="title"><button type="button" class="sort">Win<br>championship</button></th>
             </tr>
           </thead>
           <tbody id="odds-body"></tbody>

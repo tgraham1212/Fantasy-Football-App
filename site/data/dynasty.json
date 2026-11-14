@@ -1,9 +1,26 @@
 {
  "as_of_week": 9,
+ "bottom_column": {
+  "description": "Chance of finishing last in the regular season and earning next year's 1.01 pick",
+  "key": "last",
+  "label": "#1 Pick"
+ },
  "generated_at": "2026-11-13T21:17:34+00:00",
  "history": {
   "teams": {
    "1": {
+    "avoid_losers_bye": [
+     0.9999,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
     "bye": [
      0.893,
      0.916,
@@ -66,6 +83,18 @@
     ]
    },
    "10": {
+    "avoid_losers_bye": [
+     0.9875,
+     0.9885,
+     0.9571,
+     0.9195,
+     0.9701,
+     0.9921,
+     0.9847,
+     0.9952,
+     0.9985,
+     0.9999
+    ],
     "bye": [
      0.1716,
      0.1334,
@@ -128,6 +157,18 @@
     ]
    },
    "11": {
+    "avoid_losers_bye": [
+     0.9164,
+     0.9631,
+     0.9121,
+     0.891,
+     0.8461,
+     0.8133,
+     0.9192,
+     0.9796,
+     0.9957,
+     0.9951
+    ],
     "bye": [
      0.047,
      0.0682,
@@ -190,6 +231,18 @@
     ]
    },
    "12": {
+    "avoid_losers_bye": [
+     0.7938,
+     0.7291,
+     0.6263,
+     0.4426,
+     0.5171,
+     0.3495,
+     0.2466,
+     0.2081,
+     0.0856,
+     0.0266
+    ],
     "bye": [
      0.0105,
      0.0034,
@@ -252,6 +305,18 @@
     ]
    },
    "2": {
+    "avoid_losers_bye": [
+     0.1155,
+     0.0686,
+     0.141,
+     0.0965,
+     0.0425,
+     0.0312,
+     0.0633,
+     0.0372,
+     0.0262,
+     0.0808
+    ],
     "bye": [
      0.0001,
      0.0,
@@ -314,6 +379,18 @@
     ]
    },
    "3": {
+    "avoid_losers_bye": [
+     0.9876,
+     0.9818,
+     0.9769,
+     0.9915,
+     0.9965,
+     0.999,
+     1.0,
+     0.9995,
+     1.0,
+     1.0
+    ],
     "bye": [
      0.1578,
      0.0897,
@@ -376,6 +453,18 @@
     ]
    },
    "4": {
+    "avoid_losers_bye": [
+     0.8829,
+     0.9416,
+     0.9618,
+     0.9953,
+     0.9928,
+     0.9901,
+     0.9799,
+     0.9663,
+     0.9583,
+     0.9949
+    ],
     "bye": [
      0.0187,
      0.029,
@@ -438,6 +527,18 @@
     ]
    },
    "5": {
+    "avoid_losers_bye": [
+     0.9972,
+     0.9989,
+     0.9922,
+     0.997,
+     0.9961,
+     0.9946,
+     0.9982,
+     0.9998,
+     1.0,
+     0.9999
+    ],
     "bye": [
      0.419,
      0.4258,
@@ -500,6 +601,18 @@
     ]
    },
    "6": {
+    "avoid_losers_bye": [
+     0.8524,
+     0.8143,
+     0.9037,
+     0.8735,
+     0.8356,
+     0.9007,
+     0.8763,
+     0.8601,
+     0.9443,
+     0.9038
+    ],
     "bye": [
      0.0214,
      0.0063,
@@ -562,6 +675,18 @@
     ]
    },
    "7": {
+    "avoid_losers_bye": [
+     0.6883,
+     0.6543,
+     0.7905,
+     0.9063,
+     0.8971,
+     0.9499,
+     0.984,
+     0.9975,
+     0.9981,
+     0.9991
+    ],
     "bye": [
      0.0101,
      0.0048,
@@ -624,6 +749,18 @@
     ]
    },
    "8": {
+    "avoid_losers_bye": [
+     0.7873,
+     0.8621,
+     0.7403,
+     0.8888,
+     0.9062,
+     0.9805,
+     0.9479,
+     0.9567,
+     0.9933,
+     0.9999
+    ],
     "bye": [
      0.011,
      0.0097,
@@ -686,6 +823,18 @@
     ]
    },
    "9": {
+    "avoid_losers_bye": [
+     0.9912,
+     0.9977,
+     0.9981,
+     0.998,
+     0.9999,
+     0.9991,
+     0.9999,
+     1.0,
+     1.0,
+     1.0
+    ],
     "bye": [
      0.2398,
      0.3137,
@@ -781,8 +930,10 @@
  "sleeper_league_id": "1339662153812025344",
  "teams": [
   {
+   "avoid_losers_bye": 1.0,
    "bye": 0.9281,
    "change": {
+    "avoid_losers_bye": 0.0,
     "bye": 0.0513,
     "final": 0.0061,
     "last": 0.0,
@@ -792,6 +943,8 @@
     "title": -0.017
    },
    "display_name": "Gixxersean1",
+   "elo": null,
+   "elo_change": null,
    "final": 0.725,
    "last": 0.0,
    "losers_bracket": 0.0003,
@@ -826,8 +979,10 @@
    "wins": 7
   },
   {
+   "avoid_losers_bye": 1.0,
    "bye": 0.5746,
    "change": {
+    "avoid_losers_bye": 0.0,
     "bye": 0.0592,
     "final": 0.0379,
     "last": 0.0,
@@ -837,6 +992,8 @@
     "title": 0.0236
    },
    "display_name": "khar432",
+   "elo": null,
+   "elo_change": null,
    "final": 0.451,
    "last": 0.0,
    "losers_bracket": 0.0099,
@@ -871,8 +1028,10 @@
    "wins": 6
   },
   {
+   "avoid_losers_bye": 1.0,
    "bye": 0.3719,
    "change": {
+    "avoid_losers_bye": 0.0,
     "bye": 0.0395,
     "final": 0.0034,
     "last": 0.0,
@@ -882,6 +1041,8 @@
     "title": 0.0055
    },
    "display_name": "zagaplooza",
+   "elo": null,
+   "elo_change": null,
    "final": 0.347,
    "last": 0.0,
    "losers_bracket": 0.0108,
@@ -916,8 +1077,10 @@
    "wins": 6
   },
   {
+   "avoid_losers_bye": 0.9999,
    "bye": 0.0661,
    "change": {
+    "avoid_losers_bye": -0.0001,
     "bye": -0.0968,
     "final": -0.0482,
     "last": 0.0,
@@ -927,6 +1090,8 @@
     "title": -0.02
    },
    "display_name": "corygraham12",
+   "elo": null,
+   "elo_change": null,
    "final": 0.1959,
    "last": 0.0,
    "losers_bracket": 0.1136,
@@ -961,8 +1126,10 @@
    "wins": 5
   },
   {
+   "avoid_losers_bye": 0.9999,
    "bye": 0.0332,
    "change": {
+    "avoid_losers_bye": 0.0014,
     "bye": -0.0295,
     "final": -0.0111,
     "last": 0.0,
@@ -972,6 +1139,8 @@
     "title": -0.0034
    },
    "display_name": "KingDso",
+   "elo": null,
+   "elo_change": null,
    "final": 0.1231,
    "last": 0.0,
    "losers_bracket": 0.2502,
@@ -1006,8 +1175,10 @@
    "wins": 5
   },
   {
+   "avoid_losers_bye": 0.9999,
    "bye": 0.0228,
    "change": {
+    "avoid_losers_bye": 0.0066,
     "bye": 0.011,
     "final": 0.0645,
     "last": 0.0,
@@ -1017,6 +1188,8 @@
     "title": 0.0212
    },
    "display_name": "tg1212",
+   "elo": null,
+   "elo_change": null,
    "final": 0.0785,
    "last": 0.0,
    "losers_bracket": 0.4038,
@@ -1051,8 +1224,10 @@
    "wins": 5
   },
   {
+   "avoid_losers_bye": 0.9951,
    "bye": 0.0013,
    "change": {
+    "avoid_losers_bye": -0.0006,
     "bye": -0.0151,
     "final": -0.029,
     "last": 0.0002,
@@ -1062,6 +1237,8 @@
     "title": -0.0071
    },
    "display_name": "Z28kid86",
+   "elo": null,
+   "elo_change": null,
    "final": 0.0364,
    "last": 0.0003,
    "losers_bracket": 0.6751,
@@ -1096,8 +1273,10 @@
    "wins": 4
   },
   {
+   "avoid_losers_bye": 0.9991,
    "bye": 0.0017,
    "change": {
+    "avoid_losers_bye": 0.001,
     "bye": -0.0181,
     "final": -0.0256,
     "last": 0.0,
@@ -1107,6 +1286,8 @@
     "title": -0.0063
    },
    "display_name": "Jdeguire",
+   "elo": null,
+   "elo_change": null,
    "final": 0.0107,
    "last": 0.0,
    "losers_bracket": 0.7621,
@@ -1141,8 +1322,10 @@
    "wins": 5
   },
   {
+   "avoid_losers_bye": 0.9949,
    "bye": 0.0003,
    "change": {
+    "avoid_losers_bye": 0.0366,
     "bye": -0.0007,
     "final": 0.0066,
     "last": -0.0024,
@@ -1152,6 +1335,8 @@
     "title": 0.0042
    },
    "display_name": "alwaysflexin",
+   "elo": null,
+   "elo_change": null,
    "final": 0.0314,
    "last": 0.0002,
    "losers_bracket": 0.7925,
@@ -1186,8 +1371,10 @@
    "wins": 4
   },
   {
+   "avoid_losers_bye": 0.9038,
    "bye": 0.0,
    "change": {
+    "avoid_losers_bye": -0.0405,
     "bye": -0.0008,
     "final": -0.0046,
     "last": 0.0099,
@@ -1197,6 +1384,8 @@
     "title": -0.0007
    },
    "display_name": "gonzas",
+   "elo": null,
+   "elo_change": null,
    "final": 0.001,
    "last": 0.0148,
    "losers_bracket": 0.9818,
@@ -1231,8 +1420,10 @@
    "wins": 3
   },
   {
+   "avoid_losers_bye": 0.0808,
    "bye": 0.0,
    "change": {
+    "avoid_losers_bye": 0.0546,
     "bye": 0.0,
     "final": 0.0,
     "last": -0.3724,
@@ -1242,6 +1433,8 @@
     "title": 0.0
    },
    "display_name": "MattCyg",
+   "elo": null,
+   "elo_change": null,
    "final": 0.0,
    "last": 0.2822,
    "losers_bracket": 0.9999,
@@ -1276,8 +1469,10 @@
    "wins": 3
   },
   {
+   "avoid_losers_bye": 0.0266,
    "bye": 0.0,
    "change": {
+    "avoid_losers_bye": -0.059,
     "bye": 0.0,
     "final": 0.0,
     "last": 0.3647,
@@ -1287,6 +1482,8 @@
     "title": 0.0
    },
    "display_name": "CheefWiggum",
+   "elo": null,
+   "elo_change": null,
    "final": 0.0,
    "last": 0.7025,
    "losers_bracket": 1.0,

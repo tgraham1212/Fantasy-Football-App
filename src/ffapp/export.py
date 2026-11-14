@@ -13,12 +13,59 @@ from ffapp.store import Store, write_json
 log = logging.getLogger(__name__)
 
 DEFAULT_SITE_DATA = Path("site") / "data"
-RATE_KEYS = ("playoffs", "bye", "semifinal", "final", "title", "losers_bracket", "last")
-HISTORY_KEYS = ("playoffs", "bye", "final", "title", "last")
+BOTTOM_TWO_KEY = "avoid_losers_bye"
+RATE_KEYS = ("playoffs", "bye", "semifinal", "final", "title", "losers_bracket", "last", BOTTOM_TWO_KEY)
+HISTORY_KEYS = ("playoffs", "bye", "final", "title", "last", BOTTOM_TWO_KEY)
+DYNASTY_LEAGUE_TYPE = 2  # Sleeper settings.type: 0 redraft, 1 keeper, 2 dynasty
+
+BOTTOM_COLUMNS = {
+    BOTTOM_TWO_KEY: {
+        "key": BOTTOM_TWO_KEY,
+        "label": "Avoid Loser's Bye",
+        "description": "Chance of finishing outside the bottom two of the regular-season standings",
+    },
+    "last": {
+        "key": "last",
+        "label": "#1 Pick",
+        "description": "Chance of finishing last in the regular season and earning next year's 1.01 pick",
+    },
+}
 
 
 class ExportError(RuntimeError):
     pass
+
+
+def avoid_losers_bye(team: dict) -> float | None:
+    """1 minus the chance of the two worst regular-season finishes; None without a seed distribution."""
+    dist = team.get("seed_distribution")
+    if not dist or len(dist) < 2:
+        return None
+    return round(1.0 - dist[-1] - dist[-2], 4)
+
+
+def bottom_column(league: dict) -> dict:
+    """Which 'bottom' chance the site shows for this league, from its Sleeper settings.
+
+    Toilet bowl → avoid the loser's bye (bottom two). Dynasty with a consolation
+    bracket → chance of last place (the 1.01 pick). Anything else → avoid the loser's bye.
+    """
+    settings = league.get("settings", {})
+    toilet_bowl = BracketRules.from_league(league).toilet_bowl
+    dynasty = int(settings.get("type") or 0) == DYNASTY_LEAGUE_TYPE
+    key = "last" if dynasty and not toilet_bowl else BOTTOM_TWO_KEY
+    return dict(BOTTOM_COLUMNS[key])
+
+
+def _enrich(team: dict) -> dict:
+    """A stored odds row plus the rates and placeholders the site needs."""
+    return {**team, BOTTOM_TWO_KEY: avoid_losers_bye(team), "elo": None, "elo_change": None}
+
+
+def _change(current: float | None, previous: float | None) -> float | None:
+    if current is None or previous is None:
+        return None
+    return round(current - previous, 4)
 
 
 def league_export(store: Store, config: Config, league_key: str) -> dict:
@@ -32,12 +79,13 @@ def league_export(store: Store, config: Config, league_key: str) -> dict:
     rules = BracketRules.from_league(league)
     latest = store.read_odds(league_key, season, weeks[-1])
     previous = store.read_odds(league_key, season, weeks[-2]) if len(weeks) > 1 else None
-    prev_by_roster = {t["roster_id"]: t for t in (previous or {}).get("teams", [])}
+    prev_by_roster = {t["roster_id"]: _enrich(t) for t in (previous or {}).get("teams", [])}
 
     teams = []
-    for team in latest["teams"]:
+    for stored in latest["teams"]:
+        team = _enrich(stored)
         prev = prev_by_roster.get(team["roster_id"])
-        change = {k: (round(team[k] - prev[k], 4) if prev else None) for k in RATE_KEYS}
+        change = {k: (_change(team.get(k), prev.get(k)) if prev else None) for k in RATE_KEYS}
         teams.append({**team, "change": change})
 
     history_payloads = {w: store.read_odds(league_key, season, w) for w in weeks}
@@ -47,8 +95,9 @@ def league_export(store: Store, config: Config, league_key: str) -> dict:
         series = {k: [] for k in HISTORY_KEYS}
         for w in weeks:
             row = next((t for t in history_payloads[w]["teams"] if t["roster_id"] == rid), None)
+            row = _enrich(row) if row else None
             for k in HISTORY_KEYS:
-                series[k].append(row[k] if row else None)
+                series[k].append(row.get(k) if row else None)
         history_teams[str(rid)] = series
 
     return {
@@ -62,6 +111,7 @@ def league_export(store: Store, config: Config, league_key: str) -> dict:
         "runs": latest["runs"],
         "regular_season_weeks": rules.playoff_week_start - 1,
         "playoff_teams": rules.playoff_teams,
+        "bottom_column": bottom_column(league),
         "simulated_weeks": latest.get("simulated_weeks", []),
         "teams": teams,
         "history": {"weeks": weeks, "teams": history_teams},
