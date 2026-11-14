@@ -1,8 +1,11 @@
 import copy
 import hashlib
+import json
 from pathlib import Path
 
 from ffapp.cli import main
+from ffapp.projections import upsert_week
+from ffapp.store import Store
 from ffapp.sleeper import SleeperClient
 from tests.fixtures import DYNASTY, FixtureSession, load
 
@@ -64,6 +67,40 @@ def test_refresh_runs_every_step_when_sources_work(tmp_path):
     assert (tmp_path / "data" / "odds" / "dynasty" / "2026" / "asof_09.json").exists()
     assert (tmp_path / "site-data" / "dynasty.json").exists()
     assert (tmp_path / "site-data" / "index.json").exists()
+
+
+def test_refresh_does_not_calibrate(tmp_path):
+    cfg = write_config(tmp_path)
+    assert run(tmp_path, cfg, "refresh", overrides=projections_for_2026()) == 0
+    assert not (tmp_path / "data" / "calibration").exists()
+    assert not (tmp_path / "data" / "odds" / "dynasty" / "2025").exists()
+    assert not (tmp_path / "site-data" / "calibration.json").exists()
+
+
+def test_calibrate_command_writes_report_and_export_publishes_it(tmp_path):
+    cfg = write_config(tmp_path)
+    assert run(tmp_path, cfg, "sync") == 0
+    # 2025 projections: the week-1 fixture reused for every week of the completed season
+    rows = load("projections/2025/1.json")
+    for week in range(1, 18):
+        reused = copy.deepcopy(rows)
+        for row in reused:
+            row["week"] = week
+        upsert_week(Store(tmp_path / "data"), "2025", week, reused)
+    assert run(tmp_path, cfg, "projections", overrides=projections_for_2026()) == 0
+    assert run(tmp_path, cfg, "calibrate", "--runs", "200", "--residual-scale", "1.1") == 0
+    report = json.loads((tmp_path / "data" / "calibration" / "report.json").read_text(encoding="utf-8"))
+    assert report["runs"] == 200 and report["residual_scale"] == 1.1
+    assert (tmp_path / "data" / "calibration" / "report.md").exists()
+    assert (tmp_path / "data" / "odds" / "dynasty" / "2025" / "asof_16.json").exists()
+    assert run(tmp_path, cfg, "calibrate", "--residual-scale", "0") == 2
+
+    assert run(tmp_path, cfg, "simulate", "--runs", "200") == 0
+    assert run(tmp_path, cfg, "export") == 0
+    index = json.loads((tmp_path / "site-data" / "index.json").read_text(encoding="utf-8"))
+    assert index["calibration"] == {"generated_at": report["generated_at"], "file": "calibration.json"}
+    published = json.loads((tmp_path / "site-data" / "calibration.json").read_text(encoding="utf-8"))
+    assert published == report
 
 
 def test_bad_config_exits_2(tmp_path):

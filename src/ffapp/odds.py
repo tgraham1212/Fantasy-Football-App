@@ -12,7 +12,7 @@ from ffapp.league import owners, resolve_settings, starter_slots
 from ffapp.lineup import Candidate, Starter, best_lineup
 from ffapp.noise import NoiseModel, build_pools
 from ffapp.scoring import record_points
-from ffapp.simulate import SimInputs, simulate, summarize
+from ffapp.simulate import SimInputs, SimResult, simulate, summarize
 from ffapp.standings import pairings, regular_season_records
 from ffapp.store import SeasonData, Store
 
@@ -72,11 +72,10 @@ def rosters_as_of(data: SeasonData, as_of: int, *, current: bool) -> dict[int, l
 # -- inputs -----------------------------------------------------------------------
 
 
-def projected_lineup(
-    store: Store, config: Config, league_key: str, data: SeasonData, week: int, players: list[str]
+def lineup_from_projections(
+    projections: dict[str, dict], scoring: dict[str, float], slots: list[str], players: list[str]
 ) -> list[Starter]:
-    projections = store.read_projections(data.season, week)
-    scoring = resolve_settings(config, league_key, data.league, week)
+    """Best projected lineup for ``players`` given one week's projections and scoring."""
     candidates = []
     for player_id in players:
         record = projections.get(player_id)
@@ -84,7 +83,15 @@ def projected_lineup(
             continue  # no projection this week: bye, out, or unprojected -> 0 points, never starts over a projected player
         positions = tuple(record.get("fantasy_positions") or [record["position"]])
         candidates.append(Candidate(player_id, record["position"], positions, record_points(record, scoring)))
-    return best_lineup(starter_slots(data.league), candidates)
+    return best_lineup(slots, candidates)
+
+
+def projected_lineup(
+    store: Store, config: Config, league_key: str, data: SeasonData, week: int, players: list[str]
+) -> list[Starter]:
+    projections = store.read_projections(data.season, week)
+    scoring = resolve_settings(config, league_key, data.league, week)
+    return lineup_from_projections(projections, scoring, starter_slots(data.league), players)
 
 
 def build_inputs(
@@ -134,7 +141,7 @@ def default_seed(league_key: str, season: str, as_of: int) -> int:
     return zlib.crc32(f"{league_key}:{season}:{as_of}".encode())
 
 
-def run_as_of(
+def simulate_as_of(
     store: Store,
     config: Config,
     league_key: str,
@@ -145,8 +152,12 @@ def run_as_of(
     noise: NoiseModel,
     runs: int = 10_000,
     seed: int | None = None,
-) -> dict:
-    """Simulate one league-season as of ``as_of`` completed weeks and store the results."""
+) -> tuple[SimInputs, SimResult, dict]:
+    """Simulate one league-season as of ``as_of`` completed weeks; nothing is stored.
+
+    Returns the inputs, the raw result (with per-week simulated scores) and the
+    odds payload that ``run_as_of`` would store.
+    """
     inputs = build_inputs(store, config, league_key, data, as_of, current=current)
     seed = default_seed(league_key, data.season, as_of) if seed is None else seed
     result = simulate(inputs, noise, runs=runs, seed=seed)
@@ -177,11 +188,29 @@ def run_as_of(
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "runs": runs,
         "seed": seed,
+        "residual_scale": float(getattr(noise, "scale", 1.0)),
         "simulated_weeks": sorted(inputs.schedule) + [w for w in inputs.playoff_weeks if w not in inputs.real_points],
         "teams": teams,
     }
+    return inputs, result, payload
+
+
+def run_as_of(
+    store: Store,
+    config: Config,
+    league_key: str,
+    data: SeasonData,
+    as_of: int,
+    *,
+    current: bool,
+    noise: NoiseModel,
+    runs: int = 10_000,
+    seed: int | None = None,
+) -> dict:
+    """Simulate one league-season as of ``as_of`` completed weeks and store the results."""
+    _, _, payload = simulate_as_of(store, config, league_key, data, as_of, current=current, noise=noise, runs=runs, seed=seed)
     store.write_odds(league_key, data.season, as_of, payload)
-    log.info("odds %s %s as of week %d: %d runs, seed %d", league_key, data.season, as_of, runs, seed)
+    log.info("odds %s %s as of week %d: %d runs, seed %d", league_key, data.season, as_of, runs, payload["seed"])
     return payload
 
 

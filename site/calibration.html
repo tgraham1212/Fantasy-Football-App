@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How good are these odds?</title>
+  <meta name="description" content="How well the Monte Carlo playoff odds matched what really happened, measured by replaying past seasons.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <h1>How good are these odds?</h1>
+      <p class="sub">Past seasons replayed through the same simulation, compared with what happened</p>
+    </div>
+    <nav class="pages" aria-label="Pages"><a class="nav-link" href="./">&larr; Playoff odds</a></nav>
+    <button class="theme" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span aria-hidden="true">&#9680;</span>
+    </button>
+  </header>
+
+  <main id="main" hidden>
+    <section class="card summary">
+      <h2>What was checked</h2>
+      <p class="fresh" id="meta"></p>
+      <p class="explain">
+        Every completed season was replayed week by week with the schedule, rosters, projections and scoring it
+        really had, using score noise learned from the other seasons only. The chances the site would have shown
+        after each week are then compared with the real result. If the odds are honest, teams shown at 30% should
+        reach the outcome about 30% of the time.
+      </p>
+      <ul class="headlines" id="headlines"></ul>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2 id="reliability-title">Predicted vs observed</h2>
+        <div class="metrics" id="outcome-switcher" role="group" aria-label="Outcome"></div>
+      </div>
+      <div class="chart-wrap reliability-wrap">
+        <canvas id="reliability-chart" role="img" aria-label="Scatter chart of predicted chance against observed rate for each league"></canvas>
+      </div>
+      <p class="hint">Each dot is one 10-point band of predicted chance; its size is the number of cases in the band. Dots on the diagonal are perfectly calibrated; above it the odds were too cautious, below it too confident. Hover a dot for the numbers.</p>
+      <div class="table-wrap"><table class="plain" id="season-table"></table></div>
+      <p class="hint">Brier score: mean squared error of the chances (0 is perfect, 0.25 is a coin flip on a 50/50 outcome). The baseline reads the standings: base rate before the season, then each team's record extrapolated over the remaining weeks. Skill is how much better the simulation is than that baseline (1 = perfect, 0 = no better).</p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Is the score noise the right width?</h2>
+      </div>
+      <div class="split">
+        <div class="chart-wrap pit-wrap">
+          <canvas id="pit-chart" role="img" aria-label="Bar chart of where actual team scores fell within their simulated distributions"></canvas>
+        </div>
+        <div>
+          <div class="table-wrap"><table class="plain" id="coverage-table"></table></div>
+          <p class="hint" id="bias-note"></p>
+        </div>
+      </div>
+      <p class="hint">Left: where each real score landed within its simulated range, in tenths. Right noise gives a flat chart; piles at the ends mean the simulation is too narrow, a hump in the middle means too wide. Right: how often the real score fell inside the simulated 50%, 80% and 95% ranges, which should match the nominal figure. "Simulated lineup" scores the players the simulation started rather than the lineup the manager actually started.</p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Head-to-head games</h2>
+        <p class="hint" id="game-summary"></p>
+      </div>
+      <div class="table-wrap"><table class="plain" id="game-table"></table></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Lineup gap</h2>
+      </div>
+      <div class="table-wrap"><table class="plain" id="lineup-table"></table></div>
+      <p class="hint">The simulation starts each team's best projected lineup. Real managers do not always. The gap is what the best projected lineup would have added, in projected points and in the points those players actually scored.</p>
+    </section>
+
+    <section class="card">
+      <h2>Caveats</h2>
+      <ul class="caveats" id="caveats"></ul>
+    </section>
+  </main>
+
+  <section class="card not-run" id="not-run" hidden>
+    <h2>Calibration has not been run yet</h2>
+    <p class="explain">The league pages work as usual. This page fills in once <code>python -m ffapp calibrate</code> has been run and its report committed.</p>
+  </section>
+
+  <p class="status" id="status">Loading&hellip;</p>
+
+  <footer>
+    <p>Data from the Sleeper API. Projections by Rotowire via Sleeper. <a href="./">Back to the playoff odds</a>.</p>
+  </footer>
+
+  <script src="vendor/chart.umd.js"></script>
+  <script type="module" src="calibration.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from ffapp.config import Config, LeagueConfig
+from ffapp.config import Config, LeagueConfig, SimulationConfig
 from ffapp.noise import MIN_POOL, ResidualPools, band_of, build_pools, collect_residuals
 from ffapp.projections import upsert_week
 from ffapp.sleeper import SleeperClient
@@ -52,3 +52,25 @@ def test_residuals_from_stored_data(tmp_path):
 
     pools = build_pools(store, config)
     assert pools.by_position
+
+
+def test_scale_multiplies_draws_and_one_is_identity():
+    residuals = {("WR", 5): [float(i) for i in range(MIN_POOL)]}
+    plain = ResidualPools.from_residuals(residuals)
+    scaled = ResidualPools.from_residuals(residuals)
+    scaled.scale = 1.2
+    base = plain.sample("WR", 15.0, np.random.default_rng(7), 100)
+    assert np.array_equal(ResidualPools.from_residuals(residuals).sample("WR", 15.0, np.random.default_rng(7), 100), base)
+    np.testing.assert_allclose(scaled.sample("WR", 15.0, np.random.default_rng(7), 100), base * 1.2)
+    assert plain.scale == 1.0
+
+
+def test_build_pools_takes_scale_from_config_or_argument(tmp_path):
+    store = Store(tmp_path)
+    cfg = LeagueConfig(key="dynasty", league_id=DYNASTY["2026"], name="Taco Tuesdays")
+    sync_league(SleeperClient(FixtureSession(), min_interval=0, sleep=lambda s: None), store, cfg)
+    upsert_week(store, "2025", 1, load("projections/2025/1.json"))
+    assert build_pools(store, Config(leagues={"dynasty": cfg})).scale == 1.0
+    tuned = Config(leagues={"dynasty": cfg}, simulation=SimulationConfig(residual_scale=0.9))
+    assert build_pools(store, tuned).scale == 0.9
+    assert build_pools(store, tuned, scale=1.1).scale == 1.1

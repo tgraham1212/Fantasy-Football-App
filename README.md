@@ -32,6 +32,7 @@ Global options: `--config PATH` (default `config/leagues.yaml`), `--data PATH`
 | `simulate` | Run the Monte Carlo for the current as-of week of each league and store the results in `data/odds/`. `--backfill-season` also produces results for every earlier as-of week of the current season. `--runs N` and `--seed N` override the defaults. |
 | `export` | Write `site/data/<league>.json` and `site/data/index.json` for the website. |
 | `refresh` | `sync`, `projections`, `simulate`, `export` in order, stopping at the first failure with a non-zero exit. This is what the scheduled job runs. |
+| `calibrate` | Replay every completed season through the simulation and score the odds against what happened (see Calibration). Not part of `refresh`. `--runs N`, `--seed N`, `--residual-scale X` evaluate a candidate scale without touching the config. |
 
 First-time setup of a fresh clone, in order:
 
@@ -41,7 +42,7 @@ python -m ffapp projections --backfill
 python -m ffapp verify-brackets
 python -m ffapp simulate --backfill-season
 python -m ffapp export
-python -m http.server 8000 -d site   # then open http://localhost:8000
+python -m http.server 8000 -d site   # then open http://localhost:8000 (and /calibration.html)
 ```
 
 ## Configuration: `config/leagues.yaml`
@@ -74,6 +75,12 @@ overrides: []
       scoring:
         fgm_yds: 0.1
   ```
+- `simulation.residual_scale` (optional, default 1.0) multiplies every sampled score
+  residual, widening (>1) or narrowing (<1) the simulated score noise. It exists so a
+  calibration finding can be acted on; it is off unless set, and a value should only
+  be adopted when the score-level coverage in the calibration report is off across all
+  stored seasons. Try a candidate without editing the file:
+  `python -m ffapp calibrate --residual-scale 1.1`.
 
 ## Data layout
 
@@ -113,6 +120,44 @@ forever and only replaced when Sleeper publishes a newer version.
 6. **Outputs** per team: projected record and the chance of making the playoffs, a
    first-round bye, the final, the title, the losers bracket, and last place.
 
+## Calibration
+
+`python -m ffapp calibrate` replays every stored season with status complete (dynasty
+2022-2025, redraft 2021-2025) as of every week from preseason to the last playoff
+round, using the production simulation and score noise learned from the *other*
+seasons only. The replay odds are stored in `data/odds/<league>/<season>/` like the
+live ones, and the comparison with real results is written to
+`data/calibration/report.json` and `data/calibration/report.md` (plus per-season rows
+under `data/calibration/rows/`). The run takes about a minute.
+
+The report answers three questions, from most to least data:
+
+1. **Score level** (about 1,500 team-weeks): is the noise the right width? Each real
+   team score is placed within its simulated distribution for that week. If the noise
+   is right, the percentile histogram is flat and the 50/80/95% ranges contain the real
+   score 50/80/95% of the time. Piles at the ends mean too narrow; a hump in the middle
+   means too wide. This is the figure that justifies touching `residual_scale`.
+2. **Game level** (about 750 games): are next-week win chances right? Favourites shown
+   at 60-70% should win 60-70% of the time.
+3. **Season level** (108 team-seasons): are the published playoff, bye, final, title,
+   losers-bracket, last-place and bottom-two chances right, and are they better than a
+   naive standings baseline? Reliability bins show "teams shown at X% got there Y% of
+   the time"; the Brier score and the skill against the baseline summarise it. Rows
+   after an outcome is decided are left out.
+
+It also measures the **lineup gap**: how many points the best projected lineup would
+have added to the lineup each manager actually started.
+
+The optional knob `simulation.residual_scale` is deliberately off by default. Change it
+only when the score-level coverage is off across all seasons and both leagues, never to
+make one season's playoff bins look better: nine seasons give about five usable bins
+with roughly ±5 points of noise each. Try a value first with
+`python -m ffapp calibrate --residual-scale 1.1`, which leaves the config alone and
+records the scale it used in the report.
+
+Commit `data/odds`, `data/calibration` and `site/data` after a run; the next deploy
+publishes the calibration page.
+
 ## Website
 
 `site/` is static: `index.html`, `styles.css`, `app.js`, a pinned copy of Chart.js
@@ -132,6 +177,13 @@ Rows start in standings order; clicking a header sorts descending, clicking agai
 ascending. Hovering a chance shows its change since the previous week. Each team
 has a fixed colour (the dot beside the owner name) that matches its line in the
 chart; the palette comes from `tools/team_palette.py`.
+
+`calibration.html` ("How good are these odds?", linked from the header) shows the
+calibration report: predicted-vs-observed reliability per outcome, the score-noise
+percentile histogram and interval coverage, head-to-head win-chance bins, the lineup
+gap and the caveats. The export copies `data/calibration/report.json` to
+`site/data/calibration.json`; without one the page says calibration has not been run.
+It only changes when `calibrate` is re-run and its outputs committed.
 
 After `git pull`, run `python -m ffapp export` before opening the site locally:
 `site/data/` is whatever the last export wrote, and an older export may lack

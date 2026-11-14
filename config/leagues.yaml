@@ -23,3 +23,13 @@ leagues:
 #     scoring:
 #       fgm_yds: 0.1
 overrides: []
+
+# Optional Monte Carlo tuning. `residual_scale` multiplies every sampled score
+# residual (1.0 = use the stored residuals as they are). Leave it unset unless a
+# calibration run (`python -m ffapp calibrate`) shows the score noise is too
+# narrow or too wide across ALL stored seasons; a scale chosen to fit one
+# season's playoff bins is over-fitting. Evaluate a candidate first with
+# `python -m ffapp calibrate --residual-scale 1.1`, which leaves this file alone.
+#
+# simulation:
+#   residual_scale: 1.0

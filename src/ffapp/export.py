@@ -8,11 +8,12 @@ from pathlib import Path
 from ffapp.bracket import BracketRules
 from ffapp.config import Config
 from ffapp.odds import current_season
-from ffapp.store import Store, write_json
+from ffapp.store import Store, read_json, write_json
 
 log = logging.getLogger(__name__)
 
 DEFAULT_SITE_DATA = Path("site") / "data"
+CALIBRATION_FILE = "calibration.json"
 BOTTOM_TWO_KEY = "avoid_losers_bye"
 RATE_KEYS = ("playoffs", "bye", "semifinal", "final", "title", "losers_bracket", "last", BOTTOM_TWO_KEY)
 HISTORY_KEYS = ("playoffs", "bye", "final", "title", "last", BOTTOM_TWO_KEY)
@@ -138,6 +139,14 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
                 "file": path.name,
             }
         )
+    index["calibration"] = None
+    report_path = store.root / "calibration" / "report.json"
+    if report_path.exists():
+        report = read_json(report_path)
+        path = out_dir / CALIBRATION_FILE
+        write_json(path, report)
+        written.append(path)
+        index["calibration"] = {"generated_at": report.get("generated_at"), "file": path.name}
     index_path = out_dir / "index.json"
     write_json(index_path, index)
     written.append(index_path)

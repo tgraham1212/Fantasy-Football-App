@@ -41,6 +41,7 @@ class ResidualPools:
     by_band: dict[tuple[str, int], np.ndarray] = field(default_factory=dict)
     by_position: dict[str, np.ndarray] = field(default_factory=dict)
     min_pool: int = MIN_POOL
+    scale: float = 1.0  # multiplies every sampled residual; 1.0 leaves the stored residuals untouched
 
     def pool_for(self, position: str, projected: float) -> np.ndarray:
         pool = self.by_band.get((position, band_of(projected)))
@@ -53,7 +54,8 @@ class ResidualPools:
 
     def sample(self, position: str, projected: float, rng: np.random.Generator, size: int) -> np.ndarray:
         pool = self.pool_for(position, projected)
-        return pool[rng.integers(0, len(pool), size=size)]
+        draws = pool[rng.integers(0, len(pool), size=size)]
+        return draws if self.scale == 1.0 else draws * self.scale
 
     def sizes(self) -> dict[str, int]:
         return {f"{pos}[{band}]": len(arr) for (pos, band), arr in sorted(self.by_band.items())}
@@ -110,11 +112,19 @@ def collect_residuals(
     return residuals
 
 
-def build_pools(store: Store, config: Config, *, exclude_after: tuple[str, int] | None = None) -> ResidualPools:
+def build_pools(
+    store: Store,
+    config: Config,
+    *,
+    exclude_after: tuple[str, int] | None = None,
+    scale: float | None = None,
+) -> ResidualPools:
+    """Pools from the stored data; ``scale`` defaults to the configured residual scale."""
     residuals = collect_residuals(store, config, exclude_after=exclude_after)
     pools = ResidualPools.from_residuals(residuals)
+    pools.scale = config.simulation.residual_scale if scale is None else float(scale)
     total = sum(len(v) for v in pools.by_position.values())
-    log.info("residual pools: %d samples; %s", total, ", ".join(f"{k}={v}" for k, v in pools.sizes().items()))
+    log.info("residual pools: %d samples, scale %.3f; %s", total, pools.scale, ", ".join(f"{k}={v}" for k, v in pools.sizes().items()))
     return pools
 
 

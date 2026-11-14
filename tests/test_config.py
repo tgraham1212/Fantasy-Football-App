@@ -25,6 +25,7 @@ def test_repo_config_loads_both_leagues():
     assert config.leagues["dynasty"].league_id == "1339662153812025344"
     assert config.leagues["redraft"].league_id == "1389347876550770688"
     assert config.overrides == []
+    assert config.simulation.residual_scale == 1.0
 
 
 def test_valid_config_parses_overrides():
@@ -93,3 +94,30 @@ def test_overrides_must_be_list():
 def test_missing_file_reports_path(tmp_path):
     with pytest.raises(ConfigError, match="cannot read"):
         load_config(tmp_path / "nope.yaml")
+
+
+def test_residual_scale_defaults_to_one_without_simulation_section():
+    assert parse_config(valid_raw()).simulation.residual_scale == 1.0
+
+
+def test_residual_scale_parsed():
+    raw = valid_raw()
+    raw["simulation"] = {"residual_scale": 0.9}
+    assert parse_config(raw).simulation.residual_scale == 0.9
+    raw["simulation"] = {"residual_scale": 2}
+    assert parse_config(raw).simulation.residual_scale == 2.0
+
+
+@pytest.mark.parametrize("bad", [0, -1, "big", True])
+def test_invalid_residual_scale_rejected(bad):
+    raw = valid_raw()
+    raw["simulation"] = {"residual_scale": bad}
+    with pytest.raises(ConfigError, match="residual_scale"):
+        parse_config(raw)
+
+
+def test_unknown_simulation_key_rejected():
+    raw = valid_raw()
+    raw["simulation"] = {"runs": 5}
+    with pytest.raises(ConfigError, match="simulation has unknown keys: runs"):
+        parse_config(raw)

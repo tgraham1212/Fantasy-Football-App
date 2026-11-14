@@ -13,6 +13,7 @@ from ffapp.export import (
 )
 from ffapp.noise import GaussianNoise
 from ffapp.odds import run_as_of
+from ffapp.store import write_json
 
 TEAM_KEYS = {
     "roster_id", "team_name", "display_name", "user_id", "wins", "losses", "ties", "points_for",
@@ -64,6 +65,7 @@ def test_exported_schema(seeded_store, dynasty_config, tmp_path):
     assert {p.name for p in written} == {"dynasty.json", "index.json"}
 
     index = json.loads((out / "index.json").read_text(encoding="utf-8"))
+    assert index["calibration"] is None, "no calibration report stored yet"
     assert index["leagues"][0] == {
         "key": "dynasty", "name": "Taco Tuesdays", "season": "2026", "as_of_week": 3,
         "generated_at": index["leagues"][0]["generated_at"], "file": "dynasty.json",
@@ -108,3 +110,15 @@ def test_single_week_has_null_changes(seeded_store, dynasty_config):
     payload = league_export(seeded_store, dynasty_config, "dynasty")
     assert payload["previous_as_of_week"] is None
     assert all(v is None for t in payload["teams"] for v in t["change"].values())
+
+
+def test_export_includes_calibration_report_when_present(seeded_store, dynasty_config, tmp_path):
+    simulate_weeks(seeded_store, dynasty_config, [0, 1])
+    report = {"generated_at": "2026-11-14T10:00:00+00:00", "runs": 10000, "residual_scale": 1.0, "seasons": [], "overall": {}}
+    write_json(seeded_store.root / "calibration" / "report.json", report)
+    out = tmp_path / "site-data"
+    written = export_site(seeded_store, dynasty_config, out)
+    assert {p.name for p in written} == {"dynasty.json", "index.json", "calibration.json"}
+    index = json.loads((out / "index.json").read_text(encoding="utf-8"))
+    assert index["calibration"] == {"generated_at": "2026-11-14T10:00:00+00:00", "file": "calibration.json"}
+    assert json.loads((out / "calibration.json").read_text(encoding="utf-8")) == report

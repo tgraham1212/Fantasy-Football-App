@@ -12,7 +12,7 @@ from ffapp.config import DEFAULT_CONFIG_PATH, Config, ConfigError, load_config
 from ffapp.sleeper import SleeperClient
 from ffapp.store import DEFAULT_DATA_ROOT, Store
 
-COMMANDS = ("sync", "projections", "simulate", "verify-brackets", "export", "refresh")
+COMMANDS = ("sync", "projections", "simulate", "verify-brackets", "export", "refresh", "calibrate")
 log = logging.getLogger("ffapp")
 
 
@@ -39,6 +39,10 @@ def build_parser() -> argparse.ArgumentParser:
     sim.add_argument("--seed", type=int, default=None, help="Random seed (default: derived from league, season and as-of week)")
 
     sub.add_parser("verify-brackets", help="Check bracket logic against every completed season")
+    cal = sub.add_parser("calibrate", help="Replay completed seasons and score the odds against what happened")
+    cal.add_argument("--runs", type=int, default=10_000, help="Simulation runs per replay (default 10000)")
+    cal.add_argument("--seed", type=int, default=None, help="Random seed for every replay (default: derived per league, season and week)")
+    cal.add_argument("--residual-scale", type=float, default=None, help="Evaluate this residual scale instead of the configured one; the config file is not changed")
     sub.add_parser("export", help="Write site/data/*.json for the website")
     refresh = sub.add_parser("refresh", help="sync, projections, simulate and export in order")
     refresh.set_defaults(full=False, backfill=False, backfill_season=False, runs=10_000, seed=None)
@@ -121,6 +125,37 @@ def cmd_simulate(ctx: Context) -> int:
     return 0 if failed == 0 else 1
 
 
+def cmd_calibrate(ctx: Context) -> int:
+    from ffapp.calibrate import calibration_dir, run_calibration
+
+    scale = ctx.args.residual_scale
+    if scale is not None and not scale > 0:
+        print("FAILED   calibrate: --residual-scale must be positive", file=sys.stderr)
+        return 2
+
+    def progress(league_key: str, season: str, rows: dict) -> None:
+        print(f"replayed {league_key} {season}: {len(rows['score_rows'])} team-weeks, {len(rows['game_rows'])} games, {len(rows['season_rows'])} season rows")
+
+    try:
+        report = run_calibration(ctx.store, ctx.config, runs=ctx.args.runs, seed=ctx.args.seed, scale=scale, progress=progress)
+    except (ValueError, FileNotFoundError) as exc:
+        print(f"FAILED   calibrate: {exc}", file=sys.stderr)
+        return 1
+    if not report["seasons"]:
+        print("no completed seasons stored: run `ffapp sync` first", file=sys.stderr)
+        return 1
+    overall = report["overall"]
+    cov = overall["score"]["coverage"]
+    print(f"score    80% interval covered {cov['80'] * 100:.1f}% of {overall['score']['team_weeks']} team-weeks (95%: {cov['95'] * 100:.1f}%)")
+    for outcome in ("playoffs", "title"):
+        s = overall["season"][outcome]
+        skill = "n/a" if s["skill"] is None else f"{s['skill']:+.3f}"
+        print(f"season   {outcome}: Brier {s['brier']:.4f} vs baseline {s['baseline_brier']:.4f}, skill {skill} ({s['cases']} cases)")
+    print(f"wrote    {calibration_dir(ctx.store) / 'report.json'}")
+    print(f"wrote    {calibration_dir(ctx.store) / 'report.md'}")
+    return 0
+
+
 def cmd_export(ctx: Context) -> int:
     from ffapp.export import ExportError, export_site
 
@@ -152,6 +187,7 @@ HANDLERS = {
     "verify-brackets": cmd_verify_brackets,
     "export": cmd_export,
     "refresh": cmd_refresh,
+    "calibrate": cmd_calibrate,
 }
 
 

@@ -10,6 +10,7 @@ from ffapp.odds import (
     fixed_records,
     rosters_as_of,
     run_as_of,
+    simulate_as_of,
 )
 from ffapp.projections import upsert_week
 from ffapp.sleeper import SleeperClient
@@ -131,6 +132,8 @@ def test_run_as_of_writes_history_and_rerun_replaces_only_same_week(tmp_path):
 
     payload = run_as_of(store, CONFIG, "dynasty", data, 2, current=False, noise=noise, runs=300, seed=99)
     assert payload["runs"] == 300 and payload["seed"] == 99 and payload["as_of_week"] == 2
+    assert payload["residual_scale"] == 1.0
+    assert store.read_odds("dynasty", "2026", 2)["residual_scale"] == 1.0
     assert store.read_odds("dynasty", "2026", 2)["runs"] == 300
     assert {w: store.read_odds("dynasty", "2026", w) for w in (0, 1)} == before
 
@@ -140,3 +143,14 @@ def test_run_as_of_writes_history_and_rerun_replaces_only_same_week(tmp_path):
         assert key in team, key
     assert payload["teams"] == sorted(payload["teams"], key=lambda t: -t["playoffs"])
     assert sum(t["playoffs"] for t in payload["teams"]) == pytest.approx(6.0, abs=0.02)
+
+
+def test_simulate_as_of_returns_raw_result_without_storing(tmp_path):
+    store = seeded_store(tmp_path)
+    data = store.read_season("dynasty", "2026")
+    inputs, result, payload = simulate_as_of(store, CONFIG, "dynasty", data, 9, current=False, noise=GaussianNoise(5.0), runs=150)
+    assert sorted(result.weekly_scores) == [10, 11, 12, 13, 14, 15, 16, 17]
+    assert result.weekly_scores[10].shape == (150, 12)
+    assert payload["as_of_week"] == 9 and payload["simulated_weeks"] == [10, 11, 12, 13, 14, 15, 16, 17]
+    assert inputs.completed_weeks == 9
+    assert store.odds_weeks("dynasty", "2026") == []

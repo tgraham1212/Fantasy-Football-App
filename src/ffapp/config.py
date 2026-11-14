@@ -31,9 +31,17 @@ class ScoringOverride:
 
 
 @dataclass(frozen=True)
+class SimulationConfig:
+    """Optional tuning of the Monte Carlo. Defaults reproduce the untuned model exactly."""
+
+    residual_scale: float = 1.0  # multiplies every sampled score residual
+
+
+@dataclass(frozen=True)
 class Config:
     leagues: dict[str, LeagueConfig]
     overrides: list[ScoringOverride] = field(default_factory=list)
+    simulation: SimulationConfig = field(default_factory=SimulationConfig)
 
     def overrides_for(self, league_key: str, season: str) -> list[ScoringOverride]:
         """Overrides for one league-season, ordered by from_week ascending."""
@@ -41,9 +49,10 @@ class Config:
         return sorted(matching, key=lambda o: o.from_week)
 
 
-_TOP_KEYS = {"leagues", "overrides"}
+_TOP_KEYS = {"leagues", "overrides", "simulation"}
 _LEAGUE_KEYS = {"league_id", "name"}
 _OVERRIDE_KEYS = {"league", "season", "from_week", "scoring"}
+_SIMULATION_KEYS = {"residual_scale"}
 
 
 def _require_mapping(value: Any, where: str) -> dict:
@@ -103,6 +112,17 @@ def _parse_override(index: int, raw: Any, league_keys: set[str]) -> ScoringOverr
     return ScoringOverride(league=league, season=season, from_week=from_week, scoring=parsed)
 
 
+def _parse_simulation(raw: Any) -> SimulationConfig:
+    if raw is None:
+        return SimulationConfig()
+    mapping = _require_mapping(raw, "simulation")
+    _reject_unknown(mapping, _SIMULATION_KEYS, "simulation")
+    scale = mapping.get("residual_scale", 1.0)
+    if isinstance(scale, bool) or not isinstance(scale, (int, float)) or not scale > 0:
+        raise ConfigError(f"simulation.residual_scale must be a positive number, got {scale!r}")
+    return SimulationConfig(residual_scale=float(scale))
+
+
 def parse_config(raw: Any) -> Config:
     """Validate an already-parsed YAML document."""
     top = _require_mapping(raw, "config")
@@ -119,7 +139,7 @@ def parse_config(raw: Any) -> Config:
     if not isinstance(overrides_raw, list):
         raise ConfigError("overrides must be a list")
     overrides = [_parse_override(i, o, set(leagues)) for i, o in enumerate(overrides_raw)]
-    return Config(leagues=leagues, overrides=overrides)
+    return Config(leagues=leagues, overrides=overrides, simulation=_parse_simulation(top.get("simulation")))
 
 
 def load_config(path: Path | str = DEFAULT_CONFIG_PATH) -> Config:
