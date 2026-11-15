@@ -32,6 +32,20 @@
       <ul class="headlines" id="headlines"></ul>
     </section>
 
+    <section class="card" id="how-card">
+      <div class="card-head">
+        <h2>How the odds are made</h2>
+      </div>
+      <ol class="steps">
+        <li><strong>Projections.</strong> Every player starts from Sleeper's weekly projection, scored with the league's own rules.</li>
+        <li><strong>Noise.</strong> Real scores miss projections, so every simulated score adds a miss drawn from how players at that position and projection level have missed in past seasons. <span id="how-noise"></span></li>
+        <li><strong>Lineups.</strong> Each team starts its best projected lineup every week. No slot is ever worth less than a <em>replacement-level player</em>: the average of the best few free agents by projection, which is what a manager would pick up for a bye, an injury or a thin bench. <span id="how-floor"></span></li>
+        <li><strong>Roster drift.</strong> Rosters change, so a team's edge today only partly survives. From past seasons the model knows how much of an edge usually remains some weeks out, and how much random change to allow for. <span id="how-drift"></span></li>
+      </ol>
+      <div class="split" id="how-tables"></div>
+      <p class="hint" id="how-fallback" hidden>Live replacement levels and drift factors are not published yet; they appear after the next daily refresh.</p>
+    </section>
+
     <section class="card">
       <div class="card-head">
         <h2 id="reliability-title">Predicted vs observed</h2>

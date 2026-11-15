@@ -1,7 +1,56 @@
 {
  "as_of_week": 16,
- "generated_at": "2026-11-14T19:06:10+00:00",
+ "generated_at": "2026-11-15T18:17:47+00:00",
  "league_key": "redraft",
+ "model": {
+  "drift": {
+   "floor": true,
+   "league_key": "redraft",
+   "note": "",
+   "sds": [
+    0.0,
+    1.378,
+    1.744,
+    2.221,
+    2.484,
+    2.623,
+    2.839,
+    3.061,
+    3.173,
+    3.317,
+    3.317,
+    3.712,
+    4.017,
+    4.017
+   ],
+   "seasons": [
+    "2021",
+    "2022",
+    "2024",
+    "2025"
+   ],
+   "slopes": [
+    1.0,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9295
+   ],
+   "top_n": 5
+  },
+  "replacement_floor": true,
+  "replacement_top_n": 5,
+  "roster_drift": true
+ },
  "residual_scale": 1.0,
  "runs": 10000,
  "season": "2023",
@@ -42,7 +91,7 @@
    "semifinal": 1.0,
    "team_name": "We’ve Got Beef",
    "ties": 0,
-   "title": 0.6473,
+   "title": 0.6252,
    "user_id": "739284972489293824",
    "wins": 10
   },
@@ -78,7 +127,7 @@
    "semifinal": 1.0,
    "team_name": "Keeper Killer",
    "ties": 0,
-   "title": 0.3527,
+   "title": 0.3748,
    "user_id": "727642823544893440",
    "wins": 9
   },

@@ -4,8 +4,11 @@ import pytest
 
 from ffapp.config import Config, LeagueConfig
 from ffapp.noise import GaussianNoise
+from ffapp.lineup import lineup_points
 from ffapp.odds import (
+    apply_floor,
     build_inputs,
+    lineup_from_projections,
     completed_weeks,
     fixed_records,
     rosters_as_of,
@@ -154,3 +157,66 @@ def test_simulate_as_of_returns_raw_result_without_storing(tmp_path):
     assert payload["as_of_week"] == 9 and payload["simulated_weeks"] == [10, 11, 12, 13, 14, 15, 16, 17]
     assert inputs.completed_weeks == 9
     assert store.odds_weeks("dynasty", "2026") == []
+
+
+# -- replacement-level floor -------------------------------------------------------------
+
+SLOTS = ["QB", "RB", "RB", "WR", "WR", "TE", "FLEX", "DEF"]
+SCORING = {"pass_yd": 0.04, "rush_yd": 0.1, "rec_yd": 0.1}
+
+
+def rec(position, points):
+    key = {"QB": "pass_yd", "RB": "rush_yd"}.get(position, "rec_yd")
+    scale = 25.0 if position == "QB" else 10.0
+    return {"position": position, "stats": {key: points * scale}}
+
+
+def test_floor_fills_holes_and_weak_slots_but_leaves_strong_starters():
+    projections = {
+        "qb": rec("QB", 18.0), "rb1": rec("RB", 14.0), "rb2": rec("RB", 3.1),
+        "wr1": rec("WR", 12.0), "wr2": rec("WR", 9.0), "wr3": rec("WR", 6.0), "def": rec("DEF", 7.0),
+    }  # no TE at all
+    floor = {"QB": 12.0, "RB": 7.5, "WR": 8.2, "TE": 6.8, "DEF": 5.0}
+    lineup = lineup_from_projections(projections, SCORING, SLOTS, list(projections), floor)
+    by_slot = {}
+    for st in lineup:
+        by_slot.setdefault(st.slot, []).append(st)
+    assert [st.slot for st in lineup] == SLOTS
+    assert by_slot["TE"][0].player_id == "FA:TE" and by_slot["TE"][0].projected == 6.8 and by_slot["TE"][0].position == "TE"
+    rbs = sorted(by_slot["RB"], key=lambda s: -s.projected)
+    assert rbs[0].player_id == "rb1" and rbs[0].projected == 14.0
+    assert rbs[1].player_id == "FA:RB" and rbs[1].projected == 7.5, "a 3.1 RB2 is floored"
+    assert by_slot["FLEX"][0].player_id == "FA:WR" and by_slot["FLEX"][0].projected == 8.2, "FLEX takes the best eligible level (WR 8.2 beats wr3 at 6.0)"
+    assert by_slot["QB"][0].player_id == "qb" and by_slot["DEF"][0].player_id == "def"
+    plain = lineup_from_projections(projections, SCORING, SLOTS, list(projections))
+    assert plain == lineup_from_projections(projections, SCORING, SLOTS, list(projections), floor=None)
+    assert len(plain) == 7 and all(not st.player_id.startswith("FA:") for st in plain), "without a floor the empty TE slot stays empty"
+
+
+def test_apply_floor_with_zero_levels_is_identity_for_filled_lineups():
+    projections = {"qb": rec("QB", 18.0), "rb1": rec("RB", 14.0), "rb2": rec("RB", 9.0), "wr1": rec("WR", 12.0),
+                   "wr2": rec("WR", 9.0), "te": rec("TE", 5.0), "wr3": rec("WR", 6.0), "def": rec("DEF", 7.0)}
+    base = lineup_from_projections(projections, SCORING, SLOTS, list(projections))
+    assert set(apply_floor(base, SLOTS, {})) == set(base), "same starters, slot order"
+
+
+def test_build_inputs_applies_floor_and_records_strength(tmp_path):
+    store = seeded_store(tmp_path)
+    data = store.read_season("dynasty", "2026")
+    inputs = build_inputs(store, CONFIG, "dynasty", data, 9, current=True)
+    slots = len(data.league["roster_positions"]) - sum(1 for s in data.league["roster_positions"] if s in ("BN", "IR", "TAXI"))
+    assert sorted(inputs.floors) == list(range(10, 18))
+    for week, by_team in inputs.strength.items():
+        floor = inputs.floors[week]
+        assert set(by_team) == set(inputs.team_ids)
+        for rid in inputs.team_ids:
+            lineup = inputs.starters[rid][week]
+            assert len(lineup) == slots
+            for st in lineup:
+                eligible = {"FLEX": ("RB", "WR", "TE")}.get(st.slot, (st.slot,))
+                assert st.projected >= max(floor.get(p, 0.0) for p in eligible) - 1e-9
+            assert by_team[rid] == pytest.approx(lineup_points(lineup))
+    plain = build_inputs(store, CONFIG, "dynasty", data, 9, current=True, replacement_floor=False)
+    assert plain.floors == {}
+    assert all(not st.player_id.startswith("FA:") for by_week in plain.starters.values() for lineup in by_week.values() for st in lineup)
+    assert any(st.player_id.startswith("FA:") for by_week in inputs.starters.values() for lineup in by_week.values() for st in lineup), "the fixture rosters have holes the floor fills"

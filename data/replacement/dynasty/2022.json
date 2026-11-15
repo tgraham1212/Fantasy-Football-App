@@ -1,0 +1,1312 @@
+{
+ "generated_at": "2026-11-15T18:25:14+00:00",
+ "league_key": "dynasty",
+ "prior_weeks": 4.0,
+ "season": "2022",
+ "season_values": {
+  "DEF": {
+   "prior": 8.9,
+   "prior_seasons": [],
+   "projected_mean": 8.9,
+   "value": 7.93,
+   "weeks_played": 17
+  },
+  "K": {
+   "prior": 9.43,
+   "prior_seasons": [],
+   "projected_mean": 9.43,
+   "value": 8.24,
+   "weeks_played": 17
+  },
+  "QB": {
+   "prior": 14.43,
+   "prior_seasons": [],
+   "projected_mean": 14.43,
+   "value": 13.43,
+   "weeks_played": 17
+  },
+  "RB": {
+   "prior": 5.07,
+   "prior_seasons": [],
+   "projected_mean": 5.07,
+   "value": 4.74,
+   "weeks_played": 17
+  },
+  "TE": {
+   "prior": 5.58,
+   "prior_seasons": [],
+   "projected_mean": 5.58,
+   "value": 4.98,
+   "weeks_played": 17
+  },
+  "WR": {
+   "prior": 7.34,
+   "prior_seasons": [],
+   "projected_mean": 7.34,
+   "value": 6.47,
+   "weeks_played": 17
+  }
+ },
+ "settings_signature": "{\"roster\": [\"QB\", \"RB\", \"RB\", \"WR\", \"WR\", \"TE\", \"FLEX\", \"DEF\", \"BN\", \"BN\", \"BN\", \"BN\", \"BN\", \"BN\", \"BN\", \"BN\", \"BN\", \"BN\"], \"scoring\": {\"blk_kick\": 2.0, \"bonus_pass_yd_300\": 2.0, \"bonus_pass_yd_400\": 2.0, \"bonus_rec_yd_100\": 2.0, \"bonus_rec_yd_200\": 2.0, \"bonus_rush_yd_100\": 2.0, \"bonus_rush_yd_200\": 2.0, \"def_st_ff\": 1.0, \"def_st_fum_rec\": 1.0, \"def_st_td\": 6.0, \"def_td\": 6.0, \"ff\": 2.0, \"fgm_0_19\": 3.0, \"fgm_20_29\": 3.0, \"fgm_30_39\": 3.0, \"fgm_40_49\": 4.0, \"fgm_50p\": 5.0, \"fgmiss\": -1.0, \"fum\": 0.0, \"fum_lost\": -2.0, \"fum_rec\": 2.0, \"fum_rec_td\": 6.0, \"int\": 2.0, \"pass_2pt\": 2.0, \"pass_int\": -2.0, \"pass_td\": 4.0, \"pass_yd\": 0.03999999910593033, \"pts_allow_0\": 10.0, \"pts_allow_14_20\": 1.0, \"pts_allow_1_6\": 7.0, \"pts_allow_21_27\": 0.0, \"pts_allow_28_34\": -1.0, \"pts_allow_35p\": -4.0, \"pts_allow_7_13\": 4.0, \"rec\": 0.5, \"rec_2pt\": 2.0, \"rec_td\": 6.0, \"rec_yd\": 0.10000000149011612, \"rush_2pt\": 2.0, \"rush_td\": 6.0, \"rush_yd\": 0.10000000149011612, \"sack\": 1.0, \"safe\": 2.0, \"st_ff\": 1.0, \"st_fum_rec\": 1.0, \"st_td\": 6.0, \"xpm\": 1.0, \"xpmiss\": -1.0}}",
+ "top_n": 5,
+ "weeks": {
+  "1": {
+   "DEF": {
+    "available": 17,
+    "players": [
+     "CLE",
+     "CAR",
+     "KC",
+     "JAX",
+     "GB"
+    ],
+    "projected": 8.63,
+    "realised": 4.6
+   },
+   "K": {
+    "available": 32,
+    "players": [
+     "7839",
+     "1264",
+     "4227",
+     "5095",
+     "7042"
+    ],
+    "projected": 9.45,
+    "realised": 7.6
+   },
+   "QB": {
+    "available": 9,
+    "players": [
+     "3161",
+     "3163",
+     "2307",
+     "3976",
+     "4892"
+    ],
+    "projected": 16.28,
+    "realised": 19.14
+   },
+   "RB": {
+    "available": 45,
+    "players": [
+     "1387",
+     "6845",
+     "3242",
+     "5536",
+     "7045"
+    ],
+    "projected": 5.79,
+    "realised": 8.82
+   },
+   "TE": {
+    "available": 61,
+    "players": [
+     "7568",
+     "2214",
+     "5133",
+     "8225",
+     "6869"
+    ],
+    "projected": 5.37,
+    "realised": 2.36
+   },
+   "WR": {
+    "available": 75,
+    "players": [
+     "1817",
+     "7496",
+     "4234",
+     "928",
+     "5880"
+    ],
+    "projected": 8.39,
+    "realised": 4.4
+   }
+  },
+  "10": {
+   "DEF": {
+    "available": 13,
+    "players": [
+     "ATL",
+     "NO",
+     "PIT",
+     "IND",
+     "CAR"
+    ],
+    "projected": 8.89,
+    "realised": 7.0
+   },
+   "K": {
+    "available": 27,
+    "players": [
+     "5095",
+     "7042",
+     "4666",
+     "2747",
+     "4227"
+    ],
+    "projected": 9.24,
+    "realised": 4.8
+   },
+   "QB": {
+    "available": 8,
+    "players": [
+     "1049",
+     "7585",
+     "3257",
+     "5806",
+     "2711"
+    ],
+    "projected": 13.39,
+    "realised": 13.37
+   },
+   "RB": {
+    "available": 28,
+    "players": [
+     "6012",
+     "6996",
+     "4455",
+     "7741",
+     "1387"
+    ],
+    "projected": 3.82,
+    "realised": 2.0
+   },
+   "TE": {
+    "available": 58,
+    "players": [
+     "5985",
+     "7002",
+     "4993",
+     "6850",
+     "2214"
+    ],
+    "projected": 5.69,
+    "realised": 7.82
+   },
+   "WR": {
+    "available": 67,
+    "players": [
+     "4177",
+     "2750",
+     "6290",
+     "1825",
+     "3634"
+    ],
+    "projected": 7.07,
+    "realised": 6.42
+   }
+  },
+  "11": {
+   "DEF": {
+    "available": 14,
+    "players": [
+     "NYG",
+     "TEN",
+     "NYJ",
+     "HOU",
+     "ATL"
+    ],
+    "projected": 8.31,
+    "realised": 5.6
+   },
+   "K": {
+    "available": 27,
+    "players": [
+     "1264",
+     "7042",
+     "7839",
+     "503",
+     "4666"
+    ],
+    "projected": 9.21,
+    "realised": 11.4
+   },
+   "QB": {
+    "available": 8,
+    "players": [
+     "7585",
+     "1049",
+     "2711",
+     "829",
+     "421"
+    ],
+    "projected": 14.02,
+    "realised": 15.12
+   },
+   "RB": {
+    "available": 27,
+    "players": [
+     "5995",
+     "7741",
+     "1387",
+     "4455",
+     "2359"
+    ],
+    "projected": 3.59,
+    "realised": 3.56
+   },
+   "TE": {
+    "available": 61,
+    "players": [
+     "5985",
+     "7554",
+     "4602",
+     "3214",
+     "5133"
+    ],
+    "projected": 6.48,
+    "realised": 2.34
+   },
+   "WR": {
+    "available": 66,
+    "players": [
+     "1825",
+     "4177",
+     "7210",
+     "5374",
+     "3286"
+    ],
+    "projected": 6.83,
+    "realised": 10.74
+   }
+  },
+  "12": {
+   "DEF": {
+    "available": 16,
+    "players": [
+     "NYJ",
+     "MIN",
+     "CAR",
+     "PIT",
+     "CIN"
+    ],
+    "projected": 10.22,
+    "realised": 10.0
+   },
+   "K": {
+    "available": 32,
+    "players": [
+     "7042",
+     "1264",
+     "4227",
+     "7839",
+     "5119"
+    ],
+    "projected": 9.37,
+    "realised": 11.8
+   },
+   "QB": {
+    "available": 8,
+    "players": [
+     "24",
+     "7335",
+     "3257",
+     "5089",
+     "4943"
+    ],
+    "projected": 13.51,
+    "realised": 15.06
+   },
+   "RB": {
+    "available": 43,
+    "players": [
+     "6039",
+     "7045",
+     "5131",
+     "1386",
+     "6012"
+    ],
+    "projected": 4.57,
+    "realised": 6.4
+   },
+   "TE": {
+    "available": 66,
+    "players": [
+     "4993",
+     "2251",
+     "3214",
+     "4602",
+     "5133"
+    ],
+    "projected": 5.91,
+    "realised": 5.0
+   },
+   "WR": {
+    "available": 76,
+    "players": [
+     "4177",
+     "1825",
+     "3286",
+     "7210",
+     "2750"
+    ],
+    "projected": 7.39,
+    "realised": 8.72
+   }
+  },
+  "13": {
+   "DEF": {
+    "available": 13,
+    "players": [
+     "ATL",
+     "DET",
+     "JAX",
+     "LAC",
+     "NYJ"
+    ],
+    "projected": 7.6,
+    "realised": 4.2
+   },
+   "K": {
+    "available": 30,
+    "players": [
+     "1264",
+     "7839",
+     "8259",
+     "5095",
+     "4227"
+    ],
+    "projected": 9.45,
+    "realised": 7.2
+   },
+   "QB": {
+    "available": 8,
+    "players": [
+     "2307",
+     "1049",
+     "2711",
+     "5127",
+     "24"
+    ],
+    "projected": 14.73,
+    "realised": 11.26
+   },
+   "RB": {
+    "available": 39,
+    "players": [
+     "5131",
+     "7741",
+     "6931",
+     "7045",
+     "8408"
+    ],
+    "projected": 4.2,
+    "realised": 3.46
+   },
+   "TE": {
+    "available": 63,
+    "players": [
+     "4602",
+     "6850",
+     "5133",
+     "2251",
+     "5032"
+    ],
+    "projected": 5.7,
+    "realised": 2.48
+   },
+   "WR": {
+    "available": 70,
+    "players": [
+     "1067",
+     "3286",
+     "5137",
+     "2750",
+     "3269"
+    ],
+    "projected": 7.74,
+    "realised": 4.26
+   }
+  },
+  "14": {
+   "DEF": {
+    "available": 11,
+    "players": [
+     "ARI",
+     "LAR",
+     "DET",
+     "CLE",
+     "CAR"
+    ],
+    "projected": 7.33,
+    "realised": 6.2
+   },
+   "K": {
+    "available": 26,
+    "players": [
+     "7042",
+     "7839",
+     "1264",
+     "4958",
+     "4227"
+    ],
+    "projected": 9.45,
+    "realised": 9.2
+   },
+   "QB": {
+    "available": 6,
+    "players": [
+     "5870",
+     "7527",
+     "4943",
+     "5806",
+     "7585"
+    ],
+    "projected": 13.11,
+    "realised": 8.73
+   },
+   "RB": {
+    "available": 35,
+    "players": [
+     "5209",
+     "8228",
+     "7045",
+     "8408",
+     "2359"
+    ],
+    "projected": 4.64,
+    "realised": 3.98
+   },
+   "TE": {
+    "available": 55,
+    "players": [
+     "5985",
+     "8210",
+     "3202",
+     "5133",
+     "5032"
+    ],
+    "projected": 5.65,
+    "realised": 6.22
+   },
+   "WR": {
+    "available": 56,
+    "players": [
+     "5137",
+     "7496",
+     "7210",
+     "3286",
+     "2325"
+    ],
+    "projected": 7.18,
+    "realised": 9.02
+   }
+  },
+  "15": {
+   "DEF": {
+    "available": 15,
+    "players": [
+     "GB",
+     "CAR",
+     "MIN",
+     "ARI",
+     "DET"
+    ],
+    "projected": 9.63,
+    "realised": 9.6
+   },
+   "K": {
+    "available": 32,
+    "players": [
+     "8259",
+     "4227",
+     "7042",
+     "7839",
+     "5230"
+    ],
+    "projected": 9.77,
+    "realised": 6.0
+   },
+   "QB": {
+    "available": 11,
+    "players": [
+     "7538",
+     "829",
+     "4943",
+     "7527",
+     "3976"
+    ],
+    "projected": 14.48,
+    "realised": 14.05
+   },
+   "RB": {
+    "available": 47,
+    "players": [
+     "1387",
+     "8228",
+     "8408",
+     "6012",
+     "4718"
+    ],
+    "projected": 5.59,
+    "realised": 4.98
+   },
+   "TE": {
+    "available": 73,
+    "players": [
+     "5133",
+     "7002",
+     "4602",
+     "3214",
+     "3202"
+    ],
+    "projected": 6.01,
+    "realised": 5.84
+   },
+   "WR": {
+    "available": 73,
+    "players": [
+     "2325",
+     "4454",
+     "3286",
+     "7496",
+     "2334"
+    ],
+    "projected": 7.44,
+    "realised": 0.94
+   }
+  },
+  "16": {
+   "DEF": {
+    "available": 18,
+    "players": [
+     "LAC",
+     "DET",
+     "CIN",
+     "NYJ",
+     "LAR"
+    ],
+    "projected": 9.37,
+    "realised": 11.4
+   },
+   "K": {
+    "available": 32,
+    "players": [
+     "4227",
+     "7042",
+     "1264",
+     "8259",
+     "7839"
+    ],
+    "projected": 9.25,
+    "realised": 5.2
+   },
+   "QB": {
+    "available": 13,
+    "players": [
+     "6011",
+     "8183",
+     "7083",
+     "7527",
+     "1029"
+    ],
+    "projected": 14.79,
+    "realised": 14.22
+   },
+   "RB": {
+    "available": 46,
+    "players": [
+     "7045",
+     "4718",
+     "8228",
+     "6012",
+     "5046"
+    ],
+    "projected": 4.82,
+    "realised": 3.06
+   },
+   "TE": {
+    "available": 72,
+    "players": [
+     "3214",
+     "8219",
+     "5133",
+     "2214",
+     "3202"
+    ],
+    "projected": 5.17,
+    "realised": 2.84
+   },
+   "WR": {
+    "available": 71,
+    "players": [
+     "3286",
+     "1346",
+     "5137",
+     "4036",
+     "928"
+    ],
+    "projected": 7.68,
+    "realised": 4.7
+   }
+  },
+  "17": {
+   "DEF": {
+    "available": 18,
+    "players": [
+     "LAC",
+     "NYG",
+     "ATL",
+     "JAX",
+     "WAS"
+    ],
+    "projected": 10.16,
+    "realised": 10.8
+   },
+   "K": {
+    "available": 32,
+    "players": [
+     "8259",
+     "7839",
+     "7042",
+     "5230",
+     "4227"
+    ],
+    "projected": 9.5,
+    "realised": 5.2
+   },
+   "QB": {
+    "available": 14,
+    "players": [
+     "6011",
+     "3161",
+     "7527",
+     "7083",
+     "2152"
+    ],
+    "projected": 14.79,
+    "realised": 10.86
+   },
+   "RB": {
+    "available": 46,
+    "players": [
+     "1476",
+     "8123",
+     "5046",
+     "8800",
+     "4718"
+    ],
+    "projected": 8.13,
+    "realised": 6.32
+   },
+   "TE": {
+    "available": 68,
+    "players": [
+     "5133",
+     "5032",
+     "2251",
+     "8219",
+     "3202"
+    ],
+    "projected": 5.07,
+    "realised": 5.78
+   },
+   "WR": {
+    "available": 73,
+    "players": [
+     "4036",
+     "4454",
+     "3269",
+     "4171",
+     "8676"
+    ],
+    "projected": 7.76,
+    "realised": 4.76
+   }
+  },
+  "2": {
+   "DEF": {
+    "available": 17,
+    "players": [
+     "LV",
+     "PIT",
+     "NYG",
+     "CAR",
+     "KC"
+    ],
+    "projected": 9.1,
+    "realised": 6.2
+   },
+   "K": {
+    "available": 31,
+    "players": [
+     "7042",
+     "6083",
+     "5095",
+     "1264",
+     "7839"
+    ],
+    "projected": 10.05,
+    "realised": 11.0
+   },
+   "QB": {
+    "available": 9,
+    "players": [
+     "3163",
+     "5870",
+     "3976",
+     "3257",
+     "2307"
+    ],
+    "projected": 15.62,
+    "realised": 15.9
+   },
+   "RB": {
+    "available": 45,
+    "players": [
+     "3242",
+     "2161",
+     "6951",
+     "6984",
+     "4147"
+    ],
+    "projected": 5.36,
+    "realised": 4.1
+   },
+   "TE": {
+    "available": 60,
+    "players": [
+     "5133",
+     "4602",
+     "7602",
+     "7002",
+     "2214"
+    ],
+    "projected": 6.01,
+    "realised": 3.78
+   },
+   "WR": {
+    "available": 80,
+    "players": [
+     "5880",
+     "5970",
+     "6427",
+     "4036",
+     "1067"
+    ],
+    "projected": 8.19,
+    "realised": 8.86
+   }
+  },
+  "3": {
+   "DEF": {
+    "available": 17,
+    "players": [
+     "NYG",
+     "CIN",
+     "MIN",
+     "SEA",
+     "KC"
+    ],
+    "projected": 10.0,
+    "realised": 9.0
+   },
+   "K": {
+    "available": 31,
+    "players": [
+     "7042",
+     "7839",
+     "1264",
+     "1348",
+     "6083"
+    ],
+    "projected": 9.42,
+    "realised": 6.8
+   },
+   "QB": {
+    "available": 8,
+    "players": [
+     "1373",
+     "5870",
+     "1049",
+     "4892",
+     "4574"
+    ],
+    "projected": 15.52,
+    "realised": 15.3
+   },
+   "RB": {
+    "available": 41,
+    "players": [
+     "1387",
+     "7045",
+     "6951",
+     "4147",
+     "6012"
+    ],
+    "projected": 4.66,
+    "realised": 4.68
+   },
+   "TE": {
+    "available": 60,
+    "players": [
+     "2214",
+     "4055",
+     "5985",
+     "5010",
+     "5409"
+    ],
+    "projected": 5.41,
+    "realised": 4.9
+   },
+   "WR": {
+    "available": 73,
+    "players": [
+     "5137",
+     "6290",
+     "6824",
+     "4197",
+     "4177"
+    ],
+    "projected": 7.24,
+    "realised": 10.81
+   }
+  },
+  "4": {
+   "DEF": {
+    "available": 15,
+    "players": [
+     "CAR",
+     "ARI",
+     "CIN",
+     "DET",
+     "KC"
+    ],
+    "projected": 8.71,
+    "realised": 7.2
+   },
+   "K": {
+    "available": 31,
+    "players": [
+     "1264",
+     "7042",
+     "7839",
+     "4666",
+     "5095"
+    ],
+    "projected": 9.16,
+    "realised": 11.6
+   },
+   "QB": {
+    "available": 8,
+    "players": [
+     "5870",
+     "3976",
+     "1373",
+     "4574",
+     "4892"
+    ],
+    "projected": 15.86,
+    "realised": 16.06
+   },
+   "RB": {
+    "available": 43,
+    "players": [
+     "956",
+     "1387",
+     "6951",
+     "1476",
+     "1034"
+    ],
+    "projected": 6.34,
+    "realised": 7.32
+   },
+   "TE": {
+    "available": 56,
+    "players": [
+     "2214",
+     "5409",
+     "7602",
+     "4054",
+     "7002"
+    ],
+    "projected": 4.63,
+    "realised": 8.8
+   },
+   "WR": {
+    "available": 71,
+    "players": [
+     "5137",
+     "6824",
+     "1067",
+     "3634",
+     "6154"
+    ],
+    "projected": 7.25,
+    "realised": 2.72
+   }
+  },
+  "5": {
+   "DEF": {
+    "available": 14,
+    "players": [
+     "BAL",
+     "IND",
+     "CIN",
+     "DAL",
+     "NYJ"
+    ],
+    "projected": 8.18,
+    "realised": 13.0
+   },
+   "K": {
+    "available": 29,
+    "players": [
+     "7042",
+     "1264",
+     "391",
+     "4666",
+     "650"
+    ],
+    "projected": 9.33,
+    "realised": 9.8
+   },
+   "QB": {
+    "available": 8,
+    "players": [
+     "3161",
+     "2152",
+     "4574",
+     "829",
+     "3257"
+    ],
+    "projected": 15.24,
+    "realised": 10.42
+   },
+   "RB": {
+    "available": 38,
+    "players": [
+     "956",
+     "6951",
+     "1387",
+     "5536",
+     "4962"
+    ],
+    "projected": 5.14,
+    "realised": 6.1
+   },
+   "TE": {
+    "available": 56,
+    "players": [
+     "4055",
+     "7536",
+     "8111",
+     "7716",
+     "7002"
+    ],
+    "projected": 5.25,
+    "realised": 3.58
+   },
+   "WR": {
+    "available": 68,
+    "players": [
+     "6824",
+     "2750",
+     "5137",
+     "1067",
+     "6989"
+    ],
+    "projected": 7.53,
+    "realised": 5.78
+   }
+  },
+  "6": {
+   "DEF": {
+    "available": 14,
+    "players": [
+     "CHI",
+     "CLE",
+     "WAS",
+     "CIN",
+     "JAX"
+    ],
+    "projected": 8.95,
+    "realised": 5.2
+   },
+   "K": {
+    "available": 27,
+    "players": [
+     "7042",
+     "1264",
+     "503",
+     "7839",
+     "4227"
+    ],
+    "projected": 9.37,
+    "realised": 7.4
+   },
+   "QB": {
+    "available": 6,
+    "players": [
+     "3257",
+     "8206",
+     "4574",
+     "4335",
+     "829"
+    ],
+    "projected": 12.92,
+    "realised": 6.22
+   },
+   "RB": {
+    "available": 25,
+    "players": [
+     "956",
+     "7045",
+     "3242",
+     "2588",
+     "7809"
+    ],
+    "projected": 4.68,
+    "realised": 6.4
+   },
+   "TE": {
+    "available": 52,
+    "players": [
+     "4993",
+     "2214",
+     "6869",
+     "4054",
+     "7002"
+    ],
+    "projected": 5.31,
+    "realised": 6.54
+   },
+   "WR": {
+    "available": 68,
+    "players": [
+     "6824",
+     "6149",
+     "2319",
+     "6989",
+     "5026"
+    ],
+    "projected": 6.94,
+    "realised": 7.44
+   }
+  },
+  "7": {
+   "DEF": {
+    "available": 15,
+    "players": [
+     "CIN",
+     "TEN",
+     "ARI",
+     "JAX",
+     "IND"
+    ],
+    "projected": 9.35,
+    "realised": 10.2
+   },
+   "K": {
+    "available": 26,
+    "players": [
+     "7839",
+     "5095",
+     "1264",
+     "503",
+     "4227"
+    ],
+    "projected": 9.76,
+    "realised": 8.8
+   },
+   "QB": {
+    "available": 7,
+    "players": [
+     "1049",
+     "3257",
+     "2711",
+     "7585",
+     "829"
+    ],
+    "projected": 13.75,
+    "realised": 15.41
+   },
+   "RB": {
+    "available": 29,
+    "players": [
+     "1476",
+     "956",
+     "1387",
+     "5995",
+     "1034"
+    ],
+    "projected": 5.75,
+    "realised": 3.6
+   },
+   "TE": {
+    "available": 55,
+    "players": [
+     "5985",
+     "7002",
+     "4993",
+     "8172",
+     "7602"
+    ],
+    "projected": 5.37,
+    "realised": 7.08
+   },
+   "WR": {
+    "available": 62,
+    "players": [
+     "4177",
+     "1067",
+     "2750",
+     "2319",
+     "5121"
+    ],
+    "projected": 6.48,
+    "realised": 7.66
+   }
+  },
+  "8": {
+   "DEF": {
+    "available": 15,
+    "players": [
+     "ATL",
+     "LAR",
+     "MIN",
+     "LV",
+     "TB"
+    ],
+    "projected": 9.0,
+    "realised": 5.2
+   },
+   "K": {
+    "available": 29,
+    "players": [
+     "7042",
+     "5095",
+     "7839",
+     "503",
+     "1264"
+    ],
+    "projected": 9.07,
+    "realised": 5.0
+   },
+   "QB": {
+    "available": 6,
+    "players": [
+     "2307",
+     "7585",
+     "3257",
+     "8161",
+     "4335"
+    ],
+    "projected": 14.28,
+    "realised": 14.34
+   },
+   "RB": {
+    "available": 31,
+    "players": [
+     "956",
+     "1387",
+     "6039",
+     "1034",
+     "6996"
+    ],
+    "projected": 4.84,
+    "realised": 0.9
+   },
+   "TE": {
+    "available": 59,
+    "players": [
+     "7002",
+     "3214",
+     "5985",
+     "2251",
+     "5409"
+    ],
+    "projected": 6.3,
+    "realised": 3.7
+   },
+   "WR": {
+    "available": 66,
+    "players": [
+     "6989",
+     "5026",
+     "1817",
+     "2319",
+     "4177"
+    ],
+    "projected": 6.62,
+    "realised": 2.44
+   }
+  },
+  "9": {
+   "DEF": {
+    "available": 12,
+    "players": [
+     "ARI",
+     "LV",
+     "NO",
+     "LAC",
+     "WAS"
+    ],
+    "projected": 7.79,
+    "realised": 5.6
+   },
+   "K": {
+    "available": 25,
+    "players": [
+     "7839",
+     "7042",
+     "1264",
+     "5095",
+     "4666"
+    ],
+    "projected": 9.43,
+    "realised": 6.6
+   },
+   "QB": {
+    "available": 6,
+    "players": [
+     "829",
+     "2711",
+     "4335",
+     "7538",
+     "7585"
+    ],
+    "projected": 13.1,
+    "realised": 8.81
+   },
+   "RB": {
+    "available": 30,
+    "players": [
+     "5995",
+     "4962",
+     "6996",
+     "7567",
+     "6039"
+    ],
+    "projected": 4.22,
+    "realised": 3.64
+   },
+   "TE": {
+    "available": 48,
+    "players": [
+     "5985",
+     "7002",
+     "4993",
+     "7568",
+     "7602"
+    ],
+    "projected": 5.58,
+    "realised": 3.28
+   },
+   "WR": {
+    "available": 61,
+    "players": [
+     "3634",
+     "4177",
+     "2334",
+     "3269",
+     "1067"
+    ],
+    "projected": 7.02,
+    "realised": 6.82
+   }
+  }
+ }
+}

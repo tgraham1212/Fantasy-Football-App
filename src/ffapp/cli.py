@@ -12,7 +12,7 @@ from ffapp.config import DEFAULT_CONFIG_PATH, Config, ConfigError, load_config
 from ffapp.sleeper import SleeperClient
 from ffapp.store import DEFAULT_DATA_ROOT, Store
 
-COMMANDS = ("sync", "projections", "simulate", "verify-brackets", "export", "refresh", "calibrate")
+COMMANDS = ("sync", "projections", "stats", "replacement", "simulate", "verify-brackets", "export", "refresh", "calibrate")
 log = logging.getLogger("ffapp")
 
 
@@ -33,6 +33,11 @@ def build_parser() -> argparse.ArgumentParser:
     proj = sub.add_parser("projections", help="Refresh stored player projections")
     proj.add_argument("--backfill", action="store_true", help="Fetch every season in scope, not just the current one")
 
+    stats = sub.add_parser("stats", help="Refresh stored weekly player stats (actual stat lines)")
+    stats.add_argument("--backfill", action="store_true", help="Fetch every season in scope, not just the current one")
+
+    sub.add_parser("replacement", help="Write replacement-level values for every stored season to data/replacement")
+
     sim = sub.add_parser("simulate", help="Run the playoff odds simulation")
     sim.add_argument("--backfill-season", action="store_true", help="Also produce odds for every earlier as-of week of the current season")
     sim.add_argument("--runs", type=int, default=10_000, help="Simulation runs (default 10000)")
@@ -43,8 +48,10 @@ def build_parser() -> argparse.ArgumentParser:
     cal.add_argument("--runs", type=int, default=10_000, help="Simulation runs per replay (default 10000)")
     cal.add_argument("--seed", type=int, default=None, help="Random seed for every replay (default: derived per league, season and week)")
     cal.add_argument("--residual-scale", type=float, default=None, help="Evaluate this residual scale instead of the configured one; the config file is not changed")
+    cal.add_argument("--no-replacement-floor", action="store_true", help="Replay without the replacement-level lineup floor (evaluation only)")
+    cal.add_argument("--no-roster-drift", action="store_true", help="Replay without roster drift (evaluation only)")
     sub.add_parser("export", help="Write site/data/*.json for the website")
-    refresh = sub.add_parser("refresh", help="sync, projections, simulate and export in order")
+    refresh = sub.add_parser("refresh", help="sync, projections, stats, replacement, simulate and export in order")
     refresh.set_defaults(full=False, backfill=False, backfill_season=False, runs=10_000, seed=None)
     return parser
 
@@ -86,6 +93,35 @@ def cmd_projections(ctx: Context) -> int:
     for message in report.errors:
         print(f"FAILED   {message}", file=sys.stderr)
     return 0 if report.ok else 1
+
+
+def cmd_stats(ctx: Context) -> int:
+    from ffapp.stats import refresh_stats
+
+    report = refresh_stats(ctx.client, ctx.store, ctx.config.leagues, backfill=ctx.args.backfill)
+    written = sum(1 for r in report.results if r.written)
+    added = sum(r.added for r in report.results)
+    updated = sum(r.updated for r in report.results)
+    print(f"stats: {len(report.results)} weeks checked, {written} written, {added} added, {updated} updated")
+    for message in report.errors:
+        print(f"FAILED   {message}", file=sys.stderr)
+    return 0 if report.ok else 1
+
+
+def cmd_replacement(ctx: Context) -> int:
+    from ffapp.replacement import write_replacement
+
+    failed = 0
+    for key in ctx.config.leagues:
+        try:
+            written = write_replacement(ctx.store, ctx.config, key)
+        except (ValueError, FileNotFoundError) as exc:
+            print(f"FAILED   {key}: {exc}", file=sys.stderr)
+            failed += 1
+            continue
+        for path in written:
+            print(f"wrote    {path}")
+    return 0 if failed == 0 else 1
 
 
 def cmd_verify_brackets(ctx: Context) -> int:
@@ -137,7 +173,10 @@ def cmd_calibrate(ctx: Context) -> int:
         print(f"replayed {league_key} {season}: {len(rows['score_rows'])} team-weeks, {len(rows['game_rows'])} games, {len(rows['season_rows'])} season rows")
 
     try:
-        report = run_calibration(ctx.store, ctx.config, runs=ctx.args.runs, seed=ctx.args.seed, scale=scale, progress=progress)
+        report = run_calibration(
+            ctx.store, ctx.config, runs=ctx.args.runs, seed=ctx.args.seed, scale=scale,
+            replacement_floor=not ctx.args.no_replacement_floor, roster_drift=not ctx.args.no_roster_drift, progress=progress,
+        )
     except (ValueError, FileNotFoundError) as exc:
         print(f"FAILED   calibrate: {exc}", file=sys.stderr)
         return 1
@@ -146,6 +185,7 @@ def cmd_calibrate(ctx: Context) -> int:
         return 1
     overall = report["overall"]
     cov = overall["score"]["coverage"]
+    print(f"model    replacement floor {'on' if report['replacement_floor'] else 'off'}, roster drift {'on' if report['roster_drift'] else 'off'}")
     print(f"score    80% interval covered {cov['80'] * 100:.1f}% of {overall['score']['team_weeks']} team-weeks (95%: {cov['95'] * 100:.1f}%)")
     for outcome in ("playoffs", "title"):
         s = overall["season"][outcome]
@@ -171,7 +211,15 @@ def cmd_export(ctx: Context) -> int:
 
 def cmd_refresh(ctx: Context) -> int:
     """The scheduled pipeline: each step runs only if the one before succeeded."""
-    for name, handler in (("sync", cmd_sync), ("projections", cmd_projections), ("simulate", cmd_simulate), ("export", cmd_export)):
+    steps = (
+        ("sync", cmd_sync),
+        ("projections", cmd_projections),
+        ("stats", cmd_stats),
+        ("replacement", cmd_replacement),
+        ("simulate", cmd_simulate),
+        ("export", cmd_export),
+    )
+    for name, handler in steps:
         print(f"== {name}")
         code = handler(ctx)
         if code != 0:
@@ -183,6 +231,8 @@ def cmd_refresh(ctx: Context) -> int:
 HANDLERS = {
     "sync": cmd_sync,
     "projections": cmd_projections,
+    "stats": cmd_stats,
+    "replacement": cmd_replacement,
     "simulate": cmd_simulate,
     "verify-brackets": cmd_verify_brackets,
     "export": cmd_export,

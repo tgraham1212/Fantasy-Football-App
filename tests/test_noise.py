@@ -45,7 +45,7 @@ def test_residuals_from_stored_data(tmp_path):
     assert total > 0
     assert all(pos in {"QB", "RB", "WR", "TE", "K", "DEF"} for pos, _ in residuals)
     # only 2025 week 1 has projections, so every residual comes from that week
-    assert total <= 30 * 1  # at most one residual per projected player
+    assert total <= 60  # at most one residual per projected player (60 projected rows in the fixture)
 
     excluded = collect_residuals(store, config, exclude_after=("2025", 0))
     assert sum(len(v) for v in excluded.values()) == 0

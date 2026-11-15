@@ -1,7 +1,55 @@
 {
  "as_of_week": 16,
- "generated_at": "2026-11-14T19:05:30+00:00",
+ "generated_at": "2026-11-15T18:17:27+00:00",
  "league_key": "dynasty",
+ "model": {
+  "drift": {
+   "floor": true,
+   "league_key": "dynasty",
+   "note": "",
+   "sds": [
+    0.0,
+    1.383,
+    1.919,
+    2.367,
+    2.551,
+    2.862,
+    2.862,
+    2.977,
+    3.38,
+    3.38,
+    3.38,
+    3.38,
+    3.38,
+    3.415
+   ],
+   "seasons": [
+    "2023",
+    "2024",
+    "2025"
+   ],
+   "slopes": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "top_n": 5
+  },
+  "replacement_floor": true,
+  "replacement_top_n": 5,
+  "roster_drift": true
+ },
  "residual_scale": 1.0,
  "runs": 10000,
  "season": "2022",
@@ -42,7 +90,7 @@
    "semifinal": 1.0,
    "team_name": "The Kuppets",
    "ties": 0,
-   "title": 0.5562,
+   "title": 0.5532,
    "user_id": "739284972489293824",
    "wins": 7
   },
@@ -78,7 +126,7 @@
    "semifinal": 1.0,
    "team_name": "Team alwaysflexin",
    "ties": 0,
-   "title": 0.4438,
+   "title": 0.4468,
    "user_id": "785995674914312192",
    "wins": 9
   },

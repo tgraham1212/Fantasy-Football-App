@@ -119,6 +119,28 @@ def test_projections_fixture_shape():
     assert "fgm_yds" in kicker["stats"] and "xpm" in kicker["stats"]
 
 
+def test_stats_fixture_shape():
+    rows = load("stats/2025/1.json")
+    projected_ids = {str(r["player_id"]) for r in load("projections/2025/1.json")}
+    rostered = set()
+    for league_id in FULL_SEASONS:
+        for team in load(f"league/{league_id}/matchups/1.json"):
+            rostered.update(str(p) for p in (team.get("players") or []))
+    with_points = [r for r in rows if any(k.startswith("pts_") for k in r["stats"])]
+    assert len(rows) - len(with_points) >= 3, "fixture keeps a few did-not-play rows for the drop test"
+    for row in rows:
+        for key in ("player_id", "season", "week", "stats", "last_modified", "team", "player"):
+            assert key in row, key
+        assert row["season"] == "2025" and row["week"] == 1
+    free_agents = [r for r in with_points if str(r["player_id"]) not in rostered]
+    assert len(free_agents) >= 5 * 6
+    for position in ("QB", "RB", "WR", "TE", "K", "DEF"):
+        at_position = [r for r in free_agents if r["player"]["position"] == position]
+        assert len(at_position) >= 5, position
+        assert all(str(r["player_id"]) in projected_ids for r in at_position), "free agents also have projections"
+    assert sum(1 for r in with_points if str(r["player_id"]) in rostered) >= 25, "rostered fixture players have stats too"
+
+
 def test_fixture_tree_is_small():
     total = sum(p.stat().st_size for p in SLEEPER_ROOT.rglob("*.json"))
     assert total < 6 * 1024 * 1024, "fixtures should stay a few MB at most"

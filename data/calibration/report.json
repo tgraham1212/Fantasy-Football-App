@@ -5,45 +5,259 @@
   "The baseline is a simple standings extrapolation, not a rival model; skill above it shows the simulation adds information beyond the record.",
   "Noise pools for each replayed season come from every other stored season, including later ones; residuals are treated as stationary."
  ],
- "generated_at": "2026-11-14T19:06:24+00:00",
+ "drift_diagnostic": {
+  "dynasty": {
+   "floored": {
+    "12": {
+     "sd": 4.53,
+     "slope": 1.082
+    },
+    "2": {
+     "sd": 1.48,
+     "slope": 1.013
+    },
+    "3": {
+     "sd": 1.96,
+     "slope": 1.017
+    },
+    "5": {
+     "sd": 2.69,
+     "slope": 1.038
+    },
+    "8": {
+     "sd": 3.49,
+     "slope": 1.074
+    }
+   },
+   "frozen": {
+    "12": {
+     "sd": 6.1,
+     "slope": 0.819
+    },
+    "2": {
+     "sd": 3.21,
+     "slope": 0.902
+    },
+    "3": {
+     "sd": 3.64,
+     "slope": 0.891
+    },
+    "5": {
+     "sd": 4.75,
+     "slope": 0.832
+    },
+    "8": {
+     "sd": 5.1,
+     "slope": 0.863
+    }
+   },
+   "horizons": [
+    2,
+    3,
+    5,
+    8,
+    12
+   ],
+   "seasons": [
+    "2022",
+    "2023",
+    "2024",
+    "2025"
+   ],
+   "top_n": 5
+  },
+  "redraft": {
+   "floored": {
+    "12": {
+     "sd": 3.79,
+     "slope": 1.068
+    },
+    "2": {
+     "sd": 1.36,
+     "slope": 0.987
+    },
+    "3": {
+     "sd": 1.76,
+     "slope": 1.0
+    },
+    "5": {
+     "sd": 2.46,
+     "slope": 0.991
+    },
+    "8": {
+     "sd": 3.04,
+     "slope": 1.021
+    }
+   },
+   "frozen": {
+    "12": {
+     "sd": 6.04,
+     "slope": 0.387
+    },
+    "2": {
+     "sd": 4.85,
+     "slope": 0.5
+    },
+    "3": {
+     "sd": 5.2,
+     "slope": 0.471
+    },
+    "5": {
+     "sd": 5.64,
+     "slope": 0.427
+    },
+    "8": {
+     "sd": 5.85,
+     "slope": 0.421
+    }
+   },
+   "horizons": [
+    2,
+    3,
+    5,
+    8,
+    12
+   ],
+   "seasons": [
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025"
+   ],
+   "top_n": 5
+  }
+ },
+ "drift_models": {
+  "dynasty": {
+   "floor": true,
+   "league_key": "dynasty",
+   "note": "",
+   "sds": [
+    0.0,
+    1.479,
+    1.955,
+    2.361,
+    2.686,
+    3.174,
+    3.354,
+    3.485,
+    3.939,
+    4.232,
+    4.311,
+    4.526,
+    4.842,
+    5.222
+   ],
+   "seasons": [
+    "2022",
+    "2023",
+    "2024",
+    "2025"
+   ],
+   "slopes": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "top_n": 5
+  },
+  "redraft": {
+   "floor": true,
+   "league_key": "redraft",
+   "note": "",
+   "sds": [
+    0.0,
+    1.357,
+    1.76,
+    2.174,
+    2.456,
+    2.618,
+    2.802,
+    3.041,
+    3.17,
+    3.391,
+    3.418,
+    3.791,
+    4.048,
+    4.085
+   ],
+   "seasons": [
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025"
+   ],
+   "slopes": [
+    1.0,
+    0.9873,
+    0.9873,
+    0.9873,
+    0.9873,
+    0.9873,
+    0.9873,
+    0.9873,
+    0.9873,
+    0.9873,
+    0.9873,
+    0.9873,
+    0.9873,
+    0.9873
+   ],
+   "top_n": 5
+  }
+ },
+ "generated_at": "2026-11-15T18:18:00+00:00",
  "leagues": {
   "dynasty": {
    "game": {
     "bins": [
      {
-      "count": 135,
+      "count": 138,
       "hi": 0.6,
       "lo": 0.5,
-      "observed": 0.5852,
-      "predicted": 0.5419
+      "observed": 0.5942,
+      "predicted": 0.5432
      },
      {
-      "count": 94,
+      "count": 96,
       "hi": 0.7,
       "lo": 0.6,
-      "observed": 0.734,
-      "predicted": 0.6514
+      "observed": 0.7292,
+      "predicted": 0.6508
      },
      {
-      "count": 76,
+      "count": 75,
       "hi": 0.8,
       "lo": 0.7,
-      "observed": 0.7632,
-      "predicted": 0.7379
+      "observed": 0.76,
+      "predicted": 0.7403
      },
      {
-      "count": 27,
+      "count": 26,
       "hi": 0.9,
       "lo": 0.8,
-      "observed": 0.6667,
-      "predicted": 0.8443
+      "observed": 0.6923,
+      "predicted": 0.8471
      },
      {
-      "count": 4,
+      "count": 1,
       "hi": 1.0,
       "lo": 0.9,
       "observed": 1.0,
-      "predicted": 0.9223
+      "predicted": 0.9109
      }
     ],
     "brier": 0.2164,
@@ -56,46 +270,46 @@
    },
    "score": {
     "coverage": {
-     "50": 0.494,
-     "80": 0.7738,
-     "95": 0.9464
+     "50": 0.4955,
+     "80": 0.7783,
+     "95": 0.9479
     },
     "coverage_sim_lineup": {
-     "50": 0.4866,
-     "80": 0.7693,
-     "95": 0.9554
+     "50": 0.4807,
+     "80": 0.753,
+     "95": 0.9464
     },
-    "mean_bias": -1.24,
-    "mean_bias_sim_lineup": -2.57,
-    "mean_sim_sd": 20.37,
+    "mean_bias": -0.83,
+    "mean_bias_sim_lineup": 0.77,
+    "mean_sim_sd": 20.41,
     "nominal": {
      "50": 0.5,
      "80": 0.8,
      "95": 0.95
     },
     "pit_histogram": [
+     68,
+     74,
+     53,
+     57,
      70,
      70,
-     51,
-     49,
-     73,
-     71,
-     69,
-     62,
-     75,
-     82
+     64,
+     63,
+     72,
+     81
     ],
     "pit_histogram_sim_lineup": [
-     64,
-     57,
-     56,
-     58,
+     93,
      59,
+     72,
+     56,
+     55,
      57,
-     75,
-     84,
-     71,
-     91
+     76,
+     69,
+     62,
+     73
     ],
     "team_weeks": 672
    },
@@ -104,220 +318,220 @@
      "baseline_brier": 0.0896,
      "bins": [
       {
-       "count": 28,
+       "count": 25,
        "hi": 0.1,
        "lo": 0.0,
        "observed": 0.0,
-       "predicted": 0.034
+       "predicted": 0.033
       },
       {
-       "count": 11,
+       "count": 8,
        "hi": 0.2,
        "lo": 0.1,
        "observed": 0.0,
-       "predicted": 0.1695
+       "predicted": 0.1549
       },
       {
-       "count": 11,
+       "count": 15,
        "hi": 0.3,
        "lo": 0.2,
-       "observed": 0.1818,
-       "predicted": 0.2594
+       "observed": 0.0,
+       "predicted": 0.2419
       },
       {
        "count": 22,
        "hi": 0.4,
        "lo": 0.3,
        "observed": 0.0909,
-       "predicted": 0.3443
+       "predicted": 0.3518
       },
       {
        "count": 28,
        "hi": 0.5,
        "lo": 0.4,
-       "observed": 0.3571,
-       "predicted": 0.4457
-      },
-      {
-       "count": 29,
-       "hi": 0.6,
-       "lo": 0.5,
-       "observed": 0.5517,
-       "predicted": 0.5566
+       "observed": 0.1786,
+       "predicted": 0.4556
       },
       {
        "count": 20,
+       "hi": 0.6,
+       "lo": 0.5,
+       "observed": 0.65,
+       "predicted": 0.5537
+      },
+      {
+       "count": 26,
        "hi": 0.7,
        "lo": 0.6,
-       "observed": 0.8,
-       "predicted": 0.6524
+       "observed": 0.8077,
+       "predicted": 0.6534
       },
       {
-       "count": 21,
+       "count": 27,
        "hi": 0.8,
        "lo": 0.7,
-       "observed": 0.9524,
-       "predicted": 0.7535
+       "observed": 0.9259,
+       "predicted": 0.7523
       },
       {
-       "count": 43,
+       "count": 60,
        "hi": 0.9,
        "lo": 0.8,
-       "observed": 0.8605,
-       "predicted": 0.8559
+       "observed": 0.9,
+       "predicted": 0.8581
       },
       {
-       "count": 459,
+       "count": 441,
        "hi": 1.0,
        "lo": 0.9,
-       "observed": 0.9956,
-       "predicted": 0.9858
+       "observed": 0.9977,
+       "predicted": 0.984
       }
      ],
-     "brier": 0.0459,
+     "brier": 0.043,
      "cases": 672,
      "observed_rate": 0.8333,
-     "skill": 0.4884,
+     "skill": 0.5201,
      "team_seasons": 48
     },
     "bye": {
      "baseline_brier": 0.1028,
      "bins": [
       {
-       "count": 405,
+       "count": 402,
        "hi": 0.1,
        "lo": 0.0,
-       "observed": 0.0074,
-       "predicted": 0.016
+       "observed": 0.01,
+       "predicted": 0.0177
       },
       {
-       "count": 76,
+       "count": 80,
        "hi": 0.2,
        "lo": 0.1,
-       "observed": 0.0789,
-       "predicted": 0.1376
+       "observed": 0.075,
+       "predicted": 0.1498
       },
       {
-       "count": 50,
+       "count": 55,
        "hi": 0.3,
        "lo": 0.2,
-       "observed": 0.32,
-       "predicted": 0.2472
+       "observed": 0.3273,
+       "predicted": 0.2523
       },
       {
-       "count": 38,
+       "count": 31,
        "hi": 0.4,
        "lo": 0.3,
-       "observed": 0.4737,
-       "predicted": 0.3438
+       "observed": 0.3548,
+       "predicted": 0.3505
       },
       {
-       "count": 24,
+       "count": 32,
        "hi": 0.5,
        "lo": 0.4,
-       "observed": 0.5417,
-       "predicted": 0.4511
+       "observed": 0.6875,
+       "predicted": 0.4478
       },
       {
-       "count": 26,
+       "count": 19,
        "hi": 0.6,
        "lo": 0.5,
-       "observed": 0.4615,
-       "predicted": 0.5527
+       "observed": 0.4211,
+       "predicted": 0.55
       },
       {
-       "count": 11,
+       "count": 17,
        "hi": 0.7,
        "lo": 0.6,
-       "observed": 0.6364,
-       "predicted": 0.6422
+       "observed": 0.5882,
+       "predicted": 0.6438
       },
       {
-       "count": 10,
+       "count": 4,
        "hi": 0.8,
        "lo": 0.7,
-       "observed": 0.6,
-       "predicted": 0.7445
+       "observed": 0.75,
+       "predicted": 0.7225
       },
       {
-       "count": 9,
+       "count": 12,
        "hi": 0.9,
        "lo": 0.8,
-       "observed": 0.8889,
-       "predicted": 0.8555
+       "observed": 0.8333,
+       "predicted": 0.8434
       },
       {
-       "count": 23,
+       "count": 20,
        "hi": 1.0,
        "lo": 0.9,
        "observed": 1.0,
-       "predicted": 0.9674
+       "predicted": 0.9714
       }
      ],
-     "brier": 0.0726,
+     "brier": 0.0746,
      "cases": 672,
      "observed_rate": 0.1667,
-     "skill": 0.2941,
+     "skill": 0.2744,
      "team_seasons": 48
     },
     "final": {
      "baseline_brier": 0.1239,
      "bins": [
       {
-       "count": 365,
+       "count": 363,
        "hi": 0.1,
        "lo": 0.0,
-       "observed": 0.0466,
-       "predicted": 0.0171
+       "observed": 0.0413,
+       "predicted": 0.0189
       },
       {
-       "count": 128,
+       "count": 117,
        "hi": 0.2,
        "lo": 0.1,
-       "observed": 0.1641,
-       "predicted": 0.1535
+       "observed": 0.1709,
+       "predicted": 0.153
       },
       {
-       "count": 112,
+       "count": 121,
        "hi": 0.3,
        "lo": 0.2,
-       "observed": 0.2143,
-       "predicted": 0.244
+       "observed": 0.157,
+       "predicted": 0.2432
       },
       {
-       "count": 59,
+       "count": 71,
        "hi": 0.4,
        "lo": 0.3,
-       "observed": 0.2034,
-       "predicted": 0.3467
+       "observed": 0.3662,
+       "predicted": 0.3449
       },
       {
-       "count": 44,
+       "count": 49,
        "hi": 0.5,
        "lo": 0.4,
-       "observed": 0.5227,
-       "predicted": 0.4532
+       "observed": 0.4898,
+       "predicted": 0.4514
       },
       {
-       "count": 44,
+       "count": 32,
        "hi": 0.6,
        "lo": 0.5,
-       "observed": 0.7045,
-       "predicted": 0.5367
+       "observed": 0.75,
+       "predicted": 0.5408
       },
       {
-       "count": 11,
+       "count": 13,
        "hi": 0.7,
        "lo": 0.6,
        "observed": 0.0,
-       "predicted": 0.6581
+       "predicted": 0.6504
       },
       {
-       "count": 5,
+       "count": 2,
        "hi": 0.8,
        "lo": 0.7,
        "observed": 0.0,
-       "predicted": 0.7077
+       "predicted": 0.7148
       },
       {
        "count": 0,
@@ -334,303 +548,303 @@
        "predicted": null
       }
      ],
-     "brier": 0.1188,
+     "brier": 0.1174,
      "cases": 768,
      "observed_rate": 0.1667,
-     "skill": 0.0419,
+     "skill": 0.0527,
      "team_seasons": 48
     },
     "last": {
      "baseline_brier": 0.0695,
      "bins": [
       {
-       "count": 529,
+       "count": 531,
        "hi": 0.1,
        "lo": 0.0,
-       "observed": 0.0095,
-       "predicted": 0.0088
+       "observed": 0.0075,
+       "predicted": 0.0116
       },
       {
-       "count": 36,
+       "count": 38,
        "hi": 0.2,
        "lo": 0.1,
-       "observed": 0.1389,
-       "predicted": 0.1557
+       "observed": 0.1842,
+       "predicted": 0.151
       },
       {
-       "count": 43,
+       "count": 35,
        "hi": 0.3,
        "lo": 0.2,
-       "observed": 0.4884,
-       "predicted": 0.2479
+       "observed": 0.4857,
+       "predicted": 0.2532
       },
       {
-       "count": 22,
+       "count": 29,
        "hi": 0.4,
        "lo": 0.3,
-       "observed": 0.3636,
-       "predicted": 0.3548
+       "observed": 0.3448,
+       "predicted": 0.3461
       },
       {
-       "count": 12,
+       "count": 10,
        "hi": 0.5,
        "lo": 0.4,
-       "observed": 0.1667,
-       "predicted": 0.4494
+       "observed": 0.3,
+       "predicted": 0.4492
       },
       {
-       "count": 11,
+       "count": 10,
        "hi": 0.6,
        "lo": 0.5,
-       "observed": 0.2727,
-       "predicted": 0.5565
+       "observed": 0.3,
+       "predicted": 0.55
       },
       {
-       "count": 2,
+       "count": 5,
        "hi": 0.7,
        "lo": 0.6,
-       "observed": 0.5,
-       "predicted": 0.6796
+       "observed": 0.8,
+       "predicted": 0.6282
       },
       {
-       "count": 6,
+       "count": 4,
        "hi": 0.8,
        "lo": 0.7,
-       "observed": 0.5,
-       "predicted": 0.7328
+       "observed": 0.25,
+       "predicted": 0.7667
       },
       {
        "count": 5,
        "hi": 0.9,
        "lo": 0.8,
-       "observed": 0.8,
-       "predicted": 0.8399
+       "observed": 0.6,
+       "predicted": 0.835
       },
       {
-       "count": 6,
+       "count": 5,
        "hi": 1.0,
        "lo": 0.9,
-       "observed": 0.6667,
-       "predicted": 0.966
+       "observed": 0.8,
+       "predicted": 0.9671
       }
      ],
-     "brier": 0.0569,
+     "brier": 0.0549,
      "cases": 672,
      "observed_rate": 0.0833,
-     "skill": 0.1813,
+     "skill": 0.2097,
      "team_seasons": 48
     },
     "losers_bracket": {
      "baseline_brier": 0.1626,
      "bins": [
       {
-       "count": 154,
+       "count": 145,
        "hi": 0.1,
        "lo": 0.0,
-       "observed": 0.013,
-       "predicted": 0.0312
-      },
-      {
-       "count": 52,
-       "hi": 0.2,
-       "lo": 0.1,
-       "observed": 0.0962,
-       "predicted": 0.1498
+       "observed": 0.0138,
+       "predicted": 0.031
       },
       {
        "count": 60,
+       "hi": 0.2,
+       "lo": 0.1,
+       "observed": 0.0833,
+       "predicted": 0.1514
+      },
+      {
+       "count": 53,
        "hi": 0.3,
        "lo": 0.2,
-       "observed": 0.1667,
-       "predicted": 0.2409
+       "observed": 0.2075,
+       "predicted": 0.2508
       },
       {
-       "count": 39,
+       "count": 41,
        "hi": 0.4,
        "lo": 0.3,
-       "observed": 0.3846,
-       "predicted": 0.3542
+       "observed": 0.3902,
+       "predicted": 0.3465
       },
       {
-       "count": 45,
+       "count": 48,
        "hi": 0.5,
        "lo": 0.4,
-       "observed": 0.5333,
-       "predicted": 0.456
+       "observed": 0.4167,
+       "predicted": 0.4453
       },
       {
        "count": 38,
        "hi": 0.6,
        "lo": 0.5,
-       "observed": 0.6579,
-       "predicted": 0.548
+       "observed": 0.6053,
+       "predicted": 0.5519
       },
       {
-       "count": 39,
+       "count": 50,
        "hi": 0.7,
        "lo": 0.6,
-       "observed": 0.7949,
-       "predicted": 0.6559
+       "observed": 0.78,
+       "predicted": 0.6556
       },
       {
-       "count": 35,
+       "count": 31,
        "hi": 0.8,
        "lo": 0.7,
-       "observed": 0.6857,
-       "predicted": 0.7515
+       "observed": 0.8065,
+       "predicted": 0.7488
       },
       {
-       "count": 34,
+       "count": 36,
        "hi": 0.9,
        "lo": 0.8,
-       "observed": 0.7941,
-       "predicted": 0.8615
+       "observed": 0.7222,
+       "predicted": 0.8499
       },
       {
-       "count": 176,
+       "count": 170,
        "hi": 1.0,
        "lo": 0.9,
-       "observed": 0.983,
-       "predicted": 0.9808
+       "observed": 0.9941,
+       "predicted": 0.9764
       }
      ],
-     "brier": 0.101,
+     "brier": 0.1035,
      "cases": 672,
      "observed_rate": 0.5,
-     "skill": 0.3788,
+     "skill": 0.3639,
      "team_seasons": 48
     },
     "playoffs": {
      "baseline_brier": 0.1626,
      "bins": [
       {
-       "count": 176,
+       "count": 170,
        "hi": 0.1,
        "lo": 0.0,
-       "observed": 0.017,
-       "predicted": 0.0192
+       "observed": 0.0059,
+       "predicted": 0.0236
       },
       {
-       "count": 34,
+       "count": 36,
        "hi": 0.2,
        "lo": 0.1,
-       "observed": 0.2059,
-       "predicted": 0.1385
+       "observed": 0.2778,
+       "predicted": 0.1501
       },
       {
-       "count": 35,
+       "count": 31,
        "hi": 0.3,
        "lo": 0.2,
-       "observed": 0.3143,
-       "predicted": 0.2485
+       "observed": 0.1935,
+       "predicted": 0.2512
       },
       {
-       "count": 39,
+       "count": 50,
        "hi": 0.4,
        "lo": 0.3,
-       "observed": 0.2051,
-       "predicted": 0.3441
+       "observed": 0.22,
+       "predicted": 0.3444
       },
       {
        "count": 38,
        "hi": 0.5,
        "lo": 0.4,
-       "observed": 0.3421,
-       "predicted": 0.452
+       "observed": 0.3947,
+       "predicted": 0.4481
       },
       {
-       "count": 45,
+       "count": 48,
        "hi": 0.6,
        "lo": 0.5,
-       "observed": 0.4667,
-       "predicted": 0.544
+       "observed": 0.5833,
+       "predicted": 0.5547
       },
       {
-       "count": 39,
+       "count": 41,
        "hi": 0.7,
        "lo": 0.6,
-       "observed": 0.6154,
-       "predicted": 0.6458
+       "observed": 0.6098,
+       "predicted": 0.6535
+      },
+      {
+       "count": 53,
+       "hi": 0.8,
+       "lo": 0.7,
+       "observed": 0.7925,
+       "predicted": 0.7492
       },
       {
        "count": 60,
-       "hi": 0.8,
-       "lo": 0.7,
-       "observed": 0.8333,
-       "predicted": 0.7591
-      },
-      {
-       "count": 52,
        "hi": 0.9,
        "lo": 0.8,
-       "observed": 0.9038,
-       "predicted": 0.8502
+       "observed": 0.9167,
+       "predicted": 0.8486
       },
       {
-       "count": 154,
+       "count": 145,
        "hi": 1.0,
        "lo": 0.9,
-       "observed": 0.987,
-       "predicted": 0.9688
+       "observed": 0.9862,
+       "predicted": 0.969
       }
      ],
-     "brier": 0.101,
+     "brier": 0.1035,
      "cases": 672,
      "observed_rate": 0.5,
-     "skill": 0.3788,
+     "skill": 0.3639,
      "team_seasons": 48
     },
     "title": {
      "baseline_brier": 0.072,
      "bins": [
       {
-       "count": 561,
+       "count": 560,
        "hi": 0.1,
        "lo": 0.0,
        "observed": 0.0036,
-       "predicted": 0.0222
+       "predicted": 0.0245
       },
       {
-       "count": 133,
+       "count": 141,
        "hi": 0.2,
        "lo": 0.1,
-       "observed": 0.0376,
-       "predicted": 0.1451
+       "observed": 0.0567,
+       "predicted": 0.1433
       },
       {
-       "count": 77,
+       "count": 69,
        "hi": 0.3,
        "lo": 0.2,
-       "observed": 0.3377,
-       "predicted": 0.2387
+       "observed": 0.4928,
+       "predicted": 0.2448
       },
       {
-       "count": 28,
+       "count": 39,
        "hi": 0.4,
        "lo": 0.3,
-       "observed": 0.75,
-       "predicted": 0.3415
+       "observed": 0.5128,
+       "predicted": 0.3414
       },
       {
-       "count": 13,
+       "count": 3,
        "hi": 0.5,
        "lo": 0.4,
-       "observed": 0.8462,
-       "predicted": 0.4411
+       "observed": 0.3333,
+       "predicted": 0.4414
       },
       {
        "count": 2,
        "hi": 0.6,
        "lo": 0.5,
        "observed": 0.5,
-       "predicted": 0.5576
+       "predicted": 0.5579
       },
       {
        "count": 1,
        "hi": 0.7,
        "lo": 0.6,
        "observed": 1.0,
-       "predicted": 0.6353
+       "predicted": 0.6311
       },
       {
        "count": 0,
@@ -644,7 +858,7 @@
        "hi": 0.9,
        "lo": 0.8,
        "observed": 1.0,
-       "predicted": 0.8104
+       "predicted": 0.8114
       },
       {
        "count": 0,
@@ -654,10 +868,10 @@
        "predicted": null
       }
      ],
-     "brier": 0.0495,
+     "brier": 0.0542,
      "cases": 816,
      "observed_rate": 0.0833,
-     "skill": 0.3118,
+     "skill": 0.2471,
      "team_seasons": 48
     }
    }
@@ -666,42 +880,42 @@
    "game": {
     "bins": [
      {
-      "count": 251,
+      "count": 265,
       "hi": 0.6,
       "lo": 0.5,
-      "observed": 0.5179,
-      "predicted": 0.542
+      "observed": 0.483,
+      "predicted": 0.5444
      },
      {
-      "count": 116,
+      "count": 109,
       "hi": 0.7,
       "lo": 0.6,
-      "observed": 0.6293,
-      "predicted": 0.6422
+      "observed": 0.6606,
+      "predicted": 0.6412
      },
      {
-      "count": 44,
+      "count": 41,
       "hi": 0.8,
       "lo": 0.7,
-      "observed": 0.6136,
-      "predicted": 0.7457
+      "observed": 0.6829,
+      "predicted": 0.7419
      },
      {
-      "count": 8,
+      "count": 5,
       "hi": 0.9,
       "lo": 0.8,
-      "observed": 0.875,
-      "predicted": 0.8242
+      "observed": 1.0,
+      "predicted": 0.825
      },
      {
-      "count": 1,
+      "count": 0,
       "hi": 1.0,
       "lo": 0.9,
-      "observed": 1.0,
-      "predicted": 0.9531
+      "observed": null,
+      "predicted": null
      }
     ],
-    "brier": 0.2417,
+    "brier": 0.2391,
     "games": 420
    },
    "lineup": {
@@ -711,46 +925,46 @@
    },
    "score": {
     "coverage": {
-     "50": 0.4798,
-     "80": 0.7929,
-     "95": 0.9476
+     "50": 0.4833,
+     "80": 0.7952,
+     "95": 0.9429
     },
     "coverage_sim_lineup": {
-     "50": 0.4726,
-     "80": 0.7774,
-     "95": 0.944
+     "50": 0.4286,
+     "80": 0.7179,
+     "95": 0.8964
     },
-    "mean_bias": 1.51,
-    "mean_bias_sim_lineup": 1.54,
-    "mean_sim_sd": 21.03,
+    "mean_bias": 2.55,
+    "mean_bias_sim_lineup": 9.1,
+    "mean_sim_sd": 21.08,
     "nominal": {
      "50": 0.5,
      "80": 0.8,
      "95": 0.95
     },
     "pit_histogram": [
-     100,
-     95,
-     80,
-     87,
-     86,
-     73,
-     89,
-     84,
+     107,
+     98,
+     79,
+     91,
+     82,
+     76,
+     88,
+     82,
      72,
-     74
+     65
     ],
     "pit_histogram_sim_lineup": [
-     104,
-     100,
-     76,
-     81,
-     76,
-     90,
-     76,
-     92,
-     62,
-     83
+     192,
+     105,
+     93,
+     78,
+     69,
+     84,
+     63,
+     58,
+     53,
+     45
     ],
     "team_weeks": 840
    },
@@ -759,540 +973,540 @@
      "baseline_brier": 0.1357,
      "bins": [
       {
-       "count": 27,
+       "count": 20,
        "hi": 0.1,
        "lo": 0.0,
-       "observed": 0.2593,
-       "predicted": 0.0305
+       "observed": 0.25,
+       "predicted": 0.0299
       },
       {
-       "count": 11,
+       "count": 13,
        "hi": 0.2,
        "lo": 0.1,
-       "observed": 0.3636,
-       "predicted": 0.1534
+       "observed": 0.2308,
+       "predicted": 0.1585
       },
       {
        "count": 11,
        "hi": 0.3,
        "lo": 0.2,
-       "observed": 0.6364,
-       "predicted": 0.2446
+       "observed": 0.3636,
+       "predicted": 0.2503
       },
       {
-       "count": 17,
+       "count": 8,
        "hi": 0.4,
        "lo": 0.3,
-       "observed": 0.5294,
-       "predicted": 0.3457
+       "observed": 0.625,
+       "predicted": 0.351
       },
       {
-       "count": 26,
+       "count": 21,
        "hi": 0.5,
        "lo": 0.4,
-       "observed": 0.6923,
-       "predicted": 0.4578
+       "observed": 0.5238,
+       "predicted": 0.4613
       },
       {
-       "count": 32,
+       "count": 30,
        "hi": 0.6,
        "lo": 0.5,
-       "observed": 0.5625,
-       "predicted": 0.5492
+       "observed": 0.6,
+       "predicted": 0.5502
       },
       {
        "count": 49,
        "hi": 0.7,
        "lo": 0.6,
-       "observed": 0.7143,
-       "predicted": 0.658
+       "observed": 0.7551,
+       "predicted": 0.65
       },
       {
-       "count": 52,
+       "count": 82,
        "hi": 0.8,
        "lo": 0.7,
-       "observed": 0.8654,
-       "predicted": 0.7525
+       "observed": 0.7927,
+       "predicted": 0.7513
       },
       {
-       "count": 101,
+       "count": 143,
        "hi": 0.9,
        "lo": 0.8,
-       "observed": 0.901,
-       "predicted": 0.85
+       "observed": 0.8182,
+       "predicted": 0.8531
       },
       {
-       "count": 514,
+       "count": 463,
        "hi": 1.0,
        "lo": 0.9,
-       "observed": 0.9066,
-       "predicted": 0.9771
+       "observed": 0.9395,
+       "predicted": 0.9722
       }
      ],
-     "brier": 0.1246,
+     "brier": 0.1139,
      "cases": 840,
      "observed_rate": 0.8333,
-     "skill": 0.0817,
+     "skill": 0.1606,
      "team_seasons": 60
     },
     "bye": {
      "baseline_brier": 0.0971,
      "bins": [
       {
-       "count": 520,
+       "count": 475,
        "hi": 0.1,
        "lo": 0.0,
-       "observed": 0.0308,
-       "predicted": 0.0227
+       "observed": 0.0211,
+       "predicted": 0.0247
       },
       {
-       "count": 103,
+       "count": 141,
        "hi": 0.2,
        "lo": 0.1,
-       "observed": 0.1456,
-       "predicted": 0.1414
+       "observed": 0.0638,
+       "predicted": 0.1426
       },
       {
-       "count": 56,
+       "count": 71,
        "hi": 0.3,
        "lo": 0.2,
-       "observed": 0.1429,
-       "predicted": 0.2455
+       "observed": 0.2394,
+       "predicted": 0.2439
       },
       {
-       "count": 35,
+       "count": 39,
        "hi": 0.4,
        "lo": 0.3,
-       "observed": 0.4,
-       "predicted": 0.3534
+       "observed": 0.5385,
+       "predicted": 0.3491
       },
       {
-       "count": 26,
+       "count": 24,
        "hi": 0.5,
        "lo": 0.4,
-       "observed": 0.5,
-       "predicted": 0.4513
+       "observed": 0.6667,
+       "predicted": 0.4554
       },
       {
-       "count": 16,
+       "count": 25,
        "hi": 0.6,
        "lo": 0.5,
-       "observed": 0.5625,
-       "predicted": 0.5471
-      },
-      {
-       "count": 21,
-       "hi": 0.7,
-       "lo": 0.6,
-       "observed": 0.619,
-       "predicted": 0.6526
-      },
-      {
-       "count": 26,
-       "hi": 0.8,
-       "lo": 0.7,
-       "observed": 0.6538,
-       "predicted": 0.7513
-      },
-      {
-       "count": 19,
-       "hi": 0.9,
-       "lo": 0.8,
-       "observed": 0.8947,
-       "predicted": 0.8535
+       "observed": 0.48,
+       "predicted": 0.5442
       },
       {
        "count": 18,
+       "hi": 0.7,
+       "lo": 0.6,
+       "observed": 0.6111,
+       "predicted": 0.6523
+      },
+      {
+       "count": 15,
+       "hi": 0.8,
+       "lo": 0.7,
+       "observed": 0.8,
+       "predicted": 0.736
+      },
+      {
+       "count": 9,
+       "hi": 0.9,
+       "lo": 0.8,
+       "observed": 1.0,
+       "predicted": 0.8541
+      },
+      {
+       "count": 23,
        "hi": 1.0,
        "lo": 0.9,
        "observed": 1.0,
-       "predicted": 0.9766
+       "predicted": 0.9656
       }
      ],
-     "brier": 0.0807,
+     "brier": 0.0748,
      "cases": 840,
      "observed_rate": 0.1667,
-     "skill": 0.169,
+     "skill": 0.2298,
      "team_seasons": 60
     },
     "final": {
      "baseline_brier": 0.1306,
      "bins": [
       {
-       "count": 460,
+       "count": 412,
        "hi": 0.1,
        "lo": 0.0,
-       "observed": 0.0457,
-       "predicted": 0.0276
+       "observed": 0.0534,
+       "predicted": 0.0328
       },
       {
-       "count": 190,
+       "count": 239,
        "hi": 0.2,
        "lo": 0.1,
-       "observed": 0.1895,
-       "predicted": 0.1489
+       "observed": 0.1799,
+       "predicted": 0.1513
       },
       {
-       "count": 131,
+       "count": 141,
        "hi": 0.3,
        "lo": 0.2,
-       "observed": 0.2519,
-       "predicted": 0.2442
+       "observed": 0.1773,
+       "predicted": 0.2396
       },
       {
-       "count": 60,
+       "count": 68,
        "hi": 0.4,
        "lo": 0.3,
-       "observed": 0.3,
-       "predicted": 0.3444
+       "observed": 0.4118,
+       "predicted": 0.3504
       },
       {
-       "count": 43,
+       "count": 47,
        "hi": 0.5,
        "lo": 0.4,
-       "observed": 0.5349,
-       "predicted": 0.4468
+       "observed": 0.5532,
+       "predicted": 0.4552
       },
       {
-       "count": 33,
+       "count": 34,
        "hi": 0.6,
        "lo": 0.5,
-       "observed": 0.6061,
-       "predicted": 0.5365
+       "observed": 0.4118,
+       "predicted": 0.5503
       },
       {
-       "count": 29,
+       "count": 13,
        "hi": 0.7,
        "lo": 0.6,
-       "observed": 0.2069,
-       "predicted": 0.6467
-      },
-      {
-       "count": 11,
-       "hi": 0.8,
-       "lo": 0.7,
-       "observed": 0.2727,
-       "predicted": 0.7472
-      },
-      {
-       "count": 3,
-       "hi": 0.9,
-       "lo": 0.8,
        "observed": 0.0,
-       "predicted": 0.8189
-      },
-      {
-       "count": 0,
-       "hi": 1.0,
-       "lo": 0.9,
-       "observed": null,
-       "predicted": null
-      }
-     ],
-     "brier": 0.1275,
-     "cases": 960,
-     "observed_rate": 0.1667,
-     "skill": 0.0235,
-     "team_seasons": 60
-    },
-    "last": {
-     "baseline_brier": 0.0752,
-     "bins": [
-      {
-       "count": 673,
-       "hi": 0.1,
-       "lo": 0.0,
-       "observed": 0.0461,
-       "predicted": 0.0158
-      },
-      {
-       "count": 76,
-       "hi": 0.2,
-       "lo": 0.1,
-       "observed": 0.1053,
-       "predicted": 0.1473
-      },
-      {
-       "count": 23,
-       "hi": 0.3,
-       "lo": 0.2,
-       "observed": 0.087,
-       "predicted": 0.2449
-      },
-      {
-       "count": 15,
-       "hi": 0.4,
-       "lo": 0.3,
-       "observed": 0.3333,
-       "predicted": 0.3436
-      },
-      {
-       "count": 12,
-       "hi": 0.5,
-       "lo": 0.4,
-       "observed": 0.3333,
-       "predicted": 0.4405
-      },
-      {
-       "count": 7,
-       "hi": 0.6,
-       "lo": 0.5,
-       "observed": 0.2857,
-       "predicted": 0.5799
-      },
-      {
-       "count": 9,
-       "hi": 0.7,
-       "lo": 0.6,
-       "observed": 0.6667,
-       "predicted": 0.6686
+       "predicted": 0.6349
       },
       {
        "count": 6,
        "hi": 0.8,
        "lo": 0.7,
        "observed": 0.3333,
-       "predicted": 0.7703
+       "predicted": 0.7227
+      },
+      {
+       "count": 0,
+       "hi": 0.9,
+       "lo": 0.8,
+       "observed": null,
+       "predicted": null
+      },
+      {
+       "count": 0,
+       "hi": 1.0,
+       "lo": 0.9,
+       "observed": null,
+       "predicted": null
+      }
+     ],
+     "brier": 0.127,
+     "cases": 960,
+     "observed_rate": 0.1667,
+     "skill": 0.0273,
+     "team_seasons": 60
+    },
+    "last": {
+     "baseline_brier": 0.0752,
+     "bins": [
+      {
+       "count": 665,
+       "hi": 0.1,
+       "lo": 0.0,
+       "observed": 0.0481,
+       "predicted": 0.0221
+      },
+      {
+       "count": 88,
+       "hi": 0.2,
+       "lo": 0.1,
+       "observed": 0.0455,
+       "predicted": 0.1424
+      },
+      {
+       "count": 29,
+       "hi": 0.3,
+       "lo": 0.2,
+       "observed": 0.2069,
+       "predicted": 0.2361
+      },
+      {
+       "count": 14,
+       "hi": 0.4,
+       "lo": 0.3,
+       "observed": 0.4286,
+       "predicted": 0.3343
+      },
+      {
+       "count": 5,
+       "hi": 0.5,
+       "lo": 0.4,
+       "observed": 0.2,
+       "predicted": 0.4256
+      },
+      {
+       "count": 7,
+       "hi": 0.6,
+       "lo": 0.5,
+       "observed": 0.5714,
+       "predicted": 0.5621
       },
       {
        "count": 9,
-       "hi": 0.9,
-       "lo": 0.8,
-       "observed": 0.5556,
-       "predicted": 0.8688
+       "hi": 0.7,
+       "lo": 0.6,
+       "observed": 0.6667,
+       "predicted": 0.6375
       },
       {
-       "count": 10,
+       "count": 8,
+       "hi": 0.8,
+       "lo": 0.7,
+       "observed": 0.375,
+       "predicted": 0.7483
+      },
+      {
+       "count": 6,
+       "hi": 0.9,
+       "lo": 0.8,
+       "observed": 0.1667,
+       "predicted": 0.8304
+      },
+      {
+       "count": 9,
        "hi": 1.0,
        "lo": 0.9,
-       "observed": 0.5,
-       "predicted": 0.9568
+       "observed": 0.7778,
+       "predicted": 0.9409
       }
      ],
-     "brier": 0.0717,
+     "brier": 0.067,
      "cases": 840,
      "observed_rate": 0.0833,
-     "skill": 0.0459,
+     "skill": 0.1096,
      "team_seasons": 60
     },
     "losers_bracket": {
      "baseline_brier": 0.2076,
      "bins": [
       {
-       "count": 151,
+       "count": 130,
        "hi": 0.1,
        "lo": 0.0,
-       "observed": 0.0132,
-       "predicted": 0.023
+       "observed": 0.0154,
+       "predicted": 0.0211
       },
       {
-       "count": 68,
+       "count": 50,
        "hi": 0.2,
        "lo": 0.1,
-       "observed": 0.3088,
-       "predicted": 0.1514
+       "observed": 0.06,
+       "predicted": 0.1447
       },
       {
-       "count": 54,
+       "count": 61,
        "hi": 0.3,
        "lo": 0.2,
-       "observed": 0.4074,
-       "predicted": 0.2552
+       "observed": 0.3115,
+       "predicted": 0.2459
       },
       {
-       "count": 63,
+       "count": 74,
        "hi": 0.4,
        "lo": 0.3,
-       "observed": 0.4603,
-       "predicted": 0.3471
+       "observed": 0.3514,
+       "predicted": 0.349
+      },
+      {
+       "count": 109,
+       "hi": 0.5,
+       "lo": 0.4,
+       "observed": 0.5321,
+       "predicted": 0.449
+      },
+      {
+       "count": 78,
+       "hi": 0.6,
+       "lo": 0.5,
+       "observed": 0.6026,
+       "predicted": 0.5487
       },
       {
        "count": 88,
-       "hi": 0.5,
-       "lo": 0.4,
-       "observed": 0.5795,
-       "predicted": 0.4505
-      },
-      {
-       "count": 68,
-       "hi": 0.6,
-       "lo": 0.5,
-       "observed": 0.5441,
-       "predicted": 0.5471
-      },
-      {
-       "count": 67,
        "hi": 0.7,
        "lo": 0.6,
-       "observed": 0.5522,
-       "predicted": 0.6477
+       "observed": 0.7159,
+       "predicted": 0.6505
+      },
+      {
+       "count": 66,
+       "hi": 0.8,
+       "lo": 0.7,
+       "observed": 0.6667,
+       "predicted": 0.7499
       },
       {
        "count": 69,
-       "hi": 0.8,
-       "lo": 0.7,
-       "observed": 0.6232,
-       "predicted": 0.7494
-      },
-      {
-       "count": 62,
        "hi": 0.9,
        "lo": 0.8,
-       "observed": 0.7419,
-       "predicted": 0.8513
+       "observed": 0.7536,
+       "predicted": 0.8495
       },
       {
-       "count": 150,
+       "count": 115,
        "hi": 1.0,
        "lo": 0.9,
-       "observed": 0.88,
-       "predicted": 0.9724
+       "observed": 0.9217,
+       "predicted": 0.9749
       }
      ],
-     "brier": 0.1813,
+     "brier": 0.1628,
      "cases": 840,
      "observed_rate": 0.5,
-     "skill": 0.1267,
+     "skill": 0.216,
      "team_seasons": 60
     },
     "playoffs": {
      "baseline_brier": 0.2076,
      "bins": [
       {
-       "count": 149,
+       "count": 115,
        "hi": 0.1,
        "lo": 0.0,
-       "observed": 0.1208,
-       "predicted": 0.0271
-      },
-      {
-       "count": 63,
-       "hi": 0.2,
-       "lo": 0.1,
-       "observed": 0.254,
-       "predicted": 0.1479
+       "observed": 0.0783,
+       "predicted": 0.0251
       },
       {
        "count": 69,
+       "hi": 0.2,
+       "lo": 0.1,
+       "observed": 0.2464,
+       "predicted": 0.1505
+      },
+      {
+       "count": 66,
        "hi": 0.3,
        "lo": 0.2,
-       "observed": 0.3768,
-       "predicted": 0.2506
-      },
-      {
-       "count": 67,
-       "hi": 0.4,
-       "lo": 0.3,
-       "observed": 0.4478,
-       "predicted": 0.3523
-      },
-      {
-       "count": 68,
-       "hi": 0.5,
-       "lo": 0.4,
-       "observed": 0.4559,
-       "predicted": 0.4529
+       "observed": 0.3333,
+       "predicted": 0.2501
       },
       {
        "count": 88,
+       "hi": 0.4,
+       "lo": 0.3,
+       "observed": 0.2841,
+       "predicted": 0.3495
+      },
+      {
+       "count": 77,
+       "hi": 0.5,
+       "lo": 0.4,
+       "observed": 0.3896,
+       "predicted": 0.4507
+      },
+      {
+       "count": 110,
        "hi": 0.6,
        "lo": 0.5,
-       "observed": 0.4205,
-       "predicted": 0.5495
+       "observed": 0.4727,
+       "predicted": 0.5506
       },
       {
-       "count": 63,
+       "count": 74,
        "hi": 0.7,
        "lo": 0.6,
-       "observed": 0.5397,
-       "predicted": 0.6529
+       "observed": 0.6486,
+       "predicted": 0.651
       },
       {
-       "count": 54,
+       "count": 61,
        "hi": 0.8,
        "lo": 0.7,
-       "observed": 0.5926,
-       "predicted": 0.7448
+       "observed": 0.6885,
+       "predicted": 0.7541
       },
       {
-       "count": 68,
+       "count": 50,
        "hi": 0.9,
        "lo": 0.8,
-       "observed": 0.6912,
-       "predicted": 0.8486
+       "observed": 0.94,
+       "predicted": 0.8553
       },
       {
-       "count": 151,
+       "count": 130,
        "hi": 1.0,
        "lo": 0.9,
-       "observed": 0.9868,
-       "predicted": 0.977
+       "observed": 0.9846,
+       "predicted": 0.9789
       }
      ],
-     "brier": 0.1813,
+     "brier": 0.1628,
      "cases": 840,
      "observed_rate": 0.5,
-     "skill": 0.1267,
+     "skill": 0.216,
      "team_seasons": 60
     },
     "title": {
      "baseline_brier": 0.0731,
      "bins": [
       {
-       "count": 756,
+       "count": 735,
        "hi": 0.1,
        "lo": 0.0,
-       "observed": 0.0476,
-       "predicted": 0.026
+       "observed": 0.0408,
+       "predicted": 0.0338
       },
       {
-       "count": 132,
+       "count": 173,
        "hi": 0.2,
        "lo": 0.1,
-       "observed": 0.1061,
-       "predicted": 0.1398
+       "observed": 0.1329,
+       "predicted": 0.1412
       },
       {
-       "count": 56,
+       "count": 60,
        "hi": 0.3,
        "lo": 0.2,
-       "observed": 0.1786,
-       "predicted": 0.2439
+       "observed": 0.2833,
+       "predicted": 0.2415
       },
       {
-       "count": 38,
+       "count": 32,
        "hi": 0.4,
        "lo": 0.3,
-       "observed": 0.3947,
-       "predicted": 0.3397
-      },
-      {
-       "count": 16,
-       "hi": 0.5,
-       "lo": 0.4,
-       "observed": 0.375,
-       "predicted": 0.4605
+       "observed": 0.2812,
+       "predicted": 0.3437
       },
       {
        "count": 11,
+       "hi": 0.5,
+       "lo": 0.4,
+       "observed": 0.2727,
+       "predicted": 0.4572
+      },
+      {
+       "count": 6,
        "hi": 0.6,
        "lo": 0.5,
-       "observed": 0.1818,
-       "predicted": 0.5406
+       "observed": 0.1667,
+       "predicted": 0.5328
       },
       {
-       "count": 10,
+       "count": 3,
        "hi": 0.7,
        "lo": 0.6,
-       "observed": 0.2,
-       "predicted": 0.6306
+       "observed": 0.6667,
+       "predicted": 0.6653
       },
       {
-       "count": 1,
+       "count": 0,
        "hi": 0.8,
        "lo": 0.7,
-       "observed": 0.0,
-       "predicted": 0.7082
+       "observed": null,
+       "predicted": null
       },
       {
        "count": 0,
@@ -1309,10 +1523,10 @@
        "predicted": null
       }
      ],
-     "brier": 0.0733,
+     "brier": 0.0697,
      "cases": 1020,
      "observed_rate": 0.0833,
-     "skill": -0.0026,
+     "skill": 0.047,
      "team_seasons": 60
     }
    }
@@ -1331,42 +1545,42 @@
   "game": {
    "bins": [
     {
-     "count": 386,
+     "count": 403,
      "hi": 0.6,
      "lo": 0.5,
-     "observed": 0.5415,
-     "predicted": 0.5419
+     "observed": 0.5211,
+     "predicted": 0.544
     },
     {
-     "count": 210,
+     "count": 205,
      "hi": 0.7,
      "lo": 0.6,
-     "observed": 0.6762,
-     "predicted": 0.6463
+     "observed": 0.6927,
+     "predicted": 0.6457
     },
     {
-     "count": 120,
+     "count": 116,
      "hi": 0.8,
      "lo": 0.7,
-     "observed": 0.7083,
-     "predicted": 0.7408
+     "observed": 0.7328,
+     "predicted": 0.7409
     },
     {
-     "count": 35,
+     "count": 31,
      "hi": 0.9,
      "lo": 0.8,
-     "observed": 0.7143,
-     "predicted": 0.8397
+     "observed": 0.7419,
+     "predicted": 0.8436
     },
     {
-     "count": 5,
+     "count": 1,
      "hi": 1.0,
      "lo": 0.9,
      "observed": 1.0,
-     "predicted": 0.9284
+     "predicted": 0.9109
     }
    ],
-   "brier": 0.2304,
+   "brier": 0.229,
    "games": 756
   },
   "lineup": {
@@ -1376,46 +1590,46 @@
   },
   "score": {
    "coverage": {
-    "50": 0.4861,
-    "80": 0.7844,
-    "95": 0.9471
+    "50": 0.4888,
+    "80": 0.7877,
+    "95": 0.9451
    },
    "coverage_sim_lineup": {
-    "50": 0.4788,
-    "80": 0.7738,
-    "95": 0.9491
+    "50": 0.4517,
+    "80": 0.7335,
+    "95": 0.9187
    },
-   "mean_bias": 0.29,
-   "mean_bias_sim_lineup": -0.29,
-   "mean_sim_sd": 20.74,
+   "mean_bias": 1.05,
+   "mean_bias_sim_lineup": 5.4,
+   "mean_sim_sd": 20.78,
    "nominal": {
     "50": 0.5,
     "80": 0.8,
     "95": 0.95
    },
    "pit_histogram": [
-    170,
-    165,
-    131,
-    136,
-    159,
-    144,
-    158,
+    175,
+    172,
+    132,
+    148,
+    152,
     146,
-    147,
-    156
+    152,
+    145,
+    144,
+    146
    ],
    "pit_histogram_sim_lineup": [
-    168,
-    157,
-    132,
+    285,
+    164,
+    165,
+    134,
+    124,
+    141,
     139,
-    135,
-    147,
-    151,
-    176,
-    133,
-    174
+    127,
+    115,
+    118
    ],
    "team_weeks": 1512
   },
@@ -1424,227 +1638,227 @@
     "baseline_brier": 0.1152,
     "bins": [
      {
-      "count": 55,
+      "count": 45,
       "hi": 0.1,
       "lo": 0.0,
-      "observed": 0.1273,
-      "predicted": 0.0323
+      "observed": 0.1111,
+      "predicted": 0.0316
      },
      {
-      "count": 22,
+      "count": 21,
       "hi": 0.2,
       "lo": 0.1,
-      "observed": 0.1818,
-      "predicted": 0.1615
+      "observed": 0.1429,
+      "predicted": 0.1571
      },
      {
-      "count": 22,
+      "count": 26,
       "hi": 0.3,
       "lo": 0.2,
-      "observed": 0.4091,
-      "predicted": 0.252
+      "observed": 0.1538,
+      "predicted": 0.2454
      },
      {
-      "count": 39,
+      "count": 30,
       "hi": 0.4,
       "lo": 0.3,
-      "observed": 0.2821,
-      "predicted": 0.3449
+      "observed": 0.2333,
+      "predicted": 0.3516
      },
      {
-      "count": 54,
+      "count": 49,
       "hi": 0.5,
       "lo": 0.4,
-      "observed": 0.5185,
-      "predicted": 0.4515
+      "observed": 0.3265,
+      "predicted": 0.458
      },
      {
-      "count": 61,
+      "count": 50,
       "hi": 0.6,
       "lo": 0.5,
-      "observed": 0.5574,
-      "predicted": 0.5527
+      "observed": 0.62,
+      "predicted": 0.5516
      },
      {
-      "count": 69,
+      "count": 75,
       "hi": 0.7,
       "lo": 0.6,
-      "observed": 0.7391,
-      "predicted": 0.6564
+      "observed": 0.7733,
+      "predicted": 0.6512
      },
      {
-      "count": 73,
+      "count": 109,
       "hi": 0.8,
       "lo": 0.7,
-      "observed": 0.8904,
-      "predicted": 0.7528
+      "observed": 0.8257,
+      "predicted": 0.7515
      },
      {
-      "count": 144,
+      "count": 203,
       "hi": 0.9,
       "lo": 0.8,
-      "observed": 0.8889,
-      "predicted": 0.8517
+      "observed": 0.8424,
+      "predicted": 0.8545
      },
      {
-      "count": 973,
+      "count": 904,
       "hi": 1.0,
       "lo": 0.9,
-      "observed": 0.9486,
-      "predicted": 0.9812
+      "observed": 0.9679,
+      "predicted": 0.978
      }
     ],
-    "brier": 0.0896,
+    "brier": 0.0824,
     "cases": 1512,
     "observed_rate": 0.8333,
-    "skill": 0.2223,
+    "skill": 0.2849,
     "team_seasons": 108
    },
    "bye": {
     "baseline_brier": 0.0997,
     "bins": [
      {
-      "count": 925,
+      "count": 877,
       "hi": 0.1,
       "lo": 0.0,
-      "observed": 0.0205,
-      "predicted": 0.0197
+      "observed": 0.016,
+      "predicted": 0.0215
      },
      {
-      "count": 179,
+      "count": 221,
       "hi": 0.2,
       "lo": 0.1,
-      "observed": 0.1173,
-      "predicted": 0.1398
+      "observed": 0.0679,
+      "predicted": 0.1452
      },
      {
-      "count": 106,
+      "count": 126,
       "hi": 0.3,
       "lo": 0.2,
-      "observed": 0.2264,
-      "predicted": 0.2463
+      "observed": 0.2778,
+      "predicted": 0.2476
      },
      {
-      "count": 73,
+      "count": 70,
       "hi": 0.4,
       "lo": 0.3,
-      "observed": 0.4384,
-      "predicted": 0.3484
+      "observed": 0.4571,
+      "predicted": 0.3497
      },
      {
-      "count": 50,
+      "count": 56,
       "hi": 0.5,
       "lo": 0.4,
-      "observed": 0.52,
-      "predicted": 0.4512
+      "observed": 0.6786,
+      "predicted": 0.4511
      },
      {
-      "count": 42,
+      "count": 44,
       "hi": 0.6,
       "lo": 0.5,
-      "observed": 0.5,
-      "predicted": 0.5506
+      "observed": 0.4545,
+      "predicted": 0.5467
      },
      {
-      "count": 32,
+      "count": 35,
       "hi": 0.7,
       "lo": 0.6,
-      "observed": 0.625,
-      "predicted": 0.6491
+      "observed": 0.6,
+      "predicted": 0.6482
      },
      {
-      "count": 36,
+      "count": 19,
       "hi": 0.8,
       "lo": 0.7,
-      "observed": 0.6389,
-      "predicted": 0.7494
+      "observed": 0.7895,
+      "predicted": 0.7331
      },
      {
-      "count": 28,
+      "count": 21,
       "hi": 0.9,
       "lo": 0.8,
-      "observed": 0.8929,
-      "predicted": 0.8542
+      "observed": 0.9048,
+      "predicted": 0.848
      },
      {
-      "count": 41,
+      "count": 43,
       "hi": 1.0,
       "lo": 0.9,
       "observed": 1.0,
-      "predicted": 0.9714
+      "predicted": 0.9683
      }
     ],
-    "brier": 0.0771,
+    "brier": 0.0747,
     "cases": 1512,
     "observed_rate": 0.1667,
-    "skill": 0.2264,
+    "skill": 0.2503,
     "team_seasons": 108
    },
    "final": {
     "baseline_brier": 0.1276,
     "bins": [
      {
-      "count": 825,
+      "count": 775,
       "hi": 0.1,
       "lo": 0.0,
-      "observed": 0.0461,
-      "predicted": 0.023
+      "observed": 0.0477,
+      "predicted": 0.0263
      },
      {
-      "count": 318,
+      "count": 356,
       "hi": 0.2,
       "lo": 0.1,
-      "observed": 0.1792,
-      "predicted": 0.1507
+      "observed": 0.177,
+      "predicted": 0.1519
      },
      {
-      "count": 243,
+      "count": 262,
       "hi": 0.3,
       "lo": 0.2,
-      "observed": 0.2346,
-      "predicted": 0.2441
+      "observed": 0.1679,
+      "predicted": 0.2413
      },
      {
-      "count": 119,
+      "count": 139,
       "hi": 0.4,
       "lo": 0.3,
-      "observed": 0.2521,
-      "predicted": 0.3456
+      "observed": 0.3885,
+      "predicted": 0.3476
      },
      {
-      "count": 87,
+      "count": 96,
       "hi": 0.5,
       "lo": 0.4,
-      "observed": 0.5287,
-      "predicted": 0.45
+      "observed": 0.5208,
+      "predicted": 0.4532
      },
      {
-      "count": 77,
+      "count": 66,
       "hi": 0.6,
       "lo": 0.5,
-      "observed": 0.6623,
-      "predicted": 0.5366
+      "observed": 0.5758,
+      "predicted": 0.5457
      },
      {
-      "count": 40,
+      "count": 26,
       "hi": 0.7,
       "lo": 0.6,
-      "observed": 0.15,
-      "predicted": 0.6498
+      "observed": 0.0,
+      "predicted": 0.6426
      },
      {
-      "count": 16,
+      "count": 8,
       "hi": 0.8,
       "lo": 0.7,
-      "observed": 0.1875,
-      "predicted": 0.7349
+      "observed": 0.25,
+      "predicted": 0.7207
      },
      {
-      "count": 3,
+      "count": 0,
       "hi": 0.9,
       "lo": 0.8,
-      "observed": 0.0,
-      "predicted": 0.8189
+      "observed": null,
+      "predicted": null
      },
      {
       "count": 0,
@@ -1654,317 +1868,317 @@
       "predicted": null
      }
     ],
-    "brier": 0.1236,
+    "brier": 0.1227,
     "cases": 1728,
     "observed_rate": 0.1667,
-    "skill": 0.0314,
+    "skill": 0.0382,
     "team_seasons": 108
    },
    "last": {
     "baseline_brier": 0.0727,
     "bins": [
      {
-      "count": 1202,
+      "count": 1196,
       "hi": 0.1,
       "lo": 0.0,
-      "observed": 0.03,
-      "predicted": 0.0127
+      "observed": 0.0301,
+      "predicted": 0.0174
      },
      {
-      "count": 112,
+      "count": 126,
       "hi": 0.2,
       "lo": 0.1,
-      "observed": 0.1161,
-      "predicted": 0.15
+      "observed": 0.0873,
+      "predicted": 0.145
      },
      {
-      "count": 66,
+      "count": 64,
       "hi": 0.3,
       "lo": 0.2,
-      "observed": 0.3485,
-      "predicted": 0.2469
+      "observed": 0.3594,
+      "predicted": 0.2455
      },
      {
-      "count": 37,
+      "count": 43,
       "hi": 0.4,
       "lo": 0.3,
-      "observed": 0.3514,
-      "predicted": 0.3503
+      "observed": 0.3721,
+      "predicted": 0.3422
      },
      {
-      "count": 24,
+      "count": 15,
       "hi": 0.5,
       "lo": 0.4,
-      "observed": 0.25,
-      "predicted": 0.4449
+      "observed": 0.2667,
+      "predicted": 0.4414
      },
      {
-      "count": 18,
+      "count": 17,
       "hi": 0.6,
       "lo": 0.5,
-      "observed": 0.2778,
-      "predicted": 0.5656
+      "observed": 0.4118,
+      "predicted": 0.5549
      },
      {
-      "count": 11,
+      "count": 14,
       "hi": 0.7,
       "lo": 0.6,
-      "observed": 0.6364,
-      "predicted": 0.6706
+      "observed": 0.7143,
+      "predicted": 0.6342
      },
      {
       "count": 12,
       "hi": 0.8,
       "lo": 0.7,
-      "observed": 0.4167,
-      "predicted": 0.7515
+      "observed": 0.3333,
+      "predicted": 0.7544
+     },
+     {
+      "count": 11,
+      "hi": 0.9,
+      "lo": 0.8,
+      "observed": 0.3636,
+      "predicted": 0.8325
      },
      {
       "count": 14,
-      "hi": 0.9,
-      "lo": 0.8,
-      "observed": 0.6429,
-      "predicted": 0.8585
-     },
-     {
-      "count": 16,
       "hi": 1.0,
       "lo": 0.9,
-      "observed": 0.5625,
-      "predicted": 0.9603
+      "observed": 0.7857,
+      "predicted": 0.9503
      }
     ],
-    "brier": 0.0651,
+    "brier": 0.0616,
     "cases": 1512,
     "observed_rate": 0.0833,
-    "skill": 0.1035,
+    "skill": 0.1522,
     "team_seasons": 108
    },
    "losers_bracket": {
     "baseline_brier": 0.1876,
     "bins": [
      {
-      "count": 305,
+      "count": 275,
       "hi": 0.1,
       "lo": 0.0,
-      "observed": 0.0131,
-      "predicted": 0.0271
+      "observed": 0.0145,
+      "predicted": 0.0263
      },
      {
-      "count": 120,
+      "count": 110,
       "hi": 0.2,
       "lo": 0.1,
-      "observed": 0.2167,
-      "predicted": 0.1507
+      "observed": 0.0727,
+      "predicted": 0.1484
      },
      {
       "count": 114,
       "hi": 0.3,
       "lo": 0.2,
-      "observed": 0.2807,
-      "predicted": 0.2477
+      "observed": 0.2632,
+      "predicted": 0.2482
      },
      {
-      "count": 102,
+      "count": 115,
       "hi": 0.4,
       "lo": 0.3,
-      "observed": 0.4314,
-      "predicted": 0.3498
+      "observed": 0.3652,
+      "predicted": 0.3481
      },
      {
-      "count": 133,
+      "count": 157,
       "hi": 0.5,
       "lo": 0.4,
-      "observed": 0.5639,
-      "predicted": 0.4524
+      "observed": 0.4968,
+      "predicted": 0.4478
      },
      {
-      "count": 106,
+      "count": 116,
       "hi": 0.6,
       "lo": 0.5,
-      "observed": 0.5849,
-      "predicted": 0.5474
+      "observed": 0.6034,
+      "predicted": 0.5497
      },
      {
-      "count": 106,
+      "count": 138,
       "hi": 0.7,
       "lo": 0.6,
-      "observed": 0.6415,
-      "predicted": 0.6507
+      "observed": 0.7391,
+      "predicted": 0.6523
      },
      {
-      "count": 104,
+      "count": 97,
       "hi": 0.8,
       "lo": 0.7,
-      "observed": 0.6442,
-      "predicted": 0.7501
+      "observed": 0.7113,
+      "predicted": 0.7496
      },
      {
-      "count": 96,
+      "count": 105,
       "hi": 0.9,
       "lo": 0.8,
-      "observed": 0.7604,
-      "predicted": 0.8549
+      "observed": 0.7429,
+      "predicted": 0.8497
      },
      {
-      "count": 326,
+      "count": 285,
       "hi": 1.0,
       "lo": 0.9,
-      "observed": 0.9356,
-      "predicted": 0.9769
+      "observed": 0.9649,
+      "predicted": 0.9758
      }
     ],
-    "brier": 0.1456,
+    "brier": 0.1364,
     "cases": 1512,
     "observed_rate": 0.5,
-    "skill": 0.2238,
+    "skill": 0.273,
     "team_seasons": 108
    },
    "playoffs": {
     "baseline_brier": 0.1876,
     "bins": [
      {
-      "count": 325,
+      "count": 285,
       "hi": 0.1,
       "lo": 0.0,
-      "observed": 0.0646,
-      "predicted": 0.0228
+      "observed": 0.0351,
+      "predicted": 0.0242
+     },
+     {
+      "count": 105,
+      "hi": 0.2,
+      "lo": 0.1,
+      "observed": 0.2571,
+      "predicted": 0.1503
      },
      {
       "count": 97,
-      "hi": 0.2,
-      "lo": 0.1,
-      "observed": 0.2371,
-      "predicted": 0.1446
-     },
-     {
-      "count": 104,
       "hi": 0.3,
       "lo": 0.2,
-      "observed": 0.3558,
-      "predicted": 0.2499
+      "observed": 0.2887,
+      "predicted": 0.2504
      },
      {
-      "count": 106,
+      "count": 138,
       "hi": 0.4,
       "lo": 0.3,
-      "observed": 0.3585,
-      "predicted": 0.3493
+      "observed": 0.2609,
+      "predicted": 0.3477
      },
      {
-      "count": 106,
+      "count": 115,
       "hi": 0.5,
       "lo": 0.4,
-      "observed": 0.4151,
-      "predicted": 0.4526
+      "observed": 0.3913,
+      "predicted": 0.4498
      },
      {
-      "count": 133,
+      "count": 158,
       "hi": 0.6,
       "lo": 0.5,
-      "observed": 0.4361,
-      "predicted": 0.5476
+      "observed": 0.5063,
+      "predicted": 0.5518
      },
      {
-      "count": 102,
+      "count": 115,
       "hi": 0.7,
       "lo": 0.6,
-      "observed": 0.5686,
-      "predicted": 0.6502
+      "observed": 0.6348,
+      "predicted": 0.6519
      },
      {
       "count": 114,
       "hi": 0.8,
       "lo": 0.7,
-      "observed": 0.7193,
-      "predicted": 0.7523
+      "observed": 0.7368,
+      "predicted": 0.7518
      },
      {
-      "count": 120,
+      "count": 110,
       "hi": 0.9,
       "lo": 0.8,
-      "observed": 0.7833,
-      "predicted": 0.8493
+      "observed": 0.9273,
+      "predicted": 0.8516
      },
      {
-      "count": 305,
+      "count": 275,
       "hi": 1.0,
       "lo": 0.9,
-      "observed": 0.9869,
-      "predicted": 0.9729
+      "observed": 0.9855,
+      "predicted": 0.9737
      }
     ],
-    "brier": 0.1456,
+    "brier": 0.1364,
     "cases": 1512,
     "observed_rate": 0.5,
-    "skill": 0.2238,
+    "skill": 0.273,
     "team_seasons": 108
    },
    "title": {
     "baseline_brier": 0.0726,
     "bins": [
      {
-      "count": 1317,
+      "count": 1295,
       "hi": 0.1,
       "lo": 0.0,
-      "observed": 0.0289,
-      "predicted": 0.0244
+      "observed": 0.0247,
+      "predicted": 0.0298
      },
      {
-      "count": 265,
+      "count": 314,
       "hi": 0.2,
       "lo": 0.1,
-      "observed": 0.0717,
-      "predicted": 0.1425
+      "observed": 0.0987,
+      "predicted": 0.1422
      },
      {
-      "count": 133,
+      "count": 129,
       "hi": 0.3,
       "lo": 0.2,
-      "observed": 0.2707,
-      "predicted": 0.2409
+      "observed": 0.3953,
+      "predicted": 0.2432
      },
      {
-      "count": 66,
+      "count": 71,
       "hi": 0.4,
       "lo": 0.3,
-      "observed": 0.5455,
-      "predicted": 0.3405
+      "observed": 0.4085,
+      "predicted": 0.3424
      },
      {
-      "count": 29,
+      "count": 14,
       "hi": 0.5,
       "lo": 0.4,
-      "observed": 0.5862,
-      "predicted": 0.4518
+      "observed": 0.2857,
+      "predicted": 0.4538
      },
      {
-      "count": 13,
+      "count": 8,
       "hi": 0.6,
       "lo": 0.5,
-      "observed": 0.2308,
-      "predicted": 0.5432
+      "observed": 0.25,
+      "predicted": 0.5391
      },
      {
-      "count": 11,
+      "count": 4,
       "hi": 0.7,
       "lo": 0.6,
-      "observed": 0.2727,
-      "predicted": 0.631
+      "observed": 0.75,
+      "predicted": 0.6567
      },
      {
-      "count": 1,
+      "count": 0,
       "hi": 0.8,
       "lo": 0.7,
-      "observed": 0.0,
-      "predicted": 0.7082
+      "observed": null,
+      "predicted": null
      },
      {
       "count": 1,
       "hi": 0.9,
       "lo": 0.8,
       "observed": 1.0,
-      "predicted": 0.8104
+      "predicted": 0.8114
      },
      {
       "count": 0,
@@ -1977,12 +2191,15 @@
     "brier": 0.0628,
     "cases": 1836,
     "observed_rate": 0.0833,
-    "skill": 0.1359,
+    "skill": 0.1351,
     "team_seasons": 108
    }
   }
  },
+ "replacement_floor": true,
+ "replacement_top_n": 5,
  "residual_scale": 1.0,
+ "roster_drift": true,
  "runs": 10000,
  "seasons": [
   {

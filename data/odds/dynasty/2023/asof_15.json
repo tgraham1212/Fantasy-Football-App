@@ -1,7 +1,55 @@
 {
  "as_of_week": 15,
- "generated_at": "2026-11-14T19:05:37+00:00",
+ "generated_at": "2026-11-15T18:17:30+00:00",
  "league_key": "dynasty",
+ "model": {
+  "drift": {
+   "floor": true,
+   "league_key": "dynasty",
+   "note": "",
+   "sds": [
+    0.0,
+    1.525,
+    2.053,
+    2.519,
+    2.837,
+    3.344,
+    3.574,
+    3.719,
+    4.196,
+    4.572,
+    4.751,
+    5.009,
+    5.337,
+    5.653
+   ],
+   "seasons": [
+    "2022",
+    "2024",
+    "2025"
+   ],
+   "slopes": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "top_n": 5
+  },
+  "replacement_floor": true,
+  "replacement_top_n": 5,
+  "roster_drift": true
+ },
  "residual_scale": 1.0,
  "runs": 10000,
  "season": "2023",
@@ -14,7 +62,7 @@
   {
    "bye": 0.0,
    "display_name": "Gixxersean1",
-   "final": 0.5645,
+   "final": 0.5673,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 5,
@@ -43,14 +91,14 @@
    "semifinal": 1.0,
    "team_name": "#ManCrushMondays",
    "ties": 0,
-   "title": 0.3707,
+   "title": 0.3792,
    "user_id": "780972667925991424",
    "wins": 9
   },
   {
    "bye": 1.0,
    "display_name": "alwaysflexin",
-   "final": 0.4355,
+   "final": 0.4327,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 5,
@@ -79,14 +127,14 @@
    "semifinal": 1.0,
    "team_name": "🇵🇷william🏆🏆",
    "ties": 0,
-   "title": 0.261,
+   "title": 0.2588,
    "user_id": "785995674914312192",
    "wins": 9
   },
   {
    "bye": 0.0,
    "display_name": "corygraham12",
-   "final": 0.5371,
+   "final": 0.5416,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 5,
@@ -115,14 +163,14 @@
    "semifinal": 1.0,
    "team_name": "The Kuppets",
    "ties": 0,
-   "title": 0.1993,
+   "title": 0.1972,
    "user_id": "739284972489293824",
    "wins": 9
   },
   {
    "bye": 1.0,
    "display_name": "MattCyg",
-   "final": 0.4629,
+   "final": 0.4584,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 5,
@@ -151,7 +199,7 @@
    "semifinal": 1.0,
    "team_name": "Forever Unclean ",
    "ties": 0,
-   "title": 0.169,
+   "title": 0.1648,
    "user_id": "475701695121190912",
    "wins": 9
   },

@@ -8,13 +8,15 @@ from datetime import datetime, timezone
 
 from ffapp.bracket import BracketRules
 from ffapp.config import Config
-from ffapp.league import owners, resolve_settings, starter_slots
-from ffapp.lineup import Candidate, Starter, best_lineup
+from ffapp.drift import DriftModel, estimate_for_league, model_path
+from ffapp.league import FLEX_ELIGIBLE, owners, resolve_settings, starter_slots
+from ffapp.lineup import Candidate, Starter, best_lineup, lineup_points
 from ffapp.noise import NoiseModel, build_pools
+from ffapp.replacement import rostered_for_week, rostered_now, weekly_level
 from ffapp.scoring import record_points
 from ffapp.simulate import SimInputs, SimResult, simulate, summarize
 from ffapp.standings import pairings, regular_season_records
-from ffapp.store import SeasonData, Store
+from ffapp.store import SeasonData, Store, write_json
 
 log = logging.getLogger(__name__)
 
@@ -72,10 +74,45 @@ def rosters_as_of(data: SeasonData, as_of: int, *, current: bool) -> dict[int, l
 # -- inputs -----------------------------------------------------------------------
 
 
+def floor_for_slot(slot: str, floor: dict[str, float]) -> tuple[str, float]:
+    """(position, level) of the replacement player a slot can hold: flex slots take the best eligible position."""
+    best_pos, best = None, 0.0
+    for pos in FLEX_ELIGIBLE.get(slot, (slot,)):
+        level = float(floor.get(pos) or 0.0)
+        if best_pos is None or level > best:
+            best_pos, best = pos, level
+    return best_pos or slot, best
+
+
+def apply_floor(lineup: list[Starter], slots: list[str], floor: dict[str, float]) -> list[Starter]:
+    """Every slot is worth at least the replacement level: a weak or empty slot becomes a free-agent fill."""
+    queues: dict[str, list[Starter]] = {}
+    for starter in lineup:
+        queues.setdefault(starter.slot, []).append(starter)
+    floored = []
+    for slot in slots:
+        starter = queues[slot].pop(0) if queues.get(slot) else None
+        pos, level = floor_for_slot(slot, floor)
+        if starter is None or starter.projected < level:
+            floored.append(Starter(slot, f"FA:{pos}", pos, level))
+        else:
+            floored.append(starter)
+    return floored
+
+
 def lineup_from_projections(
-    projections: dict[str, dict], scoring: dict[str, float], slots: list[str], players: list[str]
+    projections: dict[str, dict],
+    scoring: dict[str, float],
+    slots: list[str],
+    players: list[str],
+    floor: dict[str, float] | None = None,
 ) -> list[Starter]:
-    """Best projected lineup for ``players`` given one week's projections and scoring."""
+    """Best projected lineup for ``players`` given one week's projections and scoring.
+
+    With ``floor`` ({position: replacement level}), every slot is worth at least the
+    replacement level for its position, standing in for the free agent a manager
+    would pick up.
+    """
     candidates = []
     for player_id in players:
         record = projections.get(player_id)
@@ -83,7 +120,18 @@ def lineup_from_projections(
             continue  # no projection this week: bye, out, or unprojected -> 0 points, never starts over a projected player
         positions = tuple(record.get("fantasy_positions") or [record["position"]])
         candidates.append(Candidate(player_id, record["position"], positions, record_points(record, scoring)))
-    return best_lineup(slots, candidates)
+    lineup = best_lineup(slots, candidates)
+    return apply_floor(lineup, slots, floor) if floor is not None else lineup
+
+
+def replacement_floor_for_week(
+    store: Store, config: Config, league_key: str, data: SeasonData, week: int, rostered: set[str]
+) -> dict[str, float]:
+    """{position: projected replacement level} for one week, from the free agents outside ``rostered``."""
+    projections = store.read_projections(data.season, week)
+    scoring = resolve_settings(config, league_key, data.league, week)
+    levels = weekly_level(projections, scoring, rostered, None, config.simulation.replacement_top_n)
+    return {pos: level["projected"] for pos, level in levels.items()}
 
 
 def projected_lineup(
@@ -95,7 +143,15 @@ def projected_lineup(
 
 
 def build_inputs(
-    store: Store, config: Config, league_key: str, data: SeasonData, as_of: int, *, current: bool
+    store: Store,
+    config: Config,
+    league_key: str,
+    data: SeasonData,
+    as_of: int,
+    *,
+    current: bool,
+    replacement_floor: bool = True,
+    drift: DriftModel | None = None,
 ) -> SimInputs:
     rules = BracketRules.from_league(data.league)
     if not rules.supported():
@@ -112,10 +168,24 @@ def build_inputs(
         schedule[week] = pairs
     rosters = rosters_as_of(data, as_of, current=current)
     future_weeks = [w for w in list(schedule) + [rules.week_for_round(r) for r in range(1, rules.rounds + 1)] if w > as_of]
-    starters = {
-        rid: {week: projected_lineup(store, config, league_key, data, week, players) for week in future_weeks}
-        for rid, players in rosters.items()
-    }
+    rostered = rostered_now(data) if current else rostered_for_week(data, as_of + 1)
+    slots = starter_slots(data.league)
+    starters: dict[int, dict[int, list[Starter]]] = {rid: {} for rid in rosters}
+    strength: dict[int, dict[int, float]] = {}
+    floors: dict[int, dict[str, float]] = {}
+    for week in future_weeks:
+        projections = store.read_projections(data.season, week)
+        scoring = resolve_settings(config, league_key, data.league, week)
+        floor = None
+        if replacement_floor:
+            levels = weekly_level(projections, scoring, rostered, None, config.simulation.replacement_top_n)
+            floor = {pos: level["projected"] for pos, level in levels.items()}
+            floors[week] = floor
+        strength[week] = {}
+        for rid, players in rosters.items():
+            lineup = lineup_from_projections(projections, scoring, slots, players, floor)
+            starters[rid][week] = lineup
+            strength[week][rid] = lineup_points(lineup)
     real_points = {}
     for round in range(1, rules.rounds + 1):
         week = rules.week_for_round(round)
@@ -131,6 +201,9 @@ def build_inputs(
         schedule=schedule,
         starters=starters,
         real_points=real_points,
+        strength=strength,
+        floors=floors,
+        drift=drift,
     )
 
 
@@ -152,13 +225,15 @@ def simulate_as_of(
     noise: NoiseModel,
     runs: int = 10_000,
     seed: int | None = None,
+    replacement_floor: bool = True,
+    drift: DriftModel | None = None,
 ) -> tuple[SimInputs, SimResult, dict]:
     """Simulate one league-season as of ``as_of`` completed weeks; nothing is stored.
 
     Returns the inputs, the raw result (with per-week simulated scores) and the
-    odds payload that ``run_as_of`` would store.
+    odds payload that ``run_as_of`` would store. ``drift`` None turns roster drift off.
     """
-    inputs = build_inputs(store, config, league_key, data, as_of, current=current)
+    inputs = build_inputs(store, config, league_key, data, as_of, current=current, replacement_floor=replacement_floor, drift=drift)
     seed = default_seed(league_key, data.season, as_of) if seed is None else seed
     result = simulate(inputs, noise, runs=runs, seed=seed)
     owner_of = owners(data.users, data.rosters)
@@ -189,6 +264,12 @@ def simulate_as_of(
         "runs": runs,
         "seed": seed,
         "residual_scale": float(getattr(noise, "scale", 1.0)),
+        "model": {
+            "replacement_top_n": config.simulation.replacement_top_n,
+            "replacement_floor": replacement_floor,
+            "roster_drift": drift is not None and not drift.identity,
+            "drift": None if drift is None else drift.to_dict(),
+        },
         "simulated_weeks": sorted(inputs.schedule) + [w for w in inputs.playoff_weeks if w not in inputs.real_points],
         "teams": teams,
     }
@@ -206,9 +287,14 @@ def run_as_of(
     noise: NoiseModel,
     runs: int = 10_000,
     seed: int | None = None,
+    replacement_floor: bool = True,
+    drift: DriftModel | None = None,
 ) -> dict:
     """Simulate one league-season as of ``as_of`` completed weeks and store the results."""
-    _, _, payload = simulate_as_of(store, config, league_key, data, as_of, current=current, noise=noise, runs=runs, seed=seed)
+    _, _, payload = simulate_as_of(
+        store, config, league_key, data, as_of, current=current, noise=noise, runs=runs, seed=seed,
+        replacement_floor=replacement_floor, drift=drift,
+    )
     store.write_odds(league_key, data.season, as_of, payload)
     log.info("odds %s %s as of week %d: %d runs, seed %d", league_key, data.season, as_of, runs, payload["seed"])
     return payload
@@ -234,11 +320,13 @@ def simulate_league(
         raise ValueError(f"{league_key}: nothing synced yet")
     data = store.read_season(league_key, season)
     as_of = completed_weeks(data.league)
+    drift = estimate_for_league(store, config, league_key)
+    write_json(model_path(store, league_key), {**drift.to_dict(), "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds")})
     payloads = []
     if backfill_season:
         for earlier in range(0, as_of):
             noise = build_pools(store, config, exclude_after=(season, earlier))
-            payloads.append(run_as_of(store, config, league_key, data, earlier, current=False, noise=noise, runs=runs, seed=seed))
+            payloads.append(run_as_of(store, config, league_key, data, earlier, current=False, noise=noise, runs=runs, seed=seed, drift=drift))
     noise = build_pools(store, config)
-    payloads.append(run_as_of(store, config, league_key, data, as_of, current=True, noise=noise, runs=runs, seed=seed))
+    payloads.append(run_as_of(store, config, league_key, data, as_of, current=True, noise=noise, runs=runs, seed=seed, drift=drift))
     return payloads

@@ -7,6 +7,7 @@ from dataclasses import dataclass, field
 import numpy as np
 
 from ffapp.bracket import BracketRules
+from ffapp.drift import DriftModel
 from ffapp.lineup import Starter
 from ffapp.noise import NoiseModel
 from ffapp.standings import TeamRecord
@@ -23,6 +24,9 @@ class SimInputs:
     schedule: dict[int, list[tuple[int, int]]]  # remaining regular week -> (roster_id, roster_id) pairs
     starters: dict[int, dict[int, list[Starter]]]  # roster_id -> week -> projected lineup
     real_points: dict[int, dict[int, float]] = field(default_factory=dict)  # scored playoff weeks -> points
+    strength: dict[int, dict[int, float]] = field(default_factory=dict)  # week -> roster_id -> floored projected lineup total
+    floors: dict[int, dict[str, float]] = field(default_factory=dict)  # week -> position -> replacement level used
+    drift: DriftModel | None = None  # roster drift applied to future weeks; None = off
 
     @property
     def regular_weeks(self) -> list[int]:
@@ -57,6 +61,26 @@ def simulate(inputs: SimInputs, noise: NoiseModel, *, runs: int = 10_000, seed: 
     index = {rid: i for i, rid in enumerate(ids)}
     run_idx = np.arange(runs)
 
+    drift_walk = np.zeros((runs, n))  # per-run, per-team drift that persists from week to week
+    last_horizon = 0
+
+    def drifted(week: int, scores: np.ndarray) -> np.ndarray:
+        """Shrink each team toward the league mean by the horizon's slope and add the random-walk drift."""
+        nonlocal drift_walk, last_horizon
+        model = inputs.drift
+        strength = inputs.strength.get(week)
+        if model is None or model.identity or not strength:
+            return scores
+        k = max(1, week - inputs.completed_weeks)
+        mean = float(np.mean([strength[rid] for rid in ids]))
+        shrink = np.array([(model.slope(k) - 1.0) * (strength.get(rid, mean) - mean) for rid in ids])
+        for step in range(last_horizon + 1, k + 1):
+            sd = model.step_sd(step)
+            if sd > 0:
+                drift_walk = drift_walk + rng.normal(0.0, sd, size=(runs, n))
+        last_horizon = max(last_horizon, k)
+        return scores + shrink[None, :] + drift_walk
+
     def simulated_scores(week: int) -> np.ndarray:
         scores = np.zeros((runs, n))
         for rid, by_week in inputs.starters.items():
@@ -64,7 +88,7 @@ def simulate(inputs: SimInputs, noise: NoiseModel, *, runs: int = 10_000, seed: 
             for starter in by_week.get(week, []):
                 total += starter.projected + noise.sample(starter.position, starter.projected, rng, runs)
             scores[:, index[rid]] = total
-        return scores
+        return drifted(week, scores)
 
     # -- regular season ------------------------------------------------------
     wins = np.zeros((runs, n))

@@ -13,6 +13,7 @@ from ffapp.export import (
 )
 from ffapp.noise import GaussianNoise
 from ffapp.odds import run_as_of
+from ffapp.replacement import write_replacement
 from ffapp.store import write_json
 
 TEAM_KEYS = {
@@ -122,3 +123,20 @@ def test_export_includes_calibration_report_when_present(seeded_store, dynasty_c
     index = json.loads((out / "index.json").read_text(encoding="utf-8"))
     assert index["calibration"] == {"generated_at": "2026-11-14T10:00:00+00:00", "file": "calibration.json"}
     assert json.loads((out / "calibration.json").read_text(encoding="utf-8")) == report
+
+
+def test_export_carries_replacement_levels_and_model_when_present(seeded_store, dynasty_config, tmp_path):
+    simulate_weeks(seeded_store, dynasty_config, [0, 1, 2])
+    out = tmp_path / "site-data"
+    export_site(seeded_store, dynasty_config, out)
+    payload = json.loads((out / "dynasty.json").read_text(encoding="utf-8"))
+    assert "replacement" not in payload, "no replacement file yet"
+    assert payload["model"]["replacement_floor"] is True and payload["model"]["roster_drift"] is False
+
+    write_replacement(seeded_store, dynasty_config, "dynasty")
+    export_site(seeded_store, dynasty_config, out)
+    payload = json.loads((out / "dynasty.json").read_text(encoding="utf-8"))
+    rep = payload["replacement"]
+    assert rep["as_of_week"] == 2 and rep["week"] == 3 and rep["top_n"] == 3
+    assert set(rep["levels"]) == {"QB", "RB", "WR", "TE", "K", "DEF"} == set(rep["season"])
+    assert all(isinstance(v, float) for v in rep["levels"].values())

@@ -1,7 +1,56 @@
 {
  "as_of_week": 16,
- "generated_at": "2026-11-14T19:05:57+00:00",
+ "generated_at": "2026-11-15T18:17:40+00:00",
  "league_key": "redraft",
+ "model": {
+  "drift": {
+   "floor": true,
+   "league_key": "redraft",
+   "note": "",
+   "sds": [
+    0.0,
+    1.21,
+    1.645,
+    2.01,
+    2.311,
+    2.48,
+    2.684,
+    3.016,
+    3.058,
+    3.219,
+    3.396,
+    3.588,
+    3.78,
+    3.823
+   ],
+   "seasons": [
+    "2022",
+    "2023",
+    "2024",
+    "2025"
+   ],
+   "slopes": [
+    1.0,
+    0.9862,
+    0.9862,
+    0.9862,
+    0.9797,
+    0.9797,
+    0.9797,
+    0.9797,
+    0.9797,
+    0.9797,
+    0.9797,
+    0.9797,
+    0.9797,
+    0.9797
+   ],
+   "top_n": 5
+  },
+  "replacement_floor": true,
+  "replacement_top_n": 5,
+  "roster_drift": true
+ },
  "residual_scale": 1.0,
  "runs": 10000,
  "season": "2021",
@@ -42,7 +91,7 @@
    "semifinal": 1.0,
    "team_name": "Kristen's My 13th Reason",
    "ties": 0,
-   "title": 0.595,
+   "title": 0.5801,
    "user_id": "727642823544893440",
    "wins": 11
   },
@@ -78,7 +127,7 @@
    "semifinal": 1.0,
    "team_name": "Cookin somthin nice",
    "ties": 0,
-   "title": 0.405,
+   "title": 0.4199,
    "user_id": "739294851916541952",
    "wins": 8
   },

@@ -31,5 +31,19 @@ overrides: []
 # season's playoff bins is over-fitting. Evaluate a candidate first with
 # `python -m ffapp calibrate --residual-scale 1.1`, which leaves this file alone.
 #
+# `replacement_top_n` is how many of the best-projected free agents are averaged
+# to define a replacement-level player at each position (the floor every lineup
+# slot gets in the simulation). `prior_weeks` is the shrinkage weight, in weeks,
+# toward earlier seasons for the season replacement value in data/replacement/.
+#
 # simulation:
 #   residual_scale: 1.0
+#   replacement_top_n: 3
+#   prior_weeks: 4
+#
+# replacement_top_n is set from the roster-drift diagnostic in the calibration
+# report (2026-11-15): with the best 5 free agents averaged, a team's floored
+# projected strength predicts its true strength weeks ahead with a slope of about
+# 1.0 in both leagues (top 3 was slightly generous, top 8+ slightly stingy).
+simulation:
+  replacement_top_n: 5

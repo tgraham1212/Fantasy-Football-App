@@ -8,6 +8,7 @@ from pathlib import Path
 from ffapp.bracket import BracketRules
 from ffapp.config import Config
 from ffapp.odds import current_season
+from ffapp.replacement import read_replacement
 from ffapp.store import Store, read_json, write_json
 
 log = logging.getLogger(__name__)
@@ -101,7 +102,7 @@ def league_export(store: Store, config: Config, league_key: str) -> dict:
                 series[k].append(row.get(k) if row else None)
         history_teams[str(rid)] = series
 
-    return {
+    payload = {
         "league_key": league_key,
         "league_name": config.leagues[league_key].name,
         "sleeper_league_id": league.get("league_id"),
@@ -116,6 +117,31 @@ def league_export(store: Store, config: Config, league_key: str) -> dict:
         "simulated_weeks": latest.get("simulated_weeks", []),
         "teams": teams,
         "history": {"weeks": weeks, "teams": history_teams},
+    }
+    replacement = replacement_summary(store, league_key, season, latest["as_of_week"])
+    if replacement:
+        payload["replacement"] = replacement
+    if latest.get("model"):
+        payload["model"] = latest["model"]
+    return payload
+
+
+def replacement_summary(store: Store, league_key: str, season: str, as_of_week: int) -> dict | None:
+    """The next unplayed week's projected replacement levels and the season values, or None without a file."""
+    stored = read_replacement(store, league_key, season)
+    if not stored:
+        return None
+    weeks = stored.get("weeks") or {}
+    week = as_of_week + 1
+    if str(week) not in weeks and weeks:
+        week = max(int(w) for w in weeks)
+    levels = weeks.get(str(week), {})
+    return {
+        "as_of_week": as_of_week,
+        "week": week,
+        "levels": {pos: level["projected"] for pos, level in levels.items()},
+        "season": {pos: value["value"] for pos, value in (stored.get("season_values") or {}).items()},
+        "top_n": stored.get("top_n"),
     }
 
 

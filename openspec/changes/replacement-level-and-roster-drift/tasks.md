@@ -1,0 +1,50 @@
+# Tasks
+
+## 1. Configuration
+
+- [x] 1.1 Add `replacement_top_n` (positive int, default 3) and `prior_weeks` (non-negative number, default 4) to the `simulation` section in `src/ffapp/config.py`, document both in `config/leagues.yaml` and the README configuration section. Verify tests in `tests/test_config.py`: defaults when absent, `5`/`2` parsed, `0`, `2.5`, `True` for top-N and `-1` for prior weeks rejected with the key named.
+
+## 2. Player stats sync
+
+- [x] 2.1 Cut a stats fixture `tests/fixtures/sleeper/stats/2025/1.json` from the live 2025 week-1 response: every player in the projections fixture plus at least five unrostered players at each fantasy position; route `/stats/nfl/<season>/<week>` in `FixtureSession`. Verify `tests/test_fixtures.py` (or a new check) asserts the fixture rows carry `player_id`, `season`, `week`, `stats` and that at least one fixture player is on no 2025 roster.
+- [x] 2.2 Add `SleeperClient.stats(season, week)` and `src/ffapp/stats.py` (validate, keep rows with a `pts_*` key, newest-version upsert, `refresh_stats(client, store, league_keys, backfill)`), plus `Store.read_stats/write_stats/stats_weeks` for `data/stats/<season>/week_NN.json`. Verify tests mirror `tests/test_projections.py`: rows without points dropped, newer `last_modified` replaces, same version unchanged, empty response leaves the file, a failing week writes nothing for that season, backfill covers every season in scope.
+- [x] 2.3 Add `actual_points(record, scoring)` and a consistency test on the fixture season: scoring the stat lines of the 2025 week-1 fixture players reproduces the `players_points` in the stored week-1 matchups within 0.05 for at least 99% of them. Verify the test passes; if the fixture disagrees, record the stat keys that differ in the test's message before adjusting.
+- [x] 2.4 Add the `stats [--backfill]` command to `src/ffapp/cli.py` and the README command table. Verify a CLI test runs `stats` against the fixture and writes `data/stats/2025/week_01.json`.
+
+## 3. Replacement level
+
+- [x] 3.1 Create `src/ffapp/replacement.py` with `rostered_for_week(data, week)`, `rostered_now(data)`, `free_agents(projections, scoring, rostered)` and `weekly_level(projections, scoring, rostered, stats, n)` returning per-position projected level, realised level (or None), available count and player ids. Verify unit tests with hand-built projections: top-3 by projection chosen (not by actual), 9.4/8.9/8.1 → 8.8 projected and 14.0/3.2/7.6 → 8.27 realised, two available TEs averaged, zero available → 0, missing stats → realised None, a player with no stat row counts 0, reserve/taxi players count as rostered for the present.
+- [x] 3.2 Implement `season_value(weekly, prior, k)` and `prior_for(store, league_key, season)` (50/30/20 over up to three earlier seasons with identical scoring and roster settings, renormalised; fallback to the current season's mean projected level). Verify tests: n = 0 → prior; 12 weeks at 8.0 with prior 6.0 and k = 4 → 7.5; 8.0/7.0/6.0 → 7.4; two seasons renormalise to 62.5/37.5; a season with different scoring is skipped; first season falls back to projected mean.
+- [x] 3.3 Implement `write_replacement(store, config, league_key, season)` producing `data/replacement/<league>/<season>.json` per design decision 4, and the `replacement` command covering every stored season. Verify a test on the fixture store writes files for every dynasty season, the 2026 file has 17 weeks with projected levels for every position, realised levels only where stats exist, and season values present; and `pytest` passes.
+- [x] 3.4 Wire `stats` and `replacement` into `refresh` in the order `sync, projections, stats, replacement, simulate, export`; update the README command table, data layout and first-time setup. Verify `tests/test_refresh.py` shows the six steps run and that a stats failure stops the run before `replacement` with the data tree unchanged.
+
+## 4. Replacement floor in the simulation
+
+- [x] 4.1 Extend `odds.lineup_from_projections` with an optional `floor: dict[position, level]`: after the greedy lineup, any slot whose starter projects below the slot's floor (FLEX: best of RB/WR/TE; empty slot = 0) is replaced by `Starter(slot, "FA:<pos>", pos, level)`. Verify tests in `tests/test_odds.py`: no-TE team gets a 6.8 TE fill, a 3.1 RB2 becomes 7.5, a 14.0 starter is untouched, FLEX takes the best eligible level, and `floor=None` reproduces the old lineup exactly.
+- [x] 4.2 In `build_inputs`, compute per future week the projected levels from the rosters the sim is using (`weekly_level` with the union of those rosters, N from config) and pass them as the floor unless `replacement_floor=False`; record floored team strength per week in `SimInputs.strength`. Verify a test on the fixture season that every starter list has one entry per slot with projection ≥ the floor, that `strength[week][rid]` equals the lineup's projected total, and that `replacement_floor=False` leaves lineups as before.
+- [x] 4.3 Update the README "How the simulation works" lineup step. Verify the text names the floor and the `replacement_top_n` setting.
+
+## 5. Roster drift
+
+- [x] 5.1 Create `src/ffapp/drift.py` with `strength_pairs(store, config, league_key, seasons, *, floor: bool, n)` (per as-of week and later week: floored strength under the held roster vs the true roster, relative to the league mean) and `estimate(pairs) -> DriftModel` (slope and residual sd per horizon, k = 1 fixed at 1/0, slopes cumulative-min, sds cumulative-max, identity with fewer than two seasons). Verify tests: a synthetic store where every team's true roster is the held roster gives slope 1 and sd 0 at every k; one where true strength is exactly 0.8 × held gives slope 0.8; monotone smoothing is applied; one season → identity model that says so.
+- [x] 5.2 Apply the drift in `simulate`: per week at horizon k, add `(slope_k − 1)·(S − mean)` and a per-run per-team random walk with step sd `sqrt(max(0, sd_k² − sd_{k−1}²))`, skipped when `roster_drift=False`; horizons past the regular season reuse the last k. Verify tests: with slopes all 1 and sds all 0 results equal the pre-change results for the same seed; with slope 0.5 and no noise a team +20 above the mean scores +10 on average; with sd growing, the variance of a team's week-13 score exceeds its week-10 variance; the drift path for a run is cumulative (week k+1 drift minus week k drift has the step sd).
+- [x] 5.3 Have `simulate_league` estimate the `DriftModel` from the league's completed seasons, write `data/model/<league>.json`, embed `model: {replacement_top_n, replacement_floor, roster_drift, drift: {slopes, sds, seasons}}` in every odds payload (and keep `residual_scale`). Verify tests assert the payload fields and the model file; `tests/test_export.py` still passes.
+- [x] 5.4 Document the drift step and the model file in the README. Verify the README's simulation section lists the step and the data layout lists `data/model/`.
+
+## 6. Calibration
+
+- [x] 6.1 Make `calibrate.replay_season` estimate the drift model excluding the replayed season and pass `replacement_floor`/`roster_drift` through; add `--no-replacement-floor` and `--no-roster-drift` to the CLI and record both plus the drift models in the report meta. Verify tests: the replayed season is absent from the drift model's `seasons`; the flags reach `build_inputs`/`simulate` (spy or payload `model` fields); the report meta names both switches.
+- [x] 6.2 Add the roster-drift diagnostic to the report (per league, horizons 2/3/5/8/12, slope and sd under frozen and floored rosters, N) in JSON and Markdown, and document how to read it in the README calibration section. Verify a test on the fixture season produces both treatments for every listed horizon and that the Markdown table contains the numbers from the JSON.
+
+- [x] 6.3 Add `replacement` (as-of week, first unplayed week's projected levels per position, season values, N) and `model` (from the latest odds payload) to each league file in `src/ffapp/export.py`, both omitted when the source files are missing. Verify tests in `tests/test_export.py` cover present and absent cases and the existing schema test still passes.
+- [x] 6.4 Add the "How the odds are made" card to `site/calibration.html`/`calibration.js` per design decision 12: four plain-language steps, per-league replacement-level table (this week by position plus season values), the "keeps about X of 20 points at 2 and 12 weeks" line from the exported slopes, the model switches in the meta line, and a fallback sentence when the league files lack the live numbers. Verify headless screenshots in both themes at desktop and 375px show the card with both leagues' numbers and no horizontal page scroll, and that removing `replacement` from a league file shows the fallback sentence without console errors.
+
+## 7. Integration check
+
+- [x] 7.1 On the repo data: `python -m ffapp stats --backfill`, `python -m ffapp replacement`, then `calibrate --no-replacement-floor --no-roster-drift`, `calibrate --no-roster-drift`, and `calibrate` (default), keeping the three Markdown reports in the scratchpad for comparison. Verify: the first reproduces the archived report's score-level coverage and playoff Brier within rounding; the diagnostic's floored redraft slope at k = 2 is about 0.89; redraft playoff bins move toward the diagonal across the three runs; score-level coverage stays within 1 point of the current values; `pytest` passes; `python -m ffapp simulate --backfill-season` and `export` run and the site renders both leagues and the calibration page with the new "How the odds are made" card showing live replacement levels.
+
+## Workflow follow-up
+
+- Commit `data/stats`, `data/replacement`, `data/model`, the default calibration run's `data/calibration` and `data/odds`, and `site/data`; push; the next deploy publishes the new odds and calibration page.
+- If redraft remains over-confident after both pieces, the next candidate is the per-team persistent effect (ICC 0.07) measured in the calibration discussion.
+- Archive the change with spec sync after the above.

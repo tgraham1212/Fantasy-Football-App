@@ -1,7 +1,56 @@
 {
  "as_of_week": 15,
- "generated_at": "2026-11-14T19:06:03+00:00",
+ "generated_at": "2026-11-15T18:17:43+00:00",
  "league_key": "redraft",
+ "model": {
+  "drift": {
+   "floor": true,
+   "league_key": "redraft",
+   "note": "",
+   "sds": [
+    0.0,
+    1.392,
+    1.793,
+    2.122,
+    2.392,
+    2.566,
+    2.772,
+    3.034,
+    3.268,
+    3.534,
+    3.579,
+    3.908,
+    4.091,
+    4.254
+   ],
+   "seasons": [
+    "2021",
+    "2023",
+    "2024",
+    "2025"
+   ],
+   "slopes": [
+    1.0,
+    0.9803,
+    0.9803,
+    0.9803,
+    0.9803,
+    0.9803,
+    0.9803,
+    0.9803,
+    0.9803,
+    0.9803,
+    0.9803,
+    0.9803,
+    0.9779,
+    0.9779
+   ],
+   "top_n": 5
+  },
+  "replacement_floor": true,
+  "replacement_top_n": 5,
+  "roster_drift": true
+ },
  "residual_scale": 1.0,
  "runs": 10000,
  "season": "2022",
@@ -14,7 +63,7 @@
   {
    "bye": 1.0,
    "display_name": "corygraham12",
-   "final": 0.6799,
+   "final": 0.6812,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 2,
@@ -43,14 +92,14 @@
    "semifinal": 1.0,
    "team_name": "We’ve Got Beef",
    "ties": 0,
-   "title": 0.488,
+   "title": 0.4835,
    "user_id": "739284972489293824",
    "wins": 12
   },
   {
    "bye": 1.0,
    "display_name": "kjern17",
-   "final": 0.5602,
+   "final": 0.5558,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 2,
@@ -79,14 +128,14 @@
    "semifinal": 1.0,
    "team_name": "My Ek, my back ",
    "ties": 0,
-   "title": 0.2046,
+   "title": 0.1932,
    "user_id": "739705195117895680",
    "wins": 12
   },
   {
    "bye": 0.0,
    "display_name": "Jdeguire",
-   "final": 0.3201,
+   "final": 0.3188,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 6,
@@ -115,14 +164,14 @@
    "semifinal": 1.0,
    "team_name": "Do It For Hurts ",
    "ties": 0,
-   "title": 0.157,
+   "title": 0.1733,
    "user_id": "739353143170727936",
    "wins": 8
   },
   {
    "bye": 0.0,
    "display_name": "jrizzo15",
-   "final": 0.4398,
+   "final": 0.4442,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 7,
@@ -151,7 +200,7 @@
    "semifinal": 1.0,
    "team_name": "Tuck n Chubbs",
    "ties": 0,
-   "title": 0.1504,
+   "title": 0.15,
    "user_id": "739272868935974912",
    "wins": 7
   },

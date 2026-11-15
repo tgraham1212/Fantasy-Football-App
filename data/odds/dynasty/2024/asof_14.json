@@ -1,7 +1,55 @@
 {
  "as_of_week": 14,
- "generated_at": "2026-11-14T19:05:43+00:00",
+ "generated_at": "2026-11-15T18:17:33+00:00",
  "league_key": "dynasty",
+ "model": {
+  "drift": {
+   "floor": true,
+   "league_key": "dynasty",
+   "note": "",
+   "sds": [
+    0.0,
+    1.547,
+    2.07,
+    2.455,
+    2.809,
+    3.372,
+    3.57,
+    3.684,
+    4.177,
+    4.562,
+    4.643,
+    4.882,
+    5.282,
+    5.736
+   ],
+   "seasons": [
+    "2022",
+    "2023",
+    "2025"
+   ],
+   "slopes": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "top_n": 5
+  },
+  "replacement_floor": true,
+  "replacement_top_n": 5,
+  "roster_drift": true
+ },
  "residual_scale": 1.0,
  "runs": 10000,
  "season": "2024",
@@ -15,7 +63,7 @@
   {
    "bye": 1.0,
    "display_name": "Gixxersean1",
-   "final": 0.5256,
+   "final": 0.5249,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 2,
@@ -44,14 +92,14 @@
    "semifinal": 1.0,
    "team_name": "#ManCrushMondays",
    "ties": 0,
-   "title": 0.2869,
+   "title": 0.2836,
    "user_id": "780972667925991424",
    "wins": 12
   },
   {
    "bye": 0.0,
    "display_name": "corygraham12",
-   "final": 0.3628,
+   "final": 0.3636,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 6,
@@ -77,17 +125,17 @@
     0.0,
     0.0
    ],
-   "semifinal": 0.6222,
+   "semifinal": 0.6251,
    "team_name": "The Kuppets",
    "ties": 0,
-   "title": 0.2114,
+   "title": 0.2151,
    "user_id": "739284972489293824",
    "wins": 8
   },
   {
    "bye": 1.0,
    "display_name": "alwaysflexin",
-   "final": 0.455,
+   "final": 0.4591,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 5,
@@ -116,14 +164,14 @@
    "semifinal": 1.0,
    "team_name": "Ranger",
    "ties": 0,
-   "title": 0.1874,
+   "title": 0.1926,
    "user_id": "785995674914312192",
    "wins": 9
   },
   {
    "bye": 0.0,
    "display_name": "tg1212",
-   "final": 0.278,
+   "final": 0.2705,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 5,
@@ -149,17 +197,17 @@
     0.0,
     0.0
    ],
-   "semifinal": 0.5257,
+   "semifinal": 0.5204,
    "team_name": "Pocket Dogs",
    "ties": 0,
-   "title": 0.1411,
+   "title": 0.1396,
    "user_id": "75490097898078208",
    "wins": 9
   },
   {
    "bye": 0.0,
    "display_name": "Jdeguire",
-   "final": 0.1833,
+   "final": 0.1828,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 7,
@@ -185,17 +233,17 @@
     0.0,
     0.0
    ],
-   "semifinal": 0.3778,
+   "semifinal": 0.3749,
    "team_name": "Jesus at Red Rock",
    "ties": 0,
-   "title": 0.092,
+   "title": 0.0884,
    "user_id": "739353143170727936",
    "wins": 7
   },
   {
    "bye": 0.0,
    "display_name": "gonzas",
-   "final": 0.1953,
+   "final": 0.1991,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 7,
@@ -221,10 +269,10 @@
     0.0,
     0.0
    ],
-   "semifinal": 0.4743,
+   "semifinal": 0.4796,
    "team_name": "“FOUTS LOOKIN”",
    "ties": 0,
-   "title": 0.0812,
+   "title": 0.0807,
    "user_id": "1074157507347689472",
    "wins": 7
   },

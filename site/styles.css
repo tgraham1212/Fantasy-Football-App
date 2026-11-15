@@ -261,6 +261,13 @@ td.chance.chance-low { color: var(--ink-2); font-weight: 500; }
 .headlines li, .caveats li { color: var(--ink-2); font-size: 0.95rem; }
 .caveats { margin: 10px 0 0; padding-left: 20px; max-width: 78ch; display: grid; gap: 6px; }
 .reliability-wrap { height: 440px; max-width: 640px; margin: 0 auto 16px; }
+.steps { margin: 4px 0 0; padding-left: 22px; max-width: 78ch; display: grid; gap: 8px; }
+.steps li { color: var(--ink-2); font-size: 0.95rem; }
+.steps li strong, .steps li em { color: var(--ink); }
+.steps li em { font-style: normal; font-weight: 600; }
+#how-tables { margin-top: 16px; }
+#how-tables h3 { font-size: 0.95rem; font-weight: 650; margin: 0; }
+#how-tables .hint { margin-top: 6px; }
 .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start; }
 .pit-wrap { height: 300px; }
 table.plain { min-width: 0; width: 100%; margin-top: 12px; }

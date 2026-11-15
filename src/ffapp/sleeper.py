@@ -15,6 +15,7 @@ import requests
 
 API_BASE = "https://api.sleeper.app/v1"
 PROJECTIONS_BASE = "https://api.sleeper.com/projections/nfl"
+STATS_BASE = "https://api.sleeper.com/stats/nfl"
 USER_AGENT = "ffapp/0.1 (fantasy league odds; +https://github.com)"
 PROJECTION_POSITIONS = ("QB", "RB", "WR", "TE", "K", "DEF")
 
@@ -55,6 +56,7 @@ class SleeperClient:
         *,
         api_base: str = API_BASE,
         projections_base: str = PROJECTIONS_BASE,
+        stats_base: str = STATS_BASE,
         timeout: float = 30.0,
         min_interval: float = 0.2,
         retries: int = 3,
@@ -65,6 +67,7 @@ class SleeperClient:
         self._session = session or requests.Session()
         self._api_base = api_base.rstrip("/")
         self._projections_base = projections_base.rstrip("/")
+        self._stats_base = stats_base.rstrip("/")
         self._timeout = timeout
         self._min_interval = min_interval
         self._retries = retries
@@ -142,3 +145,10 @@ class SleeperClient:
             [("season_type", "regular")] + [("position[]", p) for p in PROJECTION_POSITIONS]
         )
         return self.get_json(f"{self._projections_base}/{season}/{week}?{query}")
+
+    def stats(self, season: str | int, week: int) -> Any:
+        """Raw weekly actual stat lines for the fantasy positions (same shape as projections)."""
+        query = urlencode(
+            [("season_type", "regular")] + [("position[]", p) for p in PROJECTION_POSITIONS]
+        )
+        return self.get_json(f"{self._stats_base}/{season}/{week}?{query}")

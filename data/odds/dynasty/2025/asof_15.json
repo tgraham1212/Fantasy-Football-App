@@ -1,7 +1,55 @@
 {
  "as_of_week": 15,
- "generated_at": "2026-11-14T19:05:50+00:00",
+ "generated_at": "2026-11-15T18:17:36+00:00",
  "league_key": "dynasty",
+ "model": {
+  "drift": {
+   "floor": true,
+   "league_key": "dynasty",
+   "note": "",
+   "sds": [
+    0.0,
+    1.45,
+    1.76,
+    2.066,
+    2.518,
+    3.074,
+    3.35,
+    3.479,
+    3.912,
+    4.334,
+    4.414,
+    4.75,
+    5.172,
+    5.452
+   ],
+   "seasons": [
+    "2022",
+    "2023",
+    "2024"
+   ],
+   "slopes": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.9991,
+    0.9518
+   ],
+   "top_n": 5
+  },
+  "replacement_floor": true,
+  "replacement_top_n": 5,
+  "roster_drift": true
+ },
  "residual_scale": 1.0,
  "runs": 10000,
  "season": "2025",
@@ -14,7 +62,7 @@
   {
    "bye": 1.0,
    "display_name": "Gixxersean1",
-   "final": 0.5337,
+   "final": 0.5334,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 4,
@@ -43,14 +91,14 @@
    "semifinal": 1.0,
    "team_name": "#ManCrushMondays",
    "ties": 0,
-   "title": 0.36,
+   "title": 0.3725,
    "user_id": "780972667925991424",
    "wins": 10
   },
   {
    "bye": 0.0,
    "display_name": "corygraham12",
-   "final": 0.4663,
+   "final": 0.4666,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 6,
@@ -79,14 +127,14 @@
    "semifinal": 1.0,
    "team_name": "The Kuppets",
    "ties": 0,
-   "title": 0.3487,
+   "title": 0.3445,
    "user_id": "739284972489293824",
    "wins": 8
   },
   {
    "bye": 1.0,
    "display_name": "gonzas",
-   "final": 0.6908,
+   "final": 0.6871,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 5,
@@ -115,14 +163,14 @@
    "semifinal": 1.0,
    "team_name": "“FOUTS LOOKIN”",
    "ties": 0,
-   "title": 0.2224,
+   "title": 0.2188,
    "user_id": "1074157507347689472",
    "wins": 9
   },
   {
    "bye": 0.0,
    "display_name": "Z28kid86",
-   "final": 0.3092,
+   "final": 0.3129,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 5,
@@ -151,7 +199,7 @@
    "semifinal": 1.0,
    "team_name": "SLOPPY SECONDS ",
    "ties": 0,
-   "title": 0.0689,
+   "title": 0.0642,
    "user_id": "1066868199569928192",
    "wins": 9
   },

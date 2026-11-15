@@ -12,7 +12,8 @@ const OUTCOME_LABELS = {
 const HEADLINE_OUTCOMES = ["playoffs", "bye", "title"];
 const SERIES_TOKENS = ["--team-1", "--team-2", "--team-3", "--team-4"];
 
-const state = { index: null, report: null, names: {}, outcome: "playoffs", charts: {} };
+const state = { index: null, report: null, names: {}, leagues: {}, outcome: "playoffs", charts: {} };
+const POSITIONS = ["QB", "RB", "WR", "TE", "K", "DEF"];
 const $ = (id) => document.getElementById(id);
 
 // -- formatting ---------------------------------------------------------------
@@ -86,7 +87,9 @@ function renderMeta() {
   const years = R.seasons.map((s) => Number(s.season));
   const span = years.length ? `${Math.min(...years)}–${Math.max(...years)}` : "";
   const scale = R.residual_scale === 1 ? "no residual scaling" : `residual scale ${R.residual_scale}`;
-  $("meta").textContent = `${seasons} league-seasons (${leagues} leagues, ${span}) · ${R.runs.toLocaleString()} simulations per replay · ${scale} · computed ${formatDate(R.generated_at)}`;
+  const floor = R.replacement_floor === false ? "replacement floor off" : `replacement floor on${R.replacement_top_n ? ` (best ${R.replacement_top_n} free agents)` : ""}`;
+  const drift = R.roster_drift === false ? "roster drift off" : "roster drift on";
+  $("meta").textContent = `${seasons} league-seasons (${leagues} leagues, ${span}) · ${R.runs.toLocaleString()} simulations per replay · ${scale} · ${floor} · ${drift} · computed ${formatDate(R.generated_at)}`;
 }
 
 function renderHeadlines() {
@@ -110,6 +113,66 @@ function renderHeadlines() {
     `<strong>Score noise:</strong> real scores fell inside the simulated 80% range ${pct(sc.coverage["80"], 1)} of the time and inside the 95% range ${pct(sc.coverage["95"], 1)} of the time, over ${sc.team_weeks.toLocaleString()} team-weeks.`,
   );
   $("headlines").innerHTML = items.map((t) => `<li>${t}</li>`).join("");
+}
+
+// -- how the odds are made ----------------------------------------------------------
+
+function keepOf(model, k) {
+  const slopes = model && model.drift && model.drift.slopes;
+  if (!slopes || !slopes.length) return null;
+  return slopes[Math.min(Math.max(k, 1), slopes.length) - 1];
+}
+
+function sdOf(model, k) {
+  const sds = model && model.drift && model.drift.sds;
+  if (!sds || !sds.length) return null;
+  return sds[Math.min(Math.max(k, 1), sds.length) - 1];
+}
+
+function renderHow() {
+  const R = state.report;
+  const cov = R.overall && R.overall.score && R.overall.score.coverage;
+  if (cov && cov["80"] != null) {
+    $("how-noise").textContent = `Checked against ${R.seasons.length} past seasons, the real score fell inside the simulated 80% range ${pct(cov["80"], 1)} of the time, so the noise is about the right width.`;
+  }
+  const keys = leagueKeys();
+  const withData = keys.filter((k) => state.leagues[k] && (state.leagues[k].replacement || state.leagues[k].model));
+  const n = R.replacement_top_n || (withData.length && state.leagues[withData[0]].replacement && state.leagues[withData[0]].replacement.top_n);
+  if (n) $("how-floor").textContent = `Here that means the best ${n} free agents at each position, averaged, using this week's projections.`;
+
+  const driftBits = [];
+  const tables = [];
+  for (const key of keys) {
+    const L = state.leagues[key];
+    if (!L) continue;
+    const name = escapeHtml(leagueName(key));
+    const rep = L.replacement;
+    if (rep && rep.levels) {
+      const cells = (obj, digits) => POSITIONS.map((p) => `<td class="num">${obj && obj[p] != null ? obj[p].toFixed(digits) : "–"}</td>`).join("");
+      tables.push(`<div><h3>${name}: what a replacement-level player scores</h3>
+        <div class="table-wrap"><table class="plain"><thead><tr><th scope="col"></th>${POSITIONS.map((p) => `<th scope="col" class="num">${p}</th>`).join("")}</tr></thead>
+        <tbody><tr><th scope="row">Week ${rep.week} (projected)</th>${cells(rep.levels, 1)}</tr>
+        <tr><th scope="row">Season value (actual, shrunk)</th>${cells(rep.season, 1)}</tr></tbody></table></div>
+        <p class="hint">Points per week under this league's scoring. The season value is what those pickups have really scored so far, blended with earlier seasons early in the year.</p></div>`);
+    }
+    const m = L.model;
+    if (m && m.roster_drift && keepOf(m, 2) != null) {
+      const two = Math.round(20 * keepOf(m, 2));
+      const twelve = Math.round(20 * keepOf(m, 12));
+      const sd = sdOf(m, 12);
+      const spread = sd ? ` and allows about ${sd.toFixed(1)} points of random roster change either way by twelve weeks out` : "";
+      if (twelve >= 20) {
+        driftBits.push(`In ${leagueName(key)}, past seasons show a team's edge holding up once its lineup holes are filled, so the model keeps the full edge${spread}.`);
+      } else {
+        driftBits.push(`In ${leagueName(key)}, a team 20 points a week better than average is expected to keep about ${two} of those points two weeks out and ${twelve} twelve weeks out${spread}.`);
+      }
+    } else if (m && m.roster_drift === false) {
+      driftBits.push(`${leagueName(key)}: drift is currently switched off.`);
+    }
+  }
+  $("how-drift").textContent = driftBits.join(" ");
+  $("how-tables").innerHTML = tables.join("");
+  $("how-fallback").hidden = tables.length > 0 && driftBits.length > 0;
 }
 
 // -- outcome switcher and reliability chart ------------------------------------------
@@ -423,10 +486,13 @@ async function main() {
       return;
     }
     state.report = await fetchJson(`data/${state.index.calibration.file}`);
+    const leagueFiles = await Promise.all((state.index.leagues || []).map((l) => fetchJson(`data/${l.file}`).catch(() => null)));
+    (state.index.leagues || []).forEach((l, i) => { if (leagueFiles[i]) state.leagues[l.key] = leagueFiles[i]; });
     const wanted = new URLSearchParams(location.search).get("outcome");
     if (state.report.outcomes.includes(wanted)) state.outcome = wanted;
     renderMeta();
     renderHeadlines();
+    renderHow();
     renderSwitcher();
     renderSeasonTable();
     renderCoverage();

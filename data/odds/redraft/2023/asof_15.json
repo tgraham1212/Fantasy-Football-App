@@ -1,7 +1,56 @@
 {
  "as_of_week": 15,
- "generated_at": "2026-11-14T19:06:10+00:00",
+ "generated_at": "2026-11-15T18:17:47+00:00",
  "league_key": "redraft",
+ "model": {
+  "drift": {
+   "floor": true,
+   "league_key": "redraft",
+   "note": "",
+   "sds": [
+    0.0,
+    1.378,
+    1.744,
+    2.221,
+    2.484,
+    2.623,
+    2.839,
+    3.061,
+    3.173,
+    3.317,
+    3.317,
+    3.712,
+    4.017,
+    4.017
+   ],
+   "seasons": [
+    "2021",
+    "2022",
+    "2024",
+    "2025"
+   ],
+   "slopes": [
+    1.0,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9855,
+    0.9295
+   ],
+   "top_n": 5
+  },
+  "replacement_floor": true,
+  "replacement_top_n": 5,
+  "roster_drift": true
+ },
  "residual_scale": 1.0,
  "runs": 10000,
  "season": "2023",
@@ -14,7 +63,7 @@
   {
    "bye": 0.0,
    "display_name": "shanhynes",
-   "final": 0.539,
+   "final": 0.5413,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 7,
@@ -43,14 +92,14 @@
    "semifinal": 1.0,
    "team_name": "Joe Burrow on the Beach",
    "ties": 0,
-   "title": 0.3423,
+   "title": 0.3031,
    "user_id": "739298321264496640",
    "wins": 7
   },
   {
    "bye": 1.0,
    "display_name": "corygraham12",
-   "final": 0.461,
+   "final": 0.4587,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 4,
@@ -79,14 +128,14 @@
    "semifinal": 1.0,
    "team_name": "We’ve Got Beef",
    "ties": 0,
-   "title": 0.3029,
+   "title": 0.2637,
    "user_id": "739284972489293824",
    "wins": 10
   },
   {
    "bye": 0.0,
    "display_name": "Jdeguire",
-   "final": 0.5458,
+   "final": 0.543,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 7,
@@ -115,14 +164,14 @@
    "semifinal": 1.0,
    "team_name": "21st night of September",
    "ties": 0,
-   "title": 0.181,
+   "title": 0.255,
    "user_id": "739353143170727936",
    "wins": 7
   },
   {
    "bye": 1.0,
    "display_name": "NickLove17",
-   "final": 0.4542,
+   "final": 0.457,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 5,
@@ -151,7 +200,7 @@
    "semifinal": 1.0,
    "team_name": "Keeper Killer",
    "ties": 0,
-   "title": 0.1738,
+   "title": 0.1782,
    "user_id": "727642823544893440",
    "wins": 9
   },

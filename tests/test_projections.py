@@ -34,7 +34,7 @@ def digest(path):
 def test_fetch_week_accepts_fixture():
     rows = fetch_week(make_client(), "2025", 1)
     assert len(rows) == len(ROWS)
-    assert sum(is_projection(r) for r in rows) == 30
+    assert sum(is_projection(r) for r in rows) == len(PROJECTED)
 
 
 @pytest.mark.parametrize(
@@ -82,9 +82,9 @@ def test_a_failing_week_blocks_the_whole_season_write(tmp_path):
 def test_upsert_drops_adp_only_rows_and_stores_records(tmp_path):
     store = Store(tmp_path)
     result = upsert_week(store, "2025", 1, ROWS)
-    assert result.added == 30 and result.dropped == len(ROWS) - 30 and result.written
+    assert result.added == len(PROJECTED) and result.dropped == len(ROWS) - len(PROJECTED) and result.written
     stored = store.read_projections("2025", 1)
-    assert len(stored) == 30
+    assert len(stored) == len(PROJECTED)
     record = stored[str(PROJECTED[0]["player_id"])]
     assert record["stats"] == PROJECTED[0]["stats"]
     for key in ("position", "team", "opponent", "company", "last_modified"):
@@ -96,7 +96,7 @@ def test_upsert_unchanged_when_same_version(tmp_path):
     upsert_week(store, "2025", 1, ROWS)
     before = digest(store.projections_path("2025", 1))
     result = upsert_week(store, "2025", 1, copy.deepcopy(ROWS))
-    assert result.unchanged == 30 and result.added == 0 and result.updated == 0
+    assert result.unchanged == len(PROJECTED) and result.added == 0 and result.updated == 0
     assert not result.written and digest(store.projections_path("2025", 1)) == before
 
 
@@ -114,7 +114,7 @@ def test_upsert_replaces_only_newer_versions(tmp_path):
     stored = store.read_projections("2025", 1)
     assert stored[str(newer["player_id"])]["stats"]["pts_half_ppr"] == 99.9
     assert stored[str(older["player_id"])]["stats"] == PROJECTED[1]["stats"]
-    assert len(stored) == 30, "players missing from the response are kept"
+    assert len(stored) == len(PROJECTED), "players missing from the response are kept"
 
 
 def test_upsert_empty_response_leaves_file_untouched(tmp_path):

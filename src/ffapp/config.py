@@ -35,6 +35,8 @@ class SimulationConfig:
     """Optional tuning of the Monte Carlo. Defaults reproduce the untuned model exactly."""
 
     residual_scale: float = 1.0  # multiplies every sampled score residual
+    replacement_top_n: int = 3  # free agents averaged per position for the replacement level
+    prior_weeks: float = 4.0  # shrinkage weight (in weeks) toward earlier seasons for the season replacement value
 
 
 @dataclass(frozen=True)
@@ -52,7 +54,7 @@ class Config:
 _TOP_KEYS = {"leagues", "overrides", "simulation"}
 _LEAGUE_KEYS = {"league_id", "name"}
 _OVERRIDE_KEYS = {"league", "season", "from_week", "scoring"}
-_SIMULATION_KEYS = {"residual_scale"}
+_SIMULATION_KEYS = {"residual_scale", "replacement_top_n", "prior_weeks"}
 
 
 def _require_mapping(value: Any, where: str) -> dict:
@@ -120,7 +122,13 @@ def _parse_simulation(raw: Any) -> SimulationConfig:
     scale = mapping.get("residual_scale", 1.0)
     if isinstance(scale, bool) or not isinstance(scale, (int, float)) or not scale > 0:
         raise ConfigError(f"simulation.residual_scale must be a positive number, got {scale!r}")
-    return SimulationConfig(residual_scale=float(scale))
+    top_n = mapping.get("replacement_top_n", 3)
+    if isinstance(top_n, bool) or not isinstance(top_n, int) or top_n < 1:
+        raise ConfigError(f"simulation.replacement_top_n must be a positive integer, got {top_n!r}")
+    prior_weeks = mapping.get("prior_weeks", 4.0)
+    if isinstance(prior_weeks, bool) or not isinstance(prior_weeks, (int, float)) or prior_weeks < 0:
+        raise ConfigError(f"simulation.prior_weeks must be a non-negative number, got {prior_weeks!r}")
+    return SimulationConfig(residual_scale=float(scale), replacement_top_n=int(top_n), prior_weeks=float(prior_weeks))
 
 
 def parse_config(raw: Any) -> Config:

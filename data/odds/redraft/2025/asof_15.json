@@ -1,7 +1,56 @@
 {
  "as_of_week": 15,
- "generated_at": "2026-11-14T19:06:23+00:00",
+ "generated_at": "2026-11-15T18:17:55+00:00",
  "league_key": "redraft",
+ "model": {
+  "drift": {
+   "floor": true,
+   "league_key": "redraft",
+   "note": "",
+   "sds": [
+    0.0,
+    1.358,
+    1.766,
+    2.197,
+    2.454,
+    2.642,
+    2.778,
+    2.928,
+    3.056,
+    3.323,
+    3.323,
+    3.85,
+    4.216,
+    4.216
+   ],
+   "seasons": [
+    "2021",
+    "2022",
+    "2023",
+    "2024"
+   ],
+   "slopes": [
+    1.0,
+    0.997,
+    0.997,
+    0.997,
+    0.997,
+    0.997,
+    0.997,
+    0.997,
+    0.997,
+    0.997,
+    0.997,
+    0.997,
+    0.997,
+    0.997
+   ],
+   "top_n": 5
+  },
+  "replacement_floor": true,
+  "replacement_top_n": 5,
+  "roster_drift": true
+ },
  "residual_scale": 1.0,
  "runs": 10000,
  "season": "2025",
@@ -43,14 +92,14 @@
    "semifinal": 1.0,
    "team_name": "Golden Showers",
    "ties": 0,
-   "title": 0.3759,
+   "title": 0.3639,
    "user_id": "739284972489293824",
    "wins": 11
   },
   {
    "bye": 1.0,
    "display_name": "TateFM",
-   "final": 0.611,
+   "final": 0.616,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 5,
@@ -79,14 +128,14 @@
    "semifinal": 1.0,
    "team_name": "McBridezilla",
    "ties": 0,
-   "title": 0.3449,
+   "title": 0.3383,
    "user_id": "740044489435017216",
    "wins": 9
   },
   {
    "bye": 0.0,
    "display_name": "kjern17",
-   "final": 0.389,
+   "final": 0.384,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 7,
@@ -115,7 +164,7 @@
    "semifinal": 1.0,
    "team_name": "Just some Coleman bitch ",
    "ties": 0,
-   "title": 0.213,
+   "title": 0.1986,
    "user_id": "739705195117895680",
    "wins": 7
   },
@@ -151,7 +200,7 @@
    "semifinal": 1.0,
    "team_name": "McConkedonks Badonkadonks",
    "ties": 0,
-   "title": 0.0662,
+   "title": 0.0992,
    "user_id": "739328545955999744",
    "wins": 8
   },

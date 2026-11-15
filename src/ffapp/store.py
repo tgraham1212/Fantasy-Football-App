@@ -90,6 +90,9 @@ class Store:
     def projections_path(self, season: str, week: int) -> Path:
         return self.root / "projections" / str(season) / f"week_{int(week):02d}.json"
 
+    def stats_path(self, season: str, week: int) -> Path:
+        return self.root / "stats" / str(season) / f"week_{int(week):02d}.json"
+
     def odds_path(self, league_key: str, season: str, as_of_week: int) -> Path:
         return self.root / "odds" / league_key / str(season) / f"asof_{int(as_of_week):02d}.json"
 
@@ -175,6 +178,21 @@ class Store:
 
     def projection_weeks(self, season: str) -> list[int]:
         base = self.root / "projections" / str(season)
+        if not base.exists():
+            return []
+        return sorted(int(m.group(1)) for p in base.iterdir() if (m := _WEEK_RE.match(p.name)))
+
+    # -- actual stats ---------------------------------------------------------
+
+    def read_stats(self, season: str, week: int) -> dict[str, dict]:
+        path = self.stats_path(season, week)
+        return read_json(path) if path.exists() else {}
+
+    def write_stats(self, season: str, week: int, records: dict[str, dict]) -> None:
+        write_json(self.stats_path(season, week), records)
+
+    def stats_weeks(self, season: str) -> list[int]:
+        base = self.root / "stats" / str(season)
         if not base.exists():
             return []
         return sorted(int(m.group(1)) for p in base.iterdir() if (m := _WEEK_RE.match(p.name)))

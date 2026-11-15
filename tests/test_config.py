@@ -26,6 +26,7 @@ def test_repo_config_loads_both_leagues():
     assert config.leagues["redraft"].league_id == "1389347876550770688"
     assert config.overrides == []
     assert config.simulation.residual_scale == 1.0
+    assert config.simulation.replacement_top_n == 5 and config.simulation.prior_weeks == 4.0
 
 
 def test_valid_config_parses_overrides():
@@ -120,4 +121,24 @@ def test_unknown_simulation_key_rejected():
     raw = valid_raw()
     raw["simulation"] = {"runs": 5}
     with pytest.raises(ConfigError, match="simulation has unknown keys: runs"):
+        parse_config(raw)
+
+
+def test_replacement_settings_default_and_parse():
+    cfg = parse_config(valid_raw()).simulation
+    assert cfg.replacement_top_n == 3 and cfg.prior_weeks == 4.0
+    raw = valid_raw()
+    raw["simulation"] = {"replacement_top_n": 5, "prior_weeks": 2}
+    cfg = parse_config(raw).simulation
+    assert cfg.replacement_top_n == 5 and cfg.prior_weeks == 2.0 and cfg.residual_scale == 1.0
+
+
+@pytest.mark.parametrize(
+    "key, bad",
+    [("replacement_top_n", 0), ("replacement_top_n", 2.5), ("replacement_top_n", True), ("prior_weeks", -1), ("prior_weeks", "four")],
+)
+def test_invalid_replacement_settings_rejected(key, bad):
+    raw = valid_raw()
+    raw["simulation"] = {key: bad}
+    with pytest.raises(ConfigError, match=key):
         parse_config(raw)

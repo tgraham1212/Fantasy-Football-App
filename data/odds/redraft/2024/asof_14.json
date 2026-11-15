@@ -1,7 +1,56 @@
 {
  "as_of_week": 14,
- "generated_at": "2026-11-14T19:06:16+00:00",
+ "generated_at": "2026-11-15T18:17:50+00:00",
  "league_key": "redraft",
+ "model": {
+  "drift": {
+   "floor": true,
+   "league_key": "redraft",
+   "note": "",
+   "sds": [
+    0.0,
+    1.436,
+    1.844,
+    2.301,
+    2.618,
+    2.753,
+    2.909,
+    3.135,
+    3.259,
+    3.51,
+    3.51,
+    3.824,
+    4.036,
+    4.066
+   ],
+   "seasons": [
+    "2021",
+    "2022",
+    "2023",
+    "2025"
+   ],
+   "slopes": [
+    1.0,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9303
+   ],
+   "top_n": 5
+  },
+  "replacement_floor": true,
+  "replacement_top_n": 5,
+  "roster_drift": true
+ },
  "residual_scale": 1.0,
  "runs": 10000,
  "season": "2024",
@@ -15,7 +64,7 @@
   {
    "bye": 1.0,
    "display_name": "NickLove17",
-   "final": 0.7647,
+   "final": 0.7237,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 6,
@@ -44,14 +93,14 @@
    "semifinal": 1.0,
    "team_name": "Keeper Killer",
    "ties": 0,
-   "title": 0.5177,
+   "title": 0.4796,
    "user_id": "727642823544893440",
    "wins": 8
   },
   {
    "bye": 1.0,
    "display_name": "jrizzo15",
-   "final": 0.5475,
+   "final": 0.5352,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 6,
@@ -80,14 +129,14 @@
    "semifinal": 1.0,
    "team_name": "Just A Little Kittle",
    "ties": 0,
-   "title": 0.2204,
+   "title": 0.2115,
    "user_id": "739272868935974912",
    "wins": 8
   },
   {
    "bye": 0.0,
    "display_name": "kjern17",
-   "final": 0.2423,
+   "final": 0.2486,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 7,
@@ -113,17 +162,17 @@
     0.0,
     0.0
    ],
-   "semifinal": 0.5344,
+   "semifinal": 0.529,
    "team_name": "RB Reaper Reincarnate ",
    "ties": 0,
-   "title": 0.0971,
+   "title": 0.1061,
    "user_id": "739705195117895680",
    "wins": 7
   },
   {
    "bye": 0.0,
    "display_name": "corygraham12",
-   "final": 0.2102,
+   "final": 0.2162,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 6,
@@ -149,17 +198,17 @@
     0.0,
     0.0
    ],
-   "semifinal": 0.4656,
+   "semifinal": 0.471,
    "team_name": "We’ve Got Beef",
    "ties": 0,
-   "title": 0.0906,
+   "title": 0.0883,
    "user_id": "739284972489293824",
    "wins": 8
   },
   {
    "bye": 0.0,
    "display_name": "tg1212",
-   "final": 0.149,
+   "final": 0.1546,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 6,
@@ -185,17 +234,17 @@
     0.0,
     0.0
    ],
-   "semifinal": 0.5565,
+   "semifinal": 0.5435,
    "team_name": "Ferrari Race Strategy ",
    "ties": 0,
-   "title": 0.0503,
+   "title": 0.0654,
    "user_id": "75490097898078208",
    "wins": 8
   },
   {
    "bye": 0.0,
    "display_name": "micaelaconnors",
-   "final": 0.0863,
+   "final": 0.1217,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 6,
@@ -221,10 +270,10 @@
     0.0,
     0.0
    ],
-   "semifinal": 0.4435,
+   "semifinal": 0.4565,
    "team_name": "Cookin’ and EaTN",
    "ties": 0,
-   "title": 0.0239,
+   "title": 0.0491,
    "user_id": "739328545955999744",
    "wins": 8
   },

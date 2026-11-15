@@ -1,7 +1,55 @@
 {
  "as_of_week": 16,
- "generated_at": "2026-11-14T19:05:50+00:00",
+ "generated_at": "2026-11-15T18:17:36+00:00",
  "league_key": "dynasty",
+ "model": {
+  "drift": {
+   "floor": true,
+   "league_key": "dynasty",
+   "note": "",
+   "sds": [
+    0.0,
+    1.45,
+    1.76,
+    2.066,
+    2.518,
+    3.074,
+    3.35,
+    3.479,
+    3.912,
+    4.334,
+    4.414,
+    4.75,
+    5.172,
+    5.452
+   ],
+   "seasons": [
+    "2022",
+    "2023",
+    "2024"
+   ],
+   "slopes": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.9991,
+    0.9518
+   ],
+   "top_n": 5
+  },
+  "replacement_floor": true,
+  "replacement_top_n": 5,
+  "roster_drift": true
+ },
  "residual_scale": 1.0,
  "runs": 10000,
  "season": "2025",
@@ -42,7 +90,7 @@
    "semifinal": 1.0,
    "team_name": "The Kuppets",
    "ties": 0,
-   "title": 0.8104,
+   "title": 0.8114,
    "user_id": "739284972489293824",
    "wins": 8
   },
@@ -78,7 +126,7 @@
    "semifinal": 1.0,
    "team_name": "SLOPPY SECONDS ",
    "ties": 0,
-   "title": 0.1896,
+   "title": 0.1886,
    "user_id": "1066868199569928192",
    "wins": 9
   },

@@ -28,10 +28,12 @@ Global options: `--config PATH` (default `config/leagues.yaml`), `--data PATH`
 |---|---|
 | `sync` | Pull every season of each configured league from Sleeper into `data/leagues/`. Seasons already stored as complete are skipped; `--full` re-fetches them. |
 | `projections` | Refresh player projections for the current season (weeks 1-17), keeping only the newest version per player-week. `--backfill` fetches every season in scope. |
+| `stats` | Refresh actual weekly stat lines for every projected player (free agents included) for the current season, keeping the newest version per player-week. `--backfill` fetches every season in scope. |
 | `verify-brackets` | Check the bracket logic against every completed season's real playoff brackets. Exit 1 on any mismatch. |
 | `simulate` | Run the Monte Carlo for the current as-of week of each league and store the results in `data/odds/`. `--backfill-season` also produces results for every earlier as-of week of the current season. `--runs N` and `--seed N` override the defaults. |
 | `export` | Write `site/data/<league>.json` and `site/data/index.json` for the website. |
-| `refresh` | `sync`, `projections`, `simulate`, `export` in order, stopping at the first failure with a non-zero exit. This is what the scheduled job runs. |
+| `replacement` | Write replacement-level values (free agents, weekly projected and realised levels, season values) for every stored season to `data/replacement/`. |
+| `refresh` | `sync`, `projections`, `stats`, `replacement`, `simulate`, `export` in order, stopping at the first failure with a non-zero exit. This is what the scheduled job runs. |
 | `calibrate` | Replay every completed season through the simulation and score the odds against what happened (see Calibration). Not part of `refresh`. `--runs N`, `--seed N`, `--residual-scale X` evaluate a candidate scale without touching the config. |
 
 First-time setup of a fresh clone, in order:
@@ -39,6 +41,8 @@ First-time setup of a fresh clone, in order:
 ```bash
 python -m ffapp sync
 python -m ffapp projections --backfill
+python -m ffapp stats --backfill
+python -m ffapp replacement
 python -m ffapp verify-brackets
 python -m ffapp simulate --backfill-season
 python -m ffapp export
@@ -81,6 +85,10 @@ overrides: []
   be adopted when the score-level coverage in the calibration report is off across all
   stored seasons. Try a candidate without editing the file:
   `python -m ffapp calibrate --residual-scale 1.1`.
+- `simulation.replacement_top_n` (default 3): how many of the best-projected free agents
+  are averaged to define the replacement-level player at each position, the floor every
+  simulated lineup slot gets. `simulation.prior_weeks` (default 4): shrinkage weight, in
+  weeks, toward earlier seasons for the season replacement value (see Replacement level).
 
 ## Data layout
 
@@ -93,6 +101,9 @@ data/
                             brackets.json       {"winners": [...], "losers": [...]}
                             matchups/week_NN.json
   projections/<season>/week_NN.json            {player_id: {position, team, opponent, company, last_modified, stats}}
+  stats/<season>/week_NN.json                  same shape, actual stat lines for every player who played (free agents included)
+  replacement/<league>/<season>.json           weekly replacement levels by position and the season values (see Replacement level)
+  model/<league>.json                          roster-drift factors by weeks ahead, estimated from the stored seasons
   odds/<league>/<season>/asof_NN.json          one simulation result per as-of week (the odds history)
 site/data/<league>.json, index.json            what the website reads
 ```
@@ -101,6 +112,33 @@ Projections are stored as raw stat lines and scored with each league's own
 settings, so one copy serves both leagues. Records for played weeks are kept
 forever and only replaced when Sleeper publishes a newer version.
 
+## Replacement level
+
+A replacement-level player is what a manager can pick up off the waiver wire. For
+each league, season, week and position, `ffapp replacement` takes the N free agents
+(default 3, `simulation.replacement_top_n`) with the highest projection for that
+week, under the league's own scoring, and records two numbers:
+
+- **projected level**: the mean of their projections (known before the games);
+- **realised level**: the mean of the points those same players actually scored,
+  from the stats store (absent until the week is played and its stats synced).
+
+Free agents are the projected players on no roster in that league: for a stored
+week, the rosters in that week's matchups; for the present and future, the current
+rosters including IR and taxi. Choosing by projection and scoring afterwards keeps
+the realised level honest; picking the top scorers after the fact would overstate
+what a pickup is worth.
+
+The **season value** per position is the mean of the realised weekly levels so far,
+shrunk toward earlier seasons: `(n × mean + k × prior) / (n + k)` with `k =
+simulation.prior_weeks` (default 4) and the prior a 50/30/20 weighted mean of the
+last three seasons of that league with the same scoring and roster settings (the
+first stored season uses its own mean projected level instead).
+
+The simulation uses the projected level as a floor for every lineup slot (see
+below). The files in `data/replacement/` are for inspection and for later features
+such as value over replacement.
+
 ## How the simulation works
 
 1. **As-of point**: the last week Sleeper has fully scored (`last_scored_leg`). A week
@@ -108,16 +146,25 @@ forever and only replaced when Sleeper publishes a newer version.
 2. **Rosters**: current rosters minus IR and taxi squad (backfilled weeks use the
    roster each team carried into the following week).
 3. **Lineups**: the best legal lineup by projected points, per week, using the
-   league's roster slots (FLEX takes RB/WR/TE).
+   league's roster slots (FLEX takes RB/WR/TE). Every slot is worth at least that
+   week's replacement level for its position (`simulation.replacement_top_n` best
+   free agents by projection, averaged), standing in for the pickup a manager would
+   make for a bye, an injury or a thin bench.
 4. **Noise**: each simulated player score is the projection plus a residual drawn
    from the history of actual-minus-projected points for that position and
    projection band, across both leagues' stored seasons.
-5. **Season**: remaining weeks on the real schedule, standings by wins (ties =
+5. **Roster drift**: real rosters change, so a team's edge today only partly
+   survives. For each league the stored seasons give how much of a team's projected
+   edge over the league mean remains k weeks ahead (a reversion factor) and how much
+   random drift accumulates. Each simulated week shrinks every team by that factor and
+   adds a per-run drift that persists from week to week. The factors live in
+   `data/model/<league>.json` and in every odds result under `model`.
+6. **Season**: remaining weeks on the real schedule, standings by wins (ties =
    half) then points, 6-team playoffs with two byes and a losers bracket, following
    each league's Sleeper settings (`playoff_seed_type` = re-seeding,
    `playoff_type` = consolation vs toilet bowl). `verify-brackets` proves these rules
    reproduce every completed season.
-6. **Outputs** per team: projected record and the chance of making the playoffs, a
+7. **Outputs** per team: projected record and the chance of making the playoffs, a
    first-round bye, the final, the title, the losers bracket, and last place.
 
 ## Calibration
@@ -146,7 +193,13 @@ The report answers three questions, from most to least data:
    after an outcome is decided are left out.
 
 It also measures the **lineup gap**: how many points the best projected lineup would
-have added to the lineup each manager actually started.
+have added to the lineup each manager actually started, and reports the **roster drift
+diagnostic**: for each league and horizon, how well a team's projected strength
+predicts its true strength that many weeks ahead (slope and residual noise), under
+the frozen roster and under the replacement-floored roster. A floored slope near 1
+means the floor removes most of the frozen-roster bias; it is also the evidence for
+choosing `replacement_top_n` (the repo config uses 5 on that evidence). `--no-replacement-floor` and `--no-roster-drift` replay
+without one piece so each can be measured alone; the report records the switches.
 
 The optional knob `simulation.residual_scale` is deliberately off by default. Change it
 only when the score-level coverage is off across all seasons and both leagues, never to

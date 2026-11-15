@@ -1,7 +1,56 @@
 {
  "as_of_week": 15,
- "generated_at": "2026-11-14T19:06:16+00:00",
+ "generated_at": "2026-11-15T18:17:50+00:00",
  "league_key": "redraft",
+ "model": {
+  "drift": {
+   "floor": true,
+   "league_key": "redraft",
+   "note": "",
+   "sds": [
+    0.0,
+    1.436,
+    1.844,
+    2.301,
+    2.618,
+    2.753,
+    2.909,
+    3.135,
+    3.259,
+    3.51,
+    3.51,
+    3.824,
+    4.036,
+    4.066
+   ],
+   "seasons": [
+    "2021",
+    "2022",
+    "2023",
+    "2025"
+   ],
+   "slopes": [
+    1.0,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9868,
+    0.9303
+   ],
+   "top_n": 5
+  },
+  "replacement_floor": true,
+  "replacement_top_n": 5,
+  "roster_drift": true
+ },
  "residual_scale": 1.0,
  "runs": 10000,
  "season": "2024",
@@ -14,7 +63,7 @@
   {
    "bye": 1.0,
    "display_name": "NickLove17",
-   "final": 0.7199,
+   "final": 0.7316,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 6,
@@ -43,14 +92,14 @@
    "semifinal": 1.0,
    "team_name": "Keeper Killer",
    "ties": 0,
-   "title": 0.4821,
+   "title": 0.4796,
    "user_id": "727642823544893440",
    "wins": 8
   },
   {
    "bye": 1.0,
    "display_name": "jrizzo15",
-   "final": 0.5366,
+   "final": 0.5297,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 6,
@@ -79,14 +128,14 @@
    "semifinal": 1.0,
    "team_name": "Just A Little Kittle",
    "ties": 0,
-   "title": 0.2126,
+   "title": 0.2145,
    "user_id": "739272868935974912",
    "wins": 8
   },
   {
    "bye": 0.0,
    "display_name": "kjern17",
-   "final": 0.4634,
+   "final": 0.4703,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 7,
@@ -115,14 +164,14 @@
    "semifinal": 1.0,
    "team_name": "RB Reaper Reincarnate ",
    "ties": 0,
-   "title": 0.194,
+   "title": 0.1996,
    "user_id": "739705195117895680",
    "wins": 7
   },
   {
    "bye": 0.0,
    "display_name": "micaelaconnors",
-   "final": 0.2801,
+   "final": 0.2684,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 6,
@@ -151,7 +200,7 @@
    "semifinal": 1.0,
    "team_name": "Cookin’ and EaTN",
    "ties": 0,
-   "title": 0.1113,
+   "title": 0.1063,
    "user_id": "739328545955999744",
    "wins": 8
   },

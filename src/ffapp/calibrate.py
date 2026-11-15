@@ -24,6 +24,7 @@ import numpy as np
 
 from ffapp.bracket import BracketRules
 from ffapp.config import Config
+from ffapp.drift import DIAGNOSTIC_HORIZONS, diagnostic, estimate_for_league
 from ffapp.league import resolve_settings, starter_slots
 from ffapp.lineup import lineup_points
 from ffapp.noise import build_pools
@@ -260,14 +261,18 @@ def replay_season(
     runs: int = DEFAULT_RUNS,
     seed: int | None = None,
     scale: float | None = None,
+    replacement_floor: bool = True,
+    roster_drift: bool = True,
 ) -> Iterator[tuple[int, SimInputs, SimResult, dict]]:
-    """Replay one completed season as of weeks 0..16 with leave-season-out noise, storing each payload."""
+    """Replay one completed season as of weeks 0..16 with leave-season-out noise and drift, storing each payload."""
     data = store.read_season(league_key, season)
     rules = BracketRules.from_league(data.league)
     noise = build_pools(store, config, exclude_after=(season, 0), scale=scale)
+    drift = estimate_for_league(store, config, league_key, exclude_season=season, floor=replacement_floor) if roster_drift else None
     for as_of in range(0, rules.week_for_round(rules.rounds)):
         inputs, result, payload = simulate_as_of(
-            store, config, league_key, data, as_of, current=False, noise=noise, runs=runs, seed=seed
+            store, config, league_key, data, as_of, current=False, noise=noise, runs=runs, seed=seed,
+            replacement_floor=replacement_floor, drift=drift,
         )
         store.write_odds(league_key, season, as_of, payload)
         yield as_of, inputs, result, payload
@@ -277,7 +282,18 @@ def _level_key(level: float) -> str:
     return str(int(round(level * 100)))
 
 
-def season_rows(store: Store, config: Config, league_key: str, season: str, *, runs: int, seed: int | None, scale: float | None) -> dict:
+def season_rows(
+    store: Store,
+    config: Config,
+    league_key: str,
+    season: str,
+    *,
+    runs: int,
+    seed: int | None,
+    scale: float | None,
+    replacement_floor: bool = True,
+    roster_drift: bool = True,
+) -> dict:
     """Replay one season and turn every as-of result into comparable rows."""
     data = store.read_season(league_key, season)
     rules = BracketRules.from_league(data.league)
@@ -289,8 +305,12 @@ def season_rows(store: Store, config: Config, league_key: str, season: str, *, r
 
     season_level, game_level, score_level = [], [], []
     residual_scale = None
-    for as_of, inputs, result, payload in replay_season(store, config, league_key, season, runs=runs, seed=seed, scale=scale):
+    model = None
+    for as_of, inputs, result, payload in replay_season(
+        store, config, league_key, season, runs=runs, seed=seed, scale=scale, replacement_floor=replacement_floor, roster_drift=roster_drift
+    ):
         residual_scale = payload["residual_scale"]
+        model = payload.get("model")
         index = {rid: i for i, rid in enumerate(result.team_ids)}
         remaining = len(inputs.schedule)
         records = fixed_records(data, as_of)
@@ -363,6 +383,7 @@ def season_rows(store: Store, config: Config, league_key: str, season: str, *, r
         "runs": runs,
         "seed": seed,
         "residual_scale": residual_scale,
+        "model": model,
         "season_rows": season_level,
         "game_rows": game_level,
         "score_rows": score_level,
@@ -465,12 +486,29 @@ CAVEATS = [
 ]
 
 
-def build_report(season_files: list[dict], lineup_by_league: dict[str, list[dict]], *, runs: int, seed: int | None, scale: float) -> dict:
+def build_report(
+    season_files: list[dict],
+    lineup_by_league: dict[str, list[dict]],
+    *,
+    runs: int,
+    seed: int | None,
+    scale: float,
+    replacement_floor: bool = True,
+    roster_drift: bool = True,
+    replacement_top_n: int | None = None,
+    drift_models: dict[str, dict] | None = None,
+    drift_diagnostic: dict[str, dict] | None = None,
+) -> dict:
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "runs": runs,
         "seed": seed,
         "residual_scale": scale,
+        "replacement_floor": replacement_floor,
+        "roster_drift": roster_drift,
+        "replacement_top_n": replacement_top_n,
+        "drift_models": drift_models or {},
+        "drift_diagnostic": drift_diagnostic or {},
         "seasons": [{"league_key": f["league_key"], "season": f["season"]} for f in season_files],
         "outcomes": list(OUTCOMES),
         "caveats": CAVEATS,
@@ -492,12 +530,40 @@ def _num(x: float | None, nd: int = 4) -> str:
 def render_markdown(report: dict) -> str:
     out = ["# Monte Carlo calibration", ""]
     seasons = ", ".join(f"{s['league_key']} {s['season']}" for s in report["seasons"])
+    switches = (
+        f"replacement floor {'on' if report.get('replacement_floor', True) else 'off'}"
+        + (f" (top {report['replacement_top_n']})" if report.get("replacement_top_n") else "")
+        + f" · roster drift {'on' if report.get('roster_drift', True) else 'off'}"
+    )
     out += [
-        f"Generated {report['generated_at']} · {report['runs']:,} runs per replay · residual scale {report['residual_scale']} · seed {report['seed'] if report['seed'] is not None else 'per league-season-week'}",
+        f"Generated {report['generated_at']} · {report['runs']:,} runs per replay · residual scale {report['residual_scale']} · {switches} · seed {report['seed'] if report['seed'] is not None else 'per league-season-week'}",
         "",
         f"Seasons replayed: {seasons}.",
         "",
     ]
+    if report.get("drift_diagnostic"):
+        out += [
+            "## Roster drift diagnostic",
+            "",
+            "How well a team's projected strength predicts its true strength k weeks ahead: slope 1 = the edge fully survives, below 1 = it reverts toward the league mean; sd = roster-change noise the simulation would miss without drift. Frozen = the roster held as of the as-of week; floored = the same with every slot at least replacement level.",
+            "",
+        ]
+        for league, diag in report["drift_diagnostic"].items():
+            out += [f"### {league} (top {diag.get('top_n')}, seasons {', '.join(diag.get('seasons', []))})", "", "| weeks ahead | frozen slope | frozen sd | floored slope | floored sd |", "|---|---|---|---|---|"]
+            for k in diag.get("horizons", []):
+                fr = diag.get("frozen", {}).get(str(k))
+                fl = diag.get("floored", {}).get(str(k))
+                if fr and fl:
+                    out.append(f"| {k} | {_num(fr['slope'], 3)} | {_num(fr['sd'], 2)} | {_num(fl['slope'], 3)} | {_num(fl['sd'], 2)} |")
+            model = report.get("drift_models", {}).get(league)
+            if model:
+                note = model.get("note") or ""
+                slopes = model.get("slopes") or []
+                out.append("")
+                out.append(
+                    f"Drift model in force: {note if note else 'slopes ' + ', '.join(f'{s:.2f}' for s in slopes[:6]) + ('…' if len(slopes) > 6 else '')} (seasons {', '.join(model.get('seasons', []))})."
+                )
+            out += [""]
     for name, section in [("Overall", report["overall"])] + [(k, v) for k, v in report["leagues"].items()]:
         out += [f"## {name}", ""]
         sc = section["score"]
@@ -570,13 +636,18 @@ def run_calibration(
     runs: int = DEFAULT_RUNS,
     seed: int | None = None,
     scale: float | None = None,
+    replacement_floor: bool = True,
+    roster_drift: bool = True,
     progress=None,
 ) -> dict:
     """Replay every completed season, write rows and the report, return the report."""
     scale_used = config.simulation.residual_scale if scale is None else float(scale)
     season_files = []
     for league_key, season in completed_seasons(store, config):
-        rows = season_rows(store, config, league_key, season, runs=runs, seed=seed, scale=scale_used)
+        rows = season_rows(
+            store, config, league_key, season, runs=runs, seed=seed, scale=scale_used,
+            replacement_floor=replacement_floor, roster_drift=roster_drift,
+        )
         write_json(calibration_dir(store) / "rows" / league_key / f"{season}.json", rows)
         season_files.append(rows)
         if progress:
@@ -584,6 +655,16 @@ def run_calibration(
     lineup_by_league = {
         key: [r for season in store.seasons(key) for r in lineup_rows(store, config, key, season)] for key in config.leagues
     }
-    report = build_report(season_files, lineup_by_league, runs=runs, seed=seed, scale=scale_used)
+    by_league: dict[str, list[str]] = {}
+    for league_key, season in completed_seasons(store, config):
+        by_league.setdefault(league_key, []).append(season)
+    drift_models = {key: estimate_for_league(store, config, key, floor=replacement_floor).to_dict() for key in by_league}
+    drift_diagnostic = {key: diagnostic(store, config, key, seasons) for key, seasons in by_league.items()}
+    report = build_report(
+        season_files, lineup_by_league, runs=runs, seed=seed, scale=scale_used,
+        replacement_floor=replacement_floor, roster_drift=roster_drift,
+        replacement_top_n=config.simulation.replacement_top_n,
+        drift_models=drift_models, drift_diagnostic=drift_diagnostic,
+    )
     write_report(store, report)
     return report
