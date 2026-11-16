@@ -615,7 +615,8 @@ function renderRatingChart() {
   for (const [id, m] of current) push(id, m, teamColor(m.roster_id), [], m.roster_id === state.selected);
   former.forEach(([id, m], i) => { const st = formerStyle(i); push(id, m, st.color, st.dash, id === state.selectedFormer); });
 
-  const labels = weeks.map((w) => (singleSeason ? `Wk ${w.week}` : `${w.season} wk ${w.week}`));
+  const weekText = (w) => (w.week === 0 ? "pre" : `wk ${w.week}`);
+  const labels = weeks.map((w) => (singleSeason ? (w.week === 0 ? "Pre" : `Wk ${w.week}`) : `${w.season} ${weekText(w)}`));
   const ink2 = cssVar("--ink-2");
   const muted = cssVar("--muted");
   const grid = cssVar("--grid");
@@ -654,7 +655,11 @@ function renderRatingChart() {
           boxPadding: 4,
           itemSort: (a, b) => (b.raw ?? -Infinity) - (a.raw ?? -Infinity),
           callbacks: {
-            title: (items) => (items.length ? `${weeks[items[0].dataIndex].season}, after week ${weeks[items[0].dataIndex].week}` : ""),
+            title: (items) => {
+              if (!items.length) return "";
+              const w = weeks[items[0].dataIndex];
+              return w.week === 0 ? `${w.season}, preseason (after reversion)` : `${w.season}, after week ${w.week}`;
+            },
             label: (item) => `${item.dataset.label}: ${fmt(item.raw)}`,
             labelPointStyle: () => ({ pointStyle: "circle", rotation: 0 }),
             labelColor: (item) => ({ borderColor: item.dataset.teamColor, backgroundColor: item.dataset.teamColor }),

@@ -164,7 +164,8 @@ def ratings_summary(store: Store, league_key: str) -> dict | None:
         }
         if entry.get("current") and entry.get("roster_id") is not None and history:
             last = history[-1]["mu"]
-            prev = history[-2]["mu"] if len(history) > 1 else None
+            # no change before the season's first scored week (a week-0 entry is the preseason rating)
+            prev = history[-2]["mu"] if len(history) > 1 and history[-1].get("week", 0) != 0 else None
             current[str(entry["roster_id"])] = {"elo": round(last), "elo_change": None if prev is None else round(last - prev)}
     return {
         "current": current,

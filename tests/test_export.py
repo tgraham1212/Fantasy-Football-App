@@ -161,7 +161,7 @@ def test_export_carries_ratings_when_present(seeded_store, dynasty_config, tmp_p
 
     ratings = payload["ratings"]
     assert ratings["seasons"] == ["2022", "2023", "2024", "2025", "2026"]
-    assert len(ratings["weeks"]) == len(stored["weeks"]) and ratings["weeks"][0] == {"season": "2022", "week": 1}
+    assert len(ratings["weeks"]) == len(stored["weeks"]) and ratings["weeks"][:2] == [{"season": "2022", "week": 0}, {"season": "2022", "week": 1}]
     assert not any(k.startswith("vacant:") for k in ratings["managers"]), "vacant rosters are not charted"
     assert sum(1 for m in ratings["managers"].values() if m["current"]) == 12
     former = [m for m in ratings["managers"].values() if not m["current"]]
@@ -191,3 +191,23 @@ def test_newcomer_with_one_rated_week_has_no_elo_change(seeded_store, dynasty_co
     assert row["elo"] == 1057 and row["elo_change"] is None
     others = [t for t in payload["teams"] if t["roster_id"] != team["roster_id"]]
     assert all(t["elo"] is None for t in others)
+
+
+def test_preseason_rating_shows_with_no_change_until_week_one(seeded_store, dynasty_config):
+    simulate_weeks(seeded_store, dynasty_config, [0])
+    team = seeded_store.read_odds("dynasty", "2026", 0)["teams"][0]
+    entry = lambda season, week, mu: {"season": season, "week": week, "mu": mu, "sigma": 240, "z": None, "career_z": 0.1, "season_z": None, "ewma_z": 0.1, "fresh_mu": 1000}
+    stored = {
+        "league_key": "dynasty", "seasons": ["2025", "2026"],
+        "weeks": [{"season": "2025", "week": 14}, {"season": "2026", "week": 0}],
+        "managers": {"u1": {"display_name": "Vet", "current": True, "vacant": False, "roster_id": team["roster_id"], "seasons": ["2025", "2026"],
+                            "history": [entry("2025", 14, 1300.0), entry("2026", 0, 1200.0)]}},
+    }
+    write_json(seeded_store.root / "ratings" / "dynasty.json", stored)
+    row = next(t for t in league_export(seeded_store, dynasty_config, "dynasty")["teams"] if t["roster_id"] == team["roster_id"])
+    assert row["elo"] == 1200 and row["elo_change"] is None, "after the draft, before week 1"
+    stored["weeks"].append({"season": "2026", "week": 1})
+    stored["managers"]["u1"]["history"].append(entry("2026", 1, 1240.0))
+    write_json(seeded_store.root / "ratings" / "dynasty.json", stored)
+    row = next(t for t in league_export(seeded_store, dynasty_config, "dynasty")["teams"] if t["roster_id"] == team["roster_id"])
+    assert row["elo"] == 1240 and row["elo_change"] == 40, "week 1 change is measured from the preseason rating"

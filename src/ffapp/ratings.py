@@ -11,7 +11,9 @@ season apply a tapering multiplier to the mean update so managers settle quickly
 Alongside the rating: each team's weekly z-score (points against that week's league
 mean and sample sd) and its career mean, plus background variants kept for later
 evaluation (season-to-date mean z, an exponentially weighted z, and a fresh-start
-rating that resets to the start value every preseason).
+rating that resets to the start value every preseason). Once a season's draft is
+done, every member gets a week-0 entry holding the rating they enter the season
+with, so the reverted value is what the site shows until week 1 is scored.
 
 Output: ``data/ratings/<league>.json``.
 """
@@ -49,10 +51,15 @@ class LeagueResults:
     seasons_played: dict[str, list[str]] = field(default_factory=dict)
     roster_now: dict[str, int] = field(default_factory=dict)  # manager -> roster_id in the latest season
     vacant: set[str] = field(default_factory=set)
+    members: dict[str, list[str]] = field(default_factory=dict)  # season -> managers who owned a roster
+    post_draft: set[str] = field(default_factory=set)  # seasons whose draft is done (in season or complete)
 
     @property
     def current(self) -> set[str]:
         return set(self.roster_now)
+
+
+POST_DRAFT_STATUSES = ("in_season", "complete")
 
 
 def vacant_id(season: str, roster_id: int) -> str:
@@ -87,6 +94,9 @@ def weekly_results(store: Store, league_key: str) -> LeagueResults:
         for manager in owner.values():
             results.names.setdefault(manager, manager)
             results.seasons_played.setdefault(manager, []).append(season)
+        results.members[season] = sorted(set(owner.values()))
+        if data.status in POST_DRAFT_STATUSES:
+            results.post_draft.add(season)
         if season == seasons[-1]:
             results.roster_now = {m: rid for rid, m in owner.items()}
         completed = int(data.league.get("settings", {}).get("last_scored_leg") or 0)
@@ -153,62 +163,86 @@ def multiplier(params: RatingsConfig, rated_week_index: int) -> float:
 # -- the run ---------------------------------------------------------------------------------
 
 
-def run_ratings(results: LeagueResults, params: RatingsConfig) -> dict[str, list[dict]]:
-    """Per manager, the history of values after every rated week they played."""
+def run_ratings(results: LeagueResults, params: RatingsConfig) -> tuple[dict[str, list[dict]], list[tuple[str, int]]]:
+    """Per manager, the history of values after every rated week they played (plus week-0 preseason
+    entries for post-draft seasons), and the ordered list of (season, week) the entries cover."""
     model = make_model(params)
     start = Rating(mu=params.start_mu, sigma=params.start_sigma)
     main: dict[str, Rating] = {}
     fresh: dict[str, Rating] = {}
     career_sum: dict[str, float] = {}
     career_n: dict[str, int] = {}
-    season_sum: dict[str, float] = {}
-    season_n: dict[str, int] = {}
     ewma: dict[str, float] = {}
     history: dict[str, list[dict]] = {}
-    current_season = None
-    index_in_season = 0
+    weeks: list[tuple[str, int]] = []
+    by_season: dict[str, list[tuple[int, dict[str, float]]]] = {}
     for season, week, points in results.weeks:
-        if season != current_season:
-            if current_season is not None:
-                main = {m: revert(r, params.start_mu, params.revert) for m, r in main.items()}
-                fresh = {m: start for m in fresh}
-            current_season = season
-            index_in_season = 0
-            season_sum, season_n = {}, {}
-        for m in points:
-            main.setdefault(m, start)
-            fresh.setdefault(m, start)
-        k = multiplier(params, index_in_season)
-        main = rate_week(model, main, points, k)
-        fresh = rate_week(model, fresh, points, 1.0)
-        zs = z_scores(points)
-        for m, z in zs.items():
-            career_sum[m] = career_sum.get(m, 0.0) + z
-            career_n[m] = career_n.get(m, 0) + 1
-            season_sum[m] = season_sum.get(m, 0.0) + z
-            season_n[m] = season_n.get(m, 0) + 1
-            ewma[m] = z if m not in ewma else (1.0 - params.ewma_weight) * ewma[m] + params.ewma_weight * z
-            history.setdefault(m, []).append(
-                {
-                    "season": season,
-                    "week": week,
-                    "mu": round(main[m].mu, 2),
-                    "sigma": round(main[m].sigma, 2),
-                    "z": round(z, 4),
-                    "career_z": round(career_sum[m] / career_n[m], 4),
-                    "season_z": round(season_sum[m] / season_n[m], 4),
-                    "ewma_z": round(ewma[m], 4),
-                    "fresh_mu": round(fresh[m].mu, 2),
-                }
-            )
-        index_in_season += 1
-    return history
+        by_season.setdefault(season, []).append((week, points))
+    seasons = list(results.seasons)
+    for season in by_season:
+        if season not in seasons:
+            seasons.append(season)
+    seasons.sort()
+
+    for si, season in enumerate(seasons):
+        if si > 0:
+            main = {m: revert(r, params.start_mu, params.revert) for m, r in main.items()}
+            fresh = {m: start for m in fresh}
+        season_sum: dict[str, float] = {}
+        season_n: dict[str, int] = {}
+        if season in results.post_draft:
+            weeks.append((season, 0))
+            for m in results.members.get(season, []):
+                main.setdefault(m, start)
+                fresh.setdefault(m, start)
+                history.setdefault(m, []).append(
+                    {
+                        "season": season,
+                        "week": 0,
+                        "mu": round(main[m].mu, 2),
+                        "sigma": round(main[m].sigma, 2),
+                        "z": None,
+                        "career_z": round(career_sum[m] / career_n[m], 4) if career_n.get(m) else None,
+                        "season_z": None,
+                        "ewma_z": round(ewma[m], 4) if m in ewma else None,
+                        "fresh_mu": round(fresh[m].mu, 2),
+                    }
+                )
+        for index_in_season, (week, points) in enumerate(by_season.get(season, [])):
+            weeks.append((season, week))
+            for m in points:
+                main.setdefault(m, start)
+                fresh.setdefault(m, start)
+            k = multiplier(params, index_in_season)
+            main = rate_week(model, main, points, k)
+            fresh = rate_week(model, fresh, points, 1.0)
+            zs = z_scores(points)
+            for m, z in zs.items():
+                career_sum[m] = career_sum.get(m, 0.0) + z
+                career_n[m] = career_n.get(m, 0) + 1
+                season_sum[m] = season_sum.get(m, 0.0) + z
+                season_n[m] = season_n.get(m, 0) + 1
+                ewma[m] = z if m not in ewma else (1.0 - params.ewma_weight) * ewma[m] + params.ewma_weight * z
+                history.setdefault(m, []).append(
+                    {
+                        "season": season,
+                        "week": week,
+                        "mu": round(main[m].mu, 2),
+                        "sigma": round(main[m].sigma, 2),
+                        "z": round(z, 4),
+                        "career_z": round(career_sum[m] / career_n[m], 4),
+                        "season_z": round(season_sum[m] / season_n[m], 4),
+                        "ewma_z": round(ewma[m], 4),
+                        "fresh_mu": round(fresh[m].mu, 2),
+                    }
+                )
+    return history, weeks
 
 
 def build_ratings(store: Store, config: Config, league_key: str) -> dict:
     results = weekly_results(store, league_key)
     params = config.ratings
-    history = run_ratings(results, params)
+    history, weeks = run_ratings(results, params)
     managers = {}
     for m in sorted(results.names):
         managers[m] = {
@@ -231,7 +265,7 @@ def build_ratings(store: Store, config: Config, league_key: str) -> dict:
             "ewma_weight": params.ewma_weight,
         },
         "seasons": results.seasons,
-        "weeks": [{"season": s, "week": w} for s, w, _ in results.weeks],
+        "weeks": [{"season": s, "week": w} for s, w in weeks],
         "managers": managers,
     }
 
@@ -247,7 +281,7 @@ def write_ratings(store: Store, config: Config, league_key: str) -> Path:
     payload = build_ratings(store, config, league_key)
     path = ratings_path(store, league_key)
     write_json(path, payload)
-    log.info("ratings %s: %d managers, %d rated weeks", league_key, len(payload["managers"]), len(payload["weeks"]))
+    log.info("ratings %s: %d managers, %d weeks", league_key, len(payload["managers"]), len(payload["weeks"]))
     return path
 
 

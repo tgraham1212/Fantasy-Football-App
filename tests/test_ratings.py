@@ -30,6 +30,8 @@ PARAMS = RatingsConfig()
 def test_weekly_results_cover_regular_season_scored_weeks_only(seeded_store):
     results = weekly_results(seeded_store, "dynasty")
     assert results.seasons == ["2022", "2023", "2024", "2025", "2026"]
+    assert results.post_draft == {"2022", "2023", "2024", "2025", "2026"}, "all stored seasons are past their draft"
+    assert all(len(results.members[s]) == 12 for s in results.seasons)
     by_season = {}
     for season, week, points in results.weeks:
         by_season.setdefault(season, []).append(week)
@@ -105,18 +107,20 @@ def test_z_scores_use_sample_sd():
 # -- the run -------------------------------------------------------------------------------
 
 
-def synthetic(weeks):
-    """weeks: list of (season, week, points) for managers a, b, c."""
-    results = LeagueResults(league_key="x", seasons=sorted({s for s, _, _ in weeks}), weeks=weeks)
+def synthetic(weeks, post_draft=(), members=None, seasons=None):
+    """weeks: list of (season, week, points) for managers a, b, c. No preseason entries unless post_draft is given."""
+    results = LeagueResults(league_key="x", seasons=seasons or sorted({s for s, _, _ in weeks}), weeks=weeks)
     for m in ("a", "b", "c"):
         results.names[m] = m
+    results.post_draft = set(post_draft)
+    results.members = members or {}
     return results
 
 
 def test_first_week_doubles_the_model_delta_and_week_five_does_not():
     pts = {"a": 120.0, "b": 100.0, "c": 80.0}
     weeks = [("2024", w, pts) for w in range(1, 6)]
-    hist = run_ratings(synthetic(weeks), PARAMS)
+    hist, _ = run_ratings(synthetic(weeks), PARAMS)
     model, ratings = three_way()
     plain = rate_week(model, ratings, pts)
     assert hist["a"][0]["mu"] == pytest.approx(1000 + 2 * (plain["a"].mu - 1000), abs=0.01)
@@ -128,15 +132,15 @@ def test_first_week_doubles_the_model_delta_and_week_five_does_not():
 
 def test_schedule_follows_rated_week_order_not_calendar_week():
     pts = {"a": 120.0, "b": 100.0, "c": 80.0}
-    late_start = run_ratings(synthetic([("2024", w, pts) for w in range(2, 7)]), PARAMS)
-    normal = run_ratings(synthetic([("2024", w, pts) for w in range(1, 6)]), PARAMS)
+    late_start, _ = run_ratings(synthetic([("2024", w, pts) for w in range(2, 7)]), PARAMS)
+    normal, _ = run_ratings(synthetic([("2024", w, pts) for w in range(1, 6)]), PARAMS)
     assert [h["mu"] for h in late_start["a"]] == [h["mu"] for h in normal["a"]]
 
 
 def test_preseason_reversion_and_fresh_start():
     pts = {"a": 120.0, "b": 100.0, "c": 80.0}
     weeks = [("2023", w, pts) for w in range(1, 15)] + [("2024", 1, pts)]
-    hist = run_ratings(synthetic(weeks), RatingsConfig(early_k=(1.0,)))
+    hist, _ = run_ratings(synthetic(weeks), RatingsConfig(early_k=(1.0,)))
     end_2023 = Rating(hist["a"][13]["mu"], hist["a"][13]["sigma"])
     model = make_model(PARAMS)
     reverted = {m: revert(Rating(hist[m][13]["mu"], hist[m][13]["sigma"]), 1000.0, 1 / 3) for m in "abc"}
@@ -150,7 +154,7 @@ def test_preseason_reversion_and_fresh_start():
 
 def test_newcomer_starts_at_1000_and_does_not_move_the_others():
     pts3 = {"a": 120.0, "b": 100.0, "c": 80.0}
-    hist = run_ratings(synthetic([("2023", 1, pts3), ("2024", 1, {**pts3, "d": 90.0})]), RatingsConfig(early_k=(1.0,)))
+    hist, _ = run_ratings(synthetic([("2023", 1, pts3), ("2024", 1, {**pts3, "d": 90.0})]), RatingsConfig(early_k=(1.0,)))
     assert "d" in hist and len(hist["d"]) == 1
     # d entered at 1000: its first-week result is what a 1000-rated player gets from that week
     model = make_model(PARAMS)
@@ -166,7 +170,7 @@ def test_career_z_spans_seasons_and_season_z_resets():
         ("2023", 2, {"a": 100.0, "b": 120.0, "c": 80.0}),  # a: z = 0
         ("2024", 1, {"a": 100.0, "b": 120.0, "c": 110.0}),  # a: z = -1
     ]
-    hist = run_ratings(synthetic(weeks), PARAMS)
+    hist, _ = run_ratings(synthetic(weeks), PARAMS)
     a = hist["a"]
     assert [h["z"] for h in a] == pytest.approx([1.0, 0.0, -1.0])
     assert [h["career_z"] for h in a] == pytest.approx([1.0, 0.5, 0.0])
@@ -180,10 +184,36 @@ def test_career_z_is_the_mean_of_weekly_z():
         ("2023", 2, {"a": 110.0, "b": 130.0, "c": 90.0}),
         ("2024", 1, {"a": 100.0, "b": 125.0, "c": 115.0, "d": 100.0, "e": 110.0}),
     ]
-    hist = run_ratings(synthetic(weeks), PARAMS)
+    hist, _ = run_ratings(synthetic(weeks), PARAMS)
     zs = [h["z"] for h in hist["a"]]
     assert zs[0] == pytest.approx(1.0) and zs[1] == pytest.approx(0.0) and -1 < zs[2] < 0
     assert hist["a"][2]["career_z"] == pytest.approx(sum(zs) / 3, abs=1e-3)
+
+
+def test_preseason_entries_after_the_draft():
+    pts = {"a": 120.0, "b": 100.0, "c": 80.0}
+    weeks = [("2023", w, pts) for w in range(1, 4)]
+    results = synthetic(weeks, post_draft={"2023", "2024"}, members={"2023": ["a", "b", "c"], "2024": ["a", "b", "c", "d"]}, seasons=["2023", "2024"])
+    hist, week_list = run_ratings(results, PARAMS)
+    assert week_list == [("2023", 0), ("2023", 1), ("2023", 2), ("2023", 3), ("2024", 0)]
+    first = hist["a"][0]
+    assert first["week"] == 0 and first["mu"] == 1000.0 and first["z"] is None and first["career_z"] is None
+    end_2023 = hist["a"][3]
+    pre_2024 = hist["a"][4]
+    assert pre_2024["season"] == "2024" and pre_2024["week"] == 0
+    assert pre_2024["mu"] == pytest.approx(1000 + (2 / 3) * (end_2023["mu"] - 1000), abs=0.01)
+    assert pre_2024["sigma"] == end_2023["sigma"] and pre_2024["z"] is None
+    assert pre_2024["career_z"] == end_2023["career_z"] and pre_2024["fresh_mu"] == 1000.0
+    assert hist["d"] == [{"season": "2024", "week": 0, "mu": 1000.0, "sigma": pytest.approx(1000 / 3, abs=0.01), "z": None,
+                          "career_z": None, "season_z": None, "ewma_z": None, "fresh_mu": 1000.0}]
+
+
+def test_no_preseason_entries_before_the_draft():
+    pts = {"a": 120.0, "b": 100.0, "c": 80.0}
+    weeks = [("2023", w, pts) for w in range(1, 4)]
+    results = synthetic(weeks, post_draft={"2023"}, members={"2023": ["a", "b", "c"], "2024": ["a", "b", "c"]}, seasons=["2023", "2024"])
+    hist, week_list = run_ratings(results, PARAMS)
+    assert week_list[-1] == ("2023", 3) and all(h["season"] == "2023" for h in hist["a"])
 
 
 # -- the file ----------------------------------------------------------------------------------
@@ -194,7 +224,8 @@ def test_ratings_file_written_for_every_week_and_manager(seeded_store):
     path = write_ratings(seeded_store, config, "dynasty")
     payload = json.loads(path.read_text(encoding="utf-8"))
     assert payload["seasons"] == ["2022", "2023", "2024", "2025", "2026"]
-    assert len(payload["weeks"]) == 14 * 4 + 9
+    assert len(payload["weeks"]) == 14 * 4 + 9 + 5, "a week-0 entry for each of the five post-draft seasons"
+    assert payload["weeks"][0] == {"season": "2022", "week": 0} and payload["weeks"][1] == {"season": "2022", "week": 1}
     assert payload["parameters"]["early_k"] == [2, 1.75, 1.5, 1.25] and payload["parameters"]["revert"] == pytest.approx(1 / 3)
     managers = payload["managers"]
     current = [m for m, v in managers.items() if v["current"]]

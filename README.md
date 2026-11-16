@@ -182,13 +182,17 @@ background variants that the site does not show, kept for a later calibration
 experiment: the season-to-date mean z, an exponentially weighted z carried across
 seasons, and a fresh-start rating that resets to 1000 every preseason.
 
-`data/ratings/<league>.json` holds the parameters, the list of rated weeks and, per
+`data/ratings/<league>.json` holds the parameters, the list of weeks and, per
 manager, their display name, current/former/vacant flags, seasons played and a
 history entry per rated week (`mu`, `sigma`, `z`, `career_z`, `season_z`, `ewma_z`,
-`fresh_mu`, values after that week's update). Re-running on unchanged data gives the
-same file. The export puts the latest `mu` in the table's ELO column, the change over
-the last rated week beside it, and the `mu` and `career_z` series for every current
-and former manager under `ratings` in the league's site file.
+`fresh_mu`, values after that week's update). Once a season's draft is done (Sleeper
+status `in_season` or `complete`), every member also gets a week-0 entry holding the
+rating they enter the season with: the reverted mean, or 1000 for a newcomer, with no
+weekly z. Re-running on unchanged data gives the same file. The export puts the latest
+`mu` in the table's ELO column (so the reverted rating shows from the draft until week
+1 is scored, with an empty change cell), the change over the last rated week beside
+it, and the `mu` and `career_z` series for every current and former manager under
+`ratings` in the league's site file; the chart draws the preseason point as "Pre".
 
 The defaults came from a replay of the stored seasons (2021/2022 to 2026). The
 ratings are a display of career skill, not a forecaster: in the redraft league, where
