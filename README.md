@@ -33,7 +33,8 @@ Global options: `--config PATH` (default `config/leagues.yaml`), `--data PATH`
 | `simulate` | Run the Monte Carlo for the current as-of week of each league and store the results in `data/odds/`. `--backfill-season` also produces results for every earlier as-of week of the current season. `--runs N` and `--seed N` override the defaults. |
 | `export` | Write `site/data/<league>.json` and `site/data/index.json` for the website. |
 | `replacement` | Write replacement-level values (free agents, weekly projected and realised levels, season values) for every stored season to `data/replacement/`. |
-| `refresh` | `sync`, `projections`, `stats`, `replacement`, `simulate`, `export` in order, stopping at the first failure with a non-zero exit. This is what the scheduled job runs. |
+| `ratings` | Rate every manager across all stored seasons from weekly points (see Manager ratings) and write `data/ratings/<league>.json`. |
+| `refresh` | `sync`, `projections`, `stats`, `ratings`, `replacement`, `simulate`, `export` in order, stopping at the first failure with a non-zero exit. This is what the scheduled job runs. |
 | `calibrate` | Replay every completed season through the simulation and score the odds against what happened (see Calibration). Not part of `refresh`. `--runs N`, `--seed N`, `--residual-scale X` evaluate a candidate scale without touching the config. |
 
 First-time setup of a fresh clone, in order:
@@ -42,6 +43,7 @@ First-time setup of a fresh clone, in order:
 python -m ffapp sync
 python -m ffapp projections --backfill
 python -m ffapp stats --backfill
+python -m ffapp ratings
 python -m ffapp replacement
 python -m ffapp verify-brackets
 python -m ffapp simulate --backfill-season
@@ -89,6 +91,12 @@ overrides: []
   are averaged to define the replacement-level player at each position, the floor every
   simulated lineup slot gets. `simulation.prior_weeks` (default 4): shrinkage weight, in
   weeks, toward earlier seasons for the season replacement value (see Replacement level).
+- `ratings` (optional block, see Manager ratings): `revert` (default 1/3) is how far each
+  rating mean moves back toward 1000 every preseason; `early_k` (default
+  `[2, 1.75, 1.5, 1.25]`) multiplies the rating change in the first rated weeks of a
+  season; `start_mu` / `start_sigma` (1000 / 333.3) are every manager's starting rating
+  and uncertainty; `ewma_weight` (0.2) is the newest week's weight in the background
+  exponentially weighted z-score. The same values apply to every league.
 
 ## Data layout
 
@@ -104,6 +112,7 @@ data/
   stats/<season>/week_NN.json                  same shape, actual stat lines for every player who played (free agents included)
   replacement/<league>/<season>.json           weekly replacement levels by position and the season values (see Replacement level)
   model/<league>.json                          roster-drift factors by weeks ahead, estimated from the stored seasons
+  ratings/<league>.json                        every manager's rating history by week (see Manager ratings)
   odds/<league>/<season>/asof_NN.json          one simulation result per as-of week (the odds history)
 site/data/<league>.json, index.json            what the website reads
 ```
@@ -138,6 +147,53 @@ first stored season uses its own mean projected level instead).
 The simulation uses the projected level as a floor for every lineup slot (see
 below). The files in `data/replacement/` are for inspection and for later features
 such as value over replacement.
+
+## Manager ratings
+
+`ffapp ratings` rates every manager across the whole life of a league, for the
+rating chart and the ELO columns on the site. Each scored regular-season week is one
+free-for-all: all teams ranked by points scored, rated with Openskill's Plackett-Luce
+model (`openskill` on PyPI) on a 1000 scale (start 1000, uncertainty 333; the
+library's default parameters times 40). A blowout and a one-point win count the
+same; only the rank matters. Playoff weeks, unplayed weeks and weeks with no points
+are not rated.
+
+Ratings follow the roster owner's Sleeper user ID, so a manager keeps one rating
+through roster changes and former members keep their last one. A roster with no owner
+on record (Sleeper only stores end-of-season owners) is rated as a `vacant:<season>:<roster>`
+entry so the week's ranking stays complete; it is flagged and never charted.
+
+Two rules keep the numbers meaningful across seasons:
+
+- **Preseason reversion.** Entering every season after their first, each manager's
+  rating mean moves `ratings.revert` of the way (default a third) toward a fixed
+  1000. The anchor is 1000, not the league mean, so ratings cannot inflate or deflate
+  as members leave and join. The uncertainty is left alone: resetting it sped up every
+  week of the season and widened the spread when tried.
+- **Early-season multiplier.** The rating change in the first rated weeks of a season
+  is multiplied by `ratings.early_k` (default 2, 1.75, 1.5, 1.25, then 1), so managers
+  settle at their level quickly after the offseason without a cliff at week 5. This is
+  the one step outside the Openskill update; the uncertainty takes the model's value.
+
+Alongside the rating, every team gets a weekly **z-score** (points minus that week's
+league mean, divided by the sample standard deviation) and a **career mean z**: the
+mean over every rated week they have played, never reset. The file also stores
+background variants that the site does not show, kept for a later calibration
+experiment: the season-to-date mean z, an exponentially weighted z carried across
+seasons, and a fresh-start rating that resets to 1000 every preseason.
+
+`data/ratings/<league>.json` holds the parameters, the list of rated weeks and, per
+manager, their display name, current/former/vacant flags, seasons played and a
+history entry per rated week (`mu`, `sigma`, `z`, `career_z`, `season_z`, `ewma_z`,
+`fresh_mu`, values after that week's update). Re-running on unchanged data gives the
+same file. The export puts the latest `mu` in the table's ELO column, the change over
+the last rated week beside it, and the `mu` and `career_z` series for every current
+and former manager under `ratings` in the league's site file.
+
+The defaults came from a replay of the stored seasons (2021/2022 to 2026). The
+ratings are a display of career skill, not a forecaster: in the redraft league, where
+rosters reset every year, last season's rating says little about week 1, which is why
+the chart keeps a continuous career line rather than trying to predict.
 
 ## How the simulation works
 
@@ -219,8 +275,9 @@ workflow. URL options: `#dynasty` / `#redraft` picks the league, `?team=<roster_
 highlights a team, `?metric=playoffs|bye|title|avoid_losers_bye|last` picks the
 chart, `?theme=dark|light` forces a theme.
 
-The odds table follows the FiveThirtyEight layout: ELO and 1-week ELO change
-(empty until the ELO feature ships), owner with team name and record, projected
+The odds table follows the FiveThirtyEight layout: ELO (the manager's current
+rating, see Manager ratings) and its change over the last rated week, owner with
+team name and record, projected
 record, then four chance columns filled on a white-to-blue ramp. The first chance
 column depends on the league: a toilet-bowl league shows **Avoid Loser's Bye**
 (finishing outside the bottom two), a dynasty league with a consolation bracket
@@ -230,6 +287,15 @@ Rows start in standings order; clicking a header sorts descending, clicking agai
 ascending. Hovering a chance shows its change since the previous week. Each team
 has a fixed colour (the dot beside the owner name) that matches its line in the
 chart; the palette comes from `tools/team_palette.py`.
+
+Under the odds chart, the rating chart plots every manager who has ever played in
+the league: **Rating** (the Openskill mean) or **Z-score** (career mean z), over
+**This season**, **Last 3 seasons** or **All time**, with each season start marked on
+the axis. Current members keep their table colour; former members use three greys
+(`tools/team_palette.py --greys`, checked with the dataviz validator for separation
+and contrast), dashed and then dotted once the greys repeat. Clicking a line or a
+table row highlights that manager in both charts. The card says ratings are not yet
+available when the export carried none.
 
 `calibration.html` ("How good are these odds?", linked from the header) shows the
 calibration report: predicted-vs-observed reliability per outcome, the score-noise
