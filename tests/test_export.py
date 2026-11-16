@@ -90,8 +90,9 @@ def test_exported_schema(seeded_store, dynasty_config, tmp_path):
         assert all(isinstance(v, float) for v in team["change"].values()), "previous week exists, so every change is a number"
         assert 0.0 <= team["playoffs"] <= 1.0
         assert team["avoid_losers_bye"] == round(1 - sum(team["seed_distribution"][-2:]), 4)
-        assert team["elo"] is None and team["elo_change"] is None
+        assert team["elo"] is None and team["elo_change"] is None, "no rating file yet"
         assert team["wins"] + team["losses"] + team["ties"] == 3
+    assert "ratings" not in payload
     assert payload["teams"] == sorted(payload["teams"], key=lambda t: -t["playoffs"])
 
     history = payload["history"]
@@ -140,3 +141,53 @@ def test_export_carries_replacement_levels_and_model_when_present(seeded_store, 
     assert rep["as_of_week"] == 2 and rep["week"] == 3 and rep["top_n"] == 3
     assert set(rep["levels"]) == {"QB", "RB", "WR", "TE", "K", "DEF"} == set(rep["season"])
     assert all(isinstance(v, float) for v in rep["levels"].values())
+
+
+def test_export_carries_ratings_when_present(seeded_store, dynasty_config, tmp_path):
+    from ffapp.ratings import read_ratings, write_ratings
+
+    simulate_weeks(seeded_store, dynasty_config, [0, 1])
+    write_ratings(seeded_store, dynasty_config, "dynasty")
+    stored = read_ratings(seeded_store, "dynasty")
+    out = tmp_path / "site-data"
+    export_site(seeded_store, dynasty_config, out)
+    payload = json.loads((out / "dynasty.json").read_text(encoding="utf-8"))
+
+    by_roster = {v["roster_id"]: v for v in stored["managers"].values() if v["current"]}
+    for team in payload["teams"]:
+        entry = by_roster[team["roster_id"]]
+        assert team["elo"] == round(entry["history"][-1]["mu"])
+        assert team["elo_change"] == round(entry["history"][-1]["mu"] - entry["history"][-2]["mu"])
+
+    ratings = payload["ratings"]
+    assert ratings["seasons"] == ["2022", "2023", "2024", "2025", "2026"]
+    assert len(ratings["weeks"]) == len(stored["weeks"]) and ratings["weeks"][0] == {"season": "2022", "week": 1}
+    assert not any(k.startswith("vacant:") for k in ratings["managers"]), "vacant rosters are not charted"
+    assert sum(1 for m in ratings["managers"].values() if m["current"]) == 12
+    former = [m for m in ratings["managers"].values() if not m["current"]]
+    assert former and all(m["roster_id"] is None for m in former)
+    for manager_id, m in ratings["managers"].items():
+        assert len(m["mu"]) == len(ratings["weeks"]) == len(m["career_z"])
+        played = {(h["season"], h["week"]) for h in stored["managers"][manager_id]["history"]}
+        for wk, mu in zip(ratings["weeks"], m["mu"]):
+            assert (mu is not None) == ((wk["season"], wk["week"]) in played), "series aligned to the league week list"
+
+
+def test_newcomer_with_one_rated_week_has_no_elo_change(seeded_store, dynasty_config, tmp_path):
+    simulate_weeks(seeded_store, dynasty_config, [0])
+    team = seeded_store.read_odds("dynasty", "2026", 0)["teams"][0]
+    write_json(
+        seeded_store.root / "ratings" / "dynasty.json",
+        {
+            "league_key": "dynasty", "seasons": ["2026"], "weeks": [{"season": "2026", "week": 1}],
+            "managers": {
+                "u1": {"display_name": "New", "current": True, "vacant": False, "roster_id": team["roster_id"], "seasons": ["2026"],
+                       "history": [{"season": "2026", "week": 1, "mu": 1057.4, "sigma": 330, "z": 0.5, "career_z": 0.5, "season_z": 0.5, "ewma_z": 0.5, "fresh_mu": 1057.4}]},
+            },
+        },
+    )
+    payload = league_export(seeded_store, dynasty_config, "dynasty")
+    row = next(t for t in payload["teams"] if t["roster_id"] == team["roster_id"])
+    assert row["elo"] == 1057 and row["elo_change"] is None
+    others = [t for t in payload["teams"] if t["roster_id"] != team["roster_id"]]
+    assert all(t["elo"] is None for t in others)

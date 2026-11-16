@@ -40,10 +40,22 @@ class SimulationConfig:
 
 
 @dataclass(frozen=True)
+class RatingsConfig:
+    """Manager rating parameters. Defaults come from the rating spike; they apply to every league alike."""
+
+    revert: float = 1.0 / 3.0  # fraction of the way each rating mean moves toward start_mu every preseason
+    early_k: tuple[float, ...] = (2.0, 1.75, 1.5, 1.25)  # multipliers on the mean update in the first rated weeks
+    start_mu: float = 1000.0  # every manager's first rating
+    start_sigma: float = 1000.0 / 3.0  # starting uncertainty
+    ewma_weight: float = 0.2  # weight of the newest week in the exponentially weighted z-score
+
+
+@dataclass(frozen=True)
 class Config:
     leagues: dict[str, LeagueConfig]
     overrides: list[ScoringOverride] = field(default_factory=list)
     simulation: SimulationConfig = field(default_factory=SimulationConfig)
+    ratings: RatingsConfig = field(default_factory=RatingsConfig)
 
     def overrides_for(self, league_key: str, season: str) -> list[ScoringOverride]:
         """Overrides for one league-season, ordered by from_week ascending."""
@@ -51,10 +63,11 @@ class Config:
         return sorted(matching, key=lambda o: o.from_week)
 
 
-_TOP_KEYS = {"leagues", "overrides", "simulation"}
+_TOP_KEYS = {"leagues", "overrides", "simulation", "ratings"}
 _LEAGUE_KEYS = {"league_id", "name"}
 _OVERRIDE_KEYS = {"league", "season", "from_week", "scoring"}
 _SIMULATION_KEYS = {"residual_scale", "replacement_top_n", "prior_weeks"}
+_RATINGS_KEYS = {"revert", "early_k", "start_mu", "start_sigma", "ewma_weight"}
 
 
 def _require_mapping(value: Any, where: str) -> dict:
@@ -131,6 +144,37 @@ def _parse_simulation(raw: Any) -> SimulationConfig:
     return SimulationConfig(residual_scale=float(scale), replacement_top_n=int(top_n), prior_weeks=float(prior_weeks))
 
 
+def _number(mapping: dict, key: str, default: float, where: str, *, low: float, high: float | None = None, low_open: bool = False) -> float:
+    value = mapping.get(key, default)
+    ok = not isinstance(value, bool) and isinstance(value, (int, float))
+    if ok:
+        ok = (value > low) if low_open else (value >= low)
+        if high is not None:
+            ok = ok and value <= high
+    if not ok:
+        bounds = f"{'>' if low_open else '>='} {low}" + (f" and <= {high}" if high is not None else "")
+        raise ConfigError(f"{where}.{key} must be a number {bounds}, got {value!r}")
+    return float(value)
+
+
+def _parse_ratings(raw: Any) -> RatingsConfig:
+    if raw is None:
+        return RatingsConfig()
+    mapping = _require_mapping(raw, "ratings")
+    _reject_unknown(mapping, _RATINGS_KEYS, "ratings")
+    defaults = RatingsConfig()
+    revert = _number(mapping, "revert", defaults.revert, "ratings", low=0.0, high=1.0)
+    start_mu = _number(mapping, "start_mu", defaults.start_mu, "ratings", low=0.0, low_open=True)
+    start_sigma = _number(mapping, "start_sigma", start_mu / 3.0, "ratings", low=0.0, low_open=True)
+    ewma = _number(mapping, "ewma_weight", defaults.ewma_weight, "ratings", low=0.0, high=1.0, low_open=True)
+    early = mapping.get("early_k", list(defaults.early_k))
+    if not isinstance(early, list) or not early or any(isinstance(k, bool) or not isinstance(k, (int, float)) or k < 1 for k in early):
+        raise ConfigError(f"ratings.early_k must be a non-empty list of numbers >= 1, got {early!r}")
+    if any(b > a for a, b in zip(early, early[1:])):
+        raise ConfigError(f"ratings.early_k must not increase from week to week, got {early!r}")
+    return RatingsConfig(revert=revert, early_k=tuple(float(k) for k in early), start_mu=start_mu, start_sigma=start_sigma, ewma_weight=ewma)
+
+
 def parse_config(raw: Any) -> Config:
     """Validate an already-parsed YAML document."""
     top = _require_mapping(raw, "config")
@@ -147,7 +191,12 @@ def parse_config(raw: Any) -> Config:
     if not isinstance(overrides_raw, list):
         raise ConfigError("overrides must be a list")
     overrides = [_parse_override(i, o, set(leagues)) for i, o in enumerate(overrides_raw)]
-    return Config(leagues=leagues, overrides=overrides, simulation=_parse_simulation(top.get("simulation")))
+    return Config(
+        leagues=leagues,
+        overrides=overrides,
+        simulation=_parse_simulation(top.get("simulation")),
+        ratings=_parse_ratings(top.get("ratings")),
+    )
 
 
 def load_config(path: Path | str = DEFAULT_CONFIG_PATH) -> Config:

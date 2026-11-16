@@ -6,11 +6,25 @@ const state = {
   index: null,
   league: null, // current league payload
   metric: "playoffs",
-  selected: null, // roster_id
+  selected: null, // roster_id of the highlighted current team
+  selectedFormer: null, // manager id of a highlighted former member (rating chart only)
   sort: null, // null = standings order, else { key, dir: "desc" | "asc" }
   chart: null,
+  ratingChart: null,
+  ratingMetric: "mu", // "mu" | "career_z"
+  ratingRange: "all", // "season" | "3" | "all"
   colors: {}, // roster_id -> css token name, fixed per league load
 };
+
+const RATING_METRICS = [
+  { key: "mu", label: "Rating", title: "Manager rating over time", note: "Openskill rating of each manager's weekly points rank; 1000 is average" },
+  { key: "career_z", label: "Z-score", title: "Career z-score over time", note: "Career mean of weekly z-scores: standard deviations above or below that week's league average" },
+];
+const RATING_RANGES = [
+  { key: "season", label: "This season" },
+  { key: "3", label: "Last 3 seasons" },
+  { key: "all", label: "All time" },
+];
 
 const $ = (id) => document.getElementById(id);
 
@@ -110,6 +124,8 @@ function standingsCompare(a, b) {
 function columnsFor(L) {
   const bottom = bottomColumn(L);
   return {
+    elo: { value: (t) => t.elo },
+    elo_change: { value: (t) => t.elo_change },
     owner: { text: (t) => (t.display_name ?? "").toLowerCase() },
     proj: { value: (t) => t.proj_wins },
     bottom: { value: (t) => t[bottom.key] },
@@ -159,8 +175,9 @@ function initTheme() {
     try { localStorage.setItem("theme", next); } catch (e) { /* ignore */ }
     renderTable();
     renderChart();
+    renderRatingChart();
   });
-  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { renderTable(); renderChart(); });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { renderTable(); renderChart(); renderRatingChart(); });
 }
 
 // -- league switcher --------------------------------------------------------------
@@ -193,7 +210,7 @@ function renderSummary() {
 function initTableHead() {
   for (const th of document.querySelectorAll("#odds-table thead th[data-col]")) {
     const btn = th.querySelector("button.sort");
-    if (!btn) continue; // ELO columns: no data yet, so no sorting yet
+    if (!btn) continue;
     btn.addEventListener("click", () => {
       const key = th.dataset.col;
       if (state.sort && state.sort.key === key) {
@@ -265,10 +282,25 @@ function renderTable() {
 
 function selectTeam(rosterId) {
   state.selected = rosterId;
+  state.selectedFormer = null;
   for (const tr of $("odds-body").querySelectorAll("tr")) {
     tr.setAttribute("aria-selected", String(Number(tr.dataset.roster) === rosterId));
   }
   renderChart();
+  renderRatingChart();
+}
+
+/* A former member has no table row or odds line; highlighting one dims everything else. */
+function selectFormer(managerId) {
+  state.selected = null;
+  state.selectedFormer = managerId;
+  for (const tr of $("odds-body").querySelectorAll("tr")) tr.setAttribute("aria-selected", "false");
+  renderChart();
+  renderRatingChart();
+}
+
+function anySelected() {
+  return state.selected != null || state.selectedFormer != null;
 }
 
 // -- metric switcher -------------------------------------------------------------------
@@ -302,7 +334,7 @@ const endLabels = {
     const items = [];
     chart.data.datasets.forEach((ds, i) => {
       if (!chart.isDatasetVisible(i)) return;
-      const selected = ds.rosterId === state.selected;
+      const selected = ds.isSelected;
       if (narrow && !selected) return;
       const meta = chart.getDatasetMeta(i);
       let last = null;
@@ -326,7 +358,7 @@ const endLabels = {
     ctx.save();
     ctx.font = `${narrow ? 600 : 500} 11.5px system-ui, -apple-system, "Segoe UI", sans-serif`;
     ctx.textBaseline = "middle";
-    const dimmed = state.selected != null;
+    const dimmed = anySelected();
     for (const it of items) {
       const faded = dimmed && !it.selected;
       ctx.globalAlpha = faded ? 0.45 : 1;
@@ -361,7 +393,7 @@ function renderChart() {
   const weeks = L.history.weeks;
   const canvas = $("odds-chart");
   const narrow = canvas.parentElement.clientWidth < 560;
-  const selectedAny = state.selected != null;
+  const selectedAny = anySelected();
 
   const datasets = L.teams.map((t) => {
     const selected = t.roster_id === state.selected;
@@ -371,6 +403,7 @@ function renderChart() {
       label: t.display_name || t.team_name,
       shortLabel: shortName(t.display_name || t.team_name, narrow ? 14 : 22),
       rosterId: t.roster_id,
+      isSelected: selected,
       teamColor: color,
       data: (L.history.teams[String(t.roster_id)] || {})[metric.key]?.map((v) => (v == null ? null : v * 100)) ?? [],
       borderColor: faded ? withAlpha(color, 0.25) : color,
@@ -458,6 +491,210 @@ function renderChart() {
     : "Each line is a team, in the colour shown beside its name in the table. Hover for every team's chance after a given week; click a line or a table row to highlight one team.";
 }
 
+// -- rating chart -----------------------------------------------------------------------------------
+
+function renderPills(boxId, items, currentKey, onPick) {
+  const box = $(boxId);
+  box.innerHTML = "";
+  for (const item of items) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.textContent = item.label;
+    btn.setAttribute("aria-pressed", String(currentKey === item.key));
+    btn.addEventListener("click", () => onPick(item.key));
+    box.appendChild(btn);
+  }
+}
+
+function renderRatingPills() {
+  renderPills("rating-metric", RATING_METRICS, state.ratingMetric, (key) => {
+    state.ratingMetric = key;
+    renderRatingPills();
+    renderRatingChart();
+  });
+  renderPills("rating-range", RATING_RANGES, state.ratingRange, (key) => {
+    state.ratingRange = key;
+    renderRatingPills();
+    renderRatingChart();
+  });
+}
+
+/* Index of the first plotted week for the chosen range. */
+function rangeStart(R) {
+  const seasons = R.seasons || [];
+  if (state.ratingRange === "all" || !seasons.length) return 0;
+  const keep = state.ratingRange === "season" ? seasons.slice(-1) : seasons.slice(-3);
+  const i = R.weeks.findIndex((w) => keep.includes(w.season));
+  return i < 0 ? 0 : i;
+}
+
+/* Former members: three validated greys, then the same greys dashed, then dotted. */
+function formerStyle(index) {
+  const token = `--former-${(index % 3) + 1}`;
+  const pattern = Math.floor(index / 3) % 3;
+  return { color: cssVar(token), dash: pattern === 0 ? [] : pattern === 1 ? [7, 4] : [2, 4] };
+}
+
+/* Zero line for the z-score metric. */
+const zeroLine = {
+  id: "zeroLine",
+  beforeDatasetsDraw(chart) {
+    if (state.ratingMetric !== "career_z") return;
+    const y = chart.scales.y;
+    if (y.min > 0 || y.max < 0) return;
+    const { ctx, chartArea } = chart;
+    const py = y.getPixelForValue(0);
+    ctx.save();
+    ctx.strokeStyle = cssVar("--axis");
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(chartArea.left, py);
+    ctx.lineTo(chartArea.right, py);
+    ctx.stroke();
+    ctx.restore();
+  },
+};
+
+function renderRatingChart() {
+  if (!state.league) return;
+  const L = state.league;
+  const R = L.ratings;
+  const metric = RATING_METRICS.find((m) => m.key === state.ratingMetric) || RATING_METRICS[0];
+  $("rating-title").textContent = metric.title;
+  if (!R || !R.weeks?.length) {
+    $("rating-wrap").hidden = true;
+    $("rating-metric").hidden = true;
+    $("rating-range").hidden = true;
+    $("rating-note").textContent = "Manager ratings are not yet available for this league.";
+    if (state.ratingChart) { state.ratingChart.destroy(); state.ratingChart = null; }
+    return;
+  }
+  $("rating-wrap").hidden = false;
+  $("rating-metric").hidden = false;
+  $("rating-range").hidden = false;
+
+  const start = rangeStart(R);
+  const weeks = R.weeks.slice(start);
+  const seasonStarts = new Set();
+  weeks.forEach((w, i) => { if (i === 0 || weeks[i - 1].season !== w.season) seasonStarts.add(i); });
+  const singleSeason = seasonStarts.size === 1;
+  const canvas = $("rating-chart");
+  const narrow = canvas.parentElement.clientWidth < 560;
+  const selectedAny = anySelected();
+  const managers = Object.entries(R.managers);
+  const current = managers.filter(([, m]) => m.current);
+  const former = managers.filter(([, m]) => !m.current).sort((a, b) => (a[1].display_name || "").localeCompare(b[1].display_name || ""));
+
+  const datasets = [];
+  const push = (id, m, color, dash, selected) => {
+    const data = m[metric.key].slice(start);
+    if (!data.some((v) => v != null)) return; // nothing in this range
+    const faded = selectedAny && !selected;
+    datasets.push({
+      label: m.display_name || id,
+      shortLabel: shortName(m.display_name || id, narrow ? 14 : 22),
+      managerId: id,
+      rosterId: m.roster_id,
+      isSelected: selected,
+      teamColor: color,
+      data,
+      borderColor: faded ? withAlpha(color, 0.25) : color,
+      borderDash: dash,
+      borderWidth: selected ? 3 : 2,
+      pointRadius: 0,
+      pointHoverRadius: selected ? 5 : 4,
+      pointHoverBackgroundColor: color,
+      pointHoverBorderColor: cssVar("--surface"),
+      pointHoverBorderWidth: 2,
+      pointHitRadius: 14,
+      tension: 0.2,
+      spanGaps: false,
+      order: selected ? 0 : (m.current ? 1 : 2),
+    });
+  };
+  for (const [id, m] of current) push(id, m, teamColor(m.roster_id), [], m.roster_id === state.selected);
+  former.forEach(([id, m], i) => { const st = formerStyle(i); push(id, m, st.color, st.dash, id === state.selectedFormer); });
+
+  const labels = weeks.map((w) => (singleSeason ? `Wk ${w.week}` : `${w.season} wk ${w.week}`));
+  const ink2 = cssVar("--ink-2");
+  const muted = cssVar("--muted");
+  const grid = cssVar("--grid");
+  const axis = cssVar("--axis");
+  const isZ = metric.key === "career_z";
+  const fmt = (v) => (v == null ? "–" : isZ ? (v > 0 ? "+" : "") + v.toFixed(2) : String(Math.round(v)));
+  const config = {
+    type: "line",
+    data: { labels, datasets },
+    plugins: [zeroLine, endLabels],
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: false,
+      layout: { padding: { right: narrow ? 104 : 160, top: 8 } },
+      interaction: { mode: "index", intersect: false },
+      onClick(evt, elements, chart) {
+        const hits = chart.getElementsAtEventForMode(evt, "nearest", { intersect: false }, true);
+        if (!hits.length) { selectTeam(null); return; }
+        const ds = chart.data.datasets[hits[0].datasetIndex];
+        if (ds.rosterId != null) selectTeam(state.selected === ds.rosterId ? null : ds.rosterId);
+        else selectFormer(state.selectedFormer === ds.managerId ? null : ds.managerId);
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: cssVar("--surface"),
+          titleColor: cssVar("--ink"),
+          bodyColor: ink2,
+          borderColor: cssVar("--border"),
+          borderWidth: 1,
+          padding: 10,
+          usePointStyle: true,
+          boxWidth: 8,
+          boxHeight: 8,
+          boxPadding: 4,
+          itemSort: (a, b) => (b.raw ?? -Infinity) - (a.raw ?? -Infinity),
+          callbacks: {
+            title: (items) => (items.length ? `${weeks[items[0].dataIndex].season}, after week ${weeks[items[0].dataIndex].week}` : ""),
+            label: (item) => `${item.dataset.label}: ${fmt(item.raw)}`,
+            labelPointStyle: () => ({ pointStyle: "circle", rotation: 0 }),
+            labelColor: (item) => ({ borderColor: item.dataset.teamColor, backgroundColor: item.dataset.teamColor }),
+          },
+        },
+      },
+      scales: {
+        x: {
+          grid: {
+            drawTicks: false,
+            color: (ctx) => (singleSeason ? grid : (seasonStarts.has(ctx.index) ? axis : "transparent")),
+          },
+          border: { color: axis },
+          ticks: singleSeason
+            ? { color: muted, maxRotation: 0, autoSkip: true, maxTicksLimit: narrow ? 6 : 15 }
+            : {
+                color: muted,
+                maxRotation: 0,
+                autoSkip: false,
+                callback: (value, index) => (seasonStarts.has(index) ? weeks[index].season : null),
+              },
+        },
+        y: {
+          grid: { color: grid, drawTicks: false },
+          border: { display: false },
+          ticks: { color: muted, callback: (v) => (isZ ? v.toFixed(1) : v) },
+          ...(isZ ? {} : { suggestedMin: 600, suggestedMax: 1400 }),
+        },
+      },
+    },
+  };
+
+  if (state.ratingChart) state.ratingChart.destroy();
+  state.ratingChart = new Chart(canvas, config);
+  const sel = datasets.find((d) => d.isSelected);
+  $("rating-note").textContent = sel
+    ? `${sel.label} is highlighted. Click the line again to clear.`
+    : `${metric.note}. Regular-season weeks only; each season's end-of-year owner is credited with that roster's weeks. Current members keep their table colour; former members are grey (dashed when a grey repeats).`;
+}
+
 // -- loading ------------------------------------------------------------------------------------
 
 async function fetchJson(path) {
@@ -476,6 +713,7 @@ async function loadLeague(key) {
   const params = new URLSearchParams(location.search);
   const wantedTeam = Number(params.get("team"));
   state.selected = payload.teams.some((t) => t.roster_id === wantedTeam) ? wantedTeam : null;
+  state.selectedFormer = null;
   const metrics = metricsFor(payload);
   const wantedMetric = params.get("metric");
   if (metrics.some((m) => m.key === wantedMetric)) state.metric = wantedMetric;
@@ -486,6 +724,8 @@ async function loadLeague(key) {
   renderTable();
   renderMetrics();
   renderChart();
+  renderRatingPills();
+  renderRatingChart();
   $("main").hidden = false;
   $("status").hidden = true;
 }

@@ -38,6 +38,10 @@
   --team-10: #9e8401;
   --team-11: #a62534;
   --team-12: #719503;
+  /* former members on the rating chart: greys from tools/team_palette.py --greys */
+  --former-1: #292929;
+  --former-2: #525252;
+  --former-3: #808080;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -74,6 +78,9 @@
     --team-10: #ac9008;
     --team-11: #b1464c;
     --team-12: #7fa034;
+  --former-1: #cacaca;
+  --former-2: #989898;
+  --former-3: #696969;
   }
 }
 :root[data-theme="dark"] {
@@ -110,6 +117,9 @@
   --team-10: #ac9008;
   --team-11: #b1464c;
   --team-12: #7fa034;
+  --former-1: #cacaca;
+  --former-2: #989898;
+  --former-3: #696969;
 }
 
 * { box-sizing: border-box; }
@@ -239,6 +249,8 @@ td.chance.chance-low { color: var(--ink-2); font-weight: 500; }
 .metrics button[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
 
 .chart-wrap { position: relative; height: 420px; }
+.switchers { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; }
+.switchers .metrics + .metrics::before { content: ""; width: 1px; height: 18px; background: var(--border); margin-right: 10px; }
 @media (max-width: 600px) {
   .top { display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 12px; }
   .brand { grid-column: 1; grid-row: 1; }
@@ -280,7 +292,7 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
 @media (max-width: 700px) {
   .split { grid-template-columns: minmax(0, 1fr); }
   .reliability-wrap { height: 380px; }
-  .pages { grid-column: 1 / -1; grid-row: 2; }
+  .pages { grid-column: 1 / -1; grid-row: 3; } /* below the league switcher, which takes row 2 */
 }
 
 .status { color: var(--muted); text-align: center; padding: 24px 0; }

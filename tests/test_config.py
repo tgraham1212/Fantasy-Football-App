@@ -142,3 +142,44 @@ def test_invalid_replacement_settings_rejected(key, bad):
     raw["simulation"] = {key: bad}
     with pytest.raises(ConfigError, match=key):
         parse_config(raw)
+
+
+def test_ratings_defaults_without_section():
+    cfg = parse_config(valid_raw()).ratings
+    assert cfg.revert == pytest.approx(1 / 3)
+    assert cfg.early_k == (2.0, 1.75, 1.5, 1.25)
+    assert cfg.start_mu == 1000.0 and cfg.start_sigma == pytest.approx(1000 / 3)
+    assert cfg.ewma_weight == 0.2
+
+
+def test_ratings_parsed():
+    raw = valid_raw()
+    raw["ratings"] = {"revert": 0.5, "early_k": [3, 2], "start_mu": 1500, "ewma_weight": 0.1}
+    cfg = parse_config(raw).ratings
+    assert cfg.revert == 0.5 and cfg.early_k == (3.0, 2.0) and cfg.start_mu == 1500.0
+    assert cfg.start_sigma == 500.0, "start_sigma defaults to a third of start_mu"
+    assert cfg.ewma_weight == 0.1
+    raw["ratings"]["start_sigma"] = 250
+    assert parse_config(raw).ratings.start_sigma == 250.0
+
+
+@pytest.mark.parametrize(
+    "key, bad",
+    [
+        ("revert", 1.5), ("revert", -0.1), ("revert", "third"), ("revert", True),
+        ("early_k", []), ("early_k", [2, 0.5]), ("early_k", [1.5, 2]), ("early_k", 2), ("early_k", [True]),
+        ("start_mu", 0), ("start_sigma", -1), ("ewma_weight", 0), ("ewma_weight", 1.5),
+    ],
+)
+def test_invalid_ratings_rejected(key, bad):
+    raw = valid_raw()
+    raw["ratings"] = {key: bad}
+    with pytest.raises(ConfigError, match=f"ratings.{key}"):
+        parse_config(raw)
+
+
+def test_unknown_ratings_key_rejected():
+    raw = valid_raw()
+    raw["ratings"] = {"k_factor": 32}
+    with pytest.raises(ConfigError, match="ratings has unknown keys: k_factor"):
+        parse_config(raw)

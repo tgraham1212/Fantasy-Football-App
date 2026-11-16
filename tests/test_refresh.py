@@ -88,7 +88,21 @@ def stats_for_2026():
     return {f"stats/2026/{w}.json": (rows if w == 1 else []) for w in range(1, 18)}
 
 
-def test_refresh_runs_six_steps_and_stats_failure_stops_before_replacement(tmp_path):
+def test_refresh_steps_in_order():
+    from ffapp.cli import REFRESH_STEPS
+
+    assert [name for name, _ in REFRESH_STEPS] == ["sync", "projections", "stats", "ratings", "replacement", "simulate", "export"]
+
+
+def test_ratings_command_writes_every_league(tmp_path):
+    cfg = write_config(tmp_path)
+    assert run(tmp_path, cfg, "sync") == 0
+    assert run(tmp_path, cfg, "ratings") == 0
+    payload = json.loads((tmp_path / "data" / "ratings" / "dynasty.json").read_text(encoding="utf-8"))
+    assert payload["league_key"] == "dynasty" and len(payload["managers"]) >= 12
+
+
+def test_refresh_runs_seven_steps_and_stats_failure_stops_before_ratings(tmp_path):
     cfg = write_config(tmp_path)
     assert run(tmp_path, cfg, "sync") == 0
     before = tree_digest(tmp_path / "data")
@@ -96,11 +110,12 @@ def test_refresh_runs_six_steps_and_stats_failure_stops_before_replacement(tmp_p
     code = run(tmp_path, cfg, "refresh", overrides=overrides)
     assert code != 0
     assert not (tmp_path / "data" / "replacement").exists() and not (tmp_path / "data" / "odds").exists()
-    assert not (tmp_path / "data" / "stats").exists()
+    assert not (tmp_path / "data" / "stats").exists() and not (tmp_path / "data" / "ratings").exists()
     assert {k: v for k, v in tree_digest(tmp_path / "data").items() if not k.startswith("projections")} == {k: v for k, v in before.items() if not k.startswith("projections")}
 
     assert run(tmp_path, cfg, "refresh", overrides={**projections_for_2026(), **stats_for_2026()}) == 0
     assert (tmp_path / "data" / "stats" / "2026" / "week_01.json").exists()
+    assert (tmp_path / "data" / "ratings" / "dynasty.json").exists()
     assert (tmp_path / "data" / "replacement" / "dynasty" / "2026.json").exists()
     assert (tmp_path / "data" / "odds" / "dynasty" / "2026" / "asof_09.json").exists()
     assert (tmp_path / "site-data" / "dynasty.json").exists()

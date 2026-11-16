@@ -8,6 +8,7 @@ from pathlib import Path
 from ffapp.bracket import BracketRules
 from ffapp.config import Config
 from ffapp.odds import current_season
+from ffapp.ratings import read_ratings
 from ffapp.replacement import read_replacement
 from ffapp.store import Store, read_json, write_json
 
@@ -102,6 +103,13 @@ def league_export(store: Store, config: Config, league_key: str) -> dict:
                 series[k].append(row.get(k) if row else None)
         history_teams[str(rid)] = series
 
+    ratings = ratings_summary(store, league_key)
+    if ratings:
+        for team in teams:
+            current = ratings["current"].get(str(team["roster_id"]))
+            if current:
+                team["elo"], team["elo_change"] = current["elo"], current["elo_change"]
+
     payload = {
         "league_key": league_key,
         "league_name": config.leagues[league_key].name,
@@ -123,7 +131,49 @@ def league_export(store: Store, config: Config, league_key: str) -> dict:
         payload["replacement"] = replacement
     if latest.get("model"):
         payload["model"] = latest["model"]
+    if ratings:
+        payload["ratings"] = ratings["history"]
     return payload
+
+
+def ratings_summary(store: Store, league_key: str) -> dict | None:
+    """Current ELO per roster plus the chart history for every non-vacant manager, or None without a file."""
+    stored = read_ratings(store, league_key)
+    if not stored:
+        return None
+    weeks = [(w["season"], w["week"]) for w in stored.get("weeks", [])]
+    index = {wk: i for i, wk in enumerate(weeks)}
+    current: dict[str, dict] = {}
+    managers: dict[str, dict] = {}
+    for manager_id, entry in (stored.get("managers") or {}).items():
+        if entry.get("vacant"):
+            continue
+        history = entry.get("history") or []
+        mu: list[float | None] = [None] * len(weeks)
+        career_z: list[float | None] = [None] * len(weeks)
+        for h in history:
+            i = index.get((h["season"], h["week"]))
+            if i is not None:
+                mu[i], career_z[i] = h["mu"], h["career_z"]
+        managers[manager_id] = {
+            "display_name": entry.get("display_name"),
+            "current": bool(entry.get("current")),
+            "roster_id": entry.get("roster_id"),
+            "mu": mu,
+            "career_z": career_z,
+        }
+        if entry.get("current") and entry.get("roster_id") is not None and history:
+            last = history[-1]["mu"]
+            prev = history[-2]["mu"] if len(history) > 1 else None
+            current[str(entry["roster_id"])] = {"elo": round(last), "elo_change": None if prev is None else round(last - prev)}
+    return {
+        "current": current,
+        "history": {
+            "weeks": [{"season": s, "week": w} for s, w in weeks],
+            "seasons": stored.get("seasons", []),
+            "managers": managers,
+        },
+    }
 
 
 def replacement_summary(store: Store, league_key: str, season: str, as_of_week: int) -> dict | None:

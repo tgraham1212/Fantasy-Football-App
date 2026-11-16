@@ -11,6 +11,7 @@ dependencies = [
     "requests>=2.31",
     "numpy>=1.26",
     "pyyaml>=6.0",
+    "openskill>=6.2,<7",
 ]
 
 [project.optional-dependencies]
