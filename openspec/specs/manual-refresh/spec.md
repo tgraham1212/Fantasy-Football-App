@@ -29,7 +29,7 @@ The relay SHALL refuse to start a refresh within 15 minutes of the start of the 
 - **THEN** one refresh starts and the second request is refused with the time until available
 
 ### Requirement: Refresh button
-Each page SHALL show a "Refresh" button beside "How good are these odds?" when the relay's address is configured, and no button otherwise. Under it the page SHALL show "Updated N min ago" while a refresh is available and "Available in N min" while it is held, updating every minute, and a confirmation after a refresh starts.
+Each page SHALL show a "Refresh Data" button beside "How good are these odds?" when the relay's address is configured, and no button otherwise, aligned with the other header buttons. Under it the page SHALL show "Updated N min ago" while a refresh is available and "Available in N min" while it is held, updating every minute, and a confirmation after a refresh starts.
 
 #### Scenario: Not configured
 - **WHEN** the site is published without a relay address
@@ -42,3 +42,7 @@ Each page SHALL show a "Refresh" button beside "How good are these odds?" when t
 #### Scenario: Started
 - **WHEN** a visitor clicks "Refresh" and the relay starts a run
 - **THEN** the page says a refresh started and the site updates in about five minutes
+
+#### Scenario: Aligned
+- **WHEN** the header shows the button with its note
+- **THEN** the button lines up with the league and calibration buttons and the note hangs below it
