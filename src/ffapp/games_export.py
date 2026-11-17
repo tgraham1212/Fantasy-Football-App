@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from ffapp.bracket import BracketRules
 from ffapp.config import Config
-from ffapp.games import season_weeks
+from ffapp.games import game_key, season_weeks
 from ffapp.injuries import not_playing
 from ffapp.league import resolve_settings
 from ffapp.odds import completed_weeks, current_season
@@ -122,29 +122,55 @@ def games_export(store: Store, config: Config, league_key: str, owners: dict[int
                 game = schedule.game_for(week, team) if team else None
                 if game:
                     kickoff_of[pid] = game["kickoff_utc"]
+        stored_views = stored.get("views") or {}
+        live_week = bool(block.get("live"))
+        starters_of = {int(r["roster_id"]): {str(p) for p in (r.get("starters") or []) if str(p) not in ("0", "")} for r in data.matchups.get(week, [])}
+
+        def team_out(t: dict, i: int, actual_scores: list | None, view: str, played: bool) -> dict:
+            rid = int(t["roster_id"])
+            roster = week_rows.get(rid) if final and week_rows.get(rid) else current_roster.get(rid, [])
+            out = not_playing(store, season, week, roster, projections, scoring, teams_of)
+            owner = owners.get(rid, {})
+            wpa = t.get("wpa") if view == "actual" else None
+            rows = named(t["lineup"], names, final=final, points=week_points.get(rid), wpa=wpa, kickoffs=kickoff_of)
+            keys = named(key_players(t["lineup"]), names, final=final, points=week_points.get(rid), wpa=wpa, kickoffs=kickoff_of)
+            if view == "model" and played:
+                started = starters_of.get(rid, set())
+                for row in rows + keys:
+                    row["benched"] = bool(row["player_id"]) and row["player_id"] not in started
+            return {
+                "roster_id": rid,
+                "display_name": owner.get("display_name"),
+                "team_name": owner.get("team_name"),
+                "mean": t["mean"],
+                "win_prob": t["win_prob"],
+                "key_players": keys,
+                "lineup": rows,
+                "points_so_far": t.get("points_so_far"),
+                "to_play": t.get("to_play"),
+                "lineup_choices": t.get("lineup_choices"),
+                "not_playing": [{"player_id": o["player_id"], "name": names.get(o["player_id"], o["player_id"]), "reason": o["reason"]} for o in out],
+                "actual": (actual_scores or [None, None])[i],
+            }
+
         games = []
         for g in block["games"]:
-            teams = []
-            for i, t in enumerate(g["teams"]):
-                rid = int(t["roster_id"])
-                roster = week_rows.get(rid) if final and week_rows.get(rid) else current_roster.get(rid, [])
-                out = not_playing(store, season, week, roster, projections, scoring, teams_of)
-                owner = owners.get(rid, {})
-                teams.append(
-                    {
-                        "roster_id": rid,
-                        "display_name": owner.get("display_name"),
-                        "team_name": owner.get("team_name"),
-                        "mean": t["mean"],
-                        "win_prob": t["win_prob"],
-                        "key_players": named(key_players(t["lineup"]), names, final=final, points=week_points.get(rid), wpa=t.get("wpa"), kickoffs=kickoff_of),
-                        "lineup": named(t["lineup"], names, final=final, points=week_points.get(rid), wpa=t.get("wpa"), kickoffs=kickoff_of),
-                        "points_so_far": t.get("points_so_far"),
-                        "to_play": t.get("to_play"),
-                        "not_playing": [{"player_id": o["player_id"], "name": names.get(o["player_id"], o["player_id"]), "reason": o["reason"]} for o in out],
-                        "actual": (g.get("actual") or [None, None])[i],
-                    }
-                )
+            pair = game_key(*(t["roster_id"] for t in g["teams"]))
+            pair_views = stored_views.get(pair) if (final or live_week) else None
+            actual_scores = g.get("actual")
+            views = {}
+            if pair_views:
+                for name in ("model", "actual"):
+                    v = pair_views[name]
+                    order = [t["roster_id"] for t in g["teams"]]
+                    vteams = sorted(v["teams"], key=lambda t: order.index(t["roster_id"]))
+                    hist = v["hist"] if vteams[0]["roster_id"] == v["teams"][0]["roster_id"] else {**v["hist"], "shares": list(reversed(v["hist"]["shares"]))}
+                    views[name] = {"source": v.get("source"), "hist": hist, "teams": [team_out(t, i, actual_scores, name, True) for i, t in enumerate(vteams)]}
+                default = "actual"
+            else:
+                name = "actual" if final else "model"  # records without views fall back to the record as the actual view
+                views[name] = {"source": g.get("source") or block.get("source", "forecast"), "hist": g["hist"], "teams": [team_out(t, i, actual_scores, name, False) for i, t in enumerate(g["teams"])]}
+                default = name
             games.append(
                 {
                     "key": g["key"],
@@ -155,9 +181,11 @@ def games_export(store: Store, config: Config, league_key: str, owners: dict[int
                     "projected": bool(g.get("projected")),
                     "frequency": g.get("frequency"),
                     "seeds": g.get("seeds"),
-                    "hist": g["hist"],
                     "winner": g.get("winner"),
-                    "teams": teams,
+                    "default_view": default,
+                    "views": views,
+                    "hist": views[default]["hist"],
+                    "teams": views[default]["teams"],
                 }
             )
         byes = [

@@ -290,6 +290,29 @@ one week of roster drift, with a seed fixed per league, season and week. It is c
 once and kept. Weeks that finished before the log existed use the forecast made as of
 the week before instead, marked `pre-week`; for 2026 that is weeks 1 to 10.
 
+### Model and actual lineups
+
+Finished and live game cards have a **Model | Actual** toggle (upcoming weeks show the model
+only). Both are pre-kickoff forecasts simulated with the same model and no results; only the
+lineup differs:
+
+- **Model**: each roster's best legal lineup that week, every player at his last projection
+  before kickoff (the log's frozen value, else his stored projection), with the week's
+  projected replacement-level floor.
+- **Actual**: the starters each manager used, at the same projections (the prediction of
+  record). For 2026 weeks 1 to 10, played before the log existed, the model view is the
+  pre-week forecast and the actual view is rebuilt from the real starters at their stored
+  projections, labelled "rebuilt" because stored projections can include updates made after
+  kickoff. During the live week the actual view is the live forecast.
+
+Cards open on Actual. Win probability added shows in the actual view only; in the model view,
+model picks the manager benched carry a "BN" tag. Each team shows **lineup choices**: the
+points its starters scored minus the points the model lineup's players scored, a replacement
+fill counting that week's realised replacement level (during the live week only players who
+have kicked off count, fills once the week is final). The views are stored per game under
+`views` in the week files, computed once like the record (`ffapp games --force-records`
+recomputes them).
+
 ### Live weeks
 
 Once the first NFL game of the next week kicks off (from the stored schedule, which also

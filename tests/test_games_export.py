@@ -72,3 +72,51 @@ def test_export_without_game_files_has_no_games_entry(seeded_store, dynasty_conf
     export_site(seeded_store, dynasty_config, out)
     index = json.loads((out / "index.json").read_text(encoding="utf-8"))
     assert index["leagues"][0]["games"] is None and not (out / "dynasty" / "games").exists()
+
+
+def test_export_lineup_views(seeded_store, dynasty_config, tmp_path):
+    from ffapp.store import write_json
+
+    prepare(seeded_store, dynasty_config)
+    update_games(seeded_store, dynasty_config, "dynasty", now=datetime(2026, 11, 19, 12, tzinfo=timezone.utc))
+    out = tmp_path / "site-data"
+    export_site(seeded_store, dynasty_config, out)
+    read = lambda w: json.loads((out / "dynasty" / "games" / f"week_{w:02d}.json").read_text(encoding="utf-8"))
+
+    rebuilt = read(AS_OF)["games"][0]
+    assert rebuilt["default_view"] == "actual" and set(rebuilt["views"]) == {"model", "actual"}
+    assert rebuilt["views"]["actual"]["source"] == "rebuilt" and rebuilt["views"]["model"]["source"] == "pre-week"
+    actual_rows = [r for t in rebuilt["views"]["actual"]["teams"] for r in t["lineup"]]
+    model_rows = [r for t in rebuilt["views"]["model"]["teams"] for r in t["lineup"]]
+    assert any(r["wpa"] is not None for r in actual_rows) and all(r["wpa"] is None for r in model_rows)
+    assert all("benched" in r for r in model_rows) and all("benched" not in r for r in actual_rows)
+    assert all(isinstance(t["lineup_choices"], float) for t in rebuilt["views"]["actual"]["teams"])
+    assert rebuilt["teams"] == rebuilt["views"]["actual"]["teams"]  # top level mirrors the default view
+
+    upcoming = read(AS_OF + 1)["games"][0]
+    assert list(upcoming["views"]) == ["model"] and upcoming["default_view"] == "model"
+
+    # a finished week without views falls back to its record as the actual view
+    stored = seeded_store.read_games("dynasty", "2026", AS_OF)
+    stored.pop("views")
+    write_json(seeded_store.games_path("dynasty", "2026", AS_OF), stored)
+    export_site(seeded_store, dynasty_config, out)
+    fallback = read(AS_OF)["games"][0]
+    assert list(fallback["views"]) == ["actual"] and fallback["views"]["actual"]["source"] == "pre-week"
+
+
+def test_export_logged_week_views(seeded_store, dynasty_config, tmp_path):
+    from tests.test_games import WEEK
+
+    prepare(seeded_store, dynasty_config)
+    update_games(seeded_store, dynasty_config, "dynasty", now=datetime(2026, 11, 19, 12, tzinfo=timezone.utc))
+    data = seeded_store.read_season("dynasty", "2026")
+    data.matchups[WEEK] = data.matchups[AS_OF]
+    data.league["settings"]["last_scored_leg"] = WEEK
+    seeded_store.write_season("dynasty", data)
+    update_games(seeded_store, dynasty_config, "dynasty", now=datetime(2026, 11, 24, tzinfo=timezone.utc))
+    out = tmp_path / "site-data"
+    export_site(seeded_store, dynasty_config, out)
+    game = json.loads((out / "dynasty" / "games" / f"week_{WEEK:02d}.json").read_text(encoding="utf-8"))["games"][0]
+    assert game["views"]["actual"]["source"] == "log" and game["views"]["model"]["source"] == "model"
+    assert game["default_view"] == "actual"

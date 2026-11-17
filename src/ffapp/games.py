@@ -431,6 +431,16 @@ def update_games(store: Store, config: Config, league_key: str, *, now: datetime
             nz, _ = models()
             scoring = resolve_settings(config, league_key, data.league, week)
             record_wpa(stored["record"], data, week, store.read_projections(season, week), scoring, crosswalk, nz)
+        if week <= as_of and stored.get("record") and data.matchups.get(week) and (stored.get("views") is None or force_records):
+            from ffapp.views import build_views
+
+            nz, dr = models()
+            stored["views"] = build_views(store, config, league_key, data, week, stored, nz, dr)
+        elif week == live_week_no and data.matchups.get(week) and stored.get("forecast"):
+            from ffapp.views import build_views
+
+            nz, dr = models()
+            stored["views"] = build_views(store, config, league_key, data, week, stored, nz, dr, live=True, now=now)
         if stored != before:
             store.write_games(league_key, season, week, stored)
             written.append(week)
