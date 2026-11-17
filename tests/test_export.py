@@ -69,7 +69,7 @@ def test_exported_schema(seeded_store, dynasty_config, tmp_path):
     assert index["calibration"] is None, "no calibration report stored yet"
     assert index["leagues"][0] == {
         "key": "dynasty", "name": "Taco Tuesdays", "season": "2026", "as_of_week": 3,
-        "generated_at": index["leagues"][0]["generated_at"], "file": "dynasty.json", "war": None,
+        "generated_at": index["leagues"][0]["generated_at"], "file": "dynasty.json", "war": None, "games": None,
     }
 
     payload = json.loads((out / "dynasty.json").read_text(encoding="utf-8"))

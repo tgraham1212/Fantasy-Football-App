@@ -186,7 +186,7 @@ def test_refresh_crosswalk_writes_once(seeded_store):
     sleeper = client()
     assert refresh_crosswalk(sleeper, seeded_store) is True
     cw = seeded_store.read_crosswalk()
-    assert cw["7543"] == {"espn_id": None, "name": "Travis Etienne Jr.", "position": "RB"}
+    assert cw["7543"] == {"espn_id": None, "name": "Travis Etienne Jr.", "position": "RB", "team": "NO"}
     assert cw["4984"]["espn_id"] == "3918298"
     assert refresh_crosswalk(sleeper, seeded_store) is False
 

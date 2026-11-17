@@ -60,6 +60,7 @@ def to_record(row: dict) -> dict:
         "last_name": player.get("last_name"),
         "team": row.get("team"),
         "opponent": row.get("opponent"),
+        "date": row.get("date"),
         "company": row.get("company"),
         "last_modified": int(row.get("last_modified") or 0),
         "stats": row["stats"],

@@ -189,13 +189,14 @@ def slim_players(payload) -> dict[str, dict]:
             continue
         espn_id = rec.get("espn_id")
         name = rec.get("full_name") or " ".join(x for x in (rec.get("first_name"), rec.get("last_name")) if x)
-        out[str(pid)] = {"espn_id": str(espn_id) if espn_id else None, "name": name, "position": rec["position"]}
+        out[str(pid)] = {"espn_id": str(espn_id) if espn_id else None, "name": name, "position": rec["position"], "team": rec.get("team")}
     return out
 
 
-def refresh_crosswalk(sleeper: SleeperClient, store: Store) -> bool:
-    """Fetch Sleeper's player list and store the slim crosswalk; returns True when the file changed."""
-    players = slim_players(sleeper.players())
+def refresh_crosswalk(sleeper: SleeperClient, store: Store, payload: dict | None = None) -> bool:
+    """Store the slim crosswalk from Sleeper's player list (fetched unless ``payload`` is given);
+    returns True when the file changed."""
+    players = slim_players(sleeper.players() if payload is None else payload)
     if store.read_crosswalk() == players:
         return False
     store.write_crosswalk(players)

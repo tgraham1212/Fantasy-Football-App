@@ -1,30 +1,30 @@
 {
  "constants": {
-  "opponent_mean": 104.961,
-  "opponent_sd": 23.0381,
+  "opponent_mean": 105.6468,
+  "opponent_sd": 22.7913,
   "slot_mean": {
-   "DEF": 8.65,
-   "FLEX": 9.8183,
+   "DEF": 8.7,
+   "FLEX": 9.2675,
    "QB": 20.7973,
-   "RB": 14.5837,
-   "TE": 10.0508,
-   "WR": 13.2386
+   "RB": 14.7708,
+   "TE": 10.1158,
+   "WR": 13.6123
   },
   "slot_var": {
-   "DEF": 38.9353,
-   "FLEX": 48.2129,
+   "DEF": 38.3966,
+   "FLEX": 39.897,
    "QB": 76.5991,
-   "RB": 82.8555,
-   "TE": 45.1383,
-   "WR": 78.0784
+   "RB": 83.3281,
+   "TE": 44.8259,
+   "WR": 76.5335
   }
  },
  "cut": "yearly",
- "generated_at": "2026-11-17T13:49:44+00:00",
+ "generated_at": "2026-11-17T16:54:15+00:00",
  "league_key": "dynasty",
  "players": [
   {
-   "exp_wins": 4.5814,
+   "exp_wins": 4.5061,
    "games": 9,
    "id": "10213",
    "name": "Tre Tucker",
@@ -39,10 +39,10 @@
     "rush_yd": -6.0
    },
    "team": "LV",
-   "war": 0.2095
+   "war": 0.3034
   },
   {
-   "exp_wins": 4.333,
+   "exp_wins": 4.2447,
    "games": 7,
    "id": "10214",
    "name": "Davis Allen",
@@ -57,10 +57,10 @@
     "rush_yd": 0.0
    },
    "team": "LAR",
-   "war": -0.4153
+   "war": -0.255
   },
   {
-   "exp_wins": 4.0708,
+   "exp_wins": 3.9885,
    "games": 9,
    "id": "10218",
    "name": "Xavier Hutchinson",
@@ -75,10 +75,10 @@
     "rush_yd": 16.0
    },
    "team": "HOU",
-   "war": -0.3011
+   "war": -0.2142
   },
   {
-   "exp_wins": 3.5547,
+   "exp_wins": 3.4967,
    "games": 9,
    "id": "10219",
    "name": "Chris Rodriguez Jr.",
@@ -94,10 +94,10 @@
     "rush_yd": 233.0
    },
    "team": "JAX",
-   "war": -0.0271
+   "war": 0.0962
   },
   {
-   "exp_wins": 4.6533,
+   "exp_wins": 4.4271,
    "games": 1,
    "id": "10220",
    "name": "Will Mallory",
@@ -112,10 +112,10 @@
     "rush_yd": 0.0
    },
    "team": "IND",
-   "war": -0.0951
+   "war": -0.0725
   },
   {
-   "exp_wins": 4.1299,
+   "exp_wins": 3.9793,
    "games": 2,
    "id": "10222",
    "name": "Jayden Reed",
@@ -130,10 +130,10 @@
     "rush_yd": 0.0
    },
    "team": "GB",
-   "war": -0.242
+   "war": -0.2234
   },
   {
-   "exp_wins": 4.0192,
+   "exp_wins": 3.8778,
    "games": 3,
    "id": "10225",
    "name": "Jonathan Mingo",
@@ -148,10 +148,10 @@
     "rush_yd": 0.0
    },
    "team": "DAL",
-   "war": -0.3528
+   "war": -0.3249
   },
   {
-   "exp_wins": 4.1141,
+   "exp_wins": 3.9635,
    "games": 2,
    "id": "10226",
    "name": "Andrei Iosivas",
@@ -166,10 +166,10 @@
     "rush_yd": 0.0
    },
    "team": "CIN",
-   "war": -0.2578
+   "war": -0.2392
   },
   {
-   "exp_wins": 4.6207,
+   "exp_wins": 4.3943,
    "games": 1,
    "id": "10227",
    "name": "Payne Durham",
@@ -184,10 +184,10 @@
     "rush_yd": 0.0
    },
    "team": "TB",
-   "war": -0.1276
+   "war": -0.1054
   },
   {
-   "exp_wins": 4.1218,
+   "exp_wins": 3.9714,
    "games": 2,
    "id": "10228",
    "name": "Charlie Jones",
@@ -202,10 +202,10 @@
     "rush_yd": 0.0
    },
    "team": "NYG",
-   "war": -0.2501
+   "war": -0.2313
   },
   {
-   "exp_wins": 4.4902,
+   "exp_wins": 4.381,
    "games": 6,
    "id": "10229",
    "name": "Rashee Rice",
@@ -220,10 +220,10 @@
     "rush_yd": 0.0
    },
    "team": "KC",
-   "war": 0.1183
+   "war": 0.1783
   },
   {
-   "exp_wins": 4.1287,
+   "exp_wins": 4.0616,
    "games": 8,
    "id": "10231",
    "name": "Elijah Higgins",
@@ -238,10 +238,10 @@
     "rush_yd": 0.0
    },
    "team": "ARI",
-   "war": -0.6197
+   "war": -0.438
   },
   {
-   "exp_wins": 4.5599,
+   "exp_wins": 4.4831,
    "games": 9,
    "id": "10232",
    "name": "Michael Wilson",
@@ -256,10 +256,10 @@
     "rush_yd": 28.0
    },
    "team": "ARI",
-   "war": 0.1879
+   "war": 0.2804
   },
   {
-   "exp_wins": 4.0288,
+   "exp_wins": 3.8878,
    "games": 3,
    "id": "10234",
    "name": "Derius Davis",
@@ -274,10 +274,10 @@
     "rush_yd": 4.0
    },
    "team": "LAC",
-   "war": -0.3432
+   "war": -0.3149
   },
   {
-   "exp_wins": 3.5337,
+   "exp_wins": 3.4207,
    "games": 5,
    "id": "10235",
    "name": "Roschon Johnson",
@@ -296,10 +296,10 @@
     "rush_yd": 103.0
    },
    "team": "CHI",
-   "war": -0.0481
+   "war": 0.0202
   },
   {
-   "exp_wins": 4.7725,
+   "exp_wins": 4.7356,
    "games": 9,
    "id": "10236",
    "name": "Dalton Kincaid",
@@ -316,10 +316,10 @@
     "rush_yd": 0.0
    },
    "team": "BUF",
-   "war": 0.0241
+   "war": 0.236
   },
   {
-   "exp_wins": 4.1163,
+   "exp_wins": 4.1075,
    "games": 1,
    "id": "10857",
    "name": "Stetson Bennett IV",
@@ -335,10 +335,10 @@
     "rush_yd": 9.0
    },
    "team": "LAR",
-   "war": -0.235
+   "war": -0.2368
   },
   {
-   "exp_wins": 4.7554,
+   "exp_wins": 4.7183,
    "games": 9,
    "id": "10859",
    "name": "Sam LaPorta",
@@ -353,10 +353,10 @@
     "rush_yd": 2.0
    },
    "team": "DET",
-   "war": 0.007
+   "war": 0.2186
   },
   {
-   "exp_wins": 4.2733,
+   "exp_wins": 4.1139,
    "games": 4,
    "id": "10871",
    "name": "Luke Schoonmaker",
@@ -371,10 +371,10 @@
     "rush_yd": 0.0
    },
    "team": "DAL",
-   "war": -0.4751
+   "war": -0.3858
   },
   {
-   "exp_wins": 4.0709,
+   "exp_wins": 3.9296,
    "games": 3,
    "id": "11034",
    "name": "Jalen Brooks",
@@ -389,10 +389,10 @@
     "rush_yd": 0.0
    },
    "team": "ARI",
-   "war": -0.3011
+   "war": -0.2731
   },
   {
-   "exp_wins": 4.0382,
+   "exp_wins": 3.8968,
    "games": 3,
    "id": "11056",
    "name": "Jared Wayne",
@@ -407,10 +407,10 @@
     "rush_yd": 0.0
    },
    "team": "HOU",
-   "war": -0.3338
+   "war": -0.3059
   },
   {
-   "exp_wins": 4.0404,
+   "exp_wins": 3.8992,
    "games": 3,
    "id": "11068",
    "name": "Mitch Tinsley",
@@ -425,10 +425,10 @@
     "rush_yd": 0.0
    },
    "team": "CIN",
-   "war": -0.3315
+   "war": -0.3035
   },
   {
-   "exp_wins": 4.1637,
+   "exp_wins": 4.023,
    "games": 3,
    "id": "11157",
    "name": "Brycen Tremayne",
@@ -443,10 +443,10 @@
     "rush_yd": 0.0
    },
    "team": "CAR",
-   "war": -0.2082
+   "war": -0.1797
   },
   {
-   "exp_wins": 4.3961,
+   "exp_wins": 4.2368,
    "games": 1,
    "id": "11168",
    "name": "Xavier Smith",
@@ -461,10 +461,10 @@
     "rush_yd": 0.0
    },
    "team": "LAR",
-   "war": 0.0241
+   "war": 0.0341
   },
   {
-   "exp_wins": 3.5057,
+   "exp_wins": 3.3377,
    "games": 1,
    "id": "11186",
    "name": "Carlos Washington Jr.",
@@ -480,10 +480,10 @@
     "rush_yd": 0.0
    },
    "team": "MIA",
-   "war": -0.0761
+   "war": -0.0628
   },
   {
-   "exp_wins": 3.2958,
+   "exp_wins": 3.1676,
    "games": 4,
    "id": "11199",
    "name": "Emari Demercado",
@@ -501,10 +501,10 @@
     "rush_yd": 47.0
    },
    "team": "HOU",
-   "war": -0.286
+   "war": -0.2329
   },
   {
-   "exp_wins": 4.3844,
+   "exp_wins": 4.2261,
    "games": 4,
    "id": "11201",
    "name": "Blake Whiteheart",
@@ -519,10 +519,10 @@
     "rush_yd": 0.0
    },
    "team": "CLE",
-   "war": -0.3639
+   "war": -0.2736
   },
   {
-   "exp_wins": 3.4999,
+   "exp_wins": 3.3318,
    "games": 1,
    "id": "11237",
    "name": "Jacob Saylors",
@@ -538,10 +538,10 @@
     "rush_yd": 9.0
    },
    "team": "DET",
-   "war": -0.0819
+   "war": -0.0687
   },
   {
-   "exp_wins": 3.754,
+   "exp_wins": 3.7421,
    "games": 3,
    "id": "11256",
    "name": "Tyson Bagent",
@@ -557,10 +557,10 @@
     "rush_yd": 18.0
    },
    "team": "CHI",
-   "war": -0.5973
+   "war": -0.6023
   },
   {
-   "exp_wins": 3.473,
+   "exp_wins": 3.3183,
    "games": 2,
    "id": "11280",
    "name": "Brady Russell",
@@ -576,10 +576,10 @@
     "rush_yd": 0.0
    },
    "team": "SEA",
-   "war": -0.1088
+   "war": -0.0822
   },
   {
-   "exp_wins": 3.7156,
+   "exp_wins": 3.7035,
    "games": 3,
    "id": "11292",
    "name": "Tommy DeVito",
@@ -595,10 +595,10 @@
     "rush_yd": 21.0
    },
    "team": "NE",
-   "war": -0.6357
+   "war": -0.6408
   },
   {
-   "exp_wins": 3.5014,
+   "exp_wins": 3.3333,
    "games": 1,
    "id": "11299",
    "name": "Zavier Scott",
@@ -614,10 +614,10 @@
     "rush_yd": 0.0
    },
    "team": "CHI",
-   "war": -0.0805
+   "war": -0.0672
   },
   {
-   "exp_wins": 4.1889,
+   "exp_wins": 4.0291,
    "games": 1,
    "id": "11320",
    "name": "Nikko Remigio",
@@ -632,10 +632,10 @@
     "rush_yd": 0.0
    },
    "team": "KC",
-   "war": -0.183
+   "war": -0.1736
   },
   {
-   "exp_wins": 3.2801,
+   "exp_wins": 3.1654,
    "games": 5,
    "id": "11370",
    "name": "Chris Brooks",
@@ -653,10 +653,10 @@
     "rush_yd": 71.0
    },
    "team": "GB",
-   "war": -0.3017
+   "war": -0.2351
   },
   {
-   "exp_wins": 4.3348,
+   "exp_wins": 4.1854,
    "games": 2,
    "id": "11421",
    "name": "Ryan Miller",
@@ -671,10 +671,10 @@
     "rush_yd": 0.0
    },
    "team": "MIA",
-   "war": -0.0372
+   "war": -0.0173
   },
   {
-   "exp_wins": 4.7521,
+   "exp_wins": 4.5739,
    "games": 3,
    "id": "11433",
    "name": "Nate Adkins",
@@ -689,10 +689,10 @@
     "rush_yd": 6.0
    },
    "team": "DEN",
-   "war": 0.0038
+   "war": 0.0742
   },
   {
-   "exp_wins": 4.1092,
+   "exp_wins": 4.0293,
    "games": 7,
    "id": "11435",
    "name": "Emanuel Wilson",
@@ -708,10 +708,10 @@
     "rush_yd": 403.0
    },
    "team": "SEA",
-   "war": 0.5274
+   "war": 0.6287
   },
   {
-   "exp_wins": 3.555,
+   "exp_wins": 3.4146,
    "games": 3,
    "id": "11439",
    "name": "Jaleel McLaughlin",
@@ -729,10 +729,10 @@
     "rush_yd": 72.0
    },
    "team": "CLE",
-   "war": -0.0268
+   "war": 0.0141
   },
   {
-   "exp_wins": 3.0151,
+   "exp_wins": 2.9266,
    "games": 7,
    "id": "11510",
    "name": "Hunter Luepke",
@@ -748,10 +748,10 @@
     "rush_yd": 25.0
    },
    "team": "DAL",
-   "war": -0.5667
+   "war": -0.4739
   },
   {
-   "exp_wins": 4.2863,
+   "exp_wins": 4.2787,
    "games": 1,
    "id": "11557",
    "name": "Joe Milton",
@@ -767,10 +767,10 @@
     "rush_yd": 64.0
    },
    "team": "PHI",
-   "war": -0.065
+   "war": -0.0657
   },
   {
-   "exp_wins": 3.9362,
+   "exp_wins": 3.926,
    "games": 8,
    "id": "11559",
    "name": "Michael Penix Jr.",
@@ -789,10 +789,10 @@
     "rush_yd": 94.0
    },
    "team": "ATL",
-   "war": -0.4152
+   "war": -0.4184
   },
   {
-   "exp_wins": 4.5531,
+   "exp_wins": 4.5482,
    "games": 6,
    "id": "11560",
    "name": "Caleb Williams",
@@ -808,10 +808,10 @@
     "rush_yd": 145.0
    },
    "team": "CHI",
-   "war": 0.2018
+   "war": 0.2038
   },
   {
-   "exp_wins": 4.0137,
+   "exp_wins": 4.0042,
    "games": 9,
    "id": "11563",
    "name": "Bo Nix",
@@ -827,10 +827,10 @@
     "rush_yd": 116.0
    },
    "team": "DEN",
-   "war": -0.3376
+   "war": -0.3402
   },
   {
-   "exp_wins": 4.6465,
+   "exp_wins": 4.6432,
    "games": 10,
    "id": "11564",
    "name": "Drake Maye",
@@ -846,10 +846,10 @@
     "rush_yd": 230.0
    },
    "team": "NE",
-   "war": 0.2952
+   "war": 0.2989
   },
   {
-   "exp_wins": 3.822,
+   "exp_wins": 3.8105,
    "games": 5,
    "id": "11565",
    "name": "J.J. McCarthy",
@@ -865,10 +865,10 @@
     "rush_yd": 85.0
    },
    "team": "NYG",
-   "war": -0.5293
+   "war": -0.5339
   },
   {
-   "exp_wins": 4.6991,
+   "exp_wins": 4.6957,
    "games": 7,
    "id": "11566",
    "name": "Jayden Daniels",
@@ -884,10 +884,10 @@
     "rush_yd": 280.0
    },
    "team": "WAS",
-   "war": 0.3478
+   "war": 0.3513
   },
   {
-   "exp_wins": 3.4269,
+   "exp_wins": 3.2721,
    "games": 2,
    "id": "11570",
    "name": "Rasheen Ali",
@@ -903,10 +903,10 @@
     "rush_yd": 24.0
    },
    "team": "BAL",
-   "war": -0.1549
+   "war": -0.1284
   },
   {
-   "exp_wins": 3.408,
+   "exp_wins": 3.2803,
    "games": 4,
    "id": "11571",
    "name": "Isaiah Davis",
@@ -924,10 +924,10 @@
     "rush_yd": 44.0
    },
    "team": "NYJ",
-   "war": -0.1738
+   "war": -0.1202
   },
   {
-   "exp_wins": 3.4913,
+   "exp_wins": 3.3232,
    "games": 1,
    "id": "11573",
    "name": "Frank Gore Jr.",
@@ -943,10 +943,10 @@
     "rush_yd": 3.0
    },
    "team": "BUF",
-   "war": -0.0906
+   "war": -0.0773
   },
   {
-   "exp_wins": 3.4298,
+   "exp_wins": 3.3027,
    "games": 4,
    "id": "11574",
    "name": "Dylan Laube",
@@ -962,10 +962,10 @@
     "rush_yd": 9.0
    },
    "team": "LV",
-   "war": -0.152
+   "war": -0.0978
   },
   {
-   "exp_wins": 3.0748,
+   "exp_wins": 2.9865,
    "games": 7,
    "id": "11575",
    "name": "Ray Davis",
@@ -983,10 +983,10 @@
     "rush_yd": 52.0
    },
    "team": "BUF",
-   "war": -0.507
+   "war": -0.414
   },
   {
-   "exp_wins": 4.342,
+   "exp_wins": 4.3047,
    "games": 10,
    "id": "11576",
    "name": "Braelon Allen",
@@ -1002,10 +1002,10 @@
     "rush_yd": 638.0
    },
    "team": "NYJ",
-   "war": 0.7602
+   "war": 0.9042
   },
   {
-   "exp_wins": 3.368,
+   "exp_wins": 3.2538,
    "games": 5,
    "id": "11577",
    "name": "Will Shipley",
@@ -1023,10 +1023,10 @@
     "rush_yd": 57.0
    },
    "team": "PHI",
-   "war": -0.2138
+   "war": -0.1467
   },
   {
-   "exp_wins": 3.673,
+   "exp_wins": 3.5336,
    "games": 3,
    "id": "11579",
    "name": "Audric Estime",
@@ -1044,10 +1044,10 @@
     "rush_yd": 97.0
    },
    "team": "NO",
-   "war": 0.0912
+   "war": 0.1331
   },
   {
-   "exp_wins": 3.515,
+   "exp_wins": 3.4566,
    "games": 9,
    "id": "11581",
    "name": "MarShawn Lloyd",
@@ -1063,10 +1063,10 @@
     "rush_yd": 162.0
    },
    "team": "GB",
-   "war": -0.0668
+   "war": 0.0561
   },
   {
-   "exp_wins": 3.4999,
+   "exp_wins": 3.3318,
    "games": 1,
    "id": "11582",
    "name": "Carson Steele",
@@ -1082,10 +1082,10 @@
     "rush_yd": 0.0
    },
    "team": "PHI",
-   "war": -0.0819
+   "war": -0.0687
   },
   {
-   "exp_wins": 3.5181,
+   "exp_wins": 3.3637,
    "games": 2,
    "id": "11583",
    "name": "Jonathon Brooks",
@@ -1101,10 +1101,10 @@
     "rush_yd": 30.0
    },
    "team": "CAR",
-   "war": -0.0637
+   "war": -0.0368
   },
   {
-   "exp_wins": 5.2158,
+   "exp_wins": 5.1738,
    "games": 9,
    "id": "11584",
    "name": "Bucky Irving",
@@ -1120,10 +1120,10 @@
     "rush_yd": 825.0
    },
    "team": "TB",
-   "war": 1.634
+   "war": 1.7733
   },
   {
-   "exp_wins": 4.4181,
+   "exp_wins": 4.3809,
    "games": 10,
    "id": "11586",
    "name": "Blake Corum",
@@ -1139,10 +1139,10 @@
     "rush_yd": 547.0
    },
    "team": "LAR",
-   "war": 0.8363
+   "war": 0.9804
   },
   {
-   "exp_wins": 3.6704,
+   "exp_wins": 3.5034,
    "games": 1,
    "id": "11588",
    "name": "Jawhar Jordan",
@@ -1158,10 +1158,10 @@
     "rush_yd": 43.0
    },
    "team": "HOU",
-   "war": 0.0886
+   "war": 0.1029
   },
   {
-   "exp_wins": 4.4736,
+   "exp_wins": 4.2926,
    "games": 3,
    "id": "11592",
    "name": "Erick All Jr.",
@@ -1176,10 +1176,10 @@
     "rush_yd": 0.0
    },
    "team": "CIN",
-   "war": -0.2747
+   "war": -0.2071
   },
   {
-   "exp_wins": 4.1272,
+   "exp_wins": 4.0366,
    "games": 7,
    "id": "11593",
    "name": "Brevyn Spann-Ford",
@@ -1194,10 +1194,10 @@
     "rush_yd": 0.0
    },
    "team": "DAL",
-   "war": -0.6212
+   "war": -0.4631
   },
   {
-   "exp_wins": 4.6847,
+   "exp_wins": 4.4824,
    "games": 2,
    "id": "11596",
    "name": "Ben Sinnott",
@@ -1212,10 +1212,10 @@
     "rush_yd": 0.0
    },
    "team": "WAS",
-   "war": -0.0637
+   "war": -0.0173
   },
   {
-   "exp_wins": 4.4171,
+   "exp_wins": 4.2591,
    "games": 4,
    "id": "11597",
    "name": "Theo Johnson",
@@ -1230,10 +1230,10 @@
     "rush_yd": 0.0
    },
    "team": "NYG",
-   "war": -0.3312
+   "war": -0.2406
   },
   {
-   "exp_wins": 4.2658,
+   "exp_wins": 4.1063,
    "games": 4,
    "id": "11599",
    "name": "Cade Stover",
@@ -1248,10 +1248,10 @@
     "rush_yd": 5.0
    },
    "team": "HOU",
-   "war": -0.4826
+   "war": -0.3934
   },
   {
-   "exp_wins": 4.2189,
+   "exp_wins": 4.1997,
    "games": 10,
    "id": "11603",
    "name": "AJ Barner",
@@ -1266,10 +1266,10 @@
     "rush_yd": 8.0
    },
    "team": "SEA",
-   "war": -0.5295
+   "war": -0.3
   },
   {
-   "exp_wins": 5.7767,
+   "exp_wins": 5.7267,
    "games": 8,
    "id": "11604",
    "name": "Brock Bowers",
@@ -1284,10 +1284,10 @@
     "rush_yd": 2.0
    },
    "team": "LV",
-   "war": 1.0284
+   "war": 1.227
   },
   {
-   "exp_wins": 3.6471,
+   "exp_wins": 3.5635,
    "games": 9,
    "id": "11608",
    "name": "Isaiah Williams",
@@ -1304,10 +1304,10 @@
     "rush_yd": 25.0
    },
    "team": "NYJ",
-   "war": -0.7248
+   "war": -0.6392
   },
   {
-   "exp_wins": 4.1206,
+   "exp_wins": 4.0385,
    "games": 9,
    "id": "11610",
    "name": "Malik Washington",
@@ -1324,10 +1324,10 @@
     "rush_yd": 38.0
    },
    "team": "MIA",
-   "war": -0.2513
+   "war": -0.1642
   },
   {
-   "exp_wins": 3.8622,
+   "exp_wins": 3.7303,
    "games": 4,
    "id": "11616",
    "name": "Jacob Cowing",
@@ -1342,10 +1342,10 @@
     "rush_yd": 12.0
    },
    "team": "SF",
-   "war": -0.5098
+   "war": -0.4724
   },
   {
-   "exp_wins": 4.1153,
+   "exp_wins": 3.9649,
    "games": 2,
    "id": "11617",
    "name": "Malachi Corley",
@@ -1360,10 +1360,10 @@
     "rush_yd": 0.0
    },
    "team": "CLE",
-   "war": -0.2567
+   "war": -0.2378
   },
   {
-   "exp_wins": 4.1488,
+   "exp_wins": 4.067,
    "games": 9,
    "id": "11620",
    "name": "Rome Odunze",
@@ -1378,10 +1378,10 @@
     "rush_yd": 0.0
    },
    "team": "CHI",
-   "war": -0.2232
+   "war": -0.1357
   },
   {
-   "exp_wins": 4.0958,
+   "exp_wins": 3.9452,
    "games": 2,
    "id": "11623",
    "name": "Jordan Whittington",
@@ -1396,10 +1396,10 @@
     "rush_yd": 0.0
    },
    "team": "LAR",
-   "war": -0.2761
+   "war": -0.2575
   },
   {
-   "exp_wins": 3.9361,
+   "exp_wins": 3.8433,
    "games": 8,
    "id": "11624",
    "name": "Xavier Worthy",
@@ -1414,10 +1414,10 @@
     "rush_yd": 0.0
    },
    "team": "KC",
-   "war": -0.4359
+   "war": -0.3594
   },
   {
-   "exp_wins": 4.5626,
+   "exp_wins": 4.4355,
    "games": 4,
    "id": "11625",
    "name": "Adonai Mitchell",
@@ -1432,10 +1432,10 @@
     "rush_yd": 0.0
    },
    "team": "NYJ",
-   "war": 0.1907
+   "war": 0.2328
   },
   {
-   "exp_wins": 4.3347,
+   "exp_wins": 4.175,
    "games": 1,
    "id": "11626",
    "name": "Xavier Legette",
@@ -1452,10 +1452,10 @@
     "rush_yd": 0.0
    },
    "team": "CAR",
-   "war": -0.0372
+   "war": -0.0277
   },
   {
-   "exp_wins": 3.5191,
+   "exp_wins": 3.415,
    "games": 7,
    "id": "11627",
    "name": "Troy Franklin",
@@ -1470,10 +1470,10 @@
     "rush_yd": 5.0
    },
    "team": "DEN",
-   "war": -0.8529
+   "war": -0.7877
   },
   {
-   "exp_wins": 3.9453,
+   "exp_wins": 3.8325,
    "games": 6,
    "id": "11628",
    "name": "Marvin Harrison Jr.",
@@ -1488,10 +1488,10 @@
     "rush_yd": 0.0
    },
    "team": "HOU",
-   "war": -0.4267
+   "war": -0.3702
   },
   {
-   "exp_wins": 4.1513,
+   "exp_wins": 4.0103,
    "games": 3,
    "id": "11629",
    "name": "Devontez Walker",
@@ -1506,10 +1506,10 @@
     "rush_yd": 0.0
    },
    "team": "BAL",
-   "war": -0.2206
+   "war": -0.1924
   },
   {
-   "exp_wins": 4.3675,
+   "exp_wins": 4.238,
    "games": 4,
    "id": "11630",
    "name": "Roman Wilson",
@@ -1526,10 +1526,10 @@
     "rush_yd": 0.0
    },
    "team": "PIT",
-   "war": -0.0045
+   "war": 0.0353
   },
   {
-   "exp_wins": 3.9654,
+   "exp_wins": 3.8529,
    "games": 6,
    "id": "11631",
    "name": "Brian Thomas Jr.",
@@ -1544,10 +1544,10 @@
     "rush_yd": 0.0
    },
    "team": "JAX",
-   "war": -0.4065
+   "war": -0.3498
   },
   {
-   "exp_wins": 4.8829,
+   "exp_wins": 4.8107,
    "games": 9,
    "id": "11632",
    "name": "Malik Nabers",
@@ -1562,10 +1562,10 @@
     "rush_yd": 0.0
    },
    "team": "NYG",
-   "war": 0.5109
+   "war": 0.608
   },
   {
-   "exp_wins": 4.2966,
+   "exp_wins": 4.1767,
    "games": 5,
    "id": "11635",
    "name": "Ladd McConkey",
@@ -1580,10 +1580,10 @@
     "rush_yd": 0.0
    },
    "team": "LAC",
-   "war": -0.0754
+   "war": -0.026
   },
   {
-   "exp_wins": 4.0085,
+   "exp_wins": 3.9281,
    "games": 9,
    "id": "11637",
    "name": "Keon Coleman",
@@ -1598,10 +1598,10 @@
     "rush_yd": 0.0
    },
    "team": "BUF",
-   "war": -0.3634
+   "war": -0.2746
   },
   {
-   "exp_wins": 3.0135,
+   "exp_wins": 2.925,
    "games": 7,
    "id": "11643",
    "name": "Jaylen Wright",
@@ -1619,10 +1619,10 @@
     "rush_yd": 39.0
    },
    "team": "MIA",
-   "war": -0.5683
+   "war": -0.4755
   },
   {
-   "exp_wins": 4.2994,
+   "exp_wins": 4.212,
    "games": 8,
    "id": "11646",
    "name": "Jalen Coker",
@@ -1637,10 +1637,10 @@
     "rush_yd": 0.0
    },
    "team": "CAR",
-   "war": -0.0725
+   "war": 0.0093
   },
   {
-   "exp_wins": 3.5556,
+   "exp_wins": 3.4699,
    "games": 7,
    "id": "11647",
    "name": "Kimani Vidal",
@@ -1656,10 +1656,10 @@
     "rush_yd": 162.0
    },
    "team": "LAC",
-   "war": -0.0262
+   "war": 0.0694
   },
   {
-   "exp_wins": 4.2339,
+   "exp_wins": 4.0739,
    "games": 1,
    "id": "11650",
    "name": "Luke McCaffrey",
@@ -1674,10 +1674,10 @@
     "rush_yd": 0.0
    },
    "team": "WAS",
-   "war": -0.1381
+   "war": -0.1288
   },
   {
-   "exp_wins": 3.483,
+   "exp_wins": 3.3841,
    "games": 6,
    "id": "11655",
    "name": "Tyrone Tracy Jr.",
@@ -1695,10 +1695,10 @@
     "rush_yd": 55.0
    },
    "team": "NYG",
-   "war": -0.0988
+   "war": -0.0165
   },
   {
-   "exp_wins": 4.7229,
+   "exp_wins": 4.72,
    "games": 10,
    "id": "1166",
    "name": "Kirk Cousins",
@@ -1716,10 +1716,10 @@
     "rush_yd": 18.0
    },
    "team": "MIN",
-   "war": 0.3716
+   "war": 0.3756
   },
   {
-   "exp_wins": 3.1533,
+   "exp_wins": 3.0925,
    "games": 9,
    "id": "11729",
    "name": "Sione Vaki",
@@ -1737,10 +1737,10 @@
     "rush_yd": 163.0
    },
    "team": "DET",
-   "war": -0.4285
+   "war": -0.308
   },
   {
-   "exp_wins": 4.153,
+   "exp_wins": 4.0023,
    "games": 2,
    "id": "11762",
    "name": "Anthony Gould",
@@ -1755,10 +1755,10 @@
     "rush_yd": 0.0
    },
    "team": "IND",
-   "war": -0.219
+   "war": -0.2004
   },
   {
-   "exp_wins": 4.1788,
+   "exp_wins": 4.1075,
    "games": 10,
    "id": "11783",
    "name": "Ryan Flournoy",
@@ -1773,10 +1773,10 @@
     "rush_yd": 3.0
    },
    "team": "DAL",
-   "war": -0.1932
+   "war": -0.0952
   },
   {
-   "exp_wins": 4.1838,
+   "exp_wins": 4.1031,
    "games": 9,
    "id": "11834",
    "name": "Devaughn Vele",
@@ -1791,10 +1791,10 @@
     "rush_yd": 0.0
    },
    "team": "NO",
-   "war": -0.1882
+   "war": -0.0996
   },
   {
-   "exp_wins": 4.2902,
+   "exp_wins": 4.1303,
    "games": 1,
    "id": "11911",
    "name": "Jeshaun Jones",
@@ -1809,10 +1809,10 @@
     "rush_yd": 0.0
    },
    "team": "MIN",
-   "war": -0.0817
+   "war": -0.0724
   },
   {
-   "exp_wins": 4.2492,
+   "exp_wins": 4.0896,
    "games": 4,
    "id": "11942",
    "name": "Colson Yankoff",
@@ -1827,10 +1827,10 @@
     "rush_yd": 0.0
    },
    "team": "WAS",
-   "war": -0.4992
+   "war": -0.4101
   },
   {
-   "exp_wins": 4.2294,
+   "exp_wins": 4.0694,
    "games": 1,
    "id": "11994",
    "name": "Kameron Johnson",
@@ -1845,10 +1845,10 @@
     "rush_yd": 0.0
    },
    "team": "TB",
-   "war": -0.1426
+   "war": -0.1333
   },
   {
-   "exp_wins": 3.2847,
+   "exp_wins": 3.211,
    "games": 8,
    "id": "12048",
    "name": "George Holani",
@@ -1866,10 +1866,10 @@
     "rush_yd": 117.0
    },
    "team": "SEA",
-   "war": -0.2971
+   "war": -0.1895
   },
   {
-   "exp_wins": 4.7243,
+   "exp_wins": 4.4988,
    "games": 1,
    "id": "12389",
    "name": "Hayden Rucci",
@@ -1884,10 +1884,10 @@
     "rush_yd": 0.0
    },
    "team": "LAC",
-   "war": -0.0241
+   "war": -0.0009
   },
   {
-   "exp_wins": 3.4999,
+   "exp_wins": 3.3318,
    "games": 1,
    "id": "12455",
    "name": "Brashard Smith",
@@ -1903,10 +1903,10 @@
     "rush_yd": 0.0
    },
    "team": "KC",
-   "war": -0.0819
+   "war": -0.0687
   },
   {
-   "exp_wins": 3.5072,
+   "exp_wins": 3.3392,
    "games": 1,
    "id": "12457",
    "name": "Jaydon Blue",
@@ -1924,10 +1924,10 @@
     "rush_yd": 0.0
    },
    "team": "PHI",
-   "war": -0.0746
+   "war": -0.0613
   },
   {
-   "exp_wins": 3.3669,
+   "exp_wins": 3.2255,
    "games": 3,
    "id": "12467",
    "name": "Jordan James",
@@ -1943,10 +1943,10 @@
     "rush_yd": 32.0
    },
    "team": "SF",
-   "war": -0.2149
+   "war": -0.175
   },
   {
-   "exp_wins": 3.6856,
+   "exp_wins": 3.5595,
    "games": 4,
    "id": "12469",
    "name": "Dylan Sampson",
@@ -1962,10 +1962,10 @@
     "rush_yd": 79.0
    },
    "team": "CLE",
-   "war": 0.1038
+   "war": 0.159
   },
   {
-   "exp_wins": 3.5513,
+   "exp_wins": 3.3834,
    "games": 1,
    "id": "12471",
    "name": "DJ Giddens",
@@ -1981,10 +1981,10 @@
     "rush_yd": 43.0
    },
    "team": "IND",
-   "war": -0.0305
+   "war": -0.0171
   },
   {
-   "exp_wins": 3.3656,
+   "exp_wins": 3.2513,
    "games": 5,
    "id": "12472",
    "name": "Raheim Sanders",
@@ -2000,10 +2000,10 @@
     "rush_yd": 43.0
    },
    "team": "CLE",
-   "war": -0.2162
+   "war": -0.1492
   },
   {
-   "exp_wins": 3.9377,
+   "exp_wins": 3.8688,
    "games": 8,
    "id": "12473",
    "name": "Mitchell Evans",
@@ -2018,10 +2018,10 @@
     "rush_yd": 1.0
    },
    "team": "CAR",
-   "war": -0.8107
+   "war": -0.6308
   },
   {
-   "exp_wins": 3.8221,
+   "exp_wins": 3.765,
    "games": 9,
    "id": "12474",
    "name": "Woody Marks",
@@ -2037,10 +2037,10 @@
     "rush_yd": 391.0
    },
    "team": "HOU",
-   "war": 0.2403
+   "war": 0.3645
   },
   {
-   "exp_wins": 4.4095,
+   "exp_wins": 4.3314,
    "games": 7,
    "id": "12481",
    "name": "Cam Skattebo",
@@ -2056,10 +2056,10 @@
     "rush_yd": 496.0
    },
    "team": "NYG",
-   "war": 0.8276
+   "war": 0.9309
   },
   {
-   "exp_wins": 4.0821,
+   "exp_wins": 3.9604,
    "games": 5,
    "id": "12482",
    "name": "Savion Williams",
@@ -2074,10 +2074,10 @@
     "rush_yd": 44.0
    },
    "team": "GB",
-   "war": -0.2899
+   "war": -0.2423
   },
   {
-   "exp_wins": 4.0166,
+   "exp_wins": 3.8851,
    "games": 4,
    "id": "12483",
    "name": "Jack Bech",
@@ -2092,10 +2092,10 @@
     "rush_yd": 0.0
    },
    "team": "LV",
-   "war": -0.3553
+   "war": -0.3176
   },
   {
-   "exp_wins": 3.7532,
+   "exp_wins": 3.6598,
    "games": 8,
    "id": "12485",
    "name": "Tez Johnson",
@@ -2112,10 +2112,10 @@
     "rush_yd": 20.0
    },
    "team": "TB",
-   "war": -0.6188
+   "war": -0.5429
   },
   {
-   "exp_wins": 4.7272,
+   "exp_wins": 4.5254,
    "games": 2,
    "id": "12487",
    "name": "Terrance Ferguson",
@@ -2130,10 +2130,10 @@
     "rush_yd": 0.0
    },
    "team": "LAR",
-   "war": -0.0212
+   "war": 0.0257
   },
   {
-   "exp_wins": 3.887,
+   "exp_wins": 3.7903,
    "games": 6,
    "id": "12489",
    "name": "RJ Harvey",
@@ -2149,10 +2149,10 @@
     "rush_yd": 87.0
    },
    "team": "DEN",
-   "war": 0.3052
+   "war": 0.3898
   },
   {
-   "exp_wins": 4.9957,
+   "exp_wins": 4.9504,
    "games": 9,
    "id": "12490",
    "name": "Bhayshul Tuten",
@@ -2168,10 +2168,10 @@
     "rush_yd": 609.0
    },
    "team": "JAX",
-   "war": 1.4139
+   "war": 1.5499
   },
   {
-   "exp_wins": 3.334,
+   "exp_wins": 3.2606,
    "games": 8,
    "id": "12491",
    "name": "Corey Kiner",
@@ -2187,10 +2187,10 @@
     "rush_yd": 269.0
    },
    "team": "NE",
-   "war": -0.2478
+   "war": -0.1399
   },
   {
-   "exp_wins": 4.2617,
+   "exp_wins": 4.1415,
    "games": 5,
    "id": "12492",
    "name": "Pat Bryant",
@@ -2205,10 +2205,10 @@
     "rush_yd": 16.0
    },
    "team": "DEN",
-   "war": -0.1102
+   "war": -0.0612
   },
   {
-   "exp_wins": 4.3057,
+   "exp_wins": 4.2168,
    "games": 7,
    "id": "12493",
    "name": "Oronde Gadsden",
@@ -2226,10 +2226,10 @@
     "rush_yd": 2.0
    },
    "team": "LAC",
-   "war": -0.4427
+   "war": -0.2828
   },
   {
-   "exp_wins": 4.2798,
+   "exp_wins": 4.2721,
    "games": 1,
    "id": "12494",
    "name": "Kyle McCord",
@@ -2245,10 +2245,10 @@
     "rush_yd": 4.0
    },
    "team": "MIA",
-   "war": -0.0715
+   "war": -0.0723
   },
   {
-   "exp_wins": 4.3347,
+   "exp_wins": 4.2695,
    "games": 8,
    "id": "12495",
    "name": "Ollie Gordon II",
@@ -2264,10 +2264,10 @@
     "rush_yd": 539.0
    },
    "team": "MIA",
-   "war": 0.7529
+   "war": 0.869
   },
   {
-   "exp_wins": 4.0682,
+   "exp_wins": 3.9269,
    "games": 3,
    "id": "12496",
    "name": "Tai Felton",
@@ -2282,10 +2282,10 @@
     "rush_yd": 0.0
    },
    "team": "MIN",
-   "war": -0.3038
+   "war": -0.2758
   },
   {
-   "exp_wins": 3.9822,
+   "exp_wins": 3.8599,
    "games": 5,
    "id": "12497",
    "name": "Tory Horton",
@@ -2302,10 +2302,10 @@
     "rush_yd": 0.0
    },
    "team": "SEA",
-   "war": -0.3898
+   "war": -0.3428
   },
   {
-   "exp_wins": 4.4298,
+   "exp_wins": 4.3424,
    "games": 7,
    "id": "12498",
    "name": "Mason Taylor",
@@ -2320,10 +2320,10 @@
     "rush_yd": 0.0
    },
    "team": "NYJ",
-   "war": -0.3186
+   "war": -0.1573
   },
   {
-   "exp_wins": 3.6745,
+   "exp_wins": 3.5903,
    "games": 9,
    "id": "12499",
    "name": "Elic Ayomanor",
@@ -2341,10 +2341,10 @@
     "rush_yd": 0.0
    },
    "team": "TEN",
-   "war": -0.6974
+   "war": -0.6124
   },
   {
-   "exp_wins": 4.1032,
+   "exp_wins": 4.0944,
    "games": 1,
    "id": "12500",
    "name": "Quinn Ewers",
@@ -2360,10 +2360,10 @@
     "rush_yd": 0.0
    },
    "team": "JAX",
-   "war": -0.2481
+   "war": -0.25
   },
   {
-   "exp_wins": 5.3646,
+   "exp_wins": 5.3057,
    "games": 10,
    "id": "12501",
    "name": "Matthew Golden",
@@ -2378,10 +2378,10 @@
     "rush_yd": 6.0
    },
    "team": "GB",
-   "war": 0.9927
+   "war": 1.103
   },
   {
-   "exp_wins": 4.2839,
+   "exp_wins": 4.1949,
    "games": 7,
    "id": "12502",
    "name": "Gunnar Helm",
@@ -2398,10 +2398,10 @@
     "rush_yd": 0.0
    },
    "team": "TEN",
-   "war": -0.4644
+   "war": -0.3047
   },
   {
-   "exp_wins": 4.084,
+   "exp_wins": 3.9431,
    "games": 3,
    "id": "12503",
    "name": "Isaiah Bond",
@@ -2416,10 +2416,10 @@
     "rush_yd": 0.0
    },
    "team": "CLE",
-   "war": -0.288
+   "war": -0.2596
   },
   {
-   "exp_wins": 3.3318,
+   "exp_wins": 3.245,
    "games": 7,
    "id": "12504",
    "name": "Kaleb Johnson",
@@ -2437,10 +2437,10 @@
     "rush_yd": 214.0
    },
    "team": "GB",
-   "war": -0.25
+   "war": -0.1555
   },
   {
-   "exp_wins": 3.8521,
+   "exp_wins": 3.7295,
    "games": 5,
    "id": "12505",
    "name": "Jalen Royals",
@@ -2457,10 +2457,10 @@
     "rush_yd": 0.0
    },
    "team": "KC",
-   "war": -0.5199
+   "war": -0.4732
   },
   {
-   "exp_wins": 4.9607,
+   "exp_wins": 4.9493,
    "games": 10,
    "id": "12506",
    "name": "Harold Fannin Jr.",
@@ -2475,10 +2475,10 @@
     "rush_yd": 0.0
    },
    "team": "CLE",
-   "war": 0.2124
+   "war": 0.4496
   },
   {
-   "exp_wins": 4.0241,
+   "exp_wins": 3.9695,
    "games": 9,
    "id": "12507",
    "name": "Omarion Hampton",
@@ -2494,10 +2494,10 @@
     "rush_yd": 474.0
    },
    "team": "LAC",
-   "war": 0.4422
+   "war": 0.569
   },
   {
-   "exp_wins": 4.2732,
+   "exp_wins": 4.2661,
    "games": 2,
    "id": "12508",
    "name": "Jaxson Dart",
@@ -2513,10 +2513,10 @@
     "rush_yd": 54.0
    },
    "team": "NYG",
-   "war": -0.0781
+   "war": -0.0783
   },
   {
-   "exp_wins": 3.8934,
+   "exp_wins": 3.8004,
    "games": 8,
    "id": "12509",
    "name": "Tre' Harris",
@@ -2531,10 +2531,10 @@
     "rush_yd": 0.0
    },
    "team": "LAC",
-   "war": -0.4785
+   "war": -0.4023
   },
   {
-   "exp_wins": 4.2565,
+   "exp_wins": 4.2042,
    "games": 9,
    "id": "12512",
    "name": "Quinshon Judkins",
@@ -2550,10 +2550,10 @@
     "rush_yd": 423.0
    },
    "team": "CLE",
-   "war": 0.6747
+   "war": 0.8037
   },
   {
-   "exp_wins": 4.3,
+   "exp_wins": 4.1997,
    "games": 7,
    "id": "12514",
    "name": "Emeka Egbuka",
@@ -2568,10 +2568,10 @@
     "rush_yd": 12.0
    },
    "team": "TB",
-   "war": -0.0719
+   "war": -0.003
   },
   {
-   "exp_wins": 3.4913,
+   "exp_wins": 3.3232,
    "games": 1,
    "id": "12516",
    "name": "Kalel Mullings",
@@ -2587,10 +2587,10 @@
     "rush_yd": 3.0
    },
    "team": "TEN",
-   "war": -0.0906
+   "war": -0.0773
   },
   {
-   "exp_wins": 4.6841,
+   "exp_wins": 4.6228,
    "games": 8,
    "id": "12517",
    "name": "Colston Loveland",
@@ -2605,10 +2605,10 @@
     "rush_yd": 0.0
    },
    "team": "CHI",
-   "war": -0.0642
+   "war": 0.1231
   },
   {
-   "exp_wins": 4.7115,
+   "exp_wins": 4.6504,
    "games": 8,
    "id": "12518",
    "name": "Tyler Warren",
@@ -2623,10 +2623,10 @@
     "rush_yd": 9.0
    },
    "team": "IND",
-   "war": -0.0368
+   "war": 0.1507
   },
   {
-   "exp_wins": 4.8443,
+   "exp_wins": 4.7694,
    "games": 9,
    "id": "12519",
    "name": "Luther Burden III",
@@ -2641,10 +2641,10 @@
     "rush_yd": 29.0
    },
    "team": "CHI",
-   "war": 0.4724
+   "war": 0.5667
   },
   {
-   "exp_wins": 4.2886,
+   "exp_wins": 4.1287,
    "games": 1,
    "id": "12520",
    "name": "Xavier Restrepo",
@@ -2659,10 +2659,10 @@
     "rush_yd": 0.0
    },
    "team": "TEN",
-   "war": -0.0834
+   "war": -0.074
   },
   {
-   "exp_wins": 4.6402,
+   "exp_wins": 4.4139,
    "games": 1,
    "id": "12521",
    "name": "Elijah Arroyo",
@@ -2679,10 +2679,10 @@
     "rush_yd": 0.0
    },
    "team": "SEA",
-   "war": -0.1082
+   "war": -0.0858
   },
   {
-   "exp_wins": 3.8625,
+   "exp_wins": 3.8515,
    "games": 9,
    "id": "12522",
    "name": "Cam Ward",
@@ -2700,10 +2700,10 @@
     "rush_yd": 151.0
    },
    "team": "TEN",
-   "war": -0.4888
+   "war": -0.4929
   },
   {
-   "exp_wins": 4.1889,
+   "exp_wins": 4.0291,
    "games": 1,
    "id": "12523",
    "name": "Jimmy Horn Jr.",
@@ -2718,10 +2718,10 @@
     "rush_yd": 0.0
    },
    "team": "CAR",
-   "war": -0.183
+   "war": -0.1736
   },
   {
-   "exp_wins": 4.1979,
+   "exp_wins": 4.1901,
    "games": 2,
    "id": "12524",
    "name": "Shedeur Sanders",
@@ -2737,10 +2737,10 @@
     "rush_yd": 28.0
    },
    "team": "CLE",
-   "war": -0.1534
+   "war": -0.1543
   },
   {
-   "exp_wins": 4.7121,
+   "exp_wins": 4.6376,
    "games": 9,
    "id": "12526",
    "name": "Tetairoa McMillan",
@@ -2755,10 +2755,10 @@
     "rush_yd": 0.0
    },
    "team": "CAR",
-   "war": 0.3401
+   "war": 0.4349
   },
   {
-   "exp_wins": 4.6881,
+   "exp_wins": 4.6534,
    "games": 10,
    "id": "12527",
    "name": "Ashton Jeanty",
@@ -2774,10 +2774,10 @@
     "rush_yd": 380.0
    },
    "team": "LV",
-   "war": 1.1063
+   "war": 1.2529
   },
   {
-   "exp_wins": 3.4952,
+   "exp_wins": 3.3955,
    "games": 6,
    "id": "12529",
    "name": "TreVeyon Henderson",
@@ -2795,10 +2795,10 @@
     "rush_yd": 203.0
    },
    "team": "NE",
-   "war": -0.0866
+   "war": -0.005
   },
   {
-   "exp_wins": 3.7473,
+   "exp_wins": 3.6352,
    "games": 6,
    "id": "12530",
    "name": "Travis Hunter",
@@ -2813,10 +2813,10 @@
     "rush_yd": 11.0
    },
    "team": "JAX",
-   "war": -0.6246
+   "war": -0.5675
   },
   {
-   "exp_wins": 3.1987,
+   "exp_wins": 3.0838,
    "games": 5,
    "id": "12531",
    "name": "Trevor Etienne",
@@ -2832,10 +2832,10 @@
     "rush_yd": 16.0
    },
    "team": "CAR",
-   "war": -0.3831
+   "war": -0.3167
   },
   {
-   "exp_wins": 3.7751,
+   "exp_wins": 3.6636,
    "games": 5,
    "id": "12533",
    "name": "Jacory Croskey-Merritt",
@@ -2853,10 +2853,10 @@
     "rush_yd": 239.0
    },
    "team": "WAS",
-   "war": 0.1933
+   "war": 0.2631
   },
   {
-   "exp_wins": 4.1836,
+   "exp_wins": 4.0632,
    "games": 4,
    "id": "12534",
    "name": "Kyle Monangai",
@@ -2872,10 +2872,10 @@
     "rush_yd": 324.0
    },
    "team": "CHI",
-   "war": 0.6018
+   "war": 0.6627
   },
   {
-   "exp_wins": 4.0025,
+   "exp_wins": 3.8905,
    "games": 6,
    "id": "12535",
    "name": "Isaac TeSlaa",
@@ -2892,10 +2892,10 @@
     "rush_yd": 0.0
    },
    "team": "DET",
-   "war": -0.3695
+   "war": -0.3122
   },
   {
-   "exp_wins": 4.2499,
+   "exp_wins": 4.1503,
    "games": 7,
    "id": "12536",
    "name": "Jaylin Noel",
@@ -2910,10 +2910,10 @@
     "rush_yd": 26.0
    },
    "team": "HOU",
-   "war": -0.122
+   "war": -0.0524
   },
   {
-   "exp_wins": 3.818,
+   "exp_wins": 3.7062,
    "games": 6,
    "id": "12540",
    "name": "Chimere Dike",
@@ -2930,10 +2930,10 @@
     "rush_yd": 5.0
    },
    "team": "TEN",
-   "war": -0.554
+   "war": -0.4965
   },
   {
-   "exp_wins": 3.9462,
+   "exp_wins": 3.8442,
    "games": 7,
    "id": "12542",
    "name": "Efton Chism III",
@@ -2950,10 +2950,10 @@
     "rush_yd": 2.0
    },
    "team": "NE",
-   "war": -0.4258
+   "war": -0.3585
   },
   {
-   "exp_wins": 3.418,
+   "exp_wins": 3.2632,
    "games": 2,
    "id": "12543",
    "name": "Tahj Brooks",
@@ -2969,10 +2969,10 @@
     "rush_yd": 18.0
    },
    "team": "CIN",
-   "war": -0.1638
+   "war": -0.1373
   },
   {
-   "exp_wins": 3.4212,
+   "exp_wins": 3.2664,
    "games": 2,
    "id": "12544",
    "name": "LeQuint Allen Jr.",
@@ -2988,10 +2988,10 @@
     "rush_yd": 1.0
    },
    "team": "JAX",
-   "war": -0.1606
+   "war": -0.1341
   },
   {
-   "exp_wins": 4.4749,
+   "exp_wins": 4.4703,
    "games": 9,
    "id": "12545",
    "name": "Tyler Shough",
@@ -3007,10 +3007,10 @@
     "rush_yd": 187.0
    },
    "team": "NO",
-   "war": 0.1236
+   "war": 0.1259
   },
   {
-   "exp_wins": 4.1579,
+   "exp_wins": 4.0376,
    "games": 5,
    "id": "12547",
    "name": "Kyle Williams",
@@ -3028,10 +3028,10 @@
     "rush_yd": 0.0
    },
    "team": "NE",
-   "war": -0.2141
+   "war": -0.1651
   },
   {
-   "exp_wins": 4.2309,
+   "exp_wins": 4.1105,
    "games": 5,
    "id": "12634",
    "name": "Jordan Watkins",
@@ -3046,10 +3046,10 @@
     "rush_yd": 0.0
    },
    "team": "SF",
-   "war": -0.141
+   "war": -0.0922
   },
   {
-   "exp_wins": 4.1158,
+   "exp_wins": 3.9651,
    "games": 2,
    "id": "12641",
    "name": "Jaylin Lane",
@@ -3064,10 +3064,10 @@
     "rush_yd": 0.0
    },
    "team": "WAS",
-   "war": -0.2561
+   "war": -0.2376
   },
   {
-   "exp_wins": 4.5011,
+   "exp_wins": 4.297,
    "games": 2,
    "id": "12658",
    "name": "Jackson Hawes",
@@ -3082,10 +3082,10 @@
     "rush_yd": 0.0
    },
    "team": "BUF",
-   "war": -0.2472
+   "war": -0.2027
   },
   {
-   "exp_wins": 4.2055,
+   "exp_wins": 4.0549,
    "games": 2,
    "id": "12670",
    "name": "KeAndre Lambert-Smith",
@@ -3100,10 +3100,10 @@
     "rush_yd": 0.0
    },
    "team": "LAC",
-   "war": -0.1665
+   "war": -0.1478
   },
   {
-   "exp_wins": 3.8492,
+   "exp_wins": 3.7171,
    "games": 4,
    "id": "12699",
    "name": "LaJohntay Wester",
@@ -3118,10 +3118,10 @@
     "rush_yd": 0.0
    },
    "team": "BAL",
-   "war": -0.5228
+   "war": -0.4856
   },
   {
-   "exp_wins": 4.5062,
+   "exp_wins": 4.3491,
    "games": 4,
    "id": "12700",
    "name": "Gavin Bartholomew",
@@ -3136,10 +3136,10 @@
     "rush_yd": 0.0
    },
    "team": "MIN",
-   "war": -0.2421
+   "war": -0.1506
   },
   {
-   "exp_wins": 4.6599,
+   "exp_wins": 4.4338,
    "games": 1,
    "id": "12715",
    "name": "Thomas Fidone II",
@@ -3154,10 +3154,10 @@
     "rush_yd": 0.0
    },
    "team": "NYG",
-   "war": -0.0884
+   "war": -0.0658
   },
   {
-   "exp_wins": 3.8895,
+   "exp_wins": 3.7877,
    "games": 7,
    "id": "12718",
    "name": "Konata Mumpfield",
@@ -3174,10 +3174,10 @@
     "rush_yd": 0.0
    },
    "team": "LAR",
-   "war": -0.4825
+   "war": -0.415
   },
   {
-   "exp_wins": 4.7553,
+   "exp_wins": 4.5302,
    "games": 1,
    "id": "12765",
    "name": "Keleki Latu",
@@ -3192,10 +3192,10 @@
     "rush_yd": 0.0
    },
    "team": "BUF",
-   "war": 0.007
+   "war": 0.0305
   },
   {
-   "exp_wins": 4.1621,
+   "exp_wins": 4.1535,
    "games": 1,
    "id": "12773",
    "name": "DJ Uiagalelei",
@@ -3211,10 +3211,10 @@
     "rush_yd": 0.0
    },
    "team": "LAC",
-   "war": -0.1892
+   "war": -0.1909
   },
   {
-   "exp_wins": 4.1275,
+   "exp_wins": 4.1187,
    "games": 1,
    "id": "12775",
    "name": "Max Brosmer",
@@ -3230,10 +3230,10 @@
     "rush_yd": 0.0
    },
    "team": "MIN",
-   "war": -0.2239
+   "war": -0.2257
   },
   {
-   "exp_wins": 4.267,
+   "exp_wins": 4.1076,
    "games": 4,
    "id": "12817",
    "name": "Jake Briningstool",
@@ -3248,10 +3248,10 @@
     "rush_yd": 0.0
    },
    "team": "KC",
-   "war": -0.4813
+   "war": -0.3921
   },
   {
-   "exp_wins": 4.1889,
+   "exp_wins": 4.0291,
    "games": 1,
    "id": "12829",
    "name": "Coleman Owen",
@@ -3266,10 +3266,10 @@
     "rush_yd": 0.0
    },
    "team": "GB",
-   "war": -0.183
+   "war": -0.1736
   },
   {
-   "exp_wins": 4.1419,
+   "exp_wins": 3.9912,
    "games": 2,
    "id": "12860",
    "name": "Theo Wease Jr.",
@@ -3284,10 +3284,10 @@
     "rush_yd": 0.0
    },
    "team": "LAC",
-   "war": -0.2301
+   "war": -0.2115
   },
   {
-   "exp_wins": 4.1226,
+   "exp_wins": 3.9819,
    "games": 3,
    "id": "12863",
    "name": "Andrew Armstrong",
@@ -3302,10 +3302,10 @@
     "rush_yd": 0.0
    },
    "team": "KC",
-   "war": -0.2493
+   "war": -0.2208
   },
   {
-   "exp_wins": 3.4956,
+   "exp_wins": 3.3275,
    "games": 1,
    "id": "12897",
    "name": "Nate Carter",
@@ -3321,10 +3321,10 @@
     "rush_yd": 6.0
    },
    "team": "KC",
-   "war": -0.0862
+   "war": -0.073
   },
   {
-   "exp_wins": 4.6256,
+   "exp_wins": 4.3992,
    "games": 1,
    "id": "12938",
    "name": "Jackson Meeks",
@@ -3339,10 +3339,10 @@
     "rush_yd": 0.0
    },
    "team": "DET",
-   "war": -0.1228
+   "war": -0.1005
   },
   {
-   "exp_wins": 3.6161,
+   "exp_wins": 3.4487,
    "games": 1,
    "id": "12939",
    "name": "Anthony Tyus III",
@@ -3358,10 +3358,10 @@
     "rush_yd": 23.0
    },
    "team": "CAR",
-   "war": 0.0343
+   "war": 0.0482
   },
   {
-   "exp_wins": 3.3803,
+   "exp_wins": 3.2526,
    "games": 4,
    "id": "12969",
    "name": "Lan Larison",
@@ -3377,10 +3377,10 @@
     "rush_yd": 12.0
    },
    "team": "NE",
-   "war": -0.2016
+   "war": -0.1479
   },
   {
-   "exp_wins": 4.1889,
+   "exp_wins": 4.0291,
    "games": 1,
    "id": "12971",
    "name": "Ke'Shawn Williams",
@@ -3395,10 +3395,10 @@
     "rush_yd": 0.0
    },
    "team": "CIN",
-   "war": -0.183
+   "war": -0.1736
   },
   {
-   "exp_wins": 4.5092,
+   "exp_wins": 4.3051,
    "games": 2,
    "id": "13013",
    "name": "Mark Redman",
@@ -3413,10 +3413,10 @@
     "rush_yd": 0.0
    },
    "team": "GB",
-   "war": -0.2392
+   "war": -0.1945
   },
   {
-   "exp_wins": 3.9917,
+   "exp_wins": 3.8703,
    "games": 5,
    "id": "13075",
    "name": "Myles Price",
@@ -3431,10 +3431,10 @@
     "rush_yd": 14.0
    },
    "team": "MIN",
-   "war": -0.3803
+   "war": -0.3324
   },
   {
-   "exp_wins": 4.3214,
+   "exp_wins": 4.1616,
    "games": 1,
    "id": "13079",
    "name": "Jahdae Walker",
@@ -3449,10 +3449,10 @@
     "rush_yd": 0.0
    },
    "team": "CHI",
-   "war": -0.0506
+   "war": -0.0411
   },
   {
-   "exp_wins": 4.4077,
+   "exp_wins": 4.2261,
    "games": 3,
    "id": "13121",
    "name": "Ben Yurosek",
@@ -3467,10 +3467,10 @@
     "rush_yd": 0.0
    },
    "team": "MIN",
-   "war": -0.3407
+   "war": -0.2736
   },
   {
-   "exp_wins": 4.1078,
+   "exp_wins": 4.0072,
    "games": 7,
    "id": "13150",
    "name": "Darius Cooper",
@@ -3487,10 +3487,10 @@
     "rush_yd": 0.0
    },
    "team": "PHI",
-   "war": -0.2641
+   "war": -0.1955
   },
   {
-   "exp_wins": 3.9686,
+   "exp_wins": 3.866,
    "games": 7,
    "id": "13264",
    "name": "Dohnte Meyers",
@@ -3507,10 +3507,10 @@
     "rush_yd": 26.0
    },
    "team": "CIN",
-   "war": -0.4034
+   "war": -0.3367
   },
   {
-   "exp_wins": 4.2445,
+   "exp_wins": 4.0846,
    "games": 1,
    "id": "13268",
    "name": "Elijah Sarratt",
@@ -3527,10 +3527,10 @@
     "rush_yd": 0.0
    },
    "team": "BAL",
-   "war": -0.1274
+   "war": -0.1181
   },
   {
-   "exp_wins": 4.0737,
+   "exp_wins": 4.0644,
    "games": 2,
    "id": "13269",
    "name": "Fernando Mendoza",
@@ -3546,10 +3546,10 @@
     "rush_yd": 25.0
    },
    "team": "LV",
-   "war": -0.2776
+   "war": -0.2799
   },
   {
-   "exp_wins": 4.2584,
+   "exp_wins": 4.0985,
    "games": 1,
    "id": "13270",
    "name": "CJ Daniels",
@@ -3564,10 +3564,10 @@
     "rush_yd": 0.0
    },
    "team": "LAR",
-   "war": -0.1135
+   "war": -0.1042
   },
   {
-   "exp_wins": 4.1044,
+   "exp_wins": 4.0956,
    "games": 1,
    "id": "13272",
    "name": "Carson Beck",
@@ -3583,10 +3583,10 @@
     "rush_yd": 1.0
    },
    "team": "ARI",
-   "war": -0.2469
+   "war": -0.2488
   },
   {
-   "exp_wins": 4.3762,
+   "exp_wins": 4.2647,
    "games": 6,
    "id": "13273",
    "name": "Josh Cuevas",
@@ -3601,10 +3601,10 @@
     "rush_yd": 0.0
    },
    "team": "BAL",
-   "war": -0.3721
+   "war": -0.235
   },
   {
-   "exp_wins": 3.969,
+   "exp_wins": 3.8777,
    "games": 8,
    "id": "13274",
    "name": "Germie Bernard",
@@ -3619,10 +3619,10 @@
     "rush_yd": 14.0
    },
    "team": "PIT",
-   "war": -0.403
+   "war": -0.325
   },
   {
-   "exp_wins": 4.685,
+   "exp_wins": 4.5595,
    "games": 4,
    "id": "13276",
    "name": "Omar Cooper Jr.",
@@ -3637,10 +3637,10 @@
     "rush_yd": 0.0
    },
    "team": "NYJ",
-   "war": 0.3131
+   "war": 0.3568
   },
   {
-   "exp_wins": 3.1459,
+   "exp_wins": 3.0443,
    "games": 6,
    "id": "13277",
    "name": "CJ Donaldson",
@@ -3656,10 +3656,10 @@
     "rush_yd": 81.0
    },
    "team": "NO",
-   "war": -0.4359
+   "war": -0.3562
   },
   {
-   "exp_wins": 4.3015,
+   "exp_wins": 4.2021,
    "games": 7,
    "id": "13279",
    "name": "Carnell Tate",
@@ -3674,10 +3674,10 @@
     "rush_yd": 0.0
    },
    "team": "TEN",
-   "war": -0.0704
+   "war": -0.0006
   },
   {
-   "exp_wins": 4.3305,
+   "exp_wins": 4.1809,
    "games": 2,
    "id": "13281",
    "name": "Jordyn Tyson",
@@ -3692,10 +3692,10 @@
     "rush_yd": 0.0
    },
    "team": "NO",
-   "war": -0.0415
+   "war": -0.0218
   },
   {
-   "exp_wins": 4.4555,
+   "exp_wins": 4.2744,
    "games": 3,
    "id": "13282",
    "name": "Jack Endries",
@@ -3710,10 +3710,10 @@
     "rush_yd": 0.0
    },
    "team": "CIN",
-   "war": -0.2928
+   "war": -0.2253
   },
   {
-   "exp_wins": 3.8044,
+   "exp_wins": 3.7207,
    "games": 9,
    "id": "13285",
    "name": "Malachi Fields",
@@ -3728,10 +3728,10 @@
     "rush_yd": 0.0
    },
    "team": "NYG",
-   "war": -0.5676
+   "war": -0.482
   },
   {
-   "exp_wins": 3.5928,
+   "exp_wins": 3.4936,
    "games": 6,
    "id": "13286",
    "name": "Jadarian Price",
@@ -3747,10 +3747,10 @@
     "rush_yd": 208.0
    },
    "team": "SEA",
-   "war": 0.011
+   "war": 0.0931
   },
   {
-   "exp_wins": 3.7727,
+   "exp_wins": 3.6754,
    "games": 6,
    "id": "13287",
    "name": "Jeremiyah Love",
@@ -3766,10 +3766,10 @@
     "rush_yd": 268.0
    },
    "team": "ARI",
-   "war": 0.1909
+   "war": 0.2749
   },
   {
-   "exp_wins": 3.4094,
+   "exp_wins": 3.2546,
    "games": 2,
    "id": "13288",
    "name": "Nicholas Singleton",
@@ -3785,10 +3785,10 @@
     "rush_yd": 12.0
    },
    "team": "TEN",
-   "war": -0.1724
+   "war": -0.1459
   },
   {
-   "exp_wins": 3.9267,
+   "exp_wins": 3.8043,
    "games": 5,
    "id": "13293",
    "name": "Ja'Kobi Lane",
@@ -3803,10 +3803,10 @@
     "rush_yd": 0.0
    },
    "team": "BAL",
-   "war": -0.4453
+   "war": -0.3984
   },
   {
-   "exp_wins": 3.8629,
+   "exp_wins": 3.7801,
    "games": 9,
    "id": "13294",
    "name": "Makai Lemon",
@@ -3821,10 +3821,10 @@
     "rush_yd": -5.0
    },
    "team": "PHI",
-   "war": -0.5091
+   "war": -0.4226
   },
   {
-   "exp_wins": 4.4138,
+   "exp_wins": 4.3048,
    "games": 6,
    "id": "13296",
    "name": "Caleb Douglas",
@@ -3839,10 +3839,10 @@
     "rush_yd": 0.0
    },
    "team": "MIA",
-   "war": 0.0418
+   "war": 0.1021
   },
   {
-   "exp_wins": 4.1685,
+   "exp_wins": 4.0179,
    "games": 2,
    "id": "13297",
    "name": "Reggie Virgil",
@@ -3857,10 +3857,10 @@
     "rush_yd": 0.0
    },
    "team": "ARI",
-   "war": -0.2034
+   "war": -0.1848
   },
   {
-   "exp_wins": 4.1539,
+   "exp_wins": 4.0837,
    "games": 10,
    "id": "13298",
    "name": "KC Concepcion Jr.",
@@ -3875,10 +3875,10 @@
     "rush_yd": 43.0
    },
    "team": "CLE",
-   "war": -0.218
+   "war": -0.119
   },
   {
-   "exp_wins": 4.2821,
+   "exp_wins": 4.1931,
    "games": 7,
    "id": "13299",
    "name": "Nate Boerkircher",
@@ -3893,10 +3893,10 @@
     "rush_yd": 0.0
    },
    "team": "JAX",
-   "war": -0.4662
+   "war": -0.3065
   },
   {
-   "exp_wins": 3.9144,
+   "exp_wins": 3.8315,
    "games": 9,
    "id": "13301",
    "name": "Antonio Williams",
@@ -3911,10 +3911,10 @@
     "rush_yd": 0.0
    },
    "team": "WAS",
-   "war": -0.4575
+   "war": -0.3712
   },
   {
-   "exp_wins": 4.1777,
+   "exp_wins": 4.1691,
    "games": 1,
    "id": "13303",
    "name": "Cade Klubnik",
@@ -3930,10 +3930,10 @@
     "rush_yd": 26.0
    },
    "team": "NYJ",
-   "war": -0.1737
+   "war": -0.1752
   },
   {
-   "exp_wins": 3.2354,
+   "exp_wins": 3.1889,
    "games": 10,
    "id": "13305",
    "name": "Mike Washington Jr.",
@@ -3949,10 +3949,10 @@
     "rush_yd": 298.0
    },
    "team": "LV",
-   "war": -0.3464
+   "war": -0.2116
   },
   {
-   "exp_wins": 4.6385,
+   "exp_wins": 4.4122,
    "games": 1,
    "id": "13307",
    "name": "Marlin Klein",
@@ -3967,10 +3967,10 @@
     "rush_yd": 0.0
    },
    "team": "HOU",
-   "war": -0.1098
+   "war": -0.0874
   },
   {
-   "exp_wins": 4.6467,
+   "exp_wins": 4.4205,
    "games": 1,
    "id": "13308",
    "name": "Bauer Sharp",
@@ -3985,10 +3985,10 @@
     "rush_yd": 0.0
    },
    "team": "TB",
-   "war": -0.1016
+   "war": -0.0792
   },
   {
-   "exp_wins": 3.9613,
+   "exp_wins": 3.839,
    "games": 5,
    "id": "13311",
    "name": "Chris Bell",
@@ -4003,10 +4003,10 @@
     "rush_yd": 24.0
    },
    "team": "MIA",
-   "war": -0.4107
+   "war": -0.3637
   },
   {
-   "exp_wins": 4.0448,
+   "exp_wins": 3.9228,
    "games": 5,
    "id": "13317",
    "name": "Ted Hurst III",
@@ -4023,10 +4023,10 @@
     "rush_yd": 0.0
    },
    "team": "TB",
-   "war": -0.3272
+   "war": -0.2799
   },
   {
-   "exp_wins": 4.3981,
+   "exp_wins": 4.2164,
    "games": 3,
    "id": "13319",
    "name": "Oscar Delp",
@@ -4041,10 +4041,10 @@
     "rush_yd": 0.0
    },
    "team": "NO",
-   "war": -0.3503
+   "war": -0.2833
   },
   {
-   "exp_wins": 3.5991,
+   "exp_wins": 3.4856,
    "games": 6,
    "id": "13320",
    "name": "Zachariah Branch",
@@ -4059,10 +4059,10 @@
     "rush_yd": 8.0
    },
    "team": "ATL",
-   "war": -0.7729
+   "war": -0.7171
   },
   {
-   "exp_wins": 4.3044,
+   "exp_wins": 4.1453,
    "games": 4,
    "id": "13322",
    "name": "Sam Roush",
@@ -4077,10 +4077,10 @@
     "rush_yd": 0.0
    },
    "team": "CHI",
-   "war": -0.4439
+   "war": -0.3544
   },
   {
-   "exp_wins": 4.4465,
+   "exp_wins": 4.2887,
    "games": 4,
    "id": "13324",
    "name": "Matt Hibner",
@@ -4095,10 +4095,10 @@
     "rush_yd": 0.0
    },
    "team": "BAL",
-   "war": -0.3019
+   "war": -0.211
   },
   {
-   "exp_wins": 4.0839,
+   "exp_wins": 3.9332,
    "games": 2,
    "id": "13329",
    "name": "Malik Benson",
@@ -4113,10 +4113,10 @@
     "rush_yd": -8.0
    },
    "team": "LV",
-   "war": -0.2881
+   "war": -0.2695
   },
   {
-   "exp_wins": 4.2372,
+   "exp_wins": 4.195,
    "games": 9,
    "id": "13330",
    "name": "Kenyon Sadiq",
@@ -4131,10 +4131,10 @@
     "rush_yd": 3.0
    },
    "team": "NYJ",
-   "war": -0.5112
+   "war": -0.3046
   },
   {
-   "exp_wins": 3.615,
+   "exp_wins": 3.5016,
    "games": 6,
    "id": "13333",
    "name": "Deion Burks",
@@ -4149,10 +4149,10 @@
     "rush_yd": 21.0
    },
    "team": "IND",
-   "war": -0.757
+   "war": -0.7011
   },
   {
-   "exp_wins": 4.1467,
+   "exp_wins": 4.0952,
    "games": 9,
    "id": "13337",
    "name": "Emmett Johnson",
@@ -4168,10 +4168,10 @@
     "rush_yd": 212.0
    },
    "team": "KC",
-   "war": 0.5649
+   "war": 0.6947
   },
   {
-   "exp_wins": 3.8769,
+   "exp_wins": 3.7649,
    "games": 6,
    "id": "13338",
    "name": "Kevin Coleman Jr.",
@@ -4186,10 +4186,10 @@
     "rush_yd": 16.0
    },
    "team": "MIA",
-   "war": -0.4951
+   "war": -0.4378
   },
   {
-   "exp_wins": 4.1168,
+   "exp_wins": 3.9948,
    "games": 4,
    "id": "13345",
    "name": "Jonah Coleman",
@@ -4205,10 +4205,10 @@
     "rush_yd": 191.0
    },
    "team": "DEN",
-   "war": 0.535
+   "war": 0.5943
   },
   {
-   "exp_wins": 4.2661,
+   "exp_wins": 4.1959,
    "games": 10,
    "id": "13346",
    "name": "Denzel Boston",
@@ -4223,10 +4223,10 @@
     "rush_yd": 0.0
    },
    "team": "CLE",
-   "war": -0.1058
+   "war": -0.0068
   },
   {
-   "exp_wins": 3.2471,
+   "exp_wins": 3.1188,
    "games": 4,
    "id": "13347",
    "name": "Demond Claiborne",
@@ -4244,10 +4244,10 @@
     "rush_yd": 13.0
    },
    "team": "MIN",
-   "war": -0.3347
+   "war": -0.2817
   },
   {
-   "exp_wins": 4.7174,
+   "exp_wins": 4.4919,
    "games": 1,
    "id": "13349",
    "name": "Eli Stowers",
@@ -4262,10 +4262,10 @@
     "rush_yd": 0.0
    },
    "team": "PHI",
-   "war": -0.0309
+   "war": -0.0078
   },
   {
-   "exp_wins": 3.8436,
+   "exp_wins": 3.8328,
    "games": 2,
    "id": "13350",
    "name": "Joe Fagnano",
@@ -4281,10 +4281,10 @@
     "rush_yd": 16.0
    },
    "team": "BAL",
-   "war": -0.5077
+   "war": -0.5115
   },
   {
-   "exp_wins": 4.2445,
+   "exp_wins": 4.0846,
    "games": 1,
    "id": "13380",
    "name": "Brenen Thompson",
@@ -4299,10 +4299,10 @@
     "rush_yd": 0.0
    },
    "team": "LAC",
-   "war": -0.1274
+   "war": -0.1181
   },
   {
-   "exp_wins": 4.5206,
+   "exp_wins": 4.3166,
    "games": 2,
    "id": "1339",
    "name": "Zach Ertz",
@@ -4317,10 +4317,10 @@
     "rush_yd": 0.0
    },
    "team": "PHI",
-   "war": -0.2278
+   "war": -0.183
   },
   {
-   "exp_wins": 4.1335,
+   "exp_wins": 4.0222,
    "games": 6,
    "id": "13394",
    "name": "Josh Cameron",
@@ -4335,10 +4335,10 @@
     "rush_yd": 0.0
    },
    "team": "JAX",
-   "war": -0.2384
+   "war": -0.1805
   },
   {
-   "exp_wins": 3.2441,
+   "exp_wins": 3.1294,
    "games": 5,
    "id": "13405",
    "name": "Kaytron Allen",
@@ -4354,10 +4354,10 @@
     "rush_yd": 40.0
    },
    "team": "MIA",
-   "war": -0.3377
+   "war": -0.2711
   },
   {
-   "exp_wins": 4.3995,
+   "exp_wins": 4.2178,
    "games": 3,
    "id": "13408",
    "name": "Tanner Koziol",
@@ -4372,10 +4372,10 @@
     "rush_yd": 0.0
    },
    "team": "JAX",
-   "war": -0.3489
+   "war": -0.2819
   },
   {
-   "exp_wins": 3.7514,
+   "exp_wins": 3.6286,
    "games": 5,
    "id": "13411",
    "name": "Zavion Thomas",
@@ -4390,10 +4390,10 @@
     "rush_yd": 11.0
    },
    "team": "CHI",
-   "war": -0.6206
+   "war": -0.5741
   },
   {
-   "exp_wins": 4.0766,
+   "exp_wins": 3.9453,
    "games": 4,
    "id": "13413",
    "name": "Cyrus Allen",
@@ -4408,10 +4408,10 @@
     "rush_yd": 0.0
    },
    "team": "KC",
-   "war": -0.2953
+   "war": -0.2574
   },
   {
-   "exp_wins": 3.502,
+   "exp_wins": 3.4436,
    "games": 9,
    "id": "13414",
    "name": "Kaelon Black",
@@ -4427,10 +4427,10 @@
     "rush_yd": 356.0
    },
    "team": "SF",
-   "war": -0.0798
+   "war": 0.0431
   },
   {
-   "exp_wins": 3.4927,
+   "exp_wins": 3.3246,
    "games": 1,
    "id": "13418",
    "name": "Robert Henry Jr.",
@@ -4446,10 +4446,10 @@
     "rush_yd": 4.0
    },
    "team": "WAS",
-   "war": -0.0891
+   "war": -0.0759
   },
   {
-   "exp_wins": 3.5146,
+   "exp_wins": 3.3466,
    "games": 1,
    "id": "13419",
    "name": "Jaydn Ott",
@@ -4465,10 +4465,10 @@
     "rush_yd": 19.0
    },
    "team": "KC",
-   "war": -0.0672
+   "war": -0.0539
   },
   {
-   "exp_wins": 3.8848,
+   "exp_wins": 3.7624,
    "games": 5,
    "id": "13420",
    "name": "Bryce Lance",
@@ -4483,10 +4483,10 @@
     "rush_yd": 0.0
    },
    "team": "NO",
-   "war": -0.4871
+   "war": -0.4403
   },
   {
-   "exp_wins": 4.1793,
+   "exp_wins": 4.1363,
    "games": 9,
    "id": "13421",
    "name": "Eli Raridon",
@@ -4501,10 +4501,10 @@
     "rush_yd": 0.0
    },
    "team": "NE",
-   "war": -0.5691
+   "war": -0.3634
   },
   {
-   "exp_wins": 3.4086,
+   "exp_wins": 3.3497,
    "games": 9,
    "id": "13424",
    "name": "Seth McGowan",
@@ -4522,10 +4522,10 @@
     "rush_yd": 285.0
    },
    "team": "IND",
-   "war": -0.1732
+   "war": -0.0508
   },
   {
-   "exp_wins": 3.5801,
+   "exp_wins": 3.5668,
    "games": 5,
    "id": "13425",
    "name": "Jalon Daniels",
@@ -4541,10 +4541,10 @@
     "rush_yd": 123.0
    },
    "team": "TB",
-   "war": -0.7712
+   "war": -0.7775
   },
   {
-   "exp_wins": 4.1264,
+   "exp_wins": 3.9891,
    "games": 5,
    "id": "13434",
    "name": "Will Kacmarek",
@@ -4559,10 +4559,10 @@
     "rush_yd": 0.0
    },
    "team": "MIA",
-   "war": -0.622
+   "war": -0.5106
   },
   {
-   "exp_wins": 4.0913,
+   "exp_wins": 3.9407,
    "games": 2,
    "id": "13477",
    "name": "Colbie Young",
@@ -4577,10 +4577,10 @@
     "rush_yd": 0.0
    },
    "team": "CIN",
-   "war": -0.2806
+   "war": -0.262
   },
   {
-   "exp_wins": 3.7823,
+   "exp_wins": 3.6599,
    "games": 5,
    "id": "13533",
    "name": "Barion Brown",
@@ -4595,10 +4595,10 @@
     "rush_yd": -2.0
    },
    "team": "NO",
-   "war": -0.5896
+   "war": -0.5428
   },
   {
-   "exp_wins": 4.2521,
+   "exp_wins": 4.2442,
    "games": 1,
    "id": "13557",
    "name": "Athan Kaliakmanis",
@@ -4614,10 +4614,10 @@
     "rush_yd": 16.0
    },
    "team": "WAS",
-   "war": -0.0992
+   "war": -0.1002
   },
   {
-   "exp_wins": 4.0991,
+   "exp_wins": 4.0902,
    "games": 1,
    "id": "13602",
    "name": "Jack Strand",
@@ -4633,10 +4633,10 @@
     "rush_yd": 16.0
    },
    "team": "ATL",
-   "war": -0.2523
+   "war": -0.2541
   },
   {
-   "exp_wins": 3.5161,
+   "exp_wins": 3.3481,
    "games": 1,
    "id": "13603",
    "name": "Gregory Desrosiers",
@@ -4652,10 +4652,10 @@
     "rush_yd": 20.0
    },
    "team": "NYG",
-   "war": -0.0657
+   "war": -0.0524
   },
   {
-   "exp_wins": 4.2384,
+   "exp_wins": 4.0785,
    "games": 1,
    "id": "13670",
    "name": "Harrison Wallace III",
@@ -4670,10 +4670,10 @@
     "rush_yd": 0.0
    },
    "team": "ARI",
-   "war": -0.1335
+   "war": -0.1242
   },
   {
-   "exp_wins": 3.8513,
+   "exp_wins": 3.84,
    "games": 10,
    "id": "1373",
    "name": "Geno Smith",
@@ -4692,10 +4692,10 @@
     "rush_yd": 54.0
    },
    "team": "NYJ",
-   "war": -0.5
+   "war": -0.5043
   },
   {
-   "exp_wins": 4.243,
+   "exp_wins": 4.083,
    "games": 1,
    "id": "13760",
    "name": "Jaden Bradley",
@@ -4710,10 +4710,10 @@
     "rush_yd": 0.0
    },
    "team": "WAS",
-   "war": -0.129
+   "war": -0.1197
   },
   {
-   "exp_wins": 4.1361,
+   "exp_wins": 3.9951,
    "games": 3,
    "id": "13770",
    "name": "J. Michael Sturdivant",
@@ -4728,10 +4728,10 @@
     "rush_yd": 0.0
    },
    "team": "GB",
-   "war": -0.2359
+   "war": -0.2076
   },
   {
-   "exp_wins": 3.4785,
+   "exp_wins": 3.365,
    "games": 5,
    "id": "1379",
    "name": "Kyle Juszczyk",
@@ -4747,10 +4747,10 @@
     "rush_yd": 4.0
    },
    "team": "SF",
-   "war": -0.1033
+   "war": -0.0355
   },
   {
-   "exp_wins": 3.4474,
+   "exp_wins": 3.2927,
    "games": 2,
    "id": "14026",
    "name": "DJ Herman",
@@ -4766,10 +4766,10 @@
     "rush_yd": 0.0
    },
    "team": "MIA",
-   "war": -0.1344
+   "war": -0.1078
   },
   {
-   "exp_wins": 4.9388,
+   "exp_wins": 4.9035,
    "games": 9,
    "id": "1466",
    "name": "Travis Kelce",
@@ -4784,10 +4784,10 @@
     "rush_yd": 1.0
    },
    "team": "KC",
-   "war": 0.1905
+   "war": 0.4038
   },
   {
-   "exp_wins": 4.1012,
+   "exp_wins": 4.0194,
    "games": 9,
    "id": "1479",
    "name": "Keenan Allen",
@@ -4802,10 +4802,10 @@
     "rush_yd": 0.0
    },
    "team": "SF",
-   "war": -0.2708
+   "war": -0.1833
   },
   {
-   "exp_wins": 4.2363,
+   "exp_wins": 4.2288,
    "games": 2,
    "id": "1737",
    "name": "Case Keenum",
@@ -4821,10 +4821,10 @@
     "rush_yd": 10.0
    },
    "team": "CHI",
-   "war": -0.115
+   "war": -0.1155
   },
   {
-   "exp_wins": 4.8897,
+   "exp_wins": 4.7878,
    "games": 6,
    "id": "2133",
    "name": "Davante Adams",
@@ -4839,10 +4839,10 @@
     "rush_yd": 0.0
    },
    "team": "LAR",
-   "war": 0.5178
+   "war": 0.5851
   },
   {
-   "exp_wins": 3.9756,
+   "exp_wins": 3.8437,
    "games": 4,
    "id": "2197",
    "name": "Brandin Cooks",
@@ -4859,10 +4859,10 @@
     "rush_yd": 0.0
    },
    "team": "SF",
-   "war": -0.3964
+   "war": -0.359
   },
   {
-   "exp_wins": 4.7089,
+   "exp_wins": 4.6026,
    "games": 6,
    "id": "2216",
    "name": "Mike Evans",
@@ -4877,10 +4877,10 @@
     "rush_yd": 0.0
    },
    "team": "SF",
-   "war": 0.337
+   "war": 0.3999
   },
   {
-   "exp_wins": 3.4225,
+   "exp_wins": 3.408,
    "games": 8,
    "id": "2306",
    "name": "Jameis Winston",
@@ -4898,10 +4898,10 @@
     "rush_yd": 62.0
    },
    "team": "NYG",
-   "war": -0.9288
+   "war": -0.9364
   },
   {
-   "exp_wins": 4.0909,
+   "exp_wins": 4.0817,
    "games": 3,
    "id": "2307",
    "name": "Marcus Mariota",
@@ -4917,10 +4917,10 @@
     "rush_yd": 49.0
    },
    "team": "WAS",
-   "war": -0.2604
+   "war": -0.2627
   },
   {
-   "exp_wins": 3.2546,
+   "exp_wins": 3.1398,
    "games": 5,
    "id": "2359",
    "name": "Ameer Abdullah",
@@ -4936,10 +4936,10 @@
     "rush_yd": 88.0
    },
    "team": "JAX",
-   "war": -0.3272
+   "war": -0.2607
   },
   {
-   "exp_wins": 4.6487,
+   "exp_wins": 4.5616,
    "games": 8,
    "id": "2449",
    "name": "Stefon Diggs",
@@ -4954,10 +4954,10 @@
     "rush_yd": 0.0
    },
    "team": "WAS",
-   "war": 0.2768
+   "war": 0.3589
   },
   {
-   "exp_wins": 3.4898,
+   "exp_wins": 3.3218,
    "games": 1,
    "id": "2471",
    "name": "Michael Burton",
@@ -4973,10 +4973,10 @@
     "rush_yd": 2.0
    },
    "team": "CLE",
-   "war": -0.092
+   "war": -0.0787
   },
   {
-   "exp_wins": 4.7501,
+   "exp_wins": 4.6894,
    "games": 8,
    "id": "2505",
    "name": "Darren Waller",
@@ -4993,10 +4993,10 @@
     "rush_yd": 0.0
    },
    "team": "CAR",
-   "war": 0.0017
+   "war": 0.1897
   },
   {
-   "exp_wins": 4.2324,
+   "exp_wins": 4.0724,
    "games": 1,
    "id": "2750",
    "name": "DeAndre Carter",
@@ -5011,10 +5011,10 @@
     "rush_yd": 0.0
    },
    "team": "DET",
-   "war": -0.1396
+   "war": -0.1303
   },
   {
-   "exp_wins": 3.7538,
+   "exp_wins": 3.6599,
    "games": 8,
    "id": "3155",
    "name": "Laquon Treadwell",
@@ -5029,10 +5029,10 @@
     "rush_yd": 0.0
    },
    "team": "IND",
-   "war": -0.6182
+   "war": -0.5428
   },
   {
-   "exp_wins": 3.9368,
+   "exp_wins": 3.9268,
    "games": 3,
    "id": "3161",
    "name": "Carson Wentz",
@@ -5051,10 +5051,10 @@
     "rush_yd": 5.0
    },
    "team": "MIN",
-   "war": -0.4146
+   "war": -0.4176
   },
   {
-   "exp_wins": 4.7558,
+   "exp_wins": 4.7535,
    "games": 9,
    "id": "3163",
    "name": "Jared Goff",
@@ -5070,10 +5070,10 @@
     "rush_yd": 23.0
    },
    "team": "DET",
-   "war": 0.4045
+   "war": 0.4092
   },
   {
-   "exp_wins": 5.1464,
+   "exp_wins": 5.1168,
    "games": 10,
    "id": "3198",
    "name": "Derrick Henry",
@@ -5089,10 +5089,10 @@
     "rush_yd": 699.0
    },
    "team": "BAL",
-   "war": 1.5646
+   "war": 1.7163
   },
   {
-   "exp_wins": 4.26,
+   "exp_wins": 4.1,
    "games": 1,
    "id": "3200",
    "name": "Sterling Shepard",
@@ -5107,10 +5107,10 @@
     "rush_yd": 0.0
    },
    "team": "NYJ",
-   "war": -0.112
+   "war": -0.1027
   },
   {
-   "exp_wins": 4.0601,
+   "exp_wins": 3.969,
    "games": 7,
    "id": "3202",
    "name": "Austin Hooper",
@@ -5125,10 +5125,10 @@
     "rush_yd": 0.0
    },
    "team": "ATL",
-   "war": -0.6882
+   "war": -0.5307
   },
   {
-   "exp_wins": 4.4337,
+   "exp_wins": 4.4167,
    "games": 10,
    "id": "3214",
    "name": "Hunter Henry",
@@ -5143,10 +5143,10 @@
     "rush_yd": 0.0
    },
    "team": "NE",
-   "war": -0.3146
+   "war": -0.083
   },
   {
-   "exp_wins": 3.9116,
+   "exp_wins": 3.9011,
    "games": 9,
    "id": "3257",
    "name": "Jacoby Brissett",
@@ -5165,10 +5165,10 @@
     "rush_yd": 89.0
    },
    "team": "BAL",
-   "war": -0.4397
+   "war": -0.4432
   },
   {
-   "exp_wins": 4.1245,
+   "exp_wins": 3.9835,
    "games": 3,
    "id": "3269",
    "name": "Chris Moore",
@@ -5183,10 +5183,10 @@
     "rush_yd": 0.0
    },
    "team": "BAL",
-   "war": -0.2475
+   "war": -0.2192
   },
   {
-   "exp_wins": 4.3565,
+   "exp_wins": 4.3154,
    "games": 9,
    "id": "3271",
    "name": "Tyler Higbee",
@@ -5203,10 +5203,10 @@
     "rush_yd": 0.0
    },
    "team": "LAR",
-   "war": -0.3919
+   "war": -0.1843
   },
   {
-   "exp_wins": 4.2371,
+   "exp_wins": 4.0966,
    "games": 3,
    "id": "3286",
    "name": "Demarcus Robinson",
@@ -5221,10 +5221,10 @@
     "rush_yd": 0.0
    },
    "team": "SF",
-   "war": -0.1349
+   "war": -0.1061
   },
   {
-   "exp_wins": 5.017,
+   "exp_wins": 5.0169,
    "games": 10,
    "id": "3294",
    "name": "Dak Prescott",
@@ -5240,10 +5240,10 @@
     "rush_yd": 109.0
    },
    "team": "DAL",
-   "war": 0.6657
+   "war": 0.6725
   },
   {
-   "exp_wins": 4.0152,
+   "exp_wins": 3.9237,
    "games": 8,
    "id": "3634",
    "name": "Kalif Raymond",
@@ -5260,10 +5260,10 @@
     "rush_yd": 37.0
    },
    "team": "CHI",
-   "war": -0.3568
+   "war": -0.279
   },
   {
-   "exp_wins": 4.228,
+   "exp_wins": 4.22,
    "games": 9,
    "id": "4017",
    "name": "Deshaun Watson",
@@ -5279,10 +5279,10 @@
     "rush_yd": 266.0
    },
    "team": "CLE",
-   "war": -0.1234
+   "war": -0.1244
   },
   {
-   "exp_wins": 4.622,
+   "exp_wins": 4.4191,
    "games": 2,
    "id": "4033",
    "name": "David Njoku",
@@ -5297,10 +5297,10 @@
     "rush_yd": 0.0
    },
    "team": "LAC",
-   "war": -0.1263
+   "war": -0.0806
   },
   {
-   "exp_wins": 5.8163,
+   "exp_wins": 5.7794,
    "games": 9,
    "id": "4034",
    "name": "Christian McCaffrey",
@@ -5316,10 +5316,10 @@
     "rush_yd": 519.0
    },
    "team": "SF",
-   "war": 2.2345
+   "war": 2.3789
   },
   {
-   "exp_wins": 4.0381,
+   "exp_wins": 3.9703,
    "games": 8,
    "id": "4035",
    "name": "Alvin Kamara",
@@ -5335,10 +5335,10 @@
     "rush_yd": 161.0
    },
    "team": "NO",
-   "war": 0.4563
+   "war": 0.5698
   },
   {
-   "exp_wins": 3.8136,
+   "exp_wins": 3.7195,
    "games": 8,
    "id": "4037",
    "name": "Chris Godwin Jr.",
@@ -5353,10 +5353,10 @@
     "rush_yd": 30.0
    },
    "team": "TB",
-   "war": -0.5584
+   "war": -0.4832
   },
   {
-   "exp_wins": 3.7244,
+   "exp_wins": 3.6502,
    "games": 10,
    "id": "4039",
    "name": "Cooper Kupp",
@@ -5373,10 +5373,10 @@
     "rush_yd": 0.0
    },
    "team": "SEA",
-   "war": -0.6476
+   "war": -0.5525
   },
   {
-   "exp_wins": 4.8632,
+   "exp_wins": 4.8616,
    "games": 9,
    "id": "4046",
    "name": "Patrick Mahomes",
@@ -5392,10 +5392,10 @@
     "rush_yd": 100.0
    },
    "team": "KC",
-   "war": 0.5119
+   "war": 0.5172
   },
   {
-   "exp_wins": 4.4992,
+   "exp_wins": 4.3185,
    "games": 3,
    "id": "4054",
    "name": "Mo Alie-Cox",
@@ -5410,10 +5410,10 @@
     "rush_yd": 0.0
    },
    "team": "IND",
-   "war": -0.2491
+   "war": -0.1812
   },
   {
-   "exp_wins": 4.2638,
+   "exp_wins": 4.1747,
    "games": 7,
    "id": "4066",
    "name": "Evan Engram",
@@ -5430,10 +5430,10 @@
     "rush_yd": 0.0
    },
    "team": "DEN",
-   "war": -0.4846
+   "war": -0.325
   },
   {
-   "exp_wins": 4.376,
+   "exp_wins": 4.2175,
    "games": 4,
    "id": "4144",
    "name": "Jonnu Smith",
@@ -5448,10 +5448,10 @@
     "rush_yd": 0.0
    },
    "team": "GB",
-   "war": -0.3724
+   "war": -0.2822
   },
   {
-   "exp_wins": 3.5527,
+   "exp_wins": 3.4947,
    "games": 9,
    "id": "4147",
    "name": "Samaje Perine",
@@ -5467,10 +5467,10 @@
     "rush_yd": 193.0
    },
    "team": "CIN",
-   "war": -0.0291
+   "war": 0.0942
   },
   {
-   "exp_wins": 4.1936,
+   "exp_wins": 4.0823,
    "games": 6,
    "id": "4177",
    "name": "Mack Hollins",
@@ -5485,10 +5485,10 @@
     "rush_yd": 0.0
    },
    "team": "NE",
-   "war": -0.1784
+   "war": -0.1204
   },
   {
-   "exp_wins": 4.1004,
+   "exp_wins": 4.0916,
    "games": 1,
    "id": "4179",
    "name": "Joshua Dobbs",
@@ -5504,10 +5504,10 @@
     "rush_yd": -2.0
    },
    "team": "DET",
-   "war": -0.2509
+   "war": -0.2528
   },
   {
-   "exp_wins": 4.3474,
+   "exp_wins": 4.1888,
    "games": 4,
    "id": "4189",
    "name": "Eric Saubert",
@@ -5522,10 +5522,10 @@
     "rush_yd": 0.0
    },
    "team": "SEA",
-   "war": -0.4009
+   "war": -0.3109
   },
   {
-   "exp_wins": 4.1813,
+   "exp_wins": 4.1281,
    "games": 9,
    "id": "4199",
    "name": "Aaron Jones Sr.",
@@ -5541,10 +5541,10 @@
     "rush_yd": 521.0
    },
    "team": "MIN",
-   "war": 0.5994
+   "war": 0.7276
   },
   {
-   "exp_wins": 4.3897,
+   "exp_wins": 4.3839,
    "games": 10,
    "id": "421",
    "name": "Matthew Stafford",
@@ -5560,10 +5560,10 @@
     "rush_yd": 17.0
    },
    "team": "LAR",
-   "war": 0.0384
+   "war": 0.0395
   },
   {
-   "exp_wins": 5.2278,
+   "exp_wins": 5.1955,
    "games": 9,
    "id": "4217",
    "name": "George Kittle",
@@ -5578,10 +5578,10 @@
     "rush_yd": 0.0
    },
    "team": "SF",
-   "war": 0.4794
+   "war": 0.6959
   },
   {
-   "exp_wins": 3.4597,
+   "exp_wins": 3.305,
    "games": 2,
    "id": "4219",
    "name": "Jeremy McNichols",
@@ -5597,10 +5597,10 @@
     "rush_yd": 34.0
    },
    "team": "WAS",
-   "war": -0.1221
+   "war": -0.0955
   },
   {
-   "exp_wins": 4.0832,
+   "exp_wins": 3.9327,
    "games": 2,
    "id": "4274",
    "name": "David Moore",
@@ -5615,10 +5615,10 @@
     "rush_yd": 0.0
    },
    "team": "CAR",
-   "war": -0.2887
+   "war": -0.27
   },
   {
-   "exp_wins": 4.3752,
+   "exp_wins": 4.1933,
    "games": 3,
    "id": "4314",
    "name": "Johnny Mundt",
@@ -5633,10 +5633,10 @@
     "rush_yd": 0.0
    },
    "team": "PHI",
-   "war": -0.3732
+   "war": -0.3063
   },
   {
-   "exp_wins": 4.1482,
+   "exp_wins": 3.9976,
    "games": 2,
    "id": "4351",
    "name": "Tim Patrick",
@@ -5651,10 +5651,10 @@
     "rush_yd": 0.0
    },
    "team": "NYJ",
-   "war": -0.2237
+   "war": -0.2051
   },
   {
-   "exp_wins": 3.4956,
+   "exp_wins": 3.3275,
    "games": 1,
    "id": "4353",
    "name": "Patrick Ricard",
@@ -5670,10 +5670,10 @@
     "rush_yd": 0.0
    },
    "team": "NYG",
-   "war": -0.0862
+   "war": -0.073
   },
   {
-   "exp_wins": 4.6239,
+   "exp_wins": 4.3975,
    "games": 1,
    "id": "4443",
    "name": "Pharaoh Brown",
@@ -5688,10 +5688,10 @@
     "rush_yd": 0.0
    },
    "team": "IND",
-   "war": -0.1244
+   "war": -0.1021
   },
   {
-   "exp_wins": 3.9132,
+   "exp_wins": 3.8106,
    "games": 7,
    "id": "4454",
    "name": "Kendrick Bourne",
@@ -5708,10 +5708,10 @@
     "rush_yd": 0.0
    },
    "team": "ARI",
-   "war": -0.4587
+   "war": -0.3921
   },
   {
-   "exp_wins": 4.0961,
+   "exp_wins": 4.0872,
    "games": 1,
    "id": "4464",
    "name": "Nick Mullens",
@@ -5727,10 +5727,10 @@
     "rush_yd": -3.0
    },
    "team": "JAX",
-   "war": -0.2552
+   "war": -0.2571
   },
   {
-   "exp_wins": 3.9144,
+   "exp_wins": 3.904,
    "games": 2,
    "id": "4574",
    "name": "Cooper Rush",
@@ -5746,10 +5746,10 @@
     "rush_yd": 20.0
    },
    "team": "ATL",
-   "war": -0.4369
+   "war": -0.4404
   },
   {
-   "exp_wins": 4.6159,
+   "exp_wins": 4.3895,
    "games": 1,
    "id": "4602",
    "name": "Robert Tonyan",
@@ -5764,10 +5764,10 @@
     "rush_yd": 0.0
    },
    "team": "PIT",
-   "war": -0.1324
+   "war": -0.1102
   },
   {
-   "exp_wins": 3.3943,
+   "exp_wins": 3.2937,
    "games": 6,
    "id": "4663",
    "name": "Austin Ekeler",
@@ -5783,10 +5783,10 @@
     "rush_yd": 109.0
    },
    "team": "WAS",
-   "war": -0.1875
+   "war": -0.1068
   },
   {
-   "exp_wins": 3.4327,
+   "exp_wins": 3.278,
    "games": 2,
    "id": "4718",
    "name": "Dare Ogunbowale",
@@ -5802,10 +5802,10 @@
     "rush_yd": 2.0
    },
    "team": "HOU",
-   "war": -0.1491
+   "war": -0.1225
   },
   {
-   "exp_wins": 3.7874,
+   "exp_wins": 3.7034,
    "games": 7,
    "id": "4866",
    "name": "Saquon Barkley",
@@ -5821,10 +5821,10 @@
     "rush_yd": 296.0
    },
    "team": "PHI",
-   "war": 0.2056
+   "war": 0.3029
   },
   {
-   "exp_wins": 4.5742,
+   "exp_wins": 4.5696,
    "games": 4,
    "id": "4881",
    "name": "Lamar Jackson",
@@ -5840,10 +5840,10 @@
     "rush_yd": 144.0
    },
    "team": "BAL",
-   "war": 0.2229
+   "war": 0.2253
   },
   {
-   "exp_wins": 3.5347,
+   "exp_wins": 3.5204,
    "games": 6,
    "id": "4892",
    "name": "Baker Mayfield",
@@ -5859,10 +5859,10 @@
     "rush_yd": 80.0
    },
    "team": "TB",
-   "war": -0.8166
+   "war": -0.8239
   },
   {
-   "exp_wins": 3.9738,
+   "exp_wins": 3.9638,
    "games": 7,
    "id": "4943",
    "name": "Sam Darnold",
@@ -5878,10 +5878,10 @@
     "rush_yd": 72.0
    },
    "team": "SEA",
-   "war": -0.3775
+   "war": -0.3806
   },
   {
-   "exp_wins": 3.6086,
+   "exp_wins": 3.596,
    "games": 3,
    "id": "4972",
    "name": "Mason Rudolph",
@@ -5897,10 +5897,10 @@
     "rush_yd": 10.0
    },
    "team": "PIT",
-   "war": -0.7427
+   "war": -0.7483
   },
   {
-   "exp_wins": 3.9394,
+   "exp_wins": 3.8074,
    "games": 4,
    "id": "4981",
    "name": "Calvin Ridley",
@@ -5915,10 +5915,10 @@
     "rush_yd": 0.0
    },
    "team": "TEN",
-   "war": -0.4326
+   "war": -0.3953
   },
   {
-   "exp_wins": 4.4286,
+   "exp_wins": 4.3311,
    "games": 7,
    "id": "4983",
    "name": "DJ Moore",
@@ -5933,10 +5933,10 @@
     "rush_yd": 24.0
    },
    "team": "BUF",
-   "war": 0.0567
+   "war": 0.1284
   },
   {
-   "exp_wins": 5.5469,
+   "exp_wins": 5.5514,
    "games": 9,
    "id": "4984",
    "name": "Josh Allen",
@@ -5952,10 +5952,10 @@
     "rush_yd": 290.0
    },
    "team": "BUF",
-   "war": 1.1956
+   "war": 1.2071
   },
   {
-   "exp_wins": 4.81,
+   "exp_wins": 4.75,
    "games": 8,
    "id": "4993",
    "name": "Mike Gesicki",
@@ -5973,10 +5973,10 @@
     "rush_yd": 0.0
    },
    "team": "CIN",
-   "war": 0.0617
+   "war": 0.2503
   },
   {
-   "exp_wins": 4.2994,
+   "exp_wins": 4.1638,
    "games": 5,
    "id": "4995",
    "name": "Ian Thomas",
@@ -5991,10 +5991,10 @@
     "rush_yd": 0.0
    },
    "team": "LV",
-   "war": -0.4489
+   "war": -0.3359
   },
   {
-   "exp_wins": 4.5058,
+   "exp_wins": 4.4659,
    "games": 9,
    "id": "5001",
    "name": "Dalton Schultz",
@@ -6009,10 +6009,10 @@
     "rush_yd": 0.0
    },
    "team": "HOU",
-   "war": -0.2426
+   "war": -0.0338
   },
   {
-   "exp_wins": 4.6191,
+   "exp_wins": 4.3927,
    "games": 1,
    "id": "5008",
    "name": "Durham Smythe",
@@ -6027,10 +6027,10 @@
     "rush_yd": 0.0
    },
    "team": "BAL",
-   "war": -0.1292
+   "war": -0.107
   },
   {
-   "exp_wins": 4.2316,
+   "exp_wins": 4.2126,
    "games": 10,
    "id": "5012",
    "name": "Mark Andrews",
@@ -6047,10 +6047,10 @@
     "rush_yd": 0.0
    },
    "team": "BAL",
-   "war": -0.5167
+   "war": -0.2871
   },
   {
-   "exp_wins": 4.716,
+   "exp_wins": 4.6314,
    "games": 7,
    "id": "5022",
    "name": "Dallas Goedert",
@@ -6065,10 +6065,10 @@
     "rush_yd": 2.0
    },
    "team": "PHI",
-   "war": -0.0323
+   "war": 0.1317
   },
   {
-   "exp_wins": 3.7915,
+   "exp_wins": 3.7079,
    "games": 9,
    "id": "5045",
    "name": "Courtland Sutton",
@@ -6083,10 +6083,10 @@
     "rush_yd": 0.0
    },
    "team": "DEN",
-   "war": -0.5805
+   "war": -0.4948
   },
   {
-   "exp_wins": 4.2663,
+   "exp_wins": 4.1063,
    "games": 1,
    "id": "5086",
    "name": "Marquez Valdes-Scantling",
@@ -6101,10 +6101,10 @@
     "rush_yd": 0.0
    },
    "team": "LAC",
-   "war": -0.1057
+   "war": -0.0964
   },
   {
-   "exp_wins": 3.589,
+   "exp_wins": 3.5764,
    "games": 3,
    "id": "5127",
    "name": "Kyle Allen",
@@ -6120,10 +6120,10 @@
     "rush_yd": -6.0
    },
    "team": "BUF",
-   "war": -0.7623
+   "war": -0.768
   },
   {
-   "exp_wins": 4.4947,
+   "exp_wins": 4.2905,
    "games": 2,
    "id": "5133",
    "name": "Tyler Conklin",
@@ -6138,10 +6138,10 @@
     "rush_yd": 0.0
    },
    "team": "DET",
-   "war": -0.2536
+   "war": -0.2091
   },
   {
-   "exp_wins": 4.2354,
+   "exp_wins": 4.0754,
    "games": 1,
    "id": "5374",
    "name": "Justin Watson",
@@ -6156,10 +6156,10 @@
     "rush_yd": 0.0
    },
    "team": "KC",
-   "war": -0.1366
+   "war": -0.1273
   },
   {
-   "exp_wins": 4.3854,
+   "exp_wins": 4.2271,
    "games": 4,
    "id": "5409",
    "name": "Tanner Hudson",
@@ -6174,10 +6174,10 @@
     "rush_yd": 0.0
    },
    "team": "CIN",
-   "war": -0.363
+   "war": -0.2726
   },
   {
-   "exp_wins": 4.1309,
+   "exp_wins": 3.9803,
    "games": 2,
    "id": "5773",
    "name": "KhaDarel Hodge",
@@ -6192,10 +6192,10 @@
     "rush_yd": 0.0
    },
    "team": "SF",
-   "war": -0.241
+   "war": -0.2224
   },
   {
-   "exp_wins": 4.7764,
+   "exp_wins": 4.7161,
    "games": 8,
    "id": "5844",
    "name": "T.J. Hockenson",
@@ -6210,10 +6210,10 @@
     "rush_yd": 0.0
    },
    "team": "MIN",
-   "war": 0.0281
+   "war": 0.2164
   },
   {
-   "exp_wins": 4.2423,
+   "exp_wins": 4.1621,
    "games": 9,
    "id": "5846",
    "name": "DK Metcalf",
@@ -6228,10 +6228,10 @@
     "rush_yd": 11.0
    },
    "team": "PIT",
-   "war": -0.1296
+   "war": -0.0406
   },
   {
-   "exp_wins": 3.9061,
+   "exp_wins": 3.774,
    "games": 4,
    "id": "5848",
    "name": "Marquise Brown",
@@ -6246,10 +6246,10 @@
     "rush_yd": 12.0
    },
    "team": "PHI",
-   "war": -0.4659
+   "war": -0.4287
   },
   {
-   "exp_wins": 3.9116,
+   "exp_wins": 3.901,
    "games": 6,
    "id": "5849",
    "name": "Kyler Murray",
@@ -6265,10 +6265,10 @@
     "rush_yd": 167.0
    },
    "team": "MIN",
-   "war": -0.4397
+   "war": -0.4434
   },
   {
-   "exp_wins": 3.9261,
+   "exp_wins": 3.7895,
    "games": 3,
    "id": "5850",
    "name": "Josh Jacobs",
@@ -6284,10 +6284,10 @@
     "rush_yd": 80.0
    },
    "team": "GB",
-   "war": 0.3443
+   "war": 0.389
   },
   {
-   "exp_wins": 4.2569,
+   "exp_wins": 4.249,
    "games": 4,
    "id": "5854",
    "name": "Drew Lock",
@@ -6303,10 +6303,10 @@
     "rush_yd": 49.0
    },
    "team": "SEA",
-   "war": -0.0944
+   "war": -0.0953
   },
   {
-   "exp_wins": 4.5932,
+   "exp_wins": 4.4606,
    "games": 5,
    "id": "5857",
    "name": "Noah Fant",
@@ -6321,10 +6321,10 @@
     "rush_yd": 0.0
    },
    "team": "NO",
-   "war": -0.1551
+   "war": -0.0391
   },
   {
-   "exp_wins": 4.0374,
+   "exp_wins": 3.9056,
    "games": 4,
    "id": "5859",
    "name": "A.J. Brown",
@@ -6339,10 +6339,10 @@
     "rush_yd": 0.0
    },
    "team": "NE",
-   "war": -0.3345
+   "war": -0.2971
   },
   {
-   "exp_wins": 3.0077,
+   "exp_wins": 2.9883,
    "games": 10,
    "id": "5870",
    "name": "Daniel Jones",
@@ -6360,10 +6360,10 @@
     "rush_yd": 95.0
    },
    "team": "IND",
-   "war": -1.3436
+   "war": -1.356
   },
   {
-   "exp_wins": 4.7072,
+   "exp_wins": 4.6019,
    "games": 6,
    "id": "5872",
    "name": "Deebo Samuel Sr.",
@@ -6380,10 +6380,10 @@
     "rush_yd": 156.0
    },
    "team": "SF",
-   "war": 0.3353
+   "war": 0.3992
   },
   {
-   "exp_wins": 3.7739,
+   "exp_wins": 3.6636,
    "games": 5,
    "id": "5892",
    "name": "David Montgomery",
@@ -6399,10 +6399,10 @@
     "rush_yd": 138.0
    },
    "team": "HOU",
-   "war": 0.1921
+   "war": 0.2631
   },
   {
-   "exp_wins": 3.809,
+   "exp_wins": 3.7625,
    "games": 9,
    "id": "5906",
    "name": "Dawson Knox",
@@ -6417,10 +6417,10 @@
     "rush_yd": 0.0
    },
    "team": "BUF",
-   "war": -0.9393
+   "war": -0.7372
   },
   {
-   "exp_wins": 4.2204,
+   "exp_wins": 4.1002,
    "games": 5,
    "id": "5927",
    "name": "Terry McLaurin",
@@ -6435,10 +6435,10 @@
     "rush_yd": 0.0
    },
    "team": "WAS",
-   "war": -0.1515
+   "war": -0.1025
   },
   {
-   "exp_wins": 3.9653,
+   "exp_wins": 3.824,
    "games": 3,
    "id": "5938",
    "name": "Lil'Jordan Humphrey",
@@ -6453,10 +6453,10 @@
     "rush_yd": 0.0
    },
    "team": "DEN",
-   "war": -0.4066
+   "war": -0.3787
   },
   {
-   "exp_wins": 4.0633,
+   "exp_wins": 3.9813,
    "games": 9,
    "id": "5947",
    "name": "Jakobi Meyers",
@@ -6471,10 +6471,10 @@
     "rush_yd": 2.0
    },
    "team": "JAX",
-   "war": -0.3087
+   "war": -0.2214
   },
   {
-   "exp_wins": 4.8403,
+   "exp_wins": 4.7944,
    "games": 9,
    "id": "5967",
    "name": "Tony Pollard",
@@ -6490,10 +6490,10 @@
     "rush_yd": 628.0
    },
    "team": "TEN",
-   "war": 1.2585
+   "war": 1.3939
   },
   {
-   "exp_wins": 4.5599,
+   "exp_wins": 4.3563,
    "games": 2,
    "id": "5973",
    "name": "Josh Oliver",
@@ -6508,10 +6508,10 @@
     "rush_yd": 0.0
    },
    "team": "MIN",
-   "war": -0.1884
+   "war": -0.1434
   },
   {
-   "exp_wins": 4.3972,
+   "exp_wins": 4.286,
    "games": 6,
    "id": "5985",
    "name": "Foster Moreau",
@@ -6526,10 +6526,10 @@
     "rush_yd": 0.0
    },
    "team": "HOU",
-   "war": -0.3511
+   "war": -0.2137
   },
   {
-   "exp_wins": 3.5218,
+   "exp_wins": 3.477,
    "games": 10,
    "id": "5995",
    "name": "Justice Hill",
@@ -6545,10 +6545,10 @@
     "rush_yd": 244.0
    },
    "team": "BAL",
-   "war": -0.06
+   "war": 0.0765
   },
   {
-   "exp_wins": 4.4176,
+   "exp_wins": 4.283,
    "games": 5,
    "id": "6001",
    "name": "Drew Sample",
@@ -6563,10 +6563,10 @@
     "rush_yd": 0.0
    },
    "team": "CIN",
-   "war": -0.3308
+   "war": -0.2166
   },
   {
-   "exp_wins": 4.2341,
+   "exp_wins": 4.2262,
    "games": 2,
    "id": "6011",
    "name": "Gardner Minshew II",
@@ -6582,10 +6582,10 @@
     "rush_yd": 4.0
    },
    "team": "ARI",
-   "war": -0.1172
+   "war": -0.1182
   },
   {
-   "exp_wins": 3.4139,
+   "exp_wins": 3.2591,
    "games": 2,
    "id": "6012",
    "name": "Travis Homer",
@@ -6601,10 +6601,10 @@
     "rush_yd": 15.0
    },
    "team": "PIT",
-   "war": -0.1679
+   "war": -0.1414
   },
   {
-   "exp_wins": 3.397,
+   "exp_wins": 3.3102,
    "games": 7,
    "id": "6039",
    "name": "Ty Johnson",
@@ -6620,10 +6620,10 @@
     "rush_yd": 11.0
    },
    "team": "BUF",
-   "war": -0.1848
+   "war": -0.0903
   },
   {
-   "exp_wins": 3.5623,
+   "exp_wins": 3.3945,
    "games": 1,
    "id": "6109",
    "name": "Alec Ingold",
@@ -6639,10 +6639,10 @@
     "rush_yd": 0.0
    },
    "team": "LAC",
-   "war": -0.0195
+   "war": -0.006
   },
   {
-   "exp_wins": 3.5581,
+   "exp_wins": 3.4591,
    "games": 6,
    "id": "6130",
    "name": "Devin Singletary",
@@ -6661,10 +6661,10 @@
     "rush_yd": 114.0
    },
    "team": "NYG",
-   "war": -0.0237
+   "war": 0.0586
   },
   {
-   "exp_wins": 3.5698,
+   "exp_wins": 3.4563,
    "games": 6,
    "id": "6271",
    "name": "Olamide Zaccheaus",
@@ -6679,10 +6679,10 @@
     "rush_yd": 0.0
    },
    "team": "ATL",
-   "war": -0.8022
+   "war": -0.7464
   },
   {
-   "exp_wins": 3.3936,
+   "exp_wins": 3.2388,
    "games": 2,
    "id": "6323",
    "name": "Andrew Beck",
@@ -6698,10 +6698,10 @@
     "rush_yd": 1.0
    },
    "team": "NYJ",
-   "war": -0.1882
+   "war": -0.1617
   },
   {
-   "exp_wins": 4.081,
+   "exp_wins": 3.9499,
    "games": 4,
    "id": "6427",
    "name": "Ashton Dulin",
@@ -6716,10 +6716,10 @@
     "rush_yd": 6.0
    },
    "team": "IND",
-   "war": -0.291
+   "war": -0.2528
   },
   {
-   "exp_wins": 3.4927,
+   "exp_wins": 3.3246,
    "games": 1,
    "id": "6659",
    "name": "Craig Reynolds",
@@ -6735,10 +6735,10 @@
     "rush_yd": 4.0
    },
    "team": "WAS",
-   "war": -0.0891
+   "war": -0.0759
   },
   {
-   "exp_wins": 4.0922,
+   "exp_wins": 4.0834,
    "games": 1,
    "id": "6768",
    "name": "Tua Tagovailoa",
@@ -6754,10 +6754,10 @@
     "rush_yd": 0.0
    },
    "team": "ATL",
-   "war": -0.2591
+   "war": -0.261
   },
   {
-   "exp_wins": 5.7572,
+   "exp_wins": 5.7641,
    "games": 9,
    "id": "6770",
    "name": "Joe Burrow",
@@ -6773,10 +6773,10 @@
     "rush_yd": 85.0
    },
    "team": "CIN",
-   "war": 1.4058
+   "war": 1.4197
   },
   {
-   "exp_wins": 3.8894,
+   "exp_wins": 3.7862,
    "games": 7,
    "id": "6783",
    "name": "Jerry Jeudy",
@@ -6791,10 +6791,10 @@
     "rush_yd": 0.0
    },
    "team": "CLE",
-   "war": -0.4825
+   "war": -0.4165
   },
   {
-   "exp_wins": 5.914,
+   "exp_wins": 5.8639,
    "games": 10,
    "id": "6786",
    "name": "CeeDee Lamb",
@@ -6809,10 +6809,10 @@
     "rush_yd": -6.0
    },
    "team": "DAL",
-   "war": 1.542
+   "war": 1.6612
   },
   {
-   "exp_wins": 5.0407,
+   "exp_wins": 4.9967,
    "games": 9,
    "id": "6790",
    "name": "D'Andre Swift",
@@ -6828,10 +6828,10 @@
     "rush_yd": 576.0
    },
    "team": "CHI",
-   "war": 1.4589
+   "war": 1.5962
   },
   {
-   "exp_wins": 4.6206,
+   "exp_wins": 4.534,
    "games": 8,
    "id": "6794",
    "name": "Justin Jefferson",
@@ -6846,10 +6846,10 @@
     "rush_yd": -11.0
    },
    "team": "MIN",
-   "war": 0.2486
+   "war": 0.3313
   },
   {
-   "exp_wins": 3.4287,
+   "exp_wins": 3.4129,
    "games": 9,
    "id": "6797",
    "name": "Justin Herbert",
@@ -6865,10 +6865,10 @@
     "rush_yd": 241.0
    },
    "team": "LAC",
-   "war": -0.9226
+   "war": -0.9314
   },
   {
-   "exp_wins": 5.431,
+   "exp_wins": 5.3645,
    "games": 9,
    "id": "6801",
    "name": "Tee Higgins",
@@ -6883,10 +6883,10 @@
     "rush_yd": 0.0
    },
    "team": "CIN",
-   "war": 1.0591
+   "war": 1.1618
   },
   {
-   "exp_wins": 4.9102,
+   "exp_wins": 4.9089,
    "games": 10,
    "id": "6804",
    "name": "Jordan Love",
@@ -6904,10 +6904,10 @@
     "rush_yd": 23.0
    },
    "team": "GB",
-   "war": 0.5589
+   "war": 0.5645
   },
   {
-   "exp_wins": 3.6327,
+   "exp_wins": 3.575,
    "games": 9,
    "id": "6806",
    "name": "J.K. Dobbins",
@@ -6923,10 +6923,10 @@
     "rush_yd": 324.0
    },
    "team": "DEN",
-   "war": 0.0509
+   "war": 0.1745
   },
   {
-   "exp_wins": 5.0969,
+   "exp_wins": 5.0668,
    "games": 10,
    "id": "6813",
    "name": "Jonathan Taylor",
@@ -6942,10 +6942,10 @@
     "rush_yd": 739.0
    },
    "team": "IND",
-   "war": 1.5151
+   "war": 1.6663
   },
   {
-   "exp_wins": 4.1013,
+   "exp_wins": 3.9602,
    "games": 3,
    "id": "6819",
    "name": "Michael Pittman Jr.",
@@ -6960,10 +6960,10 @@
     "rush_yd": 0.0
    },
    "team": "PIT",
-   "war": -0.2706
+   "war": -0.2425
   },
   {
-   "exp_wins": 4.3557,
+   "exp_wins": 4.2206,
    "games": 5,
    "id": "6826",
    "name": "Cole Kmet",
@@ -6978,10 +6978,10 @@
     "rush_yd": 0.0
    },
    "team": "CHI",
-   "war": -0.3926
+   "war": -0.2791
   },
   {
-   "exp_wins": 3.2843,
+   "exp_wins": 3.1561,
    "games": 4,
    "id": "6828",
    "name": "AJ Dillon",
@@ -6997,10 +6997,10 @@
     "rush_yd": 43.0
    },
    "team": "CAR",
-   "war": -0.2975
+   "war": -0.2444
   },
   {
-   "exp_wins": 4.0414,
+   "exp_wins": 3.9,
    "games": 3,
    "id": "6847",
    "name": "Devin Duvernay",
@@ -7015,10 +7015,10 @@
     "rush_yd": 0.0
    },
    "team": "ARI",
-   "war": -0.3306
+   "war": -0.3027
   },
   {
-   "exp_wins": 4.4531,
+   "exp_wins": 4.2945,
    "games": 1,
    "id": "6853",
    "name": "Van Jefferson",
@@ -7033,10 +7033,10 @@
     "rush_yd": 0.0
    },
    "team": "WAS",
-   "war": 0.0812
+   "war": 0.0918
   },
   {
-   "exp_wins": 4.2179,
+   "exp_wins": 4.1284,
    "games": 7,
    "id": "6865",
    "name": "Colby Parkinson",
@@ -7053,10 +7053,10 @@
     "rush_yd": 0.0
    },
    "team": "LAR",
-   "war": -0.5304
+   "war": -0.3713
   },
   {
-   "exp_wins": 4.4552,
+   "exp_wins": 4.274,
    "games": 3,
    "id": "6869",
    "name": "Adam Trautman",
@@ -7071,10 +7071,10 @@
     "rush_yd": 0.0
    },
    "team": "DEN",
-   "war": -0.2932
+   "war": -0.2257
   },
   {
-   "exp_wins": 4.2684,
+   "exp_wins": 4.2606,
    "games": 5,
    "id": "6904",
    "name": "Jalen Hurts",
@@ -7090,10 +7090,10 @@
     "rush_yd": 107.0
    },
    "team": "PHI",
-   "war": -0.083
+   "war": -0.0837
   },
   {
-   "exp_wins": 3.5236,
+   "exp_wins": 3.3556,
    "games": 1,
    "id": "6918",
    "name": "Salvon Ahmed",
@@ -7109,10 +7109,10 @@
     "rush_yd": 25.0
    },
    "team": "CHI",
-   "war": -0.0582
+   "war": -0.0449
   },
   {
-   "exp_wins": 3.0266,
+   "exp_wins": 2.9382,
    "games": 7,
    "id": "6931",
    "name": "DeeJay Dallas",
@@ -7130,10 +7130,10 @@
     "rush_yd": 14.0
    },
    "team": "MIN",
-   "war": -0.5552
+   "war": -0.4623
   },
   {
-   "exp_wins": 4.7491,
+   "exp_wins": 4.6884,
    "games": 8,
    "id": "7002",
    "name": "Juwan Johnson",
@@ -7148,10 +7148,10 @@
     "rush_yd": 0.0
    },
    "team": "NO",
-   "war": 0.0007
+   "war": 0.1887
   },
   {
-   "exp_wins": 3.6743,
+   "exp_wins": 3.5756,
    "games": 6,
    "id": "7021",
    "name": "Rico Dowdle",
@@ -7167,10 +7167,10 @@
     "rush_yd": 200.0
    },
    "team": "PIT",
-   "war": 0.0925
+   "war": 0.1751
   },
   {
-   "exp_wins": 4.051,
+   "exp_wins": 3.9395,
    "games": 6,
    "id": "7039",
    "name": "Cody White",
@@ -7185,10 +7185,10 @@
     "rush_yd": 0.0
    },
    "team": "LV",
-   "war": -0.3209
+   "war": -0.2632
   },
   {
-   "exp_wins": 3.882,
+   "exp_wins": 3.7499,
    "games": 4,
    "id": "7049",
    "name": "Jauan Jennings",
@@ -7203,10 +7203,10 @@
     "rush_yd": 0.0
    },
    "team": "MIN",
-   "war": -0.49
+   "war": -0.4528
   },
   {
-   "exp_wins": 4.4829,
+   "exp_wins": 4.302,
    "games": 3,
    "id": "7075",
    "name": "Charlie Woerner",
@@ -7221,10 +7221,10 @@
     "rush_yd": 3.0
    },
    "team": "ATL",
-   "war": -0.2654
+   "war": -0.1976
   },
   {
-   "exp_wins": 3.9041,
+   "exp_wins": 3.8939,
    "games": 5,
    "id": "7083",
    "name": "Tyler Huntley",
@@ -7242,10 +7242,10 @@
     "rush_yd": 76.0
    },
    "team": "BAL",
-   "war": -0.4472
+   "war": -0.4505
   },
   {
-   "exp_wins": 3.557,
+   "exp_wins": 3.4624,
    "games": 8,
    "id": "7090",
    "name": "Darnell Mooney",
@@ -7260,10 +7260,10 @@
     "rush_yd": 28.0
    },
    "team": "NYG",
-   "war": -0.8149
+   "war": -0.7403
   },
   {
-   "exp_wins": 3.4209,
+   "exp_wins": 3.2661,
    "games": 2,
    "id": "7204",
    "name": "Reggie Gilliam",
@@ -7279,10 +7279,10 @@
     "rush_yd": 0.0
    },
    "team": "NE",
-   "war": -0.1609
+   "war": -0.1344
   },
   {
-   "exp_wins": 4.0023,
+   "exp_wins": 3.8609,
    "games": 3,
    "id": "7521",
    "name": "Chris Blair",
@@ -7297,10 +7297,10 @@
     "rush_yd": 0.0
    },
    "team": "ATL",
-   "war": -0.3697
+   "war": -0.3418
   },
   {
-   "exp_wins": 4.8238,
+   "exp_wins": 4.8221,
    "games": 9,
    "id": "7523",
    "name": "Trevor Lawrence",
@@ -7316,10 +7316,10 @@
     "rush_yd": 106.0
    },
    "team": "JAX",
-   "war": 0.4724
+   "war": 0.4778
   },
   {
-   "exp_wins": 4.7041,
+   "exp_wins": 4.5783,
    "games": 4,
    "id": "7525",
    "name": "DeVonta Smith",
@@ -7334,10 +7334,10 @@
     "rush_yd": 0.0
    },
    "team": "PHI",
-   "war": 0.3321
+   "war": 0.3756
   },
   {
-   "exp_wins": 4.0959,
+   "exp_wins": 4.0151,
    "games": 9,
    "id": "7526",
    "name": "Jaylen Waddle",
@@ -7352,10 +7352,10 @@
     "rush_yd": 23.0
    },
    "team": "DEN",
-   "war": -0.2761
+   "war": -0.1876
   },
   {
-   "exp_wins": 3.842,
+   "exp_wins": 3.8312,
    "games": 2,
    "id": "7527",
    "name": "Mac Jones",
@@ -7371,10 +7371,10 @@
     "rush_yd": -5.0
    },
    "team": "SF",
-   "war": -0.5093
+   "war": -0.5131
   },
   {
-   "exp_wins": 3.2694,
+   "exp_wins": 3.1548,
    "games": 5,
    "id": "7528",
    "name": "Najee Harris",
@@ -7393,10 +7393,10 @@
     "rush_yd": 99.0
    },
    "team": "NYG",
-   "war": -0.3124
+   "war": -0.2457
   },
   {
-   "exp_wins": 4.3767,
+   "exp_wins": 4.1949,
    "games": 3,
    "id": "7535",
    "name": "Hunter Long",
@@ -7411,10 +7411,10 @@
     "rush_yd": 0.0
    },
    "team": "ARI",
-   "war": -0.3716
+   "war": -0.3048
   },
   {
-   "exp_wins": 4.6239,
+   "exp_wins": 4.3975,
    "games": 1,
    "id": "7536",
    "name": "Quintin Morris",
@@ -7429,10 +7429,10 @@
     "rush_yd": 0.0
    },
    "team": "JAX",
-   "war": -0.1244
+   "war": -0.1021
   },
   {
-   "exp_wins": 3.6734,
+   "exp_wins": 3.5473,
    "games": 4,
    "id": "7543",
    "name": "Travis Etienne Jr.",
@@ -7448,10 +7448,10 @@
     "rush_yd": 142.0
    },
    "team": "NO",
-   "war": 0.0916
+   "war": 0.1468
   },
   {
-   "exp_wins": 5.5055,
+   "exp_wins": 5.4388,
    "games": 9,
    "id": "7547",
    "name": "Amon-Ra St. Brown",
@@ -7466,10 +7466,10 @@
     "rush_yd": 9.0
    },
    "team": "DET",
-   "war": 1.1336
+   "war": 1.2361
   },
   {
-   "exp_wins": 4.5142,
+   "exp_wins": 4.4746,
    "games": 9,
    "id": "7553",
    "name": "Kyle Pitts Sr.",
@@ -7484,10 +7484,10 @@
     "rush_yd": 0.0
    },
    "team": "ATL",
-   "war": -0.2342
+   "war": -0.025
   },
   {
-   "exp_wins": 3.5188,
+   "exp_wins": 3.378,
    "games": 3,
    "id": "7561",
    "name": "Elijah Mitchell",
@@ -7503,10 +7503,10 @@
     "rush_yd": 51.0
    },
    "team": "PHI",
-   "war": -0.063
+   "war": -0.0225
   },
   {
-   "exp_wins": 3.706,
+   "exp_wins": 3.5927,
    "games": 6,
    "id": "7562",
    "name": "Tutu Atwell",
@@ -7521,10 +7521,10 @@
     "rush_yd": 0.0
    },
    "team": "LAR",
-   "war": -0.6659
+   "war": -0.61
   },
   {
-   "exp_wins": 5.7241,
+   "exp_wins": 5.6619,
    "games": 9,
    "id": "7564",
    "name": "Ja'Marr Chase",
@@ -7539,10 +7539,10 @@
     "rush_yd": 0.0
    },
    "team": "CIN",
-   "war": 1.3522
+   "war": 1.4592
   },
   {
-   "exp_wins": 3.6362,
+   "exp_wins": 3.5787,
    "games": 9,
    "id": "7567",
    "name": "Kenny Gainwell",
@@ -7558,10 +7558,10 @@
     "rush_yd": 305.0
    },
    "team": "TB",
-   "war": 0.0544
+   "war": 0.1782
   },
   {
-   "exp_wins": 4.4964,
+   "exp_wins": 4.2923,
    "games": 2,
    "id": "7568",
    "name": "Brevin Jordan",
@@ -7576,10 +7576,10 @@
     "rush_yd": 0.0
    },
    "team": "HOU",
-   "war": -0.2519
+   "war": -0.2074
   },
   {
-   "exp_wins": 4.9161,
+   "exp_wins": 4.8233,
    "games": 7,
    "id": "7569",
    "name": "Nico Collins",
@@ -7594,10 +7594,10 @@
     "rush_yd": 12.0
    },
    "team": "HOU",
-   "war": 0.5441
+   "war": 0.6206
   },
   {
-   "exp_wins": 3.9524,
+   "exp_wins": 3.8604,
    "games": 8,
    "id": "7571",
    "name": "Rashod Bateman",
@@ -7614,10 +7614,10 @@
     "rush_yd": 0.0
    },
    "team": "BAL",
-   "war": -0.4196
+   "war": -0.3423
   },
   {
-   "exp_wins": 4.1004,
+   "exp_wins": 4.0916,
    "games": 1,
    "id": "7585",
    "name": "Davis Mills",
@@ -7633,10 +7633,10 @@
     "rush_yd": -2.0
    },
    "team": "HOU",
-   "war": -0.2509
+   "war": -0.2528
   },
   {
-   "exp_wins": 3.9399,
+   "exp_wins": 3.8081,
    "games": 4,
    "id": "7587",
    "name": "Dyami Brown",
@@ -7651,10 +7651,10 @@
     "rush_yd": 0.0
    },
    "team": "WAS",
-   "war": -0.4321
+   "war": -0.3946
   },
   {
-   "exp_wins": 5.2096,
+   "exp_wins": 5.1806,
    "games": 10,
    "id": "7588",
    "name": "Javonte Williams",
@@ -7670,10 +7670,10 @@
     "rush_yd": 692.0
    },
    "team": "DAL",
-   "war": 1.6278
+   "war": 1.7801
   },
   {
-   "exp_wins": 4.0763,
+   "exp_wins": 4.0675,
    "games": 1,
    "id": "7591",
    "name": "Justin Fields",
@@ -7689,10 +7689,10 @@
     "rush_yd": -1.0
    },
    "team": "KC",
-   "war": -0.275
+   "war": -0.2769
   },
   {
-   "exp_wins": 5.4774,
+   "exp_wins": 5.4376,
    "games": 9,
    "id": "7594",
    "name": "Chuba Hubbard",
@@ -7708,10 +7708,10 @@
     "rush_yd": 711.0
    },
    "team": "CAR",
-   "war": 1.8956
+   "war": 2.0371
   },
   {
-   "exp_wins": 3.8365,
+   "exp_wins": 3.7044,
    "games": 4,
    "id": "7595",
    "name": "Tylan Wallace",
@@ -7726,10 +7726,10 @@
     "rush_yd": 0.0
    },
    "team": "CLE",
-   "war": -0.5355
+   "war": -0.4983
   },
   {
-   "exp_wins": 3.9643,
+   "exp_wins": 3.823,
    "games": 3,
    "id": "7596",
    "name": "Elijah Moore",
@@ -7744,10 +7744,10 @@
     "rush_yd": 0.0
    },
    "team": "PHI",
-   "war": -0.4076
+   "war": -0.3797
   },
   {
-   "exp_wins": 4.7441,
+   "exp_wins": 4.7068,
    "games": 9,
    "id": "7600",
    "name": "Pat Freiermuth",
@@ -7764,10 +7764,10 @@
     "rush_yd": 5.0
    },
    "team": "PIT",
-   "war": -0.0043
+   "war": 0.2071
   },
   {
-   "exp_wins": 3.5146,
+   "exp_wins": 3.3466,
    "games": 1,
    "id": "7607",
    "name": "Michael Carter",
@@ -7783,10 +7783,10 @@
     "rush_yd": 7.0
    },
    "team": "TEN",
-   "war": -0.0672
+   "war": -0.0539
   },
   {
-   "exp_wins": 3.3327,
+   "exp_wins": 3.2046,
    "games": 4,
    "id": "7608",
    "name": "Khalil Herbert",
@@ -7802,10 +7802,10 @@
     "rush_yd": 28.0
    },
    "team": "ATL",
-   "war": -0.2491
+   "war": -0.1959
   },
   {
-   "exp_wins": 4.2673,
+   "exp_wins": 4.2291,
    "games": 10,
    "id": "7611",
    "name": "Rhamondre Stevenson",
@@ -7821,10 +7821,10 @@
     "rush_yd": 403.0
    },
    "team": "NE",
-   "war": 0.6855
+   "war": 0.8286
   },
   {
-   "exp_wins": 4.1654,
+   "exp_wins": 4.0346,
    "games": 4,
    "id": "7670",
    "name": "Joshua Palmer",
@@ -7839,10 +7839,10 @@
     "rush_yd": 0.0
    },
    "team": "BUF",
-   "war": -0.2065
+   "war": -0.1681
   },
   {
-   "exp_wins": 4.3399,
+   "exp_wins": 4.2986,
    "games": 9,
    "id": "7694",
    "name": "Tommy Tremble",
@@ -7857,10 +7857,10 @@
     "rush_yd": 0.0
    },
    "team": "CAR",
-   "war": -0.4084
+   "war": -0.2011
   },
   {
-   "exp_wins": 4.2574,
+   "exp_wins": 4.0978,
    "games": 4,
    "id": "7716",
    "name": "John Bates",
@@ -7875,10 +7875,10 @@
     "rush_yd": 0.0
    },
    "team": "WAS",
-   "war": -0.491
+   "war": -0.4018
   },
   {
-   "exp_wins": 3.9478,
+   "exp_wins": 3.8163,
    "games": 4,
    "id": "7757",
    "name": "Ben Skowronek",
@@ -7893,10 +7893,10 @@
     "rush_yd": 0.0
    },
    "team": "PIT",
-   "war": -0.4242
+   "war": -0.3864
   },
   {
-   "exp_wins": 3.8565,
+   "exp_wins": 3.7244,
    "games": 4,
    "id": "7812",
    "name": "Simi Fehoko",
@@ -7911,10 +7911,10 @@
     "rush_yd": 0.0
    },
    "team": "ARI",
-   "war": -0.5155
+   "war": -0.4783
   },
   {
-   "exp_wins": 4.143,
+   "exp_wins": 4.0761,
    "games": 8,
    "id": "7828",
    "name": "Noah Gray",
@@ -7929,10 +7929,10 @@
     "rush_yd": 0.0
    },
    "team": "KC",
-   "war": -0.6054
+   "war": -0.4236
   },
   {
-   "exp_wins": 4.4109,
+   "exp_wins": 4.2294,
    "games": 3,
    "id": "7842",
    "name": "Luke Farrell",
@@ -7947,10 +7947,10 @@
     "rush_yd": 0.0
    },
    "team": "SF",
-   "war": -0.3374
+   "war": -0.2703
   },
   {
-   "exp_wins": 4.1528,
+   "exp_wins": 4.0021,
    "games": 2,
    "id": "7865",
    "name": "Brandon Smith",
@@ -7965,10 +7965,10 @@
     "rush_yd": 0.0
    },
    "team": "PIT",
-   "war": -0.2192
+   "war": -0.2006
   },
   {
-   "exp_wins": 4.1538,
+   "exp_wins": 4.0167,
    "games": 5,
    "id": "7891",
    "name": "Brock Wright",
@@ -7983,10 +7983,10 @@
     "rush_yd": 0.0
    },
    "team": "DET",
-   "war": -0.5946
+   "war": -0.483
   },
   {
-   "exp_wins": 3.3333,
+   "exp_wins": 3.1918,
    "games": 3,
    "id": "8025",
    "name": "Adam Prentice",
@@ -8002,10 +8002,10 @@
     "rush_yd": 3.0
    },
    "team": "DEN",
-   "war": -0.2485
+   "war": -0.2087
   },
   {
-   "exp_wins": 4.4937,
+   "exp_wins": 4.407,
    "games": 7,
    "id": "8110",
    "name": "Jake Ferguson",
@@ -8022,10 +8022,10 @@
     "rush_yd": 0.0
    },
    "team": "DAL",
-   "war": -0.2546
+   "war": -0.0927
   },
   {
-   "exp_wins": 4.2789,
+   "exp_wins": 4.1898,
    "games": 7,
    "id": "8111",
    "name": "Cade Otton",
@@ -8040,10 +8040,10 @@
     "rush_yd": 0.0
    },
    "team": "TB",
-   "war": -0.4695
+   "war": -0.3099
   },
   {
-   "exp_wins": 4.78,
+   "exp_wins": 4.7152,
    "games": 10,
    "id": "8112",
    "name": "Drake London",
@@ -8058,10 +8058,10 @@
     "rush_yd": 4.0
    },
    "team": "ATL",
-   "war": 0.4081
+   "war": 0.5125
   },
   {
-   "exp_wins": 3.4627,
+   "exp_wins": 3.3354,
    "games": 4,
    "id": "8116",
    "name": "Pierre Strong Jr.",
@@ -8077,10 +8077,10 @@
     "rush_yd": 59.0
    },
    "team": "GB",
-   "war": -0.1191
+   "war": -0.0651
   },
   {
-   "exp_wins": 4.163,
+   "exp_wins": 4.0225,
    "games": 3,
    "id": "8117",
    "name": "Jalen Tolbert",
@@ -8095,10 +8095,10 @@
     "rush_yd": 0.0
    },
    "team": "MIA",
-   "war": -0.2089
+   "war": -0.1802
   },
   {
-   "exp_wins": 3.8406,
+   "exp_wins": 3.768,
    "games": 10,
    "id": "8119",
    "name": "Jahan Dotson",
@@ -8113,10 +8113,10 @@
     "rush_yd": 0.0
    },
    "team": "ATL",
-   "war": -0.5313
+   "war": -0.4347
   },
   {
-   "exp_wins": 4.4314,
+   "exp_wins": 4.3129,
    "games": 5,
    "id": "8121",
    "name": "Romeo Doubs",
@@ -8131,10 +8131,10 @@
     "rush_yd": 0.0
    },
    "team": "NE",
-   "war": 0.0595
+   "war": 0.1102
   },
   {
-   "exp_wins": 3.3836,
+   "exp_wins": 3.2834,
    "games": 6,
    "id": "8122",
    "name": "Zonovan Knight",
@@ -8152,10 +8152,10 @@
     "rush_yd": 187.0
    },
    "team": "ARI",
-   "war": -0.1982
+   "war": -0.1171
   },
   {
-   "exp_wins": 3.9814,
+   "exp_wins": 3.8993,
    "games": 9,
    "id": "8126",
    "name": "Wan'Dale Robinson",
@@ -8170,10 +8170,10 @@
     "rush_yd": 1.0
    },
    "team": "TEN",
-   "war": -0.3905
+   "war": -0.3034
   },
   {
-   "exp_wins": 4.2165,
+   "exp_wins": 4.1033,
    "games": 6,
    "id": "8127",
    "name": "Charlie Kolar",
@@ -8188,10 +8188,10 @@
     "rush_yd": 3.0
    },
    "team": "LAC",
-   "war": -0.5318
+   "war": -0.3963
   },
   {
-   "exp_wins": 3.7186,
+   "exp_wins": 3.5795,
    "games": 3,
    "id": "8129",
    "name": "Dameon Pierce",
@@ -8209,10 +8209,10 @@
     "rush_yd": 96.0
    },
    "team": "PHI",
-   "war": 0.1368
+   "war": 0.179
   },
   {
-   "exp_wins": 5.5658,
+   "exp_wins": 5.5606,
    "games": 10,
    "id": "8130",
    "name": "Trey McBride",
@@ -8227,10 +8227,10 @@
     "rush_yd": 0.0
    },
    "team": "ARI",
-   "war": 0.8175
+   "war": 1.0609
   },
   {
-   "exp_wins": 5.6202,
+   "exp_wins": 5.5919,
    "games": 9,
    "id": "8131",
    "name": "Isaiah Likely",
@@ -8245,10 +8245,10 @@
     "rush_yd": 0.0
    },
    "team": "NYG",
-   "war": 0.8718
+   "war": 1.0922
   },
   {
-   "exp_wins": 3.9104,
+   "exp_wins": 3.8698,
    "games": 10,
    "id": "8132",
    "name": "Tyler Allgeier",
@@ -8264,10 +8264,10 @@
     "rush_yd": 383.0
    },
    "team": "ARI",
-   "war": 0.3286
+   "war": 0.4693
   },
   {
-   "exp_wins": 4.0545,
+   "exp_wins": 3.9718,
    "games": 9,
    "id": "8134",
    "name": "Khalil Shakir",
@@ -8282,10 +8282,10 @@
     "rush_yd": 29.0
    },
    "team": "BUF",
-   "war": -0.3175
+   "war": -0.2309
   },
   {
-   "exp_wins": 4.1634,
+   "exp_wins": 4.0519,
    "games": 6,
    "id": "8135",
    "name": "Treylon Burks",
@@ -8302,10 +8302,10 @@
     "rush_yd": 0.0
    },
    "team": "WAS",
-   "war": -0.2086
+   "war": -0.1508
   },
   {
-   "exp_wins": 3.8696,
+   "exp_wins": 3.7999,
    "games": 8,
    "id": "8136",
    "name": "Rachaad White",
@@ -8321,10 +8321,10 @@
     "rush_yd": 275.0
    },
    "team": "WAS",
-   "war": 0.2878
+   "war": 0.3994
   },
   {
-   "exp_wins": 4.982,
+   "exp_wins": 4.9106,
    "games": 9,
    "id": "8137",
    "name": "George Pickens",
@@ -8339,10 +8339,10 @@
     "rush_yd": 0.0
    },
    "team": "DAL",
-   "war": 0.6101
+   "war": 0.7079
   },
   {
-   "exp_wins": 5.5849,
+   "exp_wins": 5.546,
    "games": 9,
    "id": "8138",
    "name": "James Cook III",
@@ -8358,10 +8358,10 @@
     "rush_yd": 971.0
    },
    "team": "BUF",
-   "war": 2.0031
+   "war": 2.1455
   },
   {
-   "exp_wins": 3.4941,
+   "exp_wins": 3.3261,
    "games": 1,
    "id": "8139",
    "name": "Zamir White",
@@ -8377,10 +8377,10 @@
     "rush_yd": 5.0
    },
    "team": "NO",
-   "war": -0.0877
+   "war": -0.0744
   },
   {
-   "exp_wins": 4.216,
+   "exp_wins": 4.0657,
    "games": 2,
    "id": "8142",
    "name": "Alec Pierce",
@@ -8395,10 +8395,10 @@
     "rush_yd": 0.0
    },
    "team": "IND",
-   "war": -0.1559
+   "war": -0.137
   },
   {
-   "exp_wins": 5.0146,
+   "exp_wins": 4.9416,
    "games": 9,
    "id": "8144",
    "name": "Chris Olave",
@@ -8413,10 +8413,10 @@
     "rush_yd": 0.0
    },
    "team": "NO",
-   "war": 0.6426
+   "war": 0.7389
   },
   {
-   "exp_wins": 4.5653,
+   "exp_wins": 4.3854,
    "games": 3,
    "id": "8145",
    "name": "Jeremy Ruckert",
@@ -8431,10 +8431,10 @@
     "rush_yd": 0.0
    },
    "team": "NYJ",
-   "war": -0.183
+   "war": -0.1143
   },
   {
-   "exp_wins": 4.785,
+   "exp_wins": 4.7101,
    "games": 9,
    "id": "8146",
    "name": "Garrett Wilson",
@@ -8449,10 +8449,10 @@
     "rush_yd": 0.0
    },
    "team": "NYJ",
-   "war": 0.413
+   "war": 0.5074
   },
   {
-   "exp_wins": 3.7468,
+   "exp_wins": 3.6432,
    "games": 7,
    "id": "8147",
    "name": "John Metchie III",
@@ -8467,10 +8467,10 @@
     "rush_yd": 0.0
    },
    "team": "CAR",
-   "war": -0.6252
+   "war": -0.5595
   },
   {
-   "exp_wins": 4.623,
+   "exp_wins": 4.5465,
    "games": 9,
    "id": "8148",
    "name": "Jameson Williams",
@@ -8485,10 +8485,10 @@
     "rush_yd": 9.0
    },
    "team": "DET",
-   "war": 0.251
+   "war": 0.3438
   },
   {
-   "exp_wins": 4.9742,
+   "exp_wins": 4.9424,
    "games": 10,
    "id": "8150",
    "name": "Kyren Williams",
@@ -8504,10 +8504,10 @@
     "rush_yd": 616.0
    },
    "team": "LAR",
-   "war": 1.3924
+   "war": 1.5419
   },
   {
-   "exp_wins": 5.9119,
+   "exp_wins": 5.864,
    "games": 8,
    "id": "8151",
    "name": "Kenneth Walker III",
@@ -8523,10 +8523,10 @@
     "rush_yd": 872.0
    },
    "team": "KC",
-   "war": 2.3301
+   "war": 2.4635
   },
   {
-   "exp_wins": 3.8191,
+   "exp_wins": 3.7227,
    "games": 6,
    "id": "8154",
    "name": "Brian Robinson Jr.",
@@ -8542,10 +8542,10 @@
     "rush_yd": 211.0
    },
    "team": "ATL",
-   "war": 0.2373
+   "war": 0.3222
   },
   {
-   "exp_wins": 4.1122,
+   "exp_wins": 4.0036,
    "games": 5,
    "id": "8155",
    "name": "Breece Hall",
@@ -8561,10 +8561,10 @@
     "rush_yd": 265.0
    },
    "team": "NYJ",
-   "war": 0.5303
+   "war": 0.6031
   },
   {
-   "exp_wins": 3.6618,
+   "exp_wins": 3.6494,
    "games": 3,
    "id": "8160",
    "name": "Kenny Pickett",
@@ -8580,10 +8580,10 @@
     "rush_yd": 35.0
    },
    "team": "CAR",
-   "war": -0.6895
+   "war": -0.695
   },
   {
-   "exp_wins": 3.8736,
+   "exp_wins": 3.8628,
    "games": 8,
    "id": "8161",
    "name": "Malik Willis",
@@ -8599,10 +8599,10 @@
     "rush_yd": 232.0
    },
    "team": "MIA",
-   "war": -0.4777
+   "war": -0.4816
   },
   {
-   "exp_wins": 5.5013,
+   "exp_wins": 5.446,
    "games": 10,
    "id": "8167",
    "name": "Christian Watson",
@@ -8617,10 +8617,10 @@
     "rush_yd": 0.0
    },
    "team": "GB",
-   "war": 1.1293
+   "war": 1.2433
   },
   {
-   "exp_wins": 3.8611,
+   "exp_wins": 3.7291,
    "games": 4,
    "id": "8168",
    "name": "Skyy Moore",
@@ -8635,10 +8635,10 @@
     "rush_yd": 0.0
    },
    "team": "GB",
-   "war": -0.5109
+   "war": -0.4736
   },
   {
-   "exp_wins": 4.7037,
+   "exp_wins": 4.4781,
    "games": 1,
    "id": "8170",
    "name": "James Mitchell",
@@ -8653,10 +8653,10 @@
     "rush_yd": 0.0
    },
    "team": "DAL",
-   "war": -0.0446
+   "war": -0.0216
   },
   {
-   "exp_wins": 4.4231,
+   "exp_wins": 4.3355,
    "games": 7,
    "id": "8172",
    "name": "Greg Dulcich",
@@ -8673,10 +8673,10 @@
     "rush_yd": 0.0
    },
    "team": "MIA",
-   "war": -0.3252
+   "war": -0.1642
   },
   {
-   "exp_wins": 3.5376,
+   "exp_wins": 3.4436,
    "games": 8,
    "id": "8180",
    "name": "Jalen Nailor",
@@ -8693,10 +8693,10 @@
     "rush_yd": 0.0
    },
    "team": "LV",
-   "war": -0.8344
+   "war": -0.7591
   },
   {
-   "exp_wins": 3.1742,
+   "exp_wins": 3.0592,
    "games": 5,
    "id": "8181",
    "name": "Connor Heyward",
@@ -8712,10 +8712,10 @@
     "rush_yd": -2.0
    },
    "team": "LV",
-   "war": -0.4076
+   "war": -0.3413
   },
   {
-   "exp_wins": 5.2274,
+   "exp_wins": 5.2296,
    "games": 9,
    "id": "8183",
    "name": "Brock Purdy",
@@ -8731,10 +8731,10 @@
     "rush_yd": 222.0
    },
    "team": "SF",
-   "war": 0.8761
+   "war": 0.8852
   },
   {
-   "exp_wins": 4.5798,
+   "exp_wins": 4.4435,
    "games": 3,
    "id": "8188",
    "name": "Tyquan Thornton",
@@ -8749,10 +8749,10 @@
     "rush_yd": 0.0
    },
    "team": "KC",
-   "war": 0.2078
+   "war": 0.2408
   },
   {
-   "exp_wins": 3.5607,
+   "exp_wins": 3.4065,
    "games": 2,
    "id": "8195",
    "name": "Ronnie Rivers",
@@ -8768,10 +8768,10 @@
     "rush_yd": 100.0
    },
    "team": "LAR",
-   "war": -0.0211
+   "war": 0.006
   },
   {
-   "exp_wins": 4.2354,
+   "exp_wins": 4.0754,
    "games": 1,
    "id": "8200",
    "name": "Kevin Austin",
@@ -8786,10 +8786,10 @@
     "rush_yd": 0.0
    },
    "team": "NO",
-   "war": -0.1366
+   "war": -0.1273
   },
   {
-   "exp_wins": 3.9979,
+   "exp_wins": 3.8566,
    "games": 3,
    "id": "8204",
    "name": "Bo Melton",
@@ -8804,10 +8804,10 @@
     "rush_yd": 0.0
    },
    "team": "GB",
-   "war": -0.374
+   "war": -0.3461
   },
   {
-   "exp_wins": 3.3225,
+   "exp_wins": 3.2216,
    "games": 6,
    "id": "8207",
    "name": "Tyler Goodson",
@@ -8823,10 +8823,10 @@
     "rush_yd": 163.0
    },
    "team": "DAL",
-   "war": -0.2593
+   "war": -0.1789
   },
   {
-   "exp_wins": 3.3165,
+   "exp_wins": 3.2021,
    "games": 5,
    "id": "8208",
    "name": "Tyler Badie",
@@ -8842,10 +8842,10 @@
     "rush_yd": 22.0
    },
    "team": "DEN",
-   "war": -0.2653
+   "war": -0.1984
   },
   {
-   "exp_wins": 4.3699,
+   "exp_wins": 4.2818,
    "games": 7,
    "id": "8210",
    "name": "Chig Okonkwo",
@@ -8862,10 +8862,10 @@
     "rush_yd": 0.0
    },
    "team": "WAS",
-   "war": -0.3784
+   "war": -0.2179
   },
   {
-   "exp_wins": 4.2687,
+   "exp_wins": 4.1093,
    "games": 4,
    "id": "8219",
    "name": "Jelani Woods",
@@ -8880,10 +8880,10 @@
     "rush_yd": 0.0
    },
    "team": "NYJ",
-   "war": -0.4796
+   "war": -0.3904
   },
   {
-   "exp_wins": 4.1112,
+   "exp_wins": 3.9605,
    "games": 2,
    "id": "8223",
    "name": "Velus Jones Jr.",
@@ -8898,10 +8898,10 @@
     "rush_yd": 28.0
    },
    "team": "SEA",
-   "war": -0.2608
+   "war": -0.2422
   },
   {
-   "exp_wins": 4.0559,
+   "exp_wins": 3.9648,
    "games": 7,
    "id": "8225",
    "name": "Daniel Bellinger",
@@ -8916,10 +8916,10 @@
     "rush_yd": 0.0
    },
    "team": "TEN",
-   "war": -0.6924
+   "war": -0.5349
   },
   {
-   "exp_wins": 4.7273,
+   "exp_wins": 4.5255,
    "games": 2,
    "id": "8227",
    "name": "Teagan Quitoriano",
@@ -8934,10 +8934,10 @@
     "rush_yd": 0.0
    },
    "team": "ARI",
-   "war": -0.0211
+   "war": 0.0258
   },
   {
-   "exp_wins": 5.0159,
+   "exp_wins": 4.9712,
    "games": 9,
    "id": "8228",
    "name": "Jaylen Warren",
@@ -8953,10 +8953,10 @@
     "rush_yd": 719.0
    },
    "team": "PIT",
-   "war": 1.4341
+   "war": 1.5707
   },
   {
-   "exp_wins": 4.2415,
+   "exp_wins": 4.0815,
    "games": 1,
    "id": "8250",
    "name": "Tay Martin",
@@ -8971,10 +8971,10 @@
     "rush_yd": 0.0
    },
    "team": "DET",
-   "war": -0.1305
+   "war": -0.1212
   },
   {
-   "exp_wins": 4.2369,
+   "exp_wins": 4.077,
    "games": 1,
    "id": "8253",
    "name": "Deven Thompkins",
@@ -8989,10 +8989,10 @@
     "rush_yd": 0.0
    },
    "team": "LV",
-   "war": -0.135
+   "war": -0.1257
   },
   {
-   "exp_wins": 3.8468,
+   "exp_wins": 3.8361,
    "games": 2,
    "id": "827",
    "name": "Tyrod Taylor",
@@ -9008,10 +9008,10 @@
     "rush_yd": -2.0
    },
    "team": "GB",
-   "war": -0.5045
+   "war": -0.5083
   },
   {
-   "exp_wins": 4.0774,
+   "exp_wins": 4.0685,
    "games": 1,
    "id": "829",
    "name": "Andy Dalton",
@@ -9027,10 +9027,10 @@
     "rush_yd": 0.0
    },
    "team": "PHI",
-   "war": -0.2739
+   "war": -0.2758
   },
   {
-   "exp_wins": 3.5997,
+   "exp_wins": 3.4869,
    "games": 5,
    "id": "8408",
    "name": "Jordan Mason",
@@ -9046,10 +9046,10 @@
     "rush_yd": 241.0
    },
    "team": "MIN",
-   "war": 0.0179
+   "war": 0.0864
   },
   {
-   "exp_wins": 4.6207,
+   "exp_wins": 4.3943,
    "games": 1,
    "id": "8484",
    "name": "Ko Kieft",
@@ -9064,10 +9064,10 @@
     "rush_yd": 0.0
    },
    "team": "TB",
-   "war": -0.1276
+   "war": -0.1054
   },
   {
-   "exp_wins": 4.3833,
+   "exp_wins": 4.2015,
    "games": 3,
    "id": "8489",
    "name": "Drew Ogletree",
@@ -9082,10 +9082,10 @@
     "rush_yd": 0.0
    },
    "team": "IND",
-   "war": -0.3651
+   "war": -0.2982
   },
   {
-   "exp_wins": 4.7243,
+   "exp_wins": 4.4988,
    "games": 1,
    "id": "8523",
    "name": "Nick Muse",
@@ -9100,10 +9100,10 @@
     "rush_yd": 0.0
    },
    "team": "ATL",
-   "war": -0.0241
+   "war": -0.0009
   },
   {
-   "exp_wins": 4.1031,
+   "exp_wins": 3.9525,
    "games": 2,
    "id": "8527",
    "name": "Dareke Young",
@@ -9118,10 +9118,10 @@
     "rush_yd": 0.0
    },
    "team": "LV",
-   "war": -0.2689
+   "war": -0.2502
   },
   {
-   "exp_wins": 3.698,
+   "exp_wins": 3.6045,
    "games": 8,
    "id": "8676",
    "name": "Rashid Shaheed",
@@ -9139,10 +9139,10 @@
     "rush_yd": 39.0
    },
    "team": "SEA",
-   "war": -0.674
+   "war": -0.5982
   },
   {
-   "exp_wins": 4.2324,
+   "exp_wins": 4.0724,
    "games": 1,
    "id": "8755",
    "name": "Kaden Davis",
@@ -9157,10 +9157,10 @@
     "rush_yd": 0.0
    },
    "team": "CHI",
-   "war": -0.1396
+   "war": -0.1303
   },
   {
-   "exp_wins": 4.2384,
+   "exp_wins": 4.0785,
    "games": 1,
    "id": "8756",
    "name": "Brandon Johnson",
@@ -9175,10 +9175,10 @@
     "rush_yd": 0.0
    },
    "team": "PIT",
-   "war": -0.1335
+   "war": -0.1242
   },
   {
-   "exp_wins": 3.8072,
+   "exp_wins": 3.6847,
    "games": 5,
    "id": "8917",
    "name": "KaVontae Turpin",
@@ -9193,10 +9193,10 @@
     "rush_yd": 19.0
    },
    "team": "DAL",
-   "war": -0.5648
+   "war": -0.518
   },
   {
-   "exp_wins": 6.5393,
+   "exp_wins": 6.511,
    "games": 9,
    "id": "9221",
    "name": "Jahmyr Gibbs",
@@ -9212,10 +9212,10 @@
     "rush_yd": 1000.0
    },
    "team": "DET",
-   "war": 2.9575
+   "war": 3.1105
   },
   {
-   "exp_wins": 4.4284,
+   "exp_wins": 4.3772,
    "games": 9,
    "id": "9224",
    "name": "Chase Brown",
@@ -9231,10 +9231,10 @@
     "rush_yd": 441.0
    },
    "team": "CIN",
-   "war": 0.8466
+   "war": 0.9767
   },
   {
-   "exp_wins": 3.4476,
+   "exp_wins": 3.3205,
    "games": 4,
    "id": "9225",
    "name": "Tank Bigsby",
@@ -9250,10 +9250,10 @@
     "rush_yd": 91.0
    },
    "team": "PHI",
-   "war": -0.1343
+   "war": -0.08
   },
   {
-   "exp_wins": 3.6276,
+   "exp_wins": 3.4876,
    "games": 3,
    "id": "9226",
    "name": "De'Von Achane",
@@ -9271,10 +9271,10 @@
     "rush_yd": 127.0
    },
    "team": "MIA",
-   "war": 0.0458
+   "war": 0.0871
   },
   {
-   "exp_wins": 3.5087,
+   "exp_wins": 3.3406,
    "games": 1,
    "id": "9227",
    "name": "Israel Abanikanda",
@@ -9290,10 +9290,10 @@
     "rush_yd": 8.0
    },
    "team": "DAL",
-   "war": -0.0731
+   "war": -0.0599
   },
   {
-   "exp_wins": 4.468,
+   "exp_wins": 4.4628,
    "games": 9,
    "id": "9228",
    "name": "Bryce Young",
@@ -9309,10 +9309,10 @@
     "rush_yd": 48.0
    },
    "team": "CAR",
-   "war": 0.1167
+   "war": 0.1184
   },
   {
-   "exp_wins": 4.1079,
+   "exp_wins": 4.0991,
    "games": 1,
    "id": "9229",
    "name": "Anthony Richardson Sr.",
@@ -9328,10 +9328,10 @@
     "rush_yd": 4.0
    },
    "team": "IND",
-   "war": -0.2434
+   "war": -0.2453
   },
   {
-   "exp_wins": 4.0093,
+   "exp_wins": 3.9991,
    "games": 3,
    "id": "9230",
    "name": "Tanner McKee",
@@ -9347,10 +9347,10 @@
     "rush_yd": 26.0
    },
    "team": "PHI",
-   "war": -0.342
+   "war": -0.3453
   },
   {
-   "exp_wins": 4.3542,
+   "exp_wins": 4.313,
    "games": 9,
    "id": "9479",
    "name": "Darnell Washington",
@@ -9365,10 +9365,10 @@
     "rush_yd": 0.0
    },
    "team": "PIT",
-   "war": -0.3941
+   "war": -0.1867
   },
   {
-   "exp_wins": 4.5303,
+   "exp_wins": 4.4907,
    "games": 9,
    "id": "9480",
    "name": "Brenton Strange",
@@ -9383,10 +9383,10 @@
     "rush_yd": 0.0
    },
    "team": "JAX",
-   "war": -0.218
+   "war": -0.009
   },
   {
-   "exp_wins": 4.3973,
+   "exp_wins": 4.3799,
    "games": 10,
    "id": "9482",
    "name": "Michael Mayer",
@@ -9403,10 +9403,10 @@
     "rush_yd": 2.0
    },
    "team": "LV",
-   "war": -0.3511
+   "war": -0.1198
   },
   {
-   "exp_wins": 4.5634,
+   "exp_wins": 4.5478,
    "games": 10,
    "id": "9484",
    "name": "Tucker Kraft",
@@ -9421,10 +9421,10 @@
     "rush_yd": 13.0
    },
    "team": "GB",
-   "war": -0.1849
+   "war": 0.0481
   },
   {
-   "exp_wins": 4.1483,
+   "exp_wins": 4.0371,
    "games": 6,
    "id": "9486",
    "name": "Dontayvion Wicks",
@@ -9441,10 +9441,10 @@
     "rush_yd": 0.0
    },
    "team": "PHI",
-   "war": -0.2236
+   "war": -0.1656
   },
   {
-   "exp_wins": 4.9982,
+   "exp_wins": 4.9268,
    "games": 9,
    "id": "9487",
    "name": "Parker Washington",
@@ -9459,10 +9459,10 @@
     "rush_yd": 13.0
    },
    "team": "JAX",
-   "war": 0.6262
+   "war": 0.7241
   },
   {
-   "exp_wins": 6.68,
+   "exp_wins": 6.6395,
    "games": 10,
    "id": "9488",
    "name": "Jaxon Smith-Njigba",
@@ -9477,10 +9477,10 @@
     "rush_yd": 29.0
    },
    "team": "SEA",
-   "war": 2.3081
+   "war": 2.4368
   },
   {
-   "exp_wins": 5.6478,
+   "exp_wins": 5.5635,
    "games": 7,
    "id": "9493",
    "name": "Puka Nacua",
@@ -9495,10 +9495,10 @@
     "rush_yd": 41.0
    },
    "team": "LAR",
-   "war": 1.2758
+   "war": 1.3608
   },
   {
-   "exp_wins": 3.6799,
+   "exp_wins": 3.5666,
    "games": 6,
    "id": "9494",
    "name": "Marvin Mims Jr.",
@@ -9513,10 +9513,10 @@
     "rush_yd": 30.0
    },
    "team": "DEN",
-   "war": -0.6921
+   "war": -0.6361
   },
   {
-   "exp_wins": 3.9755,
+   "exp_wins": 3.9026,
    "games": 10,
    "id": "9500",
    "name": "Josh Downs",
@@ -9531,10 +9531,10 @@
     "rush_yd": 7.0
    },
    "team": "KC",
-   "war": -0.3965
+   "war": -0.3001
   },
   {
-   "exp_wins": 4.1932,
+   "exp_wins": 4.1242,
    "games": 10,
    "id": "9501",
    "name": "DeMario Douglas",
@@ -9549,10 +9549,10 @@
     "rush_yd": 0.0
    },
    "team": "NE",
-   "war": -0.1787
+   "war": -0.0785
   },
   {
-   "exp_wins": 4.3822,
+   "exp_wins": 4.2436,
    "games": 3,
    "id": "9502",
    "name": "Tank Dell",
@@ -9567,10 +9567,10 @@
     "rush_yd": 2.0
    },
    "team": "HOU",
-   "war": 0.0103
+   "war": 0.0409
   },
   {
-   "exp_wins": 4.0138,
+   "exp_wins": 3.9238,
    "games": 8,
    "id": "9504",
    "name": "Kayshon Boutte",
@@ -9587,10 +9587,10 @@
     "rush_yd": 0.0
    },
    "team": "HOU",
-   "war": -0.3581
+   "war": -0.2789
   },
   {
-   "exp_wins": 3.6094,
+   "exp_wins": 3.4693,
    "games": 3,
    "id": "9506",
    "name": "Sean Tucker",
@@ -9606,10 +9606,10 @@
     "rush_yd": 80.0
    },
    "team": "TB",
-   "war": 0.0276
+   "war": 0.0688
   },
   {
-   "exp_wins": 3.2632,
+   "exp_wins": 3.1757,
    "games": 7,
    "id": "9508",
    "name": "Tyjae Spears",
@@ -9625,10 +9625,10 @@
     "rush_yd": 94.0
    },
    "team": "TEN",
-   "war": -0.3186
+   "war": -0.2248
   },
   {
-   "exp_wins": 5.6216,
+   "exp_wins": 5.5971,
    "games": 10,
    "id": "9509",
    "name": "Bijan Robinson",
@@ -9644,10 +9644,10 @@
     "rush_yd": 951.0
    },
    "team": "ATL",
-   "war": 2.0398
+   "war": 2.1966
   },
   {
-   "exp_wins": 3.4761,
+   "exp_wins": 3.3215,
    "games": 2,
    "id": "9510",
    "name": "Lew Nichols",
@@ -9663,10 +9663,10 @@
     "rush_yd": 49.0
    },
    "team": "PIT",
-   "war": -0.1057
+   "war": -0.079
   },
   {
-   "exp_wins": 3.3685,
+   "exp_wins": 3.3092,
    "games": 9,
    "id": "9511",
    "name": "Keaton Mitchell",
@@ -9684,10 +9684,10 @@
     "rush_yd": 182.0
    },
    "team": "LAC",
-   "war": -0.2133
+   "war": -0.0913
   },
   {
-   "exp_wins": 4.0439,
+   "exp_wins": 4.0346,
    "games": 9,
    "id": "96",
    "name": "Aaron Rodgers",
@@ -9706,10 +9706,10 @@
     "rush_yd": 22.0
    },
    "team": "PIT",
-   "war": -0.3074
+   "war": -0.3097
   },
   {
-   "exp_wins": 3.6534,
+   "exp_wins": 3.5135,
    "games": 3,
    "id": "9753",
    "name": "Zach Charbonnet",
@@ -9725,10 +9725,10 @@
     "rush_yd": 194.0
    },
    "team": "SEA",
-   "war": 0.0716
+   "war": 0.113
   },
   {
-   "exp_wins": 3.7733,
+   "exp_wins": 3.6799,
    "games": 8,
    "id": "9754",
    "name": "Quentin Johnston",
@@ -9743,10 +9743,10 @@
     "rush_yd": 8.0
    },
    "team": "LAC",
-   "war": -0.5986
+   "war": -0.5228
   },
   {
-   "exp_wins": 4.167,
+   "exp_wins": 4.0563,
    "games": 6,
    "id": "9756",
    "name": "Jordan Addison",
@@ -9761,10 +9761,10 @@
     "rush_yd": 2.0
    },
    "team": "MIN",
-   "war": -0.205
+   "war": -0.1464
   },
   {
-   "exp_wins": 3.5387,
+   "exp_wins": 3.4391,
    "games": 6,
    "id": "9757",
    "name": "Kendre Miller",
@@ -9783,10 +9783,10 @@
     "rush_yd": 159.0
    },
    "team": "NO",
-   "war": -0.0431
+   "war": 0.0386
   },
   {
-   "exp_wins": 5.0082,
+   "exp_wins": 5.0079,
    "games": 9,
    "id": "9758",
    "name": "C.J. Stroud",
@@ -9802,10 +9802,10 @@
     "rush_yd": 120.0
    },
    "team": "HOU",
-   "war": 0.6569
+   "war": 0.6635
   },
   {
-   "exp_wins": 5.1048,
+   "exp_wins": 5.024,
    "games": 8,
    "id": "9997",
    "name": "Zay Flowers",
@@ -9820,10 +9820,10 @@
     "rush_yd": 51.0
    },
    "team": "BAL",
-   "war": 0.7329
+   "war": 0.8213
   },
   {
-   "exp_wins": 4.4577,
+   "exp_wins": 4.4401,
    "games": 9,
    "id": "ARI",
    "name": "Arizona Cardinals",
@@ -9839,10 +9839,10 @@
     "sack": 20.0
    },
    "team": "ARI",
-   "war": -0.5105
+   "war": -0.484
   },
   {
-   "exp_wins": 4.5984,
+   "exp_wins": 4.5857,
    "games": 10,
    "id": "ATL",
    "name": "Atlanta Falcons",
@@ -9858,10 +9858,10 @@
     "sack": 21.0
    },
    "team": "ATL",
-   "war": -0.3698
+   "war": -0.3385
   },
   {
-   "exp_wins": 4.4294,
+   "exp_wins": 4.4149,
    "games": 10,
    "id": "BAL",
    "name": "Baltimore Ravens",
@@ -9879,10 +9879,10 @@
     "sack": 19.0
    },
    "team": "BAL",
-   "war": -0.5388
+   "war": -0.5093
   },
   {
-   "exp_wins": 4.947,
+   "exp_wins": 4.9344,
    "games": 9,
    "id": "BUF",
    "name": "Buffalo Bills",
@@ -9900,10 +9900,10 @@
     "sack": 21.0
    },
    "team": "BUF",
-   "war": -0.0213
+   "war": 0.0102
   },
   {
-   "exp_wins": 4.5829,
+   "exp_wins": 4.5663,
    "games": 9,
    "id": "CAR",
    "name": "Carolina Panthers",
@@ -9919,10 +9919,10 @@
     "sack": 14.0
    },
    "team": "CAR",
-   "war": -0.3853
+   "war": -0.3579
   },
   {
-   "exp_wins": 5.0319,
+   "exp_wins": 5.0201,
    "games": 9,
    "id": "CHI",
    "name": "Chicago Bears",
@@ -9938,10 +9938,10 @@
     "sack": 26.0
    },
    "team": "CHI",
-   "war": 0.0636
+   "war": 0.0959
   },
   {
-   "exp_wins": 5.1477,
+   "exp_wins": 5.1368,
    "games": 9,
    "id": "CIN",
    "name": "Cincinnati Bengals",
@@ -9957,10 +9957,10 @@
     "sack": 26.0
    },
    "team": "CIN",
-   "war": 0.1795
+   "war": 0.2127
   },
   {
-   "exp_wins": 4.9042,
+   "exp_wins": 4.8946,
    "games": 10,
    "id": "CLE",
    "name": "Cleveland Browns",
@@ -9978,10 +9978,10 @@
     "sack": 27.0
    },
    "team": "CLE",
-   "war": -0.064
+   "war": -0.0296
   },
   {
-   "exp_wins": 4.3447,
+   "exp_wins": 4.3293,
    "games": 10,
    "id": "DAL",
    "name": "Dallas Cowboys",
@@ -10000,10 +10000,10 @@
     "sack": 22.0
    },
    "team": "DAL",
-   "war": -0.6236
+   "war": -0.5949
   },
   {
-   "exp_wins": 4.9969,
+   "exp_wins": 4.9848,
    "games": 9,
    "id": "DEN",
    "name": "Denver Broncos",
@@ -10019,10 +10019,10 @@
     "sack": 26.0
    },
    "team": "DEN",
-   "war": 0.0286
+   "war": 0.0606
   },
   {
-   "exp_wins": 4.7952,
+   "exp_wins": 4.7809,
    "games": 9,
    "id": "DET",
    "name": "Detroit Lions",
@@ -10038,10 +10038,10 @@
     "sack": 32.0
    },
    "team": "DET",
-   "war": -0.1731
+   "war": -0.1432
   },
   {
-   "exp_wins": 4.9527,
+   "exp_wins": 4.9437,
    "games": 10,
    "id": "GB",
    "name": "Green Bay Packers",
@@ -10060,10 +10060,10 @@
     "sack": 29.0
    },
    "team": "GB",
-   "war": -0.0156
+   "war": 0.0195
   },
   {
-   "exp_wins": 4.8284,
+   "exp_wins": 4.8146,
    "games": 9,
    "id": "HOU",
    "name": "Houston Texans",
@@ -10079,10 +10079,10 @@
     "sack": 33.0
    },
    "team": "HOU",
-   "war": -0.1398
+   "war": -0.1095
   },
   {
-   "exp_wins": 4.4623,
+   "exp_wins": 4.4481,
    "games": 10,
    "id": "IND",
    "name": "Indianapolis Colts",
@@ -10100,10 +10100,10 @@
     "sack": 22.0
    },
    "team": "IND",
-   "war": -0.506
+   "war": -0.476
   },
   {
-   "exp_wins": 5.0941,
+   "exp_wins": 5.083,
    "games": 9,
    "id": "JAX",
    "name": "Jacksonville Jaguars",
@@ -10119,10 +10119,10 @@
     "sack": 17.0
    },
    "team": "JAX",
-   "war": 0.1258
+   "war": 0.1588
   },
   {
-   "exp_wins": 4.9828,
+   "exp_wins": 4.9706,
    "games": 9,
    "id": "KC",
    "name": "Kansas City Chiefs",
@@ -10142,10 +10142,10 @@
     "sack": 17.0
    },
    "team": "KC",
-   "war": 0.0145
+   "war": 0.0464
   },
   {
-   "exp_wins": 4.6196,
+   "exp_wins": 4.6035,
    "games": 9,
    "id": "LAC",
    "name": "Los Angeles Chargers",
@@ -10163,10 +10163,10 @@
     "sack": 15.0
    },
    "team": "LAC",
-   "war": -0.3486
+   "war": -0.3206
   },
   {
-   "exp_wins": 5.0346,
+   "exp_wins": 5.0264,
    "games": 10,
    "id": "LAR",
    "name": "Los Angeles Rams",
@@ -10182,10 +10182,10 @@
     "sack": 21.0
    },
    "team": "LAR",
-   "war": 0.0664
+   "war": 0.1022
   },
   {
-   "exp_wins": 5.0749,
+   "exp_wins": 5.0636,
    "games": 9,
    "id": "LV",
    "name": "Las Vegas Raiders",
@@ -10204,10 +10204,10 @@
     "sack": 20.0
    },
    "team": "LV",
-   "war": 0.1066
+   "war": 0.1395
   },
   {
-   "exp_wins": 4.4741,
+   "exp_wins": 4.4566,
    "games": 9,
    "id": "MIA",
    "name": "Miami Dolphins",
@@ -10223,10 +10223,10 @@
     "sack": 13.0
    },
    "team": "MIA",
-   "war": -0.4942
+   "war": -0.4675
   },
   {
-   "exp_wins": 5.6014,
+   "exp_wins": 5.5955,
    "games": 9,
    "id": "MIN",
    "name": "Minnesota Vikings",
@@ -10244,10 +10244,10 @@
     "sack": 37.0
    },
    "team": "MIN",
-   "war": 0.6331
+   "war": 0.6713
   },
   {
-   "exp_wins": 4.7604,
+   "exp_wins": 4.7456,
    "games": 9,
    "id": "NE",
    "name": "New England Patriots",
@@ -10265,10 +10265,10 @@
     "sack": 24.0
    },
    "team": "NE",
-   "war": -0.2079
+   "war": -0.1785
   },
   {
-   "exp_wins": 4.6248,
+   "exp_wins": 4.6089,
    "games": 9,
    "id": "NO",
    "name": "New Orleans Saints",
@@ -10286,10 +10286,10 @@
     "sack": 26.0
    },
    "team": "NO",
-   "war": -0.3434
+   "war": -0.3152
   },
   {
-   "exp_wins": 4.7594,
+   "exp_wins": 4.7448,
    "games": 9,
    "id": "NYG",
    "name": "New York Giants",
@@ -10305,10 +10305,10 @@
     "sack": 17.0
    },
    "team": "NYG",
-   "war": -0.2088
+   "war": -0.1794
   },
   {
-   "exp_wins": 4.6881,
+   "exp_wins": 4.6765,
    "games": 10,
    "id": "NYJ",
    "name": "New York Jets",
@@ -10326,10 +10326,10 @@
     "sack": 23.0
    },
    "team": "NYJ",
-   "war": -0.2801
+   "war": -0.2477
   },
   {
-   "exp_wins": 4.424,
+   "exp_wins": 4.406,
    "games": 9,
    "id": "PHI",
    "name": "Philadelphia Eagles",
@@ -10345,10 +10345,10 @@
     "sack": 16.0
    },
    "team": "PHI",
-   "war": -0.5443
+   "war": -0.5181
   },
   {
-   "exp_wins": 5.2387,
+   "exp_wins": 5.229,
    "games": 9,
    "id": "PIT",
    "name": "Pittsburgh Steelers",
@@ -10364,10 +10364,10 @@
     "sack": 27.0
    },
    "team": "PIT",
-   "war": 0.2704
+   "war": 0.3049
   },
   {
-   "exp_wins": 5.0444,
+   "exp_wins": 5.0363,
    "games": 10,
    "id": "SEA",
    "name": "Seattle Seahawks",
@@ -10383,10 +10383,10 @@
     "sack": 27.0
    },
    "team": "SEA",
-   "war": 0.0762
+   "war": 0.1122
   },
   {
-   "exp_wins": 5.2132,
+   "exp_wins": 5.1997,
    "games": 8,
    "id": "SF",
    "name": "San Francisco 49ers",
@@ -10402,10 +10402,10 @@
     "sack": 16.0
    },
    "team": "SF",
-   "war": 0.2449
+   "war": 0.2755
   },
   {
-   "exp_wins": 5.2821,
+   "exp_wins": 5.2727,
    "games": 9,
    "id": "TB",
    "name": "Tampa Bay Buccaneers",
@@ -10423,10 +10423,10 @@
     "sack": 17.0
    },
    "team": "TB",
-   "war": 0.3138
+   "war": 0.3485
   },
   {
-   "exp_wins": 4.9091,
+   "exp_wins": 4.8923,
    "games": 8,
    "id": "TEN",
    "name": "Tennessee Titans",
@@ -10444,10 +10444,10 @@
     "sack": 20.0
    },
    "team": "TEN",
-   "war": -0.0592
+   "war": -0.0318
   },
   {
-   "exp_wins": 4.9175,
+   "exp_wins": 4.9046,
    "games": 9,
    "id": "WAS",
    "name": "Washington Commanders",
@@ -10463,29 +10463,29 @@
     "sack": 18.0
    },
    "team": "WAS",
-   "war": -0.0508
+   "war": -0.0195
   }
  ],
  "replacement": {
   "DEF": {
-   "baseline_wins": 4.9683,
-   "level": 8.4667
+   "baseline_wins": 4.9242,
+   "level": 8.2667
   },
   "QB": {
-   "baseline_wins": 4.3513,
+   "baseline_wins": 4.3444,
    "level": 17.0347
   },
   "RB": {
-   "baseline_wins": 3.5818,
-   "level": 6.2133
+   "baseline_wins": 3.4005,
+   "level": 5.3733
   },
   "TE": {
-   "baseline_wins": 4.7484,
-   "level": 8.5967
+   "baseline_wins": 4.4997,
+   "level": 7.25
   },
   "WR": {
-   "baseline_wins": 4.372,
-   "level": 9.5967
+   "baseline_wins": 4.2027,
+   "level": 9.0267
   }
  },
  "season": "2026",

@@ -87,8 +87,17 @@ def test_upsert_drops_adp_only_rows_and_stores_records(tmp_path):
     assert len(stored) == len(PROJECTED)
     record = stored[str(PROJECTED[0]["player_id"])]
     assert record["stats"] == PROJECTED[0]["stats"]
-    for key in ("position", "team", "opponent", "company", "last_modified"):
+    for key in ("position", "team", "opponent", "date", "company", "last_modified"):
         assert record[key] is not None, key
+    assert record["date"] == PROJECTED[0]["date"]
+
+
+def test_record_without_a_date_still_loads(tmp_path):
+    store = Store(tmp_path)
+    rows = copy.deepcopy(PROJECTED[:1])
+    rows[0].pop("date", None)
+    upsert_week(store, "2025", 1, rows)
+    assert store.read_projections("2025", 1)[str(rows[0]["player_id"])]["date"] is None
 
 
 def test_upsert_unchanged_when_same_version(tmp_path):

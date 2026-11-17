@@ -13,7 +13,7 @@ from ffapp.config import DEFAULT_CONFIG_PATH, Config, ConfigError, load_config
 from ffapp.sleeper import SleeperClient
 from ffapp.store import DEFAULT_DATA_ROOT, Store
 
-COMMANDS = ("sync", "projections", "stats", "snapshot", "ratings", "replacement", "war", "simulate", "verify-brackets", "export", "refresh", "calibrate")
+COMMANDS = ("should-run", "sync", "projections", "stats", "schedule", "snapshot", "ratings", "replacement", "war", "simulate", "games", "verify-brackets", "export", "refresh", "calibrate")
 log = logging.getLogger("ffapp")
 
 
@@ -37,6 +37,10 @@ def build_parser() -> argparse.ArgumentParser:
     stats = sub.add_parser("stats", help="Refresh stored weekly player stats (actual stat lines)")
     stats.add_argument("--backfill", action="store_true", help="Fetch every season in scope, not just the current one")
 
+    gate = sub.add_parser("should-run", help="Decide whether the scheduled job runs the full refresh now (prints run=true|false)")
+    gate.add_argument("--mode", choices=("check", "daily", "manual"), default="check", help="daily and manual always run")
+    sched = sub.add_parser("schedule", help="Store the NFL schedule (kickoffs, game states) for the current and next week into data/nfl")
+    sched.add_argument("--all", action="store_true", help="Store every week of the current season")
     sub.add_parser("snapshot", help="Capture ESPN start-percentage snapshots and the player crosswalk into data/espn")
     sub.add_parser("ratings", help="Rate every manager across all stored seasons and write data/ratings")
     sub.add_parser("replacement", help="Write replacement-level values for every stored season to data/replacement")
@@ -47,6 +51,8 @@ def build_parser() -> argparse.ArgumentParser:
     sim.add_argument("--runs", type=int, default=10_000, help="Simulation runs (default 10000)")
     sim.add_argument("--seed", type=int, default=None, help="Random seed (default: derived from league, season and as-of week)")
 
+    games = sub.add_parser("games", help="Update this season's game logs and predictions of record in data/games")
+    games.add_argument("--force-records", action="store_true", help="Recompute the record of every final week")
     sub.add_parser("verify-brackets", help="Check bracket logic against every completed season")
     cal = sub.add_parser("calibrate", help="Replay completed seasons and score the odds against what happened")
     cal.add_argument("--runs", type=int, default=10_000, help="Simulation runs per replay (default 10000)")
@@ -55,7 +61,7 @@ def build_parser() -> argparse.ArgumentParser:
     cal.add_argument("--no-replacement-floor", action="store_true", help="Replay without the replacement-level lineup floor (evaluation only)")
     cal.add_argument("--no-roster-drift", action="store_true", help="Replay without roster drift (evaluation only)")
     sub.add_parser("export", help="Write site/data/*.json for the website")
-    refresh = sub.add_parser("refresh", help="sync, projections, stats, snapshot, ratings, replacement, war, simulate and export in order")
+    refresh = sub.add_parser("refresh", help="sync, projections, stats, schedule, snapshot, ratings, replacement, war, simulate, games and export in order")
     refresh.set_defaults(full=False, backfill=False, backfill_season=False, runs=10_000, seed=None)
     return parser
 
@@ -112,6 +118,32 @@ def cmd_stats(ctx: Context) -> int:
     return 0 if report.ok else 1
 
 
+def cmd_should_run(ctx: Context) -> int:
+    from datetime import datetime, timezone
+
+    from ffapp.schedule import should_run
+
+    decision = should_run(ctx.client, ctx.store, datetime.now(timezone.utc), ctx.args.mode)
+    line = f"run={'true' if decision.run else 'false'}"
+    print(f"{line}  ({decision.reason})")
+    output = os.environ.get("GITHUB_OUTPUT")
+    if output:
+        with open(output, "a", encoding="utf-8") as fh:
+            fh.write(line + "\n")
+    return 0
+
+
+def cmd_schedule(ctx: Context) -> int:
+    from ffapp.schedule import refresh_schedule
+
+    report = refresh_schedule(ctx.client, ctx.store, all_weeks=getattr(ctx.args, "all", False))
+    for season, week in report.written:
+        print(f"wrote    {ctx.store.nfl_week_path(season, week)}")
+    for message in report.errors:
+        print(f"FAILED   schedule {message}", file=sys.stderr)
+    return 0 if report.ok else 1
+
+
 def cmd_snapshot(ctx: Context) -> int:
     from ffapp.espn import EspnClient, capture_snapshots, match, refresh_crosswalk, teams_from_stats
     from ffapp.projections import seasons_in_scope
@@ -124,12 +156,18 @@ def cmd_snapshot(ctx: Context) -> int:
         print(f"wrote    {ctx.store.espn_week_path(*report.week_written)}")
     for message in report.errors:
         print(f"FAILED   snapshot {message}", file=sys.stderr)
+    from ffapp.injuries import save_injuries
+
     try:
-        changed = refresh_crosswalk(ctx.client, ctx.store)
+        players_payload = ctx.client.players()
+        changed = refresh_crosswalk(ctx.client, ctx.store, players_payload)
+        saved = save_injuries(ctx.store, ctx.client.state(), players_payload)
     except SleeperError as exc:
         print(f"FAILED   crosswalk: {exc}", file=sys.stderr)
         return 1
     print(f"crosswalk {'updated' if changed else 'unchanged'}")
+    if saved:
+        print(f"wrote    {ctx.store.injuries_path(*saved)}")
     crosswalk = ctx.store.read_crosswalk() or {}
     for season in seasons_in_scope(ctx.store, ctx.config.leagues):
         snapshots = [(season, ctx.store.read_espn_season(season))]
@@ -190,6 +228,21 @@ def cmd_war(ctx: Context) -> int:
             print(f"wrote    {path}")
         for message in report.skipped:
             print(f"skipped  {message}", file=sys.stderr)
+    return 0 if failed == 0 else 1
+
+
+def cmd_games(ctx: Context) -> int:
+    from ffapp.games import update_games
+
+    failed = 0
+    for key in ctx.config.leagues:
+        try:
+            weeks = update_games(ctx.store, ctx.config, key, force_records=getattr(ctx.args, "force_records", False))
+        except (ValueError, FileNotFoundError, KeyError) as exc:
+            print(f"FAILED   {key}: {exc}", file=sys.stderr)
+            failed += 1
+            continue
+        print(f"games    {key}: {len(weeks)} week files updated" + (f" ({', '.join(map(str, weeks))})" if weeks else ""))
     return 0 if failed == 0 else 1
 
 
@@ -285,6 +338,11 @@ def cmd_refresh(ctx: Context) -> int:
     WAR works from the snapshots already stored and the odds must not depend on ESPN);
     the run then ends with a warning naming them, as a workflow annotation under GitHub Actions.
     """
+    from datetime import datetime, timezone
+
+    from ffapp.schedule import write_last_run
+
+    started = datetime.now(timezone.utc)  # stored only once the run succeeds, so a failed run changes nothing
     skipped: list[str] = []
     for name, handler in REFRESH_STEPS:
         print(f"== {name}")
@@ -295,6 +353,7 @@ def cmd_refresh(ctx: Context) -> int:
         if code != 0:
             print(f"refresh stopped: {name} failed (exit {code})", file=sys.stderr)
             return code
+    write_last_run(ctx.store, started)
     for reason in skipped:
         print(warning_line("Refresh skipped a step", reason))
     return 0
@@ -311,24 +370,29 @@ REFRESH_STEPS = (
     ("sync", cmd_sync),
     ("projections", cmd_projections),
     ("stats", cmd_stats),
+    ("schedule", cmd_schedule),
     ("snapshot", cmd_snapshot),
     ("ratings", cmd_ratings),
     ("replacement", cmd_replacement),
     ("war", cmd_war),
     ("simulate", cmd_simulate),
+    ("games", cmd_games),
     ("export", cmd_export),
 )
-OPTIONAL_STEPS = frozenset({"snapshot"})
+OPTIONAL_STEPS = frozenset({"schedule", "snapshot"})
 
 HANDLERS = {
+    "should-run": cmd_should_run,
     "sync": cmd_sync,
     "projections": cmd_projections,
     "stats": cmd_stats,
+    "schedule": cmd_schedule,
     "snapshot": cmd_snapshot,
     "ratings": cmd_ratings,
     "replacement": cmd_replacement,
     "war": cmd_war,
     "simulate": cmd_simulate,
+    "games": cmd_games,
     "verify-brackets": cmd_verify_brackets,
     "export": cmd_export,
     "refresh": cmd_refresh,

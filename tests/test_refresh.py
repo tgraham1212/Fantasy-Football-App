@@ -91,7 +91,9 @@ def stats_for_2026():
 def test_refresh_steps_in_order():
     from ffapp.cli import REFRESH_STEPS
 
-    assert [name for name, _ in REFRESH_STEPS] == ["sync", "projections", "stats", "snapshot", "ratings", "replacement", "war", "simulate", "export"]
+    assert [name for name, _ in REFRESH_STEPS] == [
+        "sync", "projections", "stats", "schedule", "snapshot", "ratings", "replacement", "war", "simulate", "games", "export",
+    ]
 
 
 def test_refresh_continues_past_a_snapshot_failure_with_a_warning(tmp_path, capsys, monkeypatch):
@@ -142,7 +144,7 @@ def test_ratings_command_writes_every_league(tmp_path):
     assert payload["league_key"] == "dynasty" and len(payload["managers"]) >= 12
 
 
-def test_refresh_runs_nine_steps_and_stats_failure_stops_before_ratings(tmp_path):
+def test_refresh_runs_every_step_and_stats_failure_stops_before_ratings(tmp_path):
     cfg = write_config(tmp_path)
     assert run(tmp_path, cfg, "sync") == 0
     before = tree_digest(tmp_path / "data")
@@ -199,3 +201,30 @@ def test_bad_config_exits_2(tmp_path):
     cfg = tmp_path / "leagues.yaml"
     cfg.write_text("leagues: {}\n", encoding="utf-8")
     assert main(["--config", str(cfg), "--data", str(tmp_path / "data"), "sync"], client=client()) == 2
+
+
+def test_schedule_failure_continues_with_a_warning_and_games_failure_stops(tmp_path, capsys, monkeypatch):
+    import ffapp.cli as cli
+
+    cfg = write_config(tmp_path)
+    assert run(tmp_path, cfg, "sync") == 0
+    monkeypatch.delenv("GITHUB_ACTIONS", raising=False)
+    overrides = {**projections_for_2026(), **stats_for_2026(), "espn/scoreboard/10.json": 503}
+    assert run(tmp_path, cfg, "refresh", overrides=overrides) == 0
+    out = capsys.readouterr().out
+    assert "WARNING  Refresh skipped a step: schedule failed" in out
+    assert (tmp_path / "data" / "games" / "dynasty" / "2026").exists()  # games still ran without a schedule
+    assert (tmp_path / "data" / "refresh" / "last_run.json").exists()
+
+    monkeypatch.setattr(cli, "REFRESH_STEPS", tuple((n, (lambda ctx: 1) if n == "games" else h) for n, h in cli.REFRESH_STEPS))
+    before = (tmp_path / "data" / "refresh" / "last_run.json").read_text(encoding="utf-8")
+    assert run(tmp_path, cfg, "refresh", overrides={**projections_for_2026(), **stats_for_2026()}) == 1
+    assert (tmp_path / "data" / "refresh" / "last_run.json").read_text(encoding="utf-8") == before  # a failed run records nothing
+
+
+def test_should_run_writes_github_output(tmp_path, monkeypatch):
+    cfg = write_config(tmp_path)
+    out = tmp_path / "gh_output"
+    monkeypatch.setenv("GITHUB_OUTPUT", str(out))
+    assert run(tmp_path, cfg, "should-run", "--mode", "manual") == 0
+    assert out.read_text(encoding="utf-8") == "run=true" + chr(10)

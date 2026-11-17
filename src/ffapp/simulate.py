@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 
 import numpy as np
 
-from ffapp.bracket import BracketRules
+from ffapp.bracket import BracketRules, Game
 from ffapp.drift import DriftModel
 from ffapp.lineup import Starter
 from ffapp.noise import NoiseModel
@@ -52,6 +52,8 @@ class SimResult:
     semifinalists: np.ndarray  # (runs, 4) team indices
     losers_winner: np.ndarray  # (runs,) team index that "won" the losers bracket
     weekly_scores: dict[int, np.ndarray]  # week -> (runs, n) simulated scores (unscored weeks only)
+    winners_games: list[Game] = field(default_factory=list)  # per-run pairings of every winners-bracket game
+    losers_games: list[Game] = field(default_factory=list)
 
 
 def simulate(inputs: SimInputs, noise: NoiseModel, *, runs: int = 10_000, seed: int = 0) -> SimResult:
@@ -160,6 +162,8 @@ def simulate(inputs: SimInputs, noise: NoiseModel, *, runs: int = 10_000, seed: 
         semifinalists=semis,
         losers_winner=losers.champion,
         weekly_scores=weekly,
+        winners_games=winners.games,
+        losers_games=losers.games,
     )
 
 

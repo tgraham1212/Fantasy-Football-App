@@ -23,6 +23,7 @@
   <main id="main" hidden>
     <nav class="subtabs" id="subtabs" aria-label="Page">
       <button type="button" data-page="predictions" aria-pressed="true">Predictions</button>
+      <button type="button" data-page="games" aria-pressed="false">Games</button>
       <button type="button" data-page="war" aria-pressed="false">Player WAR</button>
     </nav>
 
@@ -90,6 +91,24 @@
       </div>
       <p class="hint" id="rating-note"></p>
     </section>
+    </div>
+
+    <div id="page-games" hidden>
+      <section class="card summary">
+        <div class="card-head">
+          <h2 id="games-title"></h2>
+          <div class="week-control" id="games-controls">
+            <button type="button" class="step" id="games-prev" aria-label="Previous week">&#8249;</button>
+            <select id="games-week" aria-label="Week"></select>
+            <button type="button" class="step" id="games-next" aria-label="Next week">&#8250;</button>
+          </div>
+        </div>
+        <p class="explain" id="games-note"></p>
+        <p class="explain" id="games-unavailable" hidden>Games are not yet available for this league: the game forecasts have not been exported.</p>
+      </section>
+      <div id="games-content" hidden>
+        <div id="games-grid"></div>
+      </div>
     </div>
 
     <div id="page-war" hidden>

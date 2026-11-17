@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 from ffapp.bracket import BracketRules
 from ffapp.config import Config
 from ffapp.drift import DriftModel, estimate_for_league, model_path
+from ffapp.forecast import game_forecasts
 from ffapp.league import FLEX_ELIGIBLE, owners, resolve_settings, starter_slots
 from ffapp.lineup import Candidate, Starter, best_lineup, lineup_points
 from ffapp.noise import NoiseModel, build_pools
@@ -272,6 +273,7 @@ def simulate_as_of(
         },
         "simulated_weeks": sorted(inputs.schedule) + [w for w in inputs.playoff_weeks if w not in inputs.real_points],
         "teams": teams,
+        "games": game_forecasts(inputs, result, data),
     }
     return inputs, result, payload
 

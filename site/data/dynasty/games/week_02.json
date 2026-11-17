@@ -1,0 +1,2344 @@
+{
+ "byes": [],
+ "forecast_as_of": 1,
+ "games": [
+  {
+   "bracket": "regular",
+   "frequency": null,
+   "hist": {
+    "shares": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      2,
+      2,
+      4,
+      3,
+      4,
+      6,
+      9,
+      9,
+      11,
+      12,
+      14,
+      17,
+      19,
+      20,
+      25,
+      22,
+      26,
+      28,
+      30,
+      31,
+      36,
+      36,
+      32,
+      34,
+      34,
+      38,
+      36,
+      33,
+      34,
+      34,
+      32,
+      34,
+      27,
+      25,
+      26,
+      23,
+      21,
+      20,
+      20,
+      14,
+      15,
+      13,
+      11,
+      10,
+      9,
+      9,
+      7,
+      6,
+      5,
+      6,
+      5,
+      3,
+      2,
+      3,
+      2,
+      2,
+      2,
+      1,
+      6
+     ],
+     [
+      6,
+      2,
+      3,
+      6,
+      4,
+      7,
+      8,
+      11,
+      13,
+      16,
+      16,
+      22,
+      21,
+      28,
+      34,
+      31,
+      36,
+      35,
+      36,
+      36,
+      40,
+      39,
+      41,
+      40,
+      40,
+      34,
+      37,
+      35,
+      33,
+      31,
+      28,
+      27,
+      27,
+      21,
+      20,
+      20,
+      16,
+      13,
+      11,
+      12,
+      9,
+      10,
+      7,
+      5,
+      6,
+      5,
+      4,
+      4,
+      3,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    ],
+    "start": 50.0,
+    "width": 2.0
+   },
+   "key": "1-12",
+   "match": null,
+   "place": null,
+   "projected": false,
+   "round": null,
+   "seeds": null,
+   "teams": [
+    {
+     "actual": 102.4,
+     "display_name": "Gixxersean1",
+     "key_players": [
+      {
+       "name": "Lamar Jackson",
+       "player_id": "4881",
+       "position": "QB",
+       "projected": 19.9,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Jahmyr Gibbs",
+       "player_id": "9221",
+       "position": "RB",
+       "projected": 24.2,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "CeeDee Lamb",
+       "player_id": "6786",
+       "position": "WR",
+       "projected": 14.9,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Bijan Robinson",
+       "player_id": "9509",
+       "position": "RB",
+       "projected": 20.4,
+       "replacement": false,
+       "slot": "RB"
+      }
+     ],
+     "lineup": [
+      {
+       "name": "Lamar Jackson",
+       "player_id": "4881",
+       "position": "QB",
+       "projected": 19.9,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Jahmyr Gibbs",
+       "player_id": "9221",
+       "position": "RB",
+       "projected": 24.2,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Bijan Robinson",
+       "player_id": "9509",
+       "position": "RB",
+       "projected": 20.4,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "CeeDee Lamb",
+       "player_id": "6786",
+       "position": "WR",
+       "projected": 14.9,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Justin Jefferson",
+       "player_id": "6794",
+       "position": "WR",
+       "projected": 14.7,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Harold Fannin Jr.",
+       "player_id": "12506",
+       "position": "TE",
+       "projected": 7.9,
+       "replacement": false,
+       "slot": "TE"
+      },
+      {
+       "name": "Javonte Williams",
+       "player_id": "7588",
+       "position": "RB",
+       "projected": 16.2,
+       "replacement": false,
+       "slot": "FLEX"
+      },
+      {
+       "name": "Los Angeles Rams",
+       "player_id": "LAR",
+       "position": "DEF",
+       "projected": 9.4,
+       "replacement": false,
+       "slot": "DEF"
+      }
+     ],
+     "mean": 126.68,
+     "not_playing": [
+      {
+       "name": "Fernando Mendoza",
+       "player_id": "13269",
+       "reason": "Inferred out"
+      }
+     ],
+     "roster_id": 1,
+     "team_name": "#ManCrushMondays",
+     "win_prob": 0.8343
+    },
+    {
+     "actual": 55.68,
+     "display_name": "CheefWiggum",
+     "key_players": [
+      {
+       "name": "Jared Goff",
+       "player_id": "3163",
+       "position": "QB",
+       "projected": 15.8,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "David Montgomery",
+       "player_id": "5892",
+       "position": "RB",
+       "projected": 15.9,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "DJ Moore",
+       "player_id": "4983",
+       "position": "WR",
+       "projected": 10.9,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Jadarian Price",
+       "player_id": "13286",
+       "position": "RB",
+       "projected": 11.0,
+       "replacement": false,
+       "slot": "RB"
+      }
+     ],
+     "lineup": [
+      {
+       "name": "Jared Goff",
+       "player_id": "3163",
+       "position": "QB",
+       "projected": 15.8,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "David Montgomery",
+       "player_id": "5892",
+       "position": "RB",
+       "projected": 15.9,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Jadarian Price",
+       "player_id": "13286",
+       "position": "RB",
+       "projected": 11.0,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "DJ Moore",
+       "player_id": "4983",
+       "position": "WR",
+       "projected": 10.9,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Jameson Williams",
+       "player_id": "8148",
+       "position": "WR",
+       "projected": 10.7,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Colston Loveland",
+       "player_id": "12517",
+       "position": "TE",
+       "projected": 9.7,
+       "replacement": false,
+       "slot": "TE"
+      },
+      {
+       "name": "Jeremiyah Love",
+       "player_id": "13287",
+       "position": "RB",
+       "projected": 10.8,
+       "replacement": false,
+       "slot": "FLEX"
+      },
+      {
+       "name": "Philadelphia Eagles",
+       "player_id": "PHI",
+       "position": "DEF",
+       "projected": 10.5,
+       "replacement": false,
+       "slot": "DEF"
+      }
+     ],
+     "mean": 97.62,
+     "not_playing": [
+      {
+       "name": "Michael Pittman Jr.",
+       "player_id": "6819",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "Zach Charbonnet",
+       "player_id": "9753",
+       "reason": "Inferred out"
+      }
+     ],
+     "roster_id": 12,
+     "team_name": "Chief Wiggum",
+     "win_prob": 0.1657
+    }
+   ],
+   "winner": 1
+  },
+  {
+   "bracket": "regular",
+   "frequency": null,
+   "hist": {
+    "shares": [
+     [
+      7,
+      4,
+      5,
+      6,
+      8,
+      9,
+      11,
+      16,
+      17,
+      20,
+      22,
+      26,
+      30,
+      30,
+      31,
+      35,
+      36,
+      40,
+      39,
+      39,
+      40,
+      39,
+      41,
+      37,
+      39,
+      34,
+      36,
+      32,
+      28,
+      28,
+      26,
+      22,
+      21,
+      21,
+      18,
+      16,
+      14,
+      12,
+      12,
+      9,
+      8,
+      6,
+      5,
+      5,
+      3,
+      3,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      2,
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      10,
+      10,
+      14,
+      15,
+      17,
+      22,
+      24,
+      27,
+      32,
+      30,
+      33,
+      32,
+      36,
+      37,
+      40,
+      38,
+      38,
+      40,
+      39,
+      38,
+      38,
+      34,
+      31,
+      31,
+      31,
+      26,
+      26,
+      22,
+      20,
+      19,
+      18,
+      15,
+      13,
+      10,
+      10,
+      8,
+      8,
+      6,
+      5,
+      5,
+      5,
+      4,
+      4,
+      2,
+      2,
+      1,
+      1,
+      6
+     ]
+    ],
+    "start": 42.0,
+    "width": 2.0
+   },
+   "key": "2-11",
+   "match": null,
+   "place": null,
+   "projected": false,
+   "round": null,
+   "seeds": null,
+   "teams": [
+    {
+     "actual": 88.82,
+     "display_name": "MattCyg",
+     "key_players": [
+      {
+       "name": "Carson Wentz",
+       "player_id": "3161",
+       "position": "QB",
+       "projected": 15.4,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Ashton Jeanty",
+       "player_id": "12527",
+       "position": "RB",
+       "projected": 14.1,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Courtland Sutton",
+       "player_id": "5045",
+       "position": "WR",
+       "projected": 8.8,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Jacory Croskey-Merritt",
+       "player_id": "12533",
+       "position": "RB",
+       "projected": 11.8,
+       "replacement": false,
+       "slot": "RB"
+      }
+     ],
+     "lineup": [
+      {
+       "name": "Carson Wentz",
+       "player_id": "3161",
+       "position": "QB",
+       "projected": 15.4,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Ashton Jeanty",
+       "player_id": "12527",
+       "position": "RB",
+       "projected": 14.1,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Jacory Croskey-Merritt",
+       "player_id": "12533",
+       "position": "RB",
+       "projected": 11.8,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Courtland Sutton",
+       "player_id": "5045",
+       "position": "WR",
+       "projected": 8.8,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Rashod Bateman",
+       "player_id": "7571",
+       "position": "WR",
+       "projected": 7.6,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Isaiah Likely",
+       "player_id": "8131",
+       "position": "TE",
+       "projected": 9.4,
+       "replacement": false,
+       "slot": "TE"
+      },
+      {
+       "name": "TreVeyon Henderson",
+       "player_id": "12529",
+       "position": "RB",
+       "projected": 8.4,
+       "replacement": false,
+       "slot": "FLEX"
+      },
+      {
+       "name": "Carolina Panthers",
+       "player_id": "CAR",
+       "position": "DEF",
+       "projected": 8.7,
+       "replacement": false,
+       "slot": "DEF"
+      }
+     ],
+     "mean": 86.51,
+     "not_playing": [
+      {
+       "name": "Michael Penix Jr.",
+       "player_id": "11559",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "Ty Simpson",
+       "player_id": "13275",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "Ja'Kobi Lane",
+       "player_id": "13293",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "Sam Darnold",
+       "player_id": "4943",
+       "reason": "Inferred out"
+      }
+     ],
+     "roster_id": 2,
+     "team_name": "Forever Unclean ",
+     "win_prob": 0.3401
+    },
+    {
+     "actual": 82.84,
+     "display_name": "Z28kid86",
+     "key_players": [
+      {
+       "name": "Jayden Daniels",
+       "player_id": "11566",
+       "position": "QB",
+       "projected": 19.9,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Cam Skattebo",
+       "player_id": "12481",
+       "position": "RB",
+       "projected": 13.5,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "George Pickens",
+       "player_id": "8137",
+       "position": "WR",
+       "projected": 13.3,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Chris Olave",
+       "player_id": "8144",
+       "position": "WR",
+       "projected": 12.7,
+       "replacement": false,
+       "slot": "WR"
+      }
+     ],
+     "lineup": [
+      {
+       "name": "Jayden Daniels",
+       "player_id": "11566",
+       "position": "QB",
+       "projected": 19.9,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Cam Skattebo",
+       "player_id": "12481",
+       "position": "RB",
+       "projected": 13.5,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "D'Andre Swift",
+       "player_id": "6790",
+       "position": "RB",
+       "projected": 11.6,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "George Pickens",
+       "player_id": "8137",
+       "position": "WR",
+       "projected": 13.3,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Chris Olave",
+       "player_id": "8144",
+       "position": "WR",
+       "projected": 12.7,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Kyle Pitts Sr.",
+       "player_id": "7553",
+       "position": "TE",
+       "projected": 7.0,
+       "replacement": false,
+       "slot": "TE"
+      },
+      {
+       "name": "Tetairoa McMillan",
+       "player_id": "12526",
+       "position": "WR",
+       "projected": 12.3,
+       "replacement": false,
+       "slot": "FLEX"
+      },
+      {
+       "name": "Free agent (replacement level)",
+       "player_id": null,
+       "position": "DEF",
+       "projected": 7.9,
+       "replacement": true,
+       "slot": "DEF"
+      }
+     ],
+     "mean": 98.04,
+     "not_playing": [
+      {
+       "name": "Omar Cooper Jr.",
+       "player_id": "13276",
+       "reason": "Inferred out"
+      }
+     ],
+     "roster_id": 11,
+     "team_name": "SLOPPY SECONDS ",
+     "win_prob": 0.6599
+    }
+   ],
+   "winner": 2
+  },
+  {
+   "bracket": "regular",
+   "frequency": null,
+   "hist": {
+    "shares": [
+     [
+      5,
+      2,
+      3,
+      3,
+      6,
+      7,
+      9,
+      10,
+      9,
+      15,
+      17,
+      19,
+      18,
+      23,
+      30,
+      27,
+      33,
+      37,
+      35,
+      36,
+      40,
+      36,
+      39,
+      36,
+      37,
+      38,
+      36,
+      35,
+      32,
+      30,
+      33,
+      29,
+      25,
+      25,
+      21,
+      21,
+      19,
+      14,
+      13,
+      13,
+      12,
+      10,
+      8,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3,
+      3,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      4
+     ],
+     [
+      2,
+      2,
+      1,
+      3,
+      3,
+      4,
+      4,
+      8,
+      8,
+      10,
+      12,
+      16,
+      15,
+      18,
+      21,
+      24,
+      24,
+      29,
+      31,
+      32,
+      34,
+      39,
+      34,
+      37,
+      39,
+      40,
+      36,
+      37,
+      36,
+      34,
+      36,
+      32,
+      30,
+      28,
+      27,
+      27,
+      23,
+      19,
+      18,
+      17,
+      13,
+      13,
+      12,
+      10,
+      11,
+      8,
+      7,
+      7,
+      5,
+      5,
+      2,
+      2,
+      2,
+      3,
+      2,
+      1,
+      1,
+      5
+     ]
+    ],
+    "start": 48.0,
+    "width": 2.0
+   },
+   "key": "3-6",
+   "match": null,
+   "place": null,
+   "projected": false,
+   "round": null,
+   "seeds": null,
+   "teams": [
+    {
+     "actual": 107.98,
+     "display_name": "zagaplooza",
+     "key_players": [
+      {
+       "name": "C.J. Stroud",
+       "player_id": "9758",
+       "position": "QB",
+       "projected": 17.0,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "James Cook III",
+       "player_id": "8138",
+       "position": "RB",
+       "projected": 18.1,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Parker Washington",
+       "player_id": "9487",
+       "position": "WR",
+       "projected": 10.8,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "J.K. Dobbins",
+       "player_id": "6806",
+       "position": "RB",
+       "projected": 11.8,
+       "replacement": false,
+       "slot": "RB"
+      }
+     ],
+     "lineup": [
+      {
+       "name": "C.J. Stroud",
+       "player_id": "9758",
+       "position": "QB",
+       "projected": 17.0,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "James Cook III",
+       "player_id": "8138",
+       "position": "RB",
+       "projected": 18.1,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "J.K. Dobbins",
+       "player_id": "6806",
+       "position": "RB",
+       "projected": 11.8,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Parker Washington",
+       "player_id": "9487",
+       "position": "WR",
+       "projected": 10.8,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Matthew Golden",
+       "player_id": "12501",
+       "position": "WR",
+       "projected": 9.9,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Dalton Schultz",
+       "player_id": "5001",
+       "position": "TE",
+       "projected": 8.6,
+       "replacement": false,
+       "slot": "TE"
+      },
+      {
+       "name": "Jaylen Warren",
+       "player_id": "8228",
+       "position": "RB",
+       "projected": 10.2,
+       "replacement": false,
+       "slot": "FLEX"
+      },
+      {
+       "name": "Tampa Bay Buccaneers",
+       "player_id": "TB",
+       "position": "DEF",
+       "projected": 10.7,
+       "replacement": false,
+       "slot": "DEF"
+      }
+     ],
+     "mean": 97.35,
+     "not_playing": [
+      {
+       "name": "Brock Bowers",
+       "player_id": "11604",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "Jayden Higgins",
+       "player_id": "12484",
+       "reason": "Inferred out"
+      }
+     ],
+     "roster_id": 3,
+     "team_name": "Jerry Jones",
+     "win_prob": 0.4447
+    },
+    {
+     "actual": 112.96,
+     "display_name": "gonzas",
+     "key_players": [
+      {
+       "name": "Dak Prescott",
+       "player_id": "3294",
+       "position": "QB",
+       "projected": 19.0,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "De'Von Achane",
+       "player_id": "9226",
+       "position": "RB",
+       "projected": 15.1,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Amon-Ra St. Brown",
+       "player_id": "7547",
+       "position": "WR",
+       "projected": 14.2,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Chase Brown",
+       "player_id": "9224",
+       "position": "RB",
+       "projected": 13.7,
+       "replacement": false,
+       "slot": "RB"
+      }
+     ],
+     "lineup": [
+      {
+       "name": "Dak Prescott",
+       "player_id": "3294",
+       "position": "QB",
+       "projected": 19.0,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "De'Von Achane",
+       "player_id": "9226",
+       "position": "RB",
+       "projected": 15.1,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Chase Brown",
+       "player_id": "9224",
+       "position": "RB",
+       "projected": 13.7,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Amon-Ra St. Brown",
+       "player_id": "7547",
+       "position": "WR",
+       "projected": 14.2,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Ladd McConkey",
+       "player_id": "11635",
+       "position": "WR",
+       "projected": 10.7,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Tyler Warren",
+       "player_id": "12518",
+       "position": "TE",
+       "projected": 9.1,
+       "replacement": false,
+       "slot": "TE"
+      },
+      {
+       "name": "MarShawn Lloyd",
+       "player_id": "11581",
+       "position": "RB",
+       "projected": 10.8,
+       "replacement": false,
+       "slot": "FLEX"
+      },
+      {
+       "name": "Los Angeles Chargers",
+       "player_id": "LAC",
+       "position": "DEF",
+       "projected": 8.3,
+       "replacement": false,
+       "slot": "DEF"
+      }
+     ],
+     "mean": 101.59,
+     "not_playing": [],
+     "roster_id": 6,
+     "team_name": "“FOUTS LOOKIN”",
+     "win_prob": 0.5553
+    }
+   ],
+   "winner": 6
+  },
+  {
+   "bracket": "regular",
+   "frequency": null,
+   "hist": {
+    "shares": [
+     [
+      8,
+      4,
+      3,
+      5,
+      8,
+      10,
+      10,
+      12,
+      17,
+      18,
+      23,
+      24,
+      27,
+      28,
+      34,
+      35,
+      33,
+      38,
+      41,
+      41,
+      44,
+      42,
+      42,
+      40,
+      39,
+      36,
+      38,
+      30,
+      29,
+      32,
+      24,
+      25,
+      22,
+      17,
+      16,
+      13,
+      13,
+      11,
+      9,
+      10,
+      8,
+      7,
+      5,
+      5,
+      3,
+      4,
+      3,
+      2,
+      2,
+      1,
+      1,
+      2,
+      0,
+      1,
+      0,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      2,
+      2,
+      4,
+      6,
+      6,
+      8,
+      9,
+      13,
+      15,
+      16,
+      20,
+      19,
+      27,
+      26,
+      27,
+      33,
+      31,
+      37,
+      38,
+      36,
+      38,
+      42,
+      39,
+      41,
+      37,
+      37,
+      34,
+      34,
+      33,
+      30,
+      28,
+      24,
+      24,
+      20,
+      20,
+      19,
+      17,
+      14,
+      13,
+      12,
+      9,
+      9,
+      7,
+      6,
+      4,
+      5,
+      4,
+      3,
+      2,
+      3,
+      2,
+      2,
+      6
+     ]
+    ],
+    "start": 42.0,
+    "width": 2.0
+   },
+   "key": "4-10",
+   "match": null,
+   "place": null,
+   "projected": false,
+   "round": null,
+   "seeds": null,
+   "teams": [
+    {
+     "actual": 110.76,
+     "display_name": "alwaysflexin",
+     "key_players": [
+      {
+       "name": "Jalen Hurts",
+       "player_id": "6904",
+       "position": "QB",
+       "projected": 20.4,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Aaron Jones Sr.",
+       "player_id": "4199",
+       "position": "RB",
+       "projected": 13.0,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Deebo Samuel Sr.",
+       "player_id": "5872",
+       "position": "WR",
+       "projected": 8.7,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Dalton Kincaid",
+       "player_id": "10236",
+       "position": "TE",
+       "projected": 9.8,
+       "replacement": false,
+       "slot": "TE"
+      }
+     ],
+     "lineup": [
+      {
+       "name": "Jalen Hurts",
+       "player_id": "6904",
+       "position": "QB",
+       "projected": 20.4,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Aaron Jones Sr.",
+       "player_id": "4199",
+       "position": "RB",
+       "projected": 13.0,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Woody Marks",
+       "player_id": "12474",
+       "position": "RB",
+       "projected": 8.0,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Deebo Samuel Sr.",
+       "player_id": "5872",
+       "position": "WR",
+       "projected": 8.7,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Romeo Doubs",
+       "player_id": "8121",
+       "position": "WR",
+       "projected": 7.4,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Dalton Kincaid",
+       "player_id": "10236",
+       "position": "TE",
+       "projected": 9.8,
+       "replacement": false,
+       "slot": "TE"
+      },
+      {
+       "name": "George Kittle",
+       "player_id": "4217",
+       "position": "TE",
+       "projected": 8.7,
+       "replacement": false,
+       "slot": "FLEX"
+      },
+      {
+       "name": "New England Patriots",
+       "player_id": "NE",
+       "position": "DEF",
+       "projected": 9.4,
+       "replacement": false,
+       "slot": "DEF"
+      }
+     ],
+     "mean": 86.79,
+     "not_playing": [
+      {
+       "name": "Skyler Bell",
+       "player_id": "13402",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "Josh Jacobs",
+       "player_id": "5850",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "A.J. Brown",
+       "player_id": "5859",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "Nico Collins",
+       "player_id": "7569",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "Zay Flowers",
+       "player_id": "9997",
+       "reason": "Inferred out"
+      }
+     ],
+     "roster_id": 4,
+     "team_name": "WILL",
+     "win_prob": 0.385
+    },
+    {
+     "actual": 93.92,
+     "display_name": "KingDso",
+     "key_players": [
+      {
+       "name": "Caleb Williams",
+       "player_id": "11560",
+       "position": "QB",
+       "projected": 18.0,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Omarion Hampton",
+       "player_id": "12507",
+       "position": "RB",
+       "projected": 12.4,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Jaxon Smith-Njigba",
+       "player_id": "9488",
+       "position": "WR",
+       "projected": 16.1,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Chuba Hubbard",
+       "player_id": "7594",
+       "position": "RB",
+       "projected": 11.4,
+       "replacement": false,
+       "slot": "RB"
+      }
+     ],
+     "lineup": [
+      {
+       "name": "Caleb Williams",
+       "player_id": "11560",
+       "position": "QB",
+       "projected": 18.0,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Omarion Hampton",
+       "player_id": "12507",
+       "position": "RB",
+       "projected": 12.4,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Chuba Hubbard",
+       "player_id": "7594",
+       "position": "RB",
+       "projected": 11.4,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Jaxon Smith-Njigba",
+       "player_id": "9488",
+       "position": "WR",
+       "projected": 16.1,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Malik Nabers",
+       "player_id": "11632",
+       "position": "WR",
+       "projected": 11.1,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Brenton Strange",
+       "player_id": "9480",
+       "position": "TE",
+       "projected": 6.2,
+       "replacement": false,
+       "slot": "TE"
+      },
+      {
+       "name": "Luther Burden III",
+       "player_id": "12519",
+       "position": "WR",
+       "projected": 9.5,
+       "replacement": false,
+       "slot": "FLEX"
+      },
+      {
+       "name": "Seattle Seahawks",
+       "player_id": "SEA",
+       "position": "DEF",
+       "projected": 9.7,
+       "replacement": false,
+       "slot": "DEF"
+      }
+     ],
+     "mean": 95.26,
+     "not_playing": [
+      {
+       "name": "Dylan Sampson",
+       "player_id": "12469",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "Jordyn Tyson",
+       "player_id": "13281",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "Nicholas Singleton",
+       "player_id": "13288",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "Chig Okonkwo",
+       "player_id": "8210",
+       "reason": "Inferred out"
+      }
+     ],
+     "roster_id": 10,
+     "team_name": "Trust the Process DSO",
+     "win_prob": 0.615
+    }
+   ],
+   "winner": 4
+  },
+  {
+   "bracket": "regular",
+   "frequency": null,
+   "hist": {
+    "shares": [
+     [
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      2,
+      2,
+      3,
+      3,
+      5,
+      6,
+      9,
+      12,
+      11,
+      14,
+      18,
+      18,
+      20,
+      23,
+      24,
+      24,
+      30,
+      33,
+      34,
+      34,
+      36,
+      35,
+      38,
+      35,
+      42,
+      34,
+      35,
+      34,
+      32,
+      31,
+      30,
+      27,
+      29,
+      26,
+      25,
+      20,
+      21,
+      18,
+      16,
+      15,
+      12,
+      11,
+      10,
+      9,
+      8,
+      8,
+      5,
+      5,
+      4,
+      4,
+      3,
+      1,
+      1,
+      1,
+      2,
+      6
+     ],
+     [
+      8,
+      3,
+      5,
+      6,
+      7,
+      11,
+      13,
+      15,
+      14,
+      21,
+      22,
+      22,
+      31,
+      29,
+      34,
+      37,
+      35,
+      39,
+      42,
+      38,
+      41,
+      39,
+      40,
+      38,
+      36,
+      38,
+      34,
+      33,
+      32,
+      32,
+      26,
+      22,
+      21,
+      18,
+      17,
+      14,
+      13,
+      11,
+      9,
+      9,
+      7,
+      6,
+      5,
+      5,
+      3,
+      3,
+      2,
+      2,
+      2,
+      1,
+      2,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    ],
+    "start": 42.0,
+    "width": 2.0
+   },
+   "key": "5-7",
+   "match": null,
+   "place": null,
+   "projected": false,
+   "round": null,
+   "seeds": null,
+   "teams": [
+    {
+     "actual": 82.18,
+     "display_name": "corygraham12",
+     "key_players": [
+      {
+       "name": "Patrick Mahomes",
+       "player_id": "4046",
+       "position": "QB",
+       "projected": 17.1,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Saquon Barkley",
+       "player_id": "4866",
+       "position": "RB",
+       "projected": 15.4,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Ja'Marr Chase",
+       "player_id": "7564",
+       "position": "WR",
+       "projected": 14.2,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Breece Hall",
+       "player_id": "8155",
+       "position": "RB",
+       "projected": 12.8,
+       "replacement": false,
+       "slot": "RB"
+      }
+     ],
+     "lineup": [
+      {
+       "name": "Patrick Mahomes",
+       "player_id": "4046",
+       "position": "QB",
+       "projected": 17.1,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Saquon Barkley",
+       "player_id": "4866",
+       "position": "RB",
+       "projected": 15.4,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Breece Hall",
+       "player_id": "8155",
+       "position": "RB",
+       "projected": 12.8,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Ja'Marr Chase",
+       "player_id": "7564",
+       "position": "WR",
+       "projected": 14.2,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Garrett Wilson",
+       "player_id": "8146",
+       "position": "WR",
+       "projected": 12.3,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Trey McBride",
+       "player_id": "8130",
+       "position": "TE",
+       "projected": 11.4,
+       "replacement": false,
+       "slot": "TE"
+      },
+      {
+       "name": "Bucky Irving",
+       "player_id": "11584",
+       "position": "RB",
+       "projected": 12.4,
+       "replacement": false,
+       "slot": "FLEX"
+      },
+      {
+       "name": "Free agent (replacement level)",
+       "player_id": null,
+       "position": "DEF",
+       "projected": 7.9,
+       "replacement": true,
+       "slot": "DEF"
+      }
+     ],
+     "mean": 104.52,
+     "not_playing": [
+      {
+       "name": "Isiah Pacheco",
+       "player_id": "8205",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "Puka Nacua",
+       "player_id": "9493",
+       "reason": "Inferred out"
+      }
+     ],
+     "roster_id": 5,
+     "team_name": "The Kuppets",
+     "win_prob": 0.7358
+    },
+    {
+     "actual": 126.42,
+     "display_name": "Jdeguire",
+     "key_players": [
+      {
+       "name": "Josh Allen",
+       "player_id": "4984",
+       "position": "QB",
+       "projected": 21.6,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Quinshon Judkins",
+       "player_id": "12512",
+       "position": "RB",
+       "projected": 11.5,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Davante Adams",
+       "player_id": "2133",
+       "position": "WR",
+       "projected": 11.3,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Emeka Egbuka",
+       "player_id": "12514",
+       "position": "WR",
+       "projected": 9.1,
+       "replacement": false,
+       "slot": "WR"
+      }
+     ],
+     "lineup": [
+      {
+       "name": "Josh Allen",
+       "player_id": "4984",
+       "position": "QB",
+       "projected": 21.6,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Quinshon Judkins",
+       "player_id": "12512",
+       "position": "RB",
+       "projected": 11.5,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Bhayshul Tuten",
+       "player_id": "12490",
+       "position": "RB",
+       "projected": 8.2,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Davante Adams",
+       "player_id": "2133",
+       "position": "WR",
+       "projected": 11.3,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Emeka Egbuka",
+       "player_id": "12514",
+       "position": "WR",
+       "projected": 9.1,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Hunter Henry",
+       "player_id": "3214",
+       "position": "TE",
+       "projected": 8.3,
+       "replacement": false,
+       "slot": "TE"
+      },
+      {
+       "name": "KC Concepcion Jr.",
+       "player_id": "13298",
+       "position": "WR",
+       "projected": 8.3,
+       "replacement": false,
+       "slot": "FLEX"
+      },
+      {
+       "name": "Buffalo Bills",
+       "player_id": "BUF",
+       "position": "DEF",
+       "projected": 8.0,
+       "replacement": false,
+       "slot": "DEF"
+      }
+     ],
+     "mean": 86.33,
+     "not_playing": [
+      {
+       "name": "De'Zhaun Stribling",
+       "player_id": "13417",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "Jordan Mason",
+       "player_id": "8408",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "Tank Dell",
+       "player_id": "9502",
+       "reason": "Inferred out"
+      }
+     ],
+     "roster_id": 7,
+     "team_name": "Jesus at Red Rock",
+     "win_prob": 0.2642
+    }
+   ],
+   "winner": 7
+  },
+  {
+   "bracket": "regular",
+   "frequency": null,
+   "hist": {
+    "shares": [
+     [
+      5,
+      3,
+      4,
+      4,
+      6,
+      7,
+      8,
+      12,
+      14,
+      16,
+      19,
+      19,
+      23,
+      23,
+      27,
+      30,
+      31,
+      35,
+      36,
+      36,
+      39,
+      39,
+      38,
+      42,
+      39,
+      38,
+      37,
+      32,
+      34,
+      33,
+      33,
+      28,
+      24,
+      21,
+      22,
+      19,
+      17,
+      15,
+      13,
+      12,
+      10,
+      10,
+      7,
+      7,
+      7,
+      5,
+      5,
+      2,
+      3,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      3
+     ],
+     [
+      7,
+      2,
+      2,
+      3,
+      5,
+      6,
+      8,
+      8,
+      11,
+      13,
+      13,
+      17,
+      21,
+      22,
+      28,
+      27,
+      32,
+      33,
+      32,
+      34,
+      32,
+      35,
+      39,
+      41,
+      38,
+      33,
+      37,
+      37,
+      33,
+      29,
+      31,
+      30,
+      29,
+      25,
+      23,
+      20,
+      21,
+      17,
+      17,
+      14,
+      13,
+      11,
+      10,
+      7,
+      8,
+      7,
+      6,
+      4,
+      4,
+      4,
+      3,
+      2,
+      3,
+      2,
+      1,
+      7
+     ]
+    ],
+    "start": 54.0,
+    "width": 2.0
+   },
+   "key": "8-9",
+   "match": null,
+   "place": null,
+   "projected": false,
+   "round": null,
+   "seeds": null,
+   "teams": [
+    {
+     "actual": 95.4,
+     "display_name": "tg1212",
+     "key_players": [
+      {
+       "name": "Jaxson Dart",
+       "player_id": "12508",
+       "position": "QB",
+       "projected": 17.5,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Jonathan Taylor",
+       "player_id": "6813",
+       "position": "RB",
+       "projected": 17.4,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Mike Evans",
+       "player_id": "2216",
+       "position": "WR",
+       "projected": 10.9,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Kyren Williams",
+       "player_id": "8150",
+       "position": "RB",
+       "projected": 15.4,
+       "replacement": false,
+       "slot": "RB"
+      }
+     ],
+     "lineup": [
+      {
+       "name": "Jaxson Dart",
+       "player_id": "12508",
+       "position": "QB",
+       "projected": 17.5,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Jonathan Taylor",
+       "player_id": "6813",
+       "position": "RB",
+       "projected": 17.4,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Kyren Williams",
+       "player_id": "8150",
+       "position": "RB",
+       "projected": 15.4,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Mike Evans",
+       "player_id": "2216",
+       "position": "WR",
+       "projected": 10.9,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Stefon Diggs",
+       "player_id": "2449",
+       "position": "WR",
+       "projected": 10.3,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "T.J. Hockenson",
+       "player_id": "5844",
+       "position": "TE",
+       "projected": 7.2,
+       "replacement": false,
+       "slot": "TE"
+      },
+      {
+       "name": "Derrick Henry",
+       "player_id": "3198",
+       "position": "RB",
+       "projected": 14.5,
+       "replacement": false,
+       "slot": "FLEX"
+      },
+      {
+       "name": "Free agent (replacement level)",
+       "player_id": null,
+       "position": "DEF",
+       "projected": 7.9,
+       "replacement": true,
+       "slot": "DEF"
+      }
+     ],
+     "mean": 102.16,
+     "not_playing": [
+      {
+       "name": "Adam Randall",
+       "player_id": "13302",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "Kyler Murray",
+       "player_id": "5849",
+       "reason": "Inferred out"
+      }
+     ],
+     "roster_id": 8,
+     "team_name": "Pocket Dogs",
+     "win_prob": 0.4656
+    },
+    {
+     "actual": 119.58,
+     "display_name": "khar432",
+     "key_players": [
+      {
+       "name": "Joe Burrow",
+       "player_id": "6770",
+       "position": "QB",
+       "projected": 16.9,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Christian McCaffrey",
+       "player_id": "4034",
+       "position": "RB",
+       "projected": 17.4,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Christian Watson",
+       "player_id": "8167",
+       "position": "WR",
+       "projected": 12.8,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Kenneth Walker III",
+       "player_id": "8151",
+       "position": "RB",
+       "projected": 15.3,
+       "replacement": false,
+       "slot": "RB"
+      }
+     ],
+     "lineup": [
+      {
+       "name": "Joe Burrow",
+       "player_id": "6770",
+       "position": "QB",
+       "projected": 16.9,
+       "replacement": false,
+       "slot": "QB"
+      },
+      {
+       "name": "Christian McCaffrey",
+       "player_id": "4034",
+       "position": "RB",
+       "projected": 17.4,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Kenneth Walker III",
+       "player_id": "8151",
+       "position": "RB",
+       "projected": 15.3,
+       "replacement": false,
+       "slot": "RB"
+      },
+      {
+       "name": "Christian Watson",
+       "player_id": "8167",
+       "position": "WR",
+       "projected": 12.8,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "DeVonta Smith",
+       "player_id": "7525",
+       "position": "WR",
+       "projected": 12.2,
+       "replacement": false,
+       "slot": "WR"
+      },
+      {
+       "name": "Mark Andrews",
+       "player_id": "5012",
+       "position": "TE",
+       "projected": 8.5,
+       "replacement": false,
+       "slot": "TE"
+      },
+      {
+       "name": "Tee Higgins",
+       "player_id": "6801",
+       "position": "WR",
+       "projected": 11.8,
+       "replacement": false,
+       "slot": "FLEX"
+      },
+      {
+       "name": "Green Bay Packers",
+       "player_id": "GB",
+       "position": "DEF",
+       "projected": 9.3,
+       "replacement": false,
+       "slot": "DEF"
+      }
+     ],
+     "mean": 104.87,
+     "not_playing": [
+      {
+       "name": "Ricky Pearsall",
+       "player_id": "11638",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "RJ Harvey",
+       "player_id": "12489",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "Eli Stowers",
+       "player_id": "13349",
+       "reason": "Inferred out"
+      },
+      {
+       "name": "James Conner",
+       "player_id": "4137",
+       "reason": "Inferred out"
+      }
+     ],
+     "roster_id": 9,
+     "team_name": "Christian Mingle",
+     "win_prob": 0.5344
+    }
+   ],
+   "winner": 9
+  }
+ ],
+ "generated_at": null,
+ "kind": "final",
+ "label": "Week 2",
+ "league_key": "dynasty",
+ "playoffs": false,
+ "season": "2026",
+ "source": "pre-week",
+ "toilet_bowl": false,
+ "week": 2
+}

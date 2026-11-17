@@ -11,6 +11,7 @@ sleeper/projections/<season>/<week>.json GET projections/nfl/<season>/<week> (tr
 sleeper/stats/<season>/<week>.json       GET stats/nfl/<season>/<week> (trimmed: fixture players + free agents)
 sleeper/players/nfl.json                 GET /v1/players/nfl (trimmed to the players the ESPN fixture names)
 sleeper/espn/players.json                ESPN seasons/<any>/players (2024 top 40 per position, served for every season and week)
+sleeper/espn/scoreboard/<week>.json      ESPN site scoreboard (weeks 10 final and 11 scheduled of 2026, trimmed)
 
 Recorded 2026-11-13. Dynasty ("Taco Tuesdays") league IDs by season:
 2022 780973042250809344, 2023 939158991781838848, 2024 1069001128785944576,
@@ -22,7 +23,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 
 FIXTURES_ROOT = Path(__file__).resolve().parent
 SLEEPER_ROOT = FIXTURES_ROOT / "sleeper"
@@ -86,6 +87,9 @@ class FixtureSession:
             return f"players/{path.removeprefix('/v1/players/')}.json"
         if path.startswith("/apis/v3/games/ffl/seasons/") and path.endswith("/players"):
             return "espn/players.json"
+        if path.endswith("/sports/football/nfl/scoreboard"):
+            week = parse_qs(urlparse(url).query).get("week", ["0"])[0]
+            return f"espn/scoreboard/{week}.json"
         if path.startswith("/projections/nfl/"):
             season, week = path.removeprefix("/projections/nfl/").split("/")
             return f"projections/{season}/{week}.json"

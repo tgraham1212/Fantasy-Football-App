@@ -2,6 +2,7 @@
 
 import { markSorted, nextSort } from "./sorting.js?v=__BUILD__";
 import { initWar, loadWar } from "./war.js?v=__BUILD__";
+import { initGames, loadGames, rerenderGames, showGames } from "./games.js?v=__BUILD__";
 
 const DEFAULT_BOTTOM = { key: "avoid_losers_bye", label: "Avoid Loser's Bye", description: "" };
 
@@ -180,8 +181,9 @@ function initTheme() {
     renderTable();
     renderChart();
     renderRatingChart();
+    rerenderGames();
   });
-  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { renderTable(); renderChart(); renderRatingChart(); });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { renderTable(); renderChart(); renderRatingChart(); rerenderGames(); });
 }
 
 // -- league switcher --------------------------------------------------------------
@@ -226,21 +228,24 @@ function initTableHead() {
 
 function parseHash() {
   const [league, page] = location.hash.replace("#", "").split("/");
-  return { league: league || "", page: page === "war" ? "war" : "predictions" };
+  return { league: league || "", page: page === "war" || page === "games" ? page : "predictions" };
 }
 
 function writeHash() {
   const key = state.league ? state.league.league_key : "";
-  try { history.replaceState(null, "", `#${key}${state.page === "war" ? "/war" : ""}`); } catch (e) { /* ignore */ }
+  const suffix = state.page === "predictions" ? "" : `/${state.page}`;
+  try { history.replaceState(null, "", `#${key}${suffix}`); } catch (e) { /* ignore */ }
 }
 
 function showPage(page) {
   state.page = page;
   $("page-predictions").hidden = page !== "predictions";
   $("page-war").hidden = page !== "war";
+  $("page-games").hidden = page !== "games";
   for (const btn of $("subtabs").querySelectorAll("button")) btn.setAttribute("aria-pressed", String(btn.dataset.page === page));
   writeHash();
   if (page === "predictions") renderChart(); // the canvas had no size while hidden
+  if (page === "games") showGames();
 }
 
 function initSubtabs() {
@@ -751,6 +756,7 @@ async function loadLeague(key) {
   $("main").hidden = false;
   $("status").hidden = true;
   showPage(state.page);
+  await loadGames(entry.key, payload.league_name, entry.games, (rid) => state.colors[rid] || "--accent");
   await loadWar(entry.key, payload.league_name, entry.war);
 }
 
@@ -759,6 +765,7 @@ async function main() {
   initTableHead();
   initSubtabs();
   initWar();
+  initGames();
   try {
     state.index = await fetchJson("data/index.json");
     if (!state.index.leagues?.length) throw new Error("no leagues exported");

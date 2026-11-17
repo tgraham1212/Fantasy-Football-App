@@ -105,6 +105,15 @@ class Store:
     def crosswalk_path(self) -> Path:
         return self.root / "espn" / "crosswalk.json"
 
+    def nfl_week_path(self, season: str, week: int) -> Path:
+        return self.root / "nfl" / str(season) / f"week_{int(week):02d}.json"
+
+    def injuries_path(self, season: str, week: int) -> Path:
+        return self.root / "injuries" / str(season) / f"week_{int(week):02d}.json"
+
+    def games_path(self, league_key: str, season: str, week: int) -> Path:
+        return self.root / "games" / league_key / str(season) / f"week_{int(week):02d}.json"
+
     # -- league seasons ------------------------------------------------------
 
     def seasons(self, league_key: str) -> list[str]:
@@ -234,6 +243,29 @@ class Store:
 
     def write_crosswalk(self, players: dict[str, dict]) -> None:
         write_json(self.crosswalk_path(), players)
+
+    # -- NFL schedule, injuries, game logs ----------------------------------------
+
+    def read_nfl_week(self, season: str, week: int) -> dict | None:
+        path = self.nfl_week_path(season, week)
+        return read_json(path) if path.exists() else None
+
+    def write_nfl_week(self, season: str, week: int, payload: dict) -> None:
+        write_json(self.nfl_week_path(season, week), payload)
+
+    def read_injuries(self, season: str, week: int) -> dict[str, str] | None:
+        path = self.injuries_path(season, week)
+        return read_json(path) if path.exists() else None
+
+    def write_injuries(self, season: str, week: int, statuses: dict[str, str]) -> None:
+        write_json(self.injuries_path(season, week), statuses)
+
+    def read_games(self, league_key: str, season: str, week: int) -> dict | None:
+        path = self.games_path(league_key, season, week)
+        return read_json(path) if path.exists() else None
+
+    def write_games(self, league_key: str, season: str, week: int, payload: dict) -> None:
+        write_json(self.games_path(league_key, season, week), payload)
 
     # -- odds history --------------------------------------------------------
 

@@ -2,8 +2,11 @@ name: Refresh odds
 
 on:
   schedule:
-    # Daily at 11:00 UTC, so Tuesday's run has Monday night's game scored.
+    # Daily at 11:00 UTC, so Tuesday's run has Monday night's game scored. Always refreshes.
     - cron: "0 11 * * *"
+    # Hourly check: refreshes ~40-60 minutes before a kickoff and after games go final,
+    # at most once every three hours (see `ffapp should-run`).
+    - cron: "20 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -17,7 +20,33 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.decide.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - name: Install
+        run: pip install -e .
+
+      - name: Decide whether to refresh
+        id: decide
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then mode=manual
+          elif [ "${{ github.event.schedule }}" = "0 11 * * *" ]; then mode=daily
+          else mode=check; fi
+          python -m ffapp should-run --mode "$mode"
+
   refresh:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -48,7 +77,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No data changes to commit."
           else
-            git commit -m "Refresh odds $(date -u +%Y-%m-%d)"
+            git commit -m "Refresh odds $(date -u +'%Y-%m-%d %H:%M') UTC"
             git push
           fi
 

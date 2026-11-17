@@ -35,8 +35,10 @@ Global options: `--config PATH` (default `config/leagues.yaml`), `--data PATH`
 | `replacement` | Write replacement-level values (free agents, weekly projected and realised levels, season values) for every stored season to `data/replacement/`. |
 | `ratings` | Rate every manager across all stored seasons from weekly points (see Manager ratings) and write `data/ratings/<league>.json`. |
 | `snapshot` | Capture ESPN start-percentage snapshots (one per stored season that has none, the in-progress season again on every run until it is complete, plus the current regular-season week) and the ESPN-to-Sleeper player crosswalk into `data/espn/`, then report any widely started player the crosswalk could not match. |
+| `schedule` | Store the NFL schedule (kickoff times, game states, byes) from ESPN's public scoreboard for the current and next week into `data/nfl/`; `--all` stores every week of the season. |
+| `games` | Update this season's game files in `data/games/`: a log entry per game for the current and later weeks, and the prediction of record for weeks that have finished (see Games). `--force-records` recomputes every record. |
 | `war` | Compute every player's Wins Above Replacement for every stored league-season (see Player WAR) and write `data/war/<league>/<season>.json`. |
-| `refresh` | `sync`, `projections`, `stats`, `snapshot`, `ratings`, `replacement`, `war`, `simulate`, `export` in order, stopping at the first failure with a non-zero exit, except that a failed `snapshot` is skipped with a warning so the odds never depend on ESPN. This is what the scheduled job runs. |
+| `refresh` | `sync`, `projections`, `stats`, `schedule`, `snapshot`, `ratings`, `replacement`, `war`, `simulate`, `games`, `export` in order, stopping at the first failure with a non-zero exit, except that a failed `schedule` or `snapshot` is skipped with a warning so the odds never depend on ESPN. This is what the scheduled job runs. |
 | `calibrate` | Replay every completed season through the simulation and score the odds against what happened (see Calibration). Not part of `refresh`. `--runs N`, `--seed N`, `--residual-scale X` evaluate a candidate scale without touching the config. |
 
 First-time setup of a fresh clone, in order:
@@ -45,10 +47,13 @@ First-time setup of a fresh clone, in order:
 python -m ffapp sync
 python -m ffapp projections --backfill
 python -m ffapp stats --backfill
+python -m ffapp schedule --all
 python -m ffapp snapshot
 python -m ffapp ratings
 python -m ffapp replacement
 python -m ffapp war
+python -m ffapp simulate --backfill-season
+python -m ffapp games
 python -m ffapp verify-brackets
 python -m ffapp simulate --backfill-season
 python -m ffapp export
@@ -121,6 +126,9 @@ data/
   espn/<season>/week_NN.json                   the same, captured weekly from the 2026 season on
   espn/crosswalk.json                          Sleeper's player list trimmed to id, ESPN id, name and position
   war/<league>/<season>.json                   every player's WAR for that league-season, with the weekly detail
+  nfl/<season>/week_NN.json                    NFL games for the week: teams, kickoff (UTC), state, byes (ESPN scoreboard)
+  injuries/<season>/week_NN.json               {player_id: Sleeper injury status} as last seen during that week
+  games/<league>/<season>/week_NN.json         per game: the projection log, the latest forecast and the prediction of record
   odds/<league>/<season>/asof_NN.json          one simulation result per as-of week (the odds history)
 site/data/<league>.json, index.json            what the website reads
 ```
@@ -254,6 +262,33 @@ probability, expected wins, WAR, the manager holding them (end of season, or the
 current roster in progress) and every manager who held them. Re-running on unchanged
 data gives the same file apart from its timestamp. The free-agent replacement level
 in `data/replacement/` is a different thing and still feeds the simulation.
+
+## Games
+
+Every simulation run also stores, for each week it plays, a forecast per game: each
+team's mean score, a shared 2-point histogram of both teams' simulated scores (per-mille
+shares), each team's win probability (ties split) and the lineup the model used, with a
+replacement-level fill marked by an empty player id. Playoff weeks that Sleeper has not
+paired yet get a projected bracket: teams seeded by expected seed, the league's own
+bracket rules, and the team with the higher win probability advancing from each game (in
+a toilet bowl, the team more likely to score lower). Each projected game says how often
+that pairing happened across the simulations. Sleeper fills its bracket from the live
+standings all season, so a pairing only counts as real once the week before it is final.
+Consolation brackets are not shown; toilet bowls are.
+
+`ffapp games` keeps a log per game for the current and later weeks. Each entry holds the
+run time, both teams' model lineups and win probability, and every rostered player's
+projection with whether his NFL game has kicked off (from the stored schedule; without
+one, midnight Eastern on the projection's game date). An entry is added only when
+something other than the time changed, and a player who has kicked off keeps his last
+projection from before kickoff in every later entry.
+
+Once a week is final, each game gets a **prediction of record**: the lineup each manager
+actually started, every player at his last logged projection before kickoff (else his
+stored projection, empty slots 0), simulated 10,000 times with the same noise model and
+one week of roster drift, with a seed fixed per league, season and week. It is computed
+once and kept. Weeks that finished before the log existed use the forecast made as of
+the week before instead, marked `pre-week`; for 2026 that is weeks 1 to 10.
 
 ## How the simulation works
 
@@ -389,9 +424,24 @@ add the placeholder to any new script or import.
 
 ## Scheduled job
 
-`.github/workflows/refresh.yml` runs daily at 11:00 UTC (after Monday night's game
-is scored) and on demand. It runs the tests, `python -m ffapp refresh`, commits
-`data/` and `site/data/` if anything changed, and deploys `site/` to GitHub Pages.
+`.github/workflows/refresh.yml` has two schedules. `0 11 * * *` is the daily run at
+11:00 UTC (after Monday night's game is scored) and always refreshes. `20 * * * *` is an
+hourly check: a small `gate` job runs `python -m ffapp should-run`, which stores the
+current and next week of the NFL schedule and decides from it. It refreshes when a game
+kicks off within the next 60 minutes or a game has gone final since the last refresh
+(a final game counts when it kicked off after four hours before the last run), and never
+within three hours of the last refresh's start, which a successful refresh records in
+`data/refresh/last_run.json`. Replayed over week 11 of 2026 (Eastern time), that gives
+7:20 pm Thursday before the night game and 12:20 am after it; on Sunday 12:20 pm before
+the 1 pm games, 3:20 pm before the 4 pm games, 6:20 pm once the early games are final
+(two hours before the night game), 9:20 pm once the late games are final and 12:20 am
+after the night game; 7:20 pm Monday and 12:20 am Tuesday around Monday night; plus the
+daily run at 6 am. Manual starts always refresh; if the scoreboard cannot be read,
+the hourly check skips that hour and the daily run goes ahead anyway.
+
+When the gate says so, the `refresh` job runs the tests, `python -m ffapp refresh`,
+commits `data/` and `site/data/` if anything changed, and deploys `site/` to GitHub
+Pages.
 A failure at any step ends the run before the commit and deploy, so the published
 site keeps its last good state. The one exception is the ESPN `snapshot` step: if
 ESPN is unreachable the run continues with the snapshots already stored and ends

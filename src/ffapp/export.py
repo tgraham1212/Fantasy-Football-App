@@ -11,6 +11,7 @@ from ffapp.odds import current_season
 from ffapp.ratings import read_ratings
 from ffapp.replacement import read_replacement
 from ffapp.store import Store, read_json, write_json
+from ffapp.games_export import games_export
 from ffapp.war import read_war, war_seasons
 
 log = logging.getLogger(__name__)
@@ -269,6 +270,18 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
             write_json(index_path, war["index"])
             written.append(index_path)
             war_entry = {"file": f"{key}/war/index.json", "seasons": len(war["files"]), "current": war["index"]["current"]}
+        owners = {t["roster_id"]: {"display_name": t.get("display_name"), "team_name": t.get("team_name")} for t in payload["teams"]}
+        games = games_export(store, config, key, owners)
+        games_entry = None
+        if games:
+            for week, week_payload in games["weeks"].items():
+                week_path = out_dir / key / "games" / f"week_{week:02d}.json"
+                write_json(week_path, week_payload)
+                written.append(week_path)
+            games_index = out_dir / key / "games" / "index.json"
+            write_json(games_index, games["index"])
+            written.append(games_index)
+            games_entry = {"file": f"{key}/games/index.json", "current": games["index"]["current"]}
         index["leagues"].append(
             {
                 "key": key,
@@ -278,6 +291,7 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
                 "generated_at": payload["generated_at"],
                 "file": path.name,
                 "war": war_entry,
+                "games": games_entry,
             }
         )
     index["calibration"] = None

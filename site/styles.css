@@ -42,6 +42,11 @@
   --former-1: #292929;
   --former-2: #525252;
   --former-3: #808080;
+  /* win-probability ramp (Games page): tools/team_palette.py --diverging */
+  --win-hi: #6fda75;
+  --win-mid: #e8e8e8;
+  --win-lo: #f66d67;
+  --win-ink: #0b0b0b;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -81,6 +86,10 @@
   --former-1: #cacaca;
   --former-2: #989898;
   --former-3: #696969;
+    --win-hi: #2e7c35;
+    --win-mid: #303030;
+    --win-lo: #861118;
+    --win-ink: #f0efec;
   }
 }
 :root[data-theme="dark"] {
@@ -120,6 +129,10 @@
   --former-1: #cacaca;
   --former-2: #989898;
   --former-3: #696969;
+  --win-hi: #2e7c35;
+  --win-mid: #303030;
+  --win-lo: #861118;
+  --win-ink: #f0efec;
 }
 
 * { box-sizing: border-box; }
@@ -366,6 +379,65 @@ table.war.full thead th[aria-sort] { background: var(--ink); }
   .war-table { padding: 14px; }
   dialog#war-dialog { padding: 14px; }
   .dialog-table { margin: 10px -14px 0; padding: 0 14px; }
+}
+
+/* ---- Games page ------------------------------------------------------------------ */
+#page-games, #games-content { display: grid; gap: 16px; }
+.week-control { display: inline-flex; align-items: center; gap: 6px; }
+.week-control select {
+  font: inherit; font-size: 0.9rem; font-weight: 600; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 10px; padding: 6px 10px;
+}
+.week-control .step {
+  appearance: none; border: 1px solid var(--border); background: var(--surface); color: var(--ink);
+  border-radius: 10px; width: 34px; height: 34px; cursor: pointer; font-size: 1.2rem; line-height: 1;
+}
+.week-control .step:disabled { opacity: 0.35; cursor: default; }
+.week-control .step:focus-visible, .week-control select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.games-section { margin: 8px 0 0; font-size: 1rem; font-weight: 650; }
+.games-cards { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.games-cards > .game-card:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 8px); }
+.game-card { min-width: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.game-card.projected { border-style: dashed; }
+.game-label { color: var(--ink-2); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+.game-body { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 12px; align-items: center; }
+.game-rows { display: grid; gap: 8px; }
+.game-team { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; gap: 8px; }
+.game-team .swatch { margin-right: 0; }
+.game-team .who { min-width: 0; }
+.game-team .owner-name { display: block; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.game-team .team { display: block; color: var(--muted); font-size: 0.78rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.game-team .mean { text-align: right; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.game-team .mean .num { display: block; font-weight: 650; }
+.game-team .mean .unit, .game-team .mean .actual { display: block; color: var(--muted); font-size: 0.72rem; }
+.game-team .mean .actual { color: var(--ink-2); font-weight: 600; }
+.game-team .win { min-width: 4.4em; padding: 6px 8px; border-radius: 8px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+.game-team .win .check { margin-right: 4px; }
+.game-team .bye-tag { grid-column: 3 / -1; justify-self: end; color: var(--ink-2); font-weight: 650; }
+.game-card.bye { align-self: start; }
+.game-chart { position: relative; height: 128px; min-width: 0; }
+.game-players { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; border-top: 1px solid var(--grid); padding-top: 10px; }
+.team-players { min-width: 0; font-size: 0.82rem; }
+.team-players .tp-name { font-weight: 650; margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.team-players ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.team-players li { display: grid; grid-template-columns: 2.6em minmax(0, 1fr) auto; gap: 6px; }
+.team-players li .pos { color: var(--muted); font-weight: 600; }
+.team-players li .pname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.team-players li .pts { font-variant-numeric: tabular-nums; color: var(--ink-2); }
+.team-players li.fill .pname { color: var(--ink-2); font-style: italic; }
+.team-players details { margin-top: 6px; }
+.team-players summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+.team-players details ul { margin-top: 4px; }
+.team-players .out-label { margin-top: 8px; color: var(--ink-2); font-weight: 650; }
+.team-players ul.out li { grid-template-columns: minmax(0, 1fr) auto; }
+.team-players ul.out .reason { color: var(--bad); font-weight: 600; }
+@media (max-width: 700px) {
+  .games-cards { grid-template-columns: minmax(0, 1fr); }
+  .games-cards > .game-card:last-child:nth-child(odd) { width: auto; justify-self: stretch; }
+  .game-card { padding: 14px; }
+}
+@media (max-width: 420px) {
+  .game-body { grid-template-columns: minmax(0, 1fr); }
 }
 
 .status { color: var(--muted); text-align: center; padding: 24px 0; }
