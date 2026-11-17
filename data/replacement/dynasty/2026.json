@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-17T03:11:30+00:00",
+ "generated_at": "2026-11-17T13:44:13+00:00",
  "league_key": "dynasty",
  "prior_weeks": 4.0,
  "season": "2026",
@@ -11,9 +11,9 @@
     "2024",
     "2023"
    ],
-   "projected_mean": 7.41,
-   "value": 8.39,
-   "weeks_played": 9
+   "projected_mean": 7.47,
+   "value": 8.27,
+   "weeks_played": 10
   },
   "K": {
    "prior": 8.69,
@@ -23,8 +23,8 @@
     "2023"
    ],
    "projected_mean": 9.83,
-   "value": 9.13,
-   "weeks_played": 9
+   "value": 9.3,
+   "weeks_played": 10
   },
   "QB": {
    "prior": 13.2,
@@ -33,9 +33,9 @@
     "2024",
     "2023"
    ],
-   "projected_mean": 13.76,
-   "value": 14.08,
-   "weeks_played": 9
+   "projected_mean": 13.75,
+   "value": 13.98,
+   "weeks_played": 10
   },
   "RB": {
    "prior": 4.29,
@@ -45,8 +45,8 @@
     "2023"
    ],
    "projected_mean": 4.47,
-   "value": 3.74,
-   "weeks_played": 9
+   "value": 3.53,
+   "weeks_played": 10
   },
   "TE": {
    "prior": 5.5,
@@ -56,8 +56,8 @@
     "2023"
    ],
    "projected_mean": 5.85,
-   "value": 6.38,
-   "weeks_played": 9
+   "value": 6.18,
+   "weeks_played": 10
   },
   "WR": {
    "prior": 5.85,
@@ -66,9 +66,9 @@
     "2024",
     "2023"
    ],
-   "projected_mean": 6.13,
-   "value": 5.04,
-   "weeks_played": 9
+   "projected_mean": 6.18,
+   "value": 5.11,
+   "weeks_played": 10
   }
  },
  "settings_signature": "{\"roster\": [\"QB\", \"RB\", \"RB\", \"WR\", \"WR\", \"TE\", \"FLEX\", \"DEF\", \"BN\", \"BN\", \"BN\", \"BN\", \"BN\", \"BN\", \"BN\", \"BN\", \"BN\", \"BN\"], \"scoring\": {\"blk_kick\": 2.0, \"bonus_pass_yd_300\": 2.0, \"bonus_pass_yd_400\": 2.0, \"bonus_rec_yd_100\": 2.0, \"bonus_rec_yd_200\": 2.0, \"bonus_rush_yd_100\": 2.0, \"bonus_rush_yd_200\": 2.0, \"def_st_ff\": 1.0, \"def_st_fum_rec\": 1.0, \"def_st_td\": 6.0, \"def_td\": 6.0, \"ff\": 2.0, \"fgm_0_19\": 3.0, \"fgm_20_29\": 3.0, \"fgm_30_39\": 3.0, \"fgm_40_49\": 4.0, \"fgm_50p\": 5.0, \"fgmiss\": -1.0, \"fum\": 0.0, \"fum_lost\": -2.0, \"fum_rec\": 2.0, \"fum_rec_td\": 6.0, \"int\": 2.0, \"pass_2pt\": 2.0, \"pass_int\": -2.0, \"pass_td\": 4.0, \"pass_yd\": 0.03999999910593033, \"pts_allow_0\": 10.0, \"pts_allow_14_20\": 1.0, \"pts_allow_1_6\": 7.0, \"pts_allow_21_27\": 0.0, \"pts_allow_28_34\": -1.0, \"pts_allow_35p\": -4.0, \"pts_allow_7_13\": 4.0, \"rec\": 0.5, \"rec_2pt\": 2.0, \"rec_td\": 6.0, \"rec_yd\": 0.10000000149011612, \"rush_2pt\": 2.0, \"rush_td\": 6.0, \"rush_yd\": 0.10000000149011612, \"sack\": 1.0, \"safe\": 2.0, \"st_ff\": 1.0, \"st_fum_rec\": 1.0, \"st_td\": 6.0, \"xpm\": 1.0, \"xpmiss\": -1.0}}",
@@ -158,7 +158,7 @@
      "ATL"
     ],
     "projected": 6.73,
-    "realised": null
+    "realised": 6.8
    },
    "K": {
     "available": 28,
@@ -170,7 +170,7 @@
      "11786"
     ],
     "projected": 9.25,
-    "realised": null
+    "realised": 11.4
    },
    "QB": {
     "available": 7,
@@ -182,7 +182,7 @@
      "5870"
     ],
     "projected": 14.37,
-    "realised": null
+    "realised": 12.78
    },
    "RB": {
     "available": 42,
@@ -194,7 +194,7 @@
      "12897"
     ],
     "projected": 5.73,
-    "realised": null
+    "realised": 0.82
    },
    "TE": {
     "available": 76,
@@ -206,7 +206,7 @@
      "12502"
     ],
     "projected": 6.18,
-    "realised": null
+    "realised": 3.58
    },
    "WR": {
     "available": 87,
@@ -218,7 +218,7 @@
      "8676"
     ],
     "projected": 6.47,
-    "realised": null
+    "realised": 5.98
    }
   },
   "11": {
@@ -226,24 +226,24 @@
     "available": 9,
     "players": [
      "DAL",
-     "NYJ",
      "LAC",
+     "NYJ",
      "NYG",
      "LV"
     ],
-    "projected": 6.61,
+    "projected": 6.7,
     "realised": null
    },
    "K": {
     "available": 26,
     "players": [
-     "12185",
      "3451",
      "11533",
+     "12185",
      "11792",
      "7839"
     ],
-    "projected": 9.54,
+    "projected": 9.51,
     "realised": null
    },
    "QB": {
@@ -255,7 +255,7 @@
      "5870",
      "13272"
     ],
-    "projected": 12.32,
+    "projected": 12.04,
     "realised": null
    },
    "RB": {
@@ -267,45 +267,45 @@
      "9227",
      "6130"
     ],
-    "projected": 5.2,
+    "projected": 5.27,
     "realised": null
    },
    "TE": {
     "available": 76,
     "players": [
-     "7600",
      "11593",
-     "9479",
+     "7600",
      "8111",
+     "9479",
      "8172"
     ],
-    "projected": 5.83,
+    "projected": 5.8,
     "realised": null
    },
    "WR": {
-    "available": 79,
+    "available": 80,
     "players": [
      "12499",
      "3634",
+     "8135",
      "12485",
-     "6427",
-     "3155"
+     "6427"
     ],
-    "projected": 5.86,
+    "projected": 6.0,
     "realised": null
    }
   },
   "12": {
    "DEF": {
-    "available": 10,
+    "available": 11,
     "players": [
+     "NE",
      "NYJ",
      "LV",
      "NYG",
-     "DAL",
-     "ATL"
+     "DAL"
     ],
-    "projected": 7.2,
+    "projected": 7.47,
     "realised": null
    },
    "K": {
@@ -336,12 +336,12 @@
     "available": 44,
     "players": [
      "9511",
-     "6130",
      "6039",
+     "6130",
      "7608",
      "9227"
     ],
-    "projected": 4.49,
+    "projected": 4.52,
     "realised": null
    },
    "TE": {
@@ -357,29 +357,29 @@
     "realised": null
    },
    "WR": {
-    "available": 99,
+    "available": 100,
     "players": [
      "12499",
      "3634",
+     "8135",
      "8119",
-     "6427",
-     "3155"
+     "6427"
     ],
-    "projected": 5.8,
+    "projected": 5.94,
     "realised": null
    }
   },
   "13": {
    "DEF": {
-    "available": 8,
+    "available": 9,
     "players": [
      "ARI",
      "ATL",
      "TEN",
-     "NO",
-     "NYG"
+     "NE",
+     "NO"
     ],
-    "projected": 6.46,
+    "projected": 6.53,
     "realised": null
    },
    "K": {
@@ -429,29 +429,29 @@
     "realised": null
    },
    "WR": {
-    "available": 83,
+    "available": 84,
     "players": [
      "12499",
      "8119",
+     "8135",
      "3634",
-     "8676",
-     "9486"
+     "8676"
     ],
-    "projected": 6.03,
+    "projected": 6.14,
     "realised": null
    }
   },
   "14": {
    "DEF": {
-    "available": 8,
+    "available": 9,
     "players": [
+     "NE",
      "LV",
      "ATL",
      "NO",
-     "NYJ",
-     "NYG"
+     "NYJ"
     ],
-    "projected": 6.9,
+    "projected": 7.17,
     "realised": null
    },
    "K": {
@@ -503,21 +503,21 @@
     "realised": null
    },
    "WR": {
-    "available": 93,
+    "available": 94,
     "players": [
      "12499",
      "3634",
      "8119",
      "6427",
-     "3155"
+     "8135"
     ],
-    "projected": 5.98,
+    "projected": 6.01,
     "realised": null
    }
   },
   "15": {
    "DEF": {
-    "available": 10,
+    "available": 11,
     "players": [
      "NYG",
      "NYJ",
@@ -577,29 +577,29 @@
     "realised": null
    },
    "WR": {
-    "available": 100,
+    "available": 101,
     "players": [
      "8119",
      "12499",
      "3155",
      "3634",
-     "8676"
+     "8135"
     ],
-    "projected": 5.9,
+    "projected": 5.99,
     "realised": null
    }
   },
   "16": {
    "DEF": {
-    "available": 10,
+    "available": 11,
     "players": [
      "LV",
      "NO",
+     "NE",
      "ATL",
-     "MIA",
-     "TEN"
+     "MIA"
     ],
-    "projected": 7.35,
+    "projected": 7.55,
     "realised": null
    },
    "K": {
@@ -651,29 +651,29 @@
     "realised": null
    },
    "WR": {
-    "available": 101,
+    "available": 102,
     "players": [
      "12499",
      "8119",
      "3155",
      "3634",
-     "9486"
+     "8135"
     ],
-    "projected": 5.79,
+    "projected": 5.84,
     "realised": null
    }
   },
   "17": {
    "DEF": {
-    "available": 10,
+    "available": 11,
     "players": [
+     "NE",
      "LV",
      "ATL",
      "NO",
-     "ARI",
-     "DAL"
+     "ARI"
     ],
-    "projected": 7.19,
+    "projected": 7.3,
     "realised": null
    },
    "K": {
@@ -725,15 +725,15 @@
     "realised": null
    },
    "WR": {
-    "available": 101,
+    "available": 102,
     "players": [
      "8119",
      "12499",
      "3634",
-     "3155",
-     "8676"
+     "8135",
+     "3155"
     ],
-    "projected": 5.75,
+    "projected": 5.88,
     "realised": null
    }
   },

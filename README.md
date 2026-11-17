@@ -34,7 +34,7 @@ Global options: `--config PATH` (default `config/leagues.yaml`), `--data PATH`
 | `export` | Write `site/data/<league>.json` and `site/data/index.json` for the website. |
 | `replacement` | Write replacement-level values (free agents, weekly projected and realised levels, season values) for every stored season to `data/replacement/`. |
 | `ratings` | Rate every manager across all stored seasons from weekly points (see Manager ratings) and write `data/ratings/<league>.json`. |
-| `snapshot` | Capture ESPN start-percentage snapshots (one per stored season that has none, plus the current regular-season week) and the ESPN-to-Sleeper player crosswalk into `data/espn/`, then report any widely started player the crosswalk could not match. |
+| `snapshot` | Capture ESPN start-percentage snapshots (one per stored season that has none, the in-progress season again on every run until it is complete, plus the current regular-season week) and the ESPN-to-Sleeper player crosswalk into `data/espn/`, then report any widely started player the crosswalk could not match. |
 | `war` | Compute every player's Wins Above Replacement for every stored league-season (see Player WAR) and write `data/war/<league>/<season>.json`. |
 | `refresh` | `sync`, `projections`, `stats`, `snapshot`, `ratings`, `replacement`, `war`, `simulate`, `export` in order, stopping at the first failure with a non-zero exit, except that a failed `snapshot` is skipped with a warning so the odds never depend on ESPN. This is what the scheduled job runs. |
 | `calibrate` | Replay every completed season through the simulation and score the odds against what happened (see Calibration). Not part of `refresh`. `--runs N`, `--seed N`, `--residual-scale X` evaluate a candidate scale without touching the config. |
@@ -216,9 +216,11 @@ by how widely a player is started), with the league's own scoring and roster slo
 1. **Start percentages.** `ffapp snapshot` pulls ESPN's public fantasy player list,
    which carries the share of ESPN leagues starting and rostering each player, and
    stores a slim copy under `data/espn/`. A finished season has one frozen value per
-   player, so 2021 to 2026 have a single season snapshot each; from now on the daily
-   refresh also stores the current week's values, overwriting that week until it rolls
-   over. ESPN players map to Sleeper ids through Sleeper's stored ESPN id, a short alias
+   player, so 2021 to 2026 have a single season snapshot each. The season in progress
+   is pulled again on every run and stops changing once Sleeper marks the season
+   complete in every league, so its frozen value is the end-of-season one, the same
+   as earlier seasons. From now on the daily refresh also stores the current week's
+   values, overwriting that week until it rolls over. ESPN players map to Sleeper ids through Sleeper's stored ESPN id, a short alias
    table in `src/ffapp/espn.py`, then a normalised name and position match with the
    NFL team as tiebreak; the command prints anyone started in at least 2% of leagues
    it could not match, so the alias table can be extended.
@@ -378,6 +380,13 @@ After `git pull`, run `python -m ffapp export` before opening the site locally:
 `site/data/` is whatever the last export wrote, and an older export may lack
 fields the page expects.
 
+Every local script reference and module import in `site/` ends in `?v=__BUILD__`.
+The deploy replaces the placeholder with the commit SHA, so a browser that cached an
+earlier deploy's scripts fetches the new ones with the new page instead of pairing a
+new page with old code. Locally the literal placeholder is just a query string and
+the site works unchanged. `tests/test_site_files.py` fails if a reference lacks it, so
+add the placeholder to any new script or import.
+
 ## Scheduled job
 
 `.github/workflows/refresh.yml` runs daily at 11:00 UTC (after Monday night's game
@@ -386,5 +395,8 @@ is scored) and on demand. It runs the tests, `python -m ffapp refresh`, commits
 A failure at any step ends the run before the commit and deploy, so the published
 site keeps its last good state. The one exception is the ESPN `snapshot` step: if
 ESPN is unreachable the run continues with the snapshots already stored and ends
-with a warning annotation on the job naming the skipped step. GitHub Pages must be set to deploy from **GitHub
-Actions** in the repository settings.
+with a warning annotation on the job naming the skipped step. After the data commit
+and before the upload, a step stamps the script URLs:
+`sed -i "s/__BUILD__/$(git rev-parse --short HEAD)/g" site/*.html site/*.js`. It runs on
+the runner only, so no stamp is ever committed. GitHub Pages must be set to deploy
+from **GitHub Actions** in the repository settings.

@@ -1,7 +1,7 @@
 /* Playoff odds site: league switcher, sortable odds table, odds-over-time chart. Plain JS + Chart.js. */
 
-import { markSorted, nextSort } from "./sorting.js";
-import { initWar, loadWar } from "./war.js";
+import { markSorted, nextSort } from "./sorting.js?v=__BUILD__";
+import { initWar, loadWar } from "./war.js?v=__BUILD__";
 
 const DEFAULT_BOTTOM = { key: "avoid_losers_bye", label: "Avoid Loser's Bye", description: "" };
 

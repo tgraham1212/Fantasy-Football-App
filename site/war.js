@@ -1,6 +1,6 @@
 /* Player WAR page: season control, per-position leaderboards, expanded sortable list, worked example. */
 
-import { comparator, markSorted, nextSort, wireHeaders } from "./sorting.js";
+import { comparator, markSorted, nextSort, wireHeaders } from "./sorting.js?v=__BUILD__";
 
 const POSITIONS = ["QB", "RB", "WR", "TE", "DEF", "K"];
 const POSITION_LABEL = { QB: "Quarterbacks", RB: "Running backs", WR: "Wide receivers", TE: "Tight ends", DEF: "Defenses", K: "Kickers" };

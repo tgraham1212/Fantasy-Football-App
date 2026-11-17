@@ -3,7 +3,7 @@
 ## MODIFIED Requirements
 
 ### Requirement: Season snapshot
-For every season a configured league has stored, the system SHALL store one start-percentage snapshot holding, per ESPN player, the ESPN id, name, position, NFL team, percent started and percent owned. A season snapshot SHALL be fetched when none is stored for that season, and SHALL be fetched again on every run while any configured league still has that season in progress, so the stored value settles on the end-of-season one. A season every configured league has stored as complete SHALL NOT be fetched again.
+For every season a configured league has stored, the system SHALL store one start-percentage snapshot holding, per ESPN player, the ESPN id, name, position, NFL team, percent started and percent owned. A season snapshot SHALL be fetched when none is stored, and again on every run while any configured league has that season in progress. A season every configured league has stored as complete SHALL NOT be fetched again.
 
 #### Scenario: Backfill past seasons
 - **WHEN** the snapshot command runs with no snapshots stored and leagues stored for 2021 to 2026

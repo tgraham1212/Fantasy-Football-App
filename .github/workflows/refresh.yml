@@ -52,6 +52,11 @@ jobs:
             git push
           fi
 
+      # Stamp script URLs with this commit so browsers never pair a new page with
+      # cached old scripts. Runs after the commit, so no stamp is ever committed.
+      - name: Stamp script URLs
+        run: sed -i "s/__BUILD__/$(git rev-parse --short HEAD)/g" site/*.html site/*.js
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3

@@ -116,13 +116,27 @@ class CaptureReport:
         return not self.errors
 
 
-def capture_snapshots(espn: EspnClient, sleeper: SleeperClient, store: Store, league_keys) -> CaptureReport:
-    """Season snapshots for stored seasons lacking one, then the current regular-season week's snapshot.
+def season_in_progress(store: Store, league_keys, season: str) -> bool:
+    """True when any configured league stores ``season`` with a status other than complete."""
+    for key in league_keys:
+        league = store.read_league(key, season)
+        if league is not None and league.get("status") != "complete":
+            return True
+    return False
 
-    Every fetch happens before any write, so a failure leaves the stored snapshots exactly as they were.
+
+def capture_snapshots(espn: EspnClient, sleeper: SleeperClient, store: Store, league_keys) -> CaptureReport:
+    """Season snapshots for stored seasons lacking one or still in progress, then the current week's snapshot.
+
+    A season in progress for any league is re-fetched every run so its frozen value ends up being the
+    end-of-season one; a season every league has complete is never fetched again. Every fetch happens
+    before any write, so a failure leaves the stored snapshots exactly as they were.
     """
     report = CaptureReport()
-    seasons = [s for s in seasons_in_scope(store, league_keys) if store.read_espn_season(s) is None]
+    seasons = [
+        s for s in seasons_in_scope(store, league_keys)
+        if store.read_espn_season(s) is None or season_in_progress(store, league_keys, s)
+    ]
     fetched_seasons: dict[str, dict] = {}
     for season in seasons:
         try:

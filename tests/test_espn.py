@@ -13,7 +13,7 @@ from ffapp.espn import (
     teams_from_stats,
 )
 from ffapp.sleeper import SleeperClient, SleeperError
-from ffapp.store import Store
+from ffapp.store import Store, write_json
 from tests.fixtures import FixtureSession, load
 
 
@@ -105,10 +105,45 @@ def test_capture_skips_stored_seasons_and_overwrites_only_the_current_week(seede
     session = FixtureSession(state(10))
     sleeper = SleeperClient(session, min_interval=0, sleep=lambda s: None)
     report = capture_snapshots(EspnClient(sleeper), sleeper, seeded_store, ["dynasty"])
-    assert report.ok and report.seasons_written == [] and report.week_written == ("2026", 10)
+    # 2022-2025 are complete and stay as stored; 2026 is in season, so it is fetched again
+    assert report.ok and report.seasons_written == ["2026"] and report.week_written == ("2026", 10)
     assert seeded_store.read_espn_season("2024")["players"] == {"marker": True}
     assert "old" not in seeded_store.read_espn_week("2026", 10)["players"]
-    assert sum(1 for c in session.calls if "/seasons/" in c) == 1  # only the weekly fetch
+    assert not any("/seasons/2024/" in c for c in session.calls)
+    assert sum(1 for c in session.calls if "/seasons/2026/" in c) == 2  # season refresh + weekly
+
+
+def test_capture_refreshes_the_in_progress_season(seeded_store):
+    sleeper = client(state(10))
+    capture_snapshots(EspnClient(sleeper), sleeper, seeded_store, ["dynasty"])
+    seeded_store.write_espn_season("2026", {"season": "2026", "week": None, "players": {"stale": True}})
+    report = capture_snapshots(EspnClient(sleeper), sleeper, seeded_store, ["dynasty"])
+    assert "2026" in report.seasons_written
+    assert "stale" not in seeded_store.read_espn_season("2026")["players"]
+
+
+def test_capture_freezes_a_season_once_complete(seeded_store):
+    sleeper = client(state(1, season="2027", season_type="off"))
+    capture_snapshots(EspnClient(sleeper), sleeper, seeded_store, ["dynasty"])
+    league = seeded_store.read_league("dynasty", "2026")
+    write_json(seeded_store.season_dir("dynasty", "2026") / "league.json", {**league, "status": "complete"})
+    seeded_store.write_espn_season("2026", {"season": "2026", "week": None, "players": {"final": True}})
+    session = FixtureSession(state(1, season="2027", season_type="off"))
+    sleeper = SleeperClient(session, min_interval=0, sleep=lambda s: None)
+    report = capture_snapshots(EspnClient(sleeper), sleeper, seeded_store, ["dynasty"])
+    assert report.ok and report.seasons_written == []
+    assert seeded_store.read_espn_season("2026")["players"] == {"final": True}
+    assert not any("/seasons/" in c for c in session.calls)
+
+
+def test_failed_refresh_keeps_the_stored_in_progress_snapshot(seeded_store):
+    sleeper = client(state(10))
+    capture_snapshots(EspnClient(sleeper), sleeper, seeded_store, ["dynasty"])
+    seeded_store.write_espn_season("2026", {"season": "2026", "week": None, "players": {"kept": True}})
+    sleeper = client({**state(10), "espn/players.json": 503})
+    report = capture_snapshots(EspnClient(sleeper), sleeper, seeded_store, ["dynasty"])
+    assert not report.ok and "season 2026" in report.errors[0]
+    assert seeded_store.read_espn_season("2026")["players"] == {"kept": True}
 
 
 def test_capture_week_rollover_keeps_the_earlier_week(seeded_store):
