@@ -43,14 +43,27 @@ def histogram(*samples: np.ndarray) -> dict:
 
 
 LINEUP_FIELDS = ("slot", "player_id", "position", "projected")  # player_id None = replacement-level free agent
+LIVE_FIELDS = ("status", "points", "clock", "share")  # appended for a starter locked in the live week
 
 
 def lineup_rows(lineup: list[Starter]) -> list[list]:
-    """Compact rows ``[slot, player_id, position, projected]``; a replacement fill has player_id None."""
-    return [
-        [s.slot, None if s.player_id.startswith("FA:") else s.player_id, s.position, round(float(s.projected), 1)]
-        for s in lineup
-    ]
+    """Compact rows ``[slot, player_id, position, projected]``; a replacement fill has player_id None.
+    A starter locked in the live week also carries ``status`` (final / in_progress), ``points`` and ``clock``."""
+    rows = []
+    for s in lineup:
+        row = [s.slot, None if s.player_id.startswith("FA:") else s.player_id, s.position, round(float(s.projected), 1)]
+        if s.status:
+            row += [s.status, round(float(s.fixed), 2), s.clock, round(float(s.share), 4)]
+        rows.append(row)
+    return rows
+
+
+def live_totals(lineup: list[Starter]) -> dict:
+    """Points already scored and starters still to kick off, for a lineup with locked starters."""
+    return {
+        "points_so_far": round(sum(float(s.fixed) for s in lineup), 2),
+        "to_play": sum(1 for s in lineup if not s.status),
+    }
 
 
 def game(inputs: SimInputs, result: SimResult, week: int, rid_a: int, rid_b: int, **extra) -> dict:
@@ -60,16 +73,22 @@ def game(inputs: SimInputs, result: SimResult, week: int, rid_a: int, rid_b: int
     pa = win_probability(sa, sb)
     teams = []
     for rid, s, p in ((rid_a, sa, pa), (rid_b, sb, 1.0 - pa)):
-        teams.append(
-            {
-                "roster_id": rid,
-                "mean": round(float(np.mean(s)), 2),
-                "win_prob": round(p, 4),
-                "lineup": lineup_rows(inputs.starters.get(rid, {}).get(week, [])),
-            }
-        )
+        lineup = inputs.starters.get(rid, {}).get(week, [])
+        team = {
+            "roster_id": rid,
+            "mean": round(float(np.mean(s)), 2),
+            "win_prob": round(p, 4),
+            "lineup": lineup_rows(lineup),
+        }
+        if any(st.status for st in lineup):
+            team.update(live_totals(lineup))
+        teams.append(team)
     key = extra.pop("key", None) or "-".join(str(r) for r in sorted((rid_a, rid_b)))
-    return {"key": key, **extra, "teams": teams, "hist": histogram(sa, sb)}
+    margin = sa - sb
+    return {
+        "key": key, **extra, "teams": teams, "hist": histogram(sa, sb),
+        "margin_mean": round(float(np.mean(margin)), 3), "margin_sd": round(float(np.std(margin)), 3),
+    }
 
 
 # -- playoff brackets --------------------------------------------------------------------

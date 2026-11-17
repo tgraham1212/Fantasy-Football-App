@@ -64,7 +64,7 @@ def test_refresh_runs_every_step_when_sources_work(tmp_path):
     assert code == 0
     assert (tmp_path / "data" / "leagues" / "dynasty" / "2026" / "league.json").exists()
     assert (tmp_path / "data" / "projections" / "2026" / "week_17.json").exists()
-    assert (tmp_path / "data" / "odds" / "dynasty" / "2026" / "asof_09.json").exists()
+    assert (tmp_path / "data" / "odds" / "dynasty" / "2026" / "live.json").exists()  # the fixture schedule has week 10 under way
     assert (tmp_path / "site-data" / "dynasty.json").exists()
     assert (tmp_path / "site-data" / "index.json").exists()
 
@@ -107,7 +107,7 @@ def test_refresh_continues_past_a_snapshot_failure_with_a_warning(tmp_path, caps
     assert not (tmp_path / "data" / "espn" / "2026").exists() and not (tmp_path / "data" / "espn" / "2022").exists()
     assert (tmp_path / "data" / "espn" / "crosswalk.json").exists()  # the Sleeper-side crosswalk does not need ESPN
     assert not (tmp_path / "data" / "war").exists()  # no snapshots stored, so every season is skipped, which is not a failure
-    assert (tmp_path / "data" / "odds" / "dynasty" / "2026" / "asof_09.json").exists()
+    assert (tmp_path / "data" / "odds" / "dynasty" / "2026" / "live.json").exists()  # the fixture schedule has week 10 under way
     assert (tmp_path / "site-data" / "dynasty.json").exists()
 
     monkeypatch.setenv("GITHUB_ACTIONS", "true")
@@ -159,7 +159,7 @@ def test_refresh_runs_every_step_and_stats_failure_stops_before_ratings(tmp_path
     assert (tmp_path / "data" / "stats" / "2026" / "week_01.json").exists()
     assert (tmp_path / "data" / "ratings" / "dynasty.json").exists()
     assert (tmp_path / "data" / "replacement" / "dynasty" / "2026.json").exists()
-    assert (tmp_path / "data" / "odds" / "dynasty" / "2026" / "asof_09.json").exists()
+    assert (tmp_path / "data" / "odds" / "dynasty" / "2026" / "live.json").exists()  # the fixture schedule has week 10 under way
     assert (tmp_path / "site-data" / "dynasty.json").exists()
 
 

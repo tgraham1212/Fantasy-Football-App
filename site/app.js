@@ -3,6 +3,7 @@
 import { markSorted, nextSort } from "./sorting.js?v=__BUILD__";
 import { initWar, loadWar } from "./war.js?v=__BUILD__";
 import { initGames, loadGames, rerenderGames, showGames } from "./games.js?v=__BUILD__";
+import { initRefresh } from "./refresh.js?v=__BUILD__";
 
 const DEFAULT_BOTTOM = { key: "avoid_losers_bye", label: "Avoid Loser's Bye", description: "" };
 
@@ -206,7 +207,9 @@ function renderSwitcher() {
 function renderSummary() {
   const L = state.league;
   $("league-title").textContent = `${L.league_name} · ${L.season}`;
-  const asOf = L.as_of_week === 0 ? "Preseason" : `After week ${L.as_of_week} of ${L.regular_season_weeks}`;
+  const asOf = L.live
+    ? `Live: week ${L.live.week}, ${L.live.games_final} of ${L.live.games_total} games final`
+    : L.as_of_week === 0 ? "Preseason" : `After week ${L.as_of_week} of ${L.regular_season_weeks}`;
   $("freshness").textContent = `${asOf} · updated ${formatDate(L.generated_at)} · ${L.runs.toLocaleString()} simulations`;
   document.title = `${L.league_name} – Playoff Odds`;
 }
@@ -769,6 +772,7 @@ async function main() {
   try {
     state.index = await fetchJson("data/index.json");
     if (!state.index.leagues?.length) throw new Error("no leagues exported");
+    initRefresh(state.index);
     const wanted = parseHash();
     state.page = wanted.page;
     await loadLeague(wanted.league);

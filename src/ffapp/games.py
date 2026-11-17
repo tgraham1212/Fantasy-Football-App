@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import copy
 import logging
+import math
 import zlib
 from datetime import datetime, timedelta, timezone
 
@@ -239,11 +240,119 @@ def record_from_log(
                     {"roster_id": rb, "mean": round(float(sb.mean()), 2), "win_prob": round(1.0 - pa, 4), "lineup": lineups[rb]},
                 ],
                 "hist": histogram(sa, sb),
+                "margin_mean": round(float((sa - sb).mean()), 3),
+                "margin_sd": round(float((sa - sb).std()), 3),
                 "actual": scores,
                 "winner": winner,
             }
         )
     return {"source": "log", "runs": RECORD_RUNS, "games": out}
+
+
+# -- win probability added ------------------------------------------------------------------------
+
+
+def normal_cdf(z: float) -> float:
+    return 0.5 * (1.0 + math.erf(z / math.sqrt(2.0)))
+
+
+def margin_stats(game: dict) -> tuple[float, float]:
+    """(mean, sd) of team A's margin: stored by newer runs, else from the two histograms as independent teams."""
+    if game.get("margin_mean") is not None and game.get("margin_sd"):
+        return float(game["margin_mean"]), float(game["margin_sd"])
+    hist = game["hist"]
+    stats = []
+    for shares in hist["shares"]:
+        total = float(sum(shares)) or 1.0
+        mids = [hist["start"] + hist["width"] * (i + 0.5) for i in range(len(shares))]
+        mean = sum(m * s for m, s in zip(mids, shares)) / total
+        var = sum((m - mean) ** 2 * s for m, s in zip(mids, shares)) / total
+        stats.append((mean, var))
+    mean_a = float(game["teams"][0].get("mean", stats[0][0]))
+    mean_b = float(game["teams"][1].get("mean", stats[1][0]))
+    return mean_a - mean_b, math.sqrt(stats[0][1] + stats[1][1])
+
+
+def win_probability_added(margin: float, spread: float, projected: float, score: float, player_sd: float, share: float = 0.0) -> float:
+    """Change in the team's win chance from one player's score against his projection, all else as projected.
+
+    ``margin`` and ``spread`` are the team's pre-kickoff margin over the opponent; a finished player
+    (``share`` 0) removes his whole variance, a player in progress keeps ``share`` of it.
+    """
+    spread = max(spread, 1e-9)
+    before = normal_cdf(margin / spread)
+    after_spread = math.sqrt(max(spread ** 2 - player_sd ** 2 * (1.0 - share), 1e-9))
+    after = normal_cdf((margin + score - projected) / after_spread)
+    return round(after - before, 3)
+
+
+def team_wpa(
+    side: int,
+    margin: float,
+    spread: float,
+    starters: list[tuple[str, str, float, float, float]],
+    noise: NoiseModel,
+) -> dict[str, float]:
+    """``{player_id: wpa}`` for ``(player_id, position, projected, score, share)`` starters, from one team's side."""
+    out = {}
+    for pid, position, projected, score, share in starters:
+        sd = noise.spread(position, projected) if projected > 0 else noise.spread(position, 0.0)
+        out[pid] = win_probability_added(side * margin, spread, projected, score, sd, share)
+    return out
+
+
+def record_wpa(record: dict, data: SeasonData, week: int, projections: dict[str, dict], scoring: dict[str, float],
+               crosswalk: dict[str, dict], noise: NoiseModel) -> None:
+    """Add ``wpa`` per team to every game of a final week's record: each real starter's score against his
+    projection in the record (log records: the record lineup; pre-week records: his stored projection)."""
+    rows = {int(r["roster_id"]): r for r in data.matchups.get(week, [])}
+    for game in record.get("games", []):
+        margin, spread = margin_stats(game)
+        for side, team in zip((1, -1), game["teams"]):
+            row = rows.get(int(team["roster_id"]))
+            if row is None:
+                continue
+            in_lineup = {r[1]: r for r in team.get("lineup", []) if r[1]}
+            points = {str(k): float(v or 0.0) for k, v in (row.get("players_points") or {}).items()}
+            starters = []
+            for pid in (str(p) for p in row.get("starters") or []):
+                if pid in ("0", "", "None"):
+                    continue
+                record_row = projections.get(pid)
+                if record.get("source") == "log" and pid in in_lineup:
+                    projected, position = float(in_lineup[pid][3]), in_lineup[pid][2]
+                else:
+                    projected = record_points(record_row, scoring) if record_row else 0.0
+                    position = (record_row or {}).get("position") or (crosswalk.get(pid) or {}).get("position") or "WR"
+                starters.append((pid, position, projected, points.get(pid, 0.0), 0.0))
+            team["wpa"] = team_wpa(side, margin, spread, starters, noise)
+
+
+def live_baseline(store: Store, config: Config, league_key: str, data: SeasonData, week: int, log_by_key: dict, noise: NoiseModel, drift) -> dict:
+    """Pre-kickoff margins for the live week's real games: the managers' current starters, each at his last
+    logged projection before kickoff (players not yet locked: their latest projection)."""
+    provisional = record_from_log(store, config, league_key, data, week, log_by_key, noise, drift)
+    return {g["key"]: {"margin_mean": g["margin_mean"], "margin_sd": g["margin_sd"],
+                       "lineups": {str(t["roster_id"]): t["lineup"] for t in g["teams"]}} for g in provisional["games"]}
+
+
+def live_wpa(forecast: dict, baseline: dict, noise: NoiseModel) -> None:
+    """Add ``wpa`` to each team of the live forecast for its locked starters (final or in progress)."""
+    for game in forecast.get("games", []):
+        base = baseline.get(game["key"])
+        if base is None:
+            continue
+        for side, team in zip((1, -1), game["teams"]):
+            base_rows = {r[1]: r for r in base["lineups"].get(str(team["roster_id"]), []) if r[1]}
+            starters = []
+            for row in team.get("lineup", []):
+                if len(row) < 8 or row[1] is None:
+                    continue
+                pid, position, current_proj, status, points, _clock, share = row[1], row[2], row[3], row[4], row[5], row[6], row[7]
+                projected = float(base_rows[pid][3]) if pid in base_rows else float(current_proj)
+                score = float(points) + float(share) * projected  # in progress: projected final
+                starters.append((pid, position, projected, score, float(share)))
+            team["wpa"] = team_wpa(side, base["margin_mean"], base["margin_sd"], starters, noise)
 
 
 def record_from_pre_week(store: Store, league_key: str, data: SeasonData, week: int) -> dict | None:
@@ -278,19 +387,29 @@ def update_games(store: Store, config: Config, league_key: str, *, now: datetime
         return []
     data = store.read_season(league_key, season)
     as_of = completed_weeks(data.league)
-    payload = store.read_odds(league_key, season, as_of)
+    live = store.read_live(league_key, season)
+    payload = live if live and live.get("as_of_week") == as_of else store.read_odds(league_key, season, as_of)
     forecasts = (payload or {}).get("games") or {}
     schedule = Schedule(store, season)
     crosswalk = store.read_crosswalk() or {}
     rosters = {int(r["roster_id"]): [str(p) for p in (r.get("players") or [])] for r in data.rosters}
     written = []
     noise = drift = None
+
+    def models():
+        nonlocal noise, drift
+        if noise is None:
+            noise = build_pools(store, config)
+            drift = estimate_for_league(store, config, league_key)
+        return noise, drift
+
+    live_week_no = ((payload or {}).get("live") or {}).get("week")
     for week in season_weeks(data.league):
         stored = store.read_games(league_key, season, week) or {"league_key": league_key, "season": season, "week": week, "log": {}, "forecast": None, "record": None}
         before = copy.deepcopy(stored)
         if week > as_of and str(week) in forecasts:
             forecast = forecasts[str(week)]
-            stored["forecast"] = {"as_of_week": as_of, "generated_at": payload.get("generated_at"), **forecast}
+            stored["forecast"] = {"as_of_week": as_of, "generated_at": payload.get("generated_at"), "live": (payload.get("live") or {}).get("week") == week, **forecast}
             projections = store.read_projections(season, week)
             scoring = resolve_settings(config, league_key, data.league, week)
             for game in forecast["games"]:
@@ -298,14 +417,20 @@ def update_games(store: Store, config: Config, league_key: str, *, now: datetime
                 entry = build_entry(game, entries, rosters, projections, scoring, schedule, week, crosswalk, now)
                 if not entries or not same_entry(entries[-1], entry):
                     entries.append(entry)
+            if week == live_week_no and data.matchups.get(week):
+                nz, dr = models()
+                stored["baseline"] = live_baseline(store, config, league_key, data, week, stored["log"], nz, dr)
+                live_wpa(stored["forecast"], stored["baseline"], nz)
         elif week <= as_of and (stored.get("record") is None or force_records) and data.matchups.get(week):
             if any(stored["log"].values()):
-                if noise is None:
-                    noise = build_pools(store, config)
-                    drift = estimate_for_league(store, config, league_key)
-                stored["record"] = record_from_log(store, config, league_key, data, week, stored["log"], noise, drift)
+                nz, dr = models()
+                stored["record"] = record_from_log(store, config, league_key, data, week, stored["log"], nz, dr)
             else:
                 stored["record"] = record_from_pre_week(store, league_key, data, week)
+        if week <= as_of and stored.get("record") and any("wpa" not in t for g in stored["record"]["games"] for t in g["teams"]):
+            nz, _ = models()
+            scoring = resolve_settings(config, league_key, data.league, week)
+            record_wpa(stored["record"], data, week, store.read_projections(season, week), scoring, crosswalk, nz)
         if stored != before:
             store.write_games(league_key, season, week, stored)
             written.append(week)

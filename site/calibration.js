@@ -1,5 +1,7 @@
 /* Calibration page: reliability chart, PIT histogram and tables from data/calibration.json. Plain JS + Chart.js. */
 
+import { initRefresh } from "./refresh.js?v=__BUILD__";
+
 const OUTCOME_LABELS = {
   playoffs: { label: "Make playoffs", noun: "made the playoffs" },
   bye: { label: "First-round bye", noun: "earned a bye" },
@@ -479,6 +481,7 @@ async function main() {
   const status = $("status");
   try {
     state.index = await fetchJson("data/index.json");
+    initRefresh(state.index);
     for (const l of state.index.leagues || []) state.names[l.key] = l.name;
     if (!state.index.calibration || !state.index.calibration.file) {
       $("not-run").hidden = false;

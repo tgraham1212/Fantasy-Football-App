@@ -290,6 +290,41 @@ one week of roster drift, with a seed fixed per league, season and week. It is c
 once and kept. Weeks that finished before the log existed use the forecast made as of
 the week before instead, marked `pre-week`; for 2026 that is weeks 1 to 10.
 
+### Live weeks
+
+Once the first NFL game of the next week kicks off (from the stored schedule, which also
+keeps each game's quarter, clock and score), runs score that week live. A starting slot
+whose player has kicked off holds the player the manager started there, from Sleeper's
+lineup for the week; a player on the bench when his game started is not used. Each locked
+starter scores `fixed + share * (projected + bias) + sqrt(share) * (residual - bias)`:
+`fixed` is his points so far (Sleeper's per-player points, league scoring), `share` is the
+share of his 60-minute game still to play (1 before kickoff, 0 when final, in overtime or
+without a clock), and `bias` is the mean miss of the residual pool he draws from. So a final
+player scores exactly his points, and in progress the projection and its bias scale with
+the time left while the scatter scales with its square root (about 71% of a full game's
+spread at half time). With `fixed` 0 and `share` 1 this is the usual `projected + residual`.
+Open slots keep the model's best pick from players who have not kicked off. Injuries and
+benchings during a game are not visible until it is final.
+
+A live run writes `data/odds/<league>/<season>/live.json` and leaves the as-of result for the
+completed weeks frozen at its last pre-kickoff version, so the odds history and the
+look-backs never see partial weeks. When the week is final, the next run writes the new
+as-of result and removes the live file. The Predictions table shows the live chances while
+the file exists.
+
+### Win probability added
+
+Every starter with a score gets his win probability added: his team's chance of beating the
+opponent with his projection replaced by his score, minus the chance with his projection,
+everyone else as projected. Both come from a normal distribution of the margin with the
+mean and spread of the game's pre-kickoff simulation (the prediction of record, or during
+the live week a provisional one built the same way each run); when his score is known his
+own share of the spread (from the noise model) is removed. A player in progress uses his
+projected final (`so far + share * projection`) and keeps `share` of his variance. Weeks
+before the log existed use the pre-week forecast's margin and each starter's stored
+projection. The values show how big a swing each performance was; they do not add up to the
+team's change.
+
 ## How the simulation works
 
 1. **As-of point**: the last week Sleeper has fully scored (`last_scored_leg`). A week

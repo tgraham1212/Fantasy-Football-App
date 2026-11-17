@@ -15,6 +15,7 @@ from ffapp.games import season_weeks
 from ffapp.injuries import not_playing
 from ffapp.league import resolve_settings
 from ffapp.odds import completed_weeks, current_season
+from ffapp.schedule import Schedule
 from ffapp.store import Store
 
 FLEX_KEY = ("RB", "WR", "TE")
@@ -49,12 +50,33 @@ def key_players(lineup: list[list]) -> list[list]:
     return picked
 
 
-def named(rows: list[list], names: dict[str, str]) -> list[dict]:
-    return [
-        {"slot": r[0], "player_id": r[1], "name": names.get(r[1], r[1]) if r[1] else "Free agent (replacement level)",
-         "position": r[2], "projected": r[3], "replacement": r[1] is None}
-        for r in rows
-    ]
+def named(
+    rows: list[list],
+    names: dict[str, str],
+    *,
+    final: bool = False,
+    points: dict[str, float] | None = None,
+    wpa: dict[str, float] | None = None,
+    kickoffs: dict[str, str] | None = None,
+) -> list[dict]:
+    """Display rows. Status: a live-locked row carries its own (final / in_progress with clock); every
+    player of a finished week is final with his Sleeper points; others are scheduled with a kickoff."""
+    out = []
+    for r in rows:
+        pid = r[1]
+        row = {"slot": r[0], "player_id": pid, "name": names.get(pid, pid) if pid else "Free agent (replacement level)",
+               "position": r[2], "projected": r[3], "replacement": pid is None,
+               "status": None, "points": None, "clock": None, "kickoff": None, "wpa": None}
+        if len(r) >= 8:
+            row.update(status=r[4], points=r[5], clock=r[6])
+        elif final and pid:
+            row.update(status="final", points=round(float((points or {}).get(pid, 0.0)), 2))
+        elif pid and kickoffs:
+            row["kickoff"] = kickoffs.get(pid)
+        if pid and wpa and pid in wpa:
+            row["wpa"] = wpa[pid]
+        out.append(row)
+    return out
 
 
 def week_label(week: int, rules: BracketRules) -> str:
@@ -91,6 +113,15 @@ def games_export(store: Store, config: Config, league_key: str, owners: dict[int
         projections = store.read_projections(season, week)
         scoring = resolve_settings(config, league_key, data.league, week)
         week_rows = {int(r["roster_id"]): [str(p) for p in (r.get("players") or [])] for r in data.matchups.get(week, [])}
+        week_points = {int(r["roster_id"]): {str(k): float(v or 0.0) for k, v in (r.get("players_points") or {}).items()} for r in data.matchups.get(week, [])}
+        schedule = Schedule(store, season)
+        kickoff_of = {}
+        if not final:
+            for pid, rec in projections.items():
+                team = rec.get("team") or teams_of.get(pid)
+                game = schedule.game_for(week, team) if team else None
+                if game:
+                    kickoff_of[pid] = game["kickoff_utc"]
         games = []
         for g in block["games"]:
             teams = []
@@ -106,8 +137,10 @@ def games_export(store: Store, config: Config, league_key: str, owners: dict[int
                         "team_name": owner.get("team_name"),
                         "mean": t["mean"],
                         "win_prob": t["win_prob"],
-                        "key_players": named(key_players(t["lineup"]), names),
-                        "lineup": named(t["lineup"], names),
+                        "key_players": named(key_players(t["lineup"]), names, final=final, points=week_points.get(rid), wpa=t.get("wpa"), kickoffs=kickoff_of),
+                        "lineup": named(t["lineup"], names, final=final, points=week_points.get(rid), wpa=t.get("wpa"), kickoffs=kickoff_of),
+                        "points_so_far": t.get("points_so_far"),
+                        "to_play": t.get("to_play"),
                         "not_playing": [{"player_id": o["player_id"], "name": names.get(o["player_id"], o["player_id"]), "reason": o["reason"]} for o in out],
                         "actual": (g.get("actual") or [None, None])[i],
                     }
@@ -137,6 +170,7 @@ def games_export(store: Store, config: Config, league_key: str, owners: dict[int
             "week": week,
             "label": week_label(week, rules),
             "kind": kind,
+            "live": bool(block.get("live")),
             "playoffs": week >= rules.playoff_week_start,
             "source": block.get("source", "forecast"),
             "forecast_as_of": block.get("as_of_week"),

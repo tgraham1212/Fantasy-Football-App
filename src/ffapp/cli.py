@@ -279,7 +279,9 @@ def cmd_simulate(ctx: Context) -> int:
             failed += 1
             continue
         for payload in payloads:
-            print(f"odds     {key} {payload['season']} as of week {payload['as_of_week']:2d}  ({payload['runs']} runs)")
+            live = payload.get("live")
+            where = f"live week {live['week']:2d} ({live['games_final']} of {live['games_total']} games final)" if live else f"as of week {payload['as_of_week']:2d}"
+            print(f"odds     {key} {payload['season']} {where}  ({payload['runs']} runs)")
     return 0 if failed == 0 else 1
 
 

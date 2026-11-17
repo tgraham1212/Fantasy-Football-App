@@ -12,6 +12,12 @@ const state = {
 };
 
 const PLACE_LABEL = { 1: "Championship", 3: "3rd place", 5: "5th place" };
+const LIVE_BADGE = `<span class="live-badge" role="img" aria-label="Live">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path class="arc arc-out" d="M5.3 5.3a9.5 9.5 0 0 0 0 13.4"/><path class="arc arc-in" d="M8.2 8.2a5.4 5.4 0 0 0 0 7.6"/>
+    <circle class="dot" cx="12" cy="12" r="2.6"/>
+    <path class="arc arc-in" d="M15.8 8.2a5.4 5.4 0 0 1 0 7.6"/><path class="arc arc-out" d="M18.7 5.3a9.5 9.5 0 0 1 0 13.4"/>
+  </svg><span class="live-text">LIVE</span></span>`;
 const $ = (id) => document.getElementById(id);
 const escapeHtml = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const cssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -114,6 +120,12 @@ function renderNote() {
       text += " Playoff pairings are projected: teams seeded by expected finish, the favourite advancing; each game says how often that pairing happened in the simulations.";
     }
     text += " Lineups are the model's best projected lineup; players listed as out can still appear in it until their projection drops.";
+    if (W.live) {
+      text = `Live, from the run ${formatTime(W.generated_at)}. Players whose games have started are locked in the slot their manager started them in: final scores count as they are, games in progress count points so far plus the projection for the time left. Injuries or benchings during a game only show once it is final. The site refreshes before and after each slate of games.`;
+    }
+  }
+  if (W.games.some((g) => g.teams.some((t) => t.lineup.some((r) => r.wpa != null)))) {
+    text += " Percentages beside scored players are win probability added: how much that score moved the team's chance against the pre-kickoff forecast, everyone else as projected. They show the size of each swing and do not add up to the team's total.";
   }
   $("games-note").textContent = text;
 }
@@ -137,18 +149,53 @@ function gameLabel(g) {
 function teamRow(g, t) {
   const color = cssVar(state.colorOf(t.roster_id));
   const won = g.winner != null && g.winner === t.roster_id;
-  const actual = t.actual != null ? `<span class="actual">${t.actual.toFixed(1)} actual</span>` : "";
+  let actual = t.actual != null ? `<span class="actual">${t.actual.toFixed(1)} actual</span>` : "";
+  if (t.points_so_far != null) {
+    actual = `<span class="actual">${t.points_so_far.toFixed(1)} so far</span><span class="unit">${t.to_play} to play</span>`;
+  }
+  const meanLabel = t.points_so_far != null ? "proj final" : "avg pts";
   return `
     <div class="game-team">
       <span class="swatch" style="--team: ${color}" aria-hidden="true"></span>
       <span class="who"><span class="owner-name">${escapeHtml(t.display_name || `Roster ${t.roster_id}`)}</span><span class="team">${escapeHtml(t.team_name || "")}</span></span>
-      <span class="mean"><span class="num">${t.mean.toFixed(1)}</span><span class="unit">avg pts</span>${actual}</span>
+      <span class="mean"><span class="num">${t.mean.toFixed(1)}</span><span class="unit">${meanLabel}</span>${actual}</span>
       <span class="win" style="${winFill(t.win_prob)}" title="Win probability">${won ? '<span class="check" aria-label="won">&#10003;</span>' : ""}${Math.round(t.win_prob * 100)}%</span>
     </div>`;
 }
 
+function kickoffLabel(iso) {
+  if (!iso) return "";
+  const d = new Date(iso);
+  const day = d.toLocaleDateString(undefined, { weekday: "short" });
+  const h = d.getHours() % 12 || 12;
+  return `${day} ${h}:${String(d.getMinutes()).padStart(2, "0")}`; // compact: "Sun 1:00"
+}
+
+function statusTag(r) {
+  if (r.status === "in_progress") return `<span class="st st-live"><span class="st-dot" aria-hidden="true"></span>${escapeHtml(r.clock || "Live")}</span>`;
+  if (r.status === "final") return `<span class="st st-final" title="Final">F</span>`;
+  if (r.kickoff) return `<span class="st st-sched">${escapeHtml(kickoffLabel(r.kickoff))}</span>`;
+  return "";
+}
+
+function wpaTag(r) {
+  if (r.wpa == null) return `<span class="wpa"></span>`;
+  const pts = Math.round(r.wpa * 100);
+  const cls = pts > 0 ? "up" : pts < 0 ? "down" : "";
+  return `<span class="wpa ${cls}" title="Win probability added">${pts > 0 ? "+" : ""}${pts}%</span>`;
+}
+
+/* One player line: label (position or slot), name with status, points (or projection), win probability added. */
+function playerLine(r, label) {
+  const scored = r.points != null;
+  const value = scored ? `<span class="pts scored" title="Projected ${Number(r.projected).toFixed(1)}">${Number(r.points).toFixed(1)}</span>`
+    : `<span class="pts">${Number(r.projected).toFixed(1)}</span>`;
+  const cls = [r.replacement ? "fill" : "", r.status ? `is-${r.status}` : ""].filter(Boolean).join(" ");
+  return `<li${cls ? ` class="${cls}"` : ""}><span class="pos">${escapeHtml(label)}</span><span class="pname"><span class="nm">${escapeHtml(r.name)}</span>${statusTag(r)}</span>${value}${wpaTag(r)}</li>`;
+}
+
 function playerList(rows) {
-  return rows.map((r) => `<li${r.replacement ? ' class="fill"' : ""}><span class="pos">${escapeHtml(r.position)}</span><span class="pname">${escapeHtml(r.name)}</span><span class="pts">${Number(r.projected).toFixed(1)}</span></li>`).join("");
+  return rows.map((r) => playerLine(r, r.position)).join("");
 }
 
 function teamPlayers(t) {
@@ -159,16 +206,18 @@ function teamPlayers(t) {
     <div class="team-players">
       <p class="tp-name">${escapeHtml(t.display_name || "")}</p>
       <ul class="key">${playerList(t.key_players)}</ul>
-      <details class="lineup"><summary>Full lineup</summary><ul>${t.lineup.map((r) => `<li${r.replacement ? ' class="fill"' : ""}><span class="pos">${escapeHtml(r.slot)}</span><span class="pname">${escapeHtml(r.name)}</span><span class="pts">${Number(r.projected).toFixed(1)}</span></li>`).join("")}</ul></details>
+      <details class="lineup"><summary>Full lineup</summary><ul>${t.lineup.map((r) => playerLine(r, r.slot)).join("")}</ul></details>
       ${out}
     </div>`;
 }
 
 function cardHtml(g, idx) {
   const label = gameLabel(g);
+  const live = state.weeks[state.week]?.live;
+  const head = live || label ? `<p class="game-label">${live ? LIVE_BADGE : ""}${label ? `<span>${escapeHtml(label)}</span>` : ""}</p>` : "";
   return `
-    <section class="game-card${g.projected ? " projected" : ""}">
-      ${label ? `<p class="game-label">${escapeHtml(label)}</p>` : ""}
+    <section class="game-card${g.projected ? " projected" : ""}${live ? " live" : ""}">
+      ${head}
       <div class="game-body">
         <div class="game-rows">${g.teams.map((t) => teamRow(g, t)).join("")}</div>
         <div class="game-chart"><canvas id="game-chart-${idx}" role="img" aria-label="Simulated score distributions for ${escapeHtml(g.teams.map((t) => t.display_name).join(" and "))}"></canvas></div>

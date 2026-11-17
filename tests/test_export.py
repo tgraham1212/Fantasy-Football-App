@@ -272,3 +272,39 @@ def test_export_without_war_files_has_no_war_entry(seeded_store, dynasty_config,
     export_site(seeded_store, dynasty_config, out)
     index = json.loads((out / "index.json").read_text(encoding="utf-8"))
     assert index["leagues"][0]["war"] is None and not (out / "dynasty").exists()
+
+
+def test_live_result_drives_the_table_and_history_stays_on_as_of_files(seeded_store, dynasty_config, tmp_path):
+    import copy
+
+    simulate_weeks(seeded_store, dynasty_config, [0, 1, 2])
+    live = copy.deepcopy(seeded_store.read_odds("dynasty", "2026", 2))
+    for team in live["teams"]:
+        team["playoffs"] = 0.5
+    live["live"] = {"week": 3, "games_final": 1, "games_total": 14, "at": "2026-11-21T12:00:00+00:00"}
+    seeded_store.write_live("dynasty", "2026", live)
+    payload = league_export(seeded_store, dynasty_config, "dynasty")
+    assert payload["live"]["games_final"] == 1 and payload["as_of_week"] == 2 and payload["previous_as_of_week"] == 2
+    assert all(t["playoffs"] == 0.5 for t in payload["teams"])
+    frozen = {t["roster_id"]: t["playoffs"] for t in seeded_store.read_odds("dynasty", "2026", 2)["teams"]}
+    assert all(t["change"]["playoffs"] == round(0.5 - frozen[t["roster_id"]], 4) for t in payload["teams"])
+    assert payload["history"]["weeks"] == [0, 1, 2]  # the live result is not a history point
+    seeded_store.delete_live("dynasty", "2026")
+    assert league_export(seeded_store, dynasty_config, "dynasty")["live"] is None
+
+
+def test_index_carries_the_refresh_url_and_last_refresh(seeded_store, dynasty_config, tmp_path):
+    import dataclasses
+
+    from ffapp.config import SiteConfig
+
+    simulate_weeks(seeded_store, dynasty_config, [0, 1])
+    out = tmp_path / "site-data"
+    export_site(seeded_store, dynasty_config, out)
+    index = json.loads((out / "index.json").read_text(encoding="utf-8"))
+    assert index["refresh_url"] is None and index["last_refresh"] is None
+    write_json(seeded_store.root / "refresh" / "last_run.json", {"started_at": "2026-11-22T17:20:00+00:00"})
+    config = dataclasses.replace(dynasty_config, site=SiteConfig(refresh_url="https://relay.example"))
+    export_site(seeded_store, config, out)
+    index = json.loads((out / "index.json").read_text(encoding="utf-8"))
+    assert index["refresh_url"] == "https://relay.example" and index["last_refresh"] == "2026-11-22T17:20:00+00:00"

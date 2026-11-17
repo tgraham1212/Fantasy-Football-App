@@ -5,7 +5,7 @@
   "games": [
    {
     "bracket": "winners",
-    "frequency": 0.2404,
+    "frequency": 0.2402,
     "hist": {
      "shares": [
       [
@@ -149,6 +149,8 @@
      "width": 2.0
     },
     "key": "winners-r2-m3",
+    "margin_mean": 15.393,
+    "margin_sd": 31.407,
     "match": 3,
     "place": null,
     "projected": true,
@@ -272,7 +274,7 @@
    },
    {
     "bracket": "winners",
-    "frequency": 0.4281,
+    "frequency": 0.4279,
     "hist": {
      "shares": [
       [
@@ -406,6 +408,8 @@
      "width": 2.0
     },
     "key": "winners-r2-m4",
+    "margin_mean": -0.006,
+    "margin_sd": 32.615,
     "match": 4,
     "place": null,
     "projected": true,
@@ -529,7 +533,7 @@
    },
    {
     "bracket": "winners",
-    "frequency": 0.095,
+    "frequency": 0.0949,
     "hist": {
      "shares": [
       [
@@ -653,6 +657,8 @@
      "width": 2.0
     },
     "key": "winners-r2-m5",
+    "margin_mean": 2.775,
+    "margin_sd": 30.085,
     "match": 5,
     "place": 5,
     "projected": true,
@@ -775,8 +781,9 @@
     ]
    }
   ],
-  "generated_at": "2026-11-17T17:03:13+00:00",
-  "kind": "playoff"
+  "generated_at": "2026-11-17T18:18:52+00:00",
+  "kind": "playoff",
+  "live": false
  },
  "league_key": "dynasty",
  "log": {

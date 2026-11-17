@@ -56,6 +56,24 @@ class SimResult:
     losers_games: list[Game] = field(default_factory=list)
 
 
+def starter_score(starter: Starter, noise: NoiseModel, rng: np.random.Generator, runs: int) -> np.ndarray:
+    """``fixed + share * (projected + bias) + sqrt(share) * (residual - bias)``.
+
+    Before kickoff (fixed 0, share 1) this is exactly ``projected + residual``. A final starter
+    (share 0) scores his points with no noise; in progress, the projection and the projections'
+    bias scale with the time left and the scatter around them with its square root. A final
+    starter draws nothing from the random stream, so the other starters' draws do not shift.
+    """
+    if starter.share >= 1.0 and starter.fixed == 0.0:
+        return starter.projected + noise.sample(starter.position, starter.projected, rng, runs)
+    if starter.share <= 0.0:
+        return np.full(runs, float(starter.fixed))
+    residual = noise.sample(starter.position, starter.projected, rng, runs)
+    bias = noise.bias(starter.position, starter.projected)
+    share = float(starter.share)
+    return starter.fixed + share * (starter.projected + bias) + np.sqrt(share) * (residual - bias)
+
+
 def simulate(inputs: SimInputs, noise: NoiseModel, *, runs: int = 10_000, seed: int = 0) -> SimResult:
     rng = np.random.default_rng(seed)
     ids = inputs.team_ids
@@ -88,7 +106,7 @@ def simulate(inputs: SimInputs, noise: NoiseModel, *, runs: int = 10_000, seed: 
         for rid, by_week in inputs.starters.items():
             total = np.zeros(runs)
             for starter in by_week.get(week, []):
-                total += starter.projected + noise.sample(starter.position, starter.projected, rng, runs)
+                total += starter_score(starter, noise, rng, runs)
             scores[:, index[rid]] = total
         return drifted(week, scores)
 

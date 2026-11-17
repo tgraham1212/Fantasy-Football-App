@@ -35,6 +35,10 @@ def band_of(projected: float) -> int:
 class NoiseModel(Protocol):
     def sample(self, position: str, projected: float, rng: np.random.Generator, size: int) -> np.ndarray: ...
 
+    def bias(self, position: str, projected: float) -> float: ...
+
+    def spread(self, position: str, projected: float) -> float: ...
+
 
 @dataclass
 class ResidualPools:
@@ -56,6 +60,13 @@ class ResidualPools:
         pool = self.pool_for(position, projected)
         draws = pool[rng.integers(0, len(pool), size=size)]
         return draws if self.scale == 1.0 else draws * self.scale
+
+    def bias(self, position: str, projected: float) -> float:
+        """Mean miss of the pool a player draws from: the projections' bias at that position and level."""
+        return float(np.mean(self.pool_for(position, projected))) * self.scale
+
+    def spread(self, position: str, projected: float) -> float:
+        return float(np.std(self.pool_for(position, projected))) * self.scale
 
     def sizes(self) -> dict[str, int]:
         return {f"{pos}[{band}]": len(arr) for (pos, band), arr in sorted(self.by_band.items())}
@@ -136,3 +147,9 @@ class GaussianNoise:
 
     def sample(self, position: str, projected: float, rng: np.random.Generator, size: int) -> np.ndarray:
         return rng.normal(0.0, self.sd, size=size)
+
+    def bias(self, position: str, projected: float) -> float:
+        return 0.0
+
+    def spread(self, position: str, projected: float) -> float:
+        return float(self.sd)

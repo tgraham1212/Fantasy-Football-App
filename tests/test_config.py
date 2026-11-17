@@ -183,3 +183,20 @@ def test_unknown_ratings_key_rejected():
     raw["ratings"] = {"k_factor": 32}
     with pytest.raises(ConfigError, match="ratings has unknown keys: k_factor"):
         parse_config(raw)
+
+
+def test_site_refresh_url_is_optional():
+    assert parse_config(valid_raw()).site.refresh_url is None
+    raw = valid_raw()
+    raw["site"] = {"refresh_url": "https://ffapp-refresh.example.workers.dev/"}
+    assert parse_config(raw).site.refresh_url == "https://ffapp-refresh.example.workers.dev"
+    raw["site"] = {"refresh_url": ""}
+    assert parse_config(raw).site.refresh_url is None
+
+
+@pytest.mark.parametrize("site", [{"refresh_url": "http://plain.example"}, {"refresh_url": 42}, {"refresh_url": "https://a b"}, {"other": 1}, "x"])
+def test_site_refresh_url_invalid(site):
+    raw = valid_raw()
+    raw["site"] = site
+    with pytest.raises(ConfigError):
+        parse_config(raw)

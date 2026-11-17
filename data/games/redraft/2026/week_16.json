@@ -135,6 +135,8 @@
      "width": 2.0
     },
     "key": "winners-r2-m3",
+    "margin_mean": 1.486,
+    "margin_sd": 30.468,
     "match": 3,
     "place": null,
     "projected": true,
@@ -270,7 +272,7 @@
    },
    {
     "bracket": "winners",
-    "frequency": 0.1297,
+    "frequency": 0.13,
     "hist": {
      "shares": [
       [
@@ -400,6 +402,8 @@
      "width": 2.0
     },
     "key": "winners-r2-m4",
+    "margin_mean": 1.905,
+    "margin_sd": 31.335,
     "match": 4,
     "place": null,
     "projected": true,
@@ -661,6 +665,8 @@
      "width": 2.0
     },
     "key": "winners-r2-m5",
+    "margin_mean": 2.225,
+    "margin_sd": 30.636,
     "match": 5,
     "place": 5,
     "projected": true,
@@ -796,7 +802,7 @@
    },
    {
     "bracket": "losers",
-    "frequency": 0.2367,
+    "frequency": 0.2366,
     "hist": {
      "shares": [
       [
@@ -924,6 +930,8 @@
      "width": 2.0
     },
     "key": "losers-r2-m3",
+    "margin_mean": -2.728,
+    "margin_sd": 30.863,
     "match": 3,
     "place": null,
     "projected": true,
@@ -1059,7 +1067,7 @@
    },
    {
     "bracket": "losers",
-    "frequency": 0.1027,
+    "frequency": 0.1028,
     "hist": {
      "shares": [
       [
@@ -1185,6 +1193,8 @@
      "width": 2.0
     },
     "key": "losers-r2-m4",
+    "margin_mean": -1.035,
+    "margin_sd": 30.257,
     "match": 4,
     "place": null,
     "projected": true,
@@ -1320,7 +1330,7 @@
    },
    {
     "bracket": "losers",
-    "frequency": 0.1205,
+    "frequency": 0.1206,
     "hist": {
      "shares": [
       [
@@ -1450,6 +1460,8 @@
      "width": 2.0
     },
     "key": "losers-r2-m5",
+    "margin_mean": 6.429,
+    "margin_sd": 30.648,
     "match": 5,
     "place": 5,
     "projected": true,
@@ -1584,8 +1596,9 @@
     ]
    }
   ],
-  "generated_at": "2026-11-17T17:03:15+00:00",
-  "kind": "playoff"
+  "generated_at": "2026-11-17T18:18:54+00:00",
+  "kind": "playoff",
+  "live": false
  },
  "league_key": "redraft",
  "log": {

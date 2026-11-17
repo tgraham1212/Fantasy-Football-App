@@ -26,7 +26,7 @@
   "games": [
    {
     "bracket": "winners",
-    "frequency": 0.1732,
+    "frequency": 0.1728,
     "hist": {
      "shares": [
       [
@@ -162,6 +162,8 @@
      "width": 2.0
     },
     "key": "winners-r1-m1",
+    "margin_mean": -4.563,
+    "margin_sd": 32.101,
     "match": 1,
     "place": null,
     "projected": true,
@@ -429,6 +431,8 @@
      "width": 2.0
     },
     "key": "winners-r1-m2",
+    "margin_mean": 2.45,
+    "margin_sd": 31.589,
     "match": 2,
     "place": null,
     "projected": true,
@@ -564,7 +568,7 @@
    },
    {
     "bracket": "losers",
-    "frequency": 0.2034,
+    "frequency": 0.2033,
     "hist": {
      "shares": [
       [
@@ -700,6 +704,8 @@
      "width": 2.0
     },
     "key": "losers-r1-m1",
+    "margin_mean": 7.324,
+    "margin_sd": 31.39,
     "match": 1,
     "place": null,
     "projected": true,
@@ -835,7 +841,7 @@
    },
    {
     "bracket": "losers",
-    "frequency": 0.1174,
+    "frequency": 0.1176,
     "hist": {
      "shares": [
       [
@@ -969,6 +975,8 @@
      "width": 2.0
     },
     "key": "losers-r1-m2",
+    "margin_mean": 8.418,
+    "margin_sd": 30.244,
     "match": 2,
     "place": null,
     "projected": true,
@@ -1103,8 +1111,9 @@
     ]
    }
   ],
-  "generated_at": "2026-11-17T17:03:15+00:00",
-  "kind": "playoff"
+  "generated_at": "2026-11-17T18:18:54+00:00",
+  "kind": "playoff",
+  "live": false
  },
  "league_key": "redraft",
  "log": {

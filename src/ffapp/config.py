@@ -11,6 +11,13 @@ import yaml
 DEFAULT_CONFIG_PATH = Path("config") / "leagues.yaml"
 
 
+@dataclass(frozen=True)
+class SiteConfig:
+    """Website settings. ``refresh_url``: the refresh relay (see relay/README.md); no button without it."""
+
+    refresh_url: str | None = None
+
+
 class ConfigError(ValueError):
     """Raised when the leagues configuration is malformed."""
 
@@ -56,6 +63,7 @@ class Config:
     overrides: list[ScoringOverride] = field(default_factory=list)
     simulation: SimulationConfig = field(default_factory=SimulationConfig)
     ratings: RatingsConfig = field(default_factory=RatingsConfig)
+    site: SiteConfig = field(default_factory=lambda: SiteConfig())
 
     def overrides_for(self, league_key: str, season: str) -> list[ScoringOverride]:
         """Overrides for one league-season, ordered by from_week ascending."""
@@ -63,7 +71,8 @@ class Config:
         return sorted(matching, key=lambda o: o.from_week)
 
 
-_TOP_KEYS = {"leagues", "overrides", "simulation", "ratings"}
+_TOP_KEYS = {"leagues", "overrides", "simulation", "ratings", "site"}
+_SITE_KEYS = {"refresh_url"}
 _LEAGUE_KEYS = {"league_id", "name"}
 _OVERRIDE_KEYS = {"league", "season", "from_week", "scoring"}
 _SIMULATION_KEYS = {"residual_scale", "replacement_top_n", "prior_weeks"}
@@ -175,6 +184,19 @@ def _parse_ratings(raw: Any) -> RatingsConfig:
     return RatingsConfig(revert=revert, early_k=tuple(float(k) for k in early), start_mu=start_mu, start_sigma=start_sigma, ewma_weight=ewma)
 
 
+def _parse_site(raw: Any) -> SiteConfig:
+    if raw is None:
+        return SiteConfig()
+    mapping = _require_mapping(raw, "site")
+    _reject_unknown(mapping, _SITE_KEYS, "site")
+    url = mapping.get("refresh_url")
+    if url is None or url == "":
+        return SiteConfig()
+    if not isinstance(url, str) or not url.startswith("https://") or any(c.isspace() for c in url):
+        raise ConfigError(f"site.refresh_url must be an https:// address, got {url!r}")
+    return SiteConfig(refresh_url=url.rstrip("/"))
+
+
 def parse_config(raw: Any) -> Config:
     """Validate an already-parsed YAML document."""
     top = _require_mapping(raw, "config")
@@ -196,6 +218,7 @@ def parse_config(raw: Any) -> Config:
         overrides=overrides,
         simulation=_parse_simulation(top.get("simulation")),
         ratings=_parse_ratings(top.get("ratings")),
+        site=_parse_site(top.get("site")),
     )
 
 

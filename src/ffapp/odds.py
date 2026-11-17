@@ -10,6 +10,8 @@ from ffapp.bracket import BracketRules
 from ffapp.config import Config
 from ffapp.drift import DriftModel, estimate_for_league, model_path
 from ffapp.forecast import game_forecasts
+from ffapp.live import LiveContext, games_progress, live_lineup, live_week
+from ffapp.schedule import Schedule
 from ffapp.league import FLEX_ELIGIBLE, owners, resolve_settings, starter_slots
 from ffapp.lineup import Candidate, Starter, best_lineup, lineup_points
 from ffapp.noise import NoiseModel, build_pools
@@ -153,7 +155,10 @@ def build_inputs(
     current: bool,
     replacement_floor: bool = True,
     drift: DriftModel | None = None,
+    live: LiveContext | None = None,
 ) -> SimInputs:
+    """Inputs for one run. With ``live``, that week's lineups lock starters who have kicked off
+    and score them from their points so far (see ffapp.live)."""
     rules = BracketRules.from_league(data.league)
     if not rules.supported():
         raise ValueError(f"{league_key} {data.season}: unsupported bracket ({rules.playoff_teams} teams)")
@@ -183,8 +188,19 @@ def build_inputs(
             floor = {pos: level["projected"] for pos, level in levels.items()}
             floors[week] = floor
         strength[week] = {}
+        live_rows = {}
+        if live is not None and week == live.week:
+            live_rows = {int(r["roster_id"]): r for r in data.matchups.get(week, [])}
+            sched = Schedule(store, data.season)
+            crosswalk = store.read_crosswalk() or {}
         for rid, players in rosters.items():
-            lineup = lineup_from_projections(projections, scoring, slots, players, floor)
+            if rid in live_rows:
+                lineup = live_lineup(
+                    live_rows[rid], slots, players, projections, scoring, sched, week, live.at, crosswalk,
+                    lambda open_slots, available: lineup_from_projections(projections, scoring, open_slots, available, floor),
+                )
+            else:
+                lineup = lineup_from_projections(projections, scoring, slots, players, floor)
             starters[rid][week] = lineup
             strength[week][rid] = lineup_points(lineup)
     real_points = {}
@@ -228,13 +244,14 @@ def simulate_as_of(
     seed: int | None = None,
     replacement_floor: bool = True,
     drift: DriftModel | None = None,
+    live: LiveContext | None = None,
 ) -> tuple[SimInputs, SimResult, dict]:
     """Simulate one league-season as of ``as_of`` completed weeks; nothing is stored.
 
     Returns the inputs, the raw result (with per-week simulated scores) and the
     odds payload that ``run_as_of`` would store. ``drift`` None turns roster drift off.
     """
-    inputs = build_inputs(store, config, league_key, data, as_of, current=current, replacement_floor=replacement_floor, drift=drift)
+    inputs = build_inputs(store, config, league_key, data, as_of, current=current, replacement_floor=replacement_floor, drift=drift, live=live)
     seed = default_seed(league_key, data.season, as_of) if seed is None else seed
     result = simulate(inputs, noise, runs=runs, seed=seed)
     owner_of = owners(data.users, data.rosters)
@@ -275,6 +292,9 @@ def simulate_as_of(
         "teams": teams,
         "games": game_forecasts(inputs, result, data),
     }
+    if live is not None:
+        final, total = games_progress(store, data.season, live.week)
+        payload["live"] = {"week": live.week, "games_final": final, "games_total": total, "at": live.at.isoformat(timespec="seconds")}
     return inputs, result, payload
 
 
@@ -291,14 +311,25 @@ def run_as_of(
     seed: int | None = None,
     replacement_floor: bool = True,
     drift: DriftModel | None = None,
+    live: LiveContext | None = None,
 ) -> dict:
-    """Simulate one league-season as of ``as_of`` completed weeks and store the results."""
+    """Simulate one league-season as of ``as_of`` completed weeks and store the results.
+
+    A live run (the next week has kicked off) writes the league's live result and leaves the
+    as-of result frozen; any other run writes the as-of result and removes a stale live result.
+    """
     _, _, payload = simulate_as_of(
         store, config, league_key, data, as_of, current=current, noise=noise, runs=runs, seed=seed,
-        replacement_floor=replacement_floor, drift=drift,
+        replacement_floor=replacement_floor, drift=drift, live=live,
     )
-    store.write_odds(league_key, data.season, as_of, payload)
-    log.info("odds %s %s as of week %d: %d runs, seed %d", league_key, data.season, as_of, runs, payload["seed"])
+    if live is not None:
+        store.write_live(league_key, data.season, payload)
+        log.info("odds %s %s live week %d (as of week %d): %d runs", league_key, data.season, live.week, as_of, runs)
+    else:
+        store.write_odds(league_key, data.season, as_of, payload)
+        if current and store.delete_live(league_key, data.season):
+            log.info("odds %s %s: live result removed", league_key, data.season)
+        log.info("odds %s %s as of week %d: %d runs, seed %d", league_key, data.season, as_of, runs, payload["seed"])
     return payload
 
 
@@ -315,8 +346,11 @@ def simulate_league(
     backfill_season: bool = False,
     runs: int = 10_000,
     seed: int | None = None,
+    now: datetime | None = None,
 ) -> list[dict]:
-    """Run the current as-of point for a league (and, optionally, every earlier one this season)."""
+    """Run the current as-of point for a league (and, optionally, every earlier one this season).
+
+    When the next week has kicked off by ``now``, the current run is a live run (see run_as_of)."""
     season = current_season(store, league_key)
     if season is None:
         raise ValueError(f"{league_key}: nothing synced yet")
@@ -330,5 +364,8 @@ def simulate_league(
             noise = build_pools(store, config, exclude_after=(season, earlier))
             payloads.append(run_as_of(store, config, league_key, data, earlier, current=False, noise=noise, runs=runs, seed=seed, drift=drift))
     noise = build_pools(store, config)
-    payloads.append(run_as_of(store, config, league_key, data, as_of, current=True, noise=noise, runs=runs, seed=seed, drift=drift))
+    now = now or datetime.now(timezone.utc)
+    week = live_week(store, data, as_of, now)
+    live = LiveContext(week=week, at=now) if week is not None else None
+    payloads.append(run_as_of(store, config, league_key, data, as_of, current=True, noise=noise, runs=runs, seed=seed, drift=drift, live=live))
     return payloads

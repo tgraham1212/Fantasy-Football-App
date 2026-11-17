@@ -21,6 +21,10 @@ class Starter:
     player_id: str
     position: str
     projected: float
+    fixed: float = 0.0  # points already scored (live week)
+    share: float = 1.0  # share of the game still to play: 1 before kickoff, 0 when final
+    status: str | None = None  # live week only: "final" or "in_progress" for a locked starter
+    clock: str | None = None  # live week only: e.g. "Q3 4:12"
 
 
 def best_lineup(slots: list[str], candidates: list[Candidate]) -> list[Starter]:

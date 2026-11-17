@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 
 import pytest
 
-from ffapp.schedule import Schedule, ScheduleError, parse_scoreboard, refresh_schedule, team
+from ffapp.schedule import Schedule, ScheduleError, parse_scoreboard, refresh_schedule, share_left, team
 from ffapp.sleeper import SleeperClient
 from ffapp.store import Store
 from tests.fixtures import FixtureSession, load
@@ -24,7 +24,12 @@ def test_parse_scoreboard_maps_states_teams_and_byes():
     teams10 = {t for g in week10["games"] for t in (g["home"], g["away"])}
     assert "WAS" in teams10 and "WSH" not in teams10  # ESPN's WSH stored under Sleeper's WAS
     assert week10["byes"] == ["CHI", "DEN", "PHI", "TB"]
-    assert week11["games"][0] == {"home": "HOU", "away": "IND", "kickoff_utc": "2026-11-20T01:15:00+00:00", "state": "scheduled"}
+    assert week11["games"][0] == {
+        "home": "HOU", "away": "IND", "kickoff_utc": "2026-11-20T01:15:00+00:00", "state": "scheduled",
+        "quarter": 0, "clock": 0.0, "home_score": 0, "away_score": 0,
+    }
+    final = week10["games"][0]
+    assert final["state"] == "final" and final["quarter"] == 4 and isinstance(final["home_score"], int)
     assert [g["kickoff_utc"] for g in week11["games"]] == sorted(g["kickoff_utc"] for g in week11["games"])
 
 
@@ -32,6 +37,31 @@ def test_parse_scoreboard_maps_states_teams_and_byes():
 def test_parse_scoreboard_rejects_unexpected_shapes(payload):
     with pytest.raises(ScheduleError):
         parse_scoreboard(payload)
+
+
+@pytest.mark.parametrize(
+    "game,share",
+    [
+        ({"state": "in_progress", "quarter": 3, "clock": 252.0}, 0.3200),  # Q3 4:12 left: 15 + 4.2 = 19.2 of 60
+        ({"state": "in_progress", "quarter": 2, "clock": 0.0}, 0.5),  # half time
+        ({"state": "in_progress", "quarter": 1, "clock": 900.0}, 1.0),
+        ({"state": "in_progress", "quarter": 5, "clock": 300.0}, 0.0),  # overtime
+        ({"state": "in_progress", "quarter": None, "clock": None}, 0.0),  # stored before clocks existed
+        ({"state": "final", "quarter": 4, "clock": 0.0}, 0.0),
+        ({"state": "scheduled"}, 1.0),
+        (None, 1.0),
+    ],
+)
+def test_share_left(game, share):
+    assert share_left(game) == pytest.approx(share)
+
+
+def test_display_clock_fallback():
+    payload = load("espn/scoreboard/11.json")
+    payload["events"][0]["status"] = {"type": {"state": "in"}, "period": 3, "displayClock": "4:12"}
+    game = parse_scoreboard(payload)["games"]
+    hou = next(g for g in game if g["home"] == "HOU")
+    assert hou["state"] == "in_progress" and hou["clock"] == 252.0 and share_left(hou) == pytest.approx(0.32)
 
 
 def test_team_aliases():

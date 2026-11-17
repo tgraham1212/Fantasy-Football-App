@@ -12,6 +12,13 @@ leagues:
     league_id: "1389347876550770688"
     name: Chris Carter's Fall Guys
 
+# Optional website settings. `refresh_url` is the address of the refresh relay (a Cloudflare
+# Worker, see relay/README.md); with it set, every page shows a "Refresh" button. Leave it out
+# and the site works exactly as before.
+#
+# site:
+#   refresh_url: https://ffapp-refresh.<your-account>.workers.dev
+
 # Manual scoring overrides for changes Sleeper did not keep (Sleeper stores
 # only each season's final settings). Each entry replaces the listed scoring
 # keys for one league-season from `from_week` onward. Example:

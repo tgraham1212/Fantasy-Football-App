@@ -39,6 +39,45 @@ def parse_iso(value: str) -> datetime:
     return parsed if parsed.tzinfo else parsed.replace(tzinfo=timezone.utc)
 
 
+def _int(value) -> int | None:
+    try:
+        return int(float(value))
+    except (TypeError, ValueError):
+        return None
+
+
+def _clock_seconds(status: dict) -> float | None:
+    """Seconds left in the period: ESPN's numeric ``clock``, else its ``displayClock`` (m:ss)."""
+    value = status.get("clock")
+    if isinstance(value, (int, float)):
+        return float(value)
+    display = status.get("displayClock")
+    if isinstance(display, str) and ":" in display:
+        minutes, seconds = display.split(":", 1)
+        try:
+            return int(minutes) * 60 + float(seconds)
+        except ValueError:
+            return None
+    return None
+
+
+QUARTER_SECONDS = 15 * 60
+GAME_SECONDS = 4 * QUARTER_SECONDS
+
+
+def share_left(game: dict | None) -> float:
+    """Share of a 60-minute game still to play: 1 before kickoff, 0 when final, in overtime or without a clock."""
+    if game is None or game.get("state") == "scheduled":
+        return 1.0
+    if game.get("state") != "in_progress":
+        return 0.0
+    quarter, clock = game.get("quarter"), game.get("clock")
+    if quarter is None or clock is None or not 1 <= quarter <= 4:
+        return 0.0
+    left = (4 - quarter) * QUARTER_SECONDS + max(0.0, min(float(clock), QUARTER_SECONDS))
+    return round(left / GAME_SECONDS, 4)
+
+
 def parse_scoreboard(payload) -> dict:
     if not isinstance(payload, dict) or not isinstance(payload.get("events"), list):
         raise ScheduleError("scoreboard without an events list")
@@ -47,13 +86,26 @@ def parse_scoreboard(payload) -> dict:
         try:
             competitors = event["competitions"][0]["competitors"]
             sides = {c["homeAway"]: team(c["team"]["abbreviation"]) for c in competitors}
-            state = STATES[event["status"]["type"]["state"]]
+            scores = {c["homeAway"]: _int(c.get("score")) for c in competitors}
+            status = event["status"]
+            state = STATES[status["type"]["state"]]
             kickoff = parse_iso(event["date"])
         except (KeyError, IndexError, TypeError, ValueError) as exc:
             raise ScheduleError(f"unexpected scoreboard event: {exc}") from exc
         if "home" not in sides or "away" not in sides:
             raise ScheduleError("scoreboard event without both teams")
-        games.append({"home": sides["home"], "away": sides["away"], "kickoff_utc": kickoff.isoformat(), "state": state})
+        games.append(
+            {
+                "home": sides["home"],
+                "away": sides["away"],
+                "kickoff_utc": kickoff.isoformat(),
+                "state": state,
+                "quarter": _int(status.get("period")),
+                "clock": _clock_seconds(status),
+                "home_score": scores.get("home"),
+                "away_score": scores.get("away"),
+            }
+        )
     games.sort(key=lambda g: (g["kickoff_utc"], g["home"]))
     byes = sorted(team(t["abbreviation"]) for t in (payload.get("week") or {}).get("teamsOnBye") or [] if t.get("abbreviation"))
     return {"games": games, "byes": byes}

@@ -96,6 +96,23 @@ class Store:
     def odds_path(self, league_key: str, season: str, as_of_week: int) -> Path:
         return self.root / "odds" / league_key / str(season) / f"asof_{int(as_of_week):02d}.json"
 
+    def live_path(self, league_key: str, season: str) -> Path:
+        return self.root / "odds" / league_key / str(season) / "live.json"
+
+    def read_live(self, league_key: str, season: str) -> dict | None:
+        path = self.live_path(league_key, season)
+        return read_json(path) if path.exists() else None
+
+    def write_live(self, league_key: str, season: str, payload: dict) -> None:
+        write_json(self.live_path(league_key, season), payload)
+
+    def delete_live(self, league_key: str, season: str) -> bool:
+        path = self.live_path(league_key, season)
+        if path.exists():
+            path.unlink()
+            return True
+        return False
+
     def espn_season_path(self, season: str) -> Path:
         return self.root / "espn" / str(season) / "season.json"
 

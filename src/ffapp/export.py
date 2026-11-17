@@ -80,12 +80,18 @@ def league_export(store: Store, config: Config, league_key: str) -> dict:
     if season is None:
         raise ExportError(f"{league_key}: nothing synced yet")
     weeks = store.odds_weeks(league_key, season)
-    if not weeks:
+    live = store.read_live(league_key, season)
+    if not weeks and not live:
         raise ExportError(f"{league_key} {season}: no odds stored, run `ffapp simulate` first")
     league = store.read_league(league_key, season) or {}
     rules = BracketRules.from_league(league)
-    latest = store.read_odds(league_key, season, weeks[-1])
-    previous = store.read_odds(league_key, season, weeks[-2]) if len(weeks) > 1 else None
+    if live:
+        # the week in progress: live chances, compared with the frozen result the live run started from
+        latest = live
+        previous = store.read_odds(league_key, season, live["as_of_week"])
+    else:
+        latest = store.read_odds(league_key, season, weeks[-1])
+        previous = store.read_odds(league_key, season, weeks[-2]) if len(weeks) > 1 else None
     prev_by_roster = {t["roster_id"]: _enrich(t) for t in (previous or {}).get("teams", [])}
 
     teams = []
@@ -123,6 +129,7 @@ def league_export(store: Store, config: Config, league_key: str) -> dict:
         "previous_as_of_week": previous["as_of_week"] if previous else None,
         "generated_at": latest["generated_at"],
         "runs": latest["runs"],
+        "live": latest.get("live"),
         "regular_season_weeks": rules.playoff_week_start - 1,
         "playoff_teams": rules.playoff_teams,
         "bottom_column": bottom_column(league),
@@ -294,6 +301,9 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
                 "games": games_entry,
             }
         )
+    index["refresh_url"] = config.site.refresh_url
+    last_run = store.root / "refresh" / "last_run.json"
+    index["last_refresh"] = (read_json(last_run) or {}).get("started_at") if last_run.exists() else None
     index["calibration"] = None
     report_path = store.root / "calibration" / "report.json"
     if report_path.exists():

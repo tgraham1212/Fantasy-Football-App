@@ -53,7 +53,11 @@ def test_export_writes_games_index_and_weeks(seeded_store, dynasty_config, tmp_p
     team = current["games"][0]["teams"][0]
     assert current["kind"] == "current" and current["source"] == "forecast" and current["forecast_as_of"] == AS_OF
     assert team["actual"] is None and len(team["lineup"]) == 8 and 1 <= len(team["key_players"]) <= 4
-    assert set(team["lineup"][0]) == {"slot", "player_id", "name", "position", "projected", "replacement"}
+    assert set(team["lineup"][0]) == {"slot", "player_id", "name", "position", "projected", "replacement", "status", "points", "clock", "kickoff", "wpa"}
+    assert team["lineup"][0]["status"] is None and team["lineup"][0]["wpa"] is None  # nothing kicked off in this fixture week
+    assert finished["games"][0]["teams"][0]["lineup"][0]["status"] == "final"
+    finished_wpa = [r["wpa"] for t in finished["games"][0]["teams"] for r in t["lineup"] if r["wpa"] is not None]
+    assert finished_wpa, "starters in a finished week carry win probability added"
     assert isinstance(team["not_playing"], list)
 
     playoff = json.loads((out / "dynasty" / "games" / "week_15.json").read_text(encoding="utf-8"))
