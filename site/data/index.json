@@ -7,18 +7,28 @@
   {
    "as_of_week": 9,
    "file": "dynasty.json",
-   "generated_at": "2026-11-16T20:45:39+00:00",
+   "generated_at": "2026-11-17T03:04:57+00:00",
    "key": "dynasty",
    "name": "Taco Tuesdays",
-   "season": "2026"
+   "season": "2026",
+   "war": {
+    "current": "2026",
+    "file": "dynasty/war/index.json",
+    "seasons": 5
+   }
   },
   {
    "as_of_week": 9,
    "file": "redraft.json",
-   "generated_at": "2026-11-16T20:45:41+00:00",
+   "generated_at": "2026-11-17T03:04:58+00:00",
    "key": "redraft",
    "name": "Chris Carter's Fall Guys",
-   "season": "2026"
+   "season": "2026",
+   "war": {
+    "current": "2026",
+    "file": "redraft/war/index.json",
+    "seasons": 6
+   }
   }
  ]
 }

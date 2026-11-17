@@ -9,6 +9,8 @@ sleeper/league/<id>/losers_bracket.json  GET /v1/league/<id>/losers_bracket
 sleeper/state/nfl.json                   GET /v1/state/nfl
 sleeper/projections/<season>/<week>.json GET projections/nfl/<season>/<week> (trimmed)
 sleeper/stats/<season>/<week>.json       GET stats/nfl/<season>/<week> (trimmed: fixture players + free agents)
+sleeper/players/nfl.json                 GET /v1/players/nfl (trimmed to the players the ESPN fixture names)
+sleeper/espn/players.json                ESPN seasons/<any>/players (2024 top 40 per position, served for every season and week)
 
 Recorded 2026-11-13. Dynasty ("Taco Tuesdays") league IDs by season:
 2022 780973042250809344, 2023 939158991781838848, 2024 1069001128785944576,
@@ -80,6 +82,10 @@ class FixtureSession:
             return None
         if path.startswith("/v1/state/"):
             return f"state/{path.removeprefix('/v1/state/')}.json"
+        if path.startswith("/v1/players/"):
+            return f"players/{path.removeprefix('/v1/players/')}.json"
+        if path.startswith("/apis/v3/games/ffl/seasons/") and path.endswith("/players"):
+            return "espn/players.json"
         if path.startswith("/projections/nfl/"):
             season, week = path.removeprefix("/projections/nfl/").split("/")
             return f"projections/{season}/{week}.json"

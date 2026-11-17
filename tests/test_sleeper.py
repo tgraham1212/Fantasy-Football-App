@@ -63,6 +63,20 @@ def test_success_returns_json_and_sets_user_agent():
     assert headers["User-Agent"].startswith("ffapp/")
 
 
+def test_extra_headers_merge_over_defaults():
+    client, session, _ = make_client([FakeResponse(200, {"ok": True})])
+    assert client.get_json("https://example.test/x", headers={"X-Fantasy-Filter": "{}"}) == {"ok": True}
+    headers = session.calls[0][2]
+    assert headers["X-Fantasy-Filter"] == "{}"
+    assert headers["User-Agent"].startswith("ffapp/") and headers["Accept"] == "application/json"
+
+
+def test_players_url():
+    client, session, _ = make_client([FakeResponse(200, {})])
+    client.players()
+    assert session.calls[0][0] == "https://api.sleeper.app/v1/players/nfl"
+
+
 def test_endpoint_urls():
     client, session, _ = make_client([FakeResponse(200, [])] * 6)
     client.league("1")

@@ -91,7 +91,47 @@ def stats_for_2026():
 def test_refresh_steps_in_order():
     from ffapp.cli import REFRESH_STEPS
 
-    assert [name for name, _ in REFRESH_STEPS] == ["sync", "projections", "stats", "ratings", "replacement", "simulate", "export"]
+    assert [name for name, _ in REFRESH_STEPS] == ["sync", "projections", "stats", "snapshot", "ratings", "replacement", "war", "simulate", "export"]
+
+
+def test_refresh_continues_past_a_snapshot_failure_with_a_warning(tmp_path, capsys, monkeypatch):
+    cfg = write_config(tmp_path)
+    assert run(tmp_path, cfg, "sync") == 0
+    overrides = {**projections_for_2026(), **stats_for_2026(), "espn/players.json": 503}
+    monkeypatch.delenv("GITHUB_ACTIONS", raising=False)
+    assert run(tmp_path, cfg, "refresh", overrides=overrides) == 0
+    out = capsys.readouterr().out
+    assert "WARNING  Refresh skipped a step: snapshot failed" in out and "::warning" not in out
+    assert not (tmp_path / "data" / "espn" / "2026").exists() and not (tmp_path / "data" / "espn" / "2022").exists()
+    assert (tmp_path / "data" / "espn" / "crosswalk.json").exists()  # the Sleeper-side crosswalk does not need ESPN
+    assert not (tmp_path / "data" / "war").exists()  # no snapshots stored, so every season is skipped, which is not a failure
+    assert (tmp_path / "data" / "odds" / "dynasty" / "2026" / "asof_09.json").exists()
+    assert (tmp_path / "site-data" / "dynasty.json").exists()
+
+    monkeypatch.setenv("GITHUB_ACTIONS", "true")
+    assert run(tmp_path, cfg, "refresh", overrides=overrides) == 0
+    assert "::warning title=Refresh skipped a step::snapshot failed" in capsys.readouterr().out
+
+
+def test_clean_refresh_prints_no_warning_and_writes_snapshots_and_war(tmp_path, capsys):
+    cfg = write_config(tmp_path)
+    assert run(tmp_path, cfg, "refresh", overrides={**projections_for_2026(), **stats_for_2026()}) == 0
+    out = capsys.readouterr().out
+    assert "WARNING" not in out and "::warning" not in out
+    assert (tmp_path / "data" / "espn" / "2026" / "season.json").exists()
+    assert (tmp_path / "data" / "espn" / "2026" / "week_10.json").exists()
+    assert (tmp_path / "data" / "espn" / "crosswalk.json").exists()
+    assert (tmp_path / "data" / "war" / "dynasty" / "2026.json").exists()
+
+
+def test_war_failure_stops_the_refresh(tmp_path, monkeypatch):
+    import ffapp.cli as cli
+
+    cfg = write_config(tmp_path)
+    assert run(tmp_path, cfg, "sync") == 0
+    monkeypatch.setattr(cli, "REFRESH_STEPS", tuple((n, (lambda ctx: 1) if n == "war" else h) for n, h in cli.REFRESH_STEPS))
+    assert run(tmp_path, cfg, "refresh", overrides={**projections_for_2026(), **stats_for_2026()}) == 1
+    assert not (tmp_path / "data" / "odds").exists() and not (tmp_path / "site-data").exists()
 
 
 def test_ratings_command_writes_every_league(tmp_path):
@@ -102,7 +142,7 @@ def test_ratings_command_writes_every_league(tmp_path):
     assert payload["league_key"] == "dynasty" and len(payload["managers"]) >= 12
 
 
-def test_refresh_runs_seven_steps_and_stats_failure_stops_before_ratings(tmp_path):
+def test_refresh_runs_nine_steps_and_stats_failure_stops_before_ratings(tmp_path):
     cfg = write_config(tmp_path)
     assert run(tmp_path, cfg, "sync") == 0
     before = tree_digest(tmp_path / "data")

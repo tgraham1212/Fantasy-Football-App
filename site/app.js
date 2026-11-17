@@ -1,5 +1,8 @@
 /* Playoff odds site: league switcher, sortable odds table, odds-over-time chart. Plain JS + Chart.js. */
 
+import { markSorted, nextSort } from "./sorting.js";
+import { initWar, loadWar } from "./war.js";
+
 const DEFAULT_BOTTOM = { key: "avoid_losers_bye", label: "Avoid Loser's Bye", description: "" };
 
 const state = {
@@ -9,6 +12,7 @@ const state = {
   selected: null, // roster_id of the highlighted current team
   selectedFormer: null, // manager id of a highlighted former member (rating chart only)
   sort: null, // null = standings order, else { key, dir: "desc" | "asc" }
+  page: "predictions", // "predictions" | "war", kept in the URL hash as #<league>/war
   chart: null,
   ratingChart: null,
   ratingMetric: "mu", // "mu" | "career_z"
@@ -212,15 +216,35 @@ function initTableHead() {
     const btn = th.querySelector("button.sort");
     if (!btn) continue;
     btn.addEventListener("click", () => {
-      const key = th.dataset.col;
-      if (state.sort && state.sort.key === key) {
-        state.sort = { key, dir: state.sort.dir === "desc" ? "asc" : "desc" };
-      } else {
-        state.sort = { key, dir: "desc" };
-      }
+      state.sort = nextSort(state.sort, th.dataset.col);
       renderTable();
     });
   }
+}
+
+// -- sub-tabs ------------------------------------------------------------------------
+
+function parseHash() {
+  const [league, page] = location.hash.replace("#", "").split("/");
+  return { league: league || "", page: page === "war" ? "war" : "predictions" };
+}
+
+function writeHash() {
+  const key = state.league ? state.league.league_key : "";
+  try { history.replaceState(null, "", `#${key}${state.page === "war" ? "/war" : ""}`); } catch (e) { /* ignore */ }
+}
+
+function showPage(page) {
+  state.page = page;
+  $("page-predictions").hidden = page !== "predictions";
+  $("page-war").hidden = page !== "war";
+  for (const btn of $("subtabs").querySelectorAll("button")) btn.setAttribute("aria-pressed", String(btn.dataset.page === page));
+  writeHash();
+  if (page === "predictions") renderChart(); // the canvas had no size while hidden
+}
+
+function initSubtabs() {
+  for (const btn of $("subtabs").querySelectorAll("button")) btn.addEventListener("click", () => showPage(btn.dataset.page));
 }
 
 function renderHead() {
@@ -229,13 +253,7 @@ function renderHead() {
   const bottomBtn = $("bottom-head");
   bottomBtn.innerHTML = bottom.key === "last" ? "#1 Pick" : "Avoid<br>Loser's Bye";
   bottomBtn.title = bottom.description || "";
-  for (const th of document.querySelectorAll("#odds-table thead th[data-col]")) {
-    if (state.sort && th.dataset.col === state.sort.key) {
-      th.setAttribute("aria-sort", state.sort.dir === "asc" ? "ascending" : "descending");
-    } else {
-      th.removeAttribute("aria-sort");
-    }
-  }
+  markSorted(document.querySelectorAll("#odds-table thead th[data-col]"), state.sort);
 }
 
 function chanceCell(L, t, key) {
@@ -723,7 +741,6 @@ async function loadLeague(key) {
   const wantedMetric = params.get("metric");
   if (metrics.some((m) => m.key === wantedMetric)) state.metric = wantedMetric;
   else if (!metrics.some((m) => m.key === state.metric)) state.metric = "playoffs";
-  try { history.replaceState(null, "", `#${entry.key}`); } catch (e) { /* ignore */ }
   renderSwitcher();
   renderSummary();
   renderTable();
@@ -733,16 +750,21 @@ async function loadLeague(key) {
   renderRatingChart();
   $("main").hidden = false;
   $("status").hidden = true;
+  showPage(state.page);
+  await loadWar(entry.key, payload.league_name, entry.war);
 }
 
 async function main() {
   initTheme();
   initTableHead();
+  initSubtabs();
+  initWar();
   try {
     state.index = await fetchJson("data/index.json");
     if (!state.index.leagues?.length) throw new Error("no leagues exported");
-    const wanted = location.hash.replace("#", "");
-    await loadLeague(wanted);
+    const wanted = parseHash();
+    state.page = wanted.page;
+    await loadLeague(wanted.league);
   } catch (err) {
     const status = $("status");
     status.textContent = `Could not load the odds data (${err.message}).`;

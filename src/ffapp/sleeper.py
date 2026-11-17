@@ -86,9 +86,9 @@ class SleeperClient:
                 self._sleep(wait)
         self._last_request = self._clock()
 
-    def get_json(self, url: str) -> Any:
-        """GET ``url`` and decode JSON, retrying transient failures."""
-        headers = {"User-Agent": USER_AGENT, "Accept": "application/json"}
+    def get_json(self, url: str, headers: dict[str, str] | None = None) -> Any:
+        """GET ``url`` and decode JSON, retrying transient failures. ``headers`` are merged over the defaults."""
+        headers = {"User-Agent": USER_AGENT, "Accept": "application/json", **(headers or {})}
         attempt = 0
         while True:
             self._throttle()
@@ -136,6 +136,10 @@ class SleeperClient:
 
     def state(self, sport: str = "nfl") -> dict:
         return self.get_json(f"{self._api_base}/state/{sport}")
+
+    def players(self, sport: str = "nfl") -> dict:
+        """The full player list (large; Sleeper asks for at most one fetch a day)."""
+        return self.get_json(f"{self._api_base}/players/{sport}")
 
     # -- undocumented projections endpoint -----------------------------------
 

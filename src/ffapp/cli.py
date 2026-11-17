@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import logging
+import os
 import sys
 from collections.abc import Sequence
 from pathlib import Path
@@ -12,7 +13,7 @@ from ffapp.config import DEFAULT_CONFIG_PATH, Config, ConfigError, load_config
 from ffapp.sleeper import SleeperClient
 from ffapp.store import DEFAULT_DATA_ROOT, Store
 
-COMMANDS = ("sync", "projections", "stats", "ratings", "replacement", "simulate", "verify-brackets", "export", "refresh", "calibrate")
+COMMANDS = ("sync", "projections", "stats", "snapshot", "ratings", "replacement", "war", "simulate", "verify-brackets", "export", "refresh", "calibrate")
 log = logging.getLogger("ffapp")
 
 
@@ -36,8 +37,10 @@ def build_parser() -> argparse.ArgumentParser:
     stats = sub.add_parser("stats", help="Refresh stored weekly player stats (actual stat lines)")
     stats.add_argument("--backfill", action="store_true", help="Fetch every season in scope, not just the current one")
 
+    sub.add_parser("snapshot", help="Capture ESPN start-percentage snapshots and the player crosswalk into data/espn")
     sub.add_parser("ratings", help="Rate every manager across all stored seasons and write data/ratings")
     sub.add_parser("replacement", help="Write replacement-level values for every stored season to data/replacement")
+    sub.add_parser("war", help="Compute every player's Wins Above Replacement per league-season into data/war")
 
     sim = sub.add_parser("simulate", help="Run the playoff odds simulation")
     sim.add_argument("--backfill-season", action="store_true", help="Also produce odds for every earlier as-of week of the current season")
@@ -52,7 +55,7 @@ def build_parser() -> argparse.ArgumentParser:
     cal.add_argument("--no-replacement-floor", action="store_true", help="Replay without the replacement-level lineup floor (evaluation only)")
     cal.add_argument("--no-roster-drift", action="store_true", help="Replay without roster drift (evaluation only)")
     sub.add_parser("export", help="Write site/data/*.json for the website")
-    refresh = sub.add_parser("refresh", help="sync, projections, stats, ratings, replacement, simulate and export in order")
+    refresh = sub.add_parser("refresh", help="sync, projections, stats, snapshot, ratings, replacement, war, simulate and export in order")
     refresh.set_defaults(full=False, backfill=False, backfill_season=False, runs=10_000, seed=None)
     return parser
 
@@ -109,6 +112,38 @@ def cmd_stats(ctx: Context) -> int:
     return 0 if report.ok else 1
 
 
+def cmd_snapshot(ctx: Context) -> int:
+    from ffapp.espn import EspnClient, capture_snapshots, match, refresh_crosswalk, teams_from_stats
+    from ffapp.projections import seasons_in_scope
+    from ffapp.sleeper import SleeperError
+
+    report = capture_snapshots(EspnClient(ctx.client), ctx.client, ctx.store, ctx.config.leagues)
+    for season in report.seasons_written:
+        print(f"wrote    {ctx.store.espn_season_path(season)}")
+    if report.week_written:
+        print(f"wrote    {ctx.store.espn_week_path(*report.week_written)}")
+    for message in report.errors:
+        print(f"FAILED   snapshot {message}", file=sys.stderr)
+    try:
+        changed = refresh_crosswalk(ctx.client, ctx.store)
+    except SleeperError as exc:
+        print(f"FAILED   crosswalk: {exc}", file=sys.stderr)
+        return 1
+    print(f"crosswalk {'updated' if changed else 'unchanged'}")
+    crosswalk = ctx.store.read_crosswalk() or {}
+    for season in seasons_in_scope(ctx.store, ctx.config.leagues):
+        snapshots = [(season, ctx.store.read_espn_season(season))]
+        snapshots += [(f"{season} week {w}", ctx.store.read_espn_week(season, w)) for w in ctx.store.espn_weeks(season)]
+        teams = teams_from_stats(ctx.store, season)
+        for label, snapshot in snapshots:
+            if not snapshot:
+                continue
+            _, unmatched = match(snapshot.get("players") or {}, crosswalk, teams)
+            for u in unmatched:
+                print(f"unmatched {label}: {u.name} ({u.position}) started {u.started}%")
+    return 0 if report.ok else 1
+
+
 def cmd_ratings(ctx: Context) -> int:
     from ffapp.ratings import write_ratings
 
@@ -137,6 +172,24 @@ def cmd_replacement(ctx: Context) -> int:
             continue
         for path in written:
             print(f"wrote    {path}")
+    return 0 if failed == 0 else 1
+
+
+def cmd_war(ctx: Context) -> int:
+    from ffapp.war import write_war
+
+    failed = 0
+    for key in ctx.config.leagues:
+        try:
+            report = write_war(ctx.store, ctx.config, key)
+        except (ValueError, FileNotFoundError) as exc:
+            print(f"FAILED   {key}: {exc}", file=sys.stderr)
+            failed += 1
+            continue
+        for path in report.written:
+            print(f"wrote    {path}")
+        for message in report.skipped:
+            print(f"skipped  {message}", file=sys.stderr)
     return 0 if failed == 0 else 1
 
 
@@ -226,32 +279,55 @@ def cmd_export(ctx: Context) -> int:
 
 
 def cmd_refresh(ctx: Context) -> int:
-    """The scheduled pipeline: each step runs only if the one before succeeded."""
+    """The scheduled pipeline: each step runs only if the one before succeeded.
+
+    Steps in ``OPTIONAL_STEPS`` may fail without stopping the run (the ESPN snapshot:
+    WAR works from the snapshots already stored and the odds must not depend on ESPN);
+    the run then ends with a warning naming them, as a workflow annotation under GitHub Actions.
+    """
+    skipped: list[str] = []
     for name, handler in REFRESH_STEPS:
         print(f"== {name}")
         code = handler(ctx)
+        if code != 0 and name in OPTIONAL_STEPS:
+            skipped.append(f"{name} failed (exit {code}); later steps used the data already stored")
+            continue
         if code != 0:
             print(f"refresh stopped: {name} failed (exit {code})", file=sys.stderr)
             return code
+    for reason in skipped:
+        print(warning_line("Refresh skipped a step", reason))
     return 0
+
+
+def warning_line(title: str, message: str) -> str:
+    """A GitHub Actions warning annotation when running there, a plain warning line otherwise."""
+    if os.environ.get("GITHUB_ACTIONS"):
+        return f"::warning title={title}::{message}"
+    return f"WARNING  {title}: {message}"
 
 
 REFRESH_STEPS = (
     ("sync", cmd_sync),
     ("projections", cmd_projections),
     ("stats", cmd_stats),
+    ("snapshot", cmd_snapshot),
     ("ratings", cmd_ratings),
     ("replacement", cmd_replacement),
+    ("war", cmd_war),
     ("simulate", cmd_simulate),
     ("export", cmd_export),
 )
+OPTIONAL_STEPS = frozenset({"snapshot"})
 
 HANDLERS = {
     "sync": cmd_sync,
     "projections": cmd_projections,
     "stats": cmd_stats,
+    "snapshot": cmd_snapshot,
     "ratings": cmd_ratings,
     "replacement": cmd_replacement,
+    "war": cmd_war,
     "simulate": cmd_simulate,
     "verify-brackets": cmd_verify_brackets,
     "export": cmd_export,

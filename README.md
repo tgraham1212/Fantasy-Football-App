@@ -34,7 +34,9 @@ Global options: `--config PATH` (default `config/leagues.yaml`), `--data PATH`
 | `export` | Write `site/data/<league>.json` and `site/data/index.json` for the website. |
 | `replacement` | Write replacement-level values (free agents, weekly projected and realised levels, season values) for every stored season to `data/replacement/`. |
 | `ratings` | Rate every manager across all stored seasons from weekly points (see Manager ratings) and write `data/ratings/<league>.json`. |
-| `refresh` | `sync`, `projections`, `stats`, `ratings`, `replacement`, `simulate`, `export` in order, stopping at the first failure with a non-zero exit. This is what the scheduled job runs. |
+| `snapshot` | Capture ESPN start-percentage snapshots (one per stored season that has none, plus the current regular-season week) and the ESPN-to-Sleeper player crosswalk into `data/espn/`, then report any widely started player the crosswalk could not match. |
+| `war` | Compute every player's Wins Above Replacement for every stored league-season (see Player WAR) and write `data/war/<league>/<season>.json`. |
+| `refresh` | `sync`, `projections`, `stats`, `snapshot`, `ratings`, `replacement`, `war`, `simulate`, `export` in order, stopping at the first failure with a non-zero exit, except that a failed `snapshot` is skipped with a warning so the odds never depend on ESPN. This is what the scheduled job runs. |
 | `calibrate` | Replay every completed season through the simulation and score the odds against what happened (see Calibration). Not part of `refresh`. `--runs N`, `--seed N`, `--residual-scale X` evaluate a candidate scale without touching the config. |
 
 First-time setup of a fresh clone, in order:
@@ -43,8 +45,10 @@ First-time setup of a fresh clone, in order:
 python -m ffapp sync
 python -m ffapp projections --backfill
 python -m ffapp stats --backfill
+python -m ffapp snapshot
 python -m ffapp ratings
 python -m ffapp replacement
+python -m ffapp war
 python -m ffapp verify-brackets
 python -m ffapp simulate --backfill-season
 python -m ffapp export
@@ -113,6 +117,10 @@ data/
   replacement/<league>/<season>.json           weekly replacement levels by position and the season values (see Replacement level)
   model/<league>.json                          roster-drift factors by weeks ahead, estimated from the stored seasons
   ratings/<league>.json                        every manager's rating history by week (see Manager ratings)
+  espn/<season>/season.json                    ESPN start/roster percentages, one frozen snapshot per season (see Player WAR)
+  espn/<season>/week_NN.json                   the same, captured weekly from the 2026 season on
+  espn/crosswalk.json                          Sleeper's player list trimmed to id, ESPN id, name and position
+  war/<league>/<season>.json                   every player's WAR for that league-season, with the weekly detail
   odds/<league>/<season>/asof_NN.json          one simulation result per as-of week (the odds history)
 site/data/<league>.json, index.json            what the website reads
 ```
@@ -198,6 +206,52 @@ The defaults came from a replay of the stored seasons (2021/2022 to 2026). The
 ratings are a display of career skill, not a forecaster: in the redraft league, where
 rosters reset every year, last season's rating says little about week 1, which is why
 the chart keeps a continuous career line rather than trying to predict.
+
+## Player WAR
+
+`ffapp war` values every player's season in Wins Above Replacement for each league,
+following the Stathole Sports method (consensus lineups and a replacement cut drawn
+by how widely a player is started), with the league's own scoring and roster slots.
+
+1. **Start percentages.** `ffapp snapshot` pulls ESPN's public fantasy player list,
+   which carries the share of ESPN leagues starting and rostering each player, and
+   stores a slim copy under `data/espn/`. A finished season has one frozen value per
+   player, so 2021 to 2026 have a single season snapshot each; from now on the daily
+   refresh also stores the current week's values, overwriting that week until it rolls
+   over. ESPN players map to Sleeper ids through Sleeper's stored ESPN id, a short alias
+   table in `src/ffapp/espn.py`, then a normalised name and position match with the
+   NFL team as tiebreak; the command prints anyone started in at least 2% of leagues
+   it could not match, so the alias table can be extended.
+2. **Consensus lineup.** Each regular-season week, the most-started players with a
+   game that week fill every position's starting slots (12 teams times the slots),
+   then the most-started remaining RB/WR/TE fill the flex. The three most-started
+   players past each position's cut are that week's replacement players.
+3. **Season constants.** Over the regular season so far, each slot's mean and
+   variance of actual points; the opponent is a normal distribution whose mean is the
+   sum of the slot means and whose spread is the square root of the summed variances.
+   The replacement level per position is the season mean of the replacement players'
+   actual points.
+4. **Wins.** A player's week is their actual points in a lineup whose other slots sit
+   at the slot means, so the win probability is the share of the opponent distribution
+   below the league mean plus (score minus the position's slot mean). A week with no
+   game played takes the replacement level; a game played for zero points counts as
+   zero. Expected wins is the sum over weeks 1 to 14, and WAR subtracts what the
+   replacement level would earn every week, so a replacement-level season is exactly 0.
+
+A season uses the **weekly cut** (each week's lineup from that week's snapshot) when
+every scored week has a weekly snapshot, and the **yearly cut** (every week from the
+season snapshot) otherwise, so 2021 to 2026 are yearly and 2027 should be the first
+weekly season. The file records which. Every player at a lineup position with at
+least one game played gets a WAR, rostered or not; the current season's values move
+a little each week until week 14 is scored, because the constants are season-to-date.
+
+`data/war/<league>/<season>.json` holds the cut mode, the week it runs through, the
+constants and replacement levels, and per player: name, position, NFL team of their
+last game, games, points, position stat totals, each week's score used and win
+probability, expected wins, WAR, the manager holding them (end of season, or the
+current roster in progress) and every manager who held them. Re-running on unchanged
+data gives the same file apart from its timestamp. The free-agent replacement level
+in `data/replacement/` is a different thing and still feeds the simulation.
 
 ## How the simulation works
 
@@ -301,6 +355,18 @@ and contrast), dashed and then dotted once the greys repeat. Clicking a line or 
 table row highlights that manager in both charts. The card says ratings are not yet
 available when the export carried none.
 
+Each league has two sub-tabs, **Predictions** (the table and charts above) and
+**Player WAR**, kept in the URL (`#redraft/war`). The Player WAR page shows the top
+10 per position in two columns (QB and RB, WR and TE, DEF and K; a league without a
+kicker slot centres its last table), for the current season by default, any past
+season, or **All-Time** with a toggle between player-seasons and careers. Each table
+expands into a full sortable list with games, points and the position's stats. The
+owner column is the manager holding the player at the end of that season (the current
+roster for the season in progress); hovering it lists any other managers who held
+them. The bottom of the page explains the calculation with a flow chart and walks
+through Kittle and Bowers in 2024 week by week from the league's own data. Seasons
+before the first weekly-cut season are noted as using a yearly replacement cut.
+
 `calibration.html` ("How good are these odds?", linked from the header) shows the
 calibration report: predicted-vs-observed reliability per outcome, the score-noise
 percentile histogram and interval coverage, head-to-head win-chance bins, the lineup
@@ -318,5 +384,7 @@ fields the page expects.
 is scored) and on demand. It runs the tests, `python -m ffapp refresh`, commits
 `data/` and `site/data/` if anything changed, and deploys `site/` to GitHub Pages.
 A failure at any step ends the run before the commit and deploy, so the published
-site keeps its last good state. GitHub Pages must be set to deploy from **GitHub
+site keeps its last good state. The one exception is the ESPN `snapshot` step: if
+ESPN is unreachable the run continues with the snapshots already stored and ends
+with a warning annotation on the job naming the skipped step. GitHub Pages must be set to deploy from **GitHub
 Actions** in the repository settings.

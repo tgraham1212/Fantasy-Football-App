@@ -11,6 +11,7 @@ from ffapp.odds import current_season
 from ffapp.ratings import read_ratings
 from ffapp.replacement import read_replacement
 from ffapp.store import Store, read_json, write_json
+from ffapp.war import read_war, war_seasons
 
 log = logging.getLogger(__name__)
 
@@ -20,6 +21,8 @@ BOTTOM_TWO_KEY = "avoid_losers_bye"
 RATE_KEYS = ("playoffs", "bye", "semifinal", "final", "title", "losers_bracket", "last", BOTTOM_TWO_KEY)
 HISTORY_KEYS = ("playoffs", "bye", "final", "title", "last", BOTTOM_TWO_KEY)
 DYNASTY_LEAGUE_TYPE = 2  # Sleeper settings.type: 0 redraft, 1 keeper, 2 dynasty
+WALKTHROUGH_SEASON = "2024"
+WALKTHROUGH_PLAYERS = ("4217", "11604")  # George Kittle, Brock Bowers: the worked example on the WAR page
 
 BOTTOM_COLUMNS = {
     BOTTOM_TWO_KEY: {
@@ -196,6 +199,55 @@ def replacement_summary(store: Store, league_key: str, season: str, as_of_week: 
     }
 
 
+def war_export(store: Store, league_key: str) -> dict | None:
+    """Per season: slim leaderboard rows with owner names, plus an index; None when the league has no WAR files."""
+    seasons = war_seasons(store, league_key)
+    if not seasons:
+        return None
+    files: dict[str, dict] = {}
+    index = {"seasons": [], "current": seasons[-1], "first_weekly": None}
+    for season in seasons:
+        stored = read_war(store, league_key, season)
+        if not stored:
+            continue
+        names = {str(u.get("user_id")): str(u.get("display_name") or u.get("user_id")) for u in store.read_users(league_key, season)}
+        rows = []
+        for pid, player in stored.get("players", {}).items():
+            owner = player.get("owner")
+            rows.append(
+                {
+                    "id": pid,
+                    "name": player["name"],
+                    "position": player["position"],
+                    "team": player.get("team"),
+                    "games": player["games"],
+                    "points": player["points"],
+                    "stats": player.get("stats", {}),
+                    "exp_wins": player["exp_wins"],
+                    "war": player["war"],
+                    "owner": names.get(owner, owner) if owner else None,
+                    "others": [names.get(h, h) for h in player.get("holders", []) if h != owner],
+                }
+            )
+        payload = {
+            "league_key": league_key,
+            "season": season,
+            "cut": stored.get("cut"),
+            "through_week": stored.get("through_week"),
+            "generated_at": stored.get("generated_at"),
+            "constants": stored.get("constants"),
+            "replacement": stored.get("replacement"),
+            "players": rows,
+        }
+        if season == WALKTHROUGH_SEASON and all(pid in stored.get("players", {}) for pid in WALKTHROUGH_PLAYERS):
+            payload["walkthrough"] = {pid: stored["players"][pid] for pid in WALKTHROUGH_PLAYERS}
+        files[season] = payload
+        index["seasons"].append({"season": season, "cut": payload["cut"], "through_week": payload["through_week"], "file": f"{season}.json"})
+        if payload["cut"] == "weekly" and index["first_weekly"] is None:
+            index["first_weekly"] = season
+    return {"index": index, "files": files}
+
+
 def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE_DATA) -> list[Path]:
     """Write one file per league plus an index. Raises ExportError if any league has no odds."""
     out_dir = Path(out_dir)
@@ -206,6 +258,17 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
         path = out_dir / f"{key}.json"
         write_json(path, payload)
         written.append(path)
+        war = war_export(store, key)
+        war_entry = None
+        if war:
+            for season, season_payload in war["files"].items():
+                season_path = out_dir / key / "war" / f"{season}.json"
+                write_json(season_path, season_payload)
+                written.append(season_path)
+            index_path = out_dir / key / "war" / "index.json"
+            write_json(index_path, war["index"])
+            written.append(index_path)
+            war_entry = {"file": f"{key}/war/index.json", "seasons": len(war["files"]), "current": war["index"]["current"]}
         index["leagues"].append(
             {
                 "key": key,
@@ -214,6 +277,7 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
                 "as_of_week": payload["as_of_week"],
                 "generated_at": payload["generated_at"],
                 "file": path.name,
+                "war": war_entry,
             }
         )
     index["calibration"] = None

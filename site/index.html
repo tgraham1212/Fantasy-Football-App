@@ -21,6 +21,12 @@
   </header>
 
   <main id="main" hidden>
+    <nav class="subtabs" id="subtabs" aria-label="Page">
+      <button type="button" data-page="predictions" aria-pressed="true">Predictions</button>
+      <button type="button" data-page="war" aria-pressed="false">Player WAR</button>
+    </nav>
+
+    <div id="page-predictions">
     <section class="card summary">
       <h2 id="league-title"></h2>
       <p class="fresh" id="freshness"></p>
@@ -84,6 +90,70 @@
       </div>
       <p class="hint" id="rating-note"></p>
     </section>
+    </div>
+
+    <div id="page-war" hidden>
+      <section class="card summary">
+        <div class="card-head">
+          <h2 id="war-title"></h2>
+          <div class="switchers" id="war-controls">
+            <label class="select-label">Season
+              <select id="war-season" aria-label="Season"></select>
+            </label>
+            <div class="metrics" id="war-mode" role="group" aria-label="All-Time view" hidden>
+              <button type="button" data-mode="seasons" aria-pressed="true">Seasons</button>
+              <button type="button" data-mode="career" aria-pressed="false">Career</button>
+            </div>
+          </div>
+        </div>
+        <p class="explain" id="war-note"></p>
+        <p class="explain" id="war-unavailable" hidden>WAR is not yet available for this league: the start-percentage snapshots and WAR files have not been exported.</p>
+      </section>
+
+      <div id="war-content" hidden>
+        <div class="war-grid" id="war-grid"></div>
+
+        <section class="card" id="war-how">
+          <div class="card-head"><h2>How WAR is calculated</h2></div>
+          <svg class="flow" viewBox="0 0 960 250" role="img" aria-labelledby="flow-title" preserveAspectRatio="xMidYMid meet">
+          <title id="flow-title">How WAR is calculated: start percentage to consensus lineup, slot means and spread, replacement cut, weekly win chance, season sum, minus the replacement baseline</title>
+          <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+          <g class="boxes">
+            <rect x="10" y="20" width="210" height="70" rx="10"/><text x="115" y="48" text-anchor="middle">ESPN start %</text><text x="115" y="70" text-anchor="middle" class="small">each player, weekly (yearly up to 2026)</text>
+            <rect x="260" y="20" width="210" height="70" rx="10"/><text x="365" y="48" text-anchor="middle">Consensus lineup</text><text x="365" y="70" text-anchor="middle" class="small">most-started fill 12 × slots, then flex</text>
+            <rect x="510" y="20" width="210" height="70" rx="10"/><text x="615" y="48" text-anchor="middle">Slot means + spread</text><text x="615" y="70" text-anchor="middle" class="small">season averages of starters' points</text>
+            <rect x="760" y="20" width="190" height="70" rx="10"/><text x="855" y="48" text-anchor="middle">Replacement cut</text><text x="855" y="70" text-anchor="middle" class="small">next 3 past the cut, averaged</text>
+            <rect x="135" y="160" width="210" height="70" rx="10"/><text x="240" y="188" text-anchor="middle">Weekly win chance</text><text x="240" y="210" text-anchor="middle" class="small">Φ((score − slot mean) ÷ spread)</text>
+            <rect x="385" y="160" width="210" height="70" rx="10"/><text x="490" y="188" text-anchor="middle">Expected wins</text><text x="490" y="210" text-anchor="middle" class="small">weeks 1–14; missed = replacement</text>
+            <rect x="635" y="160" width="210" height="70" rx="10"/><text x="740" y="188" text-anchor="middle">WAR</text><text x="740" y="210" text-anchor="middle" class="small">minus the replacement baseline</text>
+          </g>
+          <g class="arrows" fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)">
+            <path d="M220 55 H258"/><path d="M470 55 H508"/><path d="M720 55 H758"/>
+            <path d="M615 90 V125 H240 V158"/><path d="M855 90 V125 H560 V158"/>
+            <path d="M345 195 H383"/><path d="M595 195 H633"/>
+          </g>
+        </svg>
+          <ol class="steps">
+            <li><strong>Start percentage.</strong> ESPN publishes the share of its leagues starting each player. Seasons up to 2026 have one frozen value per player; from 2027 the value is captured every week.</li>
+            <li><strong>Consensus lineup.</strong> Each week the most-started players with a game fill every position's starting slots for 12 teams, then the most-started leftover RB, WR and TE fill the flex.</li>
+            <li><strong>Slot means and spread.</strong> Over the season, each slot's average points and variance from those lineups. The opponent is a normal distribution: mean = sum of slot means, spread = square root of the summed variances.</li>
+            <li><strong>Replacement cut.</strong> The three most-started players past each position's cut are that week's replacement players; their season average is the replacement level.</li>
+            <li><strong>Weekly win chance.</strong> A player's week is their actual points in a lineup whose other slots sit at the slot means, so the win chance is the share of the opponent distribution below the league mean plus (score − slot mean). A week with no game played takes the replacement level; a game played for zero counts as zero.</li>
+            <li><strong>Expected wins and WAR.</strong> Win chances sum over regular-season weeks 1 to 14. WAR subtracts what a replacement-level player would earn every week, so a replacement season is exactly 0.</li>
+          </ol>
+          <div id="war-walkthrough" class="walkthrough" hidden></div>
+        </section>
+      </div>
+    </div>
+
+    <dialog id="war-dialog" aria-labelledby="war-dialog-title">
+      <div class="dialog-head">
+        <h2 id="war-dialog-title"></h2>
+        <button type="button" class="close" id="war-dialog-close" aria-label="Close">&#x2715;</button>
+      </div>
+      <p class="hint">Click a header to sort; click again to flip. # is the WAR rank.</p>
+      <div class="table-wrap dialog-table"><table id="war-full" class="plain war full"></table></div>
+    </dialog>
   </main>
 
   <p class="status" id="status">Loading&hellip;</p>

@@ -69,7 +69,7 @@ def test_exported_schema(seeded_store, dynasty_config, tmp_path):
     assert index["calibration"] is None, "no calibration report stored yet"
     assert index["leagues"][0] == {
         "key": "dynasty", "name": "Taco Tuesdays", "season": "2026", "as_of_week": 3,
-        "generated_at": index["leagues"][0]["generated_at"], "file": "dynasty.json",
+        "generated_at": index["leagues"][0]["generated_at"], "file": "dynasty.json", "war": None,
     }
 
     payload = json.loads((out / "dynasty.json").read_text(encoding="utf-8"))
@@ -211,3 +211,64 @@ def test_preseason_rating_shows_with_no_change_until_week_one(seeded_store, dyna
     write_json(seeded_store.root / "ratings" / "dynasty.json", stored)
     row = next(t for t in league_export(seeded_store, dynasty_config, "dynasty")["teams"] if t["roster_id"] == team["roster_id"])
     assert row["elo"] == 1240 and row["elo_change"] == 40, "week 1 change is measured from the preseason rating"
+
+
+def war_payload(season, players, cut="yearly", through_week=2):
+    return {
+        "league_key": "dynasty", "season": season, "generated_at": "2026-11-16T00:00:00+00:00", "cut": cut,
+        "through_week": through_week, "weeks": [1, 2],
+        "constants": {"slot_mean": {"TE": 9.2}, "slot_var": {"TE": 1.0}, "opponent_mean": 100.0, "opponent_sd": 20.7},
+        "replacement": {"TE": {"level": 6.1, "baseline_wins": 0.88}},
+        "players": players, "unmatched": [],
+    }
+
+
+def war_player(name, owner, holders, war=1.0):
+    return {
+        "name": name, "position": "TE", "team": "LV", "games": 2, "points": 30.0, "stats": {"rec": 10.0}, "exp_wins": 1.2 + war, "war": war,
+        "owner": owner, "holders": holders,
+        "weekly": [{"week": 1, "score": 20.0, "played": True, "p": 0.7}, {"week": 2, "score": 10.0, "played": True, "p": 0.5}],
+    }
+
+
+def test_export_writes_war_leaderboards_index_and_walkthrough(seeded_store, dynasty_config, tmp_path):
+    simulate_weeks(seeded_store, dynasty_config, [0, 1])
+    users = seeded_store.read_users("dynasty", "2026")
+    a, b = str(users[0]["user_id"]), str(users[1]["user_id"])
+    write_json(seeded_store.root / "war" / "dynasty" / "2024.json", war_payload("2024", {
+        "4217": war_player("George Kittle", a, [a], 1.68), "11604": war_player("Brock Bowers", b, [b], 1.54), "1": war_player("Nobody", None, [], -0.5),
+    }, through_week=14))
+    write_json(seeded_store.root / "war" / "dynasty" / "2026.json", war_payload("2026", {
+        "11604": war_player("Brock Bowers", b, [a, b], 0.9), "2": war_player("Free Agent", None, [], 0.1),
+    }, cut="weekly", through_week=2))
+    out = tmp_path / "site-data"
+    written = {p.relative_to(out).as_posix() for p in export_site(seeded_store, dynasty_config, out)}
+    assert written == {"dynasty.json", "index.json", "dynasty/war/2024.json", "dynasty/war/2026.json", "dynasty/war/index.json"}
+
+    index = json.loads((out / "index.json").read_text(encoding="utf-8"))
+    assert index["leagues"][0]["war"] == {"file": "dynasty/war/index.json", "seasons": 2, "current": "2026"}
+    war_index = json.loads((out / "dynasty" / "war" / "index.json").read_text(encoding="utf-8"))
+    assert war_index == {
+        "seasons": [{"season": "2024", "cut": "yearly", "through_week": 14, "file": "2024.json"}, {"season": "2026", "cut": "weekly", "through_week": 2, "file": "2026.json"}],
+        "current": "2026", "first_weekly": "2026",
+    }
+    names = {str(u["user_id"]): u["display_name"] for u in users}
+    s2024 = json.loads((out / "dynasty" / "war" / "2024.json").read_text(encoding="utf-8"))
+    assert s2024["cut"] == "yearly" and s2024["through_week"] == 14 and s2024["replacement"]["TE"]["level"] == 6.1
+    rows = {r["id"]: r for r in s2024["players"]}
+    assert rows["4217"] == {"id": "4217", "name": "George Kittle", "position": "TE", "team": "LV", "games": 2, "points": 30.0, "stats": {"rec": 10.0}, "exp_wins": 2.88, "war": 1.68, "owner": names[a], "others": []}
+    assert rows["1"]["owner"] is None and rows["1"]["others"] == []
+    assert "weekly" not in rows["4217"]
+    assert set(s2024["walkthrough"]) == {"4217", "11604"} and s2024["walkthrough"]["4217"]["weekly"][0]["p"] == 0.7
+    s2026 = json.loads((out / "dynasty" / "war" / "2026.json").read_text(encoding="utf-8"))
+    bowers = next(r for r in s2026["players"] if r["id"] == "11604")
+    assert bowers["owner"] == names[b] and bowers["others"] == [names[a]]
+    assert "walkthrough" not in s2026
+
+
+def test_export_without_war_files_has_no_war_entry(seeded_store, dynasty_config, tmp_path):
+    simulate_weeks(seeded_store, dynasty_config, [0, 1])
+    out = tmp_path / "site-data"
+    export_site(seeded_store, dynasty_config, out)
+    index = json.loads((out / "index.json").read_text(encoding="utf-8"))
+    assert index["leagues"][0]["war"] is None and not (out / "dynasty").exists()

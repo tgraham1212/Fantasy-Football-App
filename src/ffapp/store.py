@@ -96,6 +96,15 @@ class Store:
     def odds_path(self, league_key: str, season: str, as_of_week: int) -> Path:
         return self.root / "odds" / league_key / str(season) / f"asof_{int(as_of_week):02d}.json"
 
+    def espn_season_path(self, season: str) -> Path:
+        return self.root / "espn" / str(season) / "season.json"
+
+    def espn_week_path(self, season: str, week: int) -> Path:
+        return self.root / "espn" / str(season) / f"week_{int(week):02d}.json"
+
+    def crosswalk_path(self) -> Path:
+        return self.root / "espn" / "crosswalk.json"
+
     # -- league seasons ------------------------------------------------------
 
     def seasons(self, league_key: str) -> list[str]:
@@ -196,6 +205,35 @@ class Store:
         if not base.exists():
             return []
         return sorted(int(m.group(1)) for p in base.iterdir() if (m := _WEEK_RE.match(p.name)))
+
+    # -- ESPN snapshots -------------------------------------------------------
+
+    def read_espn_season(self, season: str) -> dict | None:
+        path = self.espn_season_path(season)
+        return read_json(path) if path.exists() else None
+
+    def write_espn_season(self, season: str, payload: dict) -> None:
+        write_json(self.espn_season_path(season), payload)
+
+    def read_espn_week(self, season: str, week: int) -> dict | None:
+        path = self.espn_week_path(season, week)
+        return read_json(path) if path.exists() else None
+
+    def write_espn_week(self, season: str, week: int, payload: dict) -> None:
+        write_json(self.espn_week_path(season, week), payload)
+
+    def espn_weeks(self, season: str) -> list[int]:
+        base = self.root / "espn" / str(season)
+        if not base.exists():
+            return []
+        return sorted(int(m.group(1)) for p in base.iterdir() if (m := _WEEK_RE.match(p.name)))
+
+    def read_crosswalk(self) -> dict[str, dict] | None:
+        path = self.crosswalk_path()
+        return read_json(path) if path.exists() else None
+
+    def write_crosswalk(self, players: dict[str, dict]) -> None:
+        write_json(self.crosswalk_path(), players)
 
     # -- odds history --------------------------------------------------------
 

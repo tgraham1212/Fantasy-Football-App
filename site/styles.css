@@ -295,6 +295,79 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
   .pages { grid-column: 1 / -1; grid-row: 3; } /* below the league switcher, which takes row 2 */
 }
 
+/* ---- Sub-tabs and the Player WAR page ----------------------------------------- */
+.subtabs { display: inline-flex; gap: 6px; border-bottom: 1px solid var(--border); width: 100%; }
+.subtabs button {
+  appearance: none; border: 0; background: none; color: var(--ink-2); font: inherit; font-weight: 600;
+  padding: 8px 14px 10px; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.subtabs button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+.subtabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#page-predictions, #page-war, #war-content { display: grid; gap: 16px; }
+.select-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 600; color: var(--ink-2); }
+.select-label select {
+  font: inherit; font-size: 0.9rem; font-weight: 600; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 10px; padding: 6px 10px;
+}
+.war-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.war-table { min-width: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; }
+/* An odd table count leaves the last one alone on its row: centre it at column width. */
+.war-table:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 8px); }
+.war-table-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+.war-table h3 { margin: 0; font-size: 1rem; font-weight: 650; }
+table.war { min-width: 0; margin-top: 0; }
+table.war th, table.war td { padding: 6px 8px; white-space: nowrap; }
+table.war td.name { white-space: normal; font-weight: 600; }
+table.war td.rank, table.war th.rank { width: 2.2em; color: var(--muted); }
+table.war td.war-value { font-weight: 700; }
+table.war .muted, .muted { color: var(--muted); }
+.war-owner span { cursor: default; }
+.war-owner .also { color: var(--muted); font-size: 0.78rem; font-weight: 600; margin-left: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.expand {
+  appearance: none; align-self: flex-end; margin-top: 10px; border: 1px solid var(--border); background: transparent; color: var(--ink-2);
+  font: inherit; font-size: 0.85rem; font-weight: 600; padding: 5px 11px; border-radius: 999px; cursor: pointer;
+}
+.expand:hover { color: var(--ink); border-color: var(--ink); }
+.expand:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.flow { width: 100%; height: auto; color: var(--ink-2); margin: 4px 0 12px; }
+.flow rect { fill: var(--page); stroke: var(--axis); stroke-width: 1.5; }
+.flow text { fill: var(--ink); font: 600 16px system-ui, -apple-system, "Segoe UI", sans-serif; }
+.flow text.small { fill: var(--ink-2); font-weight: 500; font-size: 12.5px; }
+.walkthrough { margin-top: 18px; }
+.walkthrough h3 { margin: 0 0 6px; font-size: 1rem; font-weight: 650; }
+.walkthrough .hint { margin-top: 8px; max-width: 78ch; }
+table.walkthrough { max-width: 560px; }
+table.walkthrough tbody th { font-weight: 600; color: var(--ink-2); }
+table.walkthrough td.fill { color: var(--ink-2); font-style: italic; }
+table.walkthrough .fill-mark { color: var(--accent); font-style: normal; margin-left: 2px; }
+table.walkthrough td.p { color: var(--ink-2); }
+table.walkthrough tfoot th, table.walkthrough tfoot td { border-bottom: 0; border-top: 1px solid var(--axis); }
+table.walkthrough tfoot tr.total th, table.walkthrough tfoot tr.total td { font-weight: 700; color: var(--ink); }
+dialog#war-dialog {
+  border: 1px solid var(--border); border-radius: 14px; background: var(--surface); color: var(--ink);
+  padding: 18px; width: min(1100px, calc(100vw - 32px)); max-height: calc(100vh - 48px);
+}
+dialog#war-dialog::backdrop { background: rgba(0, 0, 0, 0.45); }
+.dialog-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 4px; }
+.dialog-head h2 { font-size: 1.05rem; }
+.dialog-head .close {
+  appearance: none; border: 1px solid var(--border); background: var(--surface); color: var(--ink-2);
+  border-radius: 10px; width: 34px; height: 34px; cursor: pointer; font-size: 0.95rem; line-height: 1;
+}
+.dialog-head .close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.dialog-table { max-height: calc(100vh - 170px); overflow: auto; margin: 10px -18px 0; padding: 0 18px; }
+table.war.full { min-width: 640px; }
+table.war.full thead th { position: sticky; top: 0; background: var(--surface); z-index: 1; }
+table.war.full thead th[aria-sort] { background: var(--ink); }
+@media (max-width: 700px) {
+  .war-grid { grid-template-columns: minmax(0, 1fr); }
+  .war-table:last-child:nth-child(odd) { width: auto; justify-self: stretch; }
+  .war-table { padding: 14px; }
+  dialog#war-dialog { padding: 14px; }
+  .dialog-table { margin: 10px -14px 0; padding: 0 14px; }
+}
+
 .status { color: var(--muted); text-align: center; padding: 24px 0; }
 .status.error { color: var(--bad); }
 footer { color: var(--muted); font-size: 0.8rem; text-align: center; padding-top: 24px; }

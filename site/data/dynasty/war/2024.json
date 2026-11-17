@@ -1,0 +1,10494 @@
+{
+ "constants": {
+  "opponent_mean": 103.6964,
+  "opponent_sd": 21.3907,
+  "slot_mean": {
+   "DEF": 9.2083,
+   "FLEX": 11.4226,
+   "QB": 19.7288,
+   "RB": 14.092,
+   "TE": 9.3101,
+   "WR": 12.9213
+  },
+  "slot_var": {
+   "DEF": 36.8366,
+   "FLEX": 60.2273,
+   "QB": 61.2724,
+   "RB": 63.5775,
+   "TE": 35.9394,
+   "WR": 68.0654
+  }
+ },
+ "cut": "yearly",
+ "generated_at": "2026-11-17T03:04:53+00:00",
+ "league_key": "dynasty",
+ "players": [
+  {
+   "exp_wins": 5.5526,
+   "games": 10,
+   "id": "10212",
+   "name": "Josh Whyle",
+   "others": [],
+   "owner": null,
+   "points": 27.2,
+   "position": "TE",
+   "stats": {
+    "rec": 18.0,
+    "rec_td": 0.0,
+    "rec_yd": 182.0,
+    "rush_yd": 0.0
+   },
+   "team": "TEN",
+   "war": -0.6007
+  },
+  {
+   "exp_wins": 5.5872,
+   "games": 12,
+   "id": "10213",
+   "name": "Tre Tucker",
+   "others": [
+    "KingDso"
+   ],
+   "owner": "alwaysflexin",
+   "points": 84.9,
+   "position": "WR",
+   "stats": {
+    "rec": 38.0,
+    "rec_td": 2.0,
+    "rec_yd": 432.0,
+    "rush_yd": 47.0
+   },
+   "team": "LV",
+   "war": -0.3592
+  },
+  {
+   "exp_wins": 6.0597,
+   "games": 2,
+   "id": "10214",
+   "name": "Davis Allen",
+   "others": [],
+   "owner": null,
+   "points": 6.9,
+   "position": "TE",
+   "stats": {
+    "rec": 6.0,
+    "rec_td": 0.0,
+    "rec_yd": 39.0,
+    "rush_yd": 0.0
+   },
+   "team": "LAR",
+   "war": -0.0935
+  },
+  {
+   "exp_wins": 4.6227,
+   "games": 6,
+   "id": "10215",
+   "name": "Jake Haener",
+   "others": [],
+   "owner": null,
+   "points": 12.58,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 1.0,
+    "pass_yd": 177.0,
+    "rush_td": 0.0,
+    "rush_yd": 15.0
+   },
+   "team": "NO",
+   "war": -1.2971
+  },
+  {
+   "exp_wins": 5.7642,
+   "games": 3,
+   "id": "10216",
+   "name": "Kenny McIntosh",
+   "others": [],
+   "owner": "khar432",
+   "points": 7.1,
+   "position": "RB",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 7.0,
+    "rush_td": 0.0,
+    "rush_yd": 54.0
+   },
+   "team": "SEA",
+   "war": -0.4542
+  },
+  {
+   "exp_wins": 5.1572,
+   "games": 3,
+   "id": "10217",
+   "name": "Clayton Tune",
+   "others": [],
+   "owner": null,
+   "points": -2.5,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 0.0,
+    "pass_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": -5.0
+   },
+   "team": "ARI",
+   "war": -0.7627
+  },
+  {
+   "exp_wins": 5.3562,
+   "games": 5,
+   "id": "10218",
+   "name": "Xavier Hutchinson",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 10.5,
+   "position": "WR",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 0.0,
+    "rec_yd": 70.0,
+    "rush_yd": 0.0
+   },
+   "team": "HOU",
+   "war": -0.5902
+  },
+  {
+   "exp_wins": 6.0101,
+   "games": 3,
+   "id": "10219",
+   "name": "Chris Rodriguez Jr.",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 21.0,
+   "position": "RB",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 1.0,
+    "rush_yd": 150.0
+   },
+   "team": "WAS",
+   "war": -0.2083
+  },
+  {
+   "exp_wins": 5.8061,
+   "games": 4,
+   "id": "10220",
+   "name": "Will Mallory",
+   "others": [],
+   "owner": null,
+   "points": 4.9,
+   "position": "TE",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 0.0,
+    "rec_yd": 29.0,
+    "rush_yd": 0.0
+   },
+   "team": "IND",
+   "war": -0.3472
+  },
+  {
+   "exp_wins": 5.6935,
+   "games": 2,
+   "id": "10221",
+   "name": "Ronnie Bell",
+   "others": [],
+   "owner": null,
+   "points": 3.2,
+   "position": "WR",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 22.0,
+    "rush_yd": 0.0
+   },
+   "team": "SF",
+   "war": -0.2529
+  },
+  {
+   "exp_wins": 6.7494,
+   "games": 12,
+   "id": "10222",
+   "name": "Jayden Reed",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 152.1,
+   "position": "WR",
+   "stats": {
+    "rec": 44.0,
+    "rec_td": 6.0,
+    "rec_yd": 693.0,
+    "rush_yd": 128.0
+   },
+   "team": "GB",
+   "war": 0.803
+  },
+  {
+   "exp_wins": 4.8653,
+   "games": 8,
+   "id": "10223",
+   "name": "Eric Gray",
+   "others": [],
+   "owner": null,
+   "points": 10.1,
+   "position": "RB",
+   "stats": {
+    "rec": 8.0,
+    "rec_td": 0.0,
+    "rec_yd": 76.0,
+    "rush_td": 0.0,
+    "rush_yd": 25.0
+   },
+   "team": "NYG",
+   "war": -1.3531
+  },
+  {
+   "exp_wins": 5.0336,
+   "games": 8,
+   "id": "10225",
+   "name": "Jonathan Mingo",
+   "others": [
+    "zagaplooza"
+   ],
+   "owner": "Z28kid86",
+   "points": 18.6,
+   "position": "WR",
+   "stats": {
+    "rec": 14.0,
+    "rec_td": 0.0,
+    "rec_yd": 131.0,
+    "rush_yd": 5.0
+   },
+   "team": "DAL",
+   "war": -0.9128
+  },
+  {
+   "exp_wins": 5.6158,
+   "games": 11,
+   "id": "10226",
+   "name": "Andrei Iosivas",
+   "others": [],
+   "owner": "gonzas",
+   "points": 78.5,
+   "position": "WR",
+   "stats": {
+    "rec": 27.0,
+    "rec_td": 5.0,
+    "rec_yd": 350.0,
+    "rush_yd": 0.0
+   },
+   "team": "CIN",
+   "war": -0.3306
+  },
+  {
+   "exp_wins": 6.0141,
+   "games": 2,
+   "id": "10227",
+   "name": "Payne Durham",
+   "others": [],
+   "owner": null,
+   "points": 4.4,
+   "position": "TE",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 34.0,
+    "rush_yd": 0.0
+   },
+   "team": "TB",
+   "war": -0.1392
+  },
+  {
+   "exp_wins": 5.7276,
+   "games": 2,
+   "id": "10228",
+   "name": "Charlie Jones",
+   "others": [],
+   "owner": null,
+   "points": 5.0,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 5.0,
+    "rush_yd": 0.0
+   },
+   "team": "CIN",
+   "war": -0.2188
+  },
+  {
+   "exp_wins": 6.3465,
+   "games": 4,
+   "id": "10229",
+   "name": "Rashee Rice",
+   "others": [],
+   "owner": "khar432",
+   "points": 56.9,
+   "position": "WR",
+   "stats": {
+    "rec": 24.0,
+    "rec_td": 2.0,
+    "rec_yd": 288.0,
+    "rush_yd": 1.0
+   },
+   "team": "KC",
+   "war": 0.4001
+  },
+  {
+   "exp_wins": 5.5825,
+   "games": 11,
+   "id": "10231",
+   "name": "Elijah Higgins",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 34.9,
+   "position": "TE",
+   "stats": {
+    "rec": 17.0,
+    "rec_td": 2.0,
+    "rec_yd": 144.0,
+    "rush_yd": 0.0
+   },
+   "team": "ARI",
+   "war": -0.5708
+  },
+  {
+   "exp_wins": 5.6423,
+   "games": 12,
+   "id": "10232",
+   "name": "Michael Wilson",
+   "others": [],
+   "owner": "KingDso",
+   "points": 88.8,
+   "position": "WR",
+   "stats": {
+    "rec": 39.0,
+    "rec_td": 4.0,
+    "rec_yd": 473.0,
+    "rush_yd": 0.0
+   },
+   "team": "ARI",
+   "war": -0.3041
+  },
+  {
+   "exp_wins": 4.9441,
+   "games": 8,
+   "id": "10234",
+   "name": "Derius Davis",
+   "others": [],
+   "owner": null,
+   "points": 13.3,
+   "position": "WR",
+   "stats": {
+    "rec": 8.0,
+    "rec_td": 0.0,
+    "rec_yd": 47.0,
+    "rush_yd": 46.0
+   },
+   "team": "LAC",
+   "war": -1.0023
+  },
+  {
+   "exp_wins": 5.5907,
+   "games": 9,
+   "id": "10235",
+   "name": "Roschon Johnson",
+   "others": [
+    "Gixxersean1"
+   ],
+   "owner": "MattCyg",
+   "points": 64.2,
+   "position": "RB",
+   "stats": {
+    "rec": 11.0,
+    "rec_td": 0.0,
+    "rec_yd": 88.0,
+    "rush_td": 6.0,
+    "rush_yd": 139.0
+   },
+   "team": "CHI",
+   "war": -0.6276
+  },
+  {
+   "exp_wins": 6.2327,
+   "games": 10,
+   "id": "10236",
+   "name": "Dalton Kincaid",
+   "others": [],
+   "owner": "gonzas",
+   "points": 64.6,
+   "position": "TE",
+   "stats": {
+    "rec": 34.0,
+    "rec_td": 2.0,
+    "rec_yd": 356.0,
+    "rush_yd": 0.0
+   },
+   "team": "BUF",
+   "war": 0.0795
+  },
+  {
+   "exp_wins": 5.7321,
+   "games": 9,
+   "id": "10444",
+   "name": "Cedric Tillman",
+   "others": [],
+   "owner": "gonzas",
+   "points": 65.9,
+   "position": "WR",
+   "stats": {
+    "rec": 29.0,
+    "rec_td": 3.0,
+    "rec_yd": 339.0,
+    "rush_yd": -5.0
+   },
+   "team": "CLE",
+   "war": -0.2143
+  },
+  {
+   "exp_wins": 6.5258,
+   "games": 12,
+   "id": "10859",
+   "name": "Sam LaPorta",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 92.5,
+   "position": "TE",
+   "stats": {
+    "rec": 36.0,
+    "rec_td": 5.0,
+    "rec_yd": 445.0,
+    "rush_yd": 0.0
+   },
+   "team": "DET",
+   "war": 0.3725
+  },
+  {
+   "exp_wins": 5.7235,
+   "games": 1,
+   "id": "10862",
+   "name": "Dorian Thompson-Robinson",
+   "others": [],
+   "owner": null,
+   "points": 3.68,
+   "position": "QB",
+   "stats": {
+    "pass_int": 2.0,
+    "pass_td": 0.0,
+    "pass_yd": 82.0,
+    "rush_td": 0.0,
+    "rush_yd": 44.0
+   },
+   "team": "CLE",
+   "war": -0.1963
+  },
+  {
+   "exp_wins": 5.2182,
+   "games": 6,
+   "id": "10866",
+   "name": "Aidan O'Connell",
+   "others": [],
+   "owner": null,
+   "points": 50.56,
+   "position": "QB",
+   "stats": {
+    "pass_int": 3.0,
+    "pass_td": 4.0,
+    "pass_yd": 899.0,
+    "rush_td": 1.0,
+    "rush_yd": 6.0
+   },
+   "team": "LV",
+   "war": -0.7017
+  },
+  {
+   "exp_wins": 5.2597,
+   "games": 6,
+   "id": "10867",
+   "name": "Jake Bobo",
+   "others": [],
+   "owner": null,
+   "points": 13.9,
+   "position": "WR",
+   "stats": {
+    "rec": 10.0,
+    "rec_td": 0.0,
+    "rec_yd": 89.0,
+    "rush_yd": 0.0
+   },
+   "team": "SEA",
+   "war": -0.6867
+  },
+  {
+   "exp_wins": 6.1197,
+   "games": 7,
+   "id": "10871",
+   "name": "Luke Schoonmaker",
+   "others": [],
+   "owner": "KingDso",
+   "points": 40.2,
+   "position": "TE",
+   "stats": {
+    "rec": 24.0,
+    "rec_td": 1.0,
+    "rec_yd": 222.0,
+    "rush_yd": 0.0
+   },
+   "team": "DAL",
+   "war": -0.0336
+  },
+  {
+   "exp_wins": 5.8232,
+   "games": 1,
+   "id": "11024",
+   "name": "Grant DuBose",
+   "others": [],
+   "owner": null,
+   "points": 1.8,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 13.0,
+    "rush_yd": 0.0
+   },
+   "team": "MIA",
+   "war": -0.1232
+  },
+  {
+   "exp_wins": 4.8993,
+   "games": 9,
+   "id": "11034",
+   "name": "Jalen Brooks",
+   "others": [],
+   "owner": null,
+   "points": 19.8,
+   "position": "WR",
+   "stats": {
+    "rec": 10.0,
+    "rec_td": 0.0,
+    "rec_yd": 148.0,
+    "rush_yd": 0.0
+   },
+   "team": "DAL",
+   "war": -1.0471
+  },
+  {
+   "exp_wins": 5.9385,
+   "games": 3,
+   "id": "11082",
+   "name": "Ben Sims",
+   "others": [],
+   "owner": null,
+   "points": 6.2,
+   "position": "TE",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 0.0,
+    "rec_yd": 42.0,
+    "rush_yd": 0.0
+   },
+   "team": "GB",
+   "war": -0.2148
+  },
+  {
+   "exp_wins": 6.0574,
+   "games": 1,
+   "id": "111",
+   "name": "Marcedes Lewis",
+   "others": [],
+   "owner": null,
+   "points": 0.7,
+   "position": "TE",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 2.0,
+    "rush_yd": 0.0
+   },
+   "team": "CHI",
+   "war": -0.0959
+  },
+  {
+   "exp_wins": 5.7992,
+   "games": 1,
+   "id": "11157",
+   "name": "Brycen Tremayne",
+   "others": [],
+   "owner": null,
+   "points": 0.3,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": -2.0,
+    "rush_yd": 0.0
+   },
+   "team": "WAS",
+   "war": -0.1472
+  },
+  {
+   "exp_wins": 5.7166,
+   "games": 2,
+   "id": "11168",
+   "name": "Xavier Smith",
+   "others": [],
+   "owner": null,
+   "points": 4.6,
+   "position": "WR",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 6.0,
+    "rush_yd": 30.0
+   },
+   "team": "LAR",
+   "war": -0.2298
+  },
+  {
+   "exp_wins": 4.7168,
+   "games": 12,
+   "id": "11199",
+   "name": "Emari Demercado",
+   "others": [],
+   "owner": null,
+   "points": 46.7,
+   "position": "RB",
+   "stats": {
+    "rec": 16.0,
+    "rec_td": 0.0,
+    "rec_yd": 104.0,
+    "rush_td": 1.0,
+    "rush_yd": 223.0
+   },
+   "team": "ARI",
+   "war": -1.5016
+  },
+  {
+   "exp_wins": 6.1559,
+   "games": 2,
+   "id": "11201",
+   "name": "Blake Whiteheart",
+   "others": [],
+   "owner": null,
+   "points": 12.2,
+   "position": "TE",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 1.0,
+    "rec_yd": 42.0,
+    "rush_yd": 0.0
+   },
+   "team": "CLE",
+   "war": 0.0026
+  },
+  {
+   "exp_wins": 5.7098,
+   "games": 3,
+   "id": "11210",
+   "name": "Malik Heath",
+   "others": [],
+   "owner": null,
+   "points": 13.1,
+   "position": "WR",
+   "stats": {
+    "rec": 6.0,
+    "rec_td": 1.0,
+    "rec_yd": 41.0,
+    "rush_yd": 0.0
+   },
+   "team": "GB",
+   "war": -0.2366
+  },
+  {
+   "exp_wins": 5.1803,
+   "games": 3,
+   "id": "11256",
+   "name": "Tyson Bagent",
+   "others": [],
+   "owner": null,
+   "points": -0.46,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 0.0,
+    "pass_yd": 6.0,
+    "rush_td": 0.0,
+    "rush_yd": -7.0
+   },
+   "team": "CHI",
+   "war": -0.7395
+  },
+  {
+   "exp_wins": 6.0368,
+   "games": 1,
+   "id": "11273",
+   "name": "Ben VanSumeren",
+   "others": [],
+   "owner": null,
+   "points": 0.5,
+   "position": "RB",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": 0.0
+   },
+   "team": "PHI",
+   "war": -0.1816
+  },
+  {
+   "exp_wins": 5.8345,
+   "games": 1,
+   "id": "11292",
+   "name": "Tommy DeVito",
+   "others": [],
+   "owner": null,
+   "points": 10.76,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 0.0,
+    "pass_yd": 189.0,
+    "rush_td": 0.0,
+    "rush_yd": 32.0
+   },
+   "team": "NYG",
+   "war": -0.0853
+  },
+  {
+   "exp_wins": 5.3987,
+   "games": 5,
+   "id": "11306",
+   "name": "Xavier Gipson",
+   "others": [],
+   "owner": null,
+   "points": 12.9,
+   "position": "WR",
+   "stats": {
+    "rec": 6.0,
+    "rec_td": 1.0,
+    "rec_yd": 39.0,
+    "rush_yd": 0.0
+   },
+   "team": "NYJ",
+   "war": -0.5477
+  },
+  {
+   "exp_wins": 5.0177,
+   "games": 8,
+   "id": "11370",
+   "name": "Chris Brooks",
+   "others": [],
+   "owner": null,
+   "points": 19.8,
+   "position": "RB",
+   "stats": {
+    "rec": 9.0,
+    "rec_td": 0.0,
+    "rec_yd": 58.0,
+    "rush_td": 0.0,
+    "rush_yd": 95.0
+   },
+   "team": "GB",
+   "war": -1.2007
+  },
+  {
+   "exp_wins": 5.5685,
+   "games": 8,
+   "id": "11371",
+   "name": "Julian Hill",
+   "others": [],
+   "owner": null,
+   "points": 16.0,
+   "position": "TE",
+   "stats": {
+    "rec": 12.0,
+    "rec_td": 0.0,
+    "rec_yd": 100.0,
+    "rush_yd": 0.0
+   },
+   "team": "MIA",
+   "war": -0.5847
+  },
+  {
+   "exp_wins": 5.4356,
+   "games": 5,
+   "id": "11378",
+   "name": "Jordan Mims",
+   "others": [],
+   "owner": null,
+   "points": 10.4,
+   "position": "RB",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 0.0,
+    "rec_yd": 42.0,
+    "rush_td": 0.0,
+    "rush_yd": 42.0
+   },
+   "team": "NO",
+   "war": -0.7828
+  },
+  {
+   "exp_wins": 5.4813,
+   "games": 5,
+   "id": "11421",
+   "name": "Ryan Miller",
+   "others": [],
+   "owner": null,
+   "points": 17.9,
+   "position": "WR",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 1.0,
+    "rec_yd": 84.0,
+    "rush_yd": 0.0
+   },
+   "team": "TB",
+   "war": -0.4651
+  },
+  {
+   "exp_wins": 5.7616,
+   "games": 7,
+   "id": "11433",
+   "name": "Nate Adkins",
+   "others": [],
+   "owner": null,
+   "points": 20.5,
+   "position": "TE",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 2.0,
+    "rec_yd": 50.0,
+    "rush_yd": 0.0
+   },
+   "team": "DEN",
+   "war": -0.3917
+  },
+  {
+   "exp_wins": 4.6686,
+   "games": 13,
+   "id": "11435",
+   "name": "Emanuel Wilson",
+   "others": [
+    "Gixxersean1",
+    "khar432"
+   ],
+   "owner": "gonzas",
+   "points": 55.0,
+   "position": "RB",
+   "stats": {
+    "rec": 9.0,
+    "rec_td": 1.0,
+    "rec_yd": 46.0,
+    "rush_td": 1.0,
+    "rush_yd": 339.0
+   },
+   "team": "GB",
+   "war": -1.5498
+  },
+  {
+   "exp_wins": 4.8433,
+   "games": 13,
+   "id": "11439",
+   "name": "Jaleel McLaughlin",
+   "others": [
+    "gonzas",
+    "alwaysflexin",
+    "KingDso"
+   ],
+   "owner": "Z28kid86",
+   "points": 65.9,
+   "position": "RB",
+   "stats": {
+    "rec": 17.0,
+    "rec_td": 2.0,
+    "rec_yd": 47.0,
+    "rush_td": 1.0,
+    "rush_yd": 367.0
+   },
+   "team": "DEN",
+   "war": -1.3751
+  },
+  {
+   "exp_wins": 6.0661,
+   "games": 1,
+   "id": "11467",
+   "name": "John Samuel Shenker",
+   "others": [],
+   "owner": null,
+   "points": 1.2,
+   "position": "TE",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 7.0,
+    "rush_yd": 0.0
+   },
+   "team": "LV",
+   "war": -0.0872
+  },
+  {
+   "exp_wins": 5.0003,
+   "games": 8,
+   "id": "11510",
+   "name": "Hunter Luepke",
+   "others": [],
+   "owner": null,
+   "points": 18.8,
+   "position": "RB",
+   "stats": {
+    "rec": 11.0,
+    "rec_td": 0.0,
+    "rec_yd": 110.0,
+    "rush_td": 0.0,
+    "rush_yd": 23.0
+   },
+   "team": "DAL",
+   "war": -1.218
+  },
+  {
+   "exp_wins": 5.4494,
+   "games": 2,
+   "id": "11559",
+   "name": "Michael Penix Jr.",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 1.52,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 0.0,
+    "pass_yd": 38.0,
+    "rush_td": 0.0,
+    "rush_yd": 0.0
+   },
+   "team": "ATL",
+   "war": -0.4705
+  },
+  {
+   "exp_wins": 6.109,
+   "games": 13,
+   "id": "11560",
+   "name": "Caleb Williams",
+   "others": [],
+   "owner": "KingDso",
+   "points": 210.34,
+   "position": "QB",
+   "stats": {
+    "pass_int": 5.0,
+    "pass_td": 16.0,
+    "pass_yd": 2746.0,
+    "rush_td": 0.0,
+    "rush_yd": 405.0
+   },
+   "team": "CHI",
+   "war": 0.1892
+  },
+  {
+   "exp_wins": 5.5465,
+   "games": 3,
+   "id": "11562",
+   "name": "Spencer Rattler",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 24.94,
+   "position": "QB",
+   "stats": {
+    "pass_int": 2.0,
+    "pass_td": 1.0,
+    "pass_yd": 571.0,
+    "rush_td": 0.0,
+    "rush_yd": 61.0
+   },
+   "team": "NO",
+   "war": -0.3733
+  },
+  {
+   "exp_wins": 6.4234,
+   "games": 13,
+   "id": "11563",
+   "name": "Bo Nix",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 228.78,
+   "position": "QB",
+   "stats": {
+    "pass_int": 8.0,
+    "pass_td": 17.0,
+    "pass_yd": 2842.0,
+    "rush_td": 4.0,
+    "rush_yd": 304.0
+   },
+   "team": "DEN",
+   "war": 0.5036
+  },
+  {
+   "exp_wins": 5.8138,
+   "games": 9,
+   "id": "11564",
+   "name": "Drake Maye",
+   "others": [],
+   "owner": "KingDso",
+   "points": 132.34,
+   "position": "QB",
+   "stats": {
+    "pass_int": 8.0,
+    "pass_td": 11.0,
+    "pass_yd": 1696.0,
+    "rush_td": 1.0,
+    "rush_yd": 345.0
+   },
+   "team": "NE",
+   "war": -0.106
+  },
+  {
+   "exp_wins": 7.0702,
+   "games": 13,
+   "id": "11566",
+   "name": "Jayden Daniels",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 263.76,
+   "position": "QB",
+   "stats": {
+    "pass_int": 6.0,
+    "pass_td": 15.0,
+    "pass_yd": 2819.0,
+    "rush_td": 6.0,
+    "rush_yd": 590.0
+   },
+   "team": "WAS",
+   "war": 1.1504
+  },
+  {
+   "exp_wins": 5.752,
+   "games": 5,
+   "id": "11571",
+   "name": "Isaiah Davis",
+   "others": [],
+   "owner": "khar432",
+   "points": 28.2,
+   "position": "RB",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 1.0,
+    "rec_yd": 65.0,
+    "rush_td": 1.0,
+    "rush_yd": 62.0
+   },
+   "team": "NYJ",
+   "war": -0.4663
+  },
+  {
+   "exp_wins": 6.0001,
+   "games": 1,
+   "id": "11574",
+   "name": "Dylan Laube",
+   "others": [],
+   "owner": null,
+   "points": -2.0,
+   "position": "RB",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": 0.0
+   },
+   "team": "LV",
+   "war": -0.2182
+  },
+  {
+   "exp_wins": 5.2934,
+   "games": 12,
+   "id": "11575",
+   "name": "Ray Davis",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 79.0,
+   "position": "RB",
+   "stats": {
+    "rec": 11.0,
+    "rec_td": 1.0,
+    "rec_yd": 153.0,
+    "rush_td": 3.0,
+    "rush_yd": 342.0
+   },
+   "team": "BUF",
+   "war": -0.925
+  },
+  {
+   "exp_wins": 4.8918,
+   "games": 13,
+   "id": "11576",
+   "name": "Braelon Allen",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 67.8,
+   "position": "RB",
+   "stats": {
+    "rec": 16.0,
+    "rec_td": 1.0,
+    "rec_yd": 135.0,
+    "rush_td": 2.0,
+    "rush_yd": 283.0
+   },
+   "team": "NYJ",
+   "war": -1.3265
+  },
+  {
+   "exp_wins": 5.5399,
+   "games": 4,
+   "id": "11577",
+   "name": "Will Shipley",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 5.0,
+   "position": "RB",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": 50.0
+   },
+   "team": "PHI",
+   "war": -0.6785
+  },
+  {
+   "exp_wins": 4.8227,
+   "games": 9,
+   "id": "11579",
+   "name": "Audric Estime",
+   "others": [
+    "Z28kid86"
+   ],
+   "owner": "MattCyg",
+   "points": 19.5,
+   "position": "RB",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 9.0,
+    "rush_td": 0.0,
+    "rush_yd": 191.0
+   },
+   "team": "DEN",
+   "war": -1.3957
+  },
+  {
+   "exp_wins": 6.0649,
+   "games": 1,
+   "id": "11581",
+   "name": "MarShawn Lloyd",
+   "others": [],
+   "owner": "zagaplooza",
+   "points": 2.3,
+   "position": "RB",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 3.0,
+    "rush_td": 0.0,
+    "rush_yd": 15.0
+   },
+   "team": "GB",
+   "war": -0.1534
+  },
+  {
+   "exp_wins": 4.4042,
+   "games": 11,
+   "id": "11582",
+   "name": "Carson Steele",
+   "others": [
+    "Jdeguire"
+   ],
+   "owner": "gonzas",
+   "points": 16.7,
+   "position": "RB",
+   "stats": {
+    "rec": 5.0,
+    "rec_td": 0.0,
+    "rec_yd": 24.0,
+    "rush_td": 0.0,
+    "rush_yd": 158.0
+   },
+   "team": "KC",
+   "war": -1.8142
+  },
+  {
+   "exp_wins": 5.7477,
+   "games": 3,
+   "id": "11583",
+   "name": "Jonathon Brooks",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 6.0,
+   "position": "RB",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 23.0,
+    "rush_td": 0.0,
+    "rush_yd": 22.0
+   },
+   "team": "CAR",
+   "war": -0.4707
+  },
+  {
+   "exp_wins": 6.4747,
+   "games": 13,
+   "id": "11584",
+   "name": "Bucky Irving",
+   "others": [
+    "tg1212"
+   ],
+   "owner": "corygraham12",
+   "points": 157.5,
+   "position": "RB",
+   "stats": {
+    "rec": 36.0,
+    "rec_td": 0.0,
+    "rec_yd": 300.0,
+    "rush_td": 6.0,
+    "rush_yd": 735.0
+   },
+   "team": "TB",
+   "war": 0.2564
+  },
+  {
+   "exp_wins": 4.6927,
+   "games": 10,
+   "id": "11586",
+   "name": "Blake Corum",
+   "others": [
+    "MattCyg"
+   ],
+   "owner": "Gixxersean1",
+   "points": 23.3,
+   "position": "RB",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 0.0,
+    "rec_yd": 31.0,
+    "rush_td": 0.0,
+    "rush_yd": 182.0
+   },
+   "team": "LAR",
+   "war": -1.5257
+  },
+  {
+   "exp_wins": 4.8215,
+   "games": 11,
+   "id": "11589",
+   "name": "Trey Benson",
+   "others": [],
+   "owner": "KingDso",
+   "points": 41.8,
+   "position": "RB",
+   "stats": {
+    "rec": 6.0,
+    "rec_td": 0.0,
+    "rec_yd": 59.0,
+    "rush_td": 1.0,
+    "rush_yd": 269.0
+   },
+   "team": "ARI",
+   "war": -1.3969
+  },
+  {
+   "exp_wins": 5.8893,
+   "games": 2,
+   "id": "11590",
+   "name": "Jase McClellan",
+   "others": [],
+   "owner": null,
+   "points": 3.2,
+   "position": "RB",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": 32.0
+   },
+   "team": "ATL",
+   "war": -0.3291
+  },
+  {
+   "exp_wins": 5.8519,
+   "games": 7,
+   "id": "11592",
+   "name": "Erick All Jr.",
+   "others": [],
+   "owner": null,
+   "points": 25.8,
+   "position": "TE",
+   "stats": {
+    "rec": 20.0,
+    "rec_td": 0.0,
+    "rec_yd": 158.0,
+    "rush_yd": 0.0
+   },
+   "team": "CIN",
+   "war": -0.3014
+  },
+  {
+   "exp_wins": 6.0521,
+   "games": 3,
+   "id": "11593",
+   "name": "Brevyn Spann-Ford",
+   "others": [],
+   "owner": null,
+   "points": 12.6,
+   "position": "TE",
+   "stats": {
+    "rec": 8.0,
+    "rec_td": 0.0,
+    "rec_yd": 86.0,
+    "rush_yd": 0.0
+   },
+   "team": "DAL",
+   "war": -0.1012
+  },
+  {
+   "exp_wins": 6.0661,
+   "games": 1,
+   "id": "11595",
+   "name": "Jared Wiley",
+   "others": [],
+   "owner": null,
+   "points": 1.2,
+   "position": "TE",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 7.0,
+    "rush_yd": 0.0
+   },
+   "team": "KC",
+   "war": -0.0872
+  },
+  {
+   "exp_wins": 6.0092,
+   "games": 3,
+   "id": "11596",
+   "name": "Ben Sinnott",
+   "others": [
+    "tg1212",
+    "alwaysflexin"
+   ],
+   "owner": "KingDso",
+   "points": 10.1,
+   "position": "TE",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 1.0,
+    "rec_yd": 21.0,
+    "rush_yd": 0.0
+   },
+   "team": "WAS",
+   "war": -0.144
+  },
+  {
+   "exp_wins": 6.032,
+   "games": 10,
+   "id": "11597",
+   "name": "Theo Johnson",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 53.6,
+   "position": "TE",
+   "stats": {
+    "rec": 29.0,
+    "rec_td": 1.0,
+    "rec_yd": 331.0,
+    "rush_yd": 0.0
+   },
+   "team": "NYG",
+   "war": -0.1213
+  },
+  {
+   "exp_wins": 5.6451,
+   "games": 9,
+   "id": "11599",
+   "name": "Cade Stover",
+   "others": [],
+   "owner": null,
+   "points": 26.2,
+   "position": "TE",
+   "stats": {
+    "rec": 14.0,
+    "rec_td": 1.0,
+    "rec_yd": 132.0,
+    "rush_yd": 0.0
+   },
+   "team": "HOU",
+   "war": -0.5082
+  },
+  {
+   "exp_wins": 5.9817,
+   "games": 10,
+   "id": "11600",
+   "name": "Ja'Tavion Sanders",
+   "others": [
+    "MattCyg"
+   ],
+   "owner": "tg1212",
+   "points": 50.7,
+   "position": "TE",
+   "stats": {
+    "rec": 29.0,
+    "rec_td": 1.0,
+    "rec_yd": 302.0,
+    "rush_yd": 0.0
+   },
+   "team": "CAR",
+   "war": -0.1716
+  },
+  {
+   "exp_wins": 5.7166,
+   "games": 11,
+   "id": "11603",
+   "name": "AJ Barner",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 42.3,
+   "position": "TE",
+   "stats": {
+    "rec": 22.0,
+    "rec_td": 2.0,
+    "rec_yd": 193.0,
+    "rush_yd": 0.0
+   },
+   "team": "SEA",
+   "war": -0.4367
+  },
+  {
+   "exp_wins": 7.7061,
+   "games": 13,
+   "id": "11604",
+   "name": "Brock Bowers",
+   "others": [],
+   "owner": "zagaplooza",
+   "points": 166.2,
+   "position": "TE",
+   "stats": {
+    "rec": 87.0,
+    "rec_td": 4.0,
+    "rec_yd": 933.0,
+    "rush_yd": 14.0
+   },
+   "team": "LV",
+   "war": 1.5528
+  },
+  {
+   "exp_wins": 6.0557,
+   "games": 1,
+   "id": "11605",
+   "name": "Jaheim Bell",
+   "others": [],
+   "owner": null,
+   "points": 0.6,
+   "position": "TE",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 1.0,
+    "rush_yd": 0.0
+   },
+   "team": "NE",
+   "war": -0.0976
+  },
+  {
+   "exp_wins": 6.0713,
+   "games": 1,
+   "id": "11606",
+   "name": "Dallin Holker",
+   "others": [],
+   "owner": null,
+   "points": 1.5,
+   "position": "TE",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 10.0,
+    "rush_yd": 0.0
+   },
+   "team": "NO",
+   "war": -0.082
+  },
+  {
+   "exp_wins": 5.82,
+   "games": 1,
+   "id": "11608",
+   "name": "Isaiah Williams",
+   "others": [],
+   "owner": null,
+   "points": 1.6,
+   "position": "WR",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 6.0,
+    "rush_yd": 0.0
+   },
+   "team": "DET",
+   "war": -0.1264
+  },
+  {
+   "exp_wins": 5.1843,
+   "games": 7,
+   "id": "11610",
+   "name": "Malik Washington",
+   "others": [
+    "alwaysflexin"
+   ],
+   "owner": "Gixxersean1",
+   "points": 18.0,
+   "position": "WR",
+   "stats": {
+    "rec": 10.0,
+    "rec_td": 0.0,
+    "rec_yd": 54.0,
+    "rush_yd": 36.0
+   },
+   "team": "MIA",
+   "war": -0.7621
+  },
+  {
+   "exp_wins": 5.6791,
+   "games": 2,
+   "id": "11615",
+   "name": "Ainias Smith",
+   "others": [],
+   "owner": null,
+   "points": 2.3,
+   "position": "WR",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 6.0,
+    "rush_yd": 2.0
+   },
+   "team": "PHI",
+   "war": -0.2673
+  },
+  {
+   "exp_wins": 5.7128,
+   "games": 2,
+   "id": "11616",
+   "name": "Jacob Cowing",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 4.0,
+   "position": "WR",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 50.0,
+    "rush_yd": 0.0
+   },
+   "team": "SF",
+   "war": -0.2336
+  },
+  {
+   "exp_wins": 5.2456,
+   "games": 5,
+   "id": "11617",
+   "name": "Malachi Corley",
+   "others": [],
+   "owner": "tg1212",
+   "points": 3.7,
+   "position": "WR",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 16.0,
+    "rush_yd": 26.0
+   },
+   "team": "NYJ",
+   "war": -0.7008
+  },
+  {
+   "exp_wins": 5.5842,
+   "games": 8,
+   "id": "11618",
+   "name": "Jalen McMillan",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 49.7,
+   "position": "WR",
+   "stats": {
+    "rec": 17.0,
+    "rec_td": 3.0,
+    "rec_yd": 204.0,
+    "rush_yd": 28.0
+   },
+   "team": "TB",
+   "war": -0.3622
+  },
+  {
+   "exp_wins": 5.1741,
+   "games": 8,
+   "id": "11619",
+   "name": "Ja'Lynn Polk",
+   "others": [
+    "KingDso"
+   ],
+   "owner": "corygraham12",
+   "points": 26.7,
+   "position": "WR",
+   "stats": {
+    "rec": 12.0,
+    "rec_td": 2.0,
+    "rec_yd": 87.0,
+    "rush_yd": 0.0
+   },
+   "team": "NE",
+   "war": -0.7723
+  },
+  {
+   "exp_wins": 5.7768,
+   "games": 13,
+   "id": "11620",
+   "name": "Rome Odunze",
+   "others": [],
+   "owner": "khar432",
+   "points": 104.5,
+   "position": "WR",
+   "stats": {
+    "rec": 45.0,
+    "rec_td": 3.0,
+    "rec_yd": 585.0,
+    "rush_yd": 15.0
+   },
+   "team": "CHI",
+   "war": -0.1696
+  },
+  {
+   "exp_wins": 5.8369,
+   "games": 4,
+   "id": "11623",
+   "name": "Jordan Whittington",
+   "others": [
+    "alwaysflexin"
+   ],
+   "owner": "gonzas",
+   "points": 29.1,
+   "position": "WR",
+   "stats": {
+    "rec": 18.0,
+    "rec_td": 0.0,
+    "rec_yd": 201.0,
+    "rush_yd": 0.0
+   },
+   "team": "LAR",
+   "war": -0.1095
+  },
+  {
+   "exp_wins": 5.7976,
+   "games": 13,
+   "id": "11624",
+   "name": "Xavier Worthy",
+   "others": [],
+   "owner": "tg1212",
+   "points": 105.2,
+   "position": "WR",
+   "stats": {
+    "rec": 38.0,
+    "rec_td": 4.0,
+    "rec_yd": 448.0,
+    "rush_yd": 54.0
+   },
+   "team": "KC",
+   "war": -0.1488
+  },
+  {
+   "exp_wins": 4.9059,
+   "games": 11,
+   "id": "11625",
+   "name": "Adonai Mitchell",
+   "others": [
+    "CheefWiggum"
+   ],
+   "owner": "alwaysflexin",
+   "points": 37.96,
+   "position": "WR",
+   "stats": {
+    "rec": 20.0,
+    "rec_td": 0.0,
+    "rec_yd": 254.0,
+    "rush_yd": 16.0
+   },
+   "team": "IND",
+   "war": -1.0405
+  },
+  {
+   "exp_wins": 5.6487,
+   "games": 12,
+   "id": "11626",
+   "name": "Xavier Legette",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 88.9,
+   "position": "WR",
+   "stats": {
+    "rec": 39.0,
+    "rec_td": 4.0,
+    "rec_yd": 432.0,
+    "rush_yd": 22.0
+   },
+   "team": "CAR",
+   "war": -0.2977
+  },
+  {
+   "exp_wins": 5.0306,
+   "games": 11,
+   "id": "11627",
+   "name": "Troy Franklin",
+   "others": [
+    "Z28kid86"
+   ],
+   "owner": "tg1212",
+   "points": 45.1,
+   "position": "WR",
+   "stats": {
+    "rec": 21.0,
+    "rec_td": 2.0,
+    "rec_yd": 218.0,
+    "rush_yd": 8.0
+   },
+   "team": "DEN",
+   "war": -0.9158
+  },
+  {
+   "exp_wins": 6.4199,
+   "games": 12,
+   "id": "11628",
+   "name": "Marvin Harrison Jr.",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 132.0,
+   "position": "WR",
+   "stats": {
+    "rec": 45.0,
+    "rec_td": 7.0,
+    "rec_yd": 655.0,
+    "rush_yd": 0.0
+   },
+   "team": "ARI",
+   "war": 0.4735
+  },
+  {
+   "exp_wins": 6.7288,
+   "games": 13,
+   "id": "11631",
+   "name": "Brian Thomas Jr.",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 157.1,
+   "position": "WR",
+   "stats": {
+    "rec": 54.0,
+    "rec_td": 6.0,
+    "rec_yd": 851.0,
+    "rush_yd": 30.0
+   },
+   "team": "JAX",
+   "war": 0.7824
+  },
+  {
+   "exp_wins": 6.8277,
+   "games": 11,
+   "id": "11632",
+   "name": "Malik Nabers",
+   "others": [],
+   "owner": "KingDso",
+   "points": 146.1,
+   "position": "WR",
+   "stats": {
+    "rec": 80.0,
+    "rec_td": 3.0,
+    "rec_yd": 819.0,
+    "rush_yd": 2.0
+   },
+   "team": "NYG",
+   "war": 0.8813
+  },
+  {
+   "exp_wins": 5.7017,
+   "games": 2,
+   "id": "11633",
+   "name": "Jamari Thrash",
+   "others": [],
+   "owner": null,
+   "points": 3.7,
+   "position": "WR",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 22.0,
+    "rush_yd": 0.0
+   },
+   "team": "CLE",
+   "war": -0.2447
+  },
+  {
+   "exp_wins": 6.5677,
+   "games": 12,
+   "id": "11635",
+   "name": "Ladd McConkey",
+   "others": [],
+   "owner": "gonzas",
+   "points": 140.5,
+   "position": "WR",
+   "stats": {
+    "rec": 58.0,
+    "rec_td": 4.0,
+    "rec_yd": 815.0,
+    "rush_yd": 0.0
+   },
+   "team": "LAC",
+   "war": 0.6213
+  },
+  {
+   "exp_wins": 5.783,
+   "games": 2,
+   "id": "11636",
+   "name": "Johnny Wilson",
+   "others": [],
+   "owner": null,
+   "points": 8.4,
+   "position": "WR",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 1.0,
+    "rec_yd": 14.0,
+    "rush_yd": 0.0
+   },
+   "team": "PHI",
+   "war": -0.1634
+  },
+  {
+   "exp_wins": 6.0252,
+   "games": 8,
+   "id": "11637",
+   "name": "Keon Coleman",
+   "others": [],
+   "owner": "zagaplooza",
+   "points": 74.7,
+   "position": "WR",
+   "stats": {
+    "rec": 22.0,
+    "rec_td": 3.0,
+    "rec_yd": 417.0,
+    "rush_yd": 0.0
+   },
+   "team": "BUF",
+   "war": 0.0788
+  },
+  {
+   "exp_wins": 5.852,
+   "games": 4,
+   "id": "11638",
+   "name": "Ricky Pearsall",
+   "others": [
+    "Z28kid86"
+   ],
+   "owner": "khar432",
+   "points": 29.6,
+   "position": "WR",
+   "stats": {
+    "rec": 12.0,
+    "rec_td": 1.0,
+    "rec_yd": 137.0,
+    "rush_yd": 39.0
+   },
+   "team": "SF",
+   "war": -0.0944
+  },
+  {
+   "exp_wins": 5.5469,
+   "games": 4,
+   "id": "11640",
+   "name": "Jermaine Burton",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 12.7,
+   "position": "WR",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 0.0,
+    "rec_yd": 107.0,
+    "rush_yd": 0.0
+   },
+   "team": "CIN",
+   "war": -0.3995
+  },
+  {
+   "exp_wins": 4.5405,
+   "games": 11,
+   "id": "11643",
+   "name": "Jaylen Wright",
+   "others": [],
+   "owner": "khar432",
+   "points": 25.3,
+   "position": "RB",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 8.0,
+    "rush_td": 0.0,
+    "rush_yd": 250.0
+   },
+   "team": "MIA",
+   "war": -1.6779
+  },
+  {
+   "exp_wins": 5.7334,
+   "games": 6,
+   "id": "11646",
+   "name": "Jalen Coker",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 40.8,
+   "position": "WR",
+   "stats": {
+    "rec": 17.0,
+    "rec_td": 1.0,
+    "rec_yd": 263.0,
+    "rush_yd": 0.0
+   },
+   "team": "CAR",
+   "war": -0.213
+  },
+  {
+   "exp_wins": 5.4484,
+   "games": 6,
+   "id": "11647",
+   "name": "Kimani Vidal",
+   "others": [
+    "tg1212"
+   ],
+   "owner": "MattCyg",
+   "points": 22.2,
+   "position": "RB",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 1.0,
+    "rec_yd": 49.0,
+    "rush_td": 0.0,
+    "rush_yd": 98.0
+   },
+   "team": "LAC",
+   "war": -0.77
+  },
+  {
+   "exp_wins": 4.9611,
+   "games": 9,
+   "id": "11650",
+   "name": "Luke McCaffrey",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 23.5,
+   "position": "WR",
+   "stats": {
+    "rec": 16.0,
+    "rec_td": 0.0,
+    "rec_yd": 155.0,
+    "rush_yd": 0.0
+   },
+   "team": "WAS",
+   "war": -0.9853
+  },
+  {
+   "exp_wins": 5.8247,
+   "games": 8,
+   "id": "11651",
+   "name": "Isaac Guerendo",
+   "others": [
+    "gonzas",
+    "KingDso"
+   ],
+   "owner": "Gixxersean1",
+   "points": 64.8,
+   "position": "RB",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 0.0,
+    "rec_yd": 69.0,
+    "rush_td": 4.0,
+    "rush_yd": 324.0
+   },
+   "team": "SF",
+   "war": -0.3937
+  },
+  {
+   "exp_wins": 6.0837,
+   "games": 13,
+   "id": "11655",
+   "name": "Tyrone Tracy Jr.",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 134.5,
+   "position": "RB",
+   "stats": {
+    "rec": 29.0,
+    "rec_td": 0.0,
+    "rec_yd": 216.0,
+    "rush_td": 5.0,
+    "rush_yd": 664.0
+   },
+   "team": "NYG",
+   "war": -0.1347
+  },
+  {
+   "exp_wins": 5.4934,
+   "games": 13,
+   "id": "1166",
+   "name": "Kirk Cousins",
+   "others": [
+    "MattCyg"
+   ],
+   "owner": "zagaplooza",
+   "points": 175.84,
+   "position": "QB",
+   "stats": {
+    "pass_int": 15.0,
+    "pass_td": 17.0,
+    "pass_yd": 3396.0,
+    "rush_td": 0.0,
+    "rush_yd": 0.0
+   },
+   "team": "ATL",
+   "war": -0.4264
+  },
+  {
+   "exp_wins": 5.8062,
+   "games": 4,
+   "id": "11716",
+   "name": "Tip Reiman",
+   "others": [],
+   "owner": null,
+   "points": 4.9,
+   "position": "TE",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 0.0,
+    "rec_yd": 29.0,
+    "rush_yd": 0.0
+   },
+   "team": "ARI",
+   "war": -0.347
+  },
+  {
+   "exp_wins": 5.5324,
+   "games": 4,
+   "id": "11729",
+   "name": "Sione Vaki",
+   "others": [],
+   "owner": null,
+   "points": 4.6,
+   "position": "RB",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 17.0,
+    "rush_td": 0.0,
+    "rush_yd": 14.0
+   },
+   "team": "DET",
+   "war": -0.686
+  },
+  {
+   "exp_wins": 5.8727,
+   "games": 3,
+   "id": "11748",
+   "name": "Bub Means",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 22.3,
+   "position": "WR",
+   "stats": {
+    "rec": 9.0,
+    "rec_td": 1.0,
+    "rec_yd": 118.0,
+    "rush_yd": 0.0
+   },
+   "team": "NO",
+   "war": -0.0737
+  },
+  {
+   "exp_wins": 5.5617,
+   "games": 3,
+   "id": "11783",
+   "name": "Ryan Flournoy",
+   "others": [],
+   "owner": null,
+   "points": 4.4,
+   "position": "WR",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 0.0,
+    "rec_yd": 44.0,
+    "rush_yd": 0.0
+   },
+   "team": "DAL",
+   "war": -0.3847
+  },
+  {
+   "exp_wins": 5.8249,
+   "games": 1,
+   "id": "11806",
+   "name": "Casey Washington",
+   "others": [],
+   "owner": null,
+   "points": 1.9,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 14.0,
+    "rush_yd": 0.0
+   },
+   "team": "ATL",
+   "war": -0.1215
+  },
+  {
+   "exp_wins": 5.4431,
+   "games": 3,
+   "id": "11808",
+   "name": "Jha'Quan Jackson",
+   "others": [],
+   "owner": null,
+   "points": -3.2,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 8.0,
+    "rush_yd": -5.0
+   },
+   "team": "TEN",
+   "war": -0.5033
+  },
+  {
+   "exp_wins": 5.6075,
+   "games": 9,
+   "id": "11834",
+   "name": "Devaughn Vele",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 60.2,
+   "position": "WR",
+   "stats": {
+    "rec": 33.0,
+    "rec_td": 1.0,
+    "rec_yd": 377.0,
+    "rush_yd": 0.0
+   },
+   "team": "DEN",
+   "war": -0.3389
+  },
+  {
+   "exp_wins": 5.8135,
+   "games": 1,
+   "id": "11885",
+   "name": "Ramel Keyton",
+   "others": [],
+   "owner": null,
+   "points": 1.2,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 7.0,
+    "rush_yd": 0.0
+   },
+   "team": "LV",
+   "war": -0.1329
+  },
+  {
+   "exp_wins": 5.1603,
+   "games": 7,
+   "id": "11895",
+   "name": "Mason Tipton",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 16.9,
+   "position": "WR",
+   "stats": {
+    "rec": 14.0,
+    "rec_td": 0.0,
+    "rec_yd": 99.0,
+    "rush_yd": 0.0
+   },
+   "team": "NO",
+   "war": -0.7861
+  },
+  {
+   "exp_wins": 5.793,
+   "games": 1,
+   "id": "11897",
+   "name": "Jermaine Jackson",
+   "others": [],
+   "owner": null,
+   "points": -0.1,
+   "position": "WR",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_yd": -1.0
+   },
+   "team": "NO",
+   "war": -0.1534
+  },
+  {
+   "exp_wins": 5.64,
+   "games": 3,
+   "id": "11959",
+   "name": "Bryce Oliver",
+   "others": [],
+   "owner": null,
+   "points": 9.2,
+   "position": "WR",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 0.0,
+    "rec_yd": 72.0,
+    "rush_yd": 0.0
+   },
+   "team": "TEN",
+   "war": -0.3064
+  },
+  {
+   "exp_wins": 6.0353,
+   "games": 1,
+   "id": "12048",
+   "name": "George Holani",
+   "others": [],
+   "owner": null,
+   "points": 0.4,
+   "position": "RB",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": -1.0,
+    "rush_td": 0.0,
+    "rush_yd": 0.0
+   },
+   "team": "SEA",
+   "war": -0.1831
+  },
+  {
+   "exp_wins": 6.054,
+   "games": 1,
+   "id": "12062",
+   "name": "Cam Grandy",
+   "others": [],
+   "owner": null,
+   "points": 0.5,
+   "position": "TE",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_yd": 0.0
+   },
+   "team": "CIN",
+   "war": -0.0993
+  },
+  {
+   "exp_wins": 6.0322,
+   "games": 1,
+   "id": "12171",
+   "name": "British Brooks",
+   "others": [],
+   "owner": null,
+   "points": 0.2,
+   "position": "RB",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": 2.0
+   },
+   "team": "HOU",
+   "war": -0.1861
+  },
+  {
+   "exp_wins": 6.1679,
+   "games": 7,
+   "id": "1234",
+   "name": "Russell Wilson",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 121.76,
+   "position": "QB",
+   "stats": {
+    "pass_int": 3.0,
+    "pass_td": 12.0,
+    "pass_yd": 1784.0,
+    "rush_td": 1.0,
+    "rush_yd": 44.0
+   },
+   "team": "PIT",
+   "war": 0.2481
+  },
+  {
+   "exp_wins": 6.0491,
+   "games": 1,
+   "id": "12412",
+   "name": "Terrell Jennings",
+   "others": [],
+   "owner": null,
+   "points": 1.3,
+   "position": "RB",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": 13.0
+   },
+   "team": "NE",
+   "war": -0.1693
+  },
+  {
+   "exp_wins": 6.6298,
+   "games": 13,
+   "id": "1339",
+   "name": "Zach Ertz",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 104.1,
+   "position": "TE",
+   "stats": {
+    "rec": 52.0,
+    "rec_td": 4.0,
+    "rec_yd": 501.0,
+    "rush_yd": 0.0
+   },
+   "team": "WAS",
+   "war": 0.4765
+  },
+  {
+   "exp_wins": 5.1541,
+   "games": 7,
+   "id": "1352",
+   "name": "Robert Woods",
+   "others": [],
+   "owner": null,
+   "points": 16.7,
+   "position": "WR",
+   "stats": {
+    "rec": 11.0,
+    "rec_td": 0.0,
+    "rec_yd": 112.0,
+    "rush_yd": 0.0
+   },
+   "team": "HOU",
+   "war": -0.7923
+  },
+  {
+   "exp_wins": 6.144,
+   "games": 13,
+   "id": "1373",
+   "name": "Geno Smith",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 213.56,
+   "position": "QB",
+   "stats": {
+    "pass_int": 12.0,
+    "pass_td": 14.0,
+    "pass_yd": 3474.0,
+    "rush_td": 2.0,
+    "rush_yd": 226.0
+   },
+   "team": "SEA",
+   "war": 0.2242
+  },
+  {
+   "exp_wins": 4.5522,
+   "games": 11,
+   "id": "1379",
+   "name": "Kyle Juszczyk",
+   "others": [],
+   "owner": "khar432",
+   "points": 25.7,
+   "position": "RB",
+   "stats": {
+    "rec": 15.0,
+    "rec_td": 0.0,
+    "rec_yd": 122.0,
+    "rush_td": 1.0,
+    "rush_yd": 20.0
+   },
+   "team": "SF",
+   "war": -1.6661
+  },
+  {
+   "exp_wins": 5.7978,
+   "games": 13,
+   "id": "1426",
+   "name": "DeAndre Hopkins",
+   "others": [],
+   "owner": "khar432",
+   "points": 105.5,
+   "position": "WR",
+   "stats": {
+    "rec": 45.0,
+    "rec_td": 5.0,
+    "rec_yd": 530.0,
+    "rush_yd": 0.0
+   },
+   "team": "KC",
+   "war": -0.1486
+  },
+  {
+   "exp_wins": 6.9211,
+   "games": 13,
+   "id": "1466",
+   "name": "Travis Kelce",
+   "others": [],
+   "owner": "gonzas",
+   "points": 120.3,
+   "position": "TE",
+   "stats": {
+    "rec": 80.0,
+    "rec_td": 2.0,
+    "rec_yd": 682.0,
+    "rush_yd": 1.0
+   },
+   "team": "KC",
+   "war": 0.7678
+  },
+  {
+   "exp_wins": 6.0184,
+   "games": 11,
+   "id": "1479",
+   "name": "Keenan Allen",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 100.6,
+   "position": "WR",
+   "stats": {
+    "rec": 47.0,
+    "rec_td": 5.0,
+    "rec_yd": 471.0,
+    "rush_yd": 0.0
+   },
+   "team": "CHI",
+   "war": 0.072
+  },
+  {
+   "exp_wins": 4.8789,
+   "games": 9,
+   "id": "1535",
+   "name": "Cordarrelle Patterson",
+   "others": [],
+   "owner": "gonzas",
+   "points": 22.2,
+   "position": "RB",
+   "stats": {
+    "rec": 10.0,
+    "rec_td": 0.0,
+    "rec_yd": 69.0,
+    "rush_td": 0.0,
+    "rush_yd": 123.0
+   },
+   "team": "PIT",
+   "war": -1.3395
+  },
+  {
+   "exp_wins": 6.1656,
+   "games": 6,
+   "id": "1689",
+   "name": "Adam Thielen",
+   "others": [],
+   "owner": "KingDso",
+   "points": 64.7,
+   "position": "WR",
+   "stats": {
+    "rec": 28.0,
+    "rec_td": 2.0,
+    "rec_yd": 367.0,
+    "rush_yd": 0.0
+   },
+   "team": "CAR",
+   "war": 0.2192
+  },
+  {
+   "exp_wins": 5.8244,
+   "games": 5,
+   "id": "19",
+   "name": "Joe Flacco",
+   "others": [
+    "CheefWiggum"
+   ],
+   "owner": "Gixxersean1",
+   "points": 71.18,
+   "position": "QB",
+   "stats": {
+    "pass_int": 5.0,
+    "pass_td": 9.0,
+    "pass_yd": 1167.0,
+    "rush_td": 0.0,
+    "rush_yd": 25.0
+   },
+   "team": "IND",
+   "war": -0.0954
+  },
+  {
+   "exp_wins": 5.6727,
+   "games": 2,
+   "id": "1992",
+   "name": "Allen Robinson",
+   "others": [],
+   "owner": null,
+   "points": 1.9,
+   "position": "WR",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 9.0,
+    "rush_yd": 0.0
+   },
+   "team": "DET",
+   "war": -0.2737
+  },
+  {
+   "exp_wins": 5.8551,
+   "games": 10,
+   "id": "2028",
+   "name": "Derek Carr",
+   "others": [
+    "zagaplooza"
+   ],
+   "owner": "tg1212",
+   "points": 150.9,
+   "position": "QB",
+   "stats": {
+    "pass_int": 5.0,
+    "pass_td": 15.0,
+    "pass_yd": 2145.0,
+    "rush_td": 1.0,
+    "rush_yd": 71.0
+   },
+   "team": "NO",
+   "war": -0.0647
+  },
+  {
+   "exp_wins": 5.3476,
+   "games": 5,
+   "id": "2078",
+   "name": "Odell Beckham Jr.",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 10.0,
+   "position": "WR",
+   "stats": {
+    "rec": 9.0,
+    "rec_td": 0.0,
+    "rec_yd": 55.0,
+    "rush_yd": 0.0
+   },
+   "team": "MIA",
+   "war": -0.5988
+  },
+  {
+   "exp_wins": 6.5804,
+   "games": 10,
+   "id": "2133",
+   "name": "Davante Adams",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 123.2,
+   "position": "WR",
+   "stats": {
+    "rec": 58.0,
+    "rec_td": 4.0,
+    "rec_yd": 662.0,
+    "rush_yd": 0.0
+   },
+   "team": "NYJ",
+   "war": 0.634
+  },
+  {
+   "exp_wins": 5.6425,
+   "games": 6,
+   "id": "2197",
+   "name": "Brandin Cooks",
+   "others": [
+    "tg1212"
+   ],
+   "owner": "KingDso",
+   "points": 35.7,
+   "position": "WR",
+   "stats": {
+    "rec": 13.0,
+    "rec_td": 3.0,
+    "rec_yd": 110.0,
+    "rush_yd": 2.0
+   },
+   "team": "DAL",
+   "war": -0.3039
+  },
+  {
+   "exp_wins": 6.6095,
+   "games": 10,
+   "id": "2216",
+   "name": "Mike Evans",
+   "others": [],
+   "owner": "tg1212",
+   "points": 124.5,
+   "position": "WR",
+   "stats": {
+    "rec": 43.0,
+    "rec_td": 7.0,
+    "rec_yd": 590.0,
+    "rush_yd": 0.0
+   },
+   "team": "TB",
+   "war": 0.6631
+  },
+  {
+   "exp_wins": 5.698,
+   "games": 10,
+   "id": "2306",
+   "name": "Jameis Winston",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 137.5,
+   "position": "QB",
+   "stats": {
+    "pass_int": 9.0,
+    "pass_td": 13.0,
+    "pass_yd": 1975.0,
+    "rush_td": 1.0,
+    "rush_yd": 85.0
+   },
+   "team": "CLE",
+   "war": -0.2219
+  },
+  {
+   "exp_wins": 5.7514,
+   "games": 2,
+   "id": "2307",
+   "name": "Marcus Mariota",
+   "others": [],
+   "owner": null,
+   "points": 19.72,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 2.0,
+    "pass_yd": 203.0,
+    "rush_td": 0.0,
+    "rush_yd": 36.0
+   },
+   "team": "WAS",
+   "war": -0.1684
+  },
+  {
+   "exp_wins": 5.7603,
+   "games": 11,
+   "id": "2309",
+   "name": "Amari Cooper",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 86.1,
+   "position": "WR",
+   "stats": {
+    "rec": 40.0,
+    "rec_td": 3.0,
+    "rec_yd": 481.0,
+    "rush_yd": 0.0
+   },
+   "team": "BUF",
+   "war": -0.1861
+  },
+  {
+   "exp_wins": 5.079,
+   "games": 10,
+   "id": "2325",
+   "name": "Nelson Agholor",
+   "others": [],
+   "owner": null,
+   "points": 39.0,
+   "position": "WR",
+   "stats": {
+    "rec": 13.0,
+    "rec_td": 2.0,
+    "rec_yd": 205.0,
+    "rush_yd": 0.0
+   },
+   "team": "BAL",
+   "war": -0.8674
+  },
+  {
+   "exp_wins": 5.2636,
+   "games": 10,
+   "id": "2359",
+   "name": "Ameer Abdullah",
+   "others": [],
+   "owner": "tg1212",
+   "points": 55.9,
+   "position": "RB",
+   "stats": {
+    "rec": 25.0,
+    "rec_td": 2.0,
+    "rec_yd": 124.0,
+    "rush_td": 1.0,
+    "rush_yd": 150.0
+   },
+   "team": "LV",
+   "war": -0.9548
+  },
+  {
+   "exp_wins": 5.5574,
+   "games": 12,
+   "id": "2374",
+   "name": "Tyler Lockett",
+   "others": [],
+   "owner": "tg1212",
+   "points": 83.6,
+   "position": "WR",
+   "stats": {
+    "rec": 41.0,
+    "rec_td": 2.0,
+    "rec_yd": 511.0,
+    "rush_yd": 0.0
+   },
+   "team": "SEA",
+   "war": -0.389
+  },
+  {
+   "exp_wins": 5.8087,
+   "games": 1,
+   "id": "2381",
+   "name": "Chris Conley",
+   "others": [],
+   "owner": null,
+   "points": 0.9,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 4.0,
+    "rush_yd": 0.0
+   },
+   "team": "SF",
+   "war": -0.1377
+  },
+  {
+   "exp_wins": 5.8103,
+   "games": 1,
+   "id": "2410",
+   "name": "Jamison Crowder",
+   "others": [],
+   "owner": null,
+   "points": 1.0,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 5.0,
+    "rush_yd": 0.0
+   },
+   "team": "WAS",
+   "war": -0.1361
+  },
+  {
+   "exp_wins": 5.8328,
+   "games": 4,
+   "id": "2446",
+   "name": "MyCole Pruitt",
+   "others": [],
+   "owner": null,
+   "points": 6.4,
+   "position": "TE",
+   "stats": {
+    "rec": 5.0,
+    "rec_td": 0.0,
+    "rec_yd": 39.0,
+    "rush_yd": 0.0
+   },
+   "team": "PIT",
+   "war": -0.3205
+  },
+  {
+   "exp_wins": 6.4603,
+   "games": 8,
+   "id": "2449",
+   "name": "Stefon Diggs",
+   "others": [],
+   "owner": "tg1212",
+   "points": 98.42,
+   "position": "WR",
+   "stats": {
+    "rec": 47.0,
+    "rec_td": 3.0,
+    "rec_yd": 496.0,
+    "rush_yd": 8.0
+   },
+   "team": "HOU",
+   "war": 0.5139
+  },
+  {
+   "exp_wins": 4.7466,
+   "games": 9,
+   "id": "2471",
+   "name": "Michael Burton",
+   "others": [],
+   "owner": null,
+   "points": 14.6,
+   "position": "RB",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 0.0,
+    "rec_yd": 46.0,
+    "rush_td": 1.0,
+    "rush_yd": 5.0
+   },
+   "team": "DEN",
+   "war": -1.4718
+  },
+  {
+   "exp_wins": 6.0661,
+   "games": 1,
+   "id": "2545",
+   "name": "Geoff Swaim",
+   "others": [],
+   "owner": null,
+   "points": 1.2,
+   "position": "TE",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 7.0,
+    "rush_yd": 0.0
+   },
+   "team": "CLE",
+   "war": -0.0872
+  },
+  {
+   "exp_wins": 5.4334,
+   "games": 2,
+   "id": "260",
+   "name": "Josh Johnson",
+   "others": [],
+   "owner": null,
+   "points": 0.24,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 0.0,
+    "pass_yd": 1.0,
+    "rush_td": 0.0,
+    "rush_yd": 2.0
+   },
+   "team": "BAL",
+   "war": -0.4864
+  },
+  {
+   "exp_wins": 5.4574,
+   "games": 2,
+   "id": "2711",
+   "name": "Taylor Heinicke",
+   "others": [],
+   "owner": null,
+   "points": 2.16,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 0.0,
+    "pass_yd": 24.0,
+    "rush_td": 0.0,
+    "rush_yd": 12.0
+   },
+   "team": "LAC",
+   "war": -0.4624
+  },
+  {
+   "exp_wins": 5.3408,
+   "games": 9,
+   "id": "2749",
+   "name": "Raheem Mostert",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 49.3,
+   "position": "RB",
+   "stats": {
+    "rec": 12.0,
+    "rec_td": 0.0,
+    "rec_yd": 117.0,
+    "rush_td": 2.0,
+    "rush_yd": 236.0
+   },
+   "team": "MIA",
+   "war": -0.8775
+  },
+  {
+   "exp_wins": 5.195,
+   "games": 6,
+   "id": "2750",
+   "name": "DeAndre Carter",
+   "others": [],
+   "owner": null,
+   "points": 9.7,
+   "position": "WR",
+   "stats": {
+    "rec": 9.0,
+    "rec_td": 0.0,
+    "rec_yd": 72.0,
+    "rush_yd": 0.0
+   },
+   "team": "CHI",
+   "war": -0.7514
+  },
+  {
+   "exp_wins": 5.9702,
+   "games": 2,
+   "id": "2755",
+   "name": "Eric Tomlinson",
+   "others": [],
+   "owner": null,
+   "points": 1.9,
+   "position": "TE",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 9.0,
+    "rush_yd": 0.0
+   },
+   "team": "LAC",
+   "war": -0.1831
+  },
+  {
+   "exp_wins": 6.1652,
+   "games": 1,
+   "id": "3048",
+   "name": "Chris Manhertz",
+   "others": [],
+   "owner": null,
+   "points": 6.7,
+   "position": "TE",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 1.0,
+    "rec_yd": 2.0,
+    "rush_yd": 0.0
+   },
+   "team": "NYG",
+   "war": 0.0119
+  },
+  {
+   "exp_wins": 6.3992,
+   "games": 13,
+   "id": "3163",
+   "name": "Jared Goff",
+   "others": [],
+   "owner": "gonzas",
+   "points": 228.5,
+   "position": "QB",
+   "stats": {
+    "pass_int": 10.0,
+    "pass_td": 25.0,
+    "pass_yd": 3265.0,
+    "rush_td": 0.0,
+    "rush_yd": 47.0
+   },
+   "team": "DET",
+   "war": 0.4794
+  },
+  {
+   "exp_wins": 4.6149,
+   "games": 12,
+   "id": "3164",
+   "name": "Ezekiel Elliott",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 40.6,
+   "position": "RB",
+   "stats": {
+    "rec": 11.0,
+    "rec_td": 0.0,
+    "rec_yd": 58.0,
+    "rush_td": 2.0,
+    "rush_yd": 193.0
+   },
+   "team": "DAL",
+   "war": -1.6035
+  },
+  {
+   "exp_wins": 8.2283,
+   "games": 13,
+   "id": "3198",
+   "name": "Derrick Henry",
+   "others": [],
+   "owner": "tg1212",
+   "points": 259.7,
+   "position": "RB",
+   "stats": {
+    "rec": 13.0,
+    "rec_td": 2.0,
+    "rec_yd": 125.0,
+    "rush_td": 13.0,
+    "rush_yd": 1407.0
+   },
+   "team": "BAL",
+   "war": 2.01
+  },
+  {
+   "exp_wins": 5.3792,
+   "games": 10,
+   "id": "3200",
+   "name": "Sterling Shepard",
+   "others": [],
+   "owner": "KingDso",
+   "points": 56.7,
+   "position": "WR",
+   "stats": {
+    "rec": 29.0,
+    "rec_td": 1.0,
+    "rec_yd": 287.0,
+    "rush_yd": 55.0
+   },
+   "team": "TB",
+   "war": -0.5672
+  },
+  {
+   "exp_wins": 5.9209,
+   "games": 13,
+   "id": "3202",
+   "name": "Austin Hooper",
+   "others": [],
+   "owner": null,
+   "points": 65.2,
+   "position": "TE",
+   "stats": {
+    "rec": 31.0,
+    "rec_td": 3.0,
+    "rec_yd": 337.0,
+    "rush_yd": 0.0
+   },
+   "team": "NE",
+   "war": -0.2324
+  },
+  {
+   "exp_wins": 6.5173,
+   "games": 13,
+   "id": "3214",
+   "name": "Hunter Henry",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 98.0,
+   "position": "TE",
+   "stats": {
+    "rec": 58.0,
+    "rec_td": 1.0,
+    "rec_yd": 610.0,
+    "rush_yd": 0.0
+   },
+   "team": "NE",
+   "war": 0.364
+  },
+  {
+   "exp_wins": 4.9266,
+   "games": 12,
+   "id": "3225",
+   "name": "Tyler Boyd",
+   "others": [],
+   "owner": "khar432",
+   "points": 48.5,
+   "position": "WR",
+   "stats": {
+    "rec": 33.0,
+    "rec_td": 0.0,
+    "rec_yd": 317.0,
+    "rush_yd": 3.0
+   },
+   "team": "TEN",
+   "war": -1.0198
+  },
+  {
+   "exp_wins": 5.0954,
+   "games": 6,
+   "id": "3257",
+   "name": "Jacoby Brissett",
+   "others": [],
+   "owner": null,
+   "points": 45.32,
+   "position": "QB",
+   "stats": {
+    "pass_int": 1.0,
+    "pass_td": 2.0,
+    "pass_yd": 828.0,
+    "rush_td": 0.0,
+    "rush_yd": 62.0
+   },
+   "team": "NE",
+   "war": -0.8244
+  },
+  {
+   "exp_wins": 5.8961,
+   "games": 7,
+   "id": "3258",
+   "name": "Nick Vannett",
+   "others": [],
+   "owner": null,
+   "points": 27.9,
+   "position": "TE",
+   "stats": {
+    "rec": 13.0,
+    "rec_td": 2.0,
+    "rec_yd": 94.0,
+    "rush_yd": 0.0
+   },
+   "team": "TEN",
+   "war": -0.2572
+  },
+  {
+   "exp_wins": 5.8367,
+   "games": 12,
+   "id": "3286",
+   "name": "Demarcus Robinson",
+   "others": [
+    "alwaysflexin",
+    "zagaplooza"
+   ],
+   "owner": "Z28kid86",
+   "points": 99.3,
+   "position": "WR",
+   "stats": {
+    "rec": 28.0,
+    "rec_td": 7.0,
+    "rec_yd": 433.0,
+    "rush_yd": 0.0
+   },
+   "team": "LAR",
+   "war": -0.1097
+  },
+  {
+   "exp_wins": 5.868,
+   "games": 8,
+   "id": "3294",
+   "name": "Dak Prescott",
+   "others": [],
+   "owner": "gonzas",
+   "points": 120.52,
+   "position": "QB",
+   "stats": {
+    "pass_int": 8.0,
+    "pass_td": 11.0,
+    "pass_yd": 1978.0,
+    "rush_td": 1.0,
+    "rush_yd": 54.0
+   },
+   "team": "DAL",
+   "war": -0.0518
+  },
+  {
+   "exp_wins": 6.5615,
+   "games": 13,
+   "id": "3321",
+   "name": "Tyreek Hill",
+   "others": [
+    "MattCyg"
+   ],
+   "owner": "tg1212",
+   "points": 148.7,
+   "position": "WR",
+   "stats": {
+    "rec": 65.0,
+    "rec_td": 5.0,
+    "rec_yd": 769.0,
+    "rush_yd": 53.0
+   },
+   "team": "MIA",
+   "war": 0.6151
+  },
+  {
+   "exp_wins": 5.2823,
+   "games": 3,
+   "id": "3357",
+   "name": "Brandon Allen",
+   "others": [],
+   "owner": null,
+   "points": 6.36,
+   "position": "QB",
+   "stats": {
+    "pass_int": 2.0,
+    "pass_td": 1.0,
+    "pass_yd": 199.0,
+    "rush_td": 0.0,
+    "rush_yd": 4.0
+   },
+   "team": "SF",
+   "war": -0.6375
+  },
+  {
+   "exp_wins": 5.8103,
+   "games": 1,
+   "id": "3423",
+   "name": "Robbie Chosen",
+   "others": [],
+   "owner": null,
+   "points": 1.0,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 5.0,
+    "rush_yd": 0.0
+   },
+   "team": "MIA",
+   "war": -0.1361
+  },
+  {
+   "exp_wins": 5.5282,
+   "games": 8,
+   "id": "3634",
+   "name": "Kalif Raymond",
+   "others": [],
+   "owner": null,
+   "points": 46.4,
+   "position": "WR",
+   "stats": {
+    "rec": 16.0,
+    "rec_td": 2.0,
+    "rec_yd": 204.0,
+    "rush_yd": 0.0
+   },
+   "team": "DET",
+   "war": -0.4182
+  },
+  {
+   "exp_wins": 5.5936,
+   "games": 4,
+   "id": "3832",
+   "name": "C.J. Ham",
+   "others": [],
+   "owner": null,
+   "points": 8.1,
+   "position": "RB",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 11.0,
+    "rush_td": 1.0,
+    "rush_yd": 10.0
+   },
+   "team": "MIN",
+   "war": -0.6248
+  },
+  {
+   "exp_wins": 4.4441,
+   "games": 6,
+   "id": "3976",
+   "name": "Mitchell Trubisky",
+   "others": [],
+   "owner": null,
+   "points": -0.64,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 0.0,
+    "pass_yd": 9.0,
+    "rush_td": 0.0,
+    "rush_yd": -10.0
+   },
+   "team": "BUF",
+   "war": -1.4757
+  },
+  {
+   "exp_wins": 5.3623,
+   "games": 7,
+   "id": "4017",
+   "name": "Deshaun Watson",
+   "others": [],
+   "owner": "tg1212",
+   "points": 76.72,
+   "position": "QB",
+   "stats": {
+    "pass_int": 3.0,
+    "pass_td": 5.0,
+    "pass_yd": 1148.0,
+    "rush_td": 1.0,
+    "rush_yd": 148.0
+   },
+   "team": "CLE",
+   "war": -0.5575
+  },
+  {
+   "exp_wins": 7.9981,
+   "games": 10,
+   "id": "4018",
+   "name": "Joe Mixon",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 212.6,
+   "position": "RB",
+   "stats": {
+    "rec": 27.0,
+    "rec_td": 1.0,
+    "rec_yd": 244.0,
+    "rush_td": 11.0,
+    "rush_yd": 887.0
+   },
+   "team": "HOU",
+   "war": 1.7797
+  },
+  {
+   "exp_wins": 5.8944,
+   "games": 2,
+   "id": "4029",
+   "name": "Dalvin Cook",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 3.5,
+   "position": "RB",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 10.0,
+    "rush_td": 0.0,
+    "rush_yd": 20.0
+   },
+   "team": "DAL",
+   "war": -0.324
+  },
+  {
+   "exp_wins": 6.9816,
+   "games": 10,
+   "id": "4033",
+   "name": "David Njoku",
+   "others": [],
+   "owner": "KingDso",
+   "points": 105.9,
+   "position": "TE",
+   "stats": {
+    "rec": 56.0,
+    "rec_td": 5.0,
+    "rec_yd": 439.0,
+    "rush_yd": 0.0
+   },
+   "team": "CLE",
+   "war": 0.8284
+  },
+  {
+   "exp_wins": 6.1469,
+   "games": 4,
+   "id": "4034",
+   "name": "Christian McCaffrey",
+   "others": [],
+   "owner": "khar432",
+   "points": 40.3,
+   "position": "RB",
+   "stats": {
+    "rec": 15.0,
+    "rec_td": 0.0,
+    "rec_yd": 146.0,
+    "rush_td": 0.0,
+    "rush_yd": 202.0
+   },
+   "team": "SF",
+   "war": -0.0714
+  },
+  {
+   "exp_wins": 7.5123,
+   "games": 13,
+   "id": "4035",
+   "name": "Alvin Kamara",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 222.3,
+   "position": "RB",
+   "stats": {
+    "rec": 64.0,
+    "rec_td": 1.0,
+    "rec_yd": 485.0,
+    "rush_td": 6.0,
+    "rush_yd": 938.0
+   },
+   "team": "NO",
+   "war": 1.2939
+  },
+  {
+   "exp_wins": 6.9151,
+   "games": 7,
+   "id": "4037",
+   "name": "Chris Godwin Jr.",
+   "others": [],
+   "owner": "khar432",
+   "points": 116.8,
+   "position": "WR",
+   "stats": {
+    "rec": 50.0,
+    "rec_td": 5.0,
+    "rec_yd": 576.0,
+    "rush_yd": 2.0
+   },
+   "team": "TB",
+   "war": 0.9687
+  },
+  {
+   "exp_wins": 5.8119,
+   "games": 1,
+   "id": "4038",
+   "name": "John Ross",
+   "others": [],
+   "owner": null,
+   "points": 1.1,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 6.0,
+    "rush_yd": 0.0
+   },
+   "team": "PHI",
+   "war": -0.1345
+  },
+  {
+   "exp_wins": 7.0386,
+   "games": 9,
+   "id": "4039",
+   "name": "Cooper Kupp",
+   "others": [
+    "corygraham12"
+   ],
+   "owner": "tg1212",
+   "points": 140.2,
+   "position": "WR",
+   "stats": {
+    "rec": 63.0,
+    "rec_td": 6.0,
+    "rec_yd": 657.0,
+    "rush_yd": 10.0
+   },
+   "team": "LAR",
+   "war": 1.0922
+  },
+  {
+   "exp_wins": 5.643,
+   "games": 6,
+   "id": "4040",
+   "name": "JuJu Smith-Schuster",
+   "others": [],
+   "owner": "zagaplooza",
+   "points": 35.2,
+   "position": "WR",
+   "stats": {
+    "rec": 14.0,
+    "rec_td": 1.0,
+    "rec_yd": 202.0,
+    "rush_yd": 0.0
+   },
+   "team": "KC",
+   "war": -0.3034
+  },
+  {
+   "exp_wins": 6.2674,
+   "games": 13,
+   "id": "4046",
+   "name": "Patrick Mahomes",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 221.06,
+   "position": "QB",
+   "stats": {
+    "pass_int": 11.0,
+    "pass_td": 20.0,
+    "pass_yd": 3189.0,
+    "rush_td": 1.0,
+    "rush_yd": 248.0
+   },
+   "team": "KC",
+   "war": 0.3476
+  },
+  {
+   "exp_wins": 6.0543,
+   "games": 5,
+   "id": "4054",
+   "name": "Mo Alie-Cox",
+   "others": [],
+   "owner": null,
+   "points": 24.7,
+   "position": "TE",
+   "stats": {
+    "rec": 11.0,
+    "rec_td": 1.0,
+    "rec_yd": 132.0,
+    "rush_yd": 0.0
+   },
+   "team": "IND",
+   "war": -0.0989
+  },
+  {
+   "exp_wins": 6.4067,
+   "games": 9,
+   "id": "4066",
+   "name": "Evan Engram",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 68.0,
+   "position": "TE",
+   "stats": {
+    "rec": 47.0,
+    "rec_td": 1.0,
+    "rec_yd": 365.0,
+    "rush_yd": 0.0
+   },
+   "team": "JAX",
+   "war": 0.2534
+  },
+  {
+   "exp_wins": 5.3578,
+   "games": 8,
+   "id": "4068",
+   "name": "Mike Williams",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 37.4,
+   "position": "WR",
+   "stats": {
+    "rec": 16.0,
+    "rec_td": 1.0,
+    "rec_yd": 234.0,
+    "rush_yd": 0.0
+   },
+   "team": "PIT",
+   "war": -0.5886
+  },
+  {
+   "exp_wins": 5.6839,
+   "games": 2,
+   "id": "4080",
+   "name": "Zay Jones",
+   "others": [],
+   "owner": null,
+   "points": 2.6,
+   "position": "WR",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 16.0,
+    "rush_yd": 0.0
+   },
+   "team": "ARI",
+   "war": -0.2625
+  },
+  {
+   "exp_wins": 5.0829,
+   "games": 10,
+   "id": "4082",
+   "name": "Curtis Samuel",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 38.9,
+   "position": "WR",
+   "stats": {
+    "rec": 23.0,
+    "rec_td": 1.0,
+    "rec_yd": 200.0,
+    "rush_yd": 14.0
+   },
+   "team": "BUF",
+   "war": -0.8635
+  },
+  {
+   "exp_wins": 5.7265,
+   "games": 5,
+   "id": "4089",
+   "name": "Gerald Everett",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 6.5,
+   "position": "TE",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 0.0,
+    "rec_yd": 30.0,
+    "rush_yd": 0.0
+   },
+   "team": "CHI",
+   "war": -0.4268
+  },
+  {
+   "exp_wins": 6.3962,
+   "games": 10,
+   "id": "4098",
+   "name": "Kareem Hunt",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 119.6,
+   "position": "RB",
+   "stats": {
+    "rec": 20.0,
+    "rec_td": 0.0,
+    "rec_yd": 148.0,
+    "rush_td": 5.0,
+    "rush_yd": 608.0
+   },
+   "team": "KC",
+   "war": 0.1779
+  },
+  {
+   "exp_wins": 5.2577,
+   "games": 7,
+   "id": "4111",
+   "name": "D'Onta Foreman",
+   "others": [],
+   "owner": "gonzas",
+   "points": 22.6,
+   "position": "RB",
+   "stats": {
+    "rec": 5.0,
+    "rec_td": 0.0,
+    "rec_yd": 46.0,
+    "rush_td": 0.0,
+    "rush_yd": 155.0
+   },
+   "team": "CLE",
+   "war": -0.9607
+  },
+  {
+   "exp_wins": 6.9619,
+   "games": 13,
+   "id": "4137",
+   "name": "James Conner",
+   "others": [],
+   "owner": "khar432",
+   "points": 183.6,
+   "position": "RB",
+   "stats": {
+    "rec": 36.0,
+    "rec_td": 1.0,
+    "rec_yd": 333.0,
+    "rush_td": 5.0,
+    "rush_yd": 863.0
+   },
+   "team": "ARI",
+   "war": 0.7435
+  },
+  {
+   "exp_wins": 7.2418,
+   "games": 12,
+   "id": "4144",
+   "name": "Jonnu Smith",
+   "others": [],
+   "owner": "KingDso",
+   "points": 133.6,
+   "position": "TE",
+   "stats": {
+    "rec": 61.0,
+    "rec_td": 5.0,
+    "rec_yd": 692.0,
+    "rush_yd": -1.0
+   },
+   "team": "MIA",
+   "war": 1.0885
+  },
+  {
+   "exp_wins": 4.5882,
+   "games": 13,
+   "id": "4147",
+   "name": "Samaje Perine",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 51.2,
+   "position": "RB",
+   "stats": {
+    "rec": 21.0,
+    "rec_td": 1.0,
+    "rec_yd": 216.0,
+    "rush_td": 1.0,
+    "rush_yd": 71.0
+   },
+   "team": "KC",
+   "war": -1.6302
+  },
+  {
+   "exp_wins": 4.7525,
+   "games": 10,
+   "id": "4149",
+   "name": "Jamaal Williams",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 26.2,
+   "position": "RB",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 0.0,
+    "rec_yd": 38.0,
+    "rush_td": 1.0,
+    "rush_yd": 129.0
+   },
+   "team": "NO",
+   "war": -1.4658
+  },
+  {
+   "exp_wins": 5.855,
+   "games": 4,
+   "id": "4171",
+   "name": "Josh Reynolds",
+   "others": [],
+   "owner": null,
+   "points": 30.3,
+   "position": "WR",
+   "stats": {
+    "rec": 12.0,
+    "rec_td": 1.0,
+    "rec_yd": 183.0,
+    "rush_yd": 0.0
+   },
+   "team": "DEN",
+   "war": -0.0914
+  },
+  {
+   "exp_wins": 5.4966,
+   "games": 11,
+   "id": "4177",
+   "name": "Mack Hollins",
+   "others": [],
+   "owner": null,
+   "points": 71.3,
+   "position": "WR",
+   "stats": {
+    "rec": 23.0,
+    "rec_td": 5.0,
+    "rec_yd": 288.0,
+    "rush_yd": 0.0
+   },
+   "team": "BUF",
+   "war": -0.4498
+  },
+  {
+   "exp_wins": 5.9113,
+   "games": 4,
+   "id": "4189",
+   "name": "Eric Saubert",
+   "others": [],
+   "owner": null,
+   "points": 10.8,
+   "position": "TE",
+   "stats": {
+    "rec": 6.0,
+    "rec_td": 0.0,
+    "rec_yd": 78.0,
+    "rush_yd": 0.0
+   },
+   "team": "SF",
+   "war": -0.242
+  },
+  {
+   "exp_wins": 6.7366,
+   "games": 13,
+   "id": "4199",
+   "name": "Aaron Jones Sr.",
+   "others": [],
+   "owner": "zagaplooza",
+   "points": 172.0,
+   "position": "RB",
+   "stats": {
+    "rec": 37.0,
+    "rec_td": 2.0,
+    "rec_yd": 302.0,
+    "rush_td": 4.0,
+    "rush_yd": 893.0
+   },
+   "team": "MIN",
+   "war": 0.5182
+  },
+  {
+   "exp_wins": 5.8478,
+   "games": 13,
+   "id": "421",
+   "name": "Matthew Stafford",
+   "others": [
+    "KingDso"
+   ],
+   "owner": "gonzas",
+   "points": 195.22,
+   "position": "QB",
+   "stats": {
+    "pass_int": 7.0,
+    "pass_td": 19.0,
+    "pass_yd": 3303.0,
+    "rush_td": 0.0,
+    "rush_yd": 11.0
+   },
+   "team": "LAR",
+   "war": -0.072
+  },
+  {
+   "exp_wins": 7.8506,
+   "games": 11,
+   "id": "4217",
+   "name": "George Kittle",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 160.0,
+   "position": "TE",
+   "stats": {
+    "rec": 56.0,
+    "rec_td": 8.0,
+    "rec_yd": 800.0,
+    "rush_yd": 0.0
+   },
+   "team": "SF",
+   "war": 1.6973
+  },
+  {
+   "exp_wins": 4.9886,
+   "games": 11,
+   "id": "4219",
+   "name": "Jeremy McNichols",
+   "others": [],
+   "owner": "KingDso",
+   "points": 50.6,
+   "position": "RB",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 7.0,
+    "rush_td": 4.0,
+    "rush_yd": 249.0
+   },
+   "team": "WAS",
+   "war": -1.2297
+  },
+  {
+   "exp_wins": 5.4456,
+   "games": 11,
+   "id": "4234",
+   "name": "Noah Brown",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 68.8,
+   "position": "WR",
+   "stats": {
+    "rec": 35.0,
+    "rec_td": 1.0,
+    "rec_yd": 453.0,
+    "rush_yd": 0.0
+   },
+   "team": "WAS",
+   "war": -0.5008
+  },
+  {
+   "exp_wins": 5.3531,
+   "games": 9,
+   "id": "4274",
+   "name": "David Moore",
+   "others": [],
+   "owner": null,
+   "points": 45.7,
+   "position": "WR",
+   "stats": {
+    "rec": 26.0,
+    "rec_td": 1.0,
+    "rec_yd": 267.0,
+    "rush_yd": 0.0
+   },
+   "team": "CAR",
+   "war": -0.5933
+  },
+  {
+   "exp_wins": 5.6842,
+   "games": 10,
+   "id": "4314",
+   "name": "Johnny Mundt",
+   "others": [],
+   "owner": null,
+   "points": 34.5,
+   "position": "TE",
+   "stats": {
+    "rec": 18.0,
+    "rec_td": 2.0,
+    "rec_yd": 135.0,
+    "rush_yd": 0.0
+   },
+   "team": "MIN",
+   "war": -0.469
+  },
+  {
+   "exp_wins": 5.4564,
+   "games": 10,
+   "id": "4351",
+   "name": "Tim Patrick",
+   "others": [],
+   "owner": null,
+   "points": 60.4,
+   "position": "WR",
+   "stats": {
+    "rec": 27.0,
+    "rec_td": 2.0,
+    "rec_yd": 349.0,
+    "rush_yd": 0.0
+   },
+   "team": "DET",
+   "war": -0.49
+  },
+  {
+   "exp_wins": 5.8753,
+   "games": 3,
+   "id": "4353",
+   "name": "Patrick Ricard",
+   "others": [],
+   "owner": null,
+   "points": 13.8,
+   "position": "RB",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 1.0,
+    "rec_yd": 8.0,
+    "rush_td": 0.0,
+    "rush_yd": 0.0
+   },
+   "team": "BAL",
+   "war": -0.3431
+  },
+  {
+   "exp_wins": 6.8395,
+   "games": 8,
+   "id": "4381",
+   "name": "Taysom Hill",
+   "others": [],
+   "owner": "gonzas",
+   "points": 92.84,
+   "position": "TE",
+   "stats": {
+    "rec": 23.0,
+    "rec_td": 0.0,
+    "rec_yd": 187.0,
+    "rush_yd": 278.0
+   },
+   "team": "NO",
+   "war": 0.6862
+  },
+  {
+   "exp_wins": 5.7419,
+   "games": 5,
+   "id": "4443",
+   "name": "Pharaoh Brown",
+   "others": [],
+   "owner": null,
+   "points": 7.4,
+   "position": "TE",
+   "stats": {
+    "rec": 6.0,
+    "rec_td": 0.0,
+    "rec_yd": 44.0,
+    "rush_yd": 0.0
+   },
+   "team": "SEA",
+   "war": -0.4114
+  },
+  {
+   "exp_wins": 5.5128,
+   "games": 7,
+   "id": "4454",
+   "name": "Kendrick Bourne",
+   "others": [],
+   "owner": null,
+   "points": 37.0,
+   "position": "WR",
+   "stats": {
+    "rec": 19.0,
+    "rec_td": 1.0,
+    "rec_yd": 209.0,
+    "rush_yd": 6.0
+   },
+   "team": "NE",
+   "war": -0.4336
+  },
+  {
+   "exp_wins": 5.2023,
+   "games": 3,
+   "id": "4464",
+   "name": "Nick Mullens",
+   "others": [],
+   "owner": null,
+   "points": 1.32,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 0.0,
+    "pass_yd": 38.0,
+    "rush_td": 0.0,
+    "rush_yd": -2.0
+   },
+   "team": "MIN",
+   "war": -0.7176
+  },
+  {
+   "exp_wins": 4.836,
+   "games": 9,
+   "id": "4574",
+   "name": "Cooper Rush",
+   "others": [],
+   "owner": null,
+   "points": 71.14,
+   "position": "QB",
+   "stats": {
+    "pass_int": 3.0,
+    "pass_td": 7.0,
+    "pass_yd": 1191.0,
+    "rush_td": 0.0,
+    "rush_yd": 15.0
+   },
+   "team": "DAL",
+   "war": -1.0838
+  },
+  {
+   "exp_wins": 6.0265,
+   "games": 11,
+   "id": "4663",
+   "name": "Austin Ekeler",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 110.6,
+   "position": "RB",
+   "stats": {
+    "rec": 33.0,
+    "rec_td": 0.0,
+    "rec_yd": 346.0,
+    "rush_td": 4.0,
+    "rush_yd": 355.0
+   },
+   "team": "WAS",
+   "war": -0.1919
+  },
+  {
+   "exp_wins": 4.7773,
+   "games": 11,
+   "id": "4718",
+   "name": "Dare Ogunbowale",
+   "others": [],
+   "owner": "gonzas",
+   "points": 38.4,
+   "position": "RB",
+   "stats": {
+    "rec": 16.0,
+    "rec_td": 1.0,
+    "rec_yd": 166.0,
+    "rush_td": 0.0,
+    "rush_yd": 68.0
+   },
+   "team": "HOU",
+   "war": -1.4411
+  },
+  {
+   "exp_wins": 8.8191,
+   "games": 13,
+   "id": "4866",
+   "name": "Saquon Barkley",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 303.5,
+   "position": "RB",
+   "stats": {
+    "rec": 29.0,
+    "rec_td": 2.0,
+    "rec_yd": 267.0,
+    "rush_td": 11.0,
+    "rush_yd": 1623.0
+   },
+   "team": "PHI",
+   "war": 2.6007
+  },
+  {
+   "exp_wins": 8.1804,
+   "games": 13,
+   "id": "4881",
+   "name": "Lamar Jackson",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 327.4,
+   "position": "QB",
+   "stats": {
+    "pass_int": 3.0,
+    "pass_td": 29.0,
+    "pass_yd": 3290.0,
+    "rush_td": 3.0,
+    "rush_yd": 678.0
+   },
+   "team": "BAL",
+   "war": 2.2606
+  },
+  {
+   "exp_wins": 7.1218,
+   "games": 13,
+   "id": "4892",
+   "name": "Baker Mayfield",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 267.26,
+   "position": "QB",
+   "stats": {
+    "pass_int": 13.0,
+    "pass_td": 28.0,
+    "pass_yd": 3329.0,
+    "rush_td": 3.0,
+    "rush_yd": 241.0
+   },
+   "team": "TB",
+   "war": 1.202
+  },
+  {
+   "exp_wins": 6.7245,
+   "games": 13,
+   "id": "4943",
+   "name": "Sam Darnold",
+   "others": [],
+   "owner": "gonzas",
+   "points": 245.36,
+   "position": "QB",
+   "stats": {
+    "pass_int": 10.0,
+    "pass_td": 28.0,
+    "pass_yd": 3299.0,
+    "rush_td": 1.0,
+    "rush_yd": 194.0
+   },
+   "team": "MIN",
+   "war": 0.8046
+  },
+  {
+   "exp_wins": 5.7202,
+   "games": 8,
+   "id": "4950",
+   "name": "Christian Kirk",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 57.4,
+   "position": "WR",
+   "stats": {
+    "rec": 27.0,
+    "rec_td": 1.0,
+    "rec_yd": 379.0,
+    "rush_yd": 0.0
+   },
+   "team": "JAX",
+   "war": -0.2262
+  },
+  {
+   "exp_wins": 5.8167,
+   "games": 1,
+   "id": "4951",
+   "name": "DJ Chark",
+   "others": [],
+   "owner": null,
+   "points": 1.4,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 9.0,
+    "rush_yd": 0.0
+   },
+   "team": "LAC",
+   "war": -0.1297
+  },
+  {
+   "exp_wins": 5.729,
+   "games": 4,
+   "id": "4972",
+   "name": "Mason Rudolph",
+   "others": [],
+   "owner": null,
+   "points": 50.34,
+   "position": "QB",
+   "stats": {
+    "pass_int": 4.0,
+    "pass_td": 4.0,
+    "pass_yd": 806.0,
+    "rush_td": 1.0,
+    "rush_yd": 61.0
+   },
+   "team": "TEN",
+   "war": -0.1908
+  },
+  {
+   "exp_wins": 5.7881,
+   "games": 5,
+   "id": "4973",
+   "name": "Hayden Hurst",
+   "others": [],
+   "owner": null,
+   "points": 10.0,
+   "position": "TE",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 0.0,
+    "rec_yd": 65.0,
+    "rush_yd": 0.0
+   },
+   "team": "LAC",
+   "war": -0.3652
+  },
+  {
+   "exp_wins": 6.1653,
+   "games": 13,
+   "id": "4981",
+   "name": "Calvin Ridley",
+   "others": [],
+   "owner": "gonzas",
+   "points": 126.0,
+   "position": "WR",
+   "stats": {
+    "rec": 50.0,
+    "rec_td": 3.0,
+    "rec_yd": 738.0,
+    "rush_yd": 32.0
+   },
+   "team": "TEN",
+   "war": 0.2189
+  },
+  {
+   "exp_wins": 6.4792,
+   "games": 13,
+   "id": "4983",
+   "name": "DJ Moore",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 144.8,
+   "position": "WR",
+   "stats": {
+    "rec": 68.0,
+    "rec_td": 5.0,
+    "rec_yd": 712.0,
+    "rush_yd": 36.0
+   },
+   "team": "CHI",
+   "war": 0.5328
+  },
+  {
+   "exp_wins": 7.6796,
+   "games": 13,
+   "id": "4984",
+   "name": "Josh Allen",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 307.62,
+   "position": "QB",
+   "stats": {
+    "pass_int": 5.0,
+    "pass_td": 23.0,
+    "pass_yd": 3033.0,
+    "rush_td": 9.0,
+    "rush_yd": 416.0
+   },
+   "team": "BUF",
+   "war": 1.7598
+  },
+  {
+   "exp_wins": 5.886,
+   "games": 7,
+   "id": "4988",
+   "name": "Nick Chubb",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 58.7,
+   "position": "RB",
+   "stats": {
+    "rec": 5.0,
+    "rec_td": 1.0,
+    "rec_yd": 31.0,
+    "rush_td": 3.0,
+    "rush_yd": 291.0
+   },
+   "team": "CLE",
+   "war": -0.3324
+  },
+  {
+   "exp_wins": 5.5821,
+   "games": 3,
+   "id": "4992",
+   "name": "Dante Pettis",
+   "others": [],
+   "owner": null,
+   "points": 5.7,
+   "position": "WR",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 22.0,
+    "rush_yd": 0.0
+   },
+   "team": "NO",
+   "war": -0.3643
+  },
+  {
+   "exp_wins": 6.3647,
+   "games": 11,
+   "id": "4993",
+   "name": "Mike Gesicki",
+   "others": [
+    "tg1212"
+   ],
+   "owner": "Z28kid86",
+   "points": 79.0,
+   "position": "TE",
+   "stats": {
+    "rec": 42.0,
+    "rec_td": 2.0,
+    "rec_yd": 460.0,
+    "rush_yd": 0.0
+   },
+   "team": "CIN",
+   "war": 0.2114
+  },
+  {
+   "exp_wins": 5.9754,
+   "games": 2,
+   "id": "4995",
+   "name": "Ian Thomas",
+   "others": [],
+   "owner": null,
+   "points": 2.2,
+   "position": "TE",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 7.0,
+    "rush_yd": 0.0
+   },
+   "team": "CAR",
+   "war": -0.1779
+  },
+  {
+   "exp_wins": 5.9784,
+   "games": 13,
+   "id": "5001",
+   "name": "Dalton Schultz",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 68.9,
+   "position": "TE",
+   "stats": {
+    "rec": 41.0,
+    "rec_td": 1.0,
+    "rec_yd": 424.0,
+    "rush_yd": 0.0
+   },
+   "team": "HOU",
+   "war": -0.1749
+  },
+  {
+   "exp_wins": 5.5271,
+   "games": 7,
+   "id": "5008",
+   "name": "Durham Smythe",
+   "others": [],
+   "owner": null,
+   "points": 7.5,
+   "position": "TE",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 0.0,
+    "rec_yd": 40.0,
+    "rush_yd": 0.0
+   },
+   "team": "MIA",
+   "war": -0.6262
+  },
+  {
+   "exp_wins": 6.0979,
+   "games": 12,
+   "id": "5010",
+   "name": "Will Dissly",
+   "others": [],
+   "owner": "gonzas",
+   "points": 69.3,
+   "position": "TE",
+   "stats": {
+    "rec": 43.0,
+    "rec_td": 1.0,
+    "rec_yd": 418.0,
+    "rush_yd": 0.0
+   },
+   "team": "LAC",
+   "war": -0.0554
+  },
+  {
+   "exp_wins": 7.0098,
+   "games": 11,
+   "id": "5012",
+   "name": "Mark Andrews",
+   "others": [],
+   "owner": "khar432",
+   "points": 112.9,
+   "position": "TE",
+   "stats": {
+    "rec": 43.0,
+    "rec_td": 7.0,
+    "rec_yd": 490.0,
+    "rush_yd": 4.0
+   },
+   "team": "BAL",
+   "war": 0.8565
+  },
+  {
+   "exp_wins": 6.6678,
+   "games": 8,
+   "id": "5022",
+   "name": "Dallas Goedert",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 77.1,
+   "position": "TE",
+   "stats": {
+    "rec": 38.0,
+    "rec_td": 2.0,
+    "rec_yd": 441.0,
+    "rush_yd": 0.0
+   },
+   "team": "PHI",
+   "war": 0.5146
+  },
+  {
+   "exp_wins": 5.8247,
+   "games": 10,
+   "id": "5032",
+   "name": "Jordan Akins",
+   "others": [],
+   "owner": null,
+   "points": 42.3,
+   "position": "TE",
+   "stats": {
+    "rec": 24.0,
+    "rec_td": 1.0,
+    "rec_yd": 243.0,
+    "rush_yd": 0.0
+   },
+   "team": "CLE",
+   "war": -0.3286
+  },
+  {
+   "exp_wins": 6.8488,
+   "games": 12,
+   "id": "5045",
+   "name": "Courtland Sutton",
+   "others": [
+    "Z28kid86"
+   ],
+   "owner": "alwaysflexin",
+   "points": 155.3,
+   "position": "WR",
+   "stats": {
+    "rec": 63.0,
+    "rec_td": 5.0,
+    "rec_yd": 846.0,
+    "rush_yd": 0.0
+   },
+   "team": "DEN",
+   "war": 0.9024
+  },
+  {
+   "exp_wins": 6.002,
+   "games": 7,
+   "id": "5086",
+   "name": "Marquez Valdes-Scantling",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 64.4,
+   "position": "WR",
+   "stats": {
+    "rec": 14.0,
+    "rec_td": 4.0,
+    "rec_yd": 314.0,
+    "rush_yd": 0.0
+   },
+   "team": "NO",
+   "war": 0.0556
+  },
+  {
+   "exp_wins": 5.5328,
+   "games": 13,
+   "id": "5096",
+   "name": "Ray-Ray McCloud",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 91.6,
+   "position": "WR",
+   "stats": {
+    "rec": 53.0,
+    "rec_td": 1.0,
+    "rec_yd": 574.0,
+    "rush_yd": 57.0
+   },
+   "team": "ATL",
+   "war": -0.4136
+  },
+  {
+   "exp_wins": 5.3358,
+   "games": 7,
+   "id": "5113",
+   "name": "Cedrick Wilson",
+   "others": [],
+   "owner": null,
+   "points": 26.4,
+   "position": "WR",
+   "stats": {
+    "rec": 13.0,
+    "rec_td": 1.0,
+    "rec_yd": 159.0,
+    "rush_yd": 0.0
+   },
+   "team": "NO",
+   "war": -0.6106
+  },
+  {
+   "exp_wins": 5.6846,
+   "games": 1,
+   "id": "5127",
+   "name": "Kyle Allen",
+   "others": [],
+   "owner": null,
+   "points": 0.76,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 0.0,
+    "pass_yd": 19.0,
+    "rush_td": 0.0,
+    "rush_yd": 0.0
+   },
+   "team": "PIT",
+   "war": -0.2352
+  },
+  {
+   "exp_wins": 5.8565,
+   "games": 13,
+   "id": "5133",
+   "name": "Tyler Conklin",
+   "others": [
+    "tg1212"
+   ],
+   "owner": "gonzas",
+   "points": 61.7,
+   "position": "TE",
+   "stats": {
+    "rec": 36.0,
+    "rec_td": 2.0,
+    "rec_yd": 317.0,
+    "rush_yd": 0.0
+   },
+   "team": "NYJ",
+   "war": -0.2968
+  },
+  {
+   "exp_wins": 5.1648,
+   "games": 7,
+   "id": "5154",
+   "name": "Trent Sherfield",
+   "others": [],
+   "owner": null,
+   "points": 17.2,
+   "position": "WR",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 1.0,
+    "rec_yd": 77.0,
+    "rush_yd": 0.0
+   },
+   "team": "MIN",
+   "war": -0.7816
+  },
+  {
+   "exp_wins": 6.3119,
+   "games": 8,
+   "id": "5185",
+   "name": "Allen Lazard",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 90.5,
+   "position": "WR",
+   "stats": {
+    "rec": 31.0,
+    "rec_td": 5.0,
+    "rec_yd": 430.0,
+    "rush_yd": 0.0
+   },
+   "team": "NYJ",
+   "war": 0.3655
+  },
+  {
+   "exp_wins": 6.0398,
+   "games": 1,
+   "id": "5209",
+   "name": "Mike Boone",
+   "others": [],
+   "owner": null,
+   "points": 0.7,
+   "position": "RB",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": 7.0
+   },
+   "team": "CAR",
+   "war": -0.1785
+  },
+  {
+   "exp_wins": 5.1768,
+   "games": 9,
+   "id": "5248",
+   "name": "Gus Edwards",
+   "others": [
+    "Z28kid86"
+   ],
+   "owner": "KingDso",
+   "points": 40.7,
+   "position": "RB",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 3.0,
+    "rush_td": 2.0,
+    "rush_yd": 274.0
+   },
+   "team": "LAC",
+   "war": -1.0416
+  },
+  {
+   "exp_wins": 5.5239,
+   "games": 2,
+   "id": "5257",
+   "name": "Tim Boyle",
+   "others": [],
+   "owner": null,
+   "points": 7.12,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 0.0,
+    "pass_yd": 153.0,
+    "rush_td": 0.0,
+    "rush_yd": 10.0
+   },
+   "team": "MIA",
+   "war": -0.3959
+  },
+  {
+   "exp_wins": 5.5825,
+   "games": 4,
+   "id": "5284",
+   "name": "Jeff Wilson",
+   "others": [],
+   "owner": "gonzas",
+   "points": 7.8,
+   "position": "RB",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 19.0,
+    "rush_td": 0.0,
+    "rush_yd": 44.0
+   },
+   "team": "MIA",
+   "war": -0.6359
+  },
+  {
+   "exp_wins": 6.0626,
+   "games": 1,
+   "id": "5285",
+   "name": "Ross Dwelley",
+   "others": [],
+   "owner": null,
+   "points": 1.0,
+   "position": "TE",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 5.0,
+    "rush_yd": 0.0
+   },
+   "team": "ATL",
+   "war": -0.0907
+  },
+  {
+   "exp_wins": 4.8977,
+   "games": 11,
+   "id": "5374",
+   "name": "Justin Watson",
+   "others": [],
+   "owner": "gonzas",
+   "points": 37.9,
+   "position": "WR",
+   "stats": {
+    "rec": 19.0,
+    "rec_td": 1.0,
+    "rec_yd": 224.0,
+    "rush_yd": 0.0
+   },
+   "team": "KC",
+   "war": -1.0487
+  },
+  {
+   "exp_wins": 5.9702,
+   "games": 6,
+   "id": "5409",
+   "name": "Tanner Hudson",
+   "others": [],
+   "owner": null,
+   "points": 26.0,
+   "position": "TE",
+   "stats": {
+    "rec": 17.0,
+    "rec_td": 1.0,
+    "rec_yd": 134.0,
+    "rush_yd": 1.0
+   },
+   "team": "CIN",
+   "war": -0.183
+  },
+  {
+   "exp_wins": 5.3291,
+   "games": 5,
+   "id": "5695",
+   "name": "Brandon Powell",
+   "others": [],
+   "owner": null,
+   "points": 8.9,
+   "position": "WR",
+   "stats": {
+    "rec": 6.0,
+    "rec_td": 0.0,
+    "rec_yd": 59.0,
+    "rush_yd": 0.0
+   },
+   "team": "MIN",
+   "war": -0.6173
+  },
+  {
+   "exp_wins": 5.6704,
+   "games": 4,
+   "id": "5773",
+   "name": "KhaDarel Hodge",
+   "others": [],
+   "owner": null,
+   "points": 19.3,
+   "position": "WR",
+   "stats": {
+    "rec": 5.0,
+    "rec_td": 1.0,
+    "rec_yd": 98.0,
+    "rush_yd": 0.0
+   },
+   "team": "ATL",
+   "war": -0.276
+  },
+  {
+   "exp_wins": 6.3223,
+   "games": 6,
+   "id": "5844",
+   "name": "T.J. Hockenson",
+   "others": [],
+   "owner": "tg1212",
+   "points": 45.4,
+   "position": "TE",
+   "stats": {
+    "rec": 27.0,
+    "rec_td": 0.0,
+    "rec_yd": 299.0,
+    "rush_yd": 0.0
+   },
+   "team": "MIN",
+   "war": 0.169
+  },
+  {
+   "exp_wins": 6.5084,
+   "games": 11,
+   "id": "5846",
+   "name": "DK Metcalf",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 128.2,
+   "position": "WR",
+   "stats": {
+    "rec": 54.0,
+    "rec_td": 3.0,
+    "rec_yd": 812.0,
+    "rush_yd": 0.0
+   },
+   "team": "SEA",
+   "war": 0.562
+  },
+  {
+   "exp_wins": 6.3617,
+   "games": 13,
+   "id": "5849",
+   "name": "Kyler Murray",
+   "others": [],
+   "owner": "tg1212",
+   "points": 224.88,
+   "position": "QB",
+   "stats": {
+    "pass_int": 8.0,
+    "pass_td": 15.0,
+    "pass_yd": 2862.0,
+    "rush_td": 4.0,
+    "rush_yd": 444.0
+   },
+   "team": "ARI",
+   "war": 0.4418
+  },
+  {
+   "exp_wins": 7.5974,
+   "games": 13,
+   "id": "5850",
+   "name": "Josh Jacobs",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 220.8,
+   "position": "RB",
+   "stats": {
+    "rec": 27.0,
+    "rec_td": 1.0,
+    "rec_yd": 260.0,
+    "rush_td": 11.0,
+    "rush_yd": 1053.0
+   },
+   "team": "GB",
+   "war": 1.3791
+  },
+  {
+   "exp_wins": 5.4271,
+   "games": 4,
+   "id": "5854",
+   "name": "Drew Lock",
+   "others": [],
+   "owner": null,
+   "points": 31.46,
+   "position": "QB",
+   "stats": {
+    "pass_int": 2.0,
+    "pass_td": 0.0,
+    "pass_yd": 414.0,
+    "rush_td": 1.0,
+    "rush_yd": 129.0
+   },
+   "team": "NYG",
+   "war": -0.4928
+  },
+  {
+   "exp_wins": 5.9542,
+   "games": 10,
+   "id": "5857",
+   "name": "Noah Fant",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 49.4,
+   "position": "TE",
+   "stats": {
+    "rec": 33.0,
+    "rec_td": 0.0,
+    "rec_yd": 329.0,
+    "rush_yd": 0.0
+   },
+   "team": "SEA",
+   "war": -0.1991
+  },
+  {
+   "exp_wins": 6.8822,
+   "games": 10,
+   "id": "5859",
+   "name": "A.J. Brown",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 139.6,
+   "position": "WR",
+   "stats": {
+    "rec": 48.0,
+    "rec_td": 4.0,
+    "rec_yd": 836.0,
+    "rush_yd": 0.0
+   },
+   "team": "PHI",
+   "war": 0.9358
+  },
+  {
+   "exp_wins": 5.5992,
+   "games": 10,
+   "id": "5870",
+   "name": "Daniel Jones",
+   "others": [
+    "Gixxersean1"
+   ],
+   "owner": "KingDso",
+   "points": 135.3,
+   "position": "QB",
+   "stats": {
+    "pass_int": 7.0,
+    "pass_td": 8.0,
+    "pass_yd": 2070.0,
+    "rush_td": 2.0,
+    "rush_yd": 265.0
+   },
+   "team": "NYG",
+   "war": -0.3207
+  },
+  {
+   "exp_wins": 5.9886,
+   "games": 11,
+   "id": "5872",
+   "name": "Deebo Samuel Sr.",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 98.5,
+   "position": "WR",
+   "stats": {
+    "rec": 40.0,
+    "rec_td": 1.0,
+    "rec_yd": 553.0,
+    "rush_yd": 92.0
+   },
+   "team": "SF",
+   "war": 0.0422
+  },
+  {
+   "exp_wins": 5.8468,
+   "games": 2,
+   "id": "5880",
+   "name": "Parris Campbell",
+   "others": [],
+   "owner": null,
+   "points": 12.0,
+   "position": "WR",
+   "stats": {
+    "rec": 6.0,
+    "rec_td": 1.0,
+    "rec_yd": 30.0,
+    "rush_yd": 0.0
+   },
+   "team": "PHI",
+   "war": -0.0996
+  },
+  {
+   "exp_wins": 7.2553,
+   "games": 13,
+   "id": "5892",
+   "name": "David Montgomery",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 200.22,
+   "position": "RB",
+   "stats": {
+    "rec": 32.0,
+    "rec_td": 0.0,
+    "rec_yd": 310.0,
+    "rush_td": 12.0,
+    "rush_yd": 771.0
+   },
+   "team": "DET",
+   "war": 1.0369
+  },
+  {
+   "exp_wins": 5.6547,
+   "games": 11,
+   "id": "5906",
+   "name": "Dawson Knox",
+   "others": [],
+   "owner": "KingDso",
+   "points": 38.8,
+   "position": "TE",
+   "stats": {
+    "rec": 17.0,
+    "rec_td": 1.0,
+    "rec_yd": 243.0,
+    "rush_yd": 0.0
+   },
+   "team": "BUF",
+   "war": -0.4985
+  },
+  {
+   "exp_wins": 5.3403,
+   "games": 7,
+   "id": "5917",
+   "name": "Mecole Hardman Jr.",
+   "others": [],
+   "owner": null,
+   "points": 27.2,
+   "position": "WR",
+   "stats": {
+    "rec": 12.0,
+    "rec_td": 0.0,
+    "rec_yd": 90.0,
+    "rush_yd": 62.0
+   },
+   "team": "KC",
+   "war": -0.6061
+  },
+  {
+   "exp_wins": 7.1954,
+   "games": 13,
+   "id": "5927",
+   "name": "Terry McLaurin",
+   "others": [],
+   "owner": "khar432",
+   "points": 182.3,
+   "position": "WR",
+   "stats": {
+    "rec": 61.0,
+    "rec_td": 9.0,
+    "rec_yd": 896.0,
+    "rush_yd": 2.0
+   },
+   "team": "WAS",
+   "war": 1.249
+  },
+  {
+   "exp_wins": 5.9963,
+   "games": 8,
+   "id": "5937",
+   "name": "Diontae Johnson",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 72.4,
+   "position": "WR",
+   "stats": {
+    "rec": 31.0,
+    "rec_td": 3.0,
+    "rec_yd": 363.0,
+    "rush_yd": 6.0
+   },
+   "team": "BAL",
+   "war": 0.0499
+  },
+  {
+   "exp_wins": 5.188,
+   "games": 10,
+   "id": "5938",
+   "name": "Lil'Jordan Humphrey",
+   "others": [],
+   "owner": null,
+   "points": 45.2,
+   "position": "WR",
+   "stats": {
+    "rec": 29.0,
+    "rec_td": 1.0,
+    "rec_yd": 267.0,
+    "rush_yd": 0.0
+   },
+   "team": "DEN",
+   "war": -0.7584
+  },
+  {
+   "exp_wins": 6.5077,
+   "games": 11,
+   "id": "5947",
+   "name": "Jakobi Meyers",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 127.6,
+   "position": "WR",
+   "stats": {
+    "rec": 66.0,
+    "rec_td": 2.0,
+    "rec_yd": 743.0,
+    "rush_yd": 23.0
+   },
+   "team": "LV",
+   "war": 0.5613
+  },
+  {
+   "exp_wins": 6.6091,
+   "games": 13,
+   "id": "5967",
+   "name": "Tony Pollard",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 164.5,
+   "position": "RB",
+   "stats": {
+    "rec": 39.0,
+    "rec_td": 0.0,
+    "rec_yd": 233.0,
+    "rush_td": 4.0,
+    "rush_yd": 937.0
+   },
+   "team": "TEN",
+   "war": 0.3908
+  },
+  {
+   "exp_wins": 4.7493,
+   "games": 12,
+   "id": "5970",
+   "name": "Greg Dortch",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 37.8,
+   "position": "WR",
+   "stats": {
+    "rec": 26.0,
+    "rec_td": 1.0,
+    "rec_yd": 198.0,
+    "rush_yd": 10.0
+   },
+   "team": "ARI",
+   "war": -1.1971
+  },
+  {
+   "exp_wins": 6.228,
+   "games": 8,
+   "id": "5973",
+   "name": "Josh Oliver",
+   "others": [],
+   "owner": null,
+   "points": 52.2,
+   "position": "TE",
+   "stats": {
+    "rec": 20.0,
+    "rec_td": 3.0,
+    "rec_yd": 242.0,
+    "rush_yd": 0.0
+   },
+   "team": "MIN",
+   "war": 0.0747
+  },
+  {
+   "exp_wins": 5.8633,
+   "games": 2,
+   "id": "5980",
+   "name": "Myles Gaskin",
+   "others": [],
+   "owner": null,
+   "points": 1.5,
+   "position": "RB",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 11.0,
+    "rush_td": 0.0,
+    "rush_yd": -1.0
+   },
+   "team": "MIN",
+   "war": -0.355
+  },
+  {
+   "exp_wins": 6.1469,
+   "games": 9,
+   "id": "5985",
+   "name": "Foster Moreau",
+   "others": [],
+   "owner": null,
+   "points": 53.8,
+   "position": "TE",
+   "stats": {
+    "rec": 19.0,
+    "rec_td": 3.0,
+    "rec_yd": 263.0,
+    "rush_yd": 0.0
+   },
+   "team": "NO",
+   "war": -0.0064
+  },
+  {
+   "exp_wins": 5.9394,
+   "games": 10,
+   "id": "5987",
+   "name": "Alexander Mattison",
+   "others": [
+    "MattCyg"
+   ],
+   "owner": "Z28kid86",
+   "points": 95.0,
+   "position": "RB",
+   "stats": {
+    "rec": 25.0,
+    "rec_td": 1.0,
+    "rec_yd": 245.0,
+    "rush_td": 3.0,
+    "rush_yd": 320.0
+   },
+   "team": "LV",
+   "war": -0.279
+  },
+  {
+   "exp_wins": 5.2362,
+   "games": 13,
+   "id": "5995",
+   "name": "Justice Hill",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 87.8,
+   "position": "RB",
+   "stats": {
+    "rec": 37.0,
+    "rec_td": 2.0,
+    "rec_yd": 322.0,
+    "rush_td": 1.0,
+    "rush_yd": 191.0
+   },
+   "team": "BAL",
+   "war": -0.9822
+  },
+  {
+   "exp_wins": 5.8486,
+   "games": 6,
+   "id": "6001",
+   "name": "Drew Sample",
+   "others": [],
+   "owner": null,
+   "points": 19.3,
+   "position": "TE",
+   "stats": {
+    "rec": 13.0,
+    "rec_td": 1.0,
+    "rec_yd": 72.0,
+    "rush_yd": -4.0
+   },
+   "team": "CIN",
+   "war": -0.3047
+  },
+  {
+   "exp_wins": 4.9389,
+   "games": 10,
+   "id": "6011",
+   "name": "Gardner Minshew II",
+   "others": [],
+   "owner": null,
+   "points": 96.32,
+   "position": "QB",
+   "stats": {
+    "pass_int": 10.0,
+    "pass_td": 9.0,
+    "pass_yd": 2013.0,
+    "rush_td": 0.0,
+    "rush_yd": 58.0
+   },
+   "team": "LV",
+   "war": -0.9809
+  },
+  {
+   "exp_wins": 5.7158,
+   "games": 3,
+   "id": "6012",
+   "name": "Travis Homer",
+   "others": [],
+   "owner": null,
+   "points": 4.2,
+   "position": "RB",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 11.0,
+    "rush_td": 0.0,
+    "rush_yd": 16.0
+   },
+   "team": "CHI",
+   "war": -0.5026
+  },
+  {
+   "exp_wins": 4.9393,
+   "games": 12,
+   "id": "6039",
+   "name": "Ty Johnson",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 60.1,
+   "position": "RB",
+   "stats": {
+    "rec": 11.0,
+    "rec_td": 3.0,
+    "rec_yd": 161.0,
+    "rush_td": 1.0,
+    "rush_yd": 145.0
+   },
+   "team": "BUF",
+   "war": -1.2791
+  },
+  {
+   "exp_wins": 5.1688,
+   "games": 7,
+   "id": "6109",
+   "name": "Alec Ingold",
+   "others": [],
+   "owner": null,
+   "points": 17.3,
+   "position": "RB",
+   "stats": {
+    "rec": 9.0,
+    "rec_td": 0.0,
+    "rec_yd": 75.0,
+    "rush_td": 1.0,
+    "rush_yd": 13.0
+   },
+   "team": "MIA",
+   "war": -1.0495
+  },
+  {
+   "exp_wins": 5.6739,
+   "games": 1,
+   "id": "6111",
+   "name": "Jake Browning",
+   "others": [],
+   "owner": null,
+   "points": -0.1,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 0.0,
+    "pass_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": -1.0
+   },
+   "team": "CIN",
+   "war": -0.2459
+  },
+  {
+   "exp_wins": 5.269,
+   "games": 11,
+   "id": "6130",
+   "name": "Devin Singletary",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 67.6,
+   "position": "RB",
+   "stats": {
+    "rec": 16.0,
+    "rec_td": 0.0,
+    "rec_yd": 99.0,
+    "rush_td": 3.0,
+    "rush_yd": 357.0
+   },
+   "team": "NYG",
+   "war": -0.9493
+  },
+  {
+   "exp_wins": 5.6727,
+   "games": 1,
+   "id": "6136",
+   "name": "Jarrett Stidham",
+   "others": [],
+   "owner": null,
+   "points": -0.2,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 0.0,
+    "pass_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": -2.0
+   },
+   "team": "DEN",
+   "war": -0.2471
+  },
+  {
+   "exp_wins": 5.6418,
+   "games": 11,
+   "id": "6149",
+   "name": "Darius Slayton",
+   "others": [],
+   "owner": "KingDso",
+   "points": 79.5,
+   "position": "WR",
+   "stats": {
+    "rec": 36.0,
+    "rec_td": 1.0,
+    "rec_yd": 504.0,
+    "rush_yd": 11.0
+   },
+   "team": "NYG",
+   "war": -0.3046
+  },
+  {
+   "exp_wins": 4.9816,
+   "games": 10,
+   "id": "6151",
+   "name": "Miles Sanders",
+   "others": [
+    "MattCyg",
+    "Z28kid86"
+   ],
+   "owner": "zagaplooza",
+   "points": 40.2,
+   "position": "RB",
+   "stats": {
+    "rec": 21.0,
+    "rec_td": 0.0,
+    "rec_yd": 98.0,
+    "rush_td": 1.0,
+    "rush_yd": 139.0
+   },
+   "team": "CAR",
+   "war": -1.2368
+  },
+  {
+   "exp_wins": 4.9079,
+   "games": 11,
+   "id": "6271",
+   "name": "Olamide Zaccheaus",
+   "others": [],
+   "owner": null,
+   "points": 37.9,
+   "position": "WR",
+   "stats": {
+    "rec": 27.0,
+    "rec_td": 0.0,
+    "rec_yd": 264.0,
+    "rush_yd": 0.0
+   },
+   "team": "WAS",
+   "war": -1.0385
+  },
+  {
+   "exp_wins": 5.7978,
+   "games": 2,
+   "id": "6290",
+   "name": "Scotty Miller",
+   "others": [],
+   "owner": null,
+   "points": 9.4,
+   "position": "WR",
+   "stats": {
+    "rec": 5.0,
+    "rec_td": 0.0,
+    "rec_yd": 69.0,
+    "rush_yd": 0.0
+   },
+   "team": "PIT",
+   "war": -0.1486
+  },
+  {
+   "exp_wins": 5.8703,
+   "games": 1,
+   "id": "6386",
+   "name": "Alex Bachman",
+   "others": [],
+   "owner": null,
+   "points": 4.6,
+   "position": "WR",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 31.0,
+    "rush_yd": 0.0
+   },
+   "team": "LV",
+   "war": -0.0761
+  },
+  {
+   "exp_wins": 5.7644,
+   "games": 1,
+   "id": "6402",
+   "name": "Steven Sims",
+   "others": [],
+   "owner": null,
+   "points": -2.0,
+   "position": "WR",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_yd": 0.0
+   },
+   "team": "HOU",
+   "war": -0.182
+  },
+  {
+   "exp_wins": 5.3432,
+   "games": 6,
+   "id": "6427",
+   "name": "Ashton Dulin",
+   "others": [],
+   "owner": null,
+   "points": 18.2,
+   "position": "WR",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 1.0,
+    "rec_yd": 67.0,
+    "rush_yd": 45.0
+   },
+   "team": "IND",
+   "war": -0.6032
+  },
+  {
+   "exp_wins": 5.5381,
+   "games": 3,
+   "id": "6598",
+   "name": "Trenton Irwin",
+   "others": [],
+   "owner": null,
+   "points": 3.0,
+   "position": "WR",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 15.0,
+    "rush_yd": 0.0
+   },
+   "team": "CIN",
+   "war": -0.4083
+  },
+  {
+   "exp_wins": 5.5404,
+   "games": 4,
+   "id": "6659",
+   "name": "Craig Reynolds",
+   "others": [],
+   "owner": null,
+   "points": 5.1,
+   "position": "RB",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": 51.0
+   },
+   "team": "DET",
+   "war": -0.678
+  },
+  {
+   "exp_wins": 6.0626,
+   "games": 1,
+   "id": "6665",
+   "name": "Jody Fortson",
+   "others": [],
+   "owner": null,
+   "points": 1.0,
+   "position": "TE",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 5.0,
+    "rush_yd": 0.0
+   },
+   "team": "KC",
+   "war": -0.0907
+  },
+  {
+   "exp_wins": 5.0814,
+   "games": 8,
+   "id": "6694",
+   "name": "D'Ernest Johnson",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 23.4,
+   "position": "RB",
+   "stats": {
+    "rec": 8.0,
+    "rec_td": 0.0,
+    "rec_yd": 77.0,
+    "rush_td": 0.0,
+    "rush_yd": 117.0
+   },
+   "team": "JAX",
+   "war": -1.1369
+  },
+  {
+   "exp_wins": 6.5504,
+   "games": 9,
+   "id": "6768",
+   "name": "Tua Tagovailoa",
+   "others": [],
+   "owner": "zagaplooza",
+   "points": 173.24,
+   "position": "QB",
+   "stats": {
+    "pass_int": 4.0,
+    "pass_td": 17.0,
+    "pass_yd": 2456.0,
+    "rush_td": 0.0,
+    "rush_yd": 50.0
+   },
+   "team": "MIA",
+   "war": 0.6305
+  },
+  {
+   "exp_wins": 7.6029,
+   "games": 13,
+   "id": "6770",
+   "name": "Joe Burrow",
+   "others": [],
+   "owner": "khar432",
+   "points": 296.04,
+   "position": "QB",
+   "stats": {
+    "pass_int": 6.0,
+    "pass_td": 33.0,
+    "pass_yd": 3706.0,
+    "rush_td": 1.0,
+    "rush_yd": 158.0
+   },
+   "team": "CIN",
+   "war": 1.683
+  },
+  {
+   "exp_wins": 6.6224,
+   "games": 13,
+   "id": "6783",
+   "name": "Jerry Jeudy",
+   "others": [],
+   "owner": "zagaplooza",
+   "points": 155.9,
+   "position": "WR",
+   "stats": {
+    "rec": 59.0,
+    "rec_td": 4.0,
+    "rec_yd": 944.0,
+    "rush_yd": 0.0
+   },
+   "team": "CLE",
+   "war": 0.676
+  },
+  {
+   "exp_wins": 7.0674,
+   "games": 13,
+   "id": "6786",
+   "name": "CeeDee Lamb",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 178.8,
+   "position": "WR",
+   "stats": {
+    "rec": 85.0,
+    "rec_td": 5.0,
+    "rec_yd": 973.0,
+    "rush_yd": 70.0
+   },
+   "team": "DAL",
+   "war": 1.121
+  },
+  {
+   "exp_wins": 6.4588,
+   "games": 13,
+   "id": "6790",
+   "name": "D'Andre Swift",
+   "others": [
+    "MattCyg"
+   ],
+   "owner": "Gixxersean1",
+   "points": 156.7,
+   "position": "RB",
+   "stats": {
+    "rec": 34.0,
+    "rec_td": 0.0,
+    "rec_yd": 315.0,
+    "rush_td": 5.0,
+    "rush_yd": 742.0
+   },
+   "team": "CHI",
+   "war": 0.2405
+  },
+  {
+   "exp_wins": 7.5874,
+   "games": 13,
+   "id": "6794",
+   "name": "Justin Jefferson",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 205.68,
+   "position": "WR",
+   "stats": {
+    "rec": 75.0,
+    "rec_td": 7.0,
+    "rec_yd": 1170.0,
+    "rush_yd": 3.0
+   },
+   "team": "MIN",
+   "war": 1.641
+  },
+  {
+   "exp_wins": 5.8848,
+   "games": 13,
+   "id": "6797",
+   "name": "Justin Herbert",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 198.96,
+   "position": "QB",
+   "stats": {
+    "pass_int": 1.0,
+    "pass_td": 14.0,
+    "pass_yd": 2764.0,
+    "rush_td": 2.0,
+    "rush_yd": 224.0
+   },
+   "team": "LAC",
+   "war": -0.0351
+  },
+  {
+   "exp_wins": 5.2169,
+   "games": 6,
+   "id": "6798",
+   "name": "Jalen Reagor",
+   "others": [],
+   "owner": null,
+   "points": 11.2,
+   "position": "WR",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 0.0,
+    "rec_yd": 100.0,
+    "rush_yd": -3.0
+   },
+   "team": "LAC",
+   "war": -0.7295
+  },
+  {
+   "exp_wins": 6.6996,
+   "games": 8,
+   "id": "6801",
+   "name": "Tee Higgins",
+   "others": [],
+   "owner": "khar432",
+   "points": 112.6,
+   "position": "WR",
+   "stats": {
+    "rec": 45.0,
+    "rec_td": 5.0,
+    "rec_yd": 581.0,
+    "rush_yd": 0.0
+   },
+   "team": "CIN",
+   "war": 0.7532
+  },
+  {
+   "exp_wins": 5.7712,
+   "games": 7,
+   "id": "6803",
+   "name": "Brandon Aiyuk",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 51.9,
+   "position": "WR",
+   "stats": {
+    "rec": 25.0,
+    "rec_td": 0.0,
+    "rec_yd": 374.0,
+    "rush_yd": 0.0
+   },
+   "team": "SF",
+   "war": -0.1752
+  },
+  {
+   "exp_wins": 6.2815,
+   "games": 11,
+   "id": "6804",
+   "name": "Jordan Love",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 190.06,
+   "position": "QB",
+   "stats": {
+    "pass_int": 11.0,
+    "pass_td": 21.0,
+    "pass_yd": 2724.0,
+    "rush_td": 1.0,
+    "rush_yd": 71.0
+   },
+   "team": "GB",
+   "war": 0.3617
+  },
+  {
+   "exp_wins": 6.8466,
+   "games": 11,
+   "id": "6806",
+   "name": "J.K. Dobbins",
+   "others": [],
+   "owner": "zagaplooza",
+   "points": 156.0,
+   "position": "RB",
+   "stats": {
+    "rec": 28.0,
+    "rec_td": 0.0,
+    "rec_yd": 134.0,
+    "rush_td": 8.0,
+    "rush_yd": 766.0
+   },
+   "team": "LAC",
+   "war": 0.6282
+  },
+  {
+   "exp_wins": 6.8127,
+   "games": 10,
+   "id": "6813",
+   "name": "Jonathan Taylor",
+   "others": [],
+   "owner": "tg1212",
+   "points": 143.2,
+   "position": "RB",
+   "stats": {
+    "rec": 14.0,
+    "rec_td": 1.0,
+    "rec_yd": 118.0,
+    "rush_td": 5.0,
+    "rush_yd": 804.0
+   },
+   "team": "IND",
+   "war": 0.5943
+  },
+  {
+   "exp_wins": 5.0171,
+   "games": 7,
+   "id": "6814",
+   "name": "Laviska Shenault",
+   "others": [],
+   "owner": null,
+   "points": 8.2,
+   "position": "WR",
+   "stats": {
+    "rec": 5.0,
+    "rec_td": 0.0,
+    "rec_yd": 36.0,
+    "rush_yd": 1.0
+   },
+   "team": "SEA",
+   "war": -0.9293
+  },
+  {
+   "exp_wins": 5.7053,
+   "games": 12,
+   "id": "6819",
+   "name": "Michael Pittman Jr.",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 92.0,
+   "position": "WR",
+   "stats": {
+    "rec": 46.0,
+    "rec_td": 2.0,
+    "rec_yd": 550.0,
+    "rush_yd": 0.0
+   },
+   "team": "IND",
+   "war": -0.2411
+  },
+  {
+   "exp_wins": 6.4973,
+   "games": 11,
+   "id": "6826",
+   "name": "Cole Kmet",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 85.8,
+   "position": "TE",
+   "stats": {
+    "rec": 42.0,
+    "rec_td": 3.0,
+    "rec_yd": 448.0,
+    "rush_yd": 0.0
+   },
+   "team": "CHI",
+   "war": 0.344
+  },
+  {
+   "exp_wins": 5.908,
+   "games": 8,
+   "id": "6845",
+   "name": "Zack Moss",
+   "others": [],
+   "owner": "zagaplooza",
+   "points": 70.4,
+   "position": "RB",
+   "stats": {
+    "rec": 23.0,
+    "rec_td": 1.0,
+    "rec_yd": 187.0,
+    "rush_td": 2.0,
+    "rush_yd": 242.0
+   },
+   "team": "CIN",
+   "war": -0.3104
+  },
+  {
+   "exp_wins": 5.1362,
+   "games": 6,
+   "id": "6847",
+   "name": "Devin Duvernay",
+   "others": [],
+   "owner": null,
+   "points": 6.3,
+   "position": "WR",
+   "stats": {
+    "rec": 6.0,
+    "rec_td": 0.0,
+    "rec_yd": 30.0,
+    "rush_yd": 3.0
+   },
+   "team": "JAX",
+   "war": -0.8102
+  },
+  {
+   "exp_wins": 5.9509,
+   "games": 4,
+   "id": "6850",
+   "name": "Harrison Bryant",
+   "others": [],
+   "owner": null,
+   "points": 13.1,
+   "position": "TE",
+   "stats": {
+    "rec": 9.0,
+    "rec_td": 0.0,
+    "rec_yd": 86.0,
+    "rush_yd": 0.0
+   },
+   "team": "LV",
+   "war": -0.2023
+  },
+  {
+   "exp_wins": 5.3172,
+   "games": 9,
+   "id": "6853",
+   "name": "Van Jefferson",
+   "others": [],
+   "owner": null,
+   "points": 44.1,
+   "position": "WR",
+   "stats": {
+    "rec": 18.0,
+    "rec_td": 2.0,
+    "rec_yd": 231.0,
+    "rush_yd": 0.0
+   },
+   "team": "PIT",
+   "war": -0.6292
+  },
+  {
+   "exp_wins": 5.8119,
+   "games": 1,
+   "id": "6857",
+   "name": "Collin Johnson",
+   "others": [],
+   "owner": null,
+   "points": 1.1,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 6.0,
+    "rush_yd": 0.0
+   },
+   "team": "CHI",
+   "war": -0.1345
+  },
+  {
+   "exp_wins": 5.7868,
+   "games": 11,
+   "id": "6865",
+   "name": "Colby Parkinson",
+   "others": [],
+   "owner": "zagaplooza",
+   "points": 46.2,
+   "position": "TE",
+   "stats": {
+    "rec": 27.0,
+    "rec_td": 1.0,
+    "rec_yd": 267.0,
+    "rush_yd": 0.0
+   },
+   "team": "LAR",
+   "war": -0.3664
+  },
+  {
+   "exp_wins": 5.9765,
+   "games": 6,
+   "id": "6869",
+   "name": "Adam Trautman",
+   "others": [],
+   "owner": null,
+   "points": 26.3,
+   "position": "TE",
+   "stats": {
+    "rec": 9.0,
+    "rec_td": 1.0,
+    "rec_yd": 158.0,
+    "rush_yd": 0.0
+   },
+   "team": "DEN",
+   "war": -0.1768
+  },
+  {
+   "exp_wins": 6.0353,
+   "games": 1,
+   "id": "6885",
+   "name": "Ke'Shawn Vaughn",
+   "others": [],
+   "owner": null,
+   "points": 0.4,
+   "position": "RB",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": 4.0
+   },
+   "team": "SF",
+   "war": -0.1831
+  },
+  {
+   "exp_wins": 7.4108,
+   "games": 13,
+   "id": "6904",
+   "name": "Jalen Hurts",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 284.48,
+   "position": "QB",
+   "stats": {
+    "pass_int": 5.0,
+    "pass_td": 16.0,
+    "pass_yd": 2602.0,
+    "rush_td": 13.0,
+    "rush_yd": 544.0
+   },
+   "team": "PHI",
+   "war": 1.4909
+  },
+  {
+   "exp_wins": 5.6774,
+   "games": 2,
+   "id": "6920",
+   "name": "Isaiah Hodgins",
+   "others": [],
+   "owner": null,
+   "points": 2.2,
+   "position": "WR",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 12.0,
+    "rush_yd": 0.0
+   },
+   "team": "NYG",
+   "war": -0.269
+  },
+  {
+   "exp_wins": 5.7668,
+   "games": 3,
+   "id": "6931",
+   "name": "DeeJay Dallas",
+   "others": [],
+   "owner": null,
+   "points": 7.2,
+   "position": "RB",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": 12.0
+   },
+   "team": "ARI",
+   "war": -0.4516
+  },
+  {
+   "exp_wins": 5.1177,
+   "games": 11,
+   "id": "6938",
+   "name": "Cam Akers",
+   "others": [
+    "MattCyg",
+    "KingDso"
+   ],
+   "owner": "gonzas",
+   "points": 59.3,
+   "position": "RB",
+   "stats": {
+    "rec": 10.0,
+    "rec_td": 2.0,
+    "rec_yd": 49.0,
+    "rush_td": 1.0,
+    "rush_yd": 334.0
+   },
+   "team": "MIN",
+   "war": -1.1007
+  },
+  {
+   "exp_wins": 5.3293,
+   "games": 9,
+   "id": "6943",
+   "name": "Gabe Davis",
+   "others": [
+    "zagaplooza",
+    "alwaysflexin"
+   ],
+   "owner": "Z28kid86",
+   "points": 43.9,
+   "position": "WR",
+   "stats": {
+    "rec": 20.0,
+    "rec_td": 2.0,
+    "rec_yd": 239.0,
+    "rush_yd": 0.0
+   },
+   "team": "JAX",
+   "war": -0.6171
+  },
+  {
+   "exp_wins": 4.8389,
+   "games": 13,
+   "id": "6945",
+   "name": "Antonio Gibson",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 65.5,
+   "position": "RB",
+   "stats": {
+    "rec": 15.0,
+    "rec_td": 0.0,
+    "rec_yd": 147.0,
+    "rush_td": 1.0,
+    "rush_yd": 373.0
+   },
+   "team": "NE",
+   "war": -1.3794
+  },
+  {
+   "exp_wins": 5.7004,
+   "games": 2,
+   "id": "6957",
+   "name": "James Proche II",
+   "others": [],
+   "owner": null,
+   "points": 3.6,
+   "position": "WR",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 21.0,
+    "rush_yd": 0.0
+   },
+   "team": "CLE",
+   "war": -0.246
+  },
+  {
+   "exp_wins": 5.344,
+   "games": 8,
+   "id": "6960",
+   "name": "Tyler Johnson",
+   "others": [],
+   "owner": "gonzas",
+   "points": 36.6,
+   "position": "WR",
+   "stats": {
+    "rec": 22.0,
+    "rec_td": 0.0,
+    "rec_yd": 256.0,
+    "rush_yd": 0.0
+   },
+   "team": "LAR",
+   "war": -0.6024
+  },
+  {
+   "exp_wins": 5.8584,
+   "games": 3,
+   "id": "6963",
+   "name": "Patrick Taylor",
+   "others": [],
+   "owner": null,
+   "points": 12.7,
+   "position": "RB",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 12.0,
+    "rush_td": 1.0,
+    "rush_yd": 50.0
+   },
+   "team": "SF",
+   "war": -0.36
+  },
+  {
+   "exp_wins": 5.7343,
+   "games": 3,
+   "id": "6973",
+   "name": "J.J. Taylor",
+   "others": [],
+   "owner": null,
+   "points": 5.4,
+   "position": "RB",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": 44.0
+   },
+   "team": "HOU",
+   "war": -0.4841
+  },
+  {
+   "exp_wins": 4.9088,
+   "games": 9,
+   "id": "6996",
+   "name": "JaMycal Hasty",
+   "others": [],
+   "owner": null,
+   "points": 23.8,
+   "position": "RB",
+   "stats": {
+    "rec": 10.0,
+    "rec_td": 1.0,
+    "rec_yd": 59.0,
+    "rush_td": 0.0,
+    "rush_yd": 69.0
+   },
+   "team": "NE",
+   "war": -1.3096
+  },
+  {
+   "exp_wins": 6.2447,
+   "games": 11,
+   "id": "7002",
+   "name": "Juwan Johnson",
+   "others": [
+    "Gixxersean1"
+   ],
+   "owner": "zagaplooza",
+   "points": 71.3,
+   "position": "TE",
+   "stats": {
+    "rec": 34.0,
+    "rec_td": 3.0,
+    "rec_yd": 363.0,
+    "rush_yd": 0.0
+   },
+   "team": "NO",
+   "war": 0.0914
+  },
+  {
+   "exp_wins": 6.29,
+   "games": 12,
+   "id": "7021",
+   "name": "Rico Dowdle",
+   "others": [
+    "Gixxersean1"
+   ],
+   "owner": "gonzas",
+   "points": 136.1,
+   "position": "RB",
+   "stats": {
+    "rec": 33.0,
+    "rec_td": 3.0,
+    "rec_yd": 205.0,
+    "rush_td": 1.0,
+    "rush_yd": 731.0
+   },
+   "team": "DAL",
+   "war": 0.0717
+  },
+  {
+   "exp_wins": 5.8842,
+   "games": 1,
+   "id": "7039",
+   "name": "Cody White",
+   "others": [],
+   "owner": null,
+   "points": 5.4,
+   "position": "WR",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 44.0,
+    "rush_yd": 0.0
+   },
+   "team": "SEA",
+   "war": -0.0622
+  },
+  {
+   "exp_wins": 6.6745,
+   "games": 11,
+   "id": "7049",
+   "name": "Jauan Jennings",
+   "others": [
+    "Gixxersean1"
+   ],
+   "owner": "Z28kid86",
+   "points": 143.9,
+   "position": "WR",
+   "stats": {
+    "rec": 57.0,
+    "rec_td": 6.0,
+    "rec_yd": 774.0,
+    "rush_yd": 0.0
+   },
+   "team": "SF",
+   "war": 0.7281
+  },
+  {
+   "exp_wins": 5.9719,
+   "games": 2,
+   "id": "7050",
+   "name": "Josiah Deguara",
+   "others": [],
+   "owner": null,
+   "points": 2.0,
+   "position": "TE",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 10.0,
+    "rush_yd": 0.0
+   },
+   "team": "JAX",
+   "war": -0.1814
+  },
+  {
+   "exp_wins": 6.0337,
+   "games": 1,
+   "id": "7064",
+   "name": "Darrynton Evans",
+   "others": [],
+   "owner": null,
+   "points": 0.3,
+   "position": "RB",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": 3.0
+   },
+   "team": "CHI",
+   "war": -0.1846
+  },
+  {
+   "exp_wins": 5.5946,
+   "games": 4,
+   "id": "7066",
+   "name": "K.J. Osborn",
+   "others": [],
+   "owner": null,
+   "points": 15.2,
+   "position": "WR",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 1.0,
+    "rec_yd": 57.0,
+    "rush_yd": 0.0
+   },
+   "team": "NE",
+   "war": -0.3518
+  },
+  {
+   "exp_wins": 5.8131,
+   "games": 4,
+   "id": "7075",
+   "name": "Charlie Woerner",
+   "others": [],
+   "owner": null,
+   "points": 5.3,
+   "position": "TE",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 0.0,
+    "rec_yd": 33.0,
+    "rush_yd": 0.0
+   },
+   "team": "ATL",
+   "war": -0.3401
+  },
+  {
+   "exp_wins": 5.5909,
+   "games": 3,
+   "id": "7083",
+   "name": "Tyler Huntley",
+   "others": [],
+   "owner": null,
+   "points": 27.78,
+   "position": "QB",
+   "stats": {
+    "pass_int": 1.0,
+    "pass_td": 1.0,
+    "pass_yd": 377.0,
+    "rush_td": 1.0,
+    "rush_yd": 67.0
+   },
+   "team": "MIA",
+   "war": -0.3289
+  },
+  {
+   "exp_wins": 5.8737,
+   "games": 2,
+   "id": "7087",
+   "name": "Jonathan Ward",
+   "others": [],
+   "owner": null,
+   "points": 2.2,
+   "position": "RB",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": 22.0
+   },
+   "team": "PIT",
+   "war": -0.3447
+  },
+  {
+   "exp_wins": 6.5818,
+   "games": 13,
+   "id": "7090",
+   "name": "Darnell Mooney",
+   "others": [
+    "gonzas"
+   ],
+   "owner": "MattCyg",
+   "points": 149.8,
+   "position": "WR",
+   "stats": {
+    "rec": 57.0,
+    "rec_td": 5.0,
+    "rec_yd": 873.0,
+    "rush_yd": 0.0
+   },
+   "team": "ATL",
+   "war": 0.6354
+  },
+  {
+   "exp_wins": 5.8119,
+   "games": 1,
+   "id": "7357",
+   "name": "Dan Chisena",
+   "others": [],
+   "owner": null,
+   "points": 1.1,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 6.0,
+    "rush_yd": 0.0
+   },
+   "team": "CAR",
+   "war": -0.1345
+  },
+  {
+   "exp_wins": 5.9453,
+   "games": 1,
+   "id": "7438",
+   "name": "Kristian Wilkerson",
+   "others": [],
+   "owner": null,
+   "points": 8.8,
+   "position": "WR",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 1.0,
+    "rec_yd": 18.0,
+    "rush_yd": 0.0
+   },
+   "team": "LV",
+   "war": -0.0011
+  },
+  {
+   "exp_wins": 6.3077,
+   "games": 9,
+   "id": "7496",
+   "name": "Nick Westbrook-Ikhine",
+   "others": [],
+   "owner": "KingDso",
+   "points": 98.9,
+   "position": "WR",
+   "stats": {
+    "rec": 21.0,
+    "rec_td": 8.0,
+    "rec_yd": 384.0,
+    "rush_yd": 0.0
+   },
+   "team": "TEN",
+   "war": 0.3613
+  },
+  {
+   "exp_wins": 5.8523,
+   "games": 10,
+   "id": "7523",
+   "name": "Trevor Lawrence",
+   "others": [],
+   "owner": "khar432",
+   "points": 149.2,
+   "position": "QB",
+   "stats": {
+    "pass_int": 7.0,
+    "pass_td": 11.0,
+    "pass_yd": 2045.0,
+    "rush_td": 3.0,
+    "rush_yd": 119.0
+   },
+   "team": "JAX",
+   "war": -0.0675
+  },
+  {
+   "exp_wins": 6.3222,
+   "games": 10,
+   "id": "7525",
+   "name": "DeVonta Smith",
+   "others": [],
+   "owner": "khar432",
+   "points": 107.8,
+   "position": "WR",
+   "stats": {
+    "rec": 45.0,
+    "rec_td": 5.0,
+    "rec_yd": 553.0,
+    "rush_yd": 0.0
+   },
+   "team": "PHI",
+   "war": 0.3758
+  },
+  {
+   "exp_wins": 5.9973,
+   "games": 13,
+   "id": "7526",
+   "name": "Jaylen Waddle",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 117.6,
+   "position": "WR",
+   "stats": {
+    "rec": 54.0,
+    "rec_td": 2.0,
+    "rec_yd": 700.0,
+    "rush_yd": 6.0
+   },
+   "team": "MIA",
+   "war": 0.0509
+  },
+  {
+   "exp_wins": 4.9641,
+   "games": 6,
+   "id": "7527",
+   "name": "Mac Jones",
+   "others": [],
+   "owner": null,
+   "points": 33.68,
+   "position": "QB",
+   "stats": {
+    "pass_int": 5.0,
+    "pass_td": 2.0,
+    "pass_yd": 732.0,
+    "rush_td": 1.0,
+    "rush_yd": 24.0
+   },
+   "team": "JAX",
+   "war": -0.9557
+  },
+  {
+   "exp_wins": 6.5718,
+   "games": 13,
+   "id": "7528",
+   "name": "Najee Harris",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 163.1,
+   "position": "RB",
+   "stats": {
+    "rec": 29.0,
+    "rec_td": 0.0,
+    "rec_yd": 249.0,
+    "rush_td": 5.0,
+    "rush_yd": 877.0
+   },
+   "team": "PIT",
+   "war": 0.3534
+  },
+  {
+   "exp_wins": 6.0626,
+   "games": 1,
+   "id": "7531",
+   "name": "Feleipe Franks",
+   "others": [],
+   "owner": null,
+   "points": 1.0,
+   "position": "TE",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_yd": 0.0
+   },
+   "team": "CAR",
+   "war": -0.0907
+  },
+  {
+   "exp_wins": 5.8386,
+   "games": 5,
+   "id": "7535",
+   "name": "Hunter Long",
+   "others": [],
+   "owner": null,
+   "points": 12.8,
+   "position": "TE",
+   "stats": {
+    "rec": 5.0,
+    "rec_td": 0.0,
+    "rec_yd": 43.0,
+    "rush_yd": 0.0
+   },
+   "team": "LAR",
+   "war": -0.3147
+  },
+  {
+   "exp_wins": 6.0902,
+   "games": 2,
+   "id": "7536",
+   "name": "Quintin Morris",
+   "others": [],
+   "owner": null,
+   "points": 8.6,
+   "position": "TE",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 1.0,
+    "rec_yd": 16.0,
+    "rush_yd": 0.0
+   },
+   "team": "BUF",
+   "war": -0.0631
+  },
+  {
+   "exp_wins": 5.4764,
+   "games": 11,
+   "id": "7543",
+   "name": "Travis Etienne Jr.",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 80.0,
+   "position": "RB",
+   "stats": {
+    "rec": 29.0,
+    "rec_td": 0.0,
+    "rec_yd": 164.0,
+    "rush_td": 2.0,
+    "rush_yd": 391.0
+   },
+   "team": "JAX",
+   "war": -0.742
+  },
+  {
+   "exp_wins": 7.3014,
+   "games": 13,
+   "id": "7547",
+   "name": "Amon-Ra St. Brown",
+   "others": [],
+   "owner": "gonzas",
+   "points": 191.68,
+   "position": "WR",
+   "stats": {
+    "rec": 81.0,
+    "rec_td": 9.0,
+    "rec_yd": 863.0,
+    "rush_yd": 6.0
+   },
+   "team": "DET",
+   "war": 1.355
+  },
+  {
+   "exp_wins": 6.521,
+   "games": 11,
+   "id": "7553",
+   "name": "Kyle Pitts Sr.",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 86.8,
+   "position": "TE",
+   "stats": {
+    "rec": 36.0,
+    "rec_td": 3.0,
+    "rec_yd": 508.0,
+    "rush_yd": 0.0
+   },
+   "team": "ATL",
+   "war": 0.3677
+  },
+  {
+   "exp_wins": 5.2895,
+   "games": 12,
+   "id": "7562",
+   "name": "Tutu Atwell",
+   "others": [
+    "Gixxersean1"
+   ],
+   "owner": "Z28kid86",
+   "points": 68.9,
+   "position": "WR",
+   "stats": {
+    "rec": 35.0,
+    "rec_td": 0.0,
+    "rec_yd": 507.0,
+    "rush_yd": 7.0
+   },
+   "team": "LAR",
+   "war": -0.6569
+  },
+  {
+   "exp_wins": 8.5037,
+   "games": 13,
+   "id": "7564",
+   "name": "Ja'Marr Chase",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 278.9,
+   "position": "WR",
+   "stats": {
+    "rec": 93.0,
+    "rec_td": 15.0,
+    "rec_yd": 1319.0,
+    "rush_yd": 25.0
+   },
+   "team": "CIN",
+   "war": 2.5573
+  },
+  {
+   "exp_wins": 5.8119,
+   "games": 1,
+   "id": "7565",
+   "name": "Terrace Marshall",
+   "others": [],
+   "owner": null,
+   "points": 1.1,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 6.0,
+    "rush_yd": 0.0
+   },
+   "team": "LV",
+   "war": -0.1345
+  },
+  {
+   "exp_wins": 4.6008,
+   "games": 12,
+   "id": "7567",
+   "name": "Kenny Gainwell",
+   "others": [],
+   "owner": "gonzas",
+   "points": 40.6,
+   "position": "RB",
+   "stats": {
+    "rec": 9.0,
+    "rec_td": 0.0,
+    "rec_yd": 56.0,
+    "rush_td": 1.0,
+    "rush_yd": 245.0
+   },
+   "team": "PHI",
+   "war": -1.6176
+  },
+  {
+   "exp_wins": 5.9667,
+   "games": 2,
+   "id": "7568",
+   "name": "Brevin Jordan",
+   "others": [],
+   "owner": null,
+   "points": 1.7,
+   "position": "TE",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 7.0,
+    "rush_yd": 0.0
+   },
+   "team": "HOU",
+   "war": -0.1866
+  },
+  {
+   "exp_wins": 7.1859,
+   "games": 8,
+   "id": "7569",
+   "name": "Nico Collins",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 139.7,
+   "position": "WR",
+   "stats": {
+    "rec": 49.0,
+    "rec_td": 4.0,
+    "rec_yd": 832.0,
+    "rush_yd": 0.0
+   },
+   "team": "HOU",
+   "war": 1.2395
+  },
+  {
+   "exp_wins": 5.9735,
+   "games": 12,
+   "id": "7571",
+   "name": "Rashod Bateman",
+   "others": [
+    "gonzas"
+   ],
+   "owner": "zagaplooza",
+   "points": 106.9,
+   "position": "WR",
+   "stats": {
+    "rec": 35.0,
+    "rec_td": 5.0,
+    "rec_yd": 574.0,
+    "rush_yd": 0.0
+   },
+   "team": "BAL",
+   "war": 0.0271
+  },
+  {
+   "exp_wins": 5.7163,
+   "games": 1,
+   "id": "7585",
+   "name": "Davis Mills",
+   "others": [],
+   "owner": null,
+   "points": 3.16,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 0.0,
+    "pass_yd": 79.0,
+    "rush_td": 0.0,
+    "rush_yd": 0.0
+   },
+   "team": "HOU",
+   "war": -0.2036
+  },
+  {
+   "exp_wins": 4.7652,
+   "games": 12,
+   "id": "7587",
+   "name": "Dyami Brown",
+   "others": [],
+   "owner": null,
+   "points": 38.4,
+   "position": "WR",
+   "stats": {
+    "rec": 20.0,
+    "rec_td": 1.0,
+    "rec_yd": 206.0,
+    "rush_yd": 18.0
+   },
+   "team": "WAS",
+   "war": -1.1812
+  },
+  {
+   "exp_wins": 5.6193,
+   "games": 13,
+   "id": "7588",
+   "name": "Javonte Williams",
+   "others": [
+    "gonzas"
+   ],
+   "owner": "Gixxersean1",
+   "points": 109.5,
+   "position": "RB",
+   "stats": {
+    "rec": 38.0,
+    "rec_td": 0.0,
+    "rec_yd": 259.0,
+    "rush_td": 4.0,
+    "rush_yd": 446.0
+   },
+   "team": "DEN",
+   "war": -0.5991
+  },
+  {
+   "exp_wins": 5.6444,
+   "games": 9,
+   "id": "7591",
+   "name": "Justin Fields",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 120.34,
+   "position": "QB",
+   "stats": {
+    "pass_int": 1.0,
+    "pass_td": 5.0,
+    "pass_yd": 1106.0,
+    "rush_td": 5.0,
+    "rush_yd": 281.0
+   },
+   "team": "PIT",
+   "war": -0.2755
+  },
+  {
+   "exp_wins": 4.9661,
+   "games": 10,
+   "id": "7593",
+   "name": "Trey Sermon",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 38.6,
+   "position": "RB",
+   "stats": {
+    "rec": 12.0,
+    "rec_td": 0.0,
+    "rec_yd": 75.0,
+    "rush_td": 2.0,
+    "rush_yd": 131.0
+   },
+   "team": "IND",
+   "war": -1.2522
+  },
+  {
+   "exp_wins": 7.0439,
+   "games": 13,
+   "id": "7594",
+   "name": "Chuba Hubbard",
+   "others": [],
+   "owner": "KingDso",
+   "points": 188.7,
+   "position": "RB",
+   "stats": {
+    "rec": 35.0,
+    "rec_td": 1.0,
+    "rec_yd": 141.0,
+    "rush_td": 8.0,
+    "rush_yd": 1011.0
+   },
+   "team": "CAR",
+   "war": 0.8255
+  },
+  {
+   "exp_wins": 5.7196,
+   "games": 5,
+   "id": "7595",
+   "name": "Tylan Wallace",
+   "others": [],
+   "owner": null,
+   "points": 30.8,
+   "position": "WR",
+   "stats": {
+    "rec": 9.0,
+    "rec_td": 1.0,
+    "rec_yd": 183.0,
+    "rush_yd": 0.0
+   },
+   "team": "BAL",
+   "war": -0.2268
+  },
+  {
+   "exp_wins": 5.392,
+   "games": 13,
+   "id": "7596",
+   "name": "Elijah Moore",
+   "others": [
+    "Jdeguire"
+   ],
+   "owner": "MattCyg",
+   "points": 82.7,
+   "position": "WR",
+   "stats": {
+    "rec": 53.0,
+    "rec_td": 1.0,
+    "rec_yd": 481.0,
+    "rush_yd": 1.0
+   },
+   "team": "CLE",
+   "war": -0.5544
+  },
+  {
+   "exp_wins": 6.011,
+   "games": 3,
+   "id": "7597",
+   "name": "Kenny Yeboah",
+   "others": [],
+   "owner": null,
+   "points": 10.2,
+   "position": "TE",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 1.0,
+    "rec_yd": 27.0,
+    "rush_yd": 0.0
+   },
+   "team": "NYJ",
+   "war": -0.1423
+  },
+  {
+   "exp_wins": 6.4962,
+   "games": 13,
+   "id": "7600",
+   "name": "Pat Freiermuth",
+   "others": [],
+   "owner": "khar432",
+   "points": 97.0,
+   "position": "TE",
+   "stats": {
+    "rec": 44.0,
+    "rec_td": 5.0,
+    "rec_yd": 470.0,
+    "rush_yd": 0.0
+   },
+   "team": "PIT",
+   "war": 0.3429
+  },
+  {
+   "exp_wins": 5.7309,
+   "games": 6,
+   "id": "7602",
+   "name": "Kylen Granson",
+   "others": [],
+   "owner": null,
+   "points": 12.9,
+   "position": "TE",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 0.0,
+    "rec_yd": 94.0,
+    "rush_yd": 0.0
+   },
+   "team": "IND",
+   "war": -0.4224
+  },
+  {
+   "exp_wins": 5.4305,
+   "games": 2,
+   "id": "7605",
+   "name": "Kyle Trask",
+   "others": [],
+   "owner": null,
+   "points": -0.0,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 0.0,
+    "pass_yd": 5.0,
+    "rush_td": 0.0,
+    "rush_yd": -2.0
+   },
+   "team": "TB",
+   "war": -0.4893
+  },
+  {
+   "exp_wins": 5.4546,
+   "games": 3,
+   "id": "7606",
+   "name": "Kadarius Toney",
+   "others": [],
+   "owner": null,
+   "points": -2.4,
+   "position": "WR",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_yd": -4.0
+   },
+   "team": "CLE",
+   "war": -0.4918
+  },
+  {
+   "exp_wins": 5.4659,
+   "games": 5,
+   "id": "7608",
+   "name": "Khalil Herbert",
+   "others": [
+    "Gixxersean1"
+   ],
+   "owner": "MattCyg",
+   "points": 12.0,
+   "position": "RB",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 11.0,
+    "rush_td": 1.0,
+    "rush_yd": 34.0
+   },
+   "team": "CIN",
+   "war": -0.7525
+  },
+  {
+   "exp_wins": 5.4335,
+   "games": 2,
+   "id": "7610",
+   "name": "Trey Lance",
+   "others": [],
+   "owner": null,
+   "points": 0.24,
+   "position": "QB",
+   "stats": {
+    "pass_int": 1.0,
+    "pass_td": 0.0,
+    "pass_yd": 21.0,
+    "rush_td": 0.0,
+    "rush_yd": 14.0
+   },
+   "team": "DAL",
+   "war": -0.4863
+  },
+  {
+   "exp_wins": 6.3845,
+   "games": 12,
+   "id": "7611",
+   "name": "Rhamondre Stevenson",
+   "others": [],
+   "owner": "khar432",
+   "points": 140.5,
+   "position": "RB",
+   "stats": {
+    "rec": 31.0,
+    "rec_td": 1.0,
+    "rec_yd": 139.0,
+    "rush_td": 6.0,
+    "rush_yd": 671.0
+   },
+   "team": "NE",
+   "war": 0.1661
+  },
+  {
+   "exp_wins": 5.717,
+   "games": 2,
+   "id": "7612",
+   "name": "Dee Eskridge",
+   "others": [],
+   "owner": null,
+   "points": 4.6,
+   "position": "WR",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 36.0,
+    "rush_yd": 0.0
+   },
+   "team": "MIA",
+   "war": -0.2294
+  },
+  {
+   "exp_wins": 5.3451,
+   "games": 12,
+   "id": "7670",
+   "name": "Joshua Palmer",
+   "others": [
+    "Jdeguire"
+   ],
+   "owner": "gonzas",
+   "points": 72.2,
+   "position": "WR",
+   "stats": {
+    "rec": 30.0,
+    "rec_td": 1.0,
+    "rec_yd": 492.0,
+    "rush_yd": 0.0
+   },
+   "team": "LAC",
+   "war": -0.6013
+  },
+  {
+   "exp_wins": 5.8927,
+   "games": 7,
+   "id": "7694",
+   "name": "Tommy Tremble",
+   "others": [],
+   "owner": null,
+   "points": 27.7,
+   "position": "TE",
+   "stats": {
+    "rec": 16.0,
+    "rec_td": 1.0,
+    "rec_yd": 157.0,
+    "rush_yd": 0.0
+   },
+   "team": "CAR",
+   "war": -0.2606
+  },
+  {
+   "exp_wins": 5.8119,
+   "games": 1,
+   "id": "7713",
+   "name": "Jaelon Darden",
+   "others": [],
+   "owner": null,
+   "points": 1.1,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 6.0,
+    "rush_yd": 0.0
+   },
+   "team": "CLE",
+   "war": -0.1345
+  },
+  {
+   "exp_wins": 5.7423,
+   "games": 5,
+   "id": "7716",
+   "name": "John Bates",
+   "others": [],
+   "owner": null,
+   "points": 7.4,
+   "position": "TE",
+   "stats": {
+    "rec": 6.0,
+    "rec_td": 0.0,
+    "rec_yd": 64.0,
+    "rush_yd": 0.0
+   },
+   "team": "WAS",
+   "war": -0.4109
+  },
+  {
+   "exp_wins": 6.1443,
+   "games": 1,
+   "id": "7720",
+   "name": "Kene Nwangwu",
+   "others": [],
+   "owner": null,
+   "points": 7.0,
+   "position": "RB",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": 0.0
+   },
+   "team": "NYJ",
+   "war": -0.0741
+  },
+  {
+   "exp_wins": 5.843,
+   "games": 1,
+   "id": "7746",
+   "name": "Austin Trammell",
+   "others": [],
+   "owner": null,
+   "points": 3.0,
+   "position": "WR",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 40.0,
+    "rush_yd": 0.0
+   },
+   "team": "JAX",
+   "war": -0.1034
+  },
+  {
+   "exp_wins": 5.4299,
+   "games": 4,
+   "id": "7757",
+   "name": "Ben Skowronek",
+   "others": [],
+   "owner": null,
+   "points": 5.7,
+   "position": "WR",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 27.0,
+    "rush_yd": 0.0
+   },
+   "team": "PIT",
+   "war": -0.5165
+  },
+  {
+   "exp_wins": 5.716,
+   "games": 3,
+   "id": "7812",
+   "name": "Simi Fehoko",
+   "others": [],
+   "owner": null,
+   "points": 13.6,
+   "position": "WR",
+   "stats": {
+    "rec": 6.0,
+    "rec_td": 0.0,
+    "rec_yd": 106.0,
+    "rush_yd": 0.0
+   },
+   "team": "LAC",
+   "war": -0.2304
+  },
+  {
+   "exp_wins": 6.4233,
+   "games": 11,
+   "id": "7828",
+   "name": "Noah Gray",
+   "others": [
+    "gonzas"
+   ],
+   "owner": "Gixxersean1",
+   "points": 81.4,
+   "position": "TE",
+   "stats": {
+    "rec": 35.0,
+    "rec_td": 4.0,
+    "rec_yd": 399.0,
+    "rush_yd": 0.0
+   },
+   "team": "KC",
+   "war": 0.2701
+  },
+  {
+   "exp_wins": 5.6794,
+   "games": 6,
+   "id": "7842",
+   "name": "Luke Farrell",
+   "others": [],
+   "owner": null,
+   "points": 10.0,
+   "position": "TE",
+   "stats": {
+    "rec": 9.0,
+    "rec_td": 0.0,
+    "rec_yd": 55.0,
+    "rush_yd": 0.0
+   },
+   "team": "JAX",
+   "war": -0.4739
+  },
+  {
+   "exp_wins": 5.7952,
+   "games": 8,
+   "id": "7891",
+   "name": "Brock Wright",
+   "others": [],
+   "owner": null,
+   "points": 28.5,
+   "position": "TE",
+   "stats": {
+    "rec": 13.0,
+    "rec_td": 2.0,
+    "rec_yd": 100.0,
+    "rush_yd": 0.0
+   },
+   "team": "DET",
+   "war": -0.358
+  },
+  {
+   "exp_wins": 6.0626,
+   "games": 1,
+   "id": "7943",
+   "name": "Zach Davidson",
+   "others": [],
+   "owner": null,
+   "points": 1.0,
+   "position": "TE",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 5.0,
+    "rush_yd": 0.0
+   },
+   "team": "BUF",
+   "war": -0.0907
+  },
+  {
+   "exp_wins": 5.9719,
+   "games": 2,
+   "id": "7946",
+   "name": "Jack Stoll",
+   "others": [],
+   "owner": null,
+   "points": 2.0,
+   "position": "TE",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 10.0,
+    "rush_yd": 0.0
+   },
+   "team": "PHI",
+   "war": -0.1814
+  },
+  {
+   "exp_wins": 5.0815,
+   "games": 10,
+   "id": "7989",
+   "name": "DJ Turner",
+   "others": [],
+   "owner": null,
+   "points": 39.1,
+   "position": "WR",
+   "stats": {
+    "rec": 16.0,
+    "rec_td": 1.0,
+    "rec_yd": 158.0,
+    "rush_yd": 33.0
+   },
+   "team": "LV",
+   "war": -0.8649
+  },
+  {
+   "exp_wins": 5.7067,
+   "games": 2,
+   "id": "8013",
+   "name": "Tim Jones",
+   "others": [],
+   "owner": null,
+   "points": 4.0,
+   "position": "WR",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 30.0,
+    "rush_yd": 0.0
+   },
+   "team": "JAX",
+   "war": -0.2397
+  },
+  {
+   "exp_wins": 6.0924,
+   "games": 1,
+   "id": "8041",
+   "name": "Shane Zylstra",
+   "others": [],
+   "owner": null,
+   "points": 2.7,
+   "position": "TE",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 22.0,
+    "rush_yd": 0.0
+   },
+   "team": "DET",
+   "war": -0.0609
+  },
+  {
+   "exp_wins": 6.1711,
+   "games": 10,
+   "id": "8110",
+   "name": "Jake Ferguson",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 61.1,
+   "position": "TE",
+   "stats": {
+    "rec": 46.0,
+    "rec_td": 0.0,
+    "rec_yd": 401.0,
+    "rush_yd": 0.0
+   },
+   "team": "DAL",
+   "war": 0.0178
+  },
+  {
+   "exp_wins": 6.7126,
+   "games": 13,
+   "id": "8111",
+   "name": "Cade Otton",
+   "others": [
+    "zagaplooza",
+    "KingDso"
+   ],
+   "owner": "Jdeguire",
+   "points": 109.7,
+   "position": "TE",
+   "stats": {
+    "rec": 57.0,
+    "rec_td": 4.0,
+    "rec_yd": 576.0,
+    "rush_yd": -4.0
+   },
+   "team": "TB",
+   "war": 0.5593
+  },
+  {
+   "exp_wins": 6.7932,
+   "games": 13,
+   "id": "8112",
+   "name": "Drake London",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 161.8,
+   "position": "WR",
+   "stats": {
+    "rec": 75.0,
+    "rec_td": 6.0,
+    "rec_yd": 866.0,
+    "rush_yd": -3.0
+   },
+   "team": "ATL",
+   "war": 0.8468
+  },
+  {
+   "exp_wins": 4.8372,
+   "games": 9,
+   "id": "8116",
+   "name": "Pierre Strong Jr.",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 20.0,
+   "position": "RB",
+   "stats": {
+    "rec": 9.0,
+    "rec_td": 0.0,
+    "rec_yd": 86.0,
+    "rush_td": 0.0,
+    "rush_yd": 69.0
+   },
+   "team": "CLE",
+   "war": -1.3812
+  },
+  {
+   "exp_wins": 5.6441,
+   "games": 12,
+   "id": "8117",
+   "name": "Jalen Tolbert",
+   "others": [
+    "alwaysflexin",
+    "gonzas"
+   ],
+   "owner": "Gixxersean1",
+   "points": 88.6,
+   "position": "WR",
+   "stats": {
+    "rec": 39.0,
+    "rec_td": 4.0,
+    "rec_yd": 451.0,
+    "rush_yd": 0.0
+   },
+   "team": "DAL",
+   "war": -0.3023
+  },
+  {
+   "exp_wins": 5.8634,
+   "games": 1,
+   "id": "8118",
+   "name": "David Bell",
+   "others": [],
+   "owner": null,
+   "points": 4.2,
+   "position": "WR",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 27.0,
+    "rush_yd": 0.0
+   },
+   "team": "CLE",
+   "war": -0.083
+  },
+  {
+   "exp_wins": 4.7411,
+   "games": 10,
+   "id": "8119",
+   "name": "Jahan Dotson",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 19.5,
+   "position": "WR",
+   "stats": {
+    "rec": 12.0,
+    "rec_td": 0.0,
+    "rec_yd": 122.0,
+    "rush_yd": 13.0
+   },
+   "team": "PHI",
+   "war": -1.2053
+  },
+  {
+   "exp_wins": 5.7558,
+   "games": 10,
+   "id": "8121",
+   "name": "Romeo Doubs",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 77.3,
+   "position": "WR",
+   "stats": {
+    "rec": 34.0,
+    "rec_td": 2.0,
+    "rec_yd": 483.0,
+    "rush_yd": 0.0
+   },
+   "team": "GB",
+   "war": -0.1906
+  },
+  {
+   "exp_wins": 5.0032,
+   "games": 7,
+   "id": "8123",
+   "name": "Hassan Haskins",
+   "others": [],
+   "owner": null,
+   "points": 6.6,
+   "position": "RB",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 1.0,
+    "rush_yd": 26.0
+   },
+   "team": "LAC",
+   "war": -1.2152
+  },
+  {
+   "exp_wins": 5.3644,
+   "games": 13,
+   "id": "8125",
+   "name": "Calvin Austin III",
+   "others": [
+    "Gixxersean1"
+   ],
+   "owner": "Jdeguire",
+   "points": 80.2,
+   "position": "WR",
+   "stats": {
+    "rec": 23.0,
+    "rec_td": 4.0,
+    "rec_yd": 387.0,
+    "rush_yd": 0.0
+   },
+   "team": "PIT",
+   "war": -0.582
+  },
+  {
+   "exp_wins": 5.6081,
+   "games": 13,
+   "id": "8126",
+   "name": "Wan'Dale Robinson",
+   "others": [],
+   "owner": "zagaplooza",
+   "points": 95.8,
+   "position": "WR",
+   "stats": {
+    "rec": 67.0,
+    "rec_td": 2.0,
+    "rec_yd": 485.0,
+    "rush_yd": 18.0
+   },
+   "team": "NYG",
+   "war": -0.3383
+  },
+  {
+   "exp_wins": 5.8232,
+   "games": 7,
+   "id": "8127",
+   "name": "Charlie Kolar",
+   "others": [],
+   "owner": null,
+   "points": 23.8,
+   "position": "TE",
+   "stats": {
+    "rec": 9.0,
+    "rec_td": 1.0,
+    "rec_yd": 131.0,
+    "rush_yd": 2.0
+   },
+   "team": "BAL",
+   "war": -0.3301
+  },
+  {
+   "exp_wins": 5.3762,
+   "games": 6,
+   "id": "8129",
+   "name": "Dameon Pierce",
+   "others": [
+    "gonzas",
+    "Jdeguire"
+   ],
+   "owner": "alwaysflexin",
+   "points": 17.2,
+   "position": "RB",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 2.0,
+    "rush_td": 1.0,
+    "rush_yd": 100.0
+   },
+   "team": "HOU",
+   "war": -0.8422
+  },
+  {
+   "exp_wins": 7.4111,
+   "games": 12,
+   "id": "8130",
+   "name": "Trey McBride",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 141.3,
+   "position": "TE",
+   "stats": {
+    "rec": 80.0,
+    "rec_td": 0.0,
+    "rec_yd": 851.0,
+    "rush_yd": 2.0
+   },
+   "team": "ARI",
+   "war": 1.2578
+  },
+  {
+   "exp_wins": 6.4835,
+   "games": 10,
+   "id": "8131",
+   "name": "Isaiah Likely",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 78.9,
+   "position": "TE",
+   "stats": {
+    "rec": 33.0,
+    "rec_td": 4.0,
+    "rec_yd": 384.0,
+    "rush_yd": 0.0
+   },
+   "team": "BAL",
+   "war": 0.3302
+  },
+  {
+   "exp_wins": 5.1659,
+   "games": 13,
+   "id": "8132",
+   "name": "Tyler Allgeier",
+   "others": [],
+   "owner": "tg1212",
+   "points": 84.0,
+   "position": "RB",
+   "stats": {
+    "rec": 10.0,
+    "rec_td": 0.0,
+    "rec_yd": 62.0,
+    "rush_td": 3.0,
+    "rush_yd": 508.0
+   },
+   "team": "ATL",
+   "war": -1.0525
+  },
+  {
+   "exp_wins": 6.3608,
+   "games": 12,
+   "id": "8134",
+   "name": "Khalil Shakir",
+   "others": [],
+   "owner": "zagaplooza",
+   "points": 128.4,
+   "position": "WR",
+   "stats": {
+    "rec": 65.0,
+    "rec_td": 3.0,
+    "rec_yd": 735.0,
+    "rush_yd": 4.0
+   },
+   "team": "BUF",
+   "war": 0.4144
+  },
+  {
+   "exp_wins": 5.4262,
+   "games": 4,
+   "id": "8135",
+   "name": "Treylon Burks",
+   "others": [],
+   "owner": null,
+   "points": 5.5,
+   "position": "WR",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 0.0,
+    "rec_yd": 34.0,
+    "rush_yd": 1.0
+   },
+   "team": "TEN",
+   "war": -0.5202
+  },
+  {
+   "exp_wins": 6.5238,
+   "games": 12,
+   "id": "8136",
+   "name": "Rachaad White",
+   "others": [],
+   "owner": "KingDso",
+   "points": 149.6,
+   "position": "RB",
+   "stats": {
+    "rec": 41.0,
+    "rec_td": 5.0,
+    "rec_yd": 322.0,
+    "rush_td": 3.0,
+    "rush_yd": 509.0
+   },
+   "team": "TB",
+   "war": 0.3055
+  },
+  {
+   "exp_wins": 6.4259,
+   "games": 12,
+   "id": "8137",
+   "name": "George Pickens",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 131.9,
+   "position": "WR",
+   "stats": {
+    "rec": 55.0,
+    "rec_td": 3.0,
+    "rec_yd": 850.0,
+    "rush_yd": -6.0
+   },
+   "team": "PIT",
+   "war": 0.4795
+  },
+  {
+   "exp_wins": 7.1154,
+   "games": 12,
+   "id": "8138",
+   "name": "James Cook III",
+   "others": [],
+   "owner": "zagaplooza",
+   "points": 182.7,
+   "position": "RB",
+   "stats": {
+    "rec": 28.0,
+    "rec_td": 1.0,
+    "rec_yd": 204.0,
+    "rush_td": 11.0,
+    "rush_yd": 723.0
+   },
+   "team": "BUF",
+   "war": 0.897
+  },
+  {
+   "exp_wins": 5.1257,
+   "games": 8,
+   "id": "8139",
+   "name": "Zamir White",
+   "others": [],
+   "owner": "KingDso",
+   "points": 26.3,
+   "position": "RB",
+   "stats": {
+    "rec": 6.0,
+    "rec_td": 0.0,
+    "rec_yd": 30.0,
+    "rush_td": 1.0,
+    "rush_yd": 183.0
+   },
+   "team": "LV",
+   "war": -1.0926
+  },
+  {
+   "exp_wins": 6.0914,
+   "games": 12,
+   "id": "8142",
+   "name": "Alec Pierce",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 113.0,
+   "position": "WR",
+   "stats": {
+    "rec": 29.0,
+    "rec_td": 5.0,
+    "rec_yd": 645.0,
+    "rush_yd": 0.0
+   },
+   "team": "IND",
+   "war": 0.145
+  },
+  {
+   "exp_wins": 5.379,
+   "games": 11,
+   "id": "8143",
+   "name": "Jerome Ford",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 74.3,
+   "position": "RB",
+   "stats": {
+    "rec": 30.0,
+    "rec_td": 0.0,
+    "rec_yd": 166.0,
+    "rush_td": 1.0,
+    "rush_yd": 367.0
+   },
+   "team": "CLE",
+   "war": -0.8394
+  },
+  {
+   "exp_wins": 5.832,
+   "games": 8,
+   "id": "8144",
+   "name": "Chris Olave",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 62.7,
+   "position": "WR",
+   "stats": {
+    "rec": 32.0,
+    "rec_td": 1.0,
+    "rec_yd": 400.0,
+    "rush_yd": 7.0
+   },
+   "team": "NO",
+   "war": -0.1145
+  },
+  {
+   "exp_wins": 5.5434,
+   "games": 8,
+   "id": "8145",
+   "name": "Jeremy Ruckert",
+   "others": [],
+   "owner": null,
+   "points": 14.6,
+   "position": "TE",
+   "stats": {
+    "rec": 14.0,
+    "rec_td": 0.0,
+    "rec_yd": 76.0,
+    "rush_yd": 0.0
+   },
+   "team": "NYJ",
+   "war": -0.6099
+  },
+  {
+   "exp_wins": 6.8844,
+   "games": 13,
+   "id": "8146",
+   "name": "Garrett Wilson",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 166.7,
+   "position": "WR",
+   "stats": {
+    "rec": 81.0,
+    "rec_td": 5.0,
+    "rec_yd": 877.0,
+    "rush_yd": 5.0
+   },
+   "team": "NYJ",
+   "war": 0.938
+  },
+  {
+   "exp_wins": 5.5474,
+   "games": 6,
+   "id": "8147",
+   "name": "John Metchie III",
+   "others": [],
+   "owner": "KingDso",
+   "points": 30.0,
+   "position": "WR",
+   "stats": {
+    "rec": 15.0,
+    "rec_td": 1.0,
+    "rec_yd": 165.0,
+    "rush_yd": 0.0
+   },
+   "team": "HOU",
+   "war": -0.399
+  },
+  {
+   "exp_wins": 6.4516,
+   "games": 11,
+   "id": "8148",
+   "name": "Jameson Williams",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 124.1,
+   "position": "WR",
+   "stats": {
+    "rec": 39.0,
+    "rec_td": 4.0,
+    "rec_yd": 710.0,
+    "rush_yd": 56.0
+   },
+   "team": "DET",
+   "war": 0.5052
+  },
+  {
+   "exp_wins": 7.4623,
+   "games": 13,
+   "id": "8150",
+   "name": "Kyren Williams",
+   "others": [],
+   "owner": "tg1212",
+   "points": 212.8,
+   "position": "RB",
+   "stats": {
+    "rec": 28.0,
+    "rec_td": 2.0,
+    "rec_yd": 155.0,
+    "rush_td": 12.0,
+    "rush_yd": 1013.0
+   },
+   "team": "LAR",
+   "war": 1.244
+  },
+  {
+   "exp_wins": 6.9208,
+   "games": 10,
+   "id": "8151",
+   "name": "Kenneth Walker III",
+   "others": [],
+   "owner": "khar432",
+   "points": 150.3,
+   "position": "RB",
+   "stats": {
+    "rec": 38.0,
+    "rec_td": 1.0,
+    "rec_yd": 271.0,
+    "rush_td": 7.0,
+    "rush_yd": 542.0
+   },
+   "team": "SEA",
+   "war": 0.7024
+  },
+  {
+   "exp_wins": 6.6648,
+   "games": 10,
+   "id": "8154",
+   "name": "Brian Robinson Jr.",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 134.5,
+   "position": "RB",
+   "stats": {
+    "rec": 12.0,
+    "rec_td": 0.0,
+    "rec_yd": 105.0,
+    "rush_td": 8.0,
+    "rush_yd": 640.0
+   },
+   "team": "WAS",
+   "war": 0.4464
+  },
+  {
+   "exp_wins": 6.9006,
+   "games": 12,
+   "id": "8155",
+   "name": "Breece Hall",
+   "others": [],
+   "owner": "gonzas",
+   "points": 170.3,
+   "position": "RB",
+   "stats": {
+    "rec": 46.0,
+    "rec_td": 2.0,
+    "rec_yd": 401.0,
+    "rush_td": 4.0,
+    "rush_yd": 692.0
+   },
+   "team": "NYJ",
+   "war": 0.6822
+  },
+  {
+   "exp_wins": 5.324,
+   "games": 3,
+   "id": "8159",
+   "name": "Desmond Ridder",
+   "others": [],
+   "owner": null,
+   "points": 10.36,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 1.0,
+    "pass_yd": 239.0,
+    "rush_td": 0.0,
+    "rush_yd": 8.0
+   },
+   "team": "LV",
+   "war": -0.5958
+  },
+  {
+   "exp_wins": 5.4318,
+   "games": 2,
+   "id": "8160",
+   "name": "Kenny Pickett",
+   "others": [],
+   "owner": null,
+   "points": 0.1,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 0.0,
+    "pass_yd": 5.0,
+    "rush_td": 0.0,
+    "rush_yd": -1.0
+   },
+   "team": "PHI",
+   "war": -0.4881
+  },
+  {
+   "exp_wins": 5.9321,
+   "games": 3,
+   "id": "8161",
+   "name": "Malik Willis",
+   "others": [],
+   "owner": null,
+   "points": 46.9,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 3.0,
+    "pass_yd": 380.0,
+    "rush_td": 1.0,
+    "rush_yd": 137.0
+   },
+   "team": "GB",
+   "war": 0.0123
+  },
+  {
+   "exp_wins": 5.91,
+   "games": 10,
+   "id": "8167",
+   "name": "Christian Watson",
+   "others": [],
+   "owner": "KingDso",
+   "points": 85.4,
+   "position": "WR",
+   "stats": {
+    "rec": 26.0,
+    "rec_td": 2.0,
+    "rec_yd": 564.0,
+    "rush_yd": 0.0
+   },
+   "team": "GB",
+   "war": -0.0364
+  },
+  {
+   "exp_wins": 6.0298,
+   "games": 2,
+   "id": "8172",
+   "name": "Greg Dulcich",
+   "others": [],
+   "owner": "KingDso",
+   "points": 5.3,
+   "position": "TE",
+   "stats": {
+    "rec": 5.0,
+    "rec_td": 0.0,
+    "rec_yd": 28.0,
+    "rush_yd": 0.0
+   },
+   "team": "DEN",
+   "war": -0.1235
+  },
+  {
+   "exp_wins": 5.9898,
+   "games": 8,
+   "id": "8177",
+   "name": "Grant Calcaterra",
+   "others": [],
+   "owner": null,
+   "points": 39.2,
+   "position": "TE",
+   "stats": {
+    "rec": 20.0,
+    "rec_td": 1.0,
+    "rec_yd": 232.0,
+    "rush_yd": 0.0
+   },
+   "team": "PHI",
+   "war": -0.1635
+  },
+  {
+   "exp_wins": 5.5146,
+   "games": 10,
+   "id": "8180",
+   "name": "Jalen Nailor",
+   "others": [],
+   "owner": "khar432",
+   "points": 63.6,
+   "position": "WR",
+   "stats": {
+    "rec": 18.0,
+    "rec_td": 5.0,
+    "rec_yd": 270.0,
+    "rush_yd": -4.0
+   },
+   "team": "MIN",
+   "war": -0.4318
+  },
+  {
+   "exp_wins": 5.8316,
+   "games": 3,
+   "id": "8181",
+   "name": "Connor Heyward",
+   "others": [],
+   "owner": null,
+   "points": 10.9,
+   "position": "RB",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 1.0,
+    "rec_yd": 29.0,
+    "rush_td": 0.0,
+    "rush_yd": 0.0
+   },
+   "team": "PIT",
+   "war": -0.3868
+  },
+  {
+   "exp_wins": 6.5228,
+   "games": 12,
+   "id": "8183",
+   "name": "Brock Purdy",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 217.48,
+   "position": "QB",
+   "stats": {
+    "pass_int": 8.0,
+    "pass_td": 15.0,
+    "pass_yd": 3032.0,
+    "rush_td": 4.0,
+    "rush_yd": 282.0
+   },
+   "team": "SF",
+   "war": 0.603
+  },
+  {
+   "exp_wins": 5.7515,
+   "games": 2,
+   "id": "8188",
+   "name": "Tyquan Thornton",
+   "others": [],
+   "owner": null,
+   "points": 6.7,
+   "position": "WR",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 0.0,
+    "rec_yd": 47.0,
+    "rush_yd": 0.0
+   },
+   "team": "NE",
+   "war": -0.1949
+  },
+  {
+   "exp_wins": 5.5481,
+   "games": 4,
+   "id": "8195",
+   "name": "Ronnie Rivers",
+   "others": [],
+   "owner": null,
+   "points": 5.6,
+   "position": "RB",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": 51.0
+   },
+   "team": "LAR",
+   "war": -0.6702
+  },
+  {
+   "exp_wins": 5.9003,
+   "games": 3,
+   "id": "8197",
+   "name": "Peyton Hendershot",
+   "others": [],
+   "owner": null,
+   "points": 4.1,
+   "position": "TE",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 26.0,
+    "rush_yd": 0.0
+   },
+   "team": "KC",
+   "war": -0.253
+  },
+  {
+   "exp_wins": 5.5588,
+   "games": 4,
+   "id": "8200",
+   "name": "Kevin Austin",
+   "others": [],
+   "owner": null,
+   "points": 13.4,
+   "position": "WR",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 0.0,
+    "rec_yd": 90.0,
+    "rush_yd": 9.0
+   },
+   "team": "NO",
+   "war": -0.3876
+  },
+  {
+   "exp_wins": 5.7664,
+   "games": 2,
+   "id": "8202",
+   "name": "Michael Woods",
+   "others": [],
+   "owner": null,
+   "points": 7.5,
+   "position": "WR",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 0.0,
+    "rec_yd": 55.0,
+    "rush_yd": 0.0
+   },
+   "team": "CLE",
+   "war": -0.18
+  },
+  {
+   "exp_wins": 5.121,
+   "games": 7,
+   "id": "8204",
+   "name": "Bo Melton",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 14.7,
+   "position": "WR",
+   "stats": {
+    "rec": 5.0,
+    "rec_td": 0.0,
+    "rec_yd": 73.0,
+    "rush_yd": 39.0
+   },
+   "team": "GB",
+   "war": -0.8254
+  },
+  {
+   "exp_wins": 6.1599,
+   "games": 4,
+   "id": "8205",
+   "name": "Isiah Pacheco",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 40.9,
+   "position": "RB",
+   "stats": {
+    "rec": 10.0,
+    "rec_td": 0.0,
+    "rec_yd": 65.0,
+    "rush_td": 1.0,
+    "rush_yd": 234.0
+   },
+   "team": "KC",
+   "war": -0.0585
+  },
+  {
+   "exp_wins": 5.5346,
+   "games": 2,
+   "id": "8206",
+   "name": "Skylar Thompson",
+   "others": [],
+   "owner": null,
+   "points": 7.88,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 0.0,
+    "pass_yd": 187.0,
+    "rush_td": 0.0,
+    "rush_yd": 4.0
+   },
+   "team": "MIA",
+   "war": -0.3852
+  },
+  {
+   "exp_wins": 5.8642,
+   "games": 5,
+   "id": "8207",
+   "name": "Tyler Goodson",
+   "others": [
+    "KingDso"
+   ],
+   "owner": "Jdeguire",
+   "points": 35.4,
+   "position": "RB",
+   "stats": {
+    "rec": 10.0,
+    "rec_td": 1.0,
+    "rec_yd": 56.0,
+    "rush_td": 1.0,
+    "rush_yd": 128.0
+   },
+   "team": "IND",
+   "war": -0.3542
+  },
+  {
+   "exp_wins": 5.7812,
+   "games": 3,
+   "id": "8208",
+   "name": "Tyler Badie",
+   "others": [],
+   "owner": "gonzas",
+   "points": 7.9,
+   "position": "RB",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": -2.0,
+    "rush_td": 0.0,
+    "rush_yd": 86.0
+   },
+   "team": "DEN",
+   "war": -0.4372
+  },
+  {
+   "exp_wins": 5.7248,
+   "games": 13,
+   "id": "8210",
+   "name": "Chig Okonkwo",
+   "others": [],
+   "owner": "KingDso",
+   "points": 54.7,
+   "position": "TE",
+   "stats": {
+    "rec": 30.0,
+    "rec_td": 2.0,
+    "rec_yd": 297.0,
+    "rush_yd": 0.0
+   },
+   "team": "TEN",
+   "war": -0.4284
+  },
+  {
+   "exp_wins": 5.9941,
+   "games": 3,
+   "id": "8220",
+   "name": "Sincere McCormick",
+   "others": [],
+   "owner": null,
+   "points": 20.7,
+   "position": "RB",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 0.0,
+    "rec_yd": 12.0,
+    "rush_td": 0.0,
+    "rush_yd": 175.0
+   },
+   "team": "LV",
+   "war": -0.2243
+  },
+  {
+   "exp_wins": 5.8008,
+   "games": 1,
+   "id": "8223",
+   "name": "Velus Jones Jr.",
+   "others": [],
+   "owner": null,
+   "points": 0.4,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 8.0,
+    "rush_yd": 11.0
+   },
+   "team": "CHI",
+   "war": -0.1456
+  },
+  {
+   "exp_wins": 5.9266,
+   "games": 4,
+   "id": "8225",
+   "name": "Daniel Bellinger",
+   "others": [],
+   "owner": null,
+   "points": 11.6,
+   "position": "TE",
+   "stats": {
+    "rec": 8.0,
+    "rec_td": 0.0,
+    "rec_yd": 76.0,
+    "rush_yd": 0.0
+   },
+   "team": "NYG",
+   "war": -0.2267
+  },
+  {
+   "exp_wins": 5.3964,
+   "games": 11,
+   "id": "8228",
+   "name": "Jaylen Warren",
+   "others": [],
+   "owner": "zagaplooza",
+   "points": 75.6,
+   "position": "RB",
+   "stats": {
+    "rec": 27.0,
+    "rec_td": 0.0,
+    "rec_yd": 222.0,
+    "rush_td": 1.0,
+    "rush_yd": 359.0
+   },
+   "team": "PIT",
+   "war": -0.822
+  },
+  {
+   "exp_wins": 5.0971,
+   "games": 8,
+   "id": "8230",
+   "name": "Ty Chandler",
+   "others": [
+    "zagaplooza"
+   ],
+   "owner": "alwaysflexin",
+   "points": 24.3,
+   "position": "RB",
+   "stats": {
+    "rec": 6.0,
+    "rec_td": 0.0,
+    "rec_yd": 42.0,
+    "rush_td": 0.0,
+    "rush_yd": 171.0
+   },
+   "team": "MIN",
+   "war": -1.1212
+  },
+  {
+   "exp_wins": 5.8306,
+   "games": 6,
+   "id": "8249",
+   "name": "Lucas Krull",
+   "others": [],
+   "owner": null,
+   "points": 18.5,
+   "position": "TE",
+   "stats": {
+    "rec": 13.0,
+    "rec_td": 0.0,
+    "rec_yd": 120.0,
+    "rush_yd": 0.0
+   },
+   "team": "DEN",
+   "war": -0.3227
+  },
+  {
+   "exp_wins": 5.5519,
+   "games": 3,
+   "id": "8253",
+   "name": "Deven Thompkins",
+   "others": [],
+   "owner": null,
+   "points": 3.8,
+   "position": "WR",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 0.0,
+    "rec_yd": 20.0,
+    "rush_yd": -2.0
+   },
+   "team": "CAR",
+   "war": -0.3945
+  },
+  {
+   "exp_wins": 5.2467,
+   "games": 6,
+   "id": "8254",
+   "name": "Julius Chestnut",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 10.5,
+   "position": "RB",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 11.0,
+    "rush_td": 0.0,
+    "rush_yd": 74.0
+   },
+   "team": "TEN",
+   "war": -0.9716
+  },
+  {
+   "exp_wins": 5.7596,
+   "games": 1,
+   "id": "827",
+   "name": "Tyrod Taylor",
+   "others": [],
+   "owner": null,
+   "points": 6.14,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 1.0,
+    "pass_yd": 36.0,
+    "rush_td": 0.0,
+    "rush_yd": 7.0
+   },
+   "team": "NYJ",
+   "war": -0.1602
+  },
+  {
+   "exp_wins": 5.6734,
+   "games": 5,
+   "id": "829",
+   "name": "Andy Dalton",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 60.96,
+   "position": "QB",
+   "stats": {
+    "pass_int": 6.0,
+    "pass_td": 7.0,
+    "pass_yd": 989.0,
+    "rush_td": 0.0,
+    "rush_yd": 34.0
+   },
+   "team": "CAR",
+   "war": -0.2464
+  },
+  {
+   "exp_wins": 5.9333,
+   "games": 12,
+   "id": "8408",
+   "name": "Jordan Mason",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 115.5,
+   "position": "RB",
+   "stats": {
+    "rec": 11.0,
+    "rec_td": 0.0,
+    "rec_yd": 91.0,
+    "rush_td": 3.0,
+    "rush_yd": 789.0
+   },
+   "team": "SF",
+   "war": -0.2851
+  },
+  {
+   "exp_wins": 5.756,
+   "games": 2,
+   "id": "8414",
+   "name": "Britain Covey",
+   "others": [],
+   "owner": null,
+   "points": 6.9,
+   "position": "WR",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 0.0,
+    "rec_yd": 34.0,
+    "rush_yd": 0.0
+   },
+   "team": "PHI",
+   "war": -0.1904
+  },
+  {
+   "exp_wins": 5.8103,
+   "games": 1,
+   "id": "8416",
+   "name": "Jalen Virgil",
+   "others": [],
+   "owner": null,
+   "points": 1.0,
+   "position": "WR",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_yd": 0.0
+   },
+   "team": "BUF",
+   "war": -0.1361
+  },
+  {
+   "exp_wins": 5.7296,
+   "games": 7,
+   "id": "8489",
+   "name": "Drew Ogletree",
+   "others": [],
+   "owner": null,
+   "points": 18.8,
+   "position": "TE",
+   "stats": {
+    "rec": 8.0,
+    "rec_td": 1.0,
+    "rec_yd": 88.0,
+    "rush_yd": 0.0
+   },
+   "team": "IND",
+   "war": -0.4237
+  },
+  {
+   "exp_wins": 6.0574,
+   "games": 1,
+   "id": "8500",
+   "name": "John FitzPatrick",
+   "others": [],
+   "owner": null,
+   "points": 0.7,
+   "position": "TE",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 2.0,
+    "rush_yd": 0.0
+   },
+   "team": "GB",
+   "war": -0.0959
+  },
+  {
+   "exp_wins": 5.948,
+   "games": 4,
+   "id": "8583",
+   "name": "Stone Smartt",
+   "others": [],
+   "owner": null,
+   "points": 12.8,
+   "position": "TE",
+   "stats": {
+    "rec": 6.0,
+    "rec_td": 0.0,
+    "rec_yd": 98.0,
+    "rush_yd": 0.0
+   },
+   "team": "LAC",
+   "war": -0.2053
+  },
+  {
+   "exp_wins": 6.4186,
+   "games": 5,
+   "id": "8676",
+   "name": "Rashid Shaheed",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 69.8,
+   "position": "WR",
+   "stats": {
+    "rec": 20.0,
+    "rec_td": 3.0,
+    "rec_yd": 349.0,
+    "rush_yd": 29.0
+   },
+   "team": "NO",
+   "war": 0.4722
+  },
+  {
+   "exp_wins": 6.046,
+   "games": 1,
+   "id": "8749",
+   "name": "Tyreik McAllister",
+   "others": [],
+   "owner": null,
+   "points": 1.1,
+   "position": "RB",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": 11.0
+   },
+   "team": "LV",
+   "war": -0.1724
+  },
+  {
+   "exp_wins": 5.8167,
+   "games": 1,
+   "id": "8756",
+   "name": "Brandon Johnson",
+   "others": [],
+   "owner": null,
+   "points": 1.4,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 9.0,
+    "rush_yd": 0.0
+   },
+   "team": "PIT",
+   "war": -0.1297
+  },
+  {
+   "exp_wins": 5.8167,
+   "games": 1,
+   "id": "8783",
+   "name": "Kendric Pryor",
+   "others": [],
+   "owner": null,
+   "points": 1.4,
+   "position": "WR",
+   "stats": {
+    "rec": 1.0,
+    "rec_td": 0.0,
+    "rec_yd": 9.0,
+    "rush_yd": 0.0
+   },
+   "team": "CIN",
+   "war": -0.1297
+  },
+  {
+   "exp_wins": 5.6769,
+   "games": 3,
+   "id": "8809",
+   "name": "Aaron Shampklin",
+   "others": [],
+   "owner": null,
+   "points": 1.7,
+   "position": "RB",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_td": 0.0,
+    "rush_yd": 17.0
+   },
+   "team": "PIT",
+   "war": -0.5414
+  },
+  {
+   "exp_wins": 5.9913,
+   "games": 2,
+   "id": "8849",
+   "name": "Tanner Conner",
+   "others": [],
+   "owner": null,
+   "points": 3.1,
+   "position": "TE",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 16.0,
+    "rush_yd": 0.0
+   },
+   "team": "MIA",
+   "war": -0.162
+  },
+  {
+   "exp_wins": 5.7946,
+   "games": 1,
+   "id": "8861",
+   "name": "Irvin Charles",
+   "others": [],
+   "owner": null,
+   "points": 0.0,
+   "position": "WR",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_yd": 0.0
+   },
+   "team": "NYJ",
+   "war": -0.1518
+  },
+  {
+   "exp_wins": 5.7802,
+   "games": 4,
+   "id": "8885",
+   "name": "Tucker Fisk",
+   "others": [],
+   "owner": null,
+   "points": 3.4,
+   "position": "TE",
+   "stats": {
+    "rec": 4.0,
+    "rec_td": 0.0,
+    "rec_yd": 14.0,
+    "rush_yd": 0.0
+   },
+   "team": "LAC",
+   "war": -0.3731
+  },
+  {
+   "exp_wins": 5.5121,
+   "games": 11,
+   "id": "8917",
+   "name": "KaVontae Turpin",
+   "others": [],
+   "owner": null,
+   "points": 72.5,
+   "position": "WR",
+   "stats": {
+    "rec": 26.0,
+    "rec_td": 2.0,
+    "rec_yd": 344.0,
+    "rush_yd": 31.0
+   },
+   "team": "DAL",
+   "war": -0.4343
+  },
+  {
+   "exp_wins": 7.6568,
+   "games": 13,
+   "id": "9221",
+   "name": "Jahmyr Gibbs",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 223.8,
+   "position": "RB",
+   "stats": {
+    "rec": 34.0,
+    "rec_td": 2.0,
+    "rec_yd": 312.0,
+    "rush_td": 10.0,
+    "rush_yd": 1016.0
+   },
+   "team": "DET",
+   "war": 1.4384
+  },
+  {
+   "exp_wins": 6.9189,
+   "games": 13,
+   "id": "9224",
+   "name": "Chase Brown",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 181.7,
+   "position": "RB",
+   "stats": {
+    "rec": 44.0,
+    "rec_td": 3.0,
+    "rec_yd": 302.0,
+    "rush_td": 6.0,
+    "rush_yd": 735.0
+   },
+   "team": "CIN",
+   "war": 0.7005
+  },
+  {
+   "exp_wins": 5.8755,
+   "games": 11,
+   "id": "9225",
+   "name": "Tank Bigsby",
+   "others": [],
+   "owner": "KingDso",
+   "points": 101.7,
+   "position": "RB",
+   "stats": {
+    "rec": 5.0,
+    "rec_td": 0.0,
+    "rec_yd": 50.0,
+    "rush_td": 5.0,
+    "rush_yd": 602.0
+   },
+   "team": "JAX",
+   "war": -0.3429
+  },
+  {
+   "exp_wins": 7.2214,
+   "games": 13,
+   "id": "9226",
+   "name": "De'Von Achane",
+   "others": [],
+   "owner": "gonzas",
+   "points": 198.9,
+   "position": "RB",
+   "stats": {
+    "rec": 63.0,
+    "rec_td": 6.0,
+    "rec_yd": 474.0,
+    "rush_td": 4.0,
+    "rush_yd": 600.0
+   },
+   "team": "MIA",
+   "war": 1.0031
+  },
+  {
+   "exp_wins": 5.0554,
+   "games": 10,
+   "id": "9228",
+   "name": "Bryce Young",
+   "others": [
+    "gonzas"
+   ],
+   "owner": "tg1212",
+   "points": 102.58,
+   "position": "QB",
+   "stats": {
+    "pass_int": 7.0,
+    "pass_td": 7.0,
+    "pass_yd": 1572.0,
+    "rush_td": 2.0,
+    "rush_yd": 137.0
+   },
+   "team": "CAR",
+   "war": -0.8644
+  },
+  {
+   "exp_wins": 5.7581,
+   "games": 9,
+   "id": "9229",
+   "name": "Anthony Richardson Sr.",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 128.74,
+   "position": "QB",
+   "stats": {
+    "pass_int": 9.0,
+    "pass_td": 7.0,
+    "pass_yd": 1511.0,
+    "rush_td": 4.0,
+    "rush_yd": 383.0
+   },
+   "team": "IND",
+   "war": -0.1617
+  },
+  {
+   "exp_wins": 5.5692,
+   "games": 11,
+   "id": "9479",
+   "name": "Darnell Washington",
+   "others": [],
+   "owner": null,
+   "points": 34.2,
+   "position": "TE",
+   "stats": {
+    "rec": 18.0,
+    "rec_td": 1.0,
+    "rec_yd": 192.0,
+    "rush_yd": 0.0
+   },
+   "team": "PIT",
+   "war": -0.5841
+  },
+  {
+   "exp_wins": 5.9516,
+   "games": 10,
+   "id": "9480",
+   "name": "Brenton Strange",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 49.1,
+   "position": "TE",
+   "stats": {
+    "rec": 23.0,
+    "rec_td": 2.0,
+    "rec_yd": 256.0,
+    "rush_yd": 0.0
+   },
+   "team": "JAX",
+   "war": -0.2016
+  },
+  {
+   "exp_wins": 5.9111,
+   "games": 3,
+   "id": "9481",
+   "name": "Luke Musgrave",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 4.7,
+   "position": "TE",
+   "stats": {
+    "rec": 5.0,
+    "rec_td": 0.0,
+    "rec_yd": 22.0,
+    "rush_yd": 0.0
+   },
+   "team": "GB",
+   "war": -0.2422
+  },
+  {
+   "exp_wins": 5.7264,
+   "games": 7,
+   "id": "9482",
+   "name": "Michael Mayer",
+   "others": [],
+   "owner": null,
+   "points": 18.5,
+   "position": "TE",
+   "stats": {
+    "rec": 15.0,
+    "rec_td": 0.0,
+    "rec_yd": 110.0,
+    "rush_yd": 0.0
+   },
+   "team": "LV",
+   "war": -0.4269
+  },
+  {
+   "exp_wins": 6.9099,
+   "games": 12,
+   "id": "9484",
+   "name": "Tucker Kraft",
+   "others": [
+    "Jdeguire"
+   ],
+   "owner": "corygraham12",
+   "points": 114.0,
+   "position": "TE",
+   "stats": {
+    "rec": 39.0,
+    "rec_td": 7.0,
+    "rec_yd": 521.0,
+    "rush_yd": 4.0
+   },
+   "team": "GB",
+   "war": 0.7566
+  },
+  {
+   "exp_wins": 5.7182,
+   "games": 9,
+   "id": "9486",
+   "name": "Dontayvion Wicks",
+   "others": [
+    "MattCyg"
+   ],
+   "owner": "tg1212",
+   "points": 66.1,
+   "position": "WR",
+   "stats": {
+    "rec": 25.0,
+    "rec_td": 4.0,
+    "rec_yd": 296.0,
+    "rush_yd": 0.0
+   },
+   "team": "GB",
+   "war": -0.2282
+  },
+  {
+   "exp_wins": 5.5621,
+   "games": 8,
+   "id": "9487",
+   "name": "Parker Washington",
+   "others": [
+    "alwaysflexin"
+   ],
+   "owner": "MattCyg",
+   "points": 48.6,
+   "position": "WR",
+   "stats": {
+    "rec": 18.0,
+    "rec_td": 1.0,
+    "rec_yd": 236.0,
+    "rush_yd": 0.0
+   },
+   "team": "JAX",
+   "war": -0.3843
+  },
+  {
+   "exp_wins": 6.8648,
+   "games": 13,
+   "id": "9488",
+   "name": "Jaxon Smith-Njigba",
+   "others": [],
+   "owner": "KingDso",
+   "points": 167.7,
+   "position": "WR",
+   "stats": {
+    "rec": 75.0,
+    "rec_td": 5.0,
+    "rec_yd": 911.0,
+    "rush_yd": 17.0
+   },
+   "team": "SEA",
+   "war": 0.9183
+  },
+  {
+   "exp_wins": 5.4532,
+   "games": 6,
+   "id": "9492",
+   "name": "Trey Palmer",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 25.1,
+   "position": "WR",
+   "stats": {
+    "rec": 10.0,
+    "rec_td": 1.0,
+    "rec_yd": 141.0,
+    "rush_yd": 0.0
+   },
+   "team": "TB",
+   "war": -0.4932
+  },
+  {
+   "exp_wins": 7.0219,
+   "games": 8,
+   "id": "9493",
+   "name": "Puka Nacua",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 133.3,
+   "position": "WR",
+   "stats": {
+    "rec": 54.0,
+    "rec_td": 3.0,
+    "rec_yd": 708.0,
+    "rush_yd": 35.0
+   },
+   "team": "LAR",
+   "war": 1.0755
+  },
+  {
+   "exp_wins": 5.3575,
+   "games": 10,
+   "id": "9494",
+   "name": "Marvin Mims Jr.",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 54.2,
+   "position": "WR",
+   "stats": {
+    "rec": 19.0,
+    "rec_td": 2.0,
+    "rec_yd": 267.0,
+    "rush_yd": 40.0
+   },
+   "team": "DEN",
+   "war": -0.5889
+  },
+  {
+   "exp_wins": 5.5735,
+   "games": 4,
+   "id": "9495",
+   "name": "Rakim Jarrett",
+   "others": [],
+   "owner": null,
+   "points": 14.2,
+   "position": "WR",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 0.0,
+    "rec_yd": 107.0,
+    "rush_yd": 0.0
+   },
+   "team": "TB",
+   "war": -0.3729
+  },
+  {
+   "exp_wins": 5.6354,
+   "games": 3,
+   "id": "9497",
+   "name": "Jalin Hyatt",
+   "others": [],
+   "owner": null,
+   "points": 8.8,
+   "position": "WR",
+   "stats": {
+    "rec": 7.0,
+    "rec_td": 0.0,
+    "rec_yd": 53.0,
+    "rush_yd": 0.0
+   },
+   "team": "NYG",
+   "war": -0.311
+  },
+  {
+   "exp_wins": 5.8948,
+   "games": 1,
+   "id": "9499",
+   "name": "Bryce Ford-Wheaton",
+   "others": [],
+   "owner": null,
+   "points": 6.0,
+   "position": "WR",
+   "stats": {
+    "rec": 0.0,
+    "rec_td": 0.0,
+    "rec_yd": 0.0,
+    "rush_yd": 0.0
+   },
+   "team": "NYG",
+   "war": -0.0516
+  },
+  {
+   "exp_wins": 6.4132,
+   "games": 10,
+   "id": "9500",
+   "name": "Josh Downs",
+   "others": [],
+   "owner": "tg1212",
+   "points": 113.1,
+   "position": "WR",
+   "stats": {
+    "rec": 53.0,
+    "rec_td": 4.0,
+    "rec_yd": 594.0,
+    "rush_yd": 12.0
+   },
+   "team": "IND",
+   "war": 0.4668
+  },
+  {
+   "exp_wins": 5.5389,
+   "games": 12,
+   "id": "9501",
+   "name": "DeMario Douglas",
+   "others": [
+    "corygraham12"
+   ],
+   "owner": "KingDso",
+   "points": 82.7,
+   "position": "WR",
+   "stats": {
+    "rec": 52.0,
+    "rec_td": 1.0,
+    "rec_yd": 497.0,
+    "rush_yd": 10.0
+   },
+   "team": "NE",
+   "war": -0.4075
+  },
+  {
+   "exp_wins": 5.8739,
+   "games": 11,
+   "id": "9502",
+   "name": "Tank Dell",
+   "others": [
+    "alwaysflexin"
+   ],
+   "owner": "KingDso",
+   "points": 92.6,
+   "position": "WR",
+   "stats": {
+    "rec": 43.0,
+    "rec_td": 2.0,
+    "rec_yd": 543.0,
+    "rush_yd": 28.0
+   },
+   "team": "HOU",
+   "war": -0.0725
+  },
+  {
+   "exp_wins": 5.1768,
+   "games": 11,
+   "id": "9504",
+   "name": "Kayshon Boutte",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 53.5,
+   "position": "WR",
+   "stats": {
+    "rec": 25.0,
+    "rec_td": 1.0,
+    "rec_yd": 330.0,
+    "rush_yd": 0.0
+   },
+   "team": "NE",
+   "war": -0.7696
+  },
+  {
+   "exp_wins": 5.5638,
+   "games": 4,
+   "id": "9505",
+   "name": "Deuce Vaughn",
+   "others": [],
+   "owner": null,
+   "points": 6.6,
+   "position": "RB",
+   "stats": {
+    "rec": 3.0,
+    "rec_td": 0.0,
+    "rec_yd": 18.0,
+    "rush_td": 0.0,
+    "rush_yd": 33.0
+   },
+   "team": "DAL",
+   "war": -0.6546
+  },
+  {
+   "exp_wins": 5.6554,
+   "games": 8,
+   "id": "9506",
+   "name": "Sean Tucker",
+   "others": [
+    "KingDso"
+   ],
+   "owner": "zagaplooza",
+   "points": 58.0,
+   "position": "RB",
+   "stats": {
+    "rec": 8.0,
+    "rec_td": 1.0,
+    "rec_yd": 104.0,
+    "rush_td": 2.0,
+    "rush_yd": 236.0
+   },
+   "team": "TB",
+   "war": -0.5629
+  },
+  {
+   "exp_wins": 5.2116,
+   "games": 9,
+   "id": "9508",
+   "name": "Tyjae Spears",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 42.5,
+   "position": "RB",
+   "stats": {
+    "rec": 18.0,
+    "rec_td": 0.0,
+    "rec_yd": 90.0,
+    "rush_td": 1.0,
+    "rush_yd": 185.0
+   },
+   "team": "TEN",
+   "war": -1.0068
+  },
+  {
+   "exp_wins": 7.7036,
+   "games": 13,
+   "id": "9509",
+   "name": "Bijan Robinson",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 226.3,
+   "position": "RB",
+   "stats": {
+    "rec": 53.0,
+    "rec_td": 1.0,
+    "rec_yd": 401.0,
+    "rush_td": 8.0,
+    "rush_yd": 977.0
+   },
+   "team": "ATL",
+   "war": 1.4852
+  },
+  {
+   "exp_wins": 5.7322,
+   "games": 13,
+   "id": "96",
+   "name": "Aaron Rodgers",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 190.24,
+   "position": "QB",
+   "stats": {
+    "pass_int": 8.0,
+    "pass_td": 20.0,
+    "pass_yd": 2966.0,
+    "rush_td": 0.0,
+    "rush_yd": 56.0
+   },
+   "team": "NYJ",
+   "war": -0.1877
+  },
+  {
+   "exp_wins": 6.0159,
+   "games": 13,
+   "id": "9753",
+   "name": "Zach Charbonnet",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 134.3,
+   "position": "RB",
+   "stats": {
+    "rec": 36.0,
+    "rec_td": 1.0,
+    "rec_yd": 263.0,
+    "rush_td": 7.0,
+    "rush_yd": 400.0
+   },
+   "team": "SEA",
+   "war": -0.2024
+  },
+  {
+   "exp_wins": 6.182,
+   "games": 10,
+   "id": "9754",
+   "name": "Quentin Johnston",
+   "others": [],
+   "owner": "zagaplooza",
+   "points": 100.5,
+   "position": "WR",
+   "stats": {
+    "rec": 29.0,
+    "rec_td": 7.0,
+    "rec_yd": 414.0,
+    "rush_yd": 6.0
+   },
+   "team": "LAC",
+   "war": 0.2356
+  },
+  {
+   "exp_wins": 6.7721,
+   "games": 11,
+   "id": "9756",
+   "name": "Jordan Addison",
+   "others": [],
+   "owner": "gonzas",
+   "points": 146.8,
+   "position": "WR",
+   "stats": {
+    "rec": 44.0,
+    "rec_td": 7.0,
+    "rec_yd": 708.0,
+    "rush_yd": 20.0
+   },
+   "team": "MIN",
+   "war": 0.8257
+  },
+  {
+   "exp_wins": 5.9053,
+   "games": 3,
+   "id": "9757",
+   "name": "Kendre Miller",
+   "others": [],
+   "owner": "tg1212",
+   "points": 15.5,
+   "position": "RB",
+   "stats": {
+    "rec": 2.0,
+    "rec_td": 0.0,
+    "rec_yd": 1.0,
+    "rush_td": 1.0,
+    "rush_yd": 84.0
+   },
+   "team": "NO",
+   "war": -0.313
+  },
+  {
+   "exp_wins": 5.626,
+   "games": 13,
+   "id": "9758",
+   "name": "C.J. Stroud",
+   "others": [],
+   "owner": "zagaplooza",
+   "points": 184.58,
+   "position": "QB",
+   "stats": {
+    "pass_int": 9.0,
+    "pass_td": 15.0,
+    "pass_yd": 3117.0,
+    "rush_td": 0.0,
+    "rush_yd": 199.0
+   },
+   "team": "HOU",
+   "war": -0.2938
+  },
+  {
+   "exp_wins": 6.6332,
+   "games": 13,
+   "id": "9997",
+   "name": "Zay Flowers",
+   "others": [
+    "KingDso"
+   ],
+   "owner": "alwaysflexin",
+   "points": 152.7,
+   "position": "WR",
+   "stats": {
+    "rec": 60.0,
+    "rec_td": 4.0,
+    "rec_yd": 863.0,
+    "rush_yd": 44.0
+   },
+   "team": "BAL",
+   "war": 0.6868
+  },
+  {
+   "exp_wins": 5.2195,
+   "games": 3,
+   "id": "9998",
+   "name": "Hendon Hooker",
+   "others": [],
+   "owner": null,
+   "points": 2.68,
+   "position": "QB",
+   "stats": {
+    "pass_int": 0.0,
+    "pass_td": 0.0,
+    "pass_yd": 62.0,
+    "rush_td": 0.0,
+    "rush_yd": 2.0
+   },
+   "team": "DET",
+   "war": -0.7004
+  },
+  {
+   "exp_wins": 5.2073,
+   "games": 10,
+   "id": "9999",
+   "name": "Will Levis",
+   "others": [
+    "Gixxersean1"
+   ],
+   "owner": "khar432",
+   "points": 112.58,
+   "position": "QB",
+   "stats": {
+    "pass_int": 9.0,
+    "pass_td": 12.0,
+    "pass_yd": 1827.0,
+    "rush_td": 0.0,
+    "rush_yd": 175.0
+   },
+   "team": "TEN",
+   "war": -0.7125
+  },
+  {
+   "exp_wins": 6.7811,
+   "games": 13,
+   "id": "ARI",
+   "name": "Arizona Cardinals",
+   "others": [],
+   "owner": "tg1212",
+   "points": 108.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 0.0,
+    "fum_rec": 7.0,
+    "int": 6.0,
+    "pts_allow": 21.8,
+    "sack": 34.0
+   },
+   "team": "ARI",
+   "war": 0.0405
+  },
+  {
+   "exp_wins": 6.4505,
+   "games": 10,
+   "id": "ATL",
+   "name": "Atlanta Falcons",
+   "others": [
+    "Z28kid86"
+   ],
+   "owner": "alwaysflexin",
+   "points": 66.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 2.0,
+    "fum_rec": 3.0,
+    "int": 7.0,
+    "pts_allow": 22.9,
+    "sack": 14.0
+   },
+   "team": "ATL",
+   "war": -0.29
+  },
+  {
+   "exp_wins": 6.3411,
+   "games": 13,
+   "id": "BAL",
+   "name": "Baltimore Ravens",
+   "others": [
+    "alwaysflexin"
+   ],
+   "owner": "Jdeguire",
+   "points": 85.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 0.0,
+    "fum_rec": 4.0,
+    "int": 7.0,
+    "pts_allow": 24.3,
+    "sack": 41.0
+   },
+   "team": "BAL",
+   "war": -0.3995
+  },
+  {
+   "exp_wins": 7.0728,
+   "games": 13,
+   "id": "BUF",
+   "name": "Buffalo Bills",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 125.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 2.0,
+    "fum_rec": 9.0,
+    "int": 13.0,
+    "pts_allow": 20.6,
+    "sack": 29.0
+   },
+   "team": "BUF",
+   "war": 0.3323
+  },
+  {
+   "exp_wins": 5.8874,
+   "games": 12,
+   "id": "CAR",
+   "name": "Carolina Panthers",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 51.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 0.0,
+    "fum_rec": 5.0,
+    "int": 7.0,
+    "pts_allow": 29.0,
+    "sack": 24.0
+   },
+   "team": "CAR",
+   "war": -0.8532
+  },
+  {
+   "exp_wins": 6.7958,
+   "games": 13,
+   "id": "CHI",
+   "name": "Chicago Bears",
+   "others": [
+    "MattCyg",
+    "KingDso"
+   ],
+   "owner": "corygraham12",
+   "points": 111.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 1.0,
+    "fum_rec": 10.0,
+    "int": 10.0,
+    "pts_allow": 21.2,
+    "sack": 31.0
+   },
+   "team": "CHI",
+   "war": 0.0553
+  },
+  {
+   "exp_wins": 6.0376,
+   "games": 13,
+   "id": "CIN",
+   "name": "Cincinnati Bengals",
+   "others": [
+    "Gixxersean1"
+   ],
+   "owner": "alwaysflexin",
+   "points": 67.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 1.0,
+    "fum_rec": 5.0,
+    "int": 8.0,
+    "pts_allow": 26.3,
+    "sack": 24.0
+   },
+   "team": "CIN",
+   "war": -0.703
+  },
+  {
+   "exp_wins": 6.4525,
+   "games": 13,
+   "id": "CLE",
+   "name": "Cleveland Browns",
+   "others": [],
+   "owner": "Jdeguire",
+   "points": 91.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 1.0,
+    "fum_rec": 6.0,
+    "int": 4.0,
+    "pts_allow": 24.8,
+    "sack": 33.0
+   },
+   "team": "CLE",
+   "war": -0.288
+  },
+  {
+   "exp_wins": 6.8714,
+   "games": 12,
+   "id": "DAL",
+   "name": "Dallas Cowboys",
+   "others": [
+    "corygraham12"
+   ],
+   "owner": "gonzas",
+   "points": 107.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 1.0,
+    "fum_rec": 5.0,
+    "int": 10.0,
+    "pts_allow": 26.1,
+    "sack": 33.0
+   },
+   "team": "DAL",
+   "war": 0.1309
+  },
+  {
+   "exp_wins": 7.4453,
+   "games": 13,
+   "id": "DEN",
+   "name": "Denver Broncos",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 146.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 4.0,
+    "fum_rec": 5.0,
+    "int": 12.0,
+    "pts_allow": 18.0,
+    "sack": 47.0
+   },
+   "team": "DEN",
+   "war": 0.7047
+  },
+  {
+   "exp_wins": 7.1138,
+   "games": 13,
+   "id": "DET",
+   "name": "Detroit Lions",
+   "others": [],
+   "owner": "corygraham12",
+   "points": 128.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 1.0,
+    "fum_rec": 6.0,
+    "int": 14.0,
+    "pts_allow": 17.4,
+    "sack": 31.0
+   },
+   "team": "DET",
+   "war": 0.3733
+  },
+  {
+   "exp_wins": 7.1686,
+   "games": 13,
+   "id": "GB",
+   "name": "Green Bay Packers",
+   "others": [
+    "zagaplooza",
+    "alwaysflexin",
+    "gonzas"
+   ],
+   "owner": "corygraham12",
+   "points": 131.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 1.0,
+    "fum_rec": 10.0,
+    "int": 12.0,
+    "pts_allow": 20.2,
+    "sack": 33.0
+   },
+   "team": "GB",
+   "war": 0.428
+  },
+  {
+   "exp_wins": 7.0632,
+   "games": 13,
+   "id": "HOU",
+   "name": "Houston Texans",
+   "others": [
+    "MattCyg"
+   ],
+   "owner": "tg1212",
+   "points": 125.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 2.0,
+    "fum_rec": 5.0,
+    "int": 16.0,
+    "pts_allow": 22.0,
+    "sack": 42.0
+   },
+   "team": "HOU",
+   "war": 0.3226
+  },
+  {
+   "exp_wins": 6.7798,
+   "games": 13,
+   "id": "IND",
+   "name": "Indianapolis Colts",
+   "others": [],
+   "owner": "khar432",
+   "points": 109.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 1.0,
+    "fum_rec": 9.0,
+    "int": 9.0,
+    "pts_allow": 22.5,
+    "sack": 32.0
+   },
+   "team": "IND",
+   "war": 0.0392
+  },
+  {
+   "exp_wins": 5.9564,
+   "games": 13,
+   "id": "JAX",
+   "name": "Jacksonville Jaguars",
+   "others": [],
+   "owner": "MattCyg",
+   "points": 63.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 1.0,
+    "fum_rec": 2.0,
+    "int": 5.0,
+    "pts_allow": 26.4,
+    "sack": 25.0
+   },
+   "team": "JAX",
+   "war": -0.7842
+  },
+  {
+   "exp_wins": 6.3234,
+   "games": 13,
+   "id": "KC",
+   "name": "Kansas City Chiefs",
+   "others": [],
+   "owner": "khar432",
+   "points": 84.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 1.0,
+    "fum_rec": 4.0,
+    "int": 6.0,
+    "pts_allow": 19.4,
+    "sack": 27.0
+   },
+   "team": "KC",
+   "war": -0.4171
+  },
+  {
+   "exp_wins": 7.2344,
+   "games": 12,
+   "id": "LAC",
+   "name": "Los Angeles Chargers",
+   "others": [
+    "tg1212",
+    "khar432"
+   ],
+   "owner": "zagaplooza",
+   "points": 126.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 1.0,
+    "fum_rec": 4.0,
+    "int": 13.0,
+    "pts_allow": 14.6,
+    "sack": 38.0
+   },
+   "team": "LAC",
+   "war": 0.4939
+  },
+  {
+   "exp_wins": 6.8773,
+   "games": 11,
+   "id": "LAR",
+   "name": "Los Angeles Rams",
+   "others": [],
+   "owner": "alwaysflexin",
+   "points": 98.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 3.0,
+    "fum_rec": 4.0,
+    "int": 10.0,
+    "pts_allow": 25.2,
+    "sack": 27.0
+   },
+   "team": "LAR",
+   "war": 0.1368
+  },
+  {
+   "exp_wins": 5.821,
+   "games": 12,
+   "id": "LV",
+   "name": "Las Vegas Raiders",
+   "others": [],
+   "owner": "tg1212",
+   "points": 48.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 1.0,
+    "fum_rec": 1.0,
+    "int": 7.0,
+    "pts_allow": 26.2,
+    "sack": 28.0
+   },
+   "team": "LV",
+   "war": -0.9196
+  },
+  {
+   "exp_wins": 6.1501,
+   "games": 12,
+   "id": "MIA",
+   "name": "Miami Dolphins",
+   "others": [
+    "zagaplooza"
+   ],
+   "owner": "MattCyg",
+   "points": 66.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 0.0,
+    "fum_rec": 4.0,
+    "int": 7.0,
+    "pts_allow": 20.9,
+    "sack": 24.0
+   },
+   "team": "MIA",
+   "war": -0.5904
+  },
+  {
+   "exp_wins": 7.5829,
+   "games": 13,
+   "id": "MIN",
+   "name": "Minnesota Vikings",
+   "others": [],
+   "owner": "KingDso",
+   "points": 153.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 3.0,
+    "fum_rec": 5.0,
+    "int": 20.0,
+    "pts_allow": 17.8,
+    "sack": 40.0
+   },
+   "team": "MIN",
+   "war": 0.8424
+  },
+  {
+   "exp_wins": 6.3538,
+   "games": 12,
+   "id": "NE",
+   "name": "New England Patriots",
+   "others": [
+    "Gixxersean1"
+   ],
+   "owner": "MattCyg",
+   "points": 77.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 1.0,
+    "fum_rec": 2.0,
+    "int": 5.0,
+    "pts_allow": 21.7,
+    "sack": 25.0
+   },
+   "team": "NE",
+   "war": -0.3868
+  },
+  {
+   "exp_wins": 6.7287,
+   "games": 13,
+   "id": "NO",
+   "name": "New Orleans Saints",
+   "others": [
+    "tg1212",
+    "corygraham12",
+    "gonzas"
+   ],
+   "owner": "alwaysflexin",
+   "points": 106.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 0.0,
+    "fum_rec": 3.0,
+    "int": 13.0,
+    "pts_allow": 20.6,
+    "sack": 29.0
+   },
+   "team": "NO",
+   "war": -0.0118
+  },
+  {
+   "exp_wins": 6.7453,
+   "games": 12,
+   "id": "NYG",
+   "name": "New York Giants",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 99.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 0.0,
+    "fum_rec": 8.0,
+    "int": 2.0,
+    "pts_allow": 20.7,
+    "sack": 38.0
+   },
+   "team": "NYG",
+   "war": 0.0048
+  },
+  {
+   "exp_wins": 6.5181,
+   "games": 13,
+   "id": "NYJ",
+   "name": "New York Jets",
+   "others": [],
+   "owner": "Gixxersean1",
+   "points": 94.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 0.0,
+    "fum_rec": 6.0,
+    "int": 2.0,
+    "pts_allow": 22.2,
+    "sack": 37.0
+   },
+   "team": "NYJ",
+   "war": -0.2225
+  },
+  {
+   "exp_wins": 6.9408,
+   "games": 13,
+   "id": "PHI",
+   "name": "Philadelphia Eagles",
+   "others": [
+    "KingDso",
+    "MattCyg"
+   ],
+   "owner": "CheefWiggum",
+   "points": 119.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 0.0,
+    "fum_rec": 6.0,
+    "int": 8.0,
+    "pts_allow": 17.5,
+    "sack": 37.0
+   },
+   "team": "PHI",
+   "war": 0.2002
+  },
+  {
+   "exp_wins": 7.6451,
+   "games": 13,
+   "id": "PIT",
+   "name": "Pittsburgh Steelers",
+   "others": [],
+   "owner": "gonzas",
+   "points": 156.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 1.0,
+    "fum_rec": 11.0,
+    "int": 15.0,
+    "pts_allow": 17.8,
+    "sack": 32.0
+   },
+   "team": "PIT",
+   "war": 0.9046
+  },
+  {
+   "exp_wins": 7.2358,
+   "games": 13,
+   "id": "SEA",
+   "name": "Seattle Seahawks",
+   "others": [],
+   "owner": "zagaplooza",
+   "points": 134.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 4.0,
+    "fum_rec": 4.0,
+    "int": 11.0,
+    "pts_allow": 21.0,
+    "sack": 32.0
+   },
+   "team": "SEA",
+   "war": 0.4952
+  },
+  {
+   "exp_wins": 6.718,
+   "games": 13,
+   "id": "SF",
+   "name": "San Francisco 49ers",
+   "others": [],
+   "owner": "CheefWiggum",
+   "points": 107.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 1.0,
+    "fum_rec": 5.0,
+    "int": 11.0,
+    "pts_allow": 23.7,
+    "sack": 35.0
+   },
+   "team": "SF",
+   "war": -0.0225
+  },
+  {
+   "exp_wins": 6.7964,
+   "games": 12,
+   "id": "TB",
+   "name": "Tampa Bay Buccaneers",
+   "others": [
+    "MattCyg"
+   ],
+   "owner": "Gixxersean1",
+   "points": 102.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 1.0,
+    "fum_rec": 7.0,
+    "int": 6.0,
+    "pts_allow": 22.3,
+    "sack": 33.0
+   },
+   "team": "TB",
+   "war": 0.0559
+  },
+  {
+   "exp_wins": 6.2193,
+   "games": 12,
+   "id": "TEN",
+   "name": "Tennessee Titans",
+   "others": [],
+   "owner": "Z28kid86",
+   "points": 70.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 0.0,
+    "fum_rec": 3.0,
+    "int": 8.0,
+    "pts_allow": 24.8,
+    "sack": 27.0
+   },
+   "team": "TEN",
+   "war": -0.5212
+  },
+  {
+   "exp_wins": 6.4417,
+   "games": 13,
+   "id": "WAS",
+   "name": "Washington Commanders",
+   "others": [
+    "alwaysflexin"
+   ],
+   "owner": "tg1212",
+   "points": 90.0,
+   "position": "DEF",
+   "stats": {
+    "def_td": 1.0,
+    "fum_rec": 8.0,
+    "int": 4.0,
+    "pts_allow": 22.8,
+    "sack": 32.0
+   },
+   "team": "WAS",
+   "war": -0.2988
+  }
+ ],
+ "replacement": {
+  "DEF": {
+   "baseline_wins": 6.7405,
+   "level": 8.2143
+  },
+  "QB": {
+   "baseline_wins": 5.9198,
+   "level": 15.5657
+  },
+  "RB": {
+   "baseline_wins": 6.2184,
+   "level": 11.0886
+  },
+  "TE": {
+   "baseline_wins": 6.1533,
+   "level": 6.0548
+  },
+  "WR": {
+   "baseline_wins": 5.9464,
+   "level": 8.8619
+  }
+ },
+ "season": "2024",
+ "through_week": 14,
+ "walkthrough": {
+  "11604": {
+   "exp_wins": 7.7061,
+   "games": 13,
+   "holders": [
+    "996990298775420928"
+   ],
+   "name": "Brock Bowers",
+   "owner": "996990298775420928",
+   "points": 166.2,
+   "position": "TE",
+   "stats": {
+    "rec": 87.0,
+    "rec_td": 4.0,
+    "rec_yd": 933.0,
+    "rush_yd": 14.0
+   },
+   "team": "LV",
+   "war": 1.5528,
+   "weekly": [
+    {
+     "p": 0.4905,
+     "played": true,
+     "score": 8.8,
+     "week": 1
+    },
+    {
+     "p": 0.5922,
+     "played": true,
+     "score": 14.3,
+     "week": 2
+    },
+    {
+     "p": 0.4312,
+     "played": true,
+     "score": 5.6,
+     "week": 3
+    },
+    {
+     "p": 0.4038,
+     "played": true,
+     "score": 4.1,
+     "week": 4
+    },
+    {
+     "p": 0.6864,
+     "played": true,
+     "score": 19.7,
+     "week": 5
+    },
+    {
+     "p": 0.5426,
+     "played": true,
+     "score": 11.6,
+     "week": 6
+    },
+    {
+     "p": 0.5922,
+     "played": true,
+     "score": 14.3,
+     "week": 7
+    },
+    {
+     "p": 0.4812,
+     "played": true,
+     "score": 8.3,
+     "week": 8
+    },
+    {
+     "p": 0.5685,
+     "played": true,
+     "score": 13.0,
+     "week": 9
+    },
+    {
+     "p": 0.4395,
+     "played": false,
+     "score": 6.05,
+     "week": 10
+    },
+    {
+     "p": 0.7932,
+     "played": true,
+     "score": 26.8,
+     "week": 11
+    },
+    {
+     "p": 0.4348,
+     "played": true,
+     "score": 5.8,
+     "week": 12
+    },
+    {
+     "p": 0.7985,
+     "played": true,
+     "score": 27.2,
+     "week": 13
+    },
+    {
+     "p": 0.4514,
+     "played": true,
+     "score": 6.7,
+     "week": 14
+    }
+   ]
+  },
+  "4217": {
+   "exp_wins": 7.8506,
+   "games": 11,
+   "holders": [
+    "785995674914312192"
+   ],
+   "name": "George Kittle",
+   "owner": "785995674914312192",
+   "points": 160.0,
+   "position": "TE",
+   "stats": {
+    "rec": 56.0,
+    "rec_td": 8.0,
+    "rec_yd": 800.0,
+    "rush_yd": 0.0
+   },
+   "team": "SF",
+   "war": 1.6973,
+   "weekly": [
+    {
+     "p": 0.4385,
+     "played": true,
+     "score": 6.0,
+     "week": 1
+    },
+    {
+     "p": 0.6421,
+     "played": true,
+     "score": 17.1,
+     "week": 2
+    },
+    {
+     "p": 0.4395,
+     "played": false,
+     "score": 6.05,
+     "week": 3
+    },
+    {
+     "p": 0.5593,
+     "played": true,
+     "score": 12.5,
+     "week": 4
+    },
+    {
+     "p": 0.6298,
+     "played": true,
+     "score": 16.4,
+     "week": 5
+    },
+    {
+     "p": 0.6963,
+     "played": true,
+     "score": 20.3,
+     "week": 6
+    },
+    {
+     "p": 0.5537,
+     "played": true,
+     "score": 12.2,
+     "week": 7
+    },
+    {
+     "p": 0.7509,
+     "played": true,
+     "score": 23.8,
+     "week": 8
+    },
+    {
+     "p": 0.4395,
+     "played": false,
+     "score": 6.05,
+     "week": 9
+    },
+    {
+     "p": 0.5721,
+     "played": true,
+     "score": 13.2,
+     "week": 10
+    },
+    {
+     "p": 0.4395,
+     "played": false,
+     "score": 6.05,
+     "week": 11
+    },
+    {
+     "p": 0.6439,
+     "played": true,
+     "score": 17.2,
+     "week": 12
+    },
+    {
+     "p": 0.3523,
+     "played": true,
+     "score": 1.2,
+     "week": 13
+    },
+    {
+     "p": 0.693,
+     "played": true,
+     "score": 20.1,
+     "week": 14
+    }
+   ]
+  }
+ }
+}
