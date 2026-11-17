@@ -11,7 +11,8 @@ leagues:
   redraft:
     league_id: "1389347876550770688"
     name: Chris Carter's Fall Guys
-
+site:
+  refresh_url: https://ffapp-refresh.tgraham1212.workers.dev
 # Optional website settings. `refresh_url` is the address of the refresh relay (a Cloudflare
 # Worker, see relay/README.md); with it set, every page shows a "Refresh" button. Leave it out
 # and the site works exactly as before.

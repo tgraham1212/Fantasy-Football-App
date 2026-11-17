@@ -24,7 +24,13 @@ token makes a few GitHub API calls per page load.
 ## 2. Create the Worker
 
 1. Sign up at <https://dash.cloudflare.com> (free plan).
-2. From this folder, deploy the Worker with Wrangler (Cloudflare's CLI, run through `npx`,
+2. Register your account's `workers.dev` subdomain (once per account; Wrangler refuses to
+   publish until it exists): dashboard → **Workers & Pages** → set up the subdomain when
+   prompted, or **Account details → Subdomain → Change**. Pick any free name; the Worker's
+   address becomes `https://ffapp-refresh.<subdomain>.workers.dev`. A new subdomain can take
+   a few minutes to start resolving. Newer Wrangler versions also offer to register it
+   during the deploy below.
+3. From this folder, deploy the Worker with Wrangler (Cloudflare's CLI, run through `npx`,
    nothing to install globally):
 
    ```bash
