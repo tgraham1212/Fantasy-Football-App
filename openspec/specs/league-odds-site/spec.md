@@ -7,7 +7,7 @@ Gives league members a public website where they can see their team's current pl
 ## Requirements
 
 ### Requirement: League pages
-The site SHALL have a page for each configured league that shows that league's current season. Visitors SHALL be able to switch between leagues. Each league page SHALL have two sub-tabs, "Predictions" (the odds table and charts) and "Player WAR", with the selected sub-tab kept in the page URL so a link opens on that sub-tab, and the sub-tab kept when switching league.
+The site SHALL have a page for each configured league that shows that league's current season. Visitors SHALL be able to switch between leagues. Each league page SHALL have three sub-tabs in this order: "Predictions" (the odds table and charts), "Games" and "Player WAR", with the selected sub-tab kept in the page URL so a link opens on that sub-tab, and the sub-tab kept when switching league.
 
 #### Scenario: Switch league
 - **WHEN** a visitor on the dynasty page picks the redraft league
@@ -20,6 +20,10 @@ The site SHALL have a page for each configured league that shows that league's c
 #### Scenario: Link to a sub-tab
 - **WHEN** a visitor opens a link whose URL names the dynasty league and the Player WAR sub-tab
 - **THEN** the page opens on the dynasty Player WAR page
+
+#### Scenario: Open the Games sub-tab
+- **WHEN** a visitor picks "Games", which sits between "Predictions" and "Player WAR"
+- **THEN** the league's Games page is shown and the URL identifies the league and the Games sub-tab
 
 ### Requirement: Current odds table
 Each league page SHALL show a table with one row per team and these columns in order: ELO, 1-week ELO change, owner (owner display name with the team name beneath it and the current record beside the owner name), projected final record, and four chance columns: the league's bottom column (see "League-dependent bottom column"), make playoffs, first-round bye, win championship. Until a visitor sorts the table, rows SHALL be in league standings order: wins (a tie counts half), then points scored.
@@ -97,7 +101,7 @@ League pages SHALL be readable on a 375px-wide screen without horizontal page sc
 - **THEN** the page itself doesn't scroll sideways and the chart fits the screen width
 
 ### Requirement: Scheduled refresh
-A scheduled job SHALL run at least once a day. It SHALL sync league data, refresh projections and player stats, capture the start-percentage snapshot, refresh manager ratings, replacement levels and player WAR, run the simulation for the current as-of week, save the results, commit the stored data to the repository and republish the site. It SHALL also be possible to start the job by hand.
+A scheduled job SHALL check hourly, following the game-aware schedule, whether to refresh, and SHALL refresh at least daily. A refresh SHALL update league data, projections, stats, the NFL schedule, injury statuses and the start-percentage snapshot; recompute ratings, replacement levels, WAR, the odds for the current as-of week and the game logs and records; commit the stored data and republish the site. The job SHALL also be startable by hand.
 
 #### Scenario: Day after Monday night
 - **WHEN** the scheduled run happens the day after Monday night's game ends and week 10 is final in Sleeper
@@ -122,6 +126,10 @@ A scheduled job SHALL run at least once a day. It SHALL sync league data, refres
 #### Scenario: ESPN unavailable
 - **WHEN** the snapshot capture fails during a scheduled run
 - **THEN** the failure is logged, the remaining steps still run using the snapshots already stored, the odds are still refreshed and published, and the run ends with a warning naming the skipped step and the reason, shown as an annotation on the job run
+
+#### Scenario: Games refreshed before kickoff
+- **WHEN** the refresh runs 40 minutes before Sunday's 1 pm games
+- **THEN** the NFL schedule, injury statuses and every current-week game log are updated and the Games page shows the new forecasts
 
 ### Requirement: League-dependent bottom column
 The first chance column SHALL depend on the league's Sleeper settings. A toilet-bowl league SHALL show "Avoid Loser's Bye": the chance of finishing outside the bottom two of the regular-season standings. A dynasty league with a consolation bracket SHALL show "#1 Pick": the chance of finishing last. Any other league SHALL show "Avoid Loser's Bye". The exported data SHALL name the column so the site needs no league-specific rules.
