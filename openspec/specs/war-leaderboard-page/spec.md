@@ -55,7 +55,7 @@ The fantasy owner shown for a player-season SHALL be the manager whose roster he
 - **THEN** the owner cell shows a dash
 
 ### Requirement: Expanded list
-Each table SHALL have an expand control that opens a scrollable overlay listing every player with a WAR at that position for the selected season or mode, with columns rank, name, NFL team, owner, games played (GP), points scored (PS), the position's stat columns, WAR, and year in All-Time Seasons mode.
+Each table SHALL have an expand control that opens a scrollable overlay listing every player with a WAR at that position for the selected season or mode, with columns rank, name, NFL team, owner, games played (GP), points scored (PS), the position's stat columns, WAR, and year in All-Time Seasons mode. The table SHALL be the overlay's only scroll area: it fills the overlay's height below the title and hint, and the overlay itself never scrolls.
 
 #### Scenario: Open the full list
 - **WHEN** the visitor expands the RB table for 2024
@@ -64,6 +64,10 @@ Each table SHALL have an expand control that opens a scrollable overlay listing 
 #### Scenario: Close
 - **WHEN** the visitor closes the overlay
 - **THEN** the page is as it was, with the same season selected
+
+#### Scenario: One scroll bar
+- **WHEN** the quarterback list for 2026 is longer than the screen
+- **THEN** only the table scrolls, its header stays in view, and the overlay's title and close button never scroll away
 
 ### Requirement: Position stat columns
 The expanded list's stat columns SHALL depend on the position: QB pass yds, pass TD, INT, rush yds, rush TD; RB rush yds, rush TD, rec, rec yds, rec TD; WR and TE rec, rec yds, rec TD, rush yds; K FG made, FG att, XP made; DEF sacks, INT, fumble rec, TD, points allowed per game. All SHALL be season totals from the stored stat lines except points allowed per game, which is the mean over games played.
