@@ -7,7 +7,11 @@ The Player WAR page of each league: per-position leaderboards for a season or al
 ## Requirements
 
 ### Requirement: Season control
-The Player WAR page SHALL default to the league's current season, labelled with the last scored week it runs through, and SHALL offer a dropdown of every season the league has a WAR file for plus an "All-Time" entry. Seasons before the first weekly-cut season SHALL be noted on the page as using a yearly replacement cut.
+The Player WAR page SHALL default to the league's current season, labelled with the last scored week it runs through, and SHALL offer a dropdown of every season the league has a WAR file for plus an "All-Time" entry. The page SHALL say which replacement cut the shown season uses:
+
+- **Yearly:** one start-percentage snapshot for the season.
+- **Merged:** weekly snapshots where they exist, and otherwise each player's start percentage from the weeks he played, or his ownership when he was not seen active.
+- **Weekly:** no note.
 
 #### Scenario: Default season
 - **WHEN** a visitor opens the Player WAR page in November 2026
@@ -16,6 +20,10 @@ The Player WAR page SHALL default to the league's current season, labelled with 
 #### Scenario: Past season
 - **WHEN** the visitor picks 2023
 - **THEN** the 2023 leaderboards are shown with the yearly-cut note
+
+#### Scenario: Partly captured season
+- **WHEN** the visitor views 2026, whose WAR file is marked merged
+- **THEN** the page shows the merged-cut note instead of the yearly-cut note
 
 ### Requirement: Position leaderboards
 The page SHALL show one table per lineup position with the top 10 players by WAR, laid out in two columns in the order QB and RB, WR and TE, DEF and K. A league without a position SHALL omit that table, and a table left alone on the last row SHALL be centred. Compact columns SHALL be rank, name, NFL team, fantasy owner and WAR.

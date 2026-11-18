@@ -7,7 +7,7 @@ Gives league members a public website where they can see their team's current pl
 ## Requirements
 
 ### Requirement: League pages
-The site SHALL have a page for each configured league that shows that league's current season. Visitors SHALL be able to switch between leagues. Each league page SHALL have three sub-tabs in this order: "Predictions" (the odds table and charts), "Games" and "Player WAR", with the selected sub-tab kept in the page URL so a link opens on that sub-tab, and the sub-tab kept when switching league.
+The site SHALL have a page for each configured league that shows that league's current season. Visitors SHALL be able to switch between leagues. Each league page SHALL have four sub-tabs in this order: "Predictions" (the odds table and charts), "Games", "Positions" and "Player WAR". The selected sub-tab SHALL be kept in the page URL, so a link opens on that sub-tab, and SHALL be kept when switching league.
 
 #### Scenario: Switch league
 - **WHEN** a visitor on the dynasty page picks the redraft league
@@ -22,8 +22,12 @@ The site SHALL have a page for each configured league that shows that league's c
 - **THEN** the page opens on the dynasty Player WAR page
 
 #### Scenario: Open the Games sub-tab
-- **WHEN** a visitor picks "Games", which sits between "Predictions" and "Player WAR"
+- **WHEN** a visitor picks "Games", which sits between "Predictions" and "Positions"
 - **THEN** the league's Games page is shown and the URL identifies the league and the Games sub-tab
+
+#### Scenario: Open the Positions sub-tab
+- **WHEN** a visitor picks "Positions", which sits between "Games" and "Player WAR"
+- **THEN** the league's Positional Rankings page is shown and the URL identifies the league and the Positions sub-tab
 
 ### Requirement: Current odds table
 Each league page SHALL show a table with one row per team and these columns in order: ELO, 1-week ELO change, owner (owner display name with the team name beneath it and the current record beside the owner name), projected final record, and four chance columns: the league's bottom column (see "League-dependent bottom column"), make playoffs, first-round bye, win championship. Until a visitor sorts the table, rows SHALL be in league standings order: wins (a tie counts half), then points scored.
@@ -98,11 +102,29 @@ The site SHALL be static files that need no server code, login or calls to Sleep
 - **THEN** the pages show their data as usual and the button reports that a refresh could not be started
 
 ### Requirement: Usable on phones
-League pages SHALL be readable on a 375px-wide screen without horizontal page scrolling. The odds table MAY scroll horizontally inside its own container.
+League pages SHALL be readable on a 375px-wide screen without horizontal page scrolling. The odds table MAY scroll horizontally inside its own container. When the sub-tabs do not fit the screen width, the sub-tab menu SHALL scroll sideways inside its own strip with a swipe:
+
+- The tabs SHALL snap into place.
+- The edge with more tabs beyond it SHALL fade.
+- The selected sub-tab SHALL be scrolled into view on load.
+- No scroll bar SHALL show.
+- Swiping the menu SHALL not move the rest of the page.
 
 #### Scenario: Phone visit
 - **WHEN** a visitor opens a league page on a 375px-wide screen
 - **THEN** the page itself doesn't scroll sideways and the chart fits the screen width
+
+#### Scenario: Swipe the sub-tabs
+- **WHEN** a visitor on a 375px-wide screen swipes the sub-tab menu left
+- **THEN** the menu scrolls to reveal "Player WAR", the tabs settle on a tab edge, and the page below stays where it was
+
+#### Scenario: Linked to the last sub-tab
+- **WHEN** a visitor on a phone opens a link to the Player WAR sub-tab
+- **THEN** the menu opens scrolled so "Player WAR" is visible and marked selected
+
+#### Scenario: Wide screen
+- **WHEN** the sub-tabs fit the screen width
+- **THEN** the menu does not scroll and shows no fade
 
 ### Requirement: Scheduled refresh
 A scheduled job SHALL check hourly, following the game-aware schedule, whether to refresh, and SHALL refresh at least daily. A refresh SHALL update league data, projections, stats, the NFL schedule, injury statuses and the start-percentage snapshot; recompute ratings, replacement levels, WAR, the odds for the current as-of week and the game logs and records; commit the stored data and republish the site. The job SHALL also be startable by hand.
