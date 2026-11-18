@@ -7,7 +7,7 @@
     0.0,
     15.0
    ],
-   "replacement": 7.43
+   "replacement": 7.13
   },
   "K": {
    "axis": [
@@ -28,21 +28,21 @@
     0.0,
     25.0
    ],
-   "replacement": 8.47
+   "replacement": 8.91
   },
   "TE": {
    "axis": [
     0.0,
     20.0
    ],
-   "replacement": 6.48
+   "replacement": 6.52
   },
   "WR": {
    "axis": [
     0.0,
     25.0
    ],
-   "replacement": 7.42
+   "replacement": 6.89
   }
  },
  "season": "2026",
@@ -175,7 +175,7 @@
      "injured": false,
      "name": "Omar Cooper Jr.",
      "position": "WR",
-     "ppg": 11.12,
+     "ppg": 11.13,
      "projected": 3,
      "reserve": false,
      "status": null,
@@ -404,7 +404,7 @@
      "injured": false,
      "name": "Xavier Worthy",
      "position": "WR",
-     "ppg": 5.86,
+     "ppg": 5.85,
      "projected": 4,
      "reserve": false,
      "status": null,
@@ -503,7 +503,7 @@
      "injured": false,
      "name": "Quinshon Judkins",
      "position": "RB",
-     "ppg": 10.71,
+     "ppg": 10.72,
      "projected": 3,
      "reserve": false,
      "status": null,
@@ -1056,6 +1056,19 @@
     },
     {
      "games": 9,
+     "id": "11563",
+     "injured": false,
+     "name": "Bo Nix",
+     "position": "QB",
+     "ppg": 15.36,
+     "projected": 4,
+     "reserve": false,
+     "status": null,
+     "taxi": false,
+     "team": "DEN"
+    },
+    {
+     "games": 9,
      "id": "4034",
      "injured": false,
      "name": "Christian McCaffrey",
@@ -1092,19 +1105,6 @@
      "status": null,
      "taxi": false,
      "team": "TEN"
-    },
-    {
-     "games": 9,
-     "id": "12474",
-     "injured": true,
-     "name": "Woody Marks",
-     "position": "RB",
-     "ppg": 7.88,
-     "projected": 4,
-     "reserve": false,
-     "status": "Doubtful",
-     "taxi": false,
-     "team": "HOU"
     },
     {
      "games": 10,
@@ -1164,7 +1164,7 @@
      "injured": false,
      "name": "Malik Washington",
      "position": "WR",
-     "ppg": 7.93,
+     "ppg": 7.92,
      "projected": 4,
      "reserve": false,
      "status": null,
@@ -1222,6 +1222,19 @@
      "status": null,
      "taxi": false,
      "team": "SEA"
+    },
+    {
+     "games": 9,
+     "id": "DET",
+     "injured": false,
+     "name": "Detroit Lions",
+     "position": "DEF",
+     "ppg": 6.14,
+     "projected": 4,
+     "reserve": false,
+     "status": null,
+     "taxi": false,
+     "team": "DET"
     }
    ],
    "roster_id": 6,
@@ -1393,7 +1406,7 @@
      "injured": false,
      "name": "Trey McBride",
      "position": "TE",
-     "ppg": 13.05,
+     "ppg": 13.02,
      "projected": 3,
      "reserve": false,
      "status": null,
@@ -1479,7 +1492,7 @@
      "injured": false,
      "name": "Breece Hall",
      "position": "RB",
-     "ppg": 11.54,
+     "ppg": 11.57,
      "projected": 3,
      "reserve": false,
      "status": null,
@@ -1505,7 +1518,7 @@
      "injured": false,
      "name": "Rashee Rice",
      "position": "WR",
-     "ppg": 11.27,
+     "ppg": 11.26,
      "projected": 4,
      "reserve": false,
      "status": null,
@@ -1570,7 +1583,7 @@
      "injured": false,
      "name": "Travis Kelce",
      "position": "TE",
-     "ppg": 9.77,
+     "ppg": 9.76,
      "projected": 4,
      "reserve": false,
      "status": null,
@@ -1669,7 +1682,7 @@
      "injured": false,
      "name": "Tyler Allgeier",
      "position": "RB",
-     "ppg": 8.2,
+     "ppg": 8.19,
      "projected": 3,
      "reserve": false,
      "status": null,
@@ -1721,7 +1734,7 @@
      "injured": false,
      "name": "Garrett Wilson",
      "position": "WR",
-     "ppg": 11.7,
+     "ppg": 11.71,
      "projected": 3,
      "reserve": false,
      "status": null,
@@ -1976,7 +1989,7 @@
      "injured": false,
      "name": "Brock Bowers",
      "position": "TE",
-     "ppg": 15.23,
+     "ppg": 15.21,
      "projected": 3,
      "reserve": false,
      "status": null,
@@ -2023,7 +2036,7 @@
      "injured": false,
      "name": "Patrick Mahomes",
      "position": "QB",
-     "ppg": 19.54,
+     "ppg": 19.52,
      "projected": 4,
      "reserve": false,
      "status": null,
@@ -2088,7 +2101,7 @@
      "injured": false,
      "name": "Zonovan Knight",
      "position": "RB",
-     "ppg": 5.13,
+     "ppg": 5.11,
      "projected": 3,
      "reserve": false,
      "status": null,
@@ -2192,7 +2205,7 @@
      "injured": false,
      "name": "Matt Gay",
      "position": "K",
-     "ppg": 10.07,
+     "ppg": 10.06,
      "projected": 3,
      "reserve": false,
      "status": null,
@@ -2252,7 +2265,7 @@
      "injured": false,
      "name": "Ashton Jeanty",
      "position": "RB",
-     "ppg": 12.39,
+     "ppg": 12.38,
      "projected": 3,
      "reserve": false,
      "status": null,

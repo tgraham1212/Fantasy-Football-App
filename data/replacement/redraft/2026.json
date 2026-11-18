@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-18T16:44:08+00:00",
+ "generated_at": "2026-11-18T19:13:40+00:00",
  "league_key": "redraft",
  "prior_weeks": 4.0,
  "season": "2026",
@@ -11,7 +11,7 @@
     "2024",
     "2023"
    ],
-   "projected_mean": 6.7,
+   "projected_mean": 6.68,
    "value": 6.46,
    "weeks_played": 10
   },
@@ -33,7 +33,7 @@
     "2024",
     "2023"
    ],
-   "projected_mean": 16.84,
+   "projected_mean": 16.71,
    "value": 15.82,
    "weeks_played": 10
   },
@@ -44,7 +44,7 @@
     "2024",
     "2023"
    ],
-   "projected_mean": 6.27,
+   "projected_mean": 6.48,
    "value": 4.95,
    "weeks_played": 10
   },
@@ -224,15 +224,15 @@
   },
   "11": {
    "DEF": {
-    "available": 17,
+    "available": 16,
     "players": [
      "CHI",
      "JAX",
-     "DET",
      "LAC",
-     "CAR"
+     "CAR",
+     "DAL"
     ],
-    "projected": 7.07,
+    "projected": 6.99,
     "realised": null
    },
    "K": {
@@ -244,31 +244,31 @@
      "6528",
      "8259"
     ],
-    "projected": 8.91,
+    "projected": 8.9,
     "realised": null
    },
    "QB": {
-    "available": 17,
+    "available": 16,
     "players": [
      "9758",
      "9228",
-     "11563",
      "96",
-     "12522"
+     "12522",
+     "6797"
     ],
-    "projected": 17.79,
+    "projected": 17.48,
     "realised": null
    },
    "RB": {
-    "available": 52,
+    "available": 53,
     "players": [
+     "12474",
      "6806",
      "4147",
      "9508",
-     "5995",
-     "4035"
+     "5995"
     ],
-    "projected": 6.35,
+    "projected": 7.27,
     "realised": null
    },
    "TE": {
@@ -298,7 +298,7 @@
   },
   "12": {
    "DEF": {
-    "available": 20,
+    "available": 19,
     "players": [
      "JAX",
      "DAL",
@@ -306,7 +306,7 @@
      "CIN",
      "NYJ"
     ],
-    "projected": 7.54,
+    "projected": 7.55,
     "realised": null
    },
    "K": {
@@ -318,11 +318,11 @@
      "5095",
      "11261"
     ],
-    "projected": 8.97,
+    "projected": 8.98,
     "realised": null
    },
    "QB": {
-    "available": 20,
+    "available": 19,
     "players": [
      "9758",
      "1373",
@@ -330,19 +330,19 @@
      "12545",
      "4017"
     ],
-    "projected": 17.09,
+    "projected": 17.14,
     "realised": null
    },
    "RB": {
-    "available": 65,
+    "available": 66,
     "players": [
      "12469",
      "4147",
+     "12474",
      "5995",
-     "13305",
-     "12529"
+     "13305"
     ],
-    "projected": 6.45,
+    "projected": 6.87,
     "realised": null
    },
    "TE": {
@@ -372,7 +372,7 @@
   },
   "13": {
    "DEF": {
-    "available": 17,
+    "available": 16,
     "players": [
      "SF",
      "CIN",
@@ -396,27 +396,27 @@
     "realised": null
    },
    "QB": {
-    "available": 15,
+    "available": 14,
     "players": [
-     "11563",
      "9758",
      "4943",
      "11559",
-     "4892"
+     "4892",
+     "12522"
     ],
-    "projected": 17.09,
+    "projected": 16.46,
     "realised": null
    },
    "RB": {
-    "available": 57,
+    "available": 58,
     "players": [
      "12469",
+     "12474",
      "4147",
      "6039",
-     "12529",
-     "7608"
+     "12529"
     ],
-    "projected": 5.77,
+    "projected": 6.19,
     "realised": null
    },
    "TE": {
@@ -446,15 +446,15 @@
   },
   "14": {
    "DEF": {
-    "available": 18,
+    "available": 17,
     "players": [
-     "DET",
      "CHI",
      "PHI",
      "JAX",
-     "BAL"
+     "BAL",
+     "LAC"
     ],
-    "projected": 6.36,
+    "projected": 6.19,
     "realised": null
    },
    "K": {
@@ -470,27 +470,27 @@
     "realised": null
    },
    "QB": {
-    "available": 18,
+    "available": 17,
     "players": [
      "9758",
      "9228",
-     "11563",
      "8161",
-     "6797"
+     "6797",
+     "12545"
     ],
-    "projected": 17.97,
+    "projected": 17.5,
     "realised": null
    },
    "RB": {
-    "available": 64,
+    "available": 65,
     "players": [
+     "12474",
      "12469",
      "13305",
      "5995",
-     "4147",
-     "11583"
+     "4147"
     ],
-    "projected": 6.07,
+    "projected": 6.52,
     "realised": null
    },
    "TE": {
@@ -520,7 +520,7 @@
   },
   "15": {
    "DEF": {
-    "available": 20,
+    "available": 19,
     "players": [
      "GB",
      "SF",
@@ -544,27 +544,27 @@
     "realised": null
    },
    "QB": {
-    "available": 19,
+    "available": 18,
     "players": [
-     "11563",
      "1373",
      "9228",
      "11559",
-     "9758"
+     "9758",
+     "4892"
     ],
-    "projected": 17.79,
+    "projected": 17.21,
     "realised": null
    },
    "RB": {
-    "available": 68,
+    "available": 69,
     "players": [
      "12469",
+     "12474",
      "4147",
      "5995",
-     "11583",
-     "6039"
+     "11583"
     ],
-    "projected": 6.18,
+    "projected": 6.61,
     "realised": null
    },
    "TE": {
@@ -594,15 +594,15 @@
   },
   "16": {
    "DEF": {
-    "available": 20,
+    "available": 19,
     "players": [
      "BAL",
      "LV",
      "NO",
-     "DET",
-     "LAC"
+     "LAC",
+     "CIN"
     ],
-    "projected": 6.37,
+    "projected": 6.33,
     "realised": null
    },
    "K": {
@@ -618,7 +618,7 @@
     "realised": null
    },
    "QB": {
-    "available": 19,
+    "available": 18,
     "players": [
      "12545",
      "9758",
@@ -630,15 +630,15 @@
     "realised": null
    },
    "RB": {
-    "available": 68,
+    "available": 69,
     "players": [
+     "12474",
      "4147",
      "12469",
      "5995",
-     "13305",
-     "11655"
+     "13305"
     ],
-    "projected": 6.19,
+    "projected": 6.64,
     "realised": null
    },
    "TE": {
@@ -668,7 +668,7 @@
   },
   "17": {
    "DEF": {
-    "available": 20,
+    "available": 19,
     "players": [
      "SF",
      "CLE",
@@ -692,27 +692,27 @@
     "realised": null
    },
    "QB": {
-    "available": 19,
+    "available": 18,
     "players": [
      "13269",
-     "11563",
      "9758",
      "4017",
-     "11565"
+     "11565",
+     "12545"
     ],
-    "projected": 16.56,
+    "projected": 16.28,
     "realised": null
    },
    "RB": {
-    "available": 68,
+    "available": 69,
     "players": [
      "12469",
+     "12474",
      "5995",
      "4147",
-     "11655",
-     "13305"
+     "11655"
     ],
-    "projected": 6.35,
+    "projected": 6.83,
     "realised": null
    },
    "TE": {
