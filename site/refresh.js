@@ -1,10 +1,13 @@
-/* The "Refresh" button: asks the refresh relay (a Cloudflare Worker, see relay/README.md) to start
-   the data refresh. Shown only when the export carried a relay address. */
+/* The "Refresh Data" button: asks the refresh relay (a Cloudflare Worker, see relay/README.md) to
+   start the data refresh. Shown only when the export carried a relay address. The note under it
+   stays short (at most 22 characters) so it never moves the layout; the full sentence is its
+   tooltip. The update check (updates.js) calls dataArrived() when new data is swapped in. */
 
 const POLL_MS = 60_000;
+const GIVE_UP_MS = 20 * 60_000; // a started refresh that has not landed by then did not finish
 const box = () => document.getElementById("refresh-box");
 
-const state = { url: null, lastRefresh: null, held: 0, message: null, busy: false, timer: null };
+const state = { url: null, lastRefresh: null, held: 0, note: null, busy: false, timer: null, waitTimer: null };
 
 function minutesSince(iso) {
   if (!iso) return null;
@@ -20,11 +23,27 @@ function agoText() {
   return h < 48 ? `Updated ${h} h ago` : `Updated ${Math.floor(h / 24)} days ago`;
 }
 
+/* A transient message: short text for the note, the full sentence for the tooltip. */
+function say(short, full, sticky = false) {
+  state.note = { short, full: full || short, sticky };
+}
+
 function render() {
   const btn = document.getElementById("refresh-btn");
   const note = document.getElementById("refresh-note");
+  if (!btn || !note) return;
   btn.disabled = state.busy || state.held > 0;
-  note.textContent = state.message || (state.held > 0 ? `Available in ${state.held} min` : agoText());
+  let short, full;
+  if (state.note) ({ short, full } = state.note);
+  else if (state.held > 0) {
+    short = `Available in ${state.held} min`;
+    full = `A refresh ran recently. The next one can start in ${state.held} min.`;
+  } else {
+    short = agoText();
+    full = state.lastRefresh ? `Data last refreshed ${new Date(state.lastRefresh).toLocaleString()}.` : "";
+  }
+  note.textContent = short;
+  if (full) note.title = full; else note.removeAttribute("title");
 }
 
 async function call(method, path) {
@@ -43,25 +62,44 @@ async function poll() {
   render();
 }
 
+function waitForData() {
+  clearTimeout(state.waitTimer);
+  state.waitTimer = setTimeout(() => {
+    state.waitTimer = null;
+    say("Refresh didn't finish", "No new data arrived within 20 minutes of the refresh starting. Try again later.", true);
+    render();
+  }, GIVE_UP_MS);
+}
+
 async function refresh() {
   state.busy = true;
-  state.message = "Starting a refresh…";
+  say("Starting…", "Asking for a data refresh…");
   render();
   try {
     const { status, body } = await call("POST", "/refresh");
     if (status === 202) {
       state.held = body.minutes || 15;
-      state.message = "Refresh started. The site updates in about 5 minutes.";
+      say("Started, back in ~5 min", "Refresh started. The new data shows here by itself in about 5 minutes.");
+      waitForData();
     } else if (status === 429) {
       state.held = body.minutes || 1;
-      state.message = null;
+      state.note = null;
     } else {
-      state.message = "Could not start a refresh. Try again later.";
+      say("Couldn't start, try later", "Could not start a refresh. Try again later.");
     }
   } catch (e) {
-    state.message = "Could not reach the refresh service. Try again later.";
+    say("Couldn't start, try later", "Could not reach the refresh service. Try again later.");
   }
   state.busy = false;
+  render();
+}
+
+/* Called by the update check when newer data has been swapped into the page. */
+export function dataArrived(lastRefresh) {
+  state.lastRefresh = lastRefresh || state.lastRefresh;
+  clearTimeout(state.waitTimer);
+  state.waitTimer = null;
+  state.note = null;
   render();
 }
 
@@ -78,7 +116,7 @@ export function initRefresh(index) {
   clearInterval(state.timer);
   state.timer = setInterval(() => {
     if (state.held > 0) state.held -= 1;
-    if (state.held === 0 && state.message && !state.busy) state.message = null;
+    if (state.held === 0 && state.note && !state.busy && !state.waitTimer && !state.note.sticky) state.note = null;
     render();
     poll();
   }, POLL_MS);

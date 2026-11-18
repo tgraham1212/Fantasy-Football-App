@@ -18,6 +18,10 @@ dependencies = [
 dev = [
     "pytest>=8.0",
 ]
+# The browser layout check (tests/layout); it drives the installed Chrome, no browser download.
+browser = [
+    "playwright>=1.45",
+]
 
 [project.scripts]
 ffapp = "ffapp.cli:main"

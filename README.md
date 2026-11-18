@@ -14,7 +14,8 @@ pip install -e ".[dev]"
 pytest
 ```
 
-Tests never touch the network; they run against recorded Sleeper responses in
+The browser layout check in `tests/layout/` skips unless Playwright is installed
+(`pip install -e ".[dev,browser]"`, see Layout check). Tests never touch the network; they run against recorded Sleeper responses in
 `tests/fixtures/`.
 
 ## Commands
@@ -450,8 +451,8 @@ and contrast), dashed and then dotted once the greys repeat. Clicking a line or 
 table row highlights that manager in both charts. The card says ratings are not yet
 available when the export carried none.
 
-Each league has two sub-tabs, **Predictions** (the table and charts above) and
-**Player WAR**, kept in the URL (`#redraft/war`). The Player WAR page shows the top
+Each league has three sub-tabs, **Predictions** (the table and charts above),
+**Games** and **Player WAR**, kept in the URL (`#redraft/war`, `#redraft/games/10`). The Player WAR page shows the top
 10 per position in two columns (QB and RB, WR and TE, DEF and K; a league without a
 kicker slot centres its last table), for the current season by default, any past
 season, or **All-Time** with a toggle between player-seasons and careers. Each table
@@ -469,16 +470,61 @@ gap and the caveats. The export copies `data/calibration/report.json` to
 `site/data/calibration.json`; without one the page says calibration has not been run.
 It only changes when `calibrate` is re-run and its outputs committed.
 
+### Live updates and the new version note
+
+An open page checks once a minute, while its tab is visible, whether newer data or
+newer site code has been deployed (`site/updates.js`). Newer data with the same code
+is swapped in without a reload: the league, sub-tab, Games week (kept in the URL as
+`#dynasty/games/10`), each card's Model or Actual view, open lineups, table sorts,
+the highlighted team and an open full list all stay as they were, and the note under
+**Refresh Data** reads "Updated just now". This covers a refresh a visitor started
+and the scheduled refreshes alike. After a visitor starts a refresh the note reads
+"Started, back in ~5 min" (the full sentence is its tooltip) and, if no new data has
+arrived 20 minutes later, "Refresh didn't finish".
+
+Newer code is never paired with the old page: when `version.json` carries a
+different fingerprint from the page's own (`site/version.js`, see the stamp below),
+a note pinned to the bottom of the screen says a new version is available, with a
+Refresh button, and stays until the page is reloaded. A local copy keeps the
+placeholder fingerprint, so it checks for new data only.
+
+### Layout check
+
+`tests/layout/` loads every page in the installed Chrome at 375, 768, 1000 and
+1280 px, drives every control through its states (the refresh relay, `version.json`
+and `data/index.json` are simulated, so no refresh starts) and fails when anything
+the control is not designed to change moves or resizes, or when the page scrolls
+sideways. `tests/layout/controls.py` is the registry of controls, their states and
+their declared effects; a coverage test fails when a page shows a button, select,
+expander or link the registry does not list, so add every new control there. The
+check also asserts that the full list scrolls only its table, that phone lineups
+show full names, and that a data swap keeps the visitor's place. Run it locally with:
+
+```bash
+pip install -e ".[dev,browser]"
+LAYOUT_REQUIRED=1 pytest tests/layout
+```
+
+Without Playwright or Chrome the layout tests skip (the data refresh job runs that
+way); `LAYOUT_REQUIRED=1`, set by the code-push workflow, turns a missing browser
+into a failure.
+
 After `git pull`, run `python -m ffapp export` before opening the site locally:
 `site/data/` is whatever the last export wrote, and an older export may lack
 fields the page expects.
 
-Every local script reference and module import in `site/` ends in `?v=__BUILD__`.
-The deploy replaces the placeholder with the commit SHA, so a browser that cached an
-earlier deploy's scripts fetches the new ones with the new page instead of pairing a
-new page with old code. Locally the literal placeholder is just a query string and
-the site works unchanged. `tests/test_site_files.py` fails if a reference lacks it, so
-add the placeholder to any new script or import.
+Every local script reference, stylesheet link and module import in `site/` ends in
+`?v=__BUILD__`. Every deploy runs `python -m ffapp stamp-site`, which fingerprints the
+site's code (every file under `site/` except `site/data/`, line endings ignored),
+replaces the placeholder with that fingerprint and writes `site/version.json`. A
+deploy that only brings new data keeps the same fingerprint, so browsers keep their
+cached scripts; any code change gives every reference a new URL, and open pages see
+the new fingerprint in `version.json` and show the "new version" note. Locally the
+literal placeholder is just a query string and the site works unchanged (the page
+then checks for new data only). `tests/test_site_files.py` fails if a reference lacks
+the placeholder or a deploying workflow skips `stamp-site`, so add the placeholder to
+any new script, stylesheet or import, and stamp any new deploy through the command.
+Do not run `stamp-site` in your checkout: it rewrites the site files in place.
 
 ## Scheduled job
 
@@ -504,7 +550,14 @@ A failure at any step ends the run before the commit and deploy, so the publishe
 site keeps its last good state. The one exception is the ESPN `snapshot` step: if
 ESPN is unreachable the run continues with the snapshots already stored and ends
 with a warning annotation on the job naming the skipped step. After the data commit
-and before the upload, a step stamps the script URLs:
-`sed -i "s/__BUILD__/$(git rev-parse --short HEAD)/g" site/*.html site/*.js`. It runs on
-the runner only, so no stamp is ever committed. GitHub Pages must be set to deploy
+and before the upload, `python -m ffapp stamp-site` stamps the script and stylesheet
+URLs with the code fingerprint and writes `version.json` (see above). It runs on the
+runner only, so no stamp is ever committed. GitHub Pages must be set to deploy
 from **GitHub Actions** in the repository settings.
+
+`.github/workflows/site.yml` deploys code: a push to `main` that changes site code,
+the Python package, the tests or `pyproject.toml` runs the full test suite with the
+browser layout check required, then stamps and deploys the site with the data on
+`main`. It shares the refresh's concurrency group, so the two never overlap. A
+failing layout check stops that deploy; the next data refresh still deploys whatever
+is on `main`, so fix forward.

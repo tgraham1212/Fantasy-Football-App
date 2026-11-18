@@ -1,0 +1,79 @@
+name: Site deploy
+
+# A push that changes site code runs the tests and the layout check, then deploys the site
+# with the data already on main, so new code goes live without waiting for the next data
+# refresh. Data commits from the refresh workflow use the workflow token and never trigger
+# this; the path filter leaves data out as well.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - "!site/data/**"
+      - "src/ffapp/**"
+      - "tests/**"
+      - "pyproject.toml"
+      - ".github/workflows/site.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Same group as the refresh, so a code deploy and a data refresh never overlap.
+concurrency:
+  group: refresh-odds
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - name: Install
+        run: pip install -e ".[dev,browser]"
+
+      # The layout check drives the Chrome preinstalled on the runner; it must not skip here.
+      - name: Test (with the layout check)
+        env:
+          LAYOUT_REQUIRED: "1"
+        run: pytest
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - name: Install
+        run: pip install -e .
+
+      # Every deploy stamps through this command (see the refresh workflow).
+      - name: Stamp site
+        run: python -m ffapp stamp-site
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

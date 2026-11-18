@@ -1,6 +1,7 @@
 /* Calibration page: reliability chart, PIT histogram and tables from data/calibration.json. Plain JS + Chart.js. */
 
 import { initRefresh } from "./refresh.js?v=__BUILD__";
+import { initUpdates } from "./updates.js?v=__BUILD__";
 
 const OUTCOME_LABELS = {
   playoffs: { label: "Make playoffs", noun: "made the playoffs" },
@@ -482,29 +483,12 @@ async function main() {
   try {
     state.index = await fetchJson("data/index.json");
     initRefresh(state.index);
-    for (const l of state.index.leagues || []) state.names[l.key] = l.name;
-    if (!state.index.calibration || !state.index.calibration.file) {
-      $("not-run").hidden = false;
-      status.hidden = true;
-      return;
-    }
-    state.report = await fetchJson(`data/${state.index.calibration.file}`);
-    const leagueFiles = await Promise.all((state.index.leagues || []).map((l) => fetchJson(`data/${l.file}`).catch(() => null)));
-    (state.index.leagues || []).forEach((l, i) => { if (leagueFiles[i]) state.leagues[l.key] = leagueFiles[i]; });
-    const wanted = new URLSearchParams(location.search).get("outcome");
-    if (state.report.outcomes.includes(wanted)) state.outcome = wanted;
-    renderMeta();
-    renderHeadlines();
-    renderHow();
-    renderSwitcher();
-    renderSeasonTable();
-    renderCoverage();
-    renderGames();
-    renderLineup();
-    renderCaveats();
-    $("main").hidden = false;
-    status.hidden = true;
-    renderCharts();
+    // New data deployed while the page is open: redraw in place, keeping the outcome shown.
+    initUpdates(state.index.last_refresh, async (index) => {
+      state.index = index;
+      await loadReport();
+    });
+    await loadReport();
   } catch (err) {
     status.textContent = `Could not load the calibration data (${err.message}).`;
     status.classList.add("error");
@@ -515,6 +499,34 @@ async function main() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(renderCharts, 150);
   });
+}
+
+async function loadReport() {
+  const status = $("status");
+  for (const l of state.index.leagues || []) state.names[l.key] = l.name;
+  if (!state.index.calibration || !state.index.calibration.file) {
+    $("not-run").hidden = false;
+    status.hidden = true;
+    return;
+  }
+  state.report = await fetchJson(`data/${state.index.calibration.file}`);
+  const leagueFiles = await Promise.all((state.index.leagues || []).map((l) => fetchJson(`data/${l.file}`).catch(() => null)));
+  (state.index.leagues || []).forEach((l, i) => { if (leagueFiles[i]) state.leagues[l.key] = leagueFiles[i]; });
+  const wanted = new URLSearchParams(location.search).get("outcome");
+  if (state.report.outcomes.includes(wanted)) state.outcome = wanted;
+  else if (!state.report.outcomes.includes(state.outcome)) state.outcome = "playoffs";
+  renderMeta();
+  renderHeadlines();
+  renderHow();
+  renderSwitcher();
+  renderSeasonTable();
+  renderCoverage();
+  renderGames();
+  renderLineup();
+  renderCaveats();
+  $("main").hidden = false;
+  status.hidden = true;
+  renderCharts();
 }
 
 main();

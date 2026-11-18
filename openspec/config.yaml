@@ -1,5 +1,13 @@
 schema: spec-driven
 
+context: |
+  Every deploy of site/ goes through `python -m ffapp stamp-site` before the Pages upload
+  (code fingerprint in script and stylesheet URLs, plus site/version.json); a new deploying
+  workflow must call it and must never stamp by hand. Every new script, stylesheet link or
+  module import in site/ carries `?v=__BUILD__`. Every new button, toggle, selector or
+  expander on the site is added to the layout check registry (tests/layout/controls.py)
+  with its states and declared effect.
+
 # Project context (optional)
 # Add only constraints that should guide OpenSpec artifacts and workflows.
 # Include constraints an agent cannot infer by reading the code.

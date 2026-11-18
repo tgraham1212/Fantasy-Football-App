@@ -13,7 +13,7 @@ from ffapp.config import DEFAULT_CONFIG_PATH, Config, ConfigError, load_config
 from ffapp.sleeper import SleeperClient
 from ffapp.store import DEFAULT_DATA_ROOT, Store
 
-COMMANDS = ("should-run", "sync", "projections", "stats", "schedule", "snapshot", "ratings", "replacement", "war", "simulate", "games", "verify-brackets", "export", "refresh", "calibrate")
+COMMANDS = ("should-run", "sync", "projections", "stats", "schedule", "snapshot", "ratings", "replacement", "war", "simulate", "games", "verify-brackets", "export", "refresh", "calibrate", "stamp-site")
 log = logging.getLogger("ffapp")
 
 
@@ -63,6 +63,8 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("export", help="Write site/data/*.json for the website")
     refresh = sub.add_parser("refresh", help="sync, projections, stats, schedule, snapshot, ratings, replacement, war, simulate, games and export in order")
     refresh.set_defaults(full=False, backfill=False, backfill_season=False, runs=10_000, seed=None)
+    stamp = sub.add_parser("stamp-site", help="Before a deploy: stamp script and stylesheet URLs with the site code fingerprint and write version.json")
+    stamp.add_argument("--site", type=Path, default=Path("site"), help="site directory (default site/)")
     return parser
 
 
@@ -410,6 +412,10 @@ def main(argv: Sequence[str] | None = None, client: SleeperClient | None = None)
         format="%(levelname)s %(name)s: %(message)s",
         stream=sys.stderr,
     )
+    if args.command == "stamp-site":  # needs no league config
+        from ffapp.stamp import stamp_site
+        print(f"stamped {args.site} with {stamp_site(args.site)}")
+        return 0
     try:
         ctx = Context(args, client)
     except ConfigError as exc:

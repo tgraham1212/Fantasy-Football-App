@@ -1,9 +1,10 @@
 /* Playoff odds site: league switcher, sortable odds table, odds-over-time chart. Plain JS + Chart.js. */
 
 import { markSorted, nextSort } from "./sorting.js?v=__BUILD__";
-import { initWar, loadWar } from "./war.js?v=__BUILD__";
-import { initGames, loadGames, rerenderGames, showGames } from "./games.js?v=__BUILD__";
+import { initWar, loadWar, reloadWar } from "./war.js?v=__BUILD__";
+import { currentWeek, initGames, loadGames, reloadGames, rerenderGames, showGames } from "./games.js?v=__BUILD__";
 import { initRefresh } from "./refresh.js?v=__BUILD__";
+import { initUpdates } from "./updates.js?v=__BUILD__";
 
 const DEFAULT_BOTTOM = { key: "avoid_losers_bye", label: "Avoid Loser's Bye", description: "" };
 
@@ -14,7 +15,7 @@ const state = {
   selected: null, // roster_id of the highlighted current team
   selectedFormer: null, // manager id of a highlighted former member (rating chart only)
   sort: null, // null = standings order, else { key, dir: "desc" | "asc" }
-  page: "predictions", // "predictions" | "war", kept in the URL hash as #<league>/war
+  page: "predictions", // "predictions" | "games" | "war", kept in the URL hash as #<league>/<page>[/<week>]
   chart: null,
   ratingChart: null,
   ratingMetric: "mu", // "mu" | "career_z"
@@ -230,13 +231,19 @@ function initTableHead() {
 // -- sub-tabs ------------------------------------------------------------------------
 
 function parseHash() {
-  const [league, page] = location.hash.replace("#", "").split("/");
-  return { league: league || "", page: page === "war" || page === "games" ? page : "predictions" };
+  const [league, page, week] = location.hash.replace("#", "").split("/");
+  const n = Number(week);
+  return {
+    league: league || "",
+    page: page === "war" || page === "games" ? page : "predictions",
+    week: page === "games" && Number.isInteger(n) && n > 0 ? n : null,
+  };
 }
 
 function writeHash() {
   const key = state.league ? state.league.league_key : "";
-  const suffix = state.page === "predictions" ? "" : `/${state.page}`;
+  let suffix = state.page === "predictions" ? "" : `/${state.page}`;
+  if (state.page === "games" && currentWeek() != null) suffix += `/${currentWeek()}`;
   try { history.replaceState(null, "", `#${key}${suffix}`); } catch (e) { /* ignore */ }
 }
 
@@ -734,9 +741,31 @@ async function fetchJson(path) {
   return res.json();
 }
 
-async function loadLeague(key) {
+/* `keep` (new data for the league already shown) keeps the sort, highlight and chart choices and
+   asks the Games and Player WAR pages to reload in place; `week` is the Games week from the URL. */
+async function loadLeague(key, { keep = false, week = null } = {}) {
   const entry = state.index.leagues.find((l) => l.key === key) || state.index.leagues[0];
   const payload = await fetchJson(`data/${entry.file}`);
+  if (keep) {
+    const before = { sort: state.sort, selected: state.selected, selectedFormer: state.selectedFormer, metric: state.metric };
+    state.league = payload;
+    assignColors(payload);
+    state.sort = before.sort;
+    state.selected = payload.teams.some((t) => t.roster_id === before.selected) ? before.selected : null;
+    state.selectedFormer = before.selectedFormer;
+    if (!metricsFor(payload).some((m) => m.key === before.metric)) state.metric = "playoffs";
+    renderSwitcher();
+    renderSummary();
+    renderTable();
+    renderMetrics();
+    renderChart();
+    renderRatingPills();
+    renderRatingChart();
+    showPage(state.page);
+    await reloadGames();
+    await reloadWar();
+    return;
+  }
   state.league = payload;
   state.sort = null; // sorting is view state and resets on league switch
   assignColors(payload);
@@ -759,7 +788,7 @@ async function loadLeague(key) {
   $("main").hidden = false;
   $("status").hidden = true;
   showPage(state.page);
-  await loadGames(entry.key, payload.league_name, entry.games, (rid) => state.colors[rid] || "--accent");
+  await loadGames(entry.key, payload.league_name, entry.games, (rid) => state.colors[rid] || "--accent", week);
   await loadWar(entry.key, payload.league_name, entry.war);
 }
 
@@ -768,14 +797,19 @@ async function main() {
   initTableHead();
   initSubtabs();
   initWar();
-  initGames();
+  initGames(() => writeHash());
   try {
     state.index = await fetchJson("data/index.json");
     if (!state.index.leagues?.length) throw new Error("no leagues exported");
     initRefresh(state.index);
     const wanted = parseHash();
     state.page = wanted.page;
-    await loadLeague(wanted.league);
+    await loadLeague(wanted.league, { week: wanted.week });
+    // New data deployed while the page is open: swap it in, keeping the visitor's place.
+    initUpdates(state.index.last_refresh, async (index) => {
+      state.index = index;
+      await loadLeague(state.league.league_key, { keep: true });
+    });
   } catch (err) {
     const status = $("status");
     status.textContent = `Could not load the odds data (${err.message}).`;

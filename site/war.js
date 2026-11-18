@@ -66,6 +66,25 @@ export async function loadWar(leagueKey, leagueName, entry) {
   render();
 }
 
+/* New data deployed: drop the cached seasons and redraw the same selection, mode and an open
+   full list with its sort. */
+export async function reloadWar() {
+  if (!state.entry) return;
+  state.index = await fetchJson(`data/${state.entry.file}`);
+  state.seasons = {};
+  if (state.selection !== "all" && !state.index.seasons.some((s) => s.season === state.selection)) {
+    state.selection = state.index.current;
+  }
+  await ensureSeason(state.selection);
+  render();
+  if (state.dialogPos && $("war-dialog").open) {
+    const scroller = document.querySelector("#war-dialog .dialog-table");
+    const top = scroller ? scroller.scrollTop : 0;
+    renderDialogBody();
+    if (scroller) scroller.scrollTop = top;
+  }
+}
+
 async function ensureSeason(selection) {
   const wanted = selection === "all" ? state.index.seasons.map((s) => s.season) : [selection];
   await Promise.all(wanted.filter((s) => !state.seasons[s]).map(async (s) => {
@@ -221,10 +240,10 @@ function renderGrid() {
     box.className = "war-table";
     box.innerHTML = `
       <div class="war-table-head"><h3>${POSITION_LABEL[pos]}</h3><span class="hint">Top ${TOP_N} by WAR</span></div>
-      <table class="plain war">
+      <div class="war-scroll"><table class="plain war">
         <thead><tr><th scope="col" class="num rank">#</th><th scope="col">Name</th><th scope="col">NFL</th><th scope="col">Owner</th>${extraHeader()}<th scope="col" class="num">WAR</th></tr></thead>
         <tbody>${rows.map((r) => `<tr><td class="num rank">${r.rank}</td><td class="name">${escapeHtml(r.name)}</td><td class="muted">${escapeHtml(r.team || "")}</td>${ownerCell(r)}${extraCell(r)}<td class="num war-value">${fmtWar(r.war)}</td></tr>`).join("")}</tbody>
-      </table>
+      </table></div>
       <button type="button" class="expand" data-pos="${pos}" aria-label="Show every ${POSITION_LABEL[pos].toLowerCase()} with a WAR"><span aria-hidden="true">&#x2922;</span> Full list</button>`;
     box.querySelector(".expand").addEventListener("click", () => openDialog(pos));
     grid.appendChild(box);

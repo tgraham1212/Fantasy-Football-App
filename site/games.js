@@ -8,9 +8,11 @@ const state = {
   weeks: {}, // week -> payload (cached per league)
   week: null,
   colorOf: () => "--accent", // roster_id -> css token name, from the Predictions page
-  charts: {}, // card index -> Chart
+  charts: {}, // game key -> Chart
   viewOf: {}, // `${week}:${game key}` -> "model" | "actual"
+  openOf: {}, // `${week}:${game key}` -> true while that card's Full Lineup is open
   cards: [], // card index -> game (for re-rendering one card)
+  onWeek: () => {}, // told when the shown week changes (app.js keeps it in the URL)
 };
 
 const PLACE_LABEL = { 1: "Championship", 3: "3rd place", 5: "5th place" };
@@ -38,13 +40,17 @@ async function fetchJson(path) {
 
 // -- loading ----------------------------------------------------------------------------------
 
-/* Called by app.js whenever a league loads. `colorOf(rid)` gives the team's colour token. */
-export async function loadGames(leagueKey, leagueName, entry, colorOf) {
+/* Called by app.js whenever a league loads. `colorOf(rid)` gives the team's colour token;
+   `wantedWeek` (from the URL) is shown when the league has it. */
+export async function loadGames(leagueKey, leagueName, entry, colorOf, wantedWeek = null) {
   if (state.leagueKey !== leagueKey) {
     state.weeks = {};
     state.index = null;
     state.week = null;
+    state.viewOf = {};
+    state.openOf = {};
   }
+  if (wantedWeek != null) state.week = wantedWeek;
   state.leagueKey = leagueKey;
   state.leagueName = leagueName;
   state.entry = entry || null;
@@ -58,12 +64,32 @@ export async function loadGames(leagueKey, leagueName, entry, colorOf) {
   }
   state.index = await fetchJson(`data/${state.entry.file}`);
   const weeks = state.index.weeks.map((w) => w.week);
-  if (!weeks.includes(state.week)) state.week = weeks.includes(state.index.current) ? state.index.current : weeks[weeks.length - 1];
+  if (!weeks.includes(state.week)) state.week = defaultWeek();
   await showWeek(state.week);
+}
+
+function defaultWeek() {
+  const weeks = state.index.weeks.map((w) => w.week);
+  return weeks.includes(state.index.current) ? state.index.current : weeks[weeks.length - 1];
+}
+
+/* New data deployed: drop the cached weeks and redraw the same week (the default week if it is
+   gone), keeping each card's view and open lineups. */
+export async function reloadGames() {
+  if (!state.entry) return;
+  state.index = await fetchJson(`data/${state.entry.file}`);
+  state.weeks = {};
+  if (!state.index.weeks.some((w) => w.week === state.week)) state.week = defaultWeek();
+  await showWeek(state.week);
+}
+
+export function currentWeek() {
+  return state.week;
 }
 
 async function showWeek(week) {
   state.week = week;
+  state.onWeek(week);
   if (!state.weeks[week]) {
     const info = state.index.weeks.find((w) => w.week === week);
     state.weeks[week] = await fetchJson(`data/${state.leagueKey}/games/${info.file}`);
@@ -204,16 +230,25 @@ function hasAside(teams) {
   return teams.some((t) => [...t.lineup, ...t.key_players].some((r) => r.wpa != null || (r.kickoff && !r.status)));
 }
 
+/* A replacement fill reads "Free agent (replacement level)"; the bracket hides on phones. */
+const FILL_PREFIX = "Free agent (";
+function playerName(r) {
+  if (r.replacement && String(r.name).startsWith(FILL_PREFIX)) {
+    return `Free agent<span class="fa-more"> ${escapeHtml(r.name.slice("Free agent ".length))}</span>`;
+  }
+  return escapeHtml(r.name);
+}
+
 /* One player line: label (position or slot), name with status, points (or projection), aside. */
 function playerLine(r, label, aside) {
   const scored = r.points != null;
   const value = scored ? `<span class="pts scored" title="Projected ${Number(r.projected).toFixed(1)}">${Number(r.points).toFixed(1)}</span>`
     : `<span class="pts">${Number(r.projected).toFixed(1)}</span>`;
   const cls = [r.replacement ? "fill" : "", r.status ? `is-${r.status}` : ""].filter(Boolean).join(" ");
-  return `<li${cls ? ` class="${cls}"` : ""}><span class="pos">${escapeHtml(label)}</span><span class="pname"><span class="nm">${escapeHtml(r.name)}</span>${statusTag(r)}</span>${value}${aside ? asideTag(r) : ""}</li>`;
+  return `<li${cls ? ` class="${cls}"` : ""}><span class="pos">${escapeHtml(label)}</span><span class="pname"><span class="nm">${playerName(r)}</span>${statusTag(r)}</span>${value}${aside ? asideTag(r) : ""}</li>`;
 }
 
-function teamPlayers(t, aside) {
+function teamPlayers(t, aside, open) {
   const out = t.not_playing.length
     ? `<p class="out-label">Not playing</p><ul class="out">${t.not_playing.map((o) => `<li><span class="pname">${escapeHtml(o.name)}</span><span class="reason">${escapeHtml(o.reason)}</span></li>`).join("")}</ul>`
     : "";
@@ -221,7 +256,7 @@ function teamPlayers(t, aside) {
     <div class="team-players">
       <p class="tp-name">${escapeHtml(t.display_name || "")}</p>
       <ul class="key">${t.key_players.map((r) => playerLine(r, r.position, aside)).join("")}</ul>
-      <details class="lineup"><summary>Full Lineup</summary><ul>${t.lineup.map((r) => playerLine(r, r.slot, aside)).join("")}</ul></details>
+      <details class="lineup"${open ? " open" : ""}><summary>Full Lineup</summary><ul>${t.lineup.map((r) => playerLine(r, r.slot, aside)).join("")}</ul></details>
       ${out}
     </div>`;
 }
@@ -258,7 +293,7 @@ function cardHtml(g, idx) {
         <div class="game-rows">${v.teams.map((t) => teamRow(v, t)).join("")}</div>
         <div class="game-chart"><canvas id="game-chart-${idx}" role="img" aria-label="Simulated score distributions for ${escapeHtml(v.teams.map((t) => t.display_name).join(" and "))}"></canvas></div>
       </div>
-      <div class="game-players">${v.teams.map((t) => teamPlayers(t, aside)).join("")}</div>
+      <div class="game-players">${v.teams.map((t) => teamPlayers(t, aside, state.openOf[viewKey(g)])).join("")}</div>
     </section>`;
 }
 
@@ -270,17 +305,16 @@ function wireCard(idx) {
     btn.addEventListener("click", () => {
       const g = state.cards[idx];
       state.viewOf[viewKey(g)] = btn.dataset.view;
-      const open = card.querySelector("details.lineup")?.open;
       card.outerHTML = cardHtml(g, idx);
-      if (state.charts[idx]) state.charts[idx].destroy();
-      drawChart($(`game-chart-${idx}`), viewed(g), idx);
+      if (state.charts[g.key]) state.charts[g.key].destroy();
+      drawChart($(`game-chart-${idx}`), viewed(g), g.key);
       wireCard(idx);
-      if (open) for (const d of document.querySelectorAll(`.game-card[data-card="${idx}"] details.lineup`)) d.open = true;
     });
   }
   const details = [...card.querySelectorAll("details.lineup")];
   for (const d of details) {
     d.addEventListener("toggle", () => {
+      state.openOf[viewKey(state.cards[idx])] = d.open;
       for (const other of details) if (other !== d && other.open !== d.open) other.open = d.open;
     });
   }
@@ -344,7 +378,7 @@ function renderCards() {
   }
   grid.innerHTML = html || `<p class="hint">No games stored for this week.</p>`;
   for (const [i, g] of games) {
-    drawChart($(`game-chart-${i}`), viewed(g), i);
+    drawChart($(`game-chart-${i}`), viewed(g), g.key);
     wireCard(i);
   }
 }
@@ -371,7 +405,7 @@ const actualLines = {
   },
 };
 
-function drawChart(canvas, g, idx) {
+function drawChart(canvas, g, key) {
   if (!canvas || typeof Chart === "undefined") return;
   const { start, width, shares } = g.hist;
   const n = shares[0].length;
@@ -394,7 +428,7 @@ function drawChart(canvas, g, idx) {
   let hi = start + width * n;
   const lines = g.teams.filter((t) => t.actual != null).map((t) => ({ value: t.actual, color: cssVar(state.colorOf(t.roster_id)) }));
   for (const l of lines) hi = Math.max(hi, l.value + width);
-  state.charts[idx] = (new Chart(canvas, {
+  state.charts[key] = (new Chart(canvas, {
     type: "line",
     data: { datasets },
     plugins: [actualLines],
@@ -424,7 +458,8 @@ function drawChart(canvas, g, idx) {
 
 // -- wiring ---------------------------------------------------------------------------------------
 
-export function initGames() {
+export function initGames(onWeek) {
+  if (onWeek) state.onWeek = onWeek;
   $("games-week").addEventListener("change", (e) => showWeek(Number(e.target.value)));
   const step = (delta) => {
     const weeks = state.index.weeks.map((w) => w.week);
