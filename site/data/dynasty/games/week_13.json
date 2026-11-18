@@ -27,42 +27,42 @@
       4,
       5,
       5,
-      6,
+      7,
       8,
       10,
       9,
       14,
       14,
-      16,
+      15,
       19,
       20,
       21,
-      24,
+      23,
       28,
       33,
-      34,
-      30,
-      37,
+      33,
+      32,
+      36,
       34,
       37,
       39,
-      35,
-      33,
-      31,
+      36,
+      32,
+      32,
       35,
       35,
       30,
-      33,
       34,
+      33,
       26,
       26,
       25,
-      22,
+      21,
       21,
       18,
       17,
       16,
-      14,
+      13,
       14,
       12,
       10,
@@ -70,12 +70,12 @@
       8,
       6,
       6,
-      5,
       4,
       4,
+      4,
+      3,
       2,
-      2,
-      2,
+      3,
       2,
       2,
       1,
@@ -316,31 +316,21 @@
       },
       {
        "clock": null,
-       "kickoff": "2026-12-04T01:15:00+00:00",
-       "name": "Los Angeles Rams",
-       "player_id": "LAR",
+       "kickoff": null,
+       "name": "Free agent (replacement level)",
+       "player_id": null,
        "points": null,
        "position": "DEF",
-       "projected": 6.6,
-       "replacement": false,
+       "projected": 6.8,
+       "replacement": true,
        "slot": "DEF",
        "status": null,
        "wpa": null
       }
      ],
      "lineup_choices": null,
-     "mean": 119.77,
+     "mean": 119.89,
      "not_playing": [
-      {
-       "name": "Marvin Harrison Jr.",
-       "player_id": "11628",
-       "reason": "Out"
-      },
-      {
-       "name": "Mason Taylor",
-       "player_id": "12498",
-       "reason": "Bye"
-      },
       {
        "name": "Fernando Mendoza",
        "player_id": "13269",
@@ -357,6 +347,11 @@
        "reason": "Bye"
       },
       {
+       "name": "Mark Andrews",
+       "player_id": "5012",
+       "reason": "Bye"
+      },
+      {
        "name": "Tank Bigsby",
        "player_id": "9225",
        "reason": "IR"
@@ -366,7 +361,7 @@
      "roster_id": 1,
      "team_name": "#ManCrushMondays",
      "to_play": null,
-     "win_prob": 0.8563
+     "win_prob": 0.8569
     },
     {
      "actual": null,
@@ -555,11 +550,6 @@
        "reason": "Bye"
       },
       {
-       "name": "David Montgomery",
-       "player_id": "5892",
-       "reason": "Out"
-      },
-      {
        "name": "Michael Pittman Jr.",
        "player_id": "6819",
        "reason": "IR"
@@ -569,7 +559,7 @@
      "roster_id": 12,
      "team_name": "Chief Wiggum",
      "to_play": null,
-     "win_prob": 0.1437
+     "win_prob": 0.1431
     }
    ],
    "views": {
@@ -595,42 +585,42 @@
         4,
         5,
         5,
-        6,
+        7,
         8,
         10,
         9,
         14,
         14,
-        16,
+        15,
         19,
         20,
         21,
-        24,
+        23,
         28,
         33,
-        34,
-        30,
-        37,
+        33,
+        32,
+        36,
         34,
         37,
         39,
-        35,
-        33,
-        31,
+        36,
+        32,
+        32,
         35,
         35,
         30,
-        33,
         34,
+        33,
         26,
         26,
         25,
-        22,
+        21,
         21,
         18,
         17,
         16,
-        14,
+        13,
         14,
         12,
         10,
@@ -638,12 +628,12 @@
         8,
         6,
         6,
-        5,
         4,
         4,
+        4,
+        3,
         2,
-        2,
-        2,
+        3,
         2,
         2,
         1,
@@ -879,31 +869,21 @@
         },
         {
          "clock": null,
-         "kickoff": "2026-12-04T01:15:00+00:00",
-         "name": "Los Angeles Rams",
-         "player_id": "LAR",
+         "kickoff": null,
+         "name": "Free agent (replacement level)",
+         "player_id": null,
          "points": null,
          "position": "DEF",
-         "projected": 6.6,
-         "replacement": false,
+         "projected": 6.8,
+         "replacement": true,
          "slot": "DEF",
          "status": null,
          "wpa": null
         }
        ],
        "lineup_choices": null,
-       "mean": 119.77,
+       "mean": 119.89,
        "not_playing": [
-        {
-         "name": "Marvin Harrison Jr.",
-         "player_id": "11628",
-         "reason": "Out"
-        },
-        {
-         "name": "Mason Taylor",
-         "player_id": "12498",
-         "reason": "Bye"
-        },
         {
          "name": "Fernando Mendoza",
          "player_id": "13269",
@@ -920,6 +900,11 @@
          "reason": "Bye"
         },
         {
+         "name": "Mark Andrews",
+         "player_id": "5012",
+         "reason": "Bye"
+        },
+        {
          "name": "Tank Bigsby",
          "player_id": "9225",
          "reason": "IR"
@@ -929,7 +914,7 @@
        "roster_id": 1,
        "team_name": "#ManCrushMondays",
        "to_play": null,
-       "win_prob": 0.8563
+       "win_prob": 0.8569
       },
       {
        "actual": null,
@@ -1118,11 +1103,6 @@
          "reason": "Bye"
         },
         {
-         "name": "David Montgomery",
-         "player_id": "5892",
-         "reason": "Out"
-        },
-        {
          "name": "Michael Pittman Jr.",
          "player_id": "6819",
          "reason": "IR"
@@ -1132,7 +1112,7 @@
        "roster_id": 12,
        "team_name": "Chief Wiggum",
        "to_play": null,
-       "win_prob": 0.1437
+       "win_prob": 0.1431
       }
      ]
     }
@@ -1146,37 +1126,37 @@
    "hist": {
     "shares": [
      [
-      7,
+      6,
       5,
       4,
       6,
       10,
       12,
-      16,
+      14,
       20,
       22,
       24,
-      29,
+      27,
       36,
-      36,
-      38,
-      44,
+      35,
+      39,
+      43,
       46,
       39,
       48,
       49,
       46,
-      43,
-      43,
-      39,
-      40,
-      36,
-      30,
-      32,
+      42,
+      44,
+      38,
+      41,
+      37,
+      29,
+      33,
       28,
       24,
-      23,
-      19,
+      22,
+      20,
       18,
       14,
       13,
@@ -1323,7 +1303,7 @@
        "player_id": "13279",
        "points": null,
        "position": "WR",
-       "projected": 10.5,
+       "projected": 10.1,
        "replacement": false,
        "slot": "WR",
        "status": null,
@@ -1377,7 +1357,7 @@
        "player_id": null,
        "points": null,
        "position": "RB",
-       "projected": 4.1,
+       "projected": 4.5,
        "replacement": true,
        "slot": "RB",
        "status": null,
@@ -1390,7 +1370,7 @@
        "player_id": "13279",
        "points": null,
        "position": "WR",
-       "projected": 10.5,
+       "projected": 10.1,
        "replacement": false,
        "slot": "WR",
        "status": null,
@@ -1442,7 +1422,7 @@
        "player_id": null,
        "points": null,
        "position": "DEF",
-       "projected": 6.5,
+       "projected": 6.8,
        "replacement": true,
        "slot": "DEF",
        "status": null,
@@ -1450,7 +1430,7 @@
       }
      ],
      "lineup_choices": null,
-     "mean": 73.5,
+     "mean": 73.64,
      "not_playing": [
       {
        "name": "Terrance Ferguson",
@@ -1465,11 +1445,6 @@
       {
        "name": "Ty Simpson",
        "player_id": "13275",
-       "reason": "Out"
-      },
-      {
-       "name": "Carnell Tate",
-       "player_id": "13279",
        "reason": "Out"
       },
       {
@@ -1492,7 +1467,7 @@
      "roster_id": 2,
      "team_name": "Forever Unclean ",
      "to_play": null,
-     "win_prob": 0.1888
+     "win_prob": 0.1904
     },
     {
      "actual": null,
@@ -1680,7 +1655,7 @@
      "roster_id": 11,
      "team_name": "SLOPPY SECONDS ",
      "to_play": null,
-     "win_prob": 0.8112
+     "win_prob": 0.8096
     }
    ],
    "views": {
@@ -1688,37 +1663,37 @@
      "hist": {
       "shares": [
        [
-        7,
+        6,
         5,
         4,
         6,
         10,
         12,
-        16,
+        14,
         20,
         22,
         24,
-        29,
+        27,
         36,
-        36,
-        38,
-        44,
+        35,
+        39,
+        43,
         46,
         39,
         48,
         49,
         46,
-        43,
-        43,
-        39,
-        40,
-        36,
-        30,
-        32,
+        42,
+        44,
+        38,
+        41,
+        37,
+        29,
+        33,
         28,
         24,
-        23,
-        19,
+        22,
+        20,
         18,
         14,
         13,
@@ -1860,7 +1835,7 @@
          "player_id": "13279",
          "points": null,
          "position": "WR",
-         "projected": 10.5,
+         "projected": 10.1,
          "replacement": false,
          "slot": "WR",
          "status": null,
@@ -1914,7 +1889,7 @@
          "player_id": null,
          "points": null,
          "position": "RB",
-         "projected": 4.1,
+         "projected": 4.5,
          "replacement": true,
          "slot": "RB",
          "status": null,
@@ -1927,7 +1902,7 @@
          "player_id": "13279",
          "points": null,
          "position": "WR",
-         "projected": 10.5,
+         "projected": 10.1,
          "replacement": false,
          "slot": "WR",
          "status": null,
@@ -1979,7 +1954,7 @@
          "player_id": null,
          "points": null,
          "position": "DEF",
-         "projected": 6.5,
+         "projected": 6.8,
          "replacement": true,
          "slot": "DEF",
          "status": null,
@@ -1987,7 +1962,7 @@
         }
        ],
        "lineup_choices": null,
-       "mean": 73.5,
+       "mean": 73.64,
        "not_playing": [
         {
          "name": "Terrance Ferguson",
@@ -2002,11 +1977,6 @@
         {
          "name": "Ty Simpson",
          "player_id": "13275",
-         "reason": "Out"
-        },
-        {
-         "name": "Carnell Tate",
-         "player_id": "13279",
          "reason": "Out"
         },
         {
@@ -2029,7 +1999,7 @@
        "roster_id": 2,
        "team_name": "Forever Unclean ",
        "to_play": null,
-       "win_prob": 0.1888
+       "win_prob": 0.1904
       },
       {
        "actual": null,
@@ -2217,7 +2187,7 @@
        "roster_id": 11,
        "team_name": "SLOPPY SECONDS ",
        "to_play": null,
-       "win_prob": 0.8112
+       "win_prob": 0.8096
       }
      ]
     }
@@ -2565,11 +2535,6 @@
        "name": "Wan'Dale Robinson",
        "player_id": "8126",
        "reason": "IR"
-      },
-      {
-       "name": "Tyler Goodson",
-       "player_id": "8207",
-       "reason": "IR"
       }
      ],
      "points_so_far": null,
@@ -2744,11 +2709,6 @@
      "lineup_choices": null,
      "mean": 86.01,
      "not_playing": [
-      {
-       "name": "Ladd McConkey",
-       "player_id": "11635",
-       "reason": "Out"
-      },
       {
        "name": "Tyler Warren",
        "player_id": "12518",
@@ -3111,11 +3071,6 @@
          "name": "Wan'Dale Robinson",
          "player_id": "8126",
          "reason": "IR"
-        },
-        {
-         "name": "Tyler Goodson",
-         "player_id": "8207",
-         "reason": "IR"
         }
        ],
        "points_so_far": null,
@@ -3291,11 +3246,6 @@
        "mean": 86.01,
        "not_playing": [
         {
-         "name": "Ladd McConkey",
-         "player_id": "11635",
-         "reason": "Out"
-        },
-        {
          "name": "Tyler Warren",
          "player_id": "12518",
          "reason": "Bye"
@@ -3343,110 +3293,108 @@
       10,
       10,
       12,
-      16,
-      20,
+      15,
+      19,
       21,
       22,
-      29,
+      28,
       30,
-      30,
-      36,
-      33,
-      36,
-      38,
-      38,
-      38,
-      42,
-      43,
-      38,
+      31,
+      35,
       32,
+      37,
       38,
-      33,
+      37,
+      39,
+      40,
+      43,
+      37,
+      35,
+      38,
+      34,
       30,
       32,
       24,
       25,
       24,
       24,
-      20,
+      21,
       20,
       18,
       15,
       14,
       13,
-      10,
+      11,
+      9,
       8,
-      8,
-      6,
+      7,
       5,
       5,
       4,
+      2,
       3,
-      3,
       2,
       2,
       2,
       1,
       1,
       1,
-      0,
       2
      ],
      [
+      3,
       1,
-      0,
       2,
-      2,
-      2,
+      3,
       4,
       5,
-      7,
-      7,
-      9,
+      6,
+      8,
+      10,
+      12,
       14,
-      14,
-      18,
-      18,
+      19,
+      21,
       22,
-      24,
-      26,
+      27,
       26,
       30,
-      34,
+      33,
+      37,
       35,
-      36,
       38,
+      39,
       40,
-      41,
-      38,
       40,
       37,
-      33,
-      38,
+      37,
       36,
-      33,
+      35,
+      38,
       34,
-      27,
-      28,
+      34,
+      30,
+      33,
       25,
-      21,
+      22,
       20,
-      17,
-      17,
-      14,
-      14,
+      18,
+      18,
+      15,
+      12,
+      13,
       10,
-      10,
+      9,
       8,
       7,
-      7,
       6,
-      3,
+      4,
+      4,
       4,
       3,
       2,
       2,
-      1,
+      2,
       1,
       1,
       6
@@ -3618,7 +3566,7 @@
        "player_id": null,
        "points": null,
        "position": "DEF",
-       "projected": 6.5,
+       "projected": 6.8,
        "replacement": true,
        "slot": "DEF",
        "status": null,
@@ -3626,12 +3574,12 @@
       }
      ],
      "lineup_choices": null,
-     "mean": 99.48,
+     "mean": 99.71,
      "not_playing": [
       {
        "name": "Woody Marks",
        "player_id": "12474",
-       "reason": "Out"
+       "reason": "Doubtful"
       },
       {
        "name": "Jacory Croskey-Merritt",
@@ -3673,7 +3621,7 @@
      "roster_id": 4,
      "team_name": "WILL",
      "to_play": null,
-     "win_prob": 0.4178
+     "win_prob": 0.4624
     },
     {
      "actual": null,
@@ -3681,12 +3629,12 @@
      "key_players": [
       {
        "clock": null,
-       "kickoff": "2026-12-06T21:25:00+00:00",
-       "name": "Drake Maye",
-       "player_id": "11564",
+       "kickoff": "2026-12-06T18:00:00+00:00",
+       "name": "Caleb Williams",
+       "player_id": "11560",
        "points": null,
        "position": "QB",
-       "projected": 20.5,
+       "projected": 16.6,
        "replacement": false,
        "slot": "QB",
        "status": null,
@@ -3735,12 +3683,12 @@
      "lineup": [
       {
        "clock": null,
-       "kickoff": "2026-12-06T21:25:00+00:00",
-       "name": "Drake Maye",
-       "player_id": "11564",
+       "kickoff": "2026-12-06T18:00:00+00:00",
+       "name": "Caleb Williams",
+       "player_id": "11560",
        "points": null,
        "position": "QB",
-       "projected": 20.5,
+       "projected": 16.6,
        "replacement": false,
        "slot": "QB",
        "status": null,
@@ -3762,11 +3710,11 @@
       {
        "clock": null,
        "kickoff": "2026-12-06T18:00:00+00:00",
-       "name": "Dylan Sampson",
-       "player_id": "12469",
+       "name": "Omarion Hampton",
+       "player_id": "12507",
        "points": null,
        "position": "RB",
-       "projected": 7.9,
+       "projected": 8.0,
        "replacement": false,
        "slot": "RB",
        "status": null,
@@ -3839,16 +3787,11 @@
       }
      ],
      "lineup_choices": null,
-     "mean": 105.27,
+     "mean": 102.53,
      "not_playing": [
       {
        "name": "Drake Maye",
        "player_id": "11564",
-       "reason": "Out"
-      },
-      {
-       "name": "Nicholas Singleton",
-       "player_id": "13288",
        "reason": "Out"
       },
       {
@@ -3871,7 +3814,7 @@
      "roster_id": 10,
      "team_name": "Trust the Process DSO",
      "to_play": null,
-     "win_prob": 0.5822
+     "win_prob": 0.5376
     }
    ],
    "views": {
@@ -3888,110 +3831,108 @@
         10,
         10,
         12,
-        16,
-        20,
+        15,
+        19,
         21,
         22,
-        29,
+        28,
         30,
-        30,
-        36,
-        33,
-        36,
-        38,
-        38,
-        38,
-        42,
-        43,
-        38,
+        31,
+        35,
         32,
+        37,
         38,
-        33,
+        37,
+        39,
+        40,
+        43,
+        37,
+        35,
+        38,
+        34,
         30,
         32,
         24,
         25,
         24,
         24,
-        20,
+        21,
         20,
         18,
         15,
         14,
         13,
-        10,
+        11,
+        9,
         8,
-        8,
-        6,
+        7,
         5,
         5,
         4,
+        2,
         3,
-        3,
         2,
         2,
         2,
         1,
         1,
         1,
-        0,
         2
        ],
        [
+        3,
         1,
-        0,
         2,
-        2,
-        2,
+        3,
         4,
         5,
-        7,
-        7,
-        9,
+        6,
+        8,
+        10,
+        12,
         14,
-        14,
-        18,
-        18,
+        19,
+        21,
         22,
-        24,
-        26,
+        27,
         26,
         30,
-        34,
+        33,
+        37,
         35,
-        36,
         38,
+        39,
         40,
-        41,
-        38,
         40,
         37,
-        33,
-        38,
+        37,
         36,
-        33,
+        35,
+        38,
         34,
-        27,
-        28,
+        34,
+        30,
+        33,
         25,
-        21,
+        22,
         20,
-        17,
-        17,
-        14,
-        14,
+        18,
+        18,
+        15,
+        12,
+        13,
         10,
-        10,
+        9,
         8,
         7,
-        7,
         6,
-        3,
+        4,
+        4,
         4,
         3,
         2,
         2,
-        1,
+        2,
         1,
         1,
         6
@@ -4158,7 +4099,7 @@
          "player_id": null,
          "points": null,
          "position": "DEF",
-         "projected": 6.5,
+         "projected": 6.8,
          "replacement": true,
          "slot": "DEF",
          "status": null,
@@ -4166,12 +4107,12 @@
         }
        ],
        "lineup_choices": null,
-       "mean": 99.48,
+       "mean": 99.71,
        "not_playing": [
         {
          "name": "Woody Marks",
          "player_id": "12474",
-         "reason": "Out"
+         "reason": "Doubtful"
         },
         {
          "name": "Jacory Croskey-Merritt",
@@ -4213,7 +4154,7 @@
        "roster_id": 4,
        "team_name": "WILL",
        "to_play": null,
-       "win_prob": 0.4178
+       "win_prob": 0.4624
       },
       {
        "actual": null,
@@ -4221,12 +4162,12 @@
        "key_players": [
         {
          "clock": null,
-         "kickoff": "2026-12-06T21:25:00+00:00",
-         "name": "Drake Maye",
-         "player_id": "11564",
+         "kickoff": "2026-12-06T18:00:00+00:00",
+         "name": "Caleb Williams",
+         "player_id": "11560",
          "points": null,
          "position": "QB",
-         "projected": 20.5,
+         "projected": 16.6,
          "replacement": false,
          "slot": "QB",
          "status": null,
@@ -4275,12 +4216,12 @@
        "lineup": [
         {
          "clock": null,
-         "kickoff": "2026-12-06T21:25:00+00:00",
-         "name": "Drake Maye",
-         "player_id": "11564",
+         "kickoff": "2026-12-06T18:00:00+00:00",
+         "name": "Caleb Williams",
+         "player_id": "11560",
          "points": null,
          "position": "QB",
-         "projected": 20.5,
+         "projected": 16.6,
          "replacement": false,
          "slot": "QB",
          "status": null,
@@ -4302,11 +4243,11 @@
         {
          "clock": null,
          "kickoff": "2026-12-06T18:00:00+00:00",
-         "name": "Dylan Sampson",
-         "player_id": "12469",
+         "name": "Omarion Hampton",
+         "player_id": "12507",
          "points": null,
          "position": "RB",
-         "projected": 7.9,
+         "projected": 8.0,
          "replacement": false,
          "slot": "RB",
          "status": null,
@@ -4379,16 +4320,11 @@
         }
        ],
        "lineup_choices": null,
-       "mean": 105.27,
+       "mean": 102.53,
        "not_playing": [
         {
          "name": "Drake Maye",
          "player_id": "11564",
-         "reason": "Out"
-        },
-        {
-         "name": "Nicholas Singleton",
-         "player_id": "13288",
          "reason": "Out"
         },
         {
@@ -4411,7 +4347,7 @@
        "roster_id": 10,
        "team_name": "Trust the Process DSO",
        "to_play": null,
-       "win_prob": 0.5822
+       "win_prob": 0.5376
       }
      ]
     }
@@ -4727,16 +4663,6 @@
        "reason": "IR"
       },
       {
-       "name": "Chris Bell",
-       "player_id": "13311",
-       "reason": "Out"
-      },
-      {
-       "name": "Jaylen Waddle",
-       "player_id": "7526",
-       "reason": "Out"
-      },
-      {
        "name": "Garrett Wilson",
        "player_id": "8146",
        "reason": "Bye"
@@ -4928,16 +4854,6 @@
        "name": "Tre Tucker",
        "player_id": "10213",
        "reason": "Bye"
-      },
-      {
-       "name": "Tyrone Tracy Jr.",
-       "player_id": "11655",
-       "reason": "IR"
-      },
-      {
-       "name": "Kyle Monangai",
-       "player_id": "12534",
-       "reason": "Out"
       },
       {
        "name": "Zachariah Branch",
@@ -5269,16 +5185,6 @@
          "reason": "IR"
         },
         {
-         "name": "Chris Bell",
-         "player_id": "13311",
-         "reason": "Out"
-        },
-        {
-         "name": "Jaylen Waddle",
-         "player_id": "7526",
-         "reason": "Out"
-        },
-        {
          "name": "Garrett Wilson",
          "player_id": "8146",
          "reason": "Bye"
@@ -5472,16 +5378,6 @@
          "reason": "Bye"
         },
         {
-         "name": "Tyrone Tracy Jr.",
-         "player_id": "11655",
-         "reason": "IR"
-        },
-        {
-         "name": "Kyle Monangai",
-         "player_id": "12534",
-         "reason": "Out"
-        },
-        {
          "name": "Zachariah Branch",
          "player_id": "13320",
          "reason": "Out"
@@ -5520,47 +5416,46 @@
    "hist": {
     "shares": [
      [
-      5,
-      2,
+      7,
       4,
-      5,
+      6,
       6,
       7,
-      9,
+      8,
       10,
-      14,
-      18,
-      22,
+      13,
+      17,
+      21,
       23,
       24,
+      29,
       30,
-      30,
+      34,
+      36,
+      36,
+      35,
+      42,
+      39,
+      40,
+      39,
+      39,
+      42,
+      38,
       35,
       35,
-      36,
-      36,
-      41,
-      38,
-      40,
-      40,
-      38,
-      43,
-      36,
-      36,
       34,
-      34,
-      29,
-      29,
-      26,
+      30,
+      28,
+      27,
       24,
       22,
       18,
       18,
-      14,
+      15,
       14,
       12,
       10,
-      9,
+      8,
       8,
       6,
       6,
@@ -5594,7 +5489,6 @@
       0,
       0,
       0,
-      1,
       0,
       1,
       1,
@@ -5609,41 +5503,41 @@
       8,
       10,
       12,
-      15,
+      14,
       17,
       18,
       20,
-      23,
+      22,
       25,
-      26,
+      25,
       29,
       32,
+      33,
       34,
       34,
-      35,
       33,
       34,
       32,
-      36,
-      38,
-      36,
       35,
-      32,
+      38,
+      38,
+      34,
+      33,
       29,
-      31,
+      30,
       25,
-      24,
-      24,
+      25,
+      25,
       23,
-      26,
+      25,
       19,
-      17,
       16,
+      17,
       16,
       13,
       12,
       11,
-      9,
+      10,
       9,
       7,
       6,
@@ -5660,7 +5554,7 @@
       5
      ]
     ],
-    "start": 42.0,
+    "start": 44.0,
     "width": 2.0
    },
    "key": "8-9",
@@ -5676,12 +5570,12 @@
      "key_players": [
       {
        "clock": null,
-       "kickoff": "2026-12-07T01:20:00+00:00",
-       "name": "Aaron Rodgers",
-       "player_id": "96",
+       "kickoff": "2026-12-06T18:00:00+00:00",
+       "name": "Cam Ward",
+       "player_id": "12522",
        "points": null,
        "position": "QB",
-       "projected": 15.0,
+       "projected": 15.5,
        "replacement": false,
        "slot": "QB",
        "status": null,
@@ -5730,12 +5624,12 @@
      "lineup": [
       {
        "clock": null,
-       "kickoff": "2026-12-07T01:20:00+00:00",
-       "name": "Aaron Rodgers",
-       "player_id": "96",
+       "kickoff": "2026-12-06T18:00:00+00:00",
+       "name": "Cam Ward",
+       "player_id": "12522",
        "points": null,
        "position": "QB",
-       "projected": 15.0,
+       "projected": 15.5,
        "replacement": false,
        "slot": "QB",
        "status": null,
@@ -5821,12 +5715,12 @@
       },
       {
        "clock": null,
-       "kickoff": "2026-12-06T18:00:00+00:00",
-       "name": "Washington Commanders",
-       "player_id": "WAS",
+       "kickoff": "2026-12-07T01:20:00+00:00",
+       "name": "Houston Texans",
+       "player_id": "HOU",
        "points": null,
        "position": "DEF",
-       "projected": 7.3,
+       "projected": 7.0,
        "replacement": false,
        "slot": "DEF",
        "status": null,
@@ -5834,7 +5728,7 @@
       }
      ],
      "lineup_choices": null,
-     "mean": 88.52,
+     "mean": 88.69,
      "not_playing": [
       {
        "name": "Adonai Mitchell",
@@ -5852,19 +5746,9 @@
        "reason": "Bye"
       },
       {
-       "name": "Mike Evans",
-       "player_id": "2216",
-       "reason": "Out"
-      },
-      {
        "name": "Derrick Henry",
        "player_id": "3198",
        "reason": "Bye"
-      },
-      {
-       "name": "T.J. Hockenson",
-       "player_id": "5844",
-       "reason": "Out"
       },
       {
        "name": "Kyler Murray",
@@ -5881,7 +5765,7 @@
      "roster_id": 8,
      "team_name": "Pocket Dogs",
      "to_play": null,
-     "win_prob": 0.2068
+     "win_prob": 0.2072
     },
     {
      "actual": null,
@@ -6034,20 +5918,20 @@
       },
       {
        "clock": null,
-       "kickoff": "2026-12-06T18:00:00+00:00",
-       "name": "Chicago Bears",
-       "player_id": "CHI",
+       "kickoff": null,
+       "name": "Free agent (replacement level)",
+       "player_id": null,
        "points": null,
        "position": "DEF",
-       "projected": 6.6,
-       "replacement": false,
+       "projected": 6.8,
+       "replacement": true,
        "slot": "DEF",
        "status": null,
        "wpa": null
       }
      ],
      "lineup_choices": null,
-     "mean": 112.85,
+     "mean": 112.99,
      "not_playing": [
       {
        "name": "RJ Harvey",
@@ -6060,19 +5944,9 @@
        "reason": "IR"
       },
       {
-       "name": "DeVonta Smith",
-       "player_id": "7525",
-       "reason": "Out"
-      },
-      {
        "name": "Alec Pierce",
        "player_id": "8142",
        "reason": "Bye"
-      },
-      {
-       "name": "Kenneth Walker III",
-       "player_id": "8151",
-       "reason": "Out"
       },
       {
        "name": "Michael Mayer",
@@ -6089,7 +5963,7 @@
      "roster_id": 9,
      "team_name": "Christian Mingle",
      "to_play": null,
-     "win_prob": 0.7932
+     "win_prob": 0.7928
     }
    ],
    "views": {
@@ -6097,47 +5971,46 @@
      "hist": {
       "shares": [
        [
-        5,
-        2,
+        7,
         4,
-        5,
+        6,
         6,
         7,
-        9,
+        8,
         10,
-        14,
-        18,
-        22,
+        13,
+        17,
+        21,
         23,
         24,
+        29,
         30,
-        30,
+        34,
+        36,
+        36,
+        35,
+        42,
+        39,
+        40,
+        39,
+        39,
+        42,
+        38,
         35,
         35,
-        36,
-        36,
-        41,
-        38,
-        40,
-        40,
-        38,
-        43,
-        36,
-        36,
         34,
-        34,
-        29,
-        29,
-        26,
+        30,
+        28,
+        27,
         24,
         22,
         18,
         18,
-        14,
+        15,
         14,
         12,
         10,
-        9,
+        8,
         8,
         6,
         6,
@@ -6171,7 +6044,6 @@
         0,
         0,
         0,
-        1,
         0,
         1,
         1,
@@ -6186,41 +6058,41 @@
         8,
         10,
         12,
-        15,
+        14,
         17,
         18,
         20,
-        23,
+        22,
         25,
-        26,
+        25,
         29,
         32,
+        33,
         34,
         34,
-        35,
         33,
         34,
         32,
-        36,
-        38,
-        36,
         35,
-        32,
+        38,
+        38,
+        34,
+        33,
         29,
-        31,
+        30,
         25,
-        24,
-        24,
+        25,
+        25,
         23,
-        26,
+        25,
         19,
-        17,
         16,
+        17,
         16,
         13,
         12,
         11,
-        9,
+        10,
         9,
         7,
         6,
@@ -6237,7 +6109,7 @@
         5
        ]
       ],
-      "start": 42.0,
+      "start": 44.0,
       "width": 2.0
      },
      "source": "forecast",
@@ -6248,12 +6120,12 @@
        "key_players": [
         {
          "clock": null,
-         "kickoff": "2026-12-07T01:20:00+00:00",
-         "name": "Aaron Rodgers",
-         "player_id": "96",
+         "kickoff": "2026-12-06T18:00:00+00:00",
+         "name": "Cam Ward",
+         "player_id": "12522",
          "points": null,
          "position": "QB",
-         "projected": 15.0,
+         "projected": 15.5,
          "replacement": false,
          "slot": "QB",
          "status": null,
@@ -6302,12 +6174,12 @@
        "lineup": [
         {
          "clock": null,
-         "kickoff": "2026-12-07T01:20:00+00:00",
-         "name": "Aaron Rodgers",
-         "player_id": "96",
+         "kickoff": "2026-12-06T18:00:00+00:00",
+         "name": "Cam Ward",
+         "player_id": "12522",
          "points": null,
          "position": "QB",
-         "projected": 15.0,
+         "projected": 15.5,
          "replacement": false,
          "slot": "QB",
          "status": null,
@@ -6393,12 +6265,12 @@
         },
         {
          "clock": null,
-         "kickoff": "2026-12-06T18:00:00+00:00",
-         "name": "Washington Commanders",
-         "player_id": "WAS",
+         "kickoff": "2026-12-07T01:20:00+00:00",
+         "name": "Houston Texans",
+         "player_id": "HOU",
          "points": null,
          "position": "DEF",
-         "projected": 7.3,
+         "projected": 7.0,
          "replacement": false,
          "slot": "DEF",
          "status": null,
@@ -6406,7 +6278,7 @@
         }
        ],
        "lineup_choices": null,
-       "mean": 88.52,
+       "mean": 88.69,
        "not_playing": [
         {
          "name": "Adonai Mitchell",
@@ -6424,19 +6296,9 @@
          "reason": "Bye"
         },
         {
-         "name": "Mike Evans",
-         "player_id": "2216",
-         "reason": "Out"
-        },
-        {
          "name": "Derrick Henry",
          "player_id": "3198",
          "reason": "Bye"
-        },
-        {
-         "name": "T.J. Hockenson",
-         "player_id": "5844",
-         "reason": "Out"
         },
         {
          "name": "Kyler Murray",
@@ -6453,7 +6315,7 @@
        "roster_id": 8,
        "team_name": "Pocket Dogs",
        "to_play": null,
-       "win_prob": 0.2068
+       "win_prob": 0.2072
       },
       {
        "actual": null,
@@ -6606,20 +6468,20 @@
         },
         {
          "clock": null,
-         "kickoff": "2026-12-06T18:00:00+00:00",
-         "name": "Chicago Bears",
-         "player_id": "CHI",
+         "kickoff": null,
+         "name": "Free agent (replacement level)",
+         "player_id": null,
          "points": null,
          "position": "DEF",
-         "projected": 6.6,
-         "replacement": false,
+         "projected": 6.8,
+         "replacement": true,
          "slot": "DEF",
          "status": null,
          "wpa": null
         }
        ],
        "lineup_choices": null,
-       "mean": 112.85,
+       "mean": 112.99,
        "not_playing": [
         {
          "name": "RJ Harvey",
@@ -6632,19 +6494,9 @@
          "reason": "IR"
         },
         {
-         "name": "DeVonta Smith",
-         "player_id": "7525",
-         "reason": "Out"
-        },
-        {
          "name": "Alec Pierce",
          "player_id": "8142",
          "reason": "Bye"
-        },
-        {
-         "name": "Kenneth Walker III",
-         "player_id": "8151",
-         "reason": "Out"
         },
         {
          "name": "Michael Mayer",
@@ -6661,7 +6513,7 @@
        "roster_id": 9,
        "team_name": "Christian Mingle",
        "to_play": null,
-       "win_prob": 0.7932
+       "win_prob": 0.7928
       }
      ]
     }
@@ -6669,7 +6521,7 @@
    "winner": null
   }
  ],
- "generated_at": "2026-11-18T04:14:14+00:00",
+ "generated_at": "2026-11-18T16:44:11+00:00",
  "kind": "upcoming",
  "label": "Week 13",
  "league_key": "dynasty",
