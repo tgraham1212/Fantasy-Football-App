@@ -29,7 +29,7 @@ def in_progress_store(tmp_path):
     week4 = {"w1": proj("W1", "WR", "DAL"), "r9": proj("R9", "RB", "ATL", rush_yd=60), "z0": proj("Z0", "RB", "NYG")}
     store.write_projections("2025", 3, week3)
     store.write_projections("2025", 4, week4)
-    store.write_injuries("2025", 2, {"w2": "Out", "q1": "Questionable"})
+    store.write_injuries("2025", 2, {"w2": "Out", "q1": "Questionable", "r1": "Doubtful"})
     return store
 
 
@@ -56,6 +56,8 @@ def test_roster_flags_and_owners(tmp_path):
     assert players["r9"]["taxi"] and not players["w1"]["taxi"]
     assert players["w3"]["reserve"]
     assert players["w2"]["injured"] and not players["q1"]["injured"]  # Out yes, Questionable no
+    assert (players["w2"]["status"], players["r1"]["status"], players["q1"]["status"]) == ("Out", "Doubtful", None)
+    assert players["r1"]["injured"]
     team = payload["teams"][0]
     assert (team["roster_id"], team["owner_id"], team["display_name"]) == (1, "A", "Alice")
     assert list(payload["positions"]) == ["QB", "RB", "WR"]

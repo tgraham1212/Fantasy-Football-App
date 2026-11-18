@@ -177,9 +177,15 @@ same; only the rank matters. Playoff weeks, unplayed weeks and weeks with no poi
 are not rated.
 
 Ratings follow the roster owner's Sleeper user ID, so a manager keeps one rating
-through roster changes and former members keep their last one. A roster with no owner
-on record (Sleeper only stores end-of-season owners) is rated as a `vacant:<season>:<roster>`
-entry so the week's ranking stays complete; it is flagged and never charted.
+through roster changes and former members keep their last one. Sleeper only stores
+end-of-season owners, so a manager who quits before the league year officially ends
+leaves a roster with no owner even though they played the season. Such a roster is
+read as owned by the most recent earlier owner of that roster slot (else the first later
+one), everywhere the app reads rosters: ratings, Player WAR owners, Positions and the odds
+labels. Dynasty 2023 roster 11 is the case in our data: it reads as DeekBurg's, his 2022
+owner. The stored Sleeper files are not changed. Only a roster with no owner in any
+stored season is rated as a `vacant:<season>:<roster>` entry, so the week's ranking stays
+complete; it is flagged and never charted.
 
 Two rules keep the numbers meaningful across seasons:
 
@@ -292,8 +298,8 @@ ranks each player by a merged figure:
   current-week bye cannot win the maximum, and a player whose team had a bye in the
   only scored captured week gets his real figure from the current week.
 - **Ownership, only for injured players.** A player not seen active in any scored
-  captured week who carries an out status (IR, Out, PUP, Sus, NA or DNR in the latest
-  saved injury file) takes the higher of that figure and his percent owned.
+  captured week who carries an out status (the shared list below, in the latest saved
+  injury file) takes the higher of that figure and his percent owned.
   Ownership barely moves during an injured-reserve stint, so it stands in for how
   often he was started while healthy. Healthy players never use it: a backup's
   ownership far exceeds his start rate (owned 50%, started 15%).
@@ -319,6 +325,15 @@ own snapshot, so seasons use the weekly cut and the merged rule no longer applie
 see it on the current data, run `python -m ffapp war` and read `cut` and
 `replacement` in `data/war/<league>/2026.json`.
 
+### Out statuses
+
+One list of Sleeper injury statuses means "not playing" everywhere on the site
+(`OUT_STATUSES` in `src/ffapp/injuries.py`): Out, Doubtful, IR, PUP, Sus, NA and DNR,
+shown as Out, Doubtful, IR, PUP, Suspended, Not active and Did not report. Doubtful
+counts as out because such players almost never play; Questionable does not. It drives
+the Games cards' not-playing list, the Player WAR ownership fallback, and the red cross
+and popup on the Positions page.
+
 ## Positional Rankings
 
 The **Positions** sub-tab compares every manager's roster position by position, in the
@@ -340,12 +355,17 @@ rostered player at his points per game.
   manager with nobody at a position keeps an empty row at the bottom.
 - **The dotted line** is the position's WAR replacement level for that league-season
   ("Replacement Level"), from `data/war/` (see Player WAR).
+- **Rows** are labelled with the manager's display name and, beneath it in small grey
+  text, the team name, as on the Predictions and Games tabs. On desktop the two charts
+  in a grid row share one row height, so both fill their cards.
 - **Dots.** A light fill and a dark outline in the manager's colour (matched by owner,
   so a past season colours by manager rather than roster slot; former members are
-  grey). A dotted outline marks a taxi player, and a red cross marks a player listed IR
-  or Out (current season only). Dots too close together step above and below the row
-  line, and a chart's rows grow taller when a row needs more room. Hovering, focusing
-  or tapping a dot shows the player's name and points per game.
+  grey). A dotted outline marks a taxi player, and a red cross marks a player with an
+  out status (current season only). Dots too close together step above and below the
+  row line, and a chart's rows grow taller when a row needs more room. The top player's
+  last name is centred over his dot, overhanging the plot if needed but never leaving
+  the card. Hovering, focusing or tapping a dot shows the player's name and points per
+  game, then his out status in red and "Taxi" in gold when they apply.
 - **Axis.** Each position keeps one range in every season of a league, chosen so about
   99% of player-seasons fit, rounded to multiples of 5 and always including zero and
   the replacement level. A value beyond the range sits at the edge with an arrow, and

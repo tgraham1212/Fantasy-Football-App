@@ -40,13 +40,34 @@ def test_weekly_results_cover_regular_season_scored_weeks_only(seeded_store):
     assert by_season["2026"] == list(range(1, 10)), "2026 has nine scored weeks; unplayed weeks are not rated"
 
 
-def test_ownerless_roster_becomes_a_vacant_manager(seeded_store):
+def test_ownerless_roster_is_rated_under_its_inherited_owner(seeded_store):
+    # dynasty roster 11 has no owner in 2023; it was DeekBurg's in 2022, so 2023 is his
+    deek = next(str(r["owner_id"]) for r in seeded_store.read_rosters("dynasty", "2022") if r["roster_id"] == 11)
     results = weekly_results(seeded_store, "dynasty")
-    vacant = [m for m in results.vacant]
-    assert vacant == [vacant_id("2023", 11)]
-    assert vacant[0] not in results.current
-    for season, week, points in results.weeks:
-        assert (vacant[0] in points) == (season == "2023")
+    assert not results.vacant
+    assert "2023" in results.seasons_played[deek]
+    assert all(deek in points for season, week, points in results.weeks if season == "2023")
+
+
+def test_roster_never_owned_becomes_a_vacant_manager(seeded_store):
+    # empty roster 11's owner in every stored season: nothing to inherit, so 2023 stays vacant
+    from ffapp.store import read_json, write_json
+    for season in seeded_store.seasons("dynasty"):
+        path = seeded_store.season_dir("dynasty", season) / "rosters.json"
+        rosters = read_json(path)
+        for r in rosters:
+            if r["roster_id"] == 11 and season <= "2023":
+                r["owner_id"] = None
+        write_json(path, rosters)
+    later = [s for s in seeded_store.seasons("dynasty") if s > "2023"]
+    for season in later:
+        path = seeded_store.season_dir("dynasty", season) / "rosters.json"
+        write_json(path, [r for r in read_json(path) if r["roster_id"] != 11] + [
+            {**r, "owner_id": None} for r in read_json(path) if r["roster_id"] == 11])
+    fresh = type(seeded_store)(seeded_store.root)  # a new Store: no cached ownership
+    results = weekly_results(fresh, "dynasty")
+    assert vacant_id("2023", 11) in results.vacant
+    assert vacant_id("2023", 11) not in results.current
 
 
 def test_managers_keyed_by_user_and_flagged_current(seeded_store):
@@ -231,7 +252,7 @@ def test_ratings_file_written_for_every_week_and_manager(seeded_store):
     current = [m for m, v in managers.items() if v["current"]]
     former = [m for m, v in managers.items() if not v["current"] and not v["vacant"]]
     vacant = [m for m, v in managers.items() if v["vacant"]]
-    assert len(current) == 12 and former and vacant == [vacant_id("2023", 11)]
+    assert len(current) == 12 and former and vacant == []  # roster 11's 2023 is DeekBurg's
     for m, v in managers.items():
         played = {(h["season"], h["week"]) for h in v["history"]}
         expected = {(w["season"], w["week"]) for w in payload["weeks"] if w["season"] in v["seasons"]}

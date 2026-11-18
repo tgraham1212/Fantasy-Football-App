@@ -28,7 +28,7 @@ from pathlib import Path
 
 from ffapp.config import Config
 from ffapp.espn import FANTASY_POSITIONS, match, teams_from_stats
-from ffapp.injuries import statuses_for_week
+from ffapp.injuries import OUT_STATUSES, statuses_for_week
 from ffapp.league import FLEX_ELIGIBLE, resolve_settings, starter_slots
 from ffapp.odds import regular_season_range
 from ffapp.stats import actual_points, played
@@ -244,8 +244,9 @@ def cut_mode(store: Store, season: str, weeks: list[int]) -> str:
     return "merged" if captured else "yearly"
 
 
-# Statuses that keep a player out; only such players may fall back to ownership (see below).
-UNAVAILABLE_STATUSES = frozenset({"IR", "Out", "PUP", "Sus", "NA", "DNR"})
+# Statuses that keep a player out (the shared list in injuries.py); only such players may fall
+# back to ownership (see below).
+UNAVAILABLE_STATUSES = frozenset(OUT_STATUSES)
 
 
 # Why a merged start percentage (README, Player WAR -> "Current-season start percentages"):
@@ -264,8 +265,8 @@ UNAVAILABLE_STATUSES = frozenset({"IR", "Out", "PUP", "Sus", "NA", "DNR"})
 # - a snapshot of a week not yet scored (the current week) is always trusted: a low figure there
 #   cannot win the maximum, and a player whose team had a bye in the only scored captured week
 #   gets his real figure from it.
-# A player never seen active in a scored captured week AND carrying an out status (IR, Out, PUP,
-# Sus, NA, DNR) takes the higher of that figure and his percent OWNED: ownership barely moves
+# A player never seen active in a scored captured week AND carrying an out status (the shared list:
+# Out, Doubtful, IR, PUP, Sus, NA, DNR) takes the higher of that figure and his percent OWNED: ownership barely moves
 # through an IR stint, so it stands in for how often he was started while healthy. Healthy
 # players never use it: a backup's ownership far exceeds his start rate (owned 50%, started 15%),
 # and giving it to everyone not seen active lifted week-10-bye backups into the replacement zone

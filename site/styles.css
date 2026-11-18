@@ -13,6 +13,7 @@
   --accent-ink: #ffffff;
   --good: #006300;
   --bad: #d03b3b;
+  --gold: #8a6100;  /* taxi label; >= 4.5:1 on --surface */
   --row-hover: rgba(11, 11, 11, 0.04);
   --row-selected: rgba(42, 120, 214, 0.12);
   /* chance-cell fill ramp: surface at 0, --fill-hi at 100. Text is --chance-ink below
@@ -64,6 +65,7 @@
     --accent: #3987e5;
     --good: #0ca30c;
     --bad: #e66767;
+    --gold: #e3b341;  /* taxi label; >= 4.5:1 on --surface */
     --row-hover: rgba(255, 255, 255, 0.05);
     --row-selected: rgba(57, 135, 229, 0.18);
     --fill-lo: #1a1a19;
@@ -109,6 +111,7 @@
   --accent: #3987e5;
   --good: #0ca30c;
   --bad: #e66767;
+  --gold: #e3b341;  /* taxi label; >= 4.5:1 on --surface */
   --row-hover: rgba(255, 255, 255, 0.05);
   --row-selected: rgba(57, 135, 229, 0.18);
   --fill-lo: #1a1a19;
@@ -547,8 +550,11 @@ footer { color: var(--muted); font-size: 0.8rem; text-align: center; padding-top
 .pos-chart { display: grid; grid-template-columns: minmax(84px, 32%) minmax(0, 1fr); column-gap: 8px; margin-top: 4px; }
 .pos-labels { min-width: 0; }
 .pos-label-top { height: 40px; }
-.pos-label { height: var(--pos-row, 28px); line-height: var(--pos-row, 28px); font-size: 0.85rem; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.pos-plot { position: relative; min-width: 0; overflow: hidden; }
+.pos-label { height: var(--pos-row, 38px); display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.pos-label .owner-name, .pos-label .team { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pos-label .owner-name { font-size: 0.85rem; color: var(--ink); }
+.pos-label .team { font-size: 0.74rem; line-height: 1.2; }
+.pos-plot { position: relative; min-width: 0; }
 .pos-plot svg { display: block; overflow: visible; }
 .pos-grid-line { stroke: var(--grid); stroke-width: 1; }
 .pos-row-line { stroke: var(--grid); stroke-width: 1; }
@@ -569,11 +575,13 @@ footer { color: var(--muted); font-size: 0.8rem; text-align: center; padding-top
 }
 .pos-pop[hidden] { display: none; }
 .pos-pop span { color: var(--ink-2); }
+.pos-pop .pos-status { color: var(--bad); font-weight: 600; }
+.pos-pop .pos-taxi { color: var(--gold); font-weight: 600; }
 @media (max-width: 759.98px) {
   .pos-grid { grid-template-columns: minmax(0, 1fr); }
   .pos-card:last-child:nth-child(odd) { width: auto; justify-self: stretch; }
 }
 @media (max-width: 420px) {
   .pos-chart { grid-template-columns: 84px minmax(0, 1fr); }
-  .pos-label { font-size: 0.8rem; }
+  .pos-label .owner-name { font-size: 0.8rem; }
 }

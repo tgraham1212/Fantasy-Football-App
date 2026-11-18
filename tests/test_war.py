@@ -295,3 +295,18 @@ def test_build_war_partly_captured_healthy_player_keeps_his_start_rate(tmp_path)
     war = build_war(store, tiny_config(), "tiny", "2025")
     # r3 is healthy, so no ownership: at 2% he is a week-1 replacement player beside r5
     assert war["replacement"]["RB"]["level"] == pytest.approx(((1.0 + 5.0) / 2 + 1.0) / 2)
+
+
+
+def test_doubtful_player_never_seen_active_uses_ownership(tmp_path):
+    store = synthetic_store(tmp_path, status="in_season")
+    week1 = _snapshot_from_season(store, "2025", r4={"started": 0.0})
+    store.write_espn_week("2025", 1, {**week1, "week": 1})
+    week3 = _snapshot_from_season(store, "2025", r4={"started": 2.0, "owned": 60.0})
+    store.write_espn_week("2025", 3, {**week3, "week": 3})
+    store.write_espn_season("2025", {**week3, "week": None})
+    store.write_injuries("2025", 3, {"r4": "Doubtful"})
+    stats = {1: {k: v for k, v in store.read_stats("2025", 1).items() if k != "r4"}, 2: store.read_stats("2025", 2)}
+    merged, mapping = merged_start_percentages(store, "2025", [1, 2], stats, store.read_espn_season("2025"), store.read_crosswalk(), {})
+    by_sid = {mapping[e]: rec["started"] for e, rec in merged["players"].items()}
+    assert by_sid["r4"] == 60.0

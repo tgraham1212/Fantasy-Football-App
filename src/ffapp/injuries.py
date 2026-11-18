@@ -18,8 +18,18 @@ from ffapp.store import Store
 log = logging.getLogger(__name__)
 
 SAVE_SEASON_TYPES = ("regular", "post")
-# Sleeper status -> the reason shown on a card (statuses not listed here do not keep a player out)
-NOT_PLAYING = {"Out": "Out", "Doubtful": "Doubtful", "IR": "IR", "PUP": "Out", "Sus": "Out"}
+# The one list of Sleeper statuses that keep a player out, with the label shown for each. Used by
+# the Games cards' not-playing list, the WAR ownership fallback and the Positions page. Doubtful
+# counts as out: such players almost never play. Statuses not listed (Questionable) do not.
+OUT_STATUSES = {
+    "Out": "Out",
+    "Doubtful": "Doubtful",
+    "IR": "IR",
+    "PUP": "PUP",
+    "Sus": "Suspended",
+    "NA": "Not active",
+    "DNR": "Did not report",
+}
 
 
 def statuses_from_players(payload: dict) -> dict[str, str]:
@@ -87,7 +97,7 @@ def not_playing(
             out.append({"player_id": pid, "reason": "Bye"})
             continue
         if saved is not None:
-            reason = NOT_PLAYING.get(saved.get(pid, ""))
+            reason = OUT_STATUSES.get(saved.get(pid, ""))
             if reason:
                 out.append({"player_id": pid, "reason": reason})
             continue

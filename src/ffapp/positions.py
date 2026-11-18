@@ -18,7 +18,7 @@ import math
 
 from ffapp.config import Config
 from ffapp.espn import FANTASY_POSITIONS
-from ffapp.injuries import statuses_for_week
+from ffapp.injuries import OUT_STATUSES, statuses_for_week
 from ffapp.league import owners, resolve_settings, starter_slots
 from ffapp.odds import regular_season_range
 from ffapp.scoring import record_points
@@ -27,7 +27,6 @@ from ffapp.store import Store
 from ffapp.war import read_war, scored_weeks
 
 POSITION_ORDER = ("QB", "RB", "WR", "TE", "K", "DEF")
-INJURED_STATUSES = frozenset({"IR", "Out"})
 AXIS_STEP = 5.0
 AXIS_QUANTILE = 0.99
 
@@ -107,7 +106,8 @@ def build_positions(store: Store, config: Config, league_key: str, season: str) 
                 "projected": projected,
                 "taxi": pid in taxi,
                 "reserve": pid in reserve,
-                "injured": statuses.get(pid) in INJURED_STATUSES,
+                "injured": statuses.get(pid) in OUT_STATUSES,
+                "status": OUT_STATUSES.get(statuses.get(pid, "")),
             })
         players.sort(key=lambda p: (POSITION_ORDER.index(p["position"]), -p["ppg"], p["id"]))
         owner = by_roster.get(int(roster["roster_id"]))

@@ -54,7 +54,7 @@ def test_saved_statuses_and_bye_take_precedence(tmp_path):
     out = not_playing(store, "2026", 9, ["a", "b", "c", "k"], projections, SCORING, {})
     assert out == [
         {"player_id": "a", "reason": "Doubtful"},
-        {"player_id": "c", "reason": "Out"},  # suspended counts as out
+        {"player_id": "c", "reason": "Suspended"},  # suspended counts as out, with its own label
         {"player_id": "k", "reason": "Bye"},  # bye wins over any status
     ]
 
@@ -81,3 +81,14 @@ def test_defense_bye_by_team_key(tmp_path):
     store = week_store(tmp_path)
     out = not_playing(store, "2026", 9, ["KC", "HOU"], {"HOU": {"position": "DEF", "team": "HOU", "stats": {"pts_allow": 1}}}, SCORING, {})
     assert out == [{"player_id": "KC", "reason": "Bye"}]
+
+
+def test_shared_out_statuses_and_labels(tmp_path):
+    store = week_store(tmp_path, saved={"n": "NA", "p": "PUP", "d": "DNR", "q": "Questionable"})
+    projections = {pid: proj("HOU", rec=3) for pid in "npdq"}
+    out = not_playing(store, "2026", 9, list("npdq"), projections, SCORING, {})
+    assert out == [
+        {"player_id": "n", "reason": "Not active"},
+        {"player_id": "p", "reason": "PUP"},
+        {"player_id": "d", "reason": "Did not report"},
+    ]

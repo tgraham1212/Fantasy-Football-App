@@ -3,7 +3,7 @@
 
 const ORDER = ["QB", "RB", "WR", "TE", "K", "DEF"];
 const LABEL = { QB: "Quarterbacks", RB: "Running backs", WR: "Wide receivers", TE: "Tight ends", K: "Kickers", DEF: "Defenses" };
-const ROW = 28; // px per manager row, the minimum: a chart's rows grow to fit its widest lane spread
+const ROW = 38; // px per manager row, the minimum (two-line labels): rows grow to fit the widest lane spread
 const TOP = 40; // px above the first row: replacement label and axis ticks
 const BOTTOM = 10;
 const NARROW = 300; // plot width (px) below which dots shrink
@@ -130,7 +130,19 @@ function drawCharts() {
       </div>
       <div class="pos-pop" role="tooltip" hidden></div>
     </section>`).join("");
-  for (const pos of positions) drawChart(grid.querySelector(`.pos-card[data-pos="${pos}"]`), pos, payload, colors);
+  const cards = positions.map((pos) => grid.querySelector(`.pos-card[data-pos="${pos}"]`));
+  const layouts = positions.map((pos, i) => layoutChart(cards[i], pos, payload));
+  // two columns: the charts sharing a grid row use one row height so both fill their cards
+  const twoColumns = getComputedStyle(grid).gridTemplateColumns.trim().split(/\s+/).length > 1;
+  const rowHeights = layouts.map((l) => l.rowH);
+  if (twoColumns) {
+    for (let i = 0; i + 1 < layouts.length; i += 2) {
+      const h = Math.max(rowHeights[i], rowHeights[i + 1]);
+      rowHeights[i] = h;
+      rowHeights[i + 1] = h;
+    }
+  }
+  layouts.forEach((l, i) => renderChart(cards[i], l, rowHeights[i], colors));
 }
 
 // -- one chart ----------------------------------------------------------------------------------
@@ -173,29 +185,40 @@ function lastName(name) {
   return parts.length > 1 ? parts.slice(1).join(" ") : parts[0] || "";
 }
 
-function drawChart(card, pos, payload, colors) {
+/* Measure a chart: its rows, scale and dot lanes, and the row height its widest lane spread needs. */
+function layoutChart(card, pos, payload) {
   const rows = rowsFor(pos, payload);
   const info = payload.positions[pos];
   const [lo, hi] = info.axis;
   const plot = card.querySelector(".pos-plot");
   const width = Math.max(120, plot.clientWidth);
   const geo = dotGeometry(width);
-  const R = geo.r;
-  const x0 = R + 2;
+  const x0 = geo.r + 2;
   const x1 = width - PAD_RIGHT;
   const sx = (v) => x0 + ((Math.min(Math.max(v, lo), hi) - lo) / (hi - lo)) * (x1 - x0);
-  // place every row's dots first: the widest lane spread sets this chart's row height
   const placed = rows.map((r) => {
     const xs = r.players.map((p) => sx(p.ppg));
     return { xs, lanes: placeDots(xs, geo) };
   });
   const spread = Math.max(0, ...placed.flatMap((p) => p.lanes.map(Math.abs)));
-  const rowH = Math.max(ROW, Math.ceil(2 * (spread + R) + 6));
+  const rowH = Math.max(ROW, Math.ceil(2 * (spread + geo.r) + 6));
+  return { pos, rows, info, lo, hi, width, geo, x0, x1, sx, placed, rowH };
+}
+
+function renderChart(card, layout, rowH, colors) {
+  const { pos, rows, info, lo, hi, width, geo, x0, x1, sx, placed } = layout;
+  const R = geo.r;
+  const plot = card.querySelector(".pos-plot");
   const height = TOP + rows.length * rowH + BOTTOM;
   card.querySelector(".pos-chart").style.setProperty("--pos-row", `${rowH}px`);
 
-  card.querySelector(".pos-labels").innerHTML = `<div class="pos-label-top"></div>` + rows.map((r) =>
-    `<div class="pos-label" title="${escapeHtml(r.team.team_name || r.team.display_name || "")}">${escapeHtml(r.team.team_name || r.team.display_name || "")}</div>`).join("");
+  card.querySelector(".pos-labels").innerHTML = `<div class="pos-label-top"></div>` + rows.map((r) => {
+    const manager = r.team.display_name || r.team.team_name || `Roster ${r.team.roster_id}`;
+    const team = r.team.display_name ? r.team.team_name || "" : "";
+    return `<div class="pos-label" title="${escapeHtml(team ? `${manager} (${team})` : manager)}">
+      <span class="owner-name">${escapeHtml(manager)}</span>${team ? `<span class="team">${escapeHtml(team)}</span>` : ""}
+    </div>`;
+  }).join("");
 
   const parts = [];
   for (let t = lo; t <= hi + 1e-9; t += 5) {
@@ -225,22 +248,34 @@ function drawChart(card, pos, payload, colors) {
       const x = xs[j];
       const cy = y + lanes[j];
       const style = `fill: color-mix(in srgb, var(${token}) 38%, var(--surface)); stroke: var(${token});`;
-      const label = `${p.name}, ${p.ppg.toFixed(1)} points per game`;
+      const extra = [p.status, p.taxi ? "taxi squad" : null].filter(Boolean).join(", ");
+      const label = `${p.name}, ${p.ppg.toFixed(1)} points per game${extra ? `, ${extra}` : ""}`;
       if (p.ppg > hi) parts.push(`<path class="pos-arrow" d="M${x + R + 2} ${cy - 4} L${x + R + 6} ${cy} L${x + R + 2} ${cy + 4}" style="stroke: var(${token});"/>`);
       if (p.ppg < lo) parts.push(`<path class="pos-arrow" d="M${x - R - 2} ${cy - 4} L${x - R - 6} ${cy} L${x - R - 2} ${cy + 4}" style="stroke: var(${token});"/>`);
-      parts.push(`<circle class="pos-dot${p.taxi ? " taxi" : ""}" cx="${x}" cy="${cy}" r="${R}" style="${style}" tabindex="0" role="img" aria-label="${escapeHtml(label)}" data-name="${escapeHtml(p.name)}" data-ppg="${p.ppg.toFixed(1)}"/>`);
+      parts.push(`<circle class="pos-dot${p.taxi ? " taxi" : ""}" cx="${x}" cy="${cy}" r="${R}" style="${style}" tabindex="0" role="img" aria-label="${escapeHtml(label)}" data-name="${escapeHtml(p.name)}" data-ppg="${p.ppg.toFixed(1)}"${p.status ? ` data-status="${escapeHtml(p.status)}"` : ""}${p.taxi ? ' data-taxi="1"' : ""}/>`);
       const arm = R - 3;
       if (p.injured) parts.push(`<g class="pos-hurt" aria-hidden="true"><line x1="${x - arm}" x2="${x + arm}" y1="${cy}" y2="${cy}"/><line x1="${x}" x2="${x}" y1="${cy - arm}" y2="${cy + arm}"/></g>`);
-      if (top && p === top) {
-        const anchor = x > x1 - 40 ? "end" : x < x0 + 40 ? "start" : "middle";
-        const lx = anchor === "end" ? Math.min(x + R, width - 1) : anchor === "start" ? Math.max(x - R, 1) : x;
-        parts.push(`<text class="pos-top-name" x="${lx}" y="${cy - R - 4}" text-anchor="${anchor}">${escapeHtml(lastName(p.name))}</text>`);
-      }
+      if (top && p === top) parts.push(`<text class="pos-top-name" x="${x}" y="${cy - R - 4}" text-anchor="middle">${escapeHtml(lastName(p.name))}</text>`);
     });
   });
 
   plot.innerHTML = `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="group" aria-label="${LABEL[pos]} by points per game">${parts.join("")}</svg>`;
+  keepNameInCard(card, plot);
   wirePopup(card);
+}
+
+/* The top name sits centred on its dot and may overhang the plot; shift it only as far as
+   needed to stay inside the card. */
+function keepNameInCard(card, plot) {
+  const name = plot.querySelector(".pos-top-name");
+  if (!name) return;
+  const c = card.getBoundingClientRect();
+  const b = name.getBoundingClientRect();
+  const margin = 6;
+  let shift = 0;
+  if (b.right > c.right - margin) shift = c.right - margin - b.right;
+  if (b.left + shift < c.left + margin) shift = c.left + margin - b.left;
+  if (shift) name.setAttribute("x", String(Number(name.getAttribute("x")) + shift));
 }
 
 // -- popup --------------------------------------------------------------------------------------
@@ -248,7 +283,9 @@ function drawChart(card, pos, payload, colors) {
 function wirePopup(card) {
   const pop = card.querySelector(".pos-pop");
   const show = (dot) => {
-    pop.innerHTML = `<strong>${escapeHtml(dot.dataset.name)}</strong><span>${dot.dataset.ppg} PPG</span>`;
+    pop.innerHTML = `<strong>${escapeHtml(dot.dataset.name)}</strong><span>${dot.dataset.ppg} PPG</span>`
+      + (dot.dataset.status ? `<span class="pos-status">${escapeHtml(dot.dataset.status)}</span>` : "")
+      + (dot.dataset.taxi ? `<span class="pos-taxi">Taxi</span>` : "");
     pop.hidden = false;
     const c = card.getBoundingClientRect();
     const d = dot.getBoundingClientRect();

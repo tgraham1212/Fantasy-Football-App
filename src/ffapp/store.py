@@ -75,6 +75,7 @@ class SeasonData:
 class Store:
     def __init__(self, root: Path | str = DEFAULT_DATA_ROOT):
         self.root = Path(root)
+        self._owners_cache: dict[str, dict[str, dict[int, str]]] = {}  # league -> season -> roster id -> owner
 
     # -- paths ---------------------------------------------------------------
 
@@ -148,10 +149,60 @@ class Store:
         return read_json(path) if path.exists() else None
 
     def read_users(self, league_key: str, season: str) -> list:
-        return read_json(self.season_dir(league_key, season) / "users.json")
+        """The season's users, plus the stored record of any owner a vacant roster inherits."""
+        users = read_json(self.season_dir(league_key, season) / "users.json")
+        known = {str(u.get("user_id")) for u in users}
+        for roster in self.read_rosters(league_key, season):
+            source = roster.get("owner_inherited")
+            uid = str(roster.get("owner_id") or "")
+            if source and uid and uid not in known:
+                for user in read_json(self.season_dir(league_key, source) / "users.json"):
+                    if str(user.get("user_id")) == uid:
+                        users.append(user)
+                        known.add(uid)
+                        break
+        return users
 
     def read_rosters(self, league_key: str, season: str) -> list:
-        return read_json(self.season_dir(league_key, season) / "rosters.json")
+        """The season's rosters, with each vacant roster read as owned by the owner it inherits.
+
+        Sleeper reports a roster with no owner when its manager left before the league year
+        officially ended, although they played the season (dynasty 2023 roster 11). Such a roster
+        reads as owned by the most recent owner of that roster slot in an earlier stored season,
+        else the first later owner, and carries ``owner_inherited`` naming the season the owner
+        came from. A slot with no owner in any stored season stays vacant. Stored files are never
+        changed.
+        """
+        rosters = read_json(self.season_dir(league_key, season) / "rosters.json")
+        if all(r.get("owner_id") for r in rosters):
+            return rosters
+        owners = self._roster_owners(league_key)
+        seasons = sorted(owners)
+        out = []
+        for roster in rosters:
+            if roster.get("owner_id"):
+                out.append(roster)
+                continue
+            rid = int(roster["roster_id"])
+            earlier = [s for s in seasons if s < season and owners[s].get(rid)]
+            later = [s for s in seasons if s > season and owners[s].get(rid)]
+            source = earlier[-1] if earlier else (later[0] if later else None)
+            if source is None:
+                out.append(roster)
+                continue
+            out.append({**roster, "owner_id": owners[source][rid], "owner_inherited": source})
+        return out
+
+    def _roster_owners(self, league_key: str) -> dict[str, dict[int, str]]:
+        """Season -> roster id -> owner user id as stored (vacant rosters left out), cached."""
+        if league_key not in self._owners_cache:
+            table: dict[str, dict[int, str]] = {}
+            for season in self.seasons(league_key):
+                path = self.season_dir(league_key, season) / "rosters.json"
+                if path.exists():
+                    table[season] = {int(r["roster_id"]): str(r["owner_id"]) for r in read_json(path) if r.get("owner_id")}
+            self._owners_cache[league_key] = table
+        return self._owners_cache[league_key]
 
     def read_brackets(self, league_key: str, season: str) -> dict:
         path = self.season_dir(league_key, season) / "brackets.json"
@@ -189,6 +240,7 @@ class Store:
     def write_season(self, league_key: str, data: SeasonData) -> None:
         """Store a fully fetched season. Each file is swapped in atomically."""
         base = self.season_dir(league_key, data.season)
+        self._owners_cache.pop(league_key, None)
         write_json(base / "league.json", data.league)
         write_json(base / "users.json", data.users)
         write_json(base / "rosters.json", data.rosters)

@@ -254,3 +254,39 @@ def test_positions_data_swap_keeps_the_season(open_page):
     new_data(page, relay, ctx)
     assert page.eval_on_selector("#positions-season", "s => s.value") == PAST_SEASON
     assert page.locator(".pos-card").count() >= 5 and page.url.endswith("/positions")
+
+
+
+def test_paired_charts_share_row_height_and_fill_their_cards(open_page):
+    page, relay, ctx = open_view(open_page, "positions", 1280)
+    cards = page.evaluate("""() => [...document.querySelectorAll('.pos-card')].map((c) => ({
+        pos: c.dataset.pos, top: Math.round(c.getBoundingClientRect().top), height: c.getBoundingClientRect().height,
+        row: getComputedStyle(c.querySelector('.pos-chart')).getPropertyValue('--pos-row').trim() }))""")
+    rows = {}
+    for c in cards:
+        rows.setdefault(c["top"], []).append(c)
+    pairs = [r for r in rows.values() if len(r) == 2]
+    assert pairs, cards
+    for a, b in pairs:
+        assert a["row"] == b["row"], f"{a['pos']} and {b['pos']} row heights differ: {a['row']} vs {b['row']}"
+        assert abs(a["height"] - b["height"]) <= 1, f"{a['pos']} and {b['pos']} cards differ in height"
+
+
+def test_row_labels_show_manager_and_team(open_page):
+    page, relay, ctx = open_view(open_page, "positions", 1280)
+    label = page.evaluate("""() => { const l = document.querySelector('.pos-label');
+        return { manager: l.querySelector('.owner-name')?.textContent, team: l.querySelector('.team')?.textContent }; }""")
+    assert label["manager"] and label["team"], label
+
+
+@pytest.mark.parametrize("which,text_class", [("data-status", "pos-status"), ("data-taxi", "pos-taxi")])
+def test_popup_shows_status_and_taxi_lines(open_page, which, text_class):
+    page, relay, ctx = open_view(open_page, "positions", 1280)
+    if not page.locator(f".pos-dot[{which}]").count():
+        pytest.skip(f"no dot with {which} in this league's current data")
+    page.locator(f".pos-dot[{which}]").first.evaluate("e => e.focus({ preventScroll: true })")
+    page.wait_for_timeout(200)
+    line = page.locator(f".pos-pop:not([hidden]) .{text_class}")
+    assert line.count() == 1
+    expected = page.locator(f".pos-dot[{which}]").first.get_attribute("data-status") if which == "data-status" else "Taxi"
+    assert line.inner_text() == expected
