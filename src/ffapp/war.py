@@ -11,8 +11,11 @@ is Phi((score - slot mean) / spread). Missed weeks score the position's replacem
 level. Expected wins is the sum over the regular season; WAR subtracts what a player
 scoring the replacement level every week would earn.
 
-A season uses the weekly cut when every scored week has a weekly snapshot, otherwise
-the yearly cut (every week from the season snapshot). Output: ``data/war/<league>/<season>.json``.
+A season uses the weekly cut when every scored week has a weekly snapshot, the yearly cut
+(every week from the season snapshot) when none has, and the merged cut when some have: those
+weeks use their own snapshot and the rest rank by a merged start percentage (see
+``merged_start_percentages`` and the README's "Current-season start percentages").
+Output: ``data/war/<league>/<season>.json``.
 """
 
 from __future__ import annotations
@@ -25,6 +28,7 @@ from pathlib import Path
 
 from ffapp.config import Config
 from ffapp.espn import FANTASY_POSITIONS, match, teams_from_stats
+from ffapp.injuries import statuses_for_week
 from ffapp.league import FLEX_ELIGIBLE, resolve_settings, starter_slots
 from ffapp.odds import regular_season_range
 from ffapp.stats import actual_points, played
@@ -232,8 +236,98 @@ def owner_attribution(pid: str, held: dict[str, list[tuple[int, str]]], current:
 
 
 def cut_mode(store: Store, season: str, weeks: list[int]) -> str:
+    """weekly: every scored week has its own snapshot; yearly: none has; merged: some have."""
     stored = set(store.espn_weeks(season))
-    return "weekly" if weeks and all(w in stored for w in weeks) else "yearly"
+    captured = [w for w in weeks if w in stored]
+    if weeks and len(captured) == len(weeks):
+        return "weekly"
+    return "merged" if captured else "yearly"
+
+
+# Statuses that keep a player out; only such players may fall back to ownership (see below).
+UNAVAILABLE_STATUSES = frozenset({"IR", "Out", "PUP", "Sus", "NA", "DNR"})
+
+
+# Why a merged start percentage (README, Player WAR -> "Current-season start percentages"):
+#
+# While a season is in progress, ESPN's public feed reports its season-level start percentage
+# as the CURRENT WEEK's figure, so data/espn/<season>/season.json is one week's view, rewritten
+# by every in-season run (in 2026 it matched week_11.json for every player). Ranking every
+# week by that view treats anyone on a bye or hurt in the snapshot week as a bench player for
+# the whole season (Josh Jacobs in week 11: owned 91.5%, started 8.6%); the consensus starter
+# cut slides deeper and the replacement players become real backups (2026 RB replacement level
+# 5.0 against 8-11 in every completed season).
+#
+# So for weeks without their own snapshot, a player's figure is the HIGHEST percent started
+# across his trusted weekly snapshots. Byes and injuries only ever LOWER a start percentage:
+# - a snapshot of a scored week is trusted only if he played that week;
+# - a snapshot of a week not yet scored (the current week) is always trusted: a low figure there
+#   cannot win the maximum, and a player whose team had a bye in the only scored captured week
+#   gets his real figure from it.
+# A player never seen active in a scored captured week AND carrying an out status (IR, Out, PUP,
+# Sus, NA, DNR) takes the higher of that figure and his percent OWNED: ownership barely moves
+# through an IR stint, so it stands in for how often he was started while healthy. Healthy
+# players never use it: a backup's ownership far exceeds his start rate (owned 50%, started 15%),
+# and giving it to everyone not seen active lifted week-10-bye backups into the replacement zone
+# (2026 WR 6.5, RB 6.4 under that earlier rule; 15.6 QB / 9.6 RB / 8.8 WR with this one).
+# Past seasons were captured after they ended (their season snapshot is the real season-long
+# figure) and keep the yearly cut; fully captured seasons (2027 on) use the weekly cut.
+def merged_start_percentages(
+    store: Store,
+    season: str,
+    weeks: list[int],
+    stats: dict[int, dict],
+    season_snapshot: dict,
+    crosswalk: dict,
+    teams: dict,
+) -> tuple[dict, dict[str, str]]:
+    """A synthetic snapshot (ESPN id -> started, position) and its mapping, for ranked_by_started."""
+    snapshot_weeks = sorted(store.espn_weeks(season))
+    weekly: dict[int, tuple[dict, dict[str, str]]] = {}
+    for w in snapshot_weeks:
+        snap = store.read_espn_week(season, w) or {}
+        mapping, _ = match(snap.get("players") or {}, crosswalk, teams)
+        weekly[w] = (snap.get("players") or {}, mapping)
+    season_players = season_snapshot.get("players") or {}
+    season_mapping, _ = match(season_players, crosswalk, teams)
+    statuses = statuses_for_week(store, season, 99) or {}  # the latest saved statuses of the season
+
+    best: dict[str, float] = {}  # Sleeper id -> highest percent started in a trusted snapshot
+    active: set[str] = set()  # played in a scored week that has a snapshot
+    for w in snapshot_weeks:
+        players, mapping = weekly[w]
+        rows = stats.get(w) or {}
+        for espn_id, rec in players.items():
+            sid = mapping.get(espn_id)
+            if not sid:
+                continue
+            if w in weeks:  # a scored week: trusted only if he played
+                if not played(rows.get(sid) or {}):
+                    continue
+                active.add(sid)
+            best[sid] = max(best.get(sid, float("-inf")), float(rec.get("started") or 0.0))
+
+    owned: dict[str, float] = {}  # latest weekly snapshot holding the player, else the season snapshot
+    sources = [weekly[w] for w in reversed(snapshot_weeks)] + [(season_players, season_mapping)]
+    for players, mapping in sources:
+        for espn_id, rec in players.items():
+            sid = mapping.get(espn_id)
+            if sid and sid not in owned:
+                owned[sid] = float(rec.get("owned") or 0.0)
+
+    merged: dict[str, dict] = {}
+    merged_mapping: dict[str, str] = {}
+    for players, mapping in sources:
+        for espn_id, rec in players.items():
+            sid = mapping.get(espn_id)
+            if not sid or espn_id in merged:
+                continue
+            pct = best.get(sid, 0.0)
+            if sid not in active and statuses.get(sid) in UNAVAILABLE_STATUSES:
+                pct = max(pct, owned.get(sid, 0.0))
+            merged[espn_id] = {"started": pct, "position": rec["position"]}
+            merged_mapping[espn_id] = sid
+    return {"players": merged}, merged_mapping
 
 
 def scored_weeks(store: Store, data: SeasonData) -> list[int]:
@@ -257,9 +351,13 @@ def build_war(store: Store, config: Config, league_key: str, season: str) -> dic
     season_ranked, season_started = ranked_by_started(season_snapshot, season_mapping)
 
     stats = {w: store.read_stats(season, w) for w in weeks}
+    if mode == "merged":
+        merged, merged_mapping = merged_start_percentages(store, season, weeks, stats, season_snapshot, crosswalk, teams)
+        season_ranked, season_started = ranked_by_started(merged, merged_mapping)
+    own_weeks = set(store.espn_weeks(season)) if mode != "yearly" else set()
     records: list[WeekRecord] = []
     for week in weeks:
-        if mode == "weekly":
+        if week in own_weeks:
             snapshot = store.read_espn_week(season, week) or season_snapshot
             mapping, _ = match(snapshot.get("players") or {}, crosswalk, teams)
             ranked, started = ranked_by_started(snapshot, mapping)

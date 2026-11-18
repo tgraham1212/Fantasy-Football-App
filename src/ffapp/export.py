@@ -12,6 +12,7 @@ from ffapp.ratings import read_ratings
 from ffapp.replacement import read_replacement
 from ffapp.store import Store, read_json, write_json
 from ffapp.games_export import games_export
+from ffapp.positions import positions_export
 from ffapp.war import read_war, war_seasons
 
 log = logging.getLogger(__name__)
@@ -289,6 +290,17 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
             write_json(games_index, games["index"])
             written.append(games_index)
             games_entry = {"file": f"{key}/games/index.json", "current": games["index"]["current"]}
+        positions = positions_export(store, config, key)
+        positions_entry = None
+        if positions:
+            for season, season_payload in positions["files"].items():
+                season_path = out_dir / key / "positions" / f"{season}.json"
+                write_json(season_path, season_payload)
+                written.append(season_path)
+            positions_index = out_dir / key / "positions" / "index.json"
+            write_json(positions_index, positions["index"])
+            written.append(positions_index)
+            positions_entry = {"file": f"{key}/positions/index.json", "current": positions["index"]["current"]}
         index["leagues"].append(
             {
                 "key": key,
@@ -299,6 +311,7 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
                 "file": path.name,
                 "war": war_entry,
                 "games": games_entry,
+                "positions": positions_entry,
             }
         )
     index["refresh_url"] = config.site.refresh_url

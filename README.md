@@ -32,7 +32,7 @@ Global options: `--config PATH` (default `config/leagues.yaml`), `--data PATH`
 | `stats` | Refresh actual weekly stat lines for every projected player (free agents included) for the current season, keeping the newest version per player-week. `--backfill` fetches every season in scope. |
 | `verify-brackets` | Check the bracket logic against every completed season's real playoff brackets. Exit 1 on any mismatch. |
 | `simulate` | Run the Monte Carlo for the current as-of week of each league and store the results in `data/odds/`. `--backfill-season` also produces results for every earlier as-of week of the current season. `--runs N` and `--seed N` override the defaults. |
-| `export` | Write `site/data/<league>.json` and `site/data/index.json` for the website. |
+| `export` | Write `site/data/<league>.json`, `site/data/index.json` and the per-league Games, Positions and Player WAR files for the website. |
 | `replacement` | Write replacement-level values (free agents, weekly projected and realised levels, season values) for every stored season to `data/replacement/`. |
 | `ratings` | Rate every manager across all stored seasons from weekly points (see Manager ratings) and write `data/ratings/<league>.json`. |
 | `snapshot` | Capture ESPN start-percentage snapshots (one per stored season that has none, the in-progress season again on every run until it is complete, plus the current regular-season week) and the ESPN-to-Sleeper player crosswalk into `data/espn/`, then report any widely started player the crosswalk could not match. |
@@ -132,6 +132,7 @@ data/
   games/<league>/<season>/week_NN.json         per game: the projection log, the latest forecast and the prediction of record
   odds/<league>/<season>/asof_NN.json          one simulation result per as-of week (the odds history)
 site/data/<league>.json, index.json            what the website reads
+site/data/<league>/positions/<season>.json     positional rankings per season, plus positions/index.json (see Positional Rankings)
 ```
 
 Projections are stored as raw stat lines and scored with each league's own
@@ -224,12 +225,12 @@ by how widely a player is started), with the league's own scoring and roster slo
 
 1. **Start percentages.** `ffapp snapshot` pulls ESPN's public fantasy player list,
    which carries the share of ESPN leagues starting and rostering each player, and
-   stores a slim copy under `data/espn/`. A finished season has one frozen value per
-   player, so 2021 to 2026 have a single season snapshot each. The season in progress
-   is pulled again on every run and stops changing once Sleeper marks the season
-   complete in every league, so its frozen value is the end-of-season one, the same
-   as earlier seasons. From now on the daily refresh also stores the current week's
-   values, overwriting that week until it rolls over. ESPN players map to Sleeper ids through Sleeper's stored ESPN id, a short alias
+   stores a slim copy under `data/espn/`. A season pulled after it ended has one
+   frozen season-long value per player, so 2021 to 2025 have a single season snapshot
+   each. The season in progress is pulled again on every run, but while it is in
+   progress ESPN reports the current week's figure, not a season-long one (see
+   "Current-season start percentages" below). The daily refresh also stores the
+   current week's values, overwriting that week until it rolls over. ESPN players map to Sleeper ids through Sleeper's stored ESPN id, a short alias
    table in `src/ffapp/espn.py`, then a normalised name and position match with the
    NFL team as tiebreak; the command prints anyone started in at least 2% of leagues
    it could not match, so the alias table can be extended.
@@ -250,9 +251,10 @@ by how widely a player is started), with the league's own scoring and roster slo
    replacement level would earn every week, so a replacement-level season is exactly 0.
 
 A season uses the **weekly cut** (each week's lineup from that week's snapshot) when
-every scored week has a weekly snapshot, and the **yearly cut** (every week from the
-season snapshot) otherwise, so 2021 to 2026 are yearly and 2027 should be the first
-weekly season. The file records which. Every player at a lineup position with at
+every scored week has a weekly snapshot, the **yearly cut** (every week from the
+season snapshot) when none has, and the **merged cut** when some have. So 2021 to 2025
+are yearly, 2026 is merged (weekly snapshots began in week 10), and 2027 should be the
+first weekly season. The file records which. Every player at a lineup position with at
 least one game played gets a WAR, rostered or not; the current season's values move
 a little each week until week 14 is scored, because the constants are season-to-date.
 
@@ -263,6 +265,98 @@ probability, expected wins, WAR, the manager holding them (end of season, or the
 current roster in progress) and every manager who held them. Re-running on unchanged
 data gives the same file apart from its timestamp. The free-agent replacement level
 in `data/replacement/` is a different thing and still feeds the simulation.
+
+### Current-season start percentages
+
+The merged cut exists because of how ESPN's feed behaves during a season. This
+subsection records the reasoning so it can be looked up later. The rules are in the
+`player-war` spec ("Yearly and weekly cut") and in `merged_start_percentages` in
+`src/ffapp/war.py`.
+
+**The problem.** While a season is in progress, ESPN's season-level start percentage
+is just the current week's figure. In November 2026, `data/espn/2026/season.json` was
+identical to `week_11.json` for every player. Ranking every week of the season by
+that one week's view treats anyone on a bye or hurt that week as a bench player for
+the whole season. Josh Jacobs, for example, showed owned 91.5% and started 8.6%. The
+consensus starter cut slid deeper, the "next three past the cut" became genuine
+backups, and the 2026 RB replacement level came out at 5.0 points, against 8 to 11 in
+every completed season. That inflated every 2026 RB and WR WAR.
+
+**The rule.** A scored week with its own weekly snapshot uses it. Every other week
+ranks each player by a merged figure:
+
+- **Highest trusted start percentage.** A snapshot of a scored week counts for a
+  player only if he played that week. A snapshot of the current, not yet scored week
+  always counts. Byes and injuries only ever lower a start percentage, so the highest
+  trusted figure is the closest to his role while active. A low figure from a
+  current-week bye cannot win the maximum, and a player whose team had a bye in the
+  only scored captured week gets his real figure from the current week.
+- **Ownership, only for injured players.** A player not seen active in any scored
+  captured week who carries an out status (IR, Out, PUP, Sus, NA or DNR in the latest
+  saved injury file) takes the higher of that figure and his percent owned.
+  Ownership barely moves during an injured-reserve stint, so it stands in for how
+  often he was started while healthy. Healthy players never use it: a backup's
+  ownership far exceeds his start rate (owned 50%, started 15%).
+
+**Why it was revised.** The first version gave ownership to everyone not seen active
+in a scored captured week. With only week 10 scored and captured, every player whose
+team had a week-10 bye fell back to ownership, and backups flooded the replacement
+zone. Measured 2026 redraft replacement levels:
+
+| rule | QB | RB | WR | TE | K | DEF |
+|---|---|---|---|---|---|---|
+| single-week season snapshot (before) | 18.0 | 5.0 | 8.2 | 7.5 | 9.0 | 6.9 |
+| scored weeks only, ownership for all not seen active | 17.4 | 6.4 | 6.5 | 6.7 | 8.3 | 6.9 |
+| **highest trusted figure, ownership only if injured (used)** | **15.6** | **9.6** | **8.8** | **6.6** | **9.4** | **7.0** |
+| 2021 to 2025 range | 15 to 18 | 8 to 12 | 8 to 11 | 6 to 7.5 | 7.4 to 9.4 | 6 to 8 |
+
+Dynasty moves the same way (RB 5.0 to 9.8, WR 8.4 to 8.8). Each newly captured week
+adds evidence, so the merged figure improves as the season goes on.
+
+**What it does not touch.** Seasons pulled after they ended (2021 to 2025) have a
+genuine season-long snapshot and keep the yearly cut. From 2027, every week has its
+own snapshot, so seasons use the weekly cut and the merged rule no longer applies. To
+see it on the current data, run `python -m ffapp war` and read `cut` and
+`replacement` in `data/war/<league>/2026.json`.
+
+## Positional Rankings
+
+The **Positions** sub-tab compares every manager's roster position by position, in the
+style of 538's quarterback Elo charts: one chart per position the league starts (QB,
+RB, WR, TE, K, DEF in redraft; no K in dynasty), one row per manager, and one dot per
+rostered player at his points per game.
+
+- **Points per game.** Regular season only, weeks 1 to 14. A player's actual points in
+  the final weeks he played, plus his projected points for the regular-season weeks not
+  yet final, over the number of those weeks. A week counts as projected when its
+  projection is above zero, and a week in progress counts as projected until it is
+  final. A player with nothing scored and nothing projected is left out; a rookie who
+  has not played yet still gets a figure from his projections. Games he played for
+  another manager or as a free agent count, because the figure rates the player.
+- **Rosters.** Completed seasons use each team's final, end-of-season roster; the
+  season in progress uses the current roster. Taxi and reserve players are included.
+- **Rows.** Each chart orders managers by their best player's points per game, then
+  the second best and so on, so the labelled top player always sits top right. A
+  manager with nobody at a position keeps an empty row at the bottom.
+- **The dotted line** is the position's WAR replacement level for that league-season
+  ("Replacement Level"), from `data/war/` (see Player WAR).
+- **Dots.** A light fill and a dark outline in the manager's colour (matched by owner,
+  so a past season colours by manager rather than roster slot; former members are
+  grey). A dotted outline marks a taxi player, and a red cross marks a player listed IR
+  or Out (current season only). Dots too close together step above and below the row
+  line, and a chart's rows grow taller when a row needs more room. Hovering, focusing
+  or tapping a dot shows the player's name and points per game.
+- **Axis.** Each position keeps one range in every season of a league, chosen so about
+  99% of player-seasons fit, rounded to multiples of 5 and always including zero and
+  the replacement level. A value beyond the range sits at the edge with an arrow, and
+  its popup still shows the real number.
+
+The data is built at export time from stored files (rosters, users, stats, projections,
+injury statuses and WAR), so nothing extra is stored under `data/`:
+`site/data/<league>/positions/<season>.json` holds the weeks covered, the last final
+week, per-position replacement levels and axis ranges, and per manager the owner and
+players (id, name, position, NFL team, points per game, games played and projected,
+taxi, reserve and injured flags); `positions/index.json` lists the seasons.
 
 ## Games
 
@@ -451,8 +545,11 @@ and contrast), dashed and then dotted once the greys repeat. Clicking a line or 
 table row highlights that manager in both charts. The card says ratings are not yet
 available when the export carried none.
 
-Each league has three sub-tabs, **Predictions** (the table and charts above),
-**Games** and **Player WAR**, kept in the URL (`#redraft/war`, `#redraft/games/10`). The Player WAR page shows the top
+Each league has four sub-tabs, **Predictions** (the table and charts above),
+**Games**, **Positions** and **Player WAR**, kept in the URL (`#redraft/war`,
+`#redraft/games/10`, `#redraft/positions`). On a phone the sub-tab row scrolls
+sideways under a finger (it snaps to a tab, fades on the side with more tabs, and
+opens scrolled to the selected tab); the page itself never scrolls sideways. The Player WAR page shows the top
 10 per position in two columns (QB and RB, WR and TE, DEF and K; a league without a
 kicker slot centres its last table), for the current season by default, any past
 season, or **All-Time** with a toggle between player-seasons and careers. Each table

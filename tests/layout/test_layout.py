@@ -118,7 +118,7 @@ def test_control_keeps_the_layout(open_page, control: Control, width: int):
     assert not problems, f"{control.name} at {width}px:\n  " + "\n  ".join(problems)
 
 
-COVERAGE_VIEWS = ("predictions", "games", "games-final", "war", "war-all", "war-dialog", "calibration")
+COVERAGE_VIEWS = ("predictions", "games", "games-final", "positions", "positions-past", "war", "war-all", "war-dialog", "calibration")
 
 
 @pytest.mark.parametrize("view", COVERAGE_VIEWS)
@@ -189,3 +189,68 @@ def test_wide_fonts_do_not_scroll_sideways(open_page, view):
     page.wait_for_timeout(300)
     problems = page.evaluate(OVERFLOW_JS, list(INSIDE))
     assert not problems, f"{view} at 375px with a wide font:\n  " + "\n  ".join(problems)
+
+
+
+def test_subtab_strip_swipes_on_a_phone(open_page):
+    page, relay, ctx = open_view(open_page, "war", 375)
+    strip = page.evaluate("""() => { const m = document.getElementById('subtabs'), t = m.querySelector('[data-page=war]');
+        const mr = m.getBoundingClientRect(), tr = t.getBoundingClientRect();
+        return { scroll: m.scrollWidth, client: m.clientWidth, tabLeft: tr.left, tabRight: tr.right, left: mr.left, right: mr.right,
+                 pressed: t.getAttribute('aria-pressed') }; }""")
+    assert strip["scroll"] > strip["client"], f"the sub-tabs should overflow their strip on a phone: {strip}"
+    assert strip["left"] - 0.5 <= strip["tabLeft"] and strip["tabRight"] <= strip["right"] + 0.5 and strip["pressed"] == "true", strip
+    y = page.evaluate("scrollY")
+    page.evaluate("document.getElementById('subtabs').scrollLeft = 0")
+    page.wait_for_timeout(200)
+    assert page.evaluate("scrollY") == y, "scrolling the sub-tab strip moved the page"
+    assert page.evaluate("document.documentElement.scrollWidth") <= 375
+
+
+def test_subtab_strip_does_not_scroll_on_desktop(open_page):
+    page, relay, ctx = open_view(open_page, "predictions", 1280)
+    m = page.evaluate("(() => { const m = document.getElementById('subtabs'); return [m.scrollWidth, m.clientWidth, m.className]; })()")
+    assert m[0] <= m[1] and "fade" not in m[2], m
+
+
+@pytest.mark.parametrize("view", ["positions", "positions-past"])
+def test_positions_charts_fit_a_phone(open_page, view):
+    page, relay, ctx = open_view(open_page, view, 375)
+    problems = page.evaluate("""() => {
+      const out = [];
+      for (const card of document.querySelectorAll('.pos-card')) {
+        const c = card.getBoundingClientRect();
+        if (c.left < -0.5 || c.right > innerWidth + 0.5) out.push(`${card.dataset.pos} card spans ${c.left}..${c.right}`);
+        for (const el of card.querySelectorAll('.pos-top-name, .pos-dot, .pos-rep-label')) {
+          const r = el.getBoundingClientRect();
+          if (r.left < c.left - 0.5 || r.right > c.right + 0.5) out.push(`${card.dataset.pos}: ${el.getAttribute('class')} ${el.textContent || el.dataset.name} leaves its chart`);
+        }
+      }
+      return out;
+    }""")
+    assert not problems, "\n".join(problems)
+
+
+@pytest.mark.parametrize("width", [375, 1280])
+def test_position_dots_do_not_hide_each_other(open_page, width):
+    page, relay, ctx = open_view(open_page, "positions", width)
+    overlaps = page.evaluate("""() => {
+      const out = [];
+      for (const card of document.querySelectorAll('.pos-card')) {
+        const dots = [...card.querySelectorAll('.pos-dot')].map((d) => ({ x: +d.getAttribute('cx'), y: +d.getAttribute('cy'), r: +d.getAttribute('r'), n: d.dataset.name }));
+        for (let i = 0; i < dots.length; i += 1) for (let j = i + 1; j < dots.length; j += 1) {
+          const a = dots[i], b = dots[j];
+          if (Math.hypot(a.x - b.x, a.y - b.y) < a.r + b.r - 2) out.push(`${card.dataset.pos}: ${a.n} and ${b.n}`);
+        }
+      }
+      return out;
+    }""")
+    assert not overlaps, f"{len(overlaps)} overlapping dots at {width}px: " + ", ".join(overlaps[:8])
+
+
+def test_positions_data_swap_keeps_the_season(open_page):
+    from tests.layout.controls import PAST_SEASON, new_data
+    page, relay, ctx = open_view(open_page, "positions-past", 1280)
+    new_data(page, relay, ctx)
+    assert page.eval_on_selector("#positions-season", "s => s.value") == PAST_SEASON
+    assert page.locator(".pos-card").count() >= 5 and page.url.endswith("/positions")

@@ -196,17 +196,30 @@ function renderControls() {
   $("war-note").textContent = noteText();
 }
 
+const MERGED_NOTE = "This season is only partly captured by weekly start-percentage snapshots, so it uses a merged replacement cut: weeks with their own snapshot use it, and the rest rank each player by his highest start percentage from weeks he played (or his ownership if he is injured and was never seen active). It settles as more weeks are captured.";
+const YEARLY_NOTE = "This season uses a yearly replacement cut: one start-percentage snapshot picks the consensus lineups and the replacement players for every week.";
+
+function cutOf(season) {
+  const s = state.index.seasons.find((x) => x.season === season);
+  if (s && s.cut) return s.cut;
+  const first = state.index.first_weekly;
+  return first && season >= first ? "weekly" : "yearly";
+}
+
 function noteText() {
   const first = state.index.first_weekly;
-  const yearly = (s) => !first || s < first;
   const parts = [];
   if (state.selection === "all") {
     parts.push(state.mode === "career" ? "Career: each player's WAR summed over their seasons in this league; owner and team from their latest season." : "Every player-season in this league ranked together.");
-    if (state.index.seasons.some((s) => yearly(s.season))) parts.push(first ? `Seasons before ${first} use a yearly replacement cut (one start-percentage snapshot per season) instead of a weekly one.` : "All seasons so far use a yearly replacement cut (one start-percentage snapshot per season); weekly cuts begin once a full season of weekly snapshots exists.");
+    const yearly = state.index.seasons.filter((s) => cutOf(s.season) === "yearly");
+    const merged = state.index.seasons.filter((s) => cutOf(s.season) === "merged");
+    if (yearly.length) parts.push(first ? `Seasons before ${first} use a yearly replacement cut (one start-percentage snapshot per season) instead of a weekly one.` : "Completed seasons so far use a yearly replacement cut (one start-percentage snapshot per season); weekly cuts begin once a full season of weekly snapshots exists.");
+    if (merged.length) parts.push(`${merged.map((s) => s.season).join(", ")} ${merged.length > 1 ? "use" : "uses"} a merged cut from the weekly snapshots captured so far.`);
   } else {
     const s = state.index.seasons.find((x) => x.season === state.selection);
     if (s && s.season === state.index.current && s.through_week < 14) parts.push(`Regular-season weeks 1 to ${s.through_week} so far; values settle as the season's averages fill in.`);
-    if (s && yearly(s.season)) parts.push("This season uses a yearly replacement cut: one start-percentage snapshot picks the consensus lineups and the replacement players for every week.");
+    if (s && cutOf(s.season) === "yearly") parts.push(YEARLY_NOTE);
+    if (s && cutOf(s.season) === "merged") parts.push(MERGED_NOTE);
   }
   parts.push("WAR is wins above a replacement-level player over the regular season. Hover an owner to see who else held the player that season.");
   return parts.join(" ");

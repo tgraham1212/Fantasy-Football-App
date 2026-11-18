@@ -315,14 +315,25 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
 }
 
 /* ---- Sub-tabs and the Player WAR page ----------------------------------------- */
-.subtabs { display: inline-flex; gap: 6px; border-bottom: 1px solid var(--border); width: 100%; }
+/* Sub-tabs: one row that scrolls sideways under a finger when it does not fit (phones), with
+   snapping and a fade on the side that has more tabs; the page itself never scrolls sideways. */
+.subtabs {
+  display: flex; gap: 6px; width: 100%; min-width: 0; box-shadow: inset 0 -1px 0 var(--border);
+  overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.subtabs::-webkit-scrollbar { display: none; }
+.subtabs.fade-right { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
+.subtabs.fade-left { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 32px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 32px), transparent); }
+.subtabs.fade-left.fade-right { -webkit-mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent); mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent); }
 .subtabs button {
   appearance: none; border: 0; background: none; color: var(--ink-2); font: inherit; font-weight: 600;
-  padding: 8px 14px 10px; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px;
+  padding: 8px 14px 10px; cursor: pointer; border-bottom: 2px solid transparent;
+  flex: none; white-space: nowrap; scroll-snap-align: start;
 }
 .subtabs button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--ink); }
-.subtabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-#page-predictions, #page-war, #war-content { display: grid; gap: 16px; }
+.subtabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+#page-predictions, #page-war, #war-content, #page-positions, #positions-content { display: grid; gap: 16px; }
 .select-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 600; color: var(--ink-2); }
 .select-label select {
   font: inherit; font-size: 0.9rem; font-weight: 600; color: var(--ink); background: var(--surface);
@@ -527,3 +538,42 @@ footer { color: var(--muted); font-size: 0.8rem; text-align: center; padding-top
 }
 .version-note button { font: inherit; cursor: pointer; white-space: nowrap; flex: none; }
 .version-note button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* -- Positional Rankings ------------------------------------------------------------------ */
+.pos-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.pos-card { position: relative; min-width: 0; margin: 0; }
+.pos-card:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 8px); }
+.pos-card h3 { margin: 0; font-size: 1rem; font-weight: 650; }
+.pos-chart { display: grid; grid-template-columns: minmax(84px, 32%) minmax(0, 1fr); column-gap: 8px; margin-top: 4px; }
+.pos-labels { min-width: 0; }
+.pos-label-top { height: 40px; }
+.pos-label { height: var(--pos-row, 28px); line-height: var(--pos-row, 28px); font-size: 0.85rem; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pos-plot { position: relative; min-width: 0; overflow: hidden; }
+.pos-plot svg { display: block; overflow: visible; }
+.pos-grid-line { stroke: var(--grid); stroke-width: 1; }
+.pos-row-line { stroke: var(--grid); stroke-width: 1; }
+.pos-tick { fill: var(--muted); font-size: 11px; }
+.pos-rep { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 2 3; }
+.pos-rep-label { fill: var(--ink-2); font-size: 11px; }
+.pos-dot { stroke-width: 2; cursor: pointer; outline: none; }
+.pos-dot.taxi { stroke-dasharray: 2.5 2; }
+.pos-dot:hover, .pos-dot:focus-visible { stroke-width: 3; }
+.pos-hurt line { stroke: var(--bad); stroke-width: 2.2; stroke-linecap: round; pointer-events: none; }
+.pos-arrow { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.pos-top-name { fill: var(--ink); font-size: 11px; font-weight: 600; }
+.pos-pop {
+  position: absolute; z-index: 5; pointer-events: none; max-width: calc(100% - 8px);
+  background: var(--surface); color: var(--ink); border: 1px solid var(--border); border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12); padding: 6px 10px; font-size: 0.85rem; line-height: 1.3;
+  display: flex; flex-direction: column; white-space: nowrap;
+}
+.pos-pop[hidden] { display: none; }
+.pos-pop span { color: var(--ink-2); }
+@media (max-width: 759.98px) {
+  .pos-grid { grid-template-columns: minmax(0, 1fr); }
+  .pos-card:last-child:nth-child(odd) { width: auto; justify-self: stretch; }
+}
+@media (max-width: 420px) {
+  .pos-chart { grid-template-columns: 84px minmax(0, 1fr); }
+  .pos-label { font-size: 0.8rem; }
+}

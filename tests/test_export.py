@@ -63,13 +63,14 @@ def test_exported_schema(seeded_store, dynasty_config, tmp_path):
     simulate_weeks(seeded_store, dynasty_config, [0, 1, 2, 3])
     out = tmp_path / "site-data"
     written = export_site(seeded_store, dynasty_config, out)
-    assert {p.name for p in written} == {"dynasty.json", "index.json"}
+    assert {p.name for p in written if "positions" not in p.parts} == {"dynasty.json", "index.json"}
 
     index = json.loads((out / "index.json").read_text(encoding="utf-8"))
     assert index["calibration"] is None, "no calibration report stored yet"
     assert index["leagues"][0] == {
         "key": "dynasty", "name": "Taco Tuesdays", "season": "2026", "as_of_week": 3,
         "generated_at": index["leagues"][0]["generated_at"], "file": "dynasty.json", "war": None, "games": None,
+        "positions": {"file": "dynasty/positions/index.json", "current": "2026"},
     }
 
     payload = json.loads((out / "dynasty.json").read_text(encoding="utf-8"))
@@ -120,7 +121,7 @@ def test_export_includes_calibration_report_when_present(seeded_store, dynasty_c
     write_json(seeded_store.root / "calibration" / "report.json", report)
     out = tmp_path / "site-data"
     written = export_site(seeded_store, dynasty_config, out)
-    assert {p.name for p in written} == {"dynasty.json", "index.json", "calibration.json"}
+    assert {p.name for p in written if "positions" not in p.parts} == {"dynasty.json", "index.json", "calibration.json"}
     index = json.loads((out / "index.json").read_text(encoding="utf-8"))
     assert index["calibration"] == {"generated_at": "2026-11-14T10:00:00+00:00", "file": "calibration.json"}
     assert json.loads((out / "calibration.json").read_text(encoding="utf-8")) == report
@@ -242,7 +243,7 @@ def test_export_writes_war_leaderboards_index_and_walkthrough(seeded_store, dyna
         "11604": war_player("Brock Bowers", b, [a, b], 0.9), "2": war_player("Free Agent", None, [], 0.1),
     }, cut="weekly", through_week=2))
     out = tmp_path / "site-data"
-    written = {p.relative_to(out).as_posix() for p in export_site(seeded_store, dynasty_config, out)}
+    written = {p.relative_to(out).as_posix() for p in export_site(seeded_store, dynasty_config, out) if "positions" not in p.parts}
     assert written == {"dynasty.json", "index.json", "dynasty/war/2024.json", "dynasty/war/2026.json", "dynasty/war/index.json"}
 
     index = json.loads((out / "index.json").read_text(encoding="utf-8"))
@@ -271,7 +272,7 @@ def test_export_without_war_files_has_no_war_entry(seeded_store, dynasty_config,
     out = tmp_path / "site-data"
     export_site(seeded_store, dynasty_config, out)
     index = json.loads((out / "index.json").read_text(encoding="utf-8"))
-    assert index["leagues"][0]["war"] is None and not (out / "dynasty").exists()
+    assert index["leagues"][0]["war"] is None and not (out / "dynasty" / "war").exists()
 
 
 def test_live_result_drives_the_table_and_history_stays_on_as_of_files(seeded_store, dynasty_config, tmp_path):
@@ -308,3 +309,32 @@ def test_index_carries_the_refresh_url_and_last_refresh(seeded_store, dynasty_co
     export_site(seeded_store, config, out)
     index = json.loads((out / "index.json").read_text(encoding="utf-8"))
     assert index["refresh_url"] == "https://relay.example" and index["last_refresh"] == "2026-11-22T17:20:00+00:00"
+
+
+def test_merged_cut_season_is_not_counted_as_weekly(seeded_store, dynasty_config, tmp_path):
+    simulate_weeks(seeded_store, dynasty_config, [0, 1])
+    users = seeded_store.read_users("dynasty", "2026")
+    a = str(users[0]["user_id"])
+    write_json(seeded_store.root / "war" / "dynasty" / "2026.json", war_payload("2026", {
+        "11604": war_player("Brock Bowers", a, [a], 0.9),
+    }, cut="merged", through_week=2))
+    out = tmp_path / "site-data"
+    export_site(seeded_store, dynasty_config, out)
+    war_index = json.loads((out / "dynasty" / "war" / "index.json").read_text(encoding="utf-8"))
+    assert war_index["seasons"][0]["cut"] == "merged" and war_index["first_weekly"] is None
+
+
+def test_export_writes_positional_rankings(seeded_store, dynasty_config, tmp_path):
+    simulate_weeks(seeded_store, dynasty_config, [0, 1])
+    out = tmp_path / "site-data"
+    written = {p.relative_to(out).as_posix() for p in export_site(seeded_store, dynasty_config, out)}
+    seasons = seeded_store.seasons("dynasty")
+    assert {f"dynasty/positions/{s}.json" for s in seasons} | {"dynasty/positions/index.json"} <= written
+    pos_index = json.loads((out / "dynasty" / "positions" / "index.json").read_text(encoding="utf-8"))
+    assert pos_index["current"] == seasons[-1] and [s["season"] for s in pos_index["seasons"]] == seasons
+    current = json.loads((out / "dynasty" / "positions" / f"{seasons[-1]}.json").read_text(encoding="utf-8"))
+    assert current["teams"] and all("axis" in info for info in current["positions"].values())
+    # deterministic: a second export writes the same files
+    again = tmp_path / "again"
+    export_site(seeded_store, dynasty_config, again)
+    assert (again / "dynasty" / "positions" / f"{seasons[-1]}.json").read_text(encoding="utf-8") == (out / "dynasty" / "positions" / f"{seasons[-1]}.json").read_text(encoding="utf-8")

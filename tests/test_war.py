@@ -12,6 +12,7 @@ from ffapp.war import (
     build_war,
     consensus_lineup,
     cut_mode,
+    merged_start_percentages,
     owner_attribution,
     player_weeks,
     read_war,
@@ -93,7 +94,8 @@ def test_cut_mode(tmp_path):
     for w in (1, 2, 3):
         store.write_espn_week("2024", w, {"players": {}})
     assert cut_mode(store, "2024", [1, 2, 3]) == "weekly"
-    assert cut_mode(store, "2024", [1, 2, 3, 4]) == "yearly"  # partly captured
+    assert cut_mode(store, "2024", [1, 2, 3, 4]) == "merged"  # partly captured
+    assert cut_mode(store, "2024", [4, 5]) == "yearly"  # none of these weeks captured
     assert cut_mode(store, "2024", []) == "yearly"
 
 
@@ -229,3 +231,67 @@ def test_write_war_skips_and_reports_a_season_without_snapshot(tmp_path):
     report = write_war(store, tiny_config(), "tiny")
     assert report.written == [] and "2025" in report.skipped[0] and "snapshot" in report.skipped[0]
     assert read_war(store, "tiny", "2025") is None
+
+
+# -- merged cut (partly captured seasons) --------------------------------------------------------
+
+
+def _snapshot_from_season(store, season, **overrides):
+    """A copy of the synthetic season snapshot with some players' started/owned overridden (by Sleeper-style key)."""
+    snap = store.read_espn_season(season)
+    players = {}
+    for espn_id, rec in snap["players"].items():
+        key = rec["name"].split()[0].lower()
+        players[espn_id] = {**rec, **overrides.get(key, {})}
+    return {"season": season, "players": players}
+
+
+def test_merged_start_percentage_rules(tmp_path):
+    store = synthetic_store(tmp_path, status="in_season")
+    # week 1 is scored and captured; r4 and w3 did not play in it (w3: bye, r4: hurt)
+    week1 = _snapshot_from_season(store, "2025", r3={"started": 85.0}, r4={"started": 0.0}, w3={"started": 0.0})
+    store.write_espn_week("2025", 1, {**week1, "week": 1})
+    # week 3 is captured but not yet scored
+    week3 = _snapshot_from_season(
+        store, "2025",
+        r3={"started": 8.0},                    # bye this week: his week-1 85% stands
+        r4={"started": 0.0, "owned": 70.0},     # on IR, never seen active: ownership
+        w3={"started": 80.0, "owned": 95.0},    # healthy, bye in week 1: this week's 80%, never ownership
+        w4={"started": 15.0, "owned": 50.0},    # healthy backup: 15%, never ownership
+    )
+    store.write_espn_week("2025", 3, {**week3, "week": 3})
+    store.write_espn_season("2025", {**week3, "week": None})  # in season, the season snapshot is the current week
+    store.write_injuries("2025", 3, {"r4": "IR", "w4": "Questionable"})
+    stats = {1: store.read_stats("2025", 1), 2: store.read_stats("2025", 2)}
+    stats[1] = {k: v for k, v in stats[1].items() if k not in ("r4", "w3", "w4")}
+    merged, mapping = merged_start_percentages(store, "2025", [1, 2], stats, store.read_espn_season("2025"), store.read_crosswalk(), {})
+    by_sid = {mapping[e]: rec["started"] for e, rec in merged["players"].items()}
+    assert by_sid["r3"] == 85.0  # bye in the current week: the scored week he played counts
+    assert by_sid["w3"] == 80.0  # bye in the captured scored week: the current week's figure, no ownership
+    assert by_sid["r4"] == 70.0  # on IR and never seen active: ownership
+    assert by_sid["w4"] == 15.0  # healthy backup not seen active: no ownership
+    assert by_sid["q1"] == 90.0  # the current week counts like any trusted snapshot
+
+
+def test_build_war_partly_captured_uses_merged_cut(tmp_path):
+    store = synthetic_store(tmp_path, status="in_season")
+    # only week 2 has its own snapshot; in it r3 (no game in week 2) shows 2% started
+    week2 = _snapshot_from_season(store, "2025", r3={"started": 2.0})
+    store.write_espn_week("2025", 2, {**week2, "week": 2})
+    store.write_espn_season("2025", {**week2, "week": None})
+    store.write_injuries("2025", 2, {"r3": "IR"})
+    war = build_war(store, tiny_config(), "tiny", "2025")
+    assert war["cut"] == "merged"
+    # week 1 ranks by the merged figure: r3 (on IR, never active in a captured week) takes his
+    # 99% ownership, so he is a consensus flex starter in week 1 rather than a replacement player
+    assert war["replacement"]["RB"]["level"] == pytest.approx(((3.0 + 1.0) / 2 + 1.0) / 2)
+
+
+def test_build_war_partly_captured_healthy_player_keeps_his_start_rate(tmp_path):
+    store = synthetic_store(tmp_path, status="in_season")
+    week2 = _snapshot_from_season(store, "2025", r3={"started": 2.0})
+    store.write_espn_week("2025", 2, {**week2, "week": 2})
+    store.write_espn_season("2025", {**week2, "week": None})
+    war = build_war(store, tiny_config(), "tiny", "2025")
+    # r3 is healthy, so no ownership: at 2% he is a week-1 replacement player beside r5
+    assert war["replacement"]["RB"]["level"] == pytest.approx(((1.0 + 5.0) / 2 + 1.0) / 2)

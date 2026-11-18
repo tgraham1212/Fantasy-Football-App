@@ -27,7 +27,7 @@ LANDMARKS = (
     "header.top > *", "#refresh-btn", "#theme-toggle", "#subtabs", "#subtabs button",
     "main section.card", ".card-head", "#games-controls > *", ".game-card", ".game-card .view-toggle",
     ".war-table", "#war-controls", "#war-dialog", "#war-dialog .dialog-head", "#war-dialog-close",
-    "#outcome-switcher", "footer",
+    "#outcome-switcher", "footer", "#positions-controls", ".pos-card",
 )
 # Elements that must stay inside the screen horizontally.
 INSIDE = ("header.top > *", "#refresh-note", "#version-note", "#subtabs")
@@ -56,10 +56,20 @@ def _games_final(page):
     page.wait_for_selector(".view-toggle")
 
 
+PAST_SEASON = "2024"
+
+
+def _positions_past(page):
+    page.select_option("#positions-season", PAST_SEASON)
+    page.wait_for_timeout(500)
+
+
 VIEWS = {
     "predictions": View("predictions", f"index.html#{LEAGUE}"),
     "games": View("games", f"index.html#{LEAGUE}/games"),
     "games-final": View("games-final", f"index.html#{LEAGUE}/games/{FINAL_WEEK}", _games_final),
+    "positions": View("positions", f"index.html#{LEAGUE}/positions"),
+    "positions-past": View("positions-past", f"index.html#{LEAGUE}/positions", _positions_past),
     "war": View("war", f"index.html#{LEAGUE}/war"),
     "war-all": View("war-all", f"index.html#{LEAGUE}/war", _war_all),
     "war-dialog": View("war-dialog", f"index.html#{LEAGUE}/war", _war_dialog),
@@ -94,6 +104,19 @@ def click(selector: str, wait: int = 400):
         page.locator(selector).first.evaluate("e => e.click()")
         page.wait_for_timeout(wait)
     return act
+
+
+def focus_first(selector: str):
+    """Keyboard focus without scrolling (SVG dots have no click() method; focus shows the popup)."""
+    def act(page, relay, ctx):
+        page.locator(selector).first.evaluate("e => e.focus({ preventScroll: true })")
+        page.wait_for_timeout(200)
+    return act
+
+
+def blur_active(page, relay, ctx):
+    page.evaluate("document.activeElement && document.activeElement.blur()")
+    page.wait_for_timeout(200)
 
 
 def select_first_other(selector: str):
@@ -161,15 +184,16 @@ CONTROLS: tuple[Control, ...] = (
     Control("theme (calibration)", "calibration", "#theme-toggle", (State("toggled", click("#theme-toggle")),)),
     Control("league switcher", "predictions", "#league-switcher button",
             (State("other league", click("#league-switcher button[aria-pressed='false']", 900)),),
-            regions=("#page-predictions", "#page-games", "#page-war"), below="#subtabs"),
+            regions=("#page-predictions", "#page-games", "#page-positions", "#page-war"), below="#subtabs"),
     Control("calibration link", "predictions", "a.nav-link[href='calibration.html']"),
     Control("odds link", "calibration", ".pages a.nav-link"),
     Control("footer link", "predictions", "footer a"),
     Control("footer link (calibration)", "calibration", "footer a"),
+    # on a phone the sub-tab strip scrolls to keep the picked tab in view, so the tabs move inside it
     Control("sub-tabs", "predictions", "#subtabs button",
-            (State("games", click("#subtabs [data-page='games']", 900)), State("war", click("#subtabs [data-page='war']", 900)),
-             State("predictions", click("#subtabs [data-page='predictions']", 900))),
-            regions=("#page-predictions", "#page-games", "#page-war"), below="self"),
+            (State("games", click("#subtabs [data-page='games']", 900)), State("positions", click("#subtabs [data-page='positions']", 900)),
+             State("war", click("#subtabs [data-page='war']", 900)), State("predictions", click("#subtabs [data-page='predictions']", 900))),
+            regions=("#page-predictions", "#page-games", "#page-positions", "#page-war", "#subtabs"), below="self", self_moves=True),
     Control("update check", "predictions", "body", UPDATE_STATES, regions=("#version-note",)),
     Control("update check (games)", "games-final", "body", UPDATE_STATES, regions=("#version-note",)),
     Control("update check (calibration)", "calibration", "body", UPDATE_STATES, regions=("#version-note",)),
@@ -206,6 +230,15 @@ CONTROLS: tuple[Control, ...] = (
             grow=(".game-card",), below=".game-card[data-card='0'] .view-toggle", self_moves=False),
     Control("full lineup (final)", "games-final", "details.lineup summary",
             (State("open", click("details.lineup summary")),), grow=(".game-card",), below="self"),
+
+    # Positions page
+    Control("positions season", "positions", "#positions-season", (State("other season", select_first_other("#positions-season")),),
+            regions=("#positions-content", "#positions-note"), grow=("main section.card",), below="#positions-controls"),
+    Control("position dot", "positions", ".pos-dot",
+            (State("focused", focus_first(".pos-card[data-pos='RB'] .pos-dot")), State("blurred", blur_active)),
+            regions=(".pos-pop",)),
+    Control("position dot (past)", "positions-past", ".pos-dot",
+            (State("focused", focus_first(".pos-card[data-pos='QB'] .pos-dot")),), regions=(".pos-pop",)),
 
     # Player WAR page
     Control("war season", "war", "#war-season", (State("other season", select_first_other("#war-season")),),

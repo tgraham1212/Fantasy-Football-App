@@ -2,6 +2,7 @@
 
 import { markSorted, nextSort } from "./sorting.js?v=__BUILD__";
 import { initWar, loadWar, reloadWar } from "./war.js?v=__BUILD__";
+import { initPositions, loadPositions, reloadPositions, showPositions } from "./positions.js?v=__BUILD__";
 import { currentWeek, initGames, loadGames, reloadGames, rerenderGames, showGames } from "./games.js?v=__BUILD__";
 import { initRefresh } from "./refresh.js?v=__BUILD__";
 import { initUpdates } from "./updates.js?v=__BUILD__";
@@ -161,6 +162,13 @@ function assignColors(L) {
   ids.forEach((rid, i) => { state.colors[rid] = `--team-${(i % 12) + 1}`; });
 }
 
+/* A current member's colour token by Sleeper user id (past seasons colour by manager, not by
+   roster slot); null for someone no longer in the league. */
+function ownerColor(userId) {
+  const team = state.league?.teams.find((t) => String(t.user_id) === String(userId));
+  return team ? state.colors[team.roster_id] || null : null;
+}
+
 function teamColor(rid) {
   return cssVar(state.colors[rid] || "--accent");
 }
@@ -235,7 +243,7 @@ function parseHash() {
   const n = Number(week);
   return {
     league: league || "",
-    page: page === "war" || page === "games" ? page : "predictions",
+    page: page === "war" || page === "games" || page === "positions" ? page : "predictions",
     week: page === "games" && Number.isInteger(n) && n > 0 ? n : null,
   };
 }
@@ -252,14 +260,42 @@ function showPage(page) {
   $("page-predictions").hidden = page !== "predictions";
   $("page-war").hidden = page !== "war";
   $("page-games").hidden = page !== "games";
+  $("page-positions").hidden = page !== "positions";
   for (const btn of $("subtabs").querySelectorAll("button")) btn.setAttribute("aria-pressed", String(btn.dataset.page === page));
+  revealSelectedSubtab();
+  updateSubtabFade();
   writeHash();
   if (page === "predictions") renderChart(); // the canvas had no size while hidden
   if (page === "games") showGames();
+  if (page === "positions") showPositions();
 }
 
 function initSubtabs() {
-  for (const btn of $("subtabs").querySelectorAll("button")) btn.addEventListener("click", () => showPage(btn.dataset.page));
+  const menu = $("subtabs");
+  for (const btn of menu.querySelectorAll("button")) btn.addEventListener("click", () => showPage(btn.dataset.page));
+  menu.addEventListener("scroll", updateSubtabFade, { passive: true });
+  addEventListener("resize", () => { revealSelectedSubtab(); updateSubtabFade(); });
+}
+
+/* On a phone the sub-tab row scrolls sideways: fade whichever edge has more tabs beyond it. */
+function updateSubtabFade() {
+  const menu = $("subtabs");
+  const max = menu.scrollWidth - menu.clientWidth;
+  menu.classList.toggle("fade-left", max > 1 && menu.scrollLeft > 1);
+  menu.classList.toggle("fade-right", max > 1 && menu.scrollLeft < max - 1);
+}
+
+/* Bring the selected sub-tab into the visible strip by scrolling the strip alone (never
+   scrollIntoView, which could also scroll the page). */
+function revealSelectedSubtab() {
+  const menu = $("subtabs");
+  const btn = menu.querySelector('button[aria-pressed="true"]');
+  if (!btn || menu.scrollWidth <= menu.clientWidth) return;
+  const left = btn.offsetLeft - menu.offsetLeft;
+  const right = left + btn.offsetWidth;
+  if (left < menu.scrollLeft) menu.scrollLeft = left;
+  else if (right > menu.scrollLeft + menu.clientWidth) menu.scrollLeft = right - menu.clientWidth;
+  updateSubtabFade();
 }
 
 function renderHead() {
@@ -763,6 +799,7 @@ async function loadLeague(key, { keep = false, week = null } = {}) {
     renderRatingChart();
     showPage(state.page);
     await reloadGames();
+    await reloadPositions();
     await reloadWar();
     return;
   }
@@ -789,6 +826,7 @@ async function loadLeague(key, { keep = false, week = null } = {}) {
   $("status").hidden = true;
   showPage(state.page);
   await loadGames(entry.key, payload.league_name, entry.games, (rid) => state.colors[rid] || "--accent", week);
+  await loadPositions(entry.key, entry.positions, ownerColor);
   await loadWar(entry.key, payload.league_name, entry.war);
 }
 
@@ -797,6 +835,7 @@ async function main() {
   initTableHead();
   initSubtabs();
   initWar();
+  initPositions();
   initGames(() => writeHash());
   try {
     state.index = await fetchJson("data/index.json");

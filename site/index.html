@@ -28,6 +28,7 @@
     <nav class="subtabs" id="subtabs" aria-label="Page">
       <button type="button" data-page="predictions" aria-pressed="true">Predictions</button>
       <button type="button" data-page="games" aria-pressed="false">Games</button>
+      <button type="button" data-page="positions" aria-pressed="false">Positions</button>
       <button type="button" data-page="war" aria-pressed="false">Player WAR</button>
     </nav>
 
@@ -112,6 +113,25 @@
       </section>
       <div id="games-content" hidden>
         <div id="games-grid"></div>
+      </div>
+    </div>
+
+    <div id="page-positions" hidden>
+      <section class="card summary">
+        <div class="card-head">
+          <h2 id="positions-title">Positional Rankings</h2>
+          <div class="switchers" id="positions-controls">
+            <label class="select-label">Season
+              <select id="positions-season" aria-label="Season"></select>
+            </label>
+          </div>
+        </div>
+        <p class="explain" id="positions-note"></p>
+        <p class="hint" id="positions-key">Each dot is a rostered player at his points per game. The dotted line is the position's replacement level from Player WAR. A dotted outline marks a taxi-squad player, and a red cross marks a player listed IR or Out. Hover or tap a dot for the player.</p>
+        <p class="explain" id="positions-unavailable" hidden>Positional rankings are not yet available for this league: the site data has not been exported.</p>
+      </section>
+      <div id="positions-content" hidden>
+        <div class="pos-grid" id="positions-grid"></div>
       </div>
     </div>
 
