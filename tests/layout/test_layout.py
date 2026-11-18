@@ -175,3 +175,17 @@ def test_data_swap_keeps_the_visitors_place(open_page):
     assert page.get_attribute(".game-card[data-card='0'] .view-toggle button[data-view='model']", "aria-pressed") == "true"
     assert page.eval_on_selector(".game-card[data-card='0'] details.lineup", "d => d.open")
     assert page.url.endswith("/games/10")
+
+
+WIDE_FONT = "* { font-family: Verdana, 'DejaVu Sans', sans-serif !important; }"
+
+
+@pytest.mark.parametrize("view", COVERAGE_VIEWS)
+def test_wide_fonts_do_not_scroll_sideways(open_page, view):
+    """Fonts differ between machines (Linux draws wider text than Windows), so a phone layout
+    that only just fits on one machine scrolls sideways on another. Check with a wide font."""
+    page, relay, ctx = open_view(open_page, view, 375)
+    page.add_style_tag(content=WIDE_FONT)
+    page.wait_for_timeout(300)
+    problems = page.evaluate(OVERFLOW_JS, list(INSIDE))
+    assert not problems, f"{view} at 375px with a wide font:\n  " + "\n  ".join(problems)

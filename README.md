@@ -498,7 +498,9 @@ sideways. `tests/layout/controls.py` is the registry of controls, their states a
 their declared effects; a coverage test fails when a page shows a button, select,
 expander or link the registry does not list, so add every new control there. The
 check also asserts that the full list scrolls only its table, that phone lineups
-show full names, and that a data swap keeps the visitor's place. Run it locally with:
+show full names, that a data swap keeps the visitor's place, and that no page scrolls
+sideways on a phone with a wide font (Linux draws wider text than Windows, so a
+layout that only just fits on one machine can overflow on another). Run it locally with:
 
 ```bash
 pip install -e ".[dev,browser]"

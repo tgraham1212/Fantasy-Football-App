@@ -199,7 +199,7 @@ main { display: grid; gap: 16px; }
 
 /* ---- Odds table -------------------------------------------------------------- */
 /* Scrolls inside its own container on narrow screens. */
-.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -18px; padding: 0 18px; }
+.table-wrap { position: relative; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -18px; padding: 0 18px; }
 table { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 760px; font-variant-numeric: tabular-nums; }
 th, td { padding: 9px 10px; text-align: left; border-bottom: 1px solid var(--grid); white-space: nowrap; vertical-align: middle; }
 th.num, td.num { text-align: right; }
@@ -335,7 +335,7 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
 .war-table-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 8px; }
 .war-table h3 { margin: 0; font-size: 1rem; font-weight: 650; }
 /* a long name or the All-Time year column scrolls inside the card, never the page */
-.war-scroll { min-width: 0; overflow-x: auto; }
+.war-scroll { position: relative; min-width: 0; overflow-x: auto; }
 table.war { min-width: 0; margin-top: 0; }
 table.war th, table.war td { padding: 6px 8px; white-space: nowrap; }
 table.war td.name { white-space: normal; font-weight: 600; }
