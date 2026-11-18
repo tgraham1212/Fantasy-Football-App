@@ -87,7 +87,7 @@ A player's merged start percentage SHALL be the highest percent started he has i
 
 A player SHALL use the higher of that figure and his percent owned only when both of these hold:
 - he played in no scored week that has a weekly snapshot;
-- his latest stored injury status for the season is IR, Out, PUP, Sus, NA or DNR.
+- his latest stored injury status for the season is on the shared out-status list (Out, Doubtful, IR, PUP, Sus, NA, DNR).
 
 His percent owned SHALL come from the most recent weekly snapshot holding him, or else from the season snapshot. Ties SHALL break by ESPN id, as in every other ranking.
 

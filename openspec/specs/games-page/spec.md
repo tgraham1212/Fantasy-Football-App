@@ -51,11 +51,15 @@ Below each card, each team SHALL list four key players from the lineup of the vi
 - **THEN** every lineup slot is listed with its player and projected points, and a replacement fill reads as a free agent at replacement level
 
 ### Requirement: Not playing
-Below each card, each team SHALL list rostered players expected not to play that week (bye, Out, Doubtful, IR, or inferred out for weeks without saved statuses), each labelled with the reason.
+Below each card, each team SHALL list rostered players expected not to play that week (bye, any status on the shared out-status list, or inferred out for weeks without saved statuses), each labelled with the reason using the shared status labels.
 
 #### Scenario: Injured starter
 - **WHEN** a team's receiver is Out for week 11
 - **THEN** he is listed under that team as Out
+
+#### Scenario: Physically unable to perform
+- **WHEN** a team's running back has a saved status of PUP for week 11
+- **THEN** he is listed under that team as PUP
 
 ### Requirement: Finished weeks
 For a finished week, each card SHALL show the selected view's forecast, a check mark in the winner's win probability cell, and a vertical line on each team's distribution at its actual score in the team's colour. A pre-week forecast used for a week before the log existed SHALL be labelled as such.

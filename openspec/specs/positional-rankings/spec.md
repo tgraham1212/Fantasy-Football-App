@@ -55,7 +55,7 @@ A player whose played and projected weeks total zero points SHALL be left out. P
 - **THEN** those 5 weeks and 60 points count in his points per game on his new manager's row
 
 ### Requirement: Injury flag
-For the season in progress, a player whose latest stored injury status is IR or Out SHALL be flagged as injured. Completed seasons SHALL carry no injury flags.
+For the season in progress, a player whose latest stored injury status is on the shared out-status list (Out, Doubtful, IR, PUP, Sus, NA, DNR) SHALL be flagged as injured, and his status SHALL be recorded. Completed seasons SHALL carry no injury flags or statuses.
 
 #### Scenario: Out this week
 - **WHEN** a quarterback's latest stored status is Out
@@ -64,6 +64,14 @@ For the season in progress, a player whose latest stored injury status is IR or 
 #### Scenario: Past season
 - **WHEN** rankings are built for 2024
 - **THEN** no player is flagged as injured
+
+#### Scenario: Doubtful
+- **WHEN** a tight end's latest stored status is Doubtful
+- **THEN** he is flagged as injured with status Doubtful
+
+#### Scenario: Questionable
+- **WHEN** a receiver's latest stored status is Questionable
+- **THEN** he is not flagged and carries no status
 
 ### Requirement: Replacement level carried
 Each league-season's rankings SHALL carry, per position, the replacement level from that league-season's WAR file. When the WAR file is missing, the rankings SHALL be written without replacement levels.
@@ -88,11 +96,11 @@ The site export SHALL write, per league, one positional rankings file per season
 - **THEN** the current season's positional rankings reflect that run's stats, projections, rosters and injury statuses
 
 ### Requirement: Positional rankings file contents
-Each season file SHALL hold the weeks covered, the last final week, and the per-position replacement levels and axis ranges. Per manager, it SHALL hold the owner's name, user id and roster id with their players. Each player entry SHALL hold the Sleeper id, name, position, NFL team, points per game, games played, games projected, and the taxi and injured flags.
+Each season file SHALL hold the weeks covered, the last final week, and the per-position replacement levels and axis ranges. Per manager, it SHALL hold the owner's name, user id and roster id with their players. Each player entry SHALL hold the Sleeper id, name, position, NFL team, points per game, games played, games projected, the taxi and injured flags, and the out status (or none).
 
 #### Scenario: Player entry
 - **WHEN** the dynasty 2026 file is read
-- **THEN** each player carries his points per game with the played and projected game counts behind it, and his taxi and injured flags
+- **THEN** each player carries his points per game with the played and projected game counts behind it, and his taxi and injured flags with his out status
 
 ### Requirement: Fixed axis range
 A position's axis range SHALL be the same in every season of a league. It SHALL be chosen from all of that league's seasons so that about 99% of player points-per-game values fall inside it, rounded outward to multiples of 5, and it SHALL include zero and the highest replacement level.
