@@ -4,13 +4,13 @@ import { initRefresh } from "./refresh.js?v=__BUILD__";
 import { initUpdates } from "./updates.js?v=__BUILD__";
 
 const OUTCOME_LABELS = {
-  playoffs: { label: "Make playoffs", noun: "made the playoffs" },
-  bye: { label: "First-round bye", noun: "earned a bye" },
-  final: { label: "Reach final", noun: "reached the final" },
-  title: { label: "Win championship", noun: "won the title" },
-  losers_bracket: { label: "Losers bracket", noun: "landed in the losers bracket" },
-  last: { label: "Finish last", noun: "finished last" },
-  avoid_losers_bye: { label: "Avoid bottom two", noun: "stayed out of the bottom two" },
+  playoffs: { label: "Make playoffs", noun: /*copy:CAL-44*/"made the playoffs" },
+  bye: { label: "First-round bye", noun: /*copy:CAL-45*/"earned a bye" },
+  final: { label: "Reach final", noun: /*copy:CAL-46*/"reached the final" },
+  title: { label: "Win championship", noun: /*copy:CAL-47*/"won the title" },
+  losers_bracket: { label: "Losers bracket", noun: /*copy:CAL-48*/"landed in the losers bracket" },
+  last: { label: "Finish last", noun: /*copy:CAL-49*/"finished last" },
+  avoid_losers_bye: { label: "Avoid bottom two", noun: /*copy:CAL-50*/"stayed out of the bottom two" },
 };
 const HEADLINE_OUTCOMES = ["playoffs", "bye", "title"];
 const SERIES_TOKENS = ["--team-1", "--team-2", "--team-3", "--team-4"];
@@ -92,7 +92,7 @@ function renderMeta() {
   const scale = R.residual_scale === 1 ? "no residual scaling" : `residual scale ${R.residual_scale}`;
   const floor = R.replacement_floor === false ? "replacement floor off" : `replacement floor on${R.replacement_top_n ? ` (best ${R.replacement_top_n} free agents)` : ""}`;
   const drift = R.roster_drift === false ? "roster drift off" : "roster drift on";
-  $("meta").textContent = `${seasons} league-seasons (${leagues} leagues, ${span}) · ${R.runs.toLocaleString()} simulations per replay · ${scale} · ${floor} · ${drift} · computed ${formatDate(R.generated_at)}`;
+  $("meta").textContent = /*copy:CAL-33*/`${seasons} league-seasons (${leagues} leagues, ${span}) · ${R.runs.toLocaleString()} simulations per replay · ${scale} · ${floor} · ${drift} · computed ${formatDate(R.generated_at)}`;
 }
 
 function renderHeadlines() {
@@ -104,16 +104,16 @@ function renderHeadlines() {
     const bins = s.bins.filter((b) => b.count >= 25 && b.lo >= 0.1 && b.hi <= 0.9);
     const mid = bins.length ? bins.reduce((best, b) => (Math.abs(b.predicted - 0.3) < Math.abs(best.predicted - 0.3) ? b : best), bins[0]) : null;
     const noun = OUTCOME_LABELS[key].noun;
-    const skill = s.skill == null ? "" : ` Skill vs the standings: ${signed(s.skill, 2)}.`;
+    const skill = s.skill == null ? "" : /*copy:CAL-36*/` Skill vs the standings: ${signed(s.skill, 2)}.`;
     items.push(
       mid
-        ? `<strong>${escapeHtml(outcomeLabel(key))}:</strong> teams shown at about ${pct(mid.predicted)} ${noun} ${pct(mid.observed)} of the time (${mid.count} cases).${skill}`
-        : `<strong>${escapeHtml(outcomeLabel(key))}:</strong> ${s.cases} cases.${skill}`,
+        ? /*copy:CAL-34*/`<strong>${escapeHtml(outcomeLabel(key))}:</strong> teams shown at about ${pct(mid.predicted)} ${noun} ${pct(mid.observed)} of the time (${mid.count} cases).${skill}`
+        : /*copy:CAL-35*/`<strong>${escapeHtml(outcomeLabel(key))}:</strong> ${s.cases} cases.${skill}`,
     );
   }
   const sc = O.score;
   items.push(
-    `<strong>Score noise:</strong> real scores fell inside the simulated 80% range ${pct(sc.coverage["80"], 1)} of the time and inside the 95% range ${pct(sc.coverage["95"], 1)} of the time, over ${sc.team_weeks.toLocaleString()} team-weeks.`,
+    /*copy:CAL-37*/`<strong>Score noise:</strong> real scores fell inside the simulated 80% range ${pct(sc.coverage["80"], 1)} of the time and inside the 95% range ${pct(sc.coverage["95"], 1)} of the time, over ${sc.team_weeks.toLocaleString()} team-weeks.`,
   );
   $("headlines").innerHTML = items.map((t) => `<li>${t}</li>`).join("");
 }
@@ -136,12 +136,12 @@ function renderHow() {
   const R = state.report;
   const cov = R.overall && R.overall.score && R.overall.score.coverage;
   if (cov && cov["80"] != null) {
-    $("how-noise").textContent = `Checked against ${R.seasons.length} past seasons, the real score fell inside the simulated 80% range ${pct(cov["80"], 1)} of the time, so the noise is about the right width.`;
+    $("how-noise").textContent = /*copy:CAL-24*/`Checked against ${R.seasons.length} past seasons, the real score fell inside the simulated 80% range ${pct(cov["80"], 1)} of the time, so the noise is about the right width.`;
   }
   const keys = leagueKeys();
   const withData = keys.filter((k) => state.leagues[k] && (state.leagues[k].replacement || state.leagues[k].model));
   const n = R.replacement_top_n || (withData.length && state.leagues[withData[0]].replacement && state.leagues[withData[0]].replacement.top_n);
-  if (n) $("how-floor").textContent = `Here that means the best ${n} free agents at each position, averaged, using this week's projections.`;
+  if (n) $("how-floor").textContent = /*copy:CAL-25*/`Here that means the best ${n} free agents at each position, averaged, using this week's projections.`;
 
   const driftBits = [];
   const tables = [];
@@ -152,25 +152,25 @@ function renderHow() {
     const rep = L.replacement;
     if (rep && rep.levels) {
       const cells = (obj, digits) => POSITIONS.map((p) => `<td class="num">${obj && obj[p] != null ? obj[p].toFixed(digits) : "–"}</td>`).join("");
-      tables.push(`<div><h3>${name}: what a replacement-level player scores</h3>
+      tables.push(`<div><h3>${/*copy:CAL-26*/`${name}: what a replacement-level player scores`}</h3>
         <div class="table-wrap"><table class="plain"><thead><tr><th scope="col"></th>${POSITIONS.map((p) => `<th scope="col" class="num">${p}</th>`).join("")}</tr></thead>
         <tbody><tr><th scope="row">Week ${rep.week} (projected)</th>${cells(rep.levels, 1)}</tr>
         <tr><th scope="row">Season value (actual, shrunk)</th>${cells(rep.season, 1)}</tr></tbody></table></div>
-        <p class="hint">Points per week under this league's scoring. The season value is what those pickups have really scored so far, blended with earlier seasons early in the year.</p></div>`);
+        <p class="hint">${/*copy:CAL-27*/"Points per week under this league's scoring. The season value is what those pickups have really scored so far, blended with earlier seasons early in the year."}</p></div>`);
     }
     const m = L.model;
     if (m && m.roster_drift && keepOf(m, 2) != null) {
       const two = Math.round(20 * keepOf(m, 2));
       const twelve = Math.round(20 * keepOf(m, 12));
       const sd = sdOf(m, 12);
-      const spread = sd ? ` and allows about ${sd.toFixed(1)} points of random roster change either way by twelve weeks out` : "";
+      const spread = sd ? /*copy:CAL-28*/` and allows about ${sd.toFixed(1)} points of random roster change either way by twelve weeks out` : "";
       if (twelve >= 20) {
-        driftBits.push(`In ${leagueName(key)}, past seasons show a team's edge holding up once its lineup holes are filled, so the model keeps the full edge${spread}.`);
+        driftBits.push(/*copy:CAL-29*/`In ${leagueName(key)}, past seasons show a team's edge holding up once its lineup holes are filled, so the model keeps the full edge${spread}.`);
       } else {
-        driftBits.push(`In ${leagueName(key)}, a team 20 points a week better than average is expected to keep about ${two} of those points two weeks out and ${twelve} twelve weeks out${spread}.`);
+        driftBits.push(/*copy:CAL-30*/`In ${leagueName(key)}, a team 20 points a week better than average is expected to keep about ${two} of those points two weeks out and ${twelve} twelve weeks out${spread}.`);
       }
     } else if (m && m.roster_drift === false) {
-      driftBits.push(`${leagueName(key)}: drift is currently switched off.`);
+      driftBits.push(/*copy:CAL-31*/`${leagueName(key)}: drift is currently switched off.`);
     }
   }
   $("how-drift").textContent = driftBits.join(" ");
@@ -207,7 +207,7 @@ function radiusFor(count, maxCount) {
 function renderReliability() {
   const R = state.report;
   const key = state.outcome;
-  $("reliability-title").textContent = `${outcomeLabel(key)}: predicted vs observed`;
+  $("reliability-title").textContent = /*copy:CAL-38*/`${outcomeLabel(key)}: predicted vs observed`;
   const canvas = $("reliability-chart");
   const narrow = canvas.parentElement.clientWidth < 560;
   const surface = cssVar("--surface");
@@ -278,8 +278,8 @@ function renderReliability() {
               const r = item.raw;
               if (r.count == null) return "";
               return [
-                `Shown at ${Math.round(r.lo * 100)}–${Math.round(r.hi * 100)}% (average ${Math.round(r.x)}%)`,
-                `Happened ${Math.round(r.y)}% of the time`,
+                /*copy:CAL-39*/`Shown at ${Math.round(r.lo * 100)}–${Math.round(r.hi * 100)}% (average ${Math.round(r.x)}%)`,
+                /*copy:CAL-40*/`Happened ${Math.round(r.y)}% of the time`,
                 `${r.count} cases`,
               ];
             },
@@ -377,14 +377,14 @@ function renderPit() {
           padding: 10,
           displayColors: false,
           callbacks: {
-            title: (items) => (items.length ? `Real score in the ${items[0].label}th percentile of its simulation` : ""),
+            title: (items) => (items.length ? /*copy:CAL-41*/`Real score in the ${items[0].label}th percentile of its simulation` : ""),
             label: (item) => `${item.raw} team-weeks (${pct(item.raw / Math.max(1, total), 1)})`,
           },
         },
       },
       scales: {
         x: {
-          title: { display: true, text: "Percentile of the real score within its simulated range", color: muted },
+          title: { display: true, text: /*copy:CAL-42*/"Percentile of the real score within its simulated range", color: muted },
           grid: { display: false },
           border: { color: cssVar("--axis") },
           ticks: { color: muted, maxRotation: 0, autoSkip: true, maxTicksLimit: canvas.parentElement.clientWidth < 420 ? 5 : 10, font: { size: 10 } },
@@ -435,12 +435,12 @@ function renderCoverage() {
   ]);
   table("coverage-table", head, rows);
   const sc = R.overall.score;
-  $("bias-note").textContent = `On average the simulation expected ${signed(sc.mean_bias, 1)} points more than teams actually scored (${signed(sc.mean_bias_sim_lineup, 1)} against the simulated lineup's own actual points). Typical simulated spread for one team-week: ±${num(sc.mean_sim_sd, 1)} points.`;
+  $("bias-note").textContent = /*copy:CAL-32*/`On average the simulation expected ${signed(sc.mean_bias, 1)} points more than teams actually scored (${signed(sc.mean_bias_sim_lineup, 1)} against the simulated lineup's own actual points). Typical simulated spread for one team-week: ±${num(sc.mean_sim_sd, 1)} points.`;
 }
 
 function renderGames() {
   const g = state.report.overall.game;
-  $("game-summary").textContent = `${g.games.toLocaleString()} regular-season games · Brier ${num(g.brier, 4)} (0.25 = coin flip)`;
+  $("game-summary").textContent = /*copy:CAL-43*/`${g.games.toLocaleString()} regular-season games · Brier ${num(g.brier, 4)} (0.25 = coin flip)`;
   const rows = g.bins.filter((b) => b.count > 0).map((b) => [
     `Favourite at ${Math.round(b.lo * 100)}–${Math.round(b.hi * 100)}%`,
     pct(b.predicted, 1),

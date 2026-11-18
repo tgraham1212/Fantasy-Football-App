@@ -13,7 +13,7 @@ from ffapp.config import DEFAULT_CONFIG_PATH, Config, ConfigError, load_config
 from ffapp.sleeper import SleeperClient
 from ffapp.store import DEFAULT_DATA_ROOT, Store
 
-COMMANDS = ("should-run", "sync", "projections", "stats", "schedule", "snapshot", "ratings", "replacement", "war", "simulate", "games", "verify-brackets", "export", "refresh", "calibrate", "stamp-site")
+COMMANDS = ("should-run", "sync", "projections", "stats", "schedule", "snapshot", "ratings", "replacement", "war", "simulate", "games", "verify-brackets", "export", "refresh", "calibrate", "stamp-site", "site-copy")
 log = logging.getLogger("ffapp")
 
 
@@ -65,6 +65,11 @@ def build_parser() -> argparse.ArgumentParser:
     refresh.set_defaults(full=False, backfill=False, backfill_season=False, runs=10_000, seed=None)
     stamp = sub.add_parser("stamp-site", help="Before a deploy: stamp script and stylesheet URLs with the site code fingerprint and write version.json")
     stamp.add_argument("--site", type=Path, default=Path("site"), help="site directory (default site/)")
+    copy = sub.add_parser("site-copy", help="Regenerate site-copy.txt from the site code; --check reports drift and pending edits; --apply writes confirmed edits into the code")
+    mode = copy.add_mutually_exclusive_group()
+    mode.add_argument("--check", action="store_true", help="report what is out of sync and exit non-zero if anything is")
+    mode.add_argument("--apply", action="store_true", help="write the pending edits in site-copy.txt into the site code (confirm with the owner first)")
+    copy.add_argument("--root", type=Path, default=Path("."), help="project root holding site/ and site-copy.txt (default .)")
     return parser
 
 
@@ -416,9 +421,52 @@ def main(argv: Sequence[str] | None = None, client: SleeperClient | None = None)
         from ffapp.stamp import stamp_site
         print(f"stamped {args.site} with {stamp_site(args.site)}")
         return 0
+    if args.command == "site-copy":  # needs no league config
+        return cmd_site_copy(args)
     try:
         ctx = Context(args, client)
     except ConfigError as exc:
         print(f"config error: {exc}", file=sys.stderr)
         return 2
     return HANDLERS[args.command](ctx)
+
+
+def _copy_report(report) -> list[str]:
+    lines = []
+    for kind, what in (("stale", "code changed, file behind (regenerate)"), ("new", "new in the code (regenerate)"),
+                       ("removed", "gone from the code (regenerate)"), ("pending", "edited in site-copy.txt, not yet applied"),
+                       ("conflict", "changed in both the code and the file")):
+        ids = report.ids(kind)
+        if ids:
+            lines.append(f"{kind}: {', '.join(ids)}  ({what})")
+    return lines
+
+
+def cmd_site_copy(args) -> int:
+    from ffapp import site_copy
+
+    root = args.root
+    if args.check:
+        report = site_copy.check(root)
+        problems = site_copy.coverage_problems(root / "site")
+        for line in _copy_report(report) + [f"uncovered: {p}" for p in problems]:
+            print(line)
+        if report.clean and not problems:
+            print(f"{site_copy.COPY_FILE} is in sync ({len(report.statuses)} entries)")
+            return 0
+        if report.ids("pending", "conflict"):
+            print("pending copy edits: confirm with the owner, then run python -m ffapp site-copy --apply")
+        return 1
+    if args.apply:
+        result = site_copy.apply_edits(root)
+        print(f"applied: {', '.join(result.applied) or 'none'}")
+        for cid, why in result.refused:
+            print(f"refused {cid}: {why}")
+        for cid in result.deletions:
+            print(f"deletion requested for {cid}: not applied; remove it from the code by hand")
+        return 1 if result.refused else 0
+    report = site_copy.regenerate(root)
+    for line in _copy_report(report):
+        print(line)
+    print(f"wrote {site_copy.COPY_FILE} and {site_copy.LOCK_FILE} ({len(report.statuses)} entries)")
+    return 0

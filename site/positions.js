@@ -94,10 +94,10 @@ function render() {
   const weeks = payload.weeks || [];
   const last = weeks[weeks.length - 1];
   $("positions-note").textContent = payload.status === "complete"
-    ? `Regular-season points per game (weeks ${weeks[0]} to ${last}) for each team's final roster.`
+    ? /*copy:POS-04*/`Regular-season points per game (weeks ${weeks[0]} to ${last}) for each team's final roster.`
     : payload.final_through
-      ? `Points per game: actual points through week ${payload.final_through} plus projected points for weeks ${payload.final_through + 1} to ${last}, for each team's current roster.`
-      : `Points per game from projected points for weeks ${weeks[0]} to ${last}, for each team's current roster.`;
+      ? /*copy:POS-05*/`Points per game: actual points through week ${payload.final_through} plus projected points for weeks ${payload.final_through + 1} to ${last}, for each team's current roster.`
+      : /*copy:POS-06*/`Points per game from projected points for weeks ${weeks[0]} to ${last}, for each team's current roster.`;
   drawCharts();
 }
 

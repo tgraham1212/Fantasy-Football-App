@@ -6,7 +6,12 @@ context: |
   workflow must call it and must never stamp by hand. Every new script, stylesheet link or
   module import in site/ carries `?v=__BUILD__`. Every new button, toggle, selector or
   expander on the site is added to the layout check registry (tests/layout/controls.py)
-  with its states and declared effect.
+  with its states and declared effect. Every new piece of descriptive site text (page or
+  tab description, heading, chart title or note, explanation, message) gets a copy ID
+  (`data-copy="ID"` in HTML, `/*copy:ID*/` before a script string) and is regenerated into
+  site-copy.txt with `python -m ffapp site-copy` in the same change. When the tests report
+  pending copy edits in site-copy.txt, confirm with the owner before running
+  `python -m ffapp site-copy --apply`; never apply or discard them unasked.
 
 # Project context (optional)
 # Add only constraints that should guide OpenSpec artifacts and workflows.

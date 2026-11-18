@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Playoff Odds</title>
+  <title data-copy="HDR-01">Playoff Odds</title>
   <meta name="description" content="Monte Carlo playoff odds for our Sleeper fantasy football leagues, updated after every week.">
   <link rel="stylesheet" href="styles.css?v=__BUILD__">
 </head>
 <body>
   <header class="top">
     <div class="brand">
-      <h1>Playoff Odds</h1>
-      <p class="sub">Monte Carlo projections for our Sleeper leagues</p>
+      <h1 data-copy="HDR-02">Playoff Odds</h1>
+      <p data-copy="HDR-03" class="sub">Monte Carlo projections for our Sleeper leagues</p>
     </div>
     <nav class="leagues" id="league-switcher" aria-label="League"></nav>
     <nav class="pages" aria-label="Pages"><a class="nav-link" href="calibration.html">How good are these odds?</a></nav>
@@ -36,7 +36,7 @@
     <section class="card summary">
       <h2 id="league-title"></h2>
       <p class="fresh" id="freshness"></p>
-      <p class="explain">
+      <p data-copy="PRED-01" class="explain">
         Every remaining week is simulated 10,000 times using each team's current roster, the real schedule,
         Sleeper's player projections and how far real scores have strayed from projections in the past.
         The playoffs and losers bracket are played out with the league's actual rules. These are chances,
@@ -46,8 +46,8 @@
 
     <section class="card">
       <div class="card-head">
-        <h2>Current odds</h2>
-        <p class="hint">In standings order. Click a header to sort, a team to highlight it in the chart; hover a chance for its change since last week.</p>
+        <h2 data-copy="PRED-02">Current odds</h2>
+        <p data-copy="PRED-03" class="hint">In standings order. Click a header to sort, a team to highlight it in the chart; hover a chance for its change since last week.</p>
       </div>
       <div class="table-wrap">
         <table id="odds-table">
@@ -74,7 +74,7 @@
 
     <section class="card">
       <div class="card-head">
-        <h2 id="chart-title">Playoff chances by week</h2>
+        <h2 data-copy="PRED-04" id="chart-title">Playoff chances by week</h2>
         <div class="metrics" id="metric-switcher" role="group" aria-label="Chart metric"></div>
       </div>
       <div class="chart-wrap">
@@ -85,7 +85,7 @@
 
     <section class="card" id="rating-card">
       <div class="card-head">
-        <h2 id="rating-title">Manager rating over time</h2>
+        <h2 data-copy="PRED-05" id="rating-title">Manager rating over time</h2>
         <div class="switchers">
           <div class="metrics" id="rating-metric" role="group" aria-label="Rating series"></div>
           <div class="metrics" id="rating-range" role="group" aria-label="Time range"></div>
@@ -109,7 +109,7 @@
           </div>
         </div>
         <p class="explain" id="games-note"></p>
-        <p class="explain" id="games-unavailable" hidden>Games are not yet available for this league: the game forecasts have not been exported.</p>
+        <p data-copy="GAME-01" class="explain" id="games-unavailable" hidden>Games are not yet available for this league: the game forecasts have not been exported.</p>
       </section>
       <div id="games-content" hidden>
         <div id="games-grid"></div>
@@ -119,7 +119,7 @@
     <div id="page-positions" hidden>
       <section class="card summary">
         <div class="card-head">
-          <h2 id="positions-title">Positional Rankings</h2>
+          <h2 data-copy="POS-01" id="positions-title">Positional Rankings</h2>
           <div class="switchers" id="positions-controls">
             <label class="select-label">Season
               <select id="positions-season" aria-label="Season"></select>
@@ -127,8 +127,8 @@
           </div>
         </div>
         <p class="explain" id="positions-note"></p>
-        <p class="hint" id="positions-key">Each dot is a rostered player at his points per game. The dotted line is the position's replacement level from Player WAR. A dotted outline marks a taxi-squad player, and a red cross marks a player who is out (Out, Doubtful, IR, PUP, suspended, not active or did not report). Hover or tap a dot for the player.</p>
-        <p class="explain" id="positions-unavailable" hidden>Positional rankings are not yet available for this league: the site data has not been exported.</p>
+        <p data-copy="POS-02" class="hint" id="positions-key">Each dot is a rostered player at his points per game. The dotted line is the position's replacement level from Player WAR. A dotted outline marks a taxi-squad player, and a red cross marks a player who is out (Out, Doubtful, IR, PUP, suspended, not active or did not report). Hover or tap a dot for the player.</p>
+        <p data-copy="POS-03" class="explain" id="positions-unavailable" hidden>Positional rankings are not yet available for this league: the site data has not been exported.</p>
       </section>
       <div id="positions-content" hidden>
         <div class="pos-grid" id="positions-grid"></div>
@@ -150,14 +150,14 @@
           </div>
         </div>
         <p class="explain" id="war-note"></p>
-        <p class="explain" id="war-unavailable" hidden>WAR is not yet available for this league: the start-percentage snapshots and WAR files have not been exported.</p>
+        <p data-copy="WAR-01" class="explain" id="war-unavailable" hidden>WAR is not yet available for this league: the start-percentage snapshots and WAR files have not been exported.</p>
       </section>
 
       <div id="war-content" hidden>
         <div class="war-grid" id="war-grid"></div>
 
         <section class="card" id="war-how">
-          <div class="card-head"><h2>How WAR is calculated</h2></div>
+          <div class="card-head"><h2 data-copy="WAR-02">How WAR is calculated</h2></div>
           <svg class="flow" viewBox="0 0 960 250" role="img" aria-labelledby="flow-title" preserveAspectRatio="xMidYMid meet">
           <title id="flow-title">How WAR is calculated: start percentage to consensus lineup, slot means and spread, replacement cut, weekly win chance, season sum, minus the replacement baseline</title>
           <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
@@ -177,12 +177,12 @@
           </g>
         </svg>
           <ol class="steps">
-            <li><strong>Start percentage.</strong> ESPN publishes the share of its leagues starting each player. Seasons up to 2026 have one frozen value per player; from 2027 the value is captured every week.</li>
-            <li><strong>Consensus lineup.</strong> Each week the most-started players with a game fill every position's starting slots for 12 teams, then the most-started leftover RB, WR and TE fill the flex.</li>
-            <li><strong>Slot means and spread.</strong> Over the season, each slot's average points and variance from those lineups. The opponent is a normal distribution: mean = sum of slot means, spread = square root of the summed variances.</li>
-            <li><strong>Replacement cut.</strong> The three most-started players past each position's cut are that week's replacement players; their season average is the replacement level.</li>
-            <li><strong>Weekly win chance.</strong> A player's week is their actual points in a lineup whose other slots sit at the slot means, so the win chance is the share of the opponent distribution below the league mean plus (score − slot mean). A week with no game played takes the replacement level; a game played for zero counts as zero.</li>
-            <li><strong>Expected wins and WAR.</strong> Win chances sum over regular-season weeks 1 to 14. WAR subtracts what a replacement-level player would earn every week, so a replacement season is exactly 0.</li>
+            <li data-copy="WAR-03"><strong>Start percentage.</strong> ESPN publishes the share of its leagues starting each player. Seasons up to 2026 have one frozen value per player; from 2027 the value is captured every week.</li>
+            <li data-copy="WAR-04"><strong>Consensus lineup.</strong> Each week the most-started players with a game fill every position's starting slots for 12 teams, then the most-started leftover RB, WR and TE fill the flex.</li>
+            <li data-copy="WAR-05"><strong>Slot means and spread.</strong> Over the season, each slot's average points and variance from those lineups. The opponent is a normal distribution: mean = sum of slot means, spread = square root of the summed variances.</li>
+            <li data-copy="WAR-06"><strong>Replacement cut.</strong> The three most-started players past each position's cut are that week's replacement players; their season average is the replacement level.</li>
+            <li data-copy="WAR-07"><strong>Weekly win chance.</strong> A player's week is their actual points in a lineup whose other slots sit at the slot means, so the win chance is the share of the opponent distribution below the league mean plus (score − slot mean). A week with no game played takes the replacement level; a game played for zero counts as zero.</li>
+            <li data-copy="WAR-08"><strong>Expected wins and WAR.</strong> Win chances sum over regular-season weeks 1 to 14. WAR subtracts what a replacement-level player would earn every week, so a replacement season is exactly 0.</li>
           </ol>
           <div id="war-walkthrough" class="walkthrough" hidden></div>
         </section>
@@ -194,15 +194,15 @@
         <h2 id="war-dialog-title"></h2>
         <button type="button" class="close" id="war-dialog-close" aria-label="Close">&#x2715;</button>
       </div>
-      <p class="hint">Click a header to sort; click again to flip. # is the WAR rank.</p>
+      <p data-copy="WAR-09" class="hint">Click a header to sort; click again to flip. # is the WAR rank.</p>
       <div class="table-wrap dialog-table"><table id="war-full" class="plain war full"></table></div>
     </dialog>
   </main>
 
-  <p class="status" id="status">Loading&hellip;</p>
+  <p data-copy="MSG-08" class="status" id="status">Loading&hellip;</p>
 
   <footer>
-    <p>Data from the Sleeper API. Projections by Rotowire via Sleeper. Rebuilt daily. <a href="calibration.html">How good are these odds?</a></p>
+    <p data-copy="HDR-04">Data from the Sleeper API. Projections by Rotowire via Sleeper. Rebuilt daily. <a href="calibration.html">How good are these odds?</a></p>
   </footer>
 
   <script src="vendor/chart.umd.js?v=__BUILD__"></script>

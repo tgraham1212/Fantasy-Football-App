@@ -37,10 +37,10 @@ function render() {
   if (state.note) ({ short, full } = state.note);
   else if (state.held > 0) {
     short = `Available in ${state.held} min`;
-    full = `A refresh ran recently. The next one can start in ${state.held} min.`;
+    full = /*copy:MSG-01*/`A refresh ran recently. The next one can start in ${state.held} min.`;
   } else {
     short = agoText();
-    full = state.lastRefresh ? `Data last refreshed ${new Date(state.lastRefresh).toLocaleString()}.` : "";
+    full = state.lastRefresh ? /*copy:MSG-02*/`Data last refreshed ${new Date(state.lastRefresh).toLocaleString()}.` : "";
   }
   note.textContent = short;
   if (full) note.title = full; else note.removeAttribute("title");
@@ -66,29 +66,29 @@ function waitForData() {
   clearTimeout(state.waitTimer);
   state.waitTimer = setTimeout(() => {
     state.waitTimer = null;
-    say("Refresh didn't finish", "No new data arrived within 20 minutes of the refresh starting. Try again later.", true);
+    say("Refresh didn't finish", /*copy:MSG-03*/"No new data arrived within 20 minutes of the refresh starting. Try again later.", true);
     render();
   }, GIVE_UP_MS);
 }
 
 async function refresh() {
   state.busy = true;
-  say("Starting…", "Asking for a data refresh…");
+  say("Starting…", /*copy:MSG-10*/"Asking for a data refresh…");
   render();
   try {
     const { status, body } = await call("POST", "/refresh");
     if (status === 202) {
       state.held = body.minutes || 15;
-      say("Started, back in ~5 min", "Refresh started. The new data shows here by itself in about 5 minutes.");
+      say(/*copy:MSG-11*/"Started, back in ~5 min", /*copy:MSG-04*/"Refresh started. The new data shows here by itself in about 5 minutes.");
       waitForData();
     } else if (status === 429) {
       state.held = body.minutes || 1;
       state.note = null;
     } else {
-      say("Couldn't start, try later", "Could not start a refresh. Try again later.");
+      say(/*copy:MSG-12*/"Couldn't start, try later", /*copy:MSG-05*/"Could not start a refresh. Try again later.");
     }
   } catch (e) {
-    say("Couldn't start, try later", "Could not reach the refresh service. Try again later.");
+    say(/*copy:MSG-13*/"Couldn't start, try later", /*copy:MSG-06*/"Could not reach the refresh service. Try again later.");
   }
   state.busy = false;
   render();

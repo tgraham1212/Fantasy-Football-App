@@ -196,8 +196,8 @@ function renderControls() {
   $("war-note").textContent = noteText();
 }
 
-const MERGED_NOTE = "This season is only partly captured by weekly start-percentage snapshots, so it uses a merged replacement cut: weeks with their own snapshot use it, and the rest rank each player by his highest start percentage from weeks he played (or his ownership if he is injured and was never seen active). It settles as more weeks are captured.";
-const YEARLY_NOTE = "This season uses a yearly replacement cut: one start-percentage snapshot picks the consensus lineups and the replacement players for every week.";
+const MERGED_NOTE = /*copy:WAR-10*/"This season is only partly captured by weekly start-percentage snapshots, so it uses a merged replacement cut: weeks with their own snapshot use it, and the rest rank each player by his highest start percentage from weeks he played (or his ownership if he is injured and was never seen active). It settles as more weeks are captured.";
+const YEARLY_NOTE = /*copy:WAR-11*/"This season uses a yearly replacement cut: one start-percentage snapshot picks the consensus lineups and the replacement players for every week.";
 
 function cutOf(season) {
   const s = state.index.seasons.find((x) => x.season === season);
@@ -210,18 +210,18 @@ function noteText() {
   const first = state.index.first_weekly;
   const parts = [];
   if (state.selection === "all") {
-    parts.push(state.mode === "career" ? "Career: each player's WAR summed over their seasons in this league; owner and team from their latest season." : "Every player-season in this league ranked together.");
+    parts.push(state.mode === "career" ? /*copy:WAR-12*/"Career: each player's WAR summed over their seasons in this league; owner and team from their latest season." : /*copy:WAR-13*/"Every player-season in this league ranked together.");
     const yearly = state.index.seasons.filter((s) => cutOf(s.season) === "yearly");
     const merged = state.index.seasons.filter((s) => cutOf(s.season) === "merged");
-    if (yearly.length) parts.push(first ? `Seasons before ${first} use a yearly replacement cut (one start-percentage snapshot per season) instead of a weekly one.` : "Completed seasons so far use a yearly replacement cut (one start-percentage snapshot per season); weekly cuts begin once a full season of weekly snapshots exists.");
-    if (merged.length) parts.push(`${merged.map((s) => s.season).join(", ")} ${merged.length > 1 ? "use" : "uses"} a merged cut from the weekly snapshots captured so far.`);
+    if (yearly.length) parts.push(first ? /*copy:WAR-14*/`Seasons before ${first} use a yearly replacement cut (one start-percentage snapshot per season) instead of a weekly one.` : /*copy:WAR-15*/"Completed seasons so far use a yearly replacement cut (one start-percentage snapshot per season); weekly cuts begin once a full season of weekly snapshots exists.");
+    if (merged.length) parts.push(/*copy:WAR-16*/`${merged.map((s) => s.season).join(", ")} ${merged.length > 1 ? "use" : "uses"} a merged cut from the weekly snapshots captured so far.`);
   } else {
     const s = state.index.seasons.find((x) => x.season === state.selection);
-    if (s && s.season === state.index.current && s.through_week < 14) parts.push(`Regular-season weeks 1 to ${s.through_week} so far; values settle as the season's averages fill in.`);
+    if (s && s.season === state.index.current && s.through_week < 14) parts.push(/*copy:WAR-17*/`Regular-season weeks 1 to ${s.through_week} so far; values settle as the season's averages fill in.`);
     if (s && cutOf(s.season) === "yearly") parts.push(YEARLY_NOTE);
     if (s && cutOf(s.season) === "merged") parts.push(MERGED_NOTE);
   }
-  parts.push("WAR is wins above a replacement-level player over the regular season. Hover an owner to see who else held the player that season.");
+  parts.push(/*copy:WAR-18*/"WAR is wins above a replacement-level player over the regular season. Hover an owner to see who else held the player that season.");
   return parts.join(" ");
 }
 
@@ -348,8 +348,8 @@ async function renderWalkthrough() {
   const cell = (w) => (w.played ? `<td class="num">${w.score.toFixed(1)}</td>` : `<td class="num fill" title="No game: replacement level used">${w.score.toFixed(1)}<span class="fill-mark" aria-hidden="true">*</span><span class="sr-only"> (replacement fill)</span></td>`) + `<td class="num p">${(w.p * 100).toFixed(0)}%</td>`;
   box.hidden = false;
   box.innerHTML = `
-    <h3>Worked example: Kittle and Bowers, 2024</h3>
-    <p class="hint">${escapeHtml(state.leagueName)}, 2024 constants: TE slot mean ${te.toFixed(1)}, opponent spread ${sd.toFixed(1)}, TE replacement level ${repl.level.toFixed(1)} (a replacement tight end earns ${repl.baseline_wins.toFixed(2)} expected wins over ${weeks.length} weeks). Each week's win chance is the share of the opponent distribution below the league mean plus (score − ${te.toFixed(1)}).</p>
+    <h3>${/*copy:WAR-19*/"Worked example: Kittle and Bowers, 2024"}</h3>
+    <p class="hint">${/*copy:WAR-20*/`${escapeHtml(state.leagueName)}, 2024 constants: TE slot mean ${te.toFixed(1)}, opponent spread ${sd.toFixed(1)}, TE replacement level ${repl.level.toFixed(1)} (a replacement tight end earns ${repl.baseline_wins.toFixed(2)} expected wins over ${weeks.length} weeks). Each week's win chance is the share of the opponent distribution below the league mean plus (score − ${te.toFixed(1)}).`}</p>
     <div class="table-wrap"><table class="plain walkthrough">
       <thead><tr><th scope="col">Week</th><th scope="col" class="num" colspan="2">Kittle: score, win chance</th><th scope="col" class="num" colspan="2">Bowers: score, win chance</th></tr></thead>
       <tbody>${weeks.map((week, i) => `<tr><th scope="row">${week}</th>${cell(kittle.weekly[i])}${cell(bowers.weekly[i])}</tr>`).join("")}</tbody>
@@ -359,7 +359,7 @@ async function renderWalkthrough() {
         <tr class="total"><th scope="row">WAR</th><td class="num" colspan="2">${fmtWar(kittle.war)}</td><td class="num" colspan="2">${fmtWar(bowers.war)}</td></tr>
       </tfoot>
     </table></div>
-    <p class="hint">* a week with no game played, filled at the replacement level. Kittle missed ${kittle.weekly.filter((w) => !w.played).length} of ${weeks.length} weeks and still finished ahead of Bowers (${bowers.games} games) on the strength of his per-game scoring; the replacement fill keeps a missed week from counting as a zero.</p>`;
+    <p class="hint">${/*copy:WAR-21*/`* a week with no game played, filled at the replacement level. Kittle missed ${kittle.weekly.filter((w) => !w.played).length} of ${weeks.length} weeks and still finished ahead of Bowers (${bowers.games} games) on the strength of his per-game scoring; the replacement fill keeps a missed week from counting as a zero.`}</p>`;
 }
 
 // -- wiring ----------------------------------------------------------------------------------------

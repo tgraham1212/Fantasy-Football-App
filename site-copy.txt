@@ -1,0 +1,693 @@
+SITE COPY FOR EDITING
+=====================
+
+Edit the text under each TEXT: line, save, and tell Claude; the tests flag the edits and Claude
+checks with you before applying them to the site (python -m ffapp site-copy --apply).
+- Leave the [ID] and WHERE lines alone; they tell the tool where each piece goes.
+- Anything inside ${...} is filled in by the page (a week number, a name, a date). Keep it, move it
+  within the sentence if you like, but do not change what is inside the braces.
+- Inline tags such as <em>, <strong>, <code> or <a ...> are written back as you leave them.
+- To ask for a piece to be deleted, leave its TEXT empty and say so in a NOTE: line.
+- Add a NOTE: line under any entry to explain an edit or ask a question; notes are kept.
+- Entries marked (generated) are built by the page; some are sentences that join others
+  ("add-on"), so read them together.
+
+
+##############################################################################
+# HEADER AND FOOTER (EVERY PAGE)
+##############################################################################
+
+[HDR-01] browser tab title
+WHERE: site/index.html line 6
+TEXT:
+Playoff Odds
+
+[HDR-02] site title
+WHERE: site/index.html line 13
+TEXT:
+Playoff Odds
+
+[HDR-03] paragraph
+WHERE: site/index.html line 14
+TEXT:
+Monte Carlo projections for our Sleeper leagues
+
+[HDR-04] paragraph
+WHERE: site/index.html line 205
+TEXT:
+Data from the Sleeper API. Projections by Rotowire via Sleeper. Rebuilt daily. <a href="calibration.html">How good are these odds?</a>
+
+
+##############################################################################
+# PREDICTIONS TAB
+##############################################################################
+
+[PRED-01] paragraph
+WHERE: site/index.html line 39
+TEXT:
+Every remaining week is simulated 10,000 times using each team's current roster, the real schedule, Sleeper's player projections and how far real scores have strayed from projections in the past. The playoffs and losers bracket are played out with the league's actual rules. These are chances, not predictions: a team at 70% misses roughly three times in ten.
+
+[PRED-02] heading
+WHERE: site/index.html line 49
+TEXT:
+Current odds
+
+[PRED-03] paragraph
+WHERE: site/index.html line 50
+TEXT:
+In standings order. Click a header to sort, a team to highlight it in the chart; hover a chance for its change since last week.
+
+[PRED-04] heading
+WHERE: site/index.html line 77
+TEXT:
+Playoff chances by week
+
+[PRED-05] heading
+WHERE: site/index.html line 88
+TEXT:
+Manager rating over time
+
+[PRED-06] rating chart title: rating
+WHERE: site/app.js line 28 (generated)
+TEXT:
+Manager rating over time
+
+[PRED-07] rating chart description: rating
+WHERE: site/app.js line 28 (generated)
+TEXT:
+Openskill rating of each manager's weekly points rank; 1000 is average
+
+[PRED-08] rating chart title: z-score
+WHERE: site/app.js line 29 (generated)
+TEXT:
+Career z-score over time
+
+[PRED-09] rating chart description: z-score
+WHERE: site/app.js line 29 (generated)
+TEXT:
+Career mean of weekly z-scores: standard deviations above or below that week's league average
+
+[PRED-10] odds chart title: bottom column
+WHERE: site/app.js line 114 (generated)
+TEXT:
+${bottom.label} chances by week
+
+[PRED-11] odds chart title: make playoffs
+WHERE: site/app.js line 115 (generated)
+TEXT:
+Playoff chances by week
+
+[PRED-12] odds chart title: first-round bye
+WHERE: site/app.js line 116 (generated)
+TEXT:
+First-round bye chances by week
+
+[PRED-13] odds chart title: championship
+WHERE: site/app.js line 117 (generated)
+TEXT:
+Championship chances by week
+
+[PRED-14] summary line: live week
+WHERE: site/app.js line 220 (generated)
+TEXT:
+Live: week ${L.live.week}, ${L.live.games_final} of ${L.live.games_total} games final
+
+[PRED-15] summary line: before or after a week
+WHERE: site/app.js line 221 (generated)
+TEXT:
+After week ${L.as_of_week} of ${L.regular_season_weeks}
+
+[PRED-16] summary line under the league title
+WHERE: site/app.js line 222 (generated)
+TEXT:
+${asOf} · updated ${formatDate(L.generated_at)} · ${L.runs.toLocaleString()} simulations
+
+[PRED-17] odds chart note (a team highlighted)
+WHERE: site/app.js line 559 (generated)
+TEXT:
+${sel.display_name || sel.team_name} is highlighted. Click the team again to clear.
+
+[PRED-18] odds chart note (nothing highlighted)
+WHERE: site/app.js line 560 (generated)
+TEXT:
+Each line is a team, in the colour shown beside its name in the table. Hover for every team's chance after a given week; click a line or a table row to highlight one team.
+
+[PRED-19] rating chart: no ratings yet
+WHERE: site/app.js line 637 (generated)
+TEXT:
+Manager ratings are not yet available for this league.
+
+[PRED-20] rating chart note (a manager highlighted)
+WHERE: site/app.js line 768 (generated)
+TEXT:
+${sel.label} is highlighted. Click the line again to clear.
+
+[PRED-21] rating chart note (follows the description above)
+WHERE: site/app.js line 769 (generated)
+TEXT:
+${metric.note}. Regular-season weeks only; each season's end-of-year owner is credited with that roster's weeks. Current members keep their table colour; former members are grey (dashed when a grey repeats).
+
+[PRED-22] generated text
+WHERE: site/app.js line 730 (generated)
+TEXT:
+${w.season}, preseason (after reversion)
+
+[PRED-23] generated text
+WHERE: site/app.js line 730 (generated)
+TEXT:
+${w.season}, after week ${w.week}
+
+
+##############################################################################
+# GAMES TAB
+##############################################################################
+
+[GAME-01] paragraph
+WHERE: site/index.html line 112
+TEXT:
+Games are not yet available for this league: the game forecasts have not been exported.
+
+[GAME-02] page note: finished week (before the projection log)
+WHERE: site/games.js line 143 (generated)
+TEXT:
+Final. Shown against the forecast made before the week (after week ${W.forecast_as_of}), from before the projection log began. A check marks the winner; the lines on each chart are the actual scores.
+
+[GAME-03] page note: finished week
+WHERE: site/games.js line 144 (generated)
+TEXT:
+Final. Shown against the prediction of record: the lineups the managers started, each player at his last projection before kickoff. A check marks the winner; the lines on each chart are the actual scores.
+
+[GAME-04] page note: upcoming week
+WHERE: site/games.js line 146 (generated)
+TEXT:
+Forecast from the simulation run ${formatTime(W.generated_at)} (after week ${W.forecast_as_of}), 10,000 simulations per game. Each chart shows the spread of simulated scores.
+
+[GAME-05] page note add-on: playoff weeks
+WHERE: site/games.js line 148 (generated)
+TEXT:
+Playoff pairings are projected: teams seeded by expected finish, the favourite advancing; each game says how often that pairing happened in the simulations.
+
+[GAME-06] page note add-on: model lineups
+WHERE: site/games.js line 150 (generated)
+TEXT:
+Lineups are the model's best projected lineup; players listed as out can still appear in it until their projection drops.
+
+[GAME-07] page note: live week
+WHERE: site/games.js line 152 (generated)
+TEXT:
+Live, from the run ${formatTime(W.generated_at)}. Players whose games have started are locked in the slot their manager started them in: final scores count as they are, games in progress count points so far plus the projection for the time left. Injuries or benchings during a game only show once it is final. The site refreshes before and after each slate of games.
+
+[GAME-08] page note add-on: win probability added
+WHERE: site/games.js line 156 (generated)
+TEXT:
+Percentages beside scored players are win probability added: how much that score moved the team's chance against the pre-kickoff forecast, everyone else as projected. They show the size of each swing and do not add up to the team's total.
+
+[GAME-09] lineup choices tooltip
+WHERE: site/games.js line 181 (generated)
+TEXT:
+<span class="choices ${cls}" title="Points vs the model lineup: what the manager's starters scored minus what the model's picks scored">Lineup choices: ${v > 0 ? "+" : ""}${v.toFixed(1)}</span>
+
+[GAME-10] generated text
+WHERE: site/games.js line 173 (generated)
+TEXT:
+· projected, happens in ${Math.round((g.frequency || 0) * 100)}% of simulations
+
+[GAME-11] generated text
+WHERE: site/games.js line 328 (generated)
+TEXT:
+First-round bye · #${b.seed} seed in the ${where}
+
+[GAME-12] generated text
+WHERE: site/games.js line 379 (generated)
+TEXT:
+No games stored for this week.
+
+
+##############################################################################
+# POSITIONS TAB
+##############################################################################
+
+[POS-01] heading
+WHERE: site/index.html line 122
+TEXT:
+Positional Rankings
+
+[POS-02] paragraph
+WHERE: site/index.html line 130
+TEXT:
+Each dot is a rostered player at his points per game. The dotted line is the position's replacement level from Player WAR. A dotted outline marks a taxi-squad player, and a red cross marks a player who is out (Out, Doubtful, IR, PUP, suspended, not active or did not report). Hover or tap a dot for the player.
+
+[POS-03] paragraph
+WHERE: site/index.html line 131
+TEXT:
+Positional rankings are not yet available for this league: the site data has not been exported.
+
+[POS-04] page note: completed season
+WHERE: site/positions.js line 97 (generated)
+TEXT:
+Regular-season points per game (weeks ${weeks[0]} to ${last}) for each team's final roster.
+
+[POS-05] page note: season in progress
+WHERE: site/positions.js line 99 (generated)
+TEXT:
+Points per game: actual points through week ${payload.final_through} plus projected points for weeks ${payload.final_through + 1} to ${last}, for each team's current roster.
+
+[POS-06] page note: before any week is final
+WHERE: site/positions.js line 100 (generated)
+TEXT:
+Points per game from projected points for weeks ${weeks[0]} to ${last}, for each team's current roster.
+
+
+##############################################################################
+# PLAYER WAR TAB
+##############################################################################
+
+[WAR-01] paragraph
+WHERE: site/index.html line 153
+TEXT:
+WAR is not yet available for this league: the start-percentage snapshots and WAR files have not been exported.
+
+[WAR-02] heading
+WHERE: site/index.html line 160
+TEXT:
+How WAR is calculated
+
+[WAR-03] list item
+WHERE: site/index.html line 180
+TEXT:
+<strong>Start percentage.</strong> ESPN publishes the share of its leagues starting each player. Seasons up to 2026 have one frozen value per player; from 2027 the value is captured every week.
+
+[WAR-04] list item
+WHERE: site/index.html line 181
+TEXT:
+<strong>Consensus lineup.</strong> Each week the most-started players with a game fill every position's starting slots for 12 teams, then the most-started leftover RB, WR and TE fill the flex.
+
+[WAR-05] list item
+WHERE: site/index.html line 182
+TEXT:
+<strong>Slot means and spread.</strong> Over the season, each slot's average points and variance from those lineups. The opponent is a normal distribution: mean = sum of slot means, spread = square root of the summed variances.
+
+[WAR-06] list item
+WHERE: site/index.html line 183
+TEXT:
+<strong>Replacement cut.</strong> The three most-started players past each position's cut are that week's replacement players; their season average is the replacement level.
+
+[WAR-07] list item
+WHERE: site/index.html line 184
+TEXT:
+<strong>Weekly win chance.</strong> A player's week is their actual points in a lineup whose other slots sit at the slot means, so the win chance is the share of the opponent distribution below the league mean plus (score − slot mean). A week with no game played takes the replacement level; a game played for zero counts as zero.
+
+[WAR-08] list item
+WHERE: site/index.html line 185
+TEXT:
+<strong>Expected wins and WAR.</strong> Win chances sum over regular-season weeks 1 to 14. WAR subtracts what a replacement-level player would earn every week, so a replacement season is exactly 0.
+
+[WAR-09] paragraph
+WHERE: site/index.html line 197
+TEXT:
+Click a header to sort; click again to flip. # is the WAR rank.
+
+[WAR-10] season note: merged cut (current season)
+WHERE: site/war.js line 199 (generated)
+TEXT:
+This season is only partly captured by weekly start-percentage snapshots, so it uses a merged replacement cut: weeks with their own snapshot use it, and the rest rank each player by his highest start percentage from weeks he played (or his ownership if he is injured and was never seen active). It settles as more weeks are captured.
+
+[WAR-11] season note: yearly cut
+WHERE: site/war.js line 200 (generated)
+TEXT:
+This season uses a yearly replacement cut: one start-percentage snapshot picks the consensus lineups and the replacement players for every week.
+
+[WAR-12] All-Time note: careers
+WHERE: site/war.js line 213 (generated)
+TEXT:
+Career: each player's WAR summed over their seasons in this league; owner and team from their latest season.
+
+[WAR-13] All-Time note: seasons
+WHERE: site/war.js line 213 (generated)
+TEXT:
+Every player-season in this league ranked together.
+
+[WAR-14] All-Time note: yearly seasons (once weekly seasons exist)
+WHERE: site/war.js line 216 (generated)
+TEXT:
+Seasons before ${first} use a yearly replacement cut (one start-percentage snapshot per season) instead of a weekly one.
+
+[WAR-15] All-Time note: yearly seasons (now)
+WHERE: site/war.js line 216 (generated)
+TEXT:
+Completed seasons so far use a yearly replacement cut (one start-percentage snapshot per season); weekly cuts begin once a full season of weekly snapshots exists.
+
+[WAR-16] All-Time note: merged seasons
+WHERE: site/war.js line 217 (generated)
+TEXT:
+${merged.map((s) => s.season).join(", ")} ${merged.length > 1 ? "use" : "uses"} a merged cut from the weekly snapshots captured so far.
+
+[WAR-17] season note: season in progress
+WHERE: site/war.js line 220 (generated)
+TEXT:
+Regular-season weeks 1 to ${s.through_week} so far; values settle as the season's averages fill in.
+
+[WAR-18] closing note on every view
+WHERE: site/war.js line 224 (generated)
+TEXT:
+WAR is wins above a replacement-level player over the regular season. Hover an owner to see who else held the player that season.
+
+[WAR-19] generated text
+WHERE: site/war.js line 351 (generated)
+TEXT:
+Worked example: Kittle and Bowers, 2024
+
+[WAR-20] generated text
+WHERE: site/war.js line 352 (generated)
+TEXT:
+${escapeHtml(state.leagueName)}, 2024 constants: TE slot mean ${te.toFixed(1)}, opponent spread ${sd.toFixed(1)}, TE replacement level ${repl.level.toFixed(1)} (a replacement tight end earns ${repl.baseline_wins.toFixed(2)} expected wins over ${weeks.length} weeks). Each week's win chance is the share of the opponent distribution below the league mean plus (score − ${te.toFixed(1)}).
+
+[WAR-21] generated text
+WHERE: site/war.js line 362 (generated)
+TEXT:
+* a week with no game played, filled at the replacement level. Kittle missed ${kittle.weekly.filter((w) => !w.played).length} of ${weeks.length} weeks and still finished ahead of Bowers (${bowers.games} games) on the strength of his per-game scoring; the replacement fill keeps a missed week from counting as a zero.
+
+
+##############################################################################
+# CALIBRATION PAGE
+##############################################################################
+
+[CAL-01] browser tab title
+WHERE: site/calibration.html line 6
+TEXT:
+How good are these odds?
+
+[CAL-02] page title
+WHERE: site/calibration.html line 13
+TEXT:
+How good are these odds?
+
+[CAL-03] paragraph
+WHERE: site/calibration.html line 14
+TEXT:
+Past seasons replayed through the same simulation, compared with what happened
+
+[CAL-04] heading
+WHERE: site/calibration.html line 28
+TEXT:
+What was checked
+
+[CAL-05] paragraph
+WHERE: site/calibration.html line 30
+TEXT:
+Every completed season was replayed week by week with the schedule, rosters, projections and scoring it really had, using score noise learned from the other seasons only. The chances the site would have shown after each week are then compared with the real result. If the odds are honest, teams shown at 30% should reach the outcome about 30% of the time.
+
+[CAL-06] heading
+WHERE: site/calibration.html line 41
+TEXT:
+How the odds are made
+
+[CAL-07] list item
+WHERE: site/calibration.html line 44
+TEXT:
+<strong>Projections.</strong> Every player starts from Sleeper's weekly projection, scored with the league's own rules.
+
+[CAL-08] list item
+WHERE: site/calibration.html line 45
+TEXT:
+<strong>Noise.</strong> Real scores miss projections, so every simulated score adds a miss drawn from how players at that position and projection level have missed in past seasons. <span id="how-noise"></span>
+
+[CAL-09] list item
+WHERE: site/calibration.html line 46
+TEXT:
+<strong>Lineups.</strong> Each team starts its best projected lineup every week. No slot is ever worth less than a <em>replacement-level player</em>: the average of the best few free agents by projection, which is what a manager would pick up for a bye, an injury or a thin bench. <span id="how-floor"></span>
+
+[CAL-10] list item
+WHERE: site/calibration.html line 47
+TEXT:
+<strong>Roster drift.</strong> Rosters change, so a team's edge today only partly survives. From past seasons the model knows how much of an edge usually remains some weeks out, and how much random change to allow for. <span id="how-drift"></span>
+
+[CAL-11] paragraph
+WHERE: site/calibration.html line 50
+TEXT:
+Live replacement levels and drift factors are not published yet; they appear after the next daily refresh.
+
+[CAL-12] heading
+WHERE: site/calibration.html line 55
+TEXT:
+Predicted vs observed
+
+[CAL-13] paragraph
+WHERE: site/calibration.html line 61
+TEXT:
+Each dot is one 10-point band of predicted chance; its size is the number of cases in the band. Dots on the diagonal are perfectly calibrated; above it the odds were too cautious, below it too confident. Hover a dot for the numbers.
+
+[CAL-14] paragraph
+WHERE: site/calibration.html line 63
+TEXT:
+Brier score: mean squared error of the chances (0 is perfect, 0.25 is a coin flip on a 50/50 outcome). The baseline reads the standings: base rate before the season, then each team's record extrapolated over the remaining weeks. Skill is how much better the simulation is than that baseline (1 = perfect, 0 = no better).
+
+[CAL-15] heading
+WHERE: site/calibration.html line 68
+TEXT:
+Is the score noise the right width?
+
+[CAL-16] paragraph
+WHERE: site/calibration.html line 79
+TEXT:
+Left: where each real score landed within its simulated range, in tenths. Right noise gives a flat chart; piles at the ends mean the simulation is too narrow, a hump in the middle means too wide. Right: how often the real score fell inside the simulated 50%, 80% and 95% ranges, which should match the nominal figure. "Simulated lineup" scores the players the simulation started rather than the lineup the manager actually started.
+
+[CAL-17] heading
+WHERE: site/calibration.html line 84
+TEXT:
+Head-to-head games
+
+[CAL-18] heading
+WHERE: site/calibration.html line 92
+TEXT:
+Lineup gap
+
+[CAL-19] paragraph
+WHERE: site/calibration.html line 95
+TEXT:
+The simulation starts each team's best projected lineup. Real managers do not always. The gap is what the best projected lineup would have added, in projected points and in the points those players actually scored.
+
+[CAL-20] heading
+WHERE: site/calibration.html line 99
+TEXT:
+Caveats
+
+[CAL-21] heading
+WHERE: site/calibration.html line 105
+TEXT:
+Calibration has not been run yet
+
+[CAL-22] paragraph
+WHERE: site/calibration.html line 106
+TEXT:
+The league pages work as usual. This page fills in once <code>python -m ffapp calibrate</code> has been run and its report committed.
+
+[CAL-23] paragraph
+WHERE: site/calibration.html line 112
+TEXT:
+Data from the Sleeper API. Projections by Rotowire via Sleeper. <a href="./">Back to the playoff odds</a>.
+
+[CAL-24] how the odds are made: noise check
+WHERE: site/calibration.js line 139 (generated)
+TEXT:
+Checked against ${R.seasons.length} past seasons, the real score fell inside the simulated 80% range ${pct(cov["80"], 1)} of the time, so the noise is about the right width.
+
+[CAL-25] how the odds are made: replacement floor
+WHERE: site/calibration.js line 144 (generated)
+TEXT:
+Here that means the best ${n} free agents at each position, averaged, using this week's projections.
+
+[CAL-26] replacement table title
+WHERE: site/calibration.js line 155 (generated)
+TEXT:
+${name}: what a replacement-level player scores
+
+[CAL-27] replacement table note
+WHERE: site/calibration.js line 159 (generated)
+TEXT:
+Points per week under this league's scoring. The season value is what those pickups have really scored so far, blended with earlier seasons early in the year.
+
+[CAL-28] roster drift: add-on with drift noise
+WHERE: site/calibration.js line 166 (generated)
+TEXT:
+and allows about ${sd.toFixed(1)} points of random roster change either way by twelve weeks out
+
+[CAL-29] roster drift: edge fully kept
+WHERE: site/calibration.js line 168 (generated)
+TEXT:
+In ${leagueName(key)}, past seasons show a team's edge holding up once its lineup holes are filled, so the model keeps the full edge${spread}.
+
+[CAL-30] roster drift: edge partly kept
+WHERE: site/calibration.js line 170 (generated)
+TEXT:
+In ${leagueName(key)}, a team 20 points a week better than average is expected to keep about ${two} of those points two weeks out and ${twelve} twelve weeks out${spread}.
+
+[CAL-31] roster drift: switched off
+WHERE: site/calibration.js line 173 (generated)
+TEXT:
+${leagueName(key)}: drift is currently switched off.
+
+[CAL-32] score bias note
+WHERE: site/calibration.js line 438 (generated)
+TEXT:
+On average the simulation expected ${signed(sc.mean_bias, 1)} points more than teams actually scored (${signed(sc.mean_bias_sim_lineup, 1)} against the simulated lineup's own actual points). Typical simulated spread for one team-week: ±${num(sc.mean_sim_sd, 1)} points.
+
+[CAL-33] generated text
+WHERE: site/calibration.js line 95 (generated)
+TEXT:
+${seasons} league-seasons (${leagues} leagues, ${span}) · ${R.runs.toLocaleString()} simulations per replay · ${scale} · ${floor} · ${drift} · computed ${formatDate(R.generated_at)}
+
+[CAL-34] generated text
+WHERE: site/calibration.js line 110 (generated)
+TEXT:
+<strong>${escapeHtml(outcomeLabel(key))}:</strong> teams shown at about ${pct(mid.predicted)} ${noun} ${pct(mid.observed)} of the time (${mid.count} cases).${skill}
+
+[CAL-35] generated text
+WHERE: site/calibration.js line 111 (generated)
+TEXT:
+<strong>${escapeHtml(outcomeLabel(key))}:</strong> ${s.cases} cases.${skill}
+
+[CAL-36] generated text
+WHERE: site/calibration.js line 107 (generated)
+TEXT:
+Skill vs the standings: ${signed(s.skill, 2)}.
+
+[CAL-37] generated text
+WHERE: site/calibration.js line 116 (generated)
+TEXT:
+<strong>Score noise:</strong> real scores fell inside the simulated 80% range ${pct(sc.coverage["80"], 1)} of the time and inside the 95% range ${pct(sc.coverage["95"], 1)} of the time, over ${sc.team_weeks.toLocaleString()} team-weeks.
+
+[CAL-38] generated text
+WHERE: site/calibration.js line 210 (generated)
+TEXT:
+${outcomeLabel(key)}: predicted vs observed
+
+[CAL-39] generated text
+WHERE: site/calibration.js line 281 (generated)
+TEXT:
+Shown at ${Math.round(r.lo * 100)}–${Math.round(r.hi * 100)}% (average ${Math.round(r.x)}%)
+
+[CAL-40] generated text
+WHERE: site/calibration.js line 282 (generated)
+TEXT:
+Happened ${Math.round(r.y)}% of the time
+
+[CAL-41] generated text
+WHERE: site/calibration.js line 380 (generated)
+TEXT:
+Real score in the ${items[0].label}th percentile of its simulation
+
+[CAL-42] generated text
+WHERE: site/calibration.js line 387 (generated)
+TEXT:
+Percentile of the real score within its simulated range
+
+[CAL-43] generated text
+WHERE: site/calibration.js line 443 (generated)
+TEXT:
+${g.games.toLocaleString()} regular-season games · Brier ${num(g.brier, 4)} (0.25 = coin flip)
+
+[CAL-44] generated text
+WHERE: site/calibration.js line 7 (generated)
+TEXT:
+made the playoffs
+
+[CAL-45] generated text
+WHERE: site/calibration.js line 8 (generated)
+TEXT:
+earned a bye
+
+[CAL-46] generated text
+WHERE: site/calibration.js line 9 (generated)
+TEXT:
+reached the final
+
+[CAL-47] generated text
+WHERE: site/calibration.js line 10 (generated)
+TEXT:
+won the title
+
+[CAL-48] generated text
+WHERE: site/calibration.js line 11 (generated)
+TEXT:
+landed in the losers bracket
+
+[CAL-49] generated text
+WHERE: site/calibration.js line 12 (generated)
+TEXT:
+finished last
+
+[CAL-50] generated text
+WHERE: site/calibration.js line 13 (generated)
+TEXT:
+stayed out of the bottom two
+
+
+##############################################################################
+# MESSAGES
+##############################################################################
+
+[MSG-01] refresh: held
+WHERE: site/refresh.js line 40 (generated)
+TEXT:
+A refresh ran recently. The next one can start in ${state.held} min.
+
+[MSG-02] refresh: last refreshed
+WHERE: site/refresh.js line 43 (generated)
+TEXT:
+Data last refreshed ${new Date(state.lastRefresh).toLocaleString()}.
+
+[MSG-03] refresh: did not finish
+WHERE: site/refresh.js line 69 (generated)
+TEXT:
+No new data arrived within 20 minutes of the refresh starting. Try again later.
+
+[MSG-04] refresh: started
+WHERE: site/refresh.js line 82 (generated)
+TEXT:
+Refresh started. The new data shows here by itself in about 5 minutes.
+
+[MSG-05] refresh: could not start
+WHERE: site/refresh.js line 88 (generated)
+TEXT:
+Could not start a refresh. Try again later.
+
+[MSG-06] refresh: unreachable
+WHERE: site/refresh.js line 91 (generated)
+TEXT:
+Could not reach the refresh service. Try again later.
+
+[MSG-07] new version note
+WHERE: site/updates.js line 29 (generated)
+TEXT:
+A new version of the site is available.
+
+[MSG-08] paragraph
+WHERE: site/index.html line 202
+TEXT:
+Loading&hellip;
+
+[MSG-09] paragraph
+WHERE: site/calibration.html line 109
+TEXT:
+Loading&hellip;
+
+[MSG-10] generated text
+WHERE: site/refresh.js line 76 (generated)
+TEXT:
+Asking for a data refresh…
+
+[MSG-11] generated text
+WHERE: site/refresh.js line 82 (generated)
+TEXT:
+Started, back in ~5 min
+
+[MSG-12] generated text
+WHERE: site/refresh.js line 88 (generated)
+TEXT:
+Couldn't start, try later
+
+[MSG-13] generated text
+WHERE: site/refresh.js line 91 (generated)
+TEXT:
+Couldn't start, try later

@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>How good are these odds?</title>
+  <title data-copy="CAL-01">How good are these odds?</title>
   <meta name="description" content="How well the Monte Carlo playoff odds matched what really happened, measured by replaying past seasons.">
   <link rel="stylesheet" href="styles.css?v=__BUILD__">
 </head>
 <body>
   <header class="top">
     <div class="brand">
-      <h1>How good are these odds?</h1>
-      <p class="sub">Past seasons replayed through the same simulation, compared with what happened</p>
+      <h1 data-copy="CAL-02">How good are these odds?</h1>
+      <p data-copy="CAL-03" class="sub">Past seasons replayed through the same simulation, compared with what happened</p>
     </div>
     <nav class="pages" aria-label="Pages"><a class="nav-link" href="./">&larr; Playoff odds</a></nav>
     <div class="refresh" id="refresh-box" hidden>
@@ -25,9 +25,9 @@
 
   <main id="main" hidden>
     <section class="card summary">
-      <h2>What was checked</h2>
+      <h2 data-copy="CAL-04">What was checked</h2>
       <p class="fresh" id="meta"></p>
-      <p class="explain">
+      <p data-copy="CAL-05" class="explain">
         Every completed season was replayed week by week with the schedule, rosters, projections and scoring it
         really had, using score noise learned from the other seasons only. The chances the site would have shown
         after each week are then compared with the real result. If the odds are honest, teams shown at 30% should
@@ -38,34 +38,34 @@
 
     <section class="card" id="how-card">
       <div class="card-head">
-        <h2>How the odds are made</h2>
+        <h2 data-copy="CAL-06">How the odds are made</h2>
       </div>
       <ol class="steps">
-        <li><strong>Projections.</strong> Every player starts from Sleeper's weekly projection, scored with the league's own rules.</li>
-        <li><strong>Noise.</strong> Real scores miss projections, so every simulated score adds a miss drawn from how players at that position and projection level have missed in past seasons. <span id="how-noise"></span></li>
-        <li><strong>Lineups.</strong> Each team starts its best projected lineup every week. No slot is ever worth less than a <em>replacement-level player</em>: the average of the best few free agents by projection, which is what a manager would pick up for a bye, an injury or a thin bench. <span id="how-floor"></span></li>
-        <li><strong>Roster drift.</strong> Rosters change, so a team's edge today only partly survives. From past seasons the model knows how much of an edge usually remains some weeks out, and how much random change to allow for. <span id="how-drift"></span></li>
+        <li data-copy="CAL-07"><strong>Projections.</strong> Every player starts from Sleeper's weekly projection, scored with the league's own rules.</li>
+        <li data-copy="CAL-08"><strong>Noise.</strong> Real scores miss projections, so every simulated score adds a miss drawn from how players at that position and projection level have missed in past seasons. <span id="how-noise"></span></li>
+        <li data-copy="CAL-09"><strong>Lineups.</strong> Each team starts its best projected lineup every week. No slot is ever worth less than a <em>replacement-level player</em>: the average of the best few free agents by projection, which is what a manager would pick up for a bye, an injury or a thin bench. <span id="how-floor"></span></li>
+        <li data-copy="CAL-10"><strong>Roster drift.</strong> Rosters change, so a team's edge today only partly survives. From past seasons the model knows how much of an edge usually remains some weeks out, and how much random change to allow for. <span id="how-drift"></span></li>
       </ol>
       <div class="split" id="how-tables"></div>
-      <p class="hint" id="how-fallback" hidden>Live replacement levels and drift factors are not published yet; they appear after the next daily refresh.</p>
+      <p data-copy="CAL-11" class="hint" id="how-fallback" hidden>Live replacement levels and drift factors are not published yet; they appear after the next daily refresh.</p>
     </section>
 
     <section class="card">
       <div class="card-head">
-        <h2 id="reliability-title">Predicted vs observed</h2>
+        <h2 data-copy="CAL-12" id="reliability-title">Predicted vs observed</h2>
         <div class="metrics" id="outcome-switcher" role="group" aria-label="Outcome"></div>
       </div>
       <div class="chart-wrap reliability-wrap">
         <canvas id="reliability-chart" role="img" aria-label="Scatter chart of predicted chance against observed rate for each league"></canvas>
       </div>
-      <p class="hint">Each dot is one 10-point band of predicted chance; its size is the number of cases in the band. Dots on the diagonal are perfectly calibrated; above it the odds were too cautious, below it too confident. Hover a dot for the numbers.</p>
+      <p data-copy="CAL-13" class="hint">Each dot is one 10-point band of predicted chance; its size is the number of cases in the band. Dots on the diagonal are perfectly calibrated; above it the odds were too cautious, below it too confident. Hover a dot for the numbers.</p>
       <div class="table-wrap"><table class="plain" id="season-table"></table></div>
-      <p class="hint">Brier score: mean squared error of the chances (0 is perfect, 0.25 is a coin flip on a 50/50 outcome). The baseline reads the standings: base rate before the season, then each team's record extrapolated over the remaining weeks. Skill is how much better the simulation is than that baseline (1 = perfect, 0 = no better).</p>
+      <p data-copy="CAL-14" class="hint">Brier score: mean squared error of the chances (0 is perfect, 0.25 is a coin flip on a 50/50 outcome). The baseline reads the standings: base rate before the season, then each team's record extrapolated over the remaining weeks. Skill is how much better the simulation is than that baseline (1 = perfect, 0 = no better).</p>
     </section>
 
     <section class="card">
       <div class="card-head">
-        <h2>Is the score noise the right width?</h2>
+        <h2 data-copy="CAL-15">Is the score noise the right width?</h2>
       </div>
       <div class="split">
         <div class="chart-wrap pit-wrap">
@@ -76,12 +76,12 @@
           <p class="hint" id="bias-note"></p>
         </div>
       </div>
-      <p class="hint">Left: where each real score landed within its simulated range, in tenths. Right noise gives a flat chart; piles at the ends mean the simulation is too narrow, a hump in the middle means too wide. Right: how often the real score fell inside the simulated 50%, 80% and 95% ranges, which should match the nominal figure. "Simulated lineup" scores the players the simulation started rather than the lineup the manager actually started.</p>
+      <p data-copy="CAL-16" class="hint">Left: where each real score landed within its simulated range, in tenths. Right noise gives a flat chart; piles at the ends mean the simulation is too narrow, a hump in the middle means too wide. Right: how often the real score fell inside the simulated 50%, 80% and 95% ranges, which should match the nominal figure. "Simulated lineup" scores the players the simulation started rather than the lineup the manager actually started.</p>
     </section>
 
     <section class="card">
       <div class="card-head">
-        <h2>Head-to-head games</h2>
+        <h2 data-copy="CAL-17">Head-to-head games</h2>
         <p class="hint" id="game-summary"></p>
       </div>
       <div class="table-wrap"><table class="plain" id="game-table"></table></div>
@@ -89,27 +89,27 @@
 
     <section class="card">
       <div class="card-head">
-        <h2>Lineup gap</h2>
+        <h2 data-copy="CAL-18">Lineup gap</h2>
       </div>
       <div class="table-wrap"><table class="plain" id="lineup-table"></table></div>
-      <p class="hint">The simulation starts each team's best projected lineup. Real managers do not always. The gap is what the best projected lineup would have added, in projected points and in the points those players actually scored.</p>
+      <p data-copy="CAL-19" class="hint">The simulation starts each team's best projected lineup. Real managers do not always. The gap is what the best projected lineup would have added, in projected points and in the points those players actually scored.</p>
     </section>
 
     <section class="card">
-      <h2>Caveats</h2>
+      <h2 data-copy="CAL-20">Caveats</h2>
       <ul class="caveats" id="caveats"></ul>
     </section>
   </main>
 
   <section class="card not-run" id="not-run" hidden>
-    <h2>Calibration has not been run yet</h2>
-    <p class="explain">The league pages work as usual. This page fills in once <code>python -m ffapp calibrate</code> has been run and its report committed.</p>
+    <h2 data-copy="CAL-21">Calibration has not been run yet</h2>
+    <p data-copy="CAL-22" class="explain">The league pages work as usual. This page fills in once <code>python -m ffapp calibrate</code> has been run and its report committed.</p>
   </section>
 
-  <p class="status" id="status">Loading&hellip;</p>
+  <p data-copy="MSG-09" class="status" id="status">Loading&hellip;</p>
 
   <footer>
-    <p>Data from the Sleeper API. Projections by Rotowire via Sleeper. <a href="./">Back to the playoff odds</a>.</p>
+    <p data-copy="CAL-23">Data from the Sleeper API. Projections by Rotowire via Sleeper. <a href="./">Back to the playoff odds</a>.</p>
   </footer>
 
   <script src="vendor/chart.umd.js?v=__BUILD__"></script>

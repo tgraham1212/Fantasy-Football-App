@@ -25,8 +25,8 @@ const state = {
 };
 
 const RATING_METRICS = [
-  { key: "mu", label: "Rating", title: "Manager rating over time", note: "Openskill rating of each manager's weekly points rank; 1000 is average" },
-  { key: "career_z", label: "Z-score", title: "Career z-score over time", note: "Career mean of weekly z-scores: standard deviations above or below that week's league average" },
+  { key: "mu", label: "Rating", title: /*copy:PRED-06*/"Manager rating over time", note: /*copy:PRED-07*/"Openskill rating of each manager's weekly points rank; 1000 is average" },
+  { key: "career_z", label: "Z-score", title: /*copy:PRED-08*/"Career z-score over time", note: /*copy:PRED-09*/"Career mean of weekly z-scores: standard deviations above or below that week's league average" },
 ];
 const RATING_RANGES = [
   { key: "season", label: "This season" },
@@ -111,10 +111,10 @@ function bottomColumn(L) {
 function metricsFor(L) {
   const bottom = bottomColumn(L);
   return [
-    { key: bottom.key, label: bottom.label, title: `${bottom.label} chances by week` },
-    { key: "playoffs", label: "Make playoffs", title: "Playoff chances by week" },
-    { key: "bye", label: "First-round bye", title: "First-round bye chances by week" },
-    { key: "title", label: "Win championship", title: "Championship chances by week" },
+    { key: bottom.key, label: bottom.label, title: /*copy:PRED-10*/`${bottom.label} chances by week` },
+    { key: "playoffs", label: "Make playoffs", title: /*copy:PRED-11*/"Playoff chances by week" },
+    { key: "bye", label: "First-round bye", title: /*copy:PRED-12*/"First-round bye chances by week" },
+    { key: "title", label: "Win championship", title: /*copy:PRED-13*/"Championship chances by week" },
   ];
 }
 
@@ -217,9 +217,9 @@ function renderSummary() {
   const L = state.league;
   $("league-title").textContent = `${L.league_name} · ${L.season}`;
   const asOf = L.live
-    ? `Live: week ${L.live.week}, ${L.live.games_final} of ${L.live.games_total} games final`
-    : L.as_of_week === 0 ? "Preseason" : `After week ${L.as_of_week} of ${L.regular_season_weeks}`;
-  $("freshness").textContent = `${asOf} · updated ${formatDate(L.generated_at)} · ${L.runs.toLocaleString()} simulations`;
+    ? /*copy:PRED-14*/`Live: week ${L.live.week}, ${L.live.games_final} of ${L.live.games_total} games final`
+    : L.as_of_week === 0 ? "Preseason" : /*copy:PRED-15*/`After week ${L.as_of_week} of ${L.regular_season_weeks}`;
+  $("freshness").textContent = /*copy:PRED-16*/`${asOf} · updated ${formatDate(L.generated_at)} · ${L.runs.toLocaleString()} simulations`;
   document.title = `${L.league_name} – Playoff Odds`;
 }
 
@@ -556,8 +556,8 @@ function renderChart() {
   state.chart = new Chart(canvas, config);
   const sel = L.teams.find((t) => t.roster_id === state.selected);
   $("chart-note").textContent = sel
-    ? `${sel.display_name || sel.team_name} is highlighted. Click the team again to clear.`
-    : "Each line is a team, in the colour shown beside its name in the table. Hover for every team's chance after a given week; click a line or a table row to highlight one team.";
+    ? /*copy:PRED-17*/`${sel.display_name || sel.team_name} is highlighted. Click the team again to clear.`
+    : /*copy:PRED-18*/"Each line is a team, in the colour shown beside its name in the table. Hover for every team's chance after a given week; click a line or a table row to highlight one team.";
 }
 
 // -- rating chart -----------------------------------------------------------------------------------
@@ -634,7 +634,7 @@ function renderRatingChart() {
     $("rating-wrap").hidden = true;
     $("rating-metric").hidden = true;
     $("rating-range").hidden = true;
-    $("rating-note").textContent = "Manager ratings are not yet available for this league.";
+    $("rating-note").textContent = /*copy:PRED-19*/"Manager ratings are not yet available for this league.";
     if (state.ratingChart) { state.ratingChart.destroy(); state.ratingChart = null; }
     return;
   }
@@ -727,7 +727,7 @@ function renderRatingChart() {
             title: (items) => {
               if (!items.length) return "";
               const w = weeks[items[0].dataIndex];
-              return w.week === 0 ? `${w.season}, preseason (after reversion)` : `${w.season}, after week ${w.week}`;
+              return w.week === 0 ? /*copy:PRED-22*/`${w.season}, preseason (after reversion)` : /*copy:PRED-23*/`${w.season}, after week ${w.week}`;
             },
             label: (item) => `${item.dataset.label}: ${fmt(item.raw)}`,
             labelPointStyle: () => ({ pointStyle: "circle", rotation: 0 }),
@@ -765,8 +765,8 @@ function renderRatingChart() {
   state.ratingChart = new Chart(canvas, config);
   const sel = datasets.find((d) => d.isSelected);
   $("rating-note").textContent = sel
-    ? `${sel.label} is highlighted. Click the line again to clear.`
-    : `${metric.note}. Regular-season weeks only; each season's end-of-year owner is credited with that roster's weeks. Current members keep their table colour; former members are grey (dashed when a grey repeats).`;
+    ? /*copy:PRED-20*/`${sel.label} is highlighted. Click the line again to clear.`
+    : /*copy:PRED-21*/`${metric.note}. Regular-season weeks only; each season's end-of-year owner is credited with that roster's weeks. Current members keep their table colour; former members are grey (dashed when a grey repeats).`;
 }
 
 // -- loading ------------------------------------------------------------------------------------

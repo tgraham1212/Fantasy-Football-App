@@ -140,20 +140,20 @@ function renderNote() {
   let text;
   if (W.kind === "final") {
     text = W.source === "pre-week"
-      ? `Final. Shown against the forecast made before the week (after week ${W.forecast_as_of}), from before the projection log began. A check marks the winner; the lines on each chart are the actual scores.`
-      : "Final. Shown against the prediction of record: the lineups the managers started, each player at his last projection before kickoff. A check marks the winner; the lines on each chart are the actual scores.";
+      ? /*copy:GAME-02*/`Final. Shown against the forecast made before the week (after week ${W.forecast_as_of}), from before the projection log began. A check marks the winner; the lines on each chart are the actual scores.`
+      : /*copy:GAME-03*/"Final. Shown against the prediction of record: the lineups the managers started, each player at his last projection before kickoff. A check marks the winner; the lines on each chart are the actual scores.";
   } else {
-    text = `Forecast from the simulation run ${formatTime(W.generated_at)} (after week ${W.forecast_as_of}), 10,000 simulations per game. Each chart shows the spread of simulated scores.`;
+    text = /*copy:GAME-04*/`Forecast from the simulation run ${formatTime(W.generated_at)} (after week ${W.forecast_as_of}), 10,000 simulations per game. Each chart shows the spread of simulated scores.`;
     if (W.games.some((g) => g.projected)) {
-      text += " Playoff pairings are projected: teams seeded by expected finish, the favourite advancing; each game says how often that pairing happened in the simulations.";
+      text += /*copy:GAME-05*/" Playoff pairings are projected: teams seeded by expected finish, the favourite advancing; each game says how often that pairing happened in the simulations.";
     }
-    text += " Lineups are the model's best projected lineup; players listed as out can still appear in it until their projection drops.";
+    text += /*copy:GAME-06*/" Lineups are the model's best projected lineup; players listed as out can still appear in it until their projection drops.";
     if (W.live) {
-      text = `Live, from the run ${formatTime(W.generated_at)}. Players whose games have started are locked in the slot their manager started them in: final scores count as they are, games in progress count points so far plus the projection for the time left. Injuries or benchings during a game only show once it is final. The site refreshes before and after each slate of games.`;
+      text = /*copy:GAME-07*/`Live, from the run ${formatTime(W.generated_at)}. Players whose games have started are locked in the slot their manager started them in: final scores count as they are, games in progress count points so far plus the projection for the time left. Injuries or benchings during a game only show once it is final. The site refreshes before and after each slate of games.`;
     }
   }
   if (W.games.some((g) => g.teams.some((t) => t.lineup.some((r) => r.wpa != null)))) {
-    text += " Percentages beside scored players are win probability added: how much that score moved the team's chance against the pre-kickoff forecast, everyone else as projected. They show the size of each swing and do not add up to the team's total.";
+    text += /*copy:GAME-08*/" Percentages beside scored players are win probability added: how much that score moved the team's chance against the pre-kickoff forecast, everyone else as projected. They show the size of each swing and do not add up to the team's total.";
   }
   $("games-note").textContent = text;
 }
@@ -170,7 +170,7 @@ function gameLabel(g) {
   let name = PLACE_LABEL[g.place] || (g.round === 1 ? "Quarterfinal" : g.round === 2 ? "Semifinal" : "Playoffs");
   if (g.bracket === "losers") name = g.place === 1 ? "Toilet bowl final" : g.place ? `Toilet bowl, ${PLACE_LABEL[g.place].toLowerCase()}` : `Toilet bowl ${name.toLowerCase()}`;
   const seeds = g.seeds && g.seeds.every((s) => s) ? ` · #${g.seeds[0]} v #${g.seeds[1]}` : "";
-  const projected = g.projected ? ` · projected, happens in ${Math.round((g.frequency || 0) * 100)}% of simulations` : "";
+  const projected = g.projected ? /*copy:GAME-10*/` · projected, happens in ${Math.round((g.frequency || 0) * 100)}% of simulations` : "";
   return `${bracket && !name.startsWith("Toilet") ? bracket + " " : ""}${name}${seeds}${projected}`;
 }
 
@@ -178,7 +178,7 @@ function choicesLine(t) {
   if (t.lineup_choices == null) return "";
   const v = Number(t.lineup_choices);
   const cls = v > 0 ? "up" : v < 0 ? "down" : "";
-  return `<span class="choices ${cls}" title="Points vs the model lineup: what the manager's starters scored minus what the model's picks scored">Lineup choices: ${v > 0 ? "+" : ""}${v.toFixed(1)}</span>`;
+  return /*copy:GAME-09*/`<span class="choices ${cls}" title="Points vs the model lineup: what the manager's starters scored minus what the model's picks scored">Lineup choices: ${v > 0 ? "+" : ""}${v.toFixed(1)}</span>`;
 }
 
 function teamRow(g, t) {
@@ -325,7 +325,7 @@ function byeHtml(b) {
   const where = b.bracket === "losers" ? "toilet bowl" : "playoffs";
   return `
     <section class="game-card bye">
-      <p class="game-label">First-round bye · #${b.seed} seed in the ${where}</p>
+      <p class="game-label">${/*copy:GAME-11*/`First-round bye · #${b.seed} seed in the ${where}`}</p>
       <div class="game-team"><span class="swatch" style="--team: ${color}" aria-hidden="true"></span>
         <span class="who"><span class="owner-name">${escapeHtml(b.display_name || `Roster ${b.roster_id}`)}</span><span class="team">${escapeHtml(b.team_name || "")}</span></span>
         <span class="bye-tag">Bye</span></div>
@@ -376,7 +376,7 @@ function renderCards() {
     }
     html += `</div>`;
   }
-  grid.innerHTML = html || `<p class="hint">No games stored for this week.</p>`;
+  grid.innerHTML = html || `<p class="hint">${/*copy:GAME-12*/"No games stored for this week."}</p>`;
   for (const [i, g] of games) {
     drawChart($(`game-chart-${i}`), viewed(g), g.key);
     wireCard(i);

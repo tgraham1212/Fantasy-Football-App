@@ -605,6 +605,33 @@ a note pinned to the bottom of the screen says a new version is available, with 
 Refresh button, and stays until the page is reloaded. A local copy keeps the
 placeholder fingerprint, so it checks for new data only.
 
+### Site copy
+
+`site-copy.txt` (project root) holds every piece of descriptive text on the site in one
+place for copy editing: page and tab descriptions, headings, chart titles and notes,
+explanations and on-screen messages. Each entry has a stable ID (`POS-02`), a label, its
+location and its text; values the page fills in show as `${...}` placeholders and inline
+markup (`<em>`, `<strong>`, links) is kept. The IDs live in the code: `data-copy="ID"` on
+an HTML element, `/*copy:ID*/` before a script string.
+
+To edit: change the text under `TEXT:` lines (keep the placeholders), add `NOTE:` lines for
+questions, save. The tests then report the entries as pending copy edits, and they are
+applied only after the owner confirms:
+
+```bash
+python -m ffapp site-copy            # regenerate the file from the code (keeps pending edits)
+python -m ffapp site-copy --check    # report anything out of sync; non-zero exit if so
+python -m ffapp site-copy --apply    # write confirmed edits into the HTML and scripts
+```
+
+`site-copy.lock.json` records a hash of each entry as last synced, which tells the two
+directions apart: code changed but not the file means stale (regenerate); the file
+changed but not the code means a pending edit (confirm, then `--apply`); both changed
+means a conflict to resolve by hand. An edit that drops or changes a `${...}` placeholder
+is refused. `tests/test_site_copy.py` fails on descriptive text without an ID, on a stale
+file and on unapplied edits, so new text must be added in the same change (button labels,
+tab names and table column headers are not part of the file).
+
 ### Layout check
 
 `tests/layout/` loads every page in the installed Chrome at 375, 768, 1000 and

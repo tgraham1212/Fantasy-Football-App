@@ -26,7 +26,7 @@ function showVersionNote() {
   note.id = "version-note";
   note.className = "version-note";
   note.setAttribute("role", "status");
-  note.innerHTML = `<span>A new version of the site is available.</span><button type="button" class="nav-link">Refresh</button>`;
+  note.innerHTML = `<span>${/*copy:MSG-07*/"A new version of the site is available."}</span><button type="button" class="nav-link">Refresh</button>`;
   note.querySelector("button").addEventListener("click", () => location.reload());
   document.body.appendChild(note);
 }
