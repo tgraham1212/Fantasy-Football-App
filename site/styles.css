@@ -270,8 +270,9 @@ td.chance.chance-low { color: var(--ink-2); font-weight: 500; }
 }
 /* Phones: only the Manager column stays pinned; ELO and 1-week change scroll away beneath it. */
 @media (max-width: 599.98px) {
-  /* the left shadow covers the scroll container's padding strip, so nothing peeks past the pinned column */
-  #odds-table .col-owner { position: sticky; left: 0; z-index: 1; box-shadow: -14px 0 0 var(--surface), 1px 0 0 var(--grid); }
+  /* left: -14px (the scroll box's padding) pins the cell flush with the box's edge, so nothing peeks
+     past it while pinned, and it covers nothing next to it before the table is scrolled */
+  #odds-table .col-owner { position: sticky; left: -14px; z-index: 1; box-shadow: 1px 0 0 var(--grid); }
   #odds-table thead .col-owner { background: var(--surface); z-index: 2; }
   #odds-table thead th[aria-sort].col-owner { background: var(--ink); }
   #odds-table th, #odds-table td { padding: 6px 6px; }
@@ -427,7 +428,7 @@ table.war.full thead th { position: sticky; top: 0; background: var(--surface); 
 table.war.full thead th[aria-sort] { background: var(--ink); }
 /* Phones: the player name stays pinned to the left edge while the full list scrolls sideways. */
 @media (max-width: 599.98px) {
-  table.war.full td.name, table.war.full th[data-col="name"] { position: sticky; left: 0; box-shadow: -14px 0 0 var(--surface), 1px 0 0 var(--grid); }
+  table.war.full td.name, table.war.full th[data-col="name"] { position: sticky; left: -14px; box-shadow: 1px 0 0 var(--grid); }
   table.war.full td.name { background: var(--surface); z-index: 1; }
   table.war.full thead th[data-col="name"] { z-index: 3; }
 }
@@ -441,7 +442,9 @@ table.war.full thead th[aria-sort] { background: var(--ink); }
 
 /* ---- Games page ------------------------------------------------------------------ */
 #page-games, #games-content { display: grid; gap: 16px; }
-.week-control { display: inline-flex; align-items: center; gap: 6px; }
+.week-control { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; min-width: 0; }
+/* the week select shrinks before the row can run past a narrow screen (its text is then cut short) */
+.week-control select { min-width: 0; flex: 0 1 auto; text-overflow: ellipsis; }
 .week-control select {
   font: inherit; font-size: 0.9rem; font-weight: 600; color: var(--ink); background: var(--surface);
   border: 1px solid var(--border); border-radius: 10px; padding: 6px 10px;

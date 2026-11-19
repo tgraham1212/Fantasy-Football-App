@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import pytest
 
-from tests.layout.conftest import WIDTHS
+from tests.layout.conftest import OTHER_ENGINE_WIDTHS, PHONE_WIDTHS, WIDTHS, engine_cases
 from tests.layout.controls import CONTROL_QUERY, CONTROLS, INSIDE, LANDMARKS, VIEWS, Control
 
 TOLERANCE = 0.5
@@ -93,11 +93,11 @@ def moved(control: Control, before: dict, after: dict, flags: dict, limit) -> li
     return problems
 
 
-CASES = [(c, w) for c in CONTROLS if c.states for w in WIDTHS]
+CASES = [(e, c, w) for c in CONTROLS if c.states for e, w in engine_cases()]
 
 
-@pytest.mark.parametrize("control,width", CASES, ids=[f"{c.name}-{w}" for c, w in CASES])
-def test_control_keeps_the_layout(open_page, control: Control, width: int):
+@pytest.mark.parametrize("engine,control,width", CASES, ids=[f"{e}-{c.name}-{w}" for e, c, w in CASES], indirect=["engine"])
+def test_control_keeps_the_layout(open_page, engine, control: Control, width: int):
     page, relay, ctx = open_view(open_page, control.view, width)
     problems = [f"on load: {p}" for p in page.evaluate(OVERFLOW_JS, list(INSIDE))]
     for state in control.states:
@@ -152,7 +152,7 @@ def test_full_list_scrolls_only_its_table(open_page, width):
 
 
 def test_phone_lineups_show_full_names(open_page):
-    page, relay, ctx = open_view(open_page, "games-final", 375)
+    page, relay, ctx = open_view(open_page, "games-final", 360)
     page.click("details.lineup summary")
     page.wait_for_timeout(300)
     clipped = page.evaluate("""() => [...document.querySelectorAll('.team-players ul:not(.out) li .nm')]
@@ -180,20 +180,21 @@ def test_data_swap_keeps_the_visitors_place(open_page):
 WIDE_FONT = "* { font-family: Verdana, 'DejaVu Sans', sans-serif !important; }"
 
 
+@pytest.mark.parametrize("engine", ["chromium", "webkit", "firefox"], indirect=True)
 @pytest.mark.parametrize("view", COVERAGE_VIEWS)
-def test_wide_fonts_do_not_scroll_sideways(open_page, view):
+def test_wide_fonts_do_not_scroll_sideways(open_page, engine, view):
     """Fonts differ between machines (Linux draws wider text than Windows), so a phone layout
     that only just fits on one machine scrolls sideways on another. Check with a wide font."""
-    page, relay, ctx = open_view(open_page, view, 375)
+    page, relay, ctx = open_view(open_page, view, 360)
     page.add_style_tag(content=WIDE_FONT)
     page.wait_for_timeout(300)
     problems = page.evaluate(OVERFLOW_JS, list(INSIDE))
-    assert not problems, f"{view} at 375px with a wide font:\n  " + "\n  ".join(problems)
+    assert not problems, f"{view} at 360px with a wide font:\n  " + "\n  ".join(problems)
 
 
 
 def test_subtab_strip_swipes_on_a_phone(open_page):
-    page, relay, ctx = open_view(open_page, "war", 375)
+    page, relay, ctx = open_view(open_page, "war", 360)
     strip = page.evaluate("""() => { const m = document.getElementById('subtabs'), t = m.querySelector('[data-page=war]');
         const mr = m.getBoundingClientRect(), tr = t.getBoundingClientRect();
         return { scroll: m.scrollWidth, client: m.clientWidth, tabLeft: tr.left, tabRight: tr.right, left: mr.left, right: mr.right,
@@ -204,7 +205,7 @@ def test_subtab_strip_swipes_on_a_phone(open_page):
     page.evaluate("document.getElementById('subtabs').scrollLeft = 0")
     page.wait_for_timeout(200)
     assert page.evaluate("scrollY") == y, "scrolling the sub-tab strip moved the page"
-    assert page.evaluate("document.documentElement.scrollWidth") <= 375
+    assert page.evaluate("document.documentElement.scrollWidth") <= 360
 
 
 def test_subtab_strip_does_not_scroll_on_desktop(open_page):
@@ -215,7 +216,7 @@ def test_subtab_strip_does_not_scroll_on_desktop(open_page):
 
 @pytest.mark.parametrize("view", ["positions", "positions-past"])
 def test_positions_charts_fit_a_phone(open_page, view):
-    page, relay, ctx = open_view(open_page, view, 375)
+    page, relay, ctx = open_view(open_page, view, 360)
     problems = page.evaluate("""() => {
       const out = [];
       for (const card of document.querySelectorAll('.pos-card')) {
@@ -231,7 +232,7 @@ def test_positions_charts_fit_a_phone(open_page, view):
     assert not problems, "\n".join(problems)
 
 
-@pytest.mark.parametrize("width", [375, 1280])
+@pytest.mark.parametrize("width", [360, 1280])
 def test_position_dots_do_not_hide_each_other(open_page, width):
     page, relay, ctx = open_view(open_page, "positions", width)
     overlaps = page.evaluate("""() => {
@@ -298,27 +299,30 @@ def _scroll_and_left(page, container, cell):
       const box = document.querySelector(container);
       box.scrollLeft = box.scrollWidth;
       const c = document.querySelector(cell).getBoundingClientRect(), b = box.getBoundingClientRect();
-      const style = getComputedStyle(box);
-      return { scrolled: box.scrollLeft, cellLeft: c.left, contentLeft: b.left + parseFloat(style.paddingLeft) };
+      // the pinned cell sits flush with the scroll box's edge (sticky left = minus the box's padding)
+      return { scrolled: box.scrollLeft, cellLeft: c.left, contentLeft: b.left };
     }""", [container, cell])
 
 
-def test_forecast_table_pins_the_manager_column_on_phones(open_page):
-    page, relay, ctx = open_view(open_page, "predictions", 375)
+@pytest.mark.parametrize("engine", ["chromium", "webkit", "firefox"], indirect=True)
+def test_forecast_table_pins_the_manager_column_on_phones(open_page, engine):
+    page, relay, ctx = open_view(open_page, "predictions", 360)
     r = _scroll_and_left(page, "#page-predictions .table-wrap", "#odds-body td.col-owner")
-    assert r["scrolled"] > 0, "the forecast table should scroll sideways at 375 px"
+    assert r["scrolled"] > 0, "the forecast table should scroll sideways at 360 px"
     assert abs(r["cellLeft"] - r["contentLeft"]) <= 1, f"the Manager column did not stay at the left edge: {r}"
 
 
-def test_war_full_list_pins_the_name_column_on_phones(open_page):
-    page, relay, ctx = open_view(open_page, "war-dialog", 375)
+@pytest.mark.parametrize("engine", ["chromium", "webkit", "firefox"], indirect=True)
+def test_war_full_list_pins_the_name_column_on_phones(open_page, engine):
+    page, relay, ctx = open_view(open_page, "war-dialog", 360)
     r = _scroll_and_left(page, "#war-dialog .dialog-table", "#war-full td.name")
-    assert r["scrolled"] > 0, "the full list should scroll sideways at 375 px"
+    assert r["scrolled"] > 0, "the full list should scroll sideways at 360 px"
     assert abs(r["cellLeft"] - r["contentLeft"]) <= 1, f"the name column did not stay at the left edge: {r}"
 
 
+@pytest.mark.parametrize("engine", ["chromium", "webkit", "firefox"], indirect=True)
 @pytest.mark.parametrize("view", ["games", "games-final"])
-def test_games_cards_stack_and_team_rows_do_not_overlap_on_large_phones(open_page, view):
+def test_games_cards_stack_and_team_rows_do_not_overlap_on_large_phones(open_page, engine, view):
     page, relay, ctx = open_view(open_page, view, 440)
     problems = page.evaluate("""() => {
       const out = [];
@@ -348,7 +352,7 @@ def test_finished_cards_show_the_actual_score_first(open_page):
 
 
 def test_charts_reach_the_card_edge_on_phones(open_page):
-    page, relay, ctx = open_view(open_page, "predictions", 375)
+    page, relay, ctx = open_view(open_page, "predictions", 360)
     gaps = page.evaluate("""() => ['odds-chart', 'rating-chart'].map((id) => {
       const chart = Chart.getChart(id), canvas = document.getElementById(id);
       return canvas.getBoundingClientRect().width - chart.chartArea.right;
@@ -359,10 +363,45 @@ def test_charts_reach_the_card_edge_on_phones(open_page):
 
 
 def test_metric_buttons_form_one_swipe_strip_on_phones(open_page):
-    page, relay, ctx = open_view(open_page, "predictions", 375)
+    page, relay, ctx = open_view(open_page, "predictions", 360)
     tops = page.evaluate("""() => [...document.querySelectorAll('#metric-switcher button')].map((b) => Math.round(b.getBoundingClientRect().top))""")
     assert len(set(tops)) == 1, f"metric buttons wrap onto more than one line: {tops}"
     y = page.evaluate("scrollY")
     page.evaluate("document.getElementById('metric-switcher').scrollLeft = 200")
     page.wait_for_timeout(150)
-    assert page.evaluate("scrollY") == y and page.evaluate("document.documentElement.scrollWidth") <= 375
+    assert page.evaluate("scrollY") == y and page.evaluate("document.documentElement.scrollWidth") <= 360
+
+
+PINNED_NEIGHBOURS = (
+    ("predictions", "#odds-body tr", "td.col-elo-change"),  # left of the pinned Manager column
+    ("war-dialog", "#war-full tbody tr", "td:first-child"),  # the # column, left of the pinned name column
+)
+
+
+@pytest.mark.parametrize("engine", ["chromium", "webkit", "firefox"], indirect=True)
+@pytest.mark.parametrize("view,rows,cell", PINNED_NEIGHBOURS, ids=["forecast-table", "war-full-list"])
+@pytest.mark.parametrize("width", PHONE_WIDTHS)
+def test_pinned_columns_cover_nothing_before_scrolling(open_page, engine, view, rows, cell, width):
+    """At the start position the column beside a pinned one must be fully visible (the full
+    list's # column was half covered by the pinned name cell's padding cover)."""
+    page, relay, ctx = open_view(open_page, view, width)
+    covered = page.evaluate("""([rows, cell]) => {
+      const out = [];
+      for (const tr of [...document.querySelectorAll(rows)].slice(0, 6)) {
+        const c = tr.querySelector(cell);
+        const pinned = c && c.nextElementSibling;
+        if (!c || !pinned) continue;
+        const r = c.getBoundingClientRect(), p = pinned.getBoundingClientRect();
+        // painted cover: a box-shadow reaching left of the pinned cell over its neighbour
+        const reach = Math.min(0, ...[...getComputedStyle(pinned).boxShadow.matchAll(/(-?\d+(?:\.\d+)?)px\s+-?\d/g)].map((m) => parseFloat(m[1])));
+        if (p.left + reach < r.right - 0.5) out.push(`${c.textContent.trim()} painted over by a ${-reach}px cover`);
+        // stacking: the neighbour's right edge must be on top where it is on screen
+        const y = r.top + r.height / 2;
+        if (y > 0 && y < innerHeight) {
+          const hit = document.elementFromPoint(r.right - 2, y);
+          if (!(hit && (hit === c || c.contains(hit)))) out.push(`${c.textContent.trim()} covered by ${hit ? hit.className || hit.tagName : '?'}`);
+        }
+      }
+      return out;
+    }""", [rows, cell])
+    assert not covered, f"{view} at {width}px: " + "; ".join(covered)

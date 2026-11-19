@@ -21,7 +21,19 @@ import pytest
 from ffapp.stamp import stamp_site
 
 SITE = Path(__file__).resolve().parents[2] / "site"
-WIDTHS = (375, 440, 768, 1000, 1280)  # 440: current large phones
+# Phone widths from StatCounter's US mobile screen statistics (October 2026: 414, 390, 384, 360,
+# 402 and 393 px wide); 440 is the largest current iPhone. Re-check the statistics yearly.
+WIDTHS = (360, 390, 414, 440, 768, 1000, 1280)
+PHONE_WIDTHS = tuple(w for w in WIDTHS if w < 600)
+# Chromium stands for Chrome and Edge; WebKit for Safari. WebKit and Firefox run the
+# engine-sensitive tests at these widths.
+ENGINES = ("chromium", "webkit", "firefox")
+OTHER_ENGINE_WIDTHS = (390, 440, 1280)
+
+
+def engine_cases(widths=WIDTHS, other_widths=OTHER_ENGINE_WIDTHS):
+    """(engine, width) pairs: Chromium at every width, WebKit and Firefox at a subset."""
+    return [("chromium", w) for w in widths] + [(e, w) for e in ENGINES[1:] for w in other_widths if w in widths or w in other_widths]
 HEIGHT = 860
 
 
@@ -56,20 +68,36 @@ def base_url(site_copy):
 
 
 @pytest.fixture(scope="session")
-def browser():
+def _playwright():
     try:
         from playwright.sync_api import sync_playwright
     except ImportError:
         _unavailable("Playwright is not installed")
     pw = sync_playwright().start()
-    try:
-        chrome = pw.chromium.launch(channel="chrome")
-    except Exception as exc:  # no Chrome on this machine
-        pw.stop()
-        _unavailable(f"Chrome could not start ({str(exc).splitlines()[0]})")
-    yield chrome
-    chrome.close()
+    launched = {}
+    yield pw, launched
+    for b in launched.values():
+        b.close()
     pw.stop()
+
+
+@pytest.fixture
+def engine(request):
+    """The browser engine a test runs in: Chromium unless the test is parametrized with one."""
+    return getattr(request, "param", "chromium")
+
+
+@pytest.fixture
+def browser(_playwright, engine):
+    """One browser per engine for the whole session: the installed Chrome for Chromium,
+    Playwright's own builds for WebKit (Safari's engine) and Firefox."""
+    pw, launched = _playwright
+    if engine not in launched:
+        try:
+            launched[engine] = pw.chromium.launch(channel="chrome") if engine == "chromium" else getattr(pw, engine).launch()
+        except Exception as exc:  # engine not installed on this machine
+            _unavailable(f"{engine} could not start ({str(exc).splitlines()[0]}); run python -m playwright install webkit firefox")
+    return launched[engine]
 
 
 @pytest.fixture(scope="session")

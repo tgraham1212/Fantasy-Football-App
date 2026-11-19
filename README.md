@@ -141,70 +141,20 @@ forever and only replaced when Sleeper publishes a newer version.
 
 ## Replacement level
 
-A replacement-level player is what a manager can pick up off the waiver wire. For
-each league, season, week and position, `ffapp replacement` takes the N free agents
-(default 3, `simulation.replacement_top_n`) with the highest projection for that
-week, under the league's own scoring, and records two numbers:
-
-- **projected level**: the mean of their projections (known before the games);
-- **realised level**: the mean of the points those same players actually scored,
-  from the stats store (absent until the week is played and its stats synced).
-
-Free agents are the projected players on no roster in that league: for a stored
-week, the rosters in that week's matchups; for the present and future, the current
-rosters including IR and taxi. Choosing by projection and scoring afterwards keeps
-the realised level honest; picking the top scorers after the fact would overstate
-what a pickup is worth.
-
-The **season value** per position is the mean of the realised weekly levels so far,
-shrunk toward earlier seasons: `(n × mean + k × prior) / (n + k)` with `k =
-simulation.prior_weeks` (default 4) and the prior a 50/30/20 weighted mean of the
-last three seasons of that league with the same scoring and roster settings (the
-first stored season uses its own mean projected level instead).
-
-The simulation uses the projected level as a floor for every lineup slot (see
-below). The files in `data/replacement/` are for inspection and for later features
-such as value over replacement.
+`ffapp replacement` records, per league, season, week and position, what a waiver-wire
+pickup is worth: the best free agents by projection that week (their projected and realised
+levels) and a season value shrunk toward earlier seasons. The simulation uses the projected
+level as the floor for every lineup slot. Files: `data/replacement/<league>/<season>.json`.
+How it is calculated: `Calculations.txt`, section 14 (Replacement level).
 
 ## Manager ratings
 
-`ffapp ratings` rates every manager across the whole life of a league, for the
-rating chart and the ELO columns on the site. Each scored regular-season week is one
-free-for-all: all teams ranked by points scored, rated with Openskill's Plackett-Luce
-model (`openskill` on PyPI) on a 1000 scale (start 1000, uncertainty 333; the
-library's default parameters times 40). A blowout and a one-point win count the
-same; only the rank matters. Playoff weeks, unplayed weeks and weeks with no points
-are not rated.
-
-Ratings follow the roster owner's Sleeper user ID, so a manager keeps one rating
-through roster changes and former members keep their last one. Sleeper only stores
-end-of-season owners, so a manager who quits before the league year officially ends
-leaves a roster with no owner even though they played the season. Such a roster is
-read as owned by the most recent earlier owner of that roster slot (else the first later
-one), everywhere the app reads rosters: ratings, Player WAR owners, Positions and the odds
-labels. Dynasty 2023 roster 11 is the case in our data: it reads as DeekBurg's, his 2022
-owner. The stored Sleeper files are not changed. Only a roster with no owner in any
-stored season is rated as a `vacant:<season>:<roster>` entry, so the week's ranking stays
-complete; it is flagged and never charted.
-
-Two rules keep the numbers meaningful across seasons:
-
-- **Preseason reversion.** Entering every season after their first, each manager's
-  rating mean moves `ratings.revert` of the way (default a third) toward a fixed
-  1000. The anchor is 1000, not the league mean, so ratings cannot inflate or deflate
-  as members leave and join. The uncertainty is left alone: resetting it sped up every
-  week of the season and widened the spread when tried.
-- **Early-season multiplier.** The rating change in the first rated weeks of a season
-  is multiplied by `ratings.early_k` (default 2, 1.75, 1.5, 1.25, then 1), so managers
-  settle at their level quickly after the offseason without a cliff at week 5. This is
-  the one step outside the Openskill update; the uncertainty takes the model's value.
-
-Alongside the rating, every team gets a weekly **z-score** (points minus that week's
-league mean, divided by the sample standard deviation) and a **career mean z**: the
-mean over every rated week they have played, never reset. The file also stores
-background variants that the site does not show, kept for a later calibration
-experiment: the season-to-date mean z, an exponentially weighted z carried across
-seasons, and a fresh-start rating that resets to 1000 every preseason.
+`ffapp ratings` rates every manager across the whole life of a league, for the rating chart
+and the ELO columns on the site: each scored regular-season week is a free-for-all ranked by
+points, rated with Openskill on a 1000 scale, with a preseason pull back toward 1000 and a
+faster start to each season, plus weekly and career z-scores. Ratings follow the manager's
+Sleeper user ID; a vacant roster counts for its last earlier owner. How it is calculated:
+`Calculations.txt`, section 15 (Manager ratings).
 
 `data/ratings/<league>.json` holds the parameters, the list of weeks and, per
 manager, their display name, current/former/vacant flags, seasons played and a
@@ -225,44 +175,14 @@ the chart keeps a continuous career line rather than trying to predict.
 
 ## Player WAR
 
-`ffapp war` values every player's season in Wins Above Replacement for each league,
-following the Stathole Sports method (consensus lineups and a replacement cut drawn
-by how widely a player is started), with the league's own scoring and roster slots.
-
-1. **Start percentages.** `ffapp snapshot` pulls ESPN's public fantasy player list,
-   which carries the share of ESPN leagues starting and rostering each player, and
-   stores a slim copy under `data/espn/`. A season pulled after it ended has one
-   frozen season-long value per player, so 2021 to 2025 have a single season snapshot
-   each. The season in progress is pulled again on every run, but while it is in
-   progress ESPN reports the current week's figure, not a season-long one (see
-   "Current-season start percentages" below). The daily refresh also stores the
-   current week's values, overwriting that week until it rolls over. ESPN players map to Sleeper ids through Sleeper's stored ESPN id, a short alias
-   table in `src/ffapp/espn.py`, then a normalised name and position match with the
-   NFL team as tiebreak; the command prints anyone started in at least 2% of leagues
-   it could not match, so the alias table can be extended.
-2. **Consensus lineup.** Each regular-season week, the most-started players with a
-   game that week fill every position's starting slots (12 teams times the slots),
-   then the most-started remaining RB/WR/TE fill the flex. The three most-started
-   players past each position's cut are that week's replacement players.
-3. **Season constants.** Over the regular season so far, each slot's mean and
-   variance of actual points; the opponent is a normal distribution whose mean is the
-   sum of the slot means and whose spread is the square root of the summed variances.
-   The replacement level per position is the season mean of the replacement players'
-   actual points.
-4. **Wins.** A player's week is their actual points in a lineup whose other slots sit
-   at the slot means, so the win probability is the share of the opponent distribution
-   below the league mean plus (score minus the position's slot mean). A week with no
-   game played takes the replacement level; a game played for zero points counts as
-   zero. Expected wins is the sum over weeks 1 to 14, and WAR subtracts what the
-   replacement level would earn every week, so a replacement-level season is exactly 0.
-
-A season uses the **weekly cut** (each week's lineup from that week's snapshot) when
-every scored week has a weekly snapshot, the **yearly cut** (every week from the
-season snapshot) when none has, and the **merged cut** when some have. So 2021 to 2025
-are yearly, 2026 is merged (weekly snapshots began in week 10), and 2027 should be the
-first weekly season. The file records which. Every player at a lineup position with at
-least one game played gets a WAR, rostered or not; the current season's values move
-a little each week until week 14 is scored, because the constants are season-to-date.
+`ffapp war` values every Player's season in Wins Above Replacement for each league, following
+the Stathole Sports method: consensus lineups and a replacement cut drawn from ESPN start
+percentages (`ffapp snapshot` stores them under `data/espn/`, mapped to Sleeper ids through a
+crosswalk and a short alias table in `src/ffapp/espn.py`), the league's own scoring and slots,
+and a win probability against a typical opponent. A season uses the weekly, yearly or merged
+start-percentage cut; 2021 to 2025 are yearly, 2026 is merged, and 2027 should be the first
+weekly season. How it is calculated, including why the merged cut exists and the numbers
+behind the decision: `Calculations.txt`, section 16 (Player WAR).
 
 `data/war/<league>/<season>.json` holds the cut mode, the week it runs through, the
 constants and replacement levels, and per player: name, position, NFL team of their
@@ -272,67 +192,14 @@ current roster in progress) and every manager who held them. Re-running on uncha
 data gives the same file apart from its timestamp. The free-agent replacement level
 in `data/replacement/` is a different thing and still feeds the simulation.
 
-### Current-season start percentages
 
-The merged cut exists because of how ESPN's feed behaves during a season. This
-subsection records the reasoning so it can be looked up later. The rules are in the
-`player-war` spec ("Yearly and weekly cut") and in `merged_start_percentages` in
-`src/ffapp/war.py`.
-
-**The problem.** While a season is in progress, ESPN's season-level start percentage
-is just the current week's figure. In November 2026, `data/espn/2026/season.json` was
-identical to `week_11.json` for every player. Ranking every week of the season by
-that one week's view treats anyone on a bye or hurt that week as a bench player for
-the whole season. Josh Jacobs, for example, showed owned 91.5% and started 8.6%. The
-consensus starter cut slid deeper, the "next three past the cut" became genuine
-backups, and the 2026 RB replacement level came out at 5.0 points, against 8 to 11 in
-every completed season. That inflated every 2026 RB and WR WAR.
-
-**The rule.** A scored week with its own weekly snapshot uses it. Every other week
-ranks each player by a merged figure:
-
-- **Highest trusted start percentage.** A snapshot of a scored week counts for a
-  player only if he played that week. A snapshot of the current, not yet scored week
-  always counts. Byes and injuries only ever lower a start percentage, so the highest
-  trusted figure is the closest to his role while active. A low figure from a
-  current-week bye cannot win the maximum, and a player whose team had a bye in the
-  only scored captured week gets his real figure from the current week.
-- **Ownership, only for injured players.** A player not seen active in any scored
-  captured week who carries an out status (the shared list below, in the latest saved
-  injury file) takes the higher of that figure and his percent owned.
-  Ownership barely moves during an injured-reserve stint, so it stands in for how
-  often he was started while healthy. Healthy players never use it: a backup's
-  ownership far exceeds his start rate (owned 50%, started 15%).
-
-**Why it was revised.** The first version gave ownership to everyone not seen active
-in a scored captured week. With only week 10 scored and captured, every player whose
-team had a week-10 bye fell back to ownership, and backups flooded the replacement
-zone. Measured 2026 redraft replacement levels:
-
-| rule | QB | RB | WR | TE | K | DEF |
-|---|---|---|---|---|---|---|
-| single-week season snapshot (before) | 18.0 | 5.0 | 8.2 | 7.5 | 9.0 | 6.9 |
-| scored weeks only, ownership for all not seen active | 17.4 | 6.4 | 6.5 | 6.7 | 8.3 | 6.9 |
-| **highest trusted figure, ownership only if injured (used)** | **15.6** | **9.6** | **8.8** | **6.6** | **9.4** | **7.0** |
-| 2021 to 2025 range | 15 to 18 | 8 to 12 | 8 to 11 | 6 to 7.5 | 7.4 to 9.4 | 6 to 8 |
-
-Dynasty moves the same way (RB 5.0 to 9.8, WR 8.4 to 8.8). Each newly captured week
-adds evidence, so the merged figure improves as the season goes on.
-
-**What it does not touch.** Seasons pulled after they ended (2021 to 2025) have a
-genuine season-long snapshot and keep the yearly cut. From 2027, every week has its
-own snapshot, so seasons use the weekly cut and the merged rule no longer applies. To
-see it on the current data, run `python -m ffapp war` and read `cut` and
-`replacement` in `data/war/<league>/2026.json`.
 
 ### Out statuses
 
-One list of Sleeper injury statuses means "not playing" everywhere on the site
-(`OUT_STATUSES` in `src/ffapp/injuries.py`): Out, Doubtful, IR, PUP, Sus, NA and DNR,
-shown as Out, Doubtful, IR, PUP, Suspended, Not active and Did not report. Doubtful
-counts as out because such players almost never play; Questionable does not. It drives
-the Games cards' not-playing list, the Player WAR ownership fallback, and the red cross
-and popup on the Positions page.
+One shared list of Sleeper statuses means "not playing" everywhere on the site (Out,
+Doubtful, IR, PUP, Sus, NA, DNR, in `src/ffapp/injuries.py`): the Games cards' not-playing
+list, the Player WAR ownership fallback, and the red cross on the Positions page. Details:
+`Calculations.txt`, section 3 (Out statuses).
 
 ## Positional Rankings
 
@@ -341,13 +208,8 @@ style of 538's quarterback Elo charts: one chart per position the league starts 
 RB, WR, TE, K, DEF in redraft; no K in dynasty), one row per manager, and one dot per
 rostered player at his points per game.
 
-- **Points per game.** Regular season only, weeks 1 to 14. A player's actual points in
-  the final weeks he played, plus his projected points for the regular-season weeks not
-  yet final, over the number of those weeks. A week counts as projected when its
-  projection is above zero, and a week in progress counts as projected until it is
-  final. A player with nothing scored and nothing projected is left out; a rookie who
-  has not played yet still gets a figure from his projections. Games he played for
-  another manager or as a free agent count, because the figure rates the player.
+- **Points per game.** Regular season only: actual points in the weeks played plus
+  projected points for the weeks left, per game (`Calculations.txt`, section 17).
 - **Rosters.** Completed seasons use each team's final, end-of-season roster; the
   season in progress uses the current roster. Taxi and reserve players are included.
 - **Rows.** Each chart orders managers by their best player's points per game, then
@@ -366,10 +228,8 @@ rostered player at his points per game.
   last name is centred over his dot, overhanging the plot if needed but never leaving
   the card. Hovering, focusing or tapping a dot shows the player's name and points per
   game, then his out status in red and "Taxi" in gold when they apply.
-- **Axis.** Each position keeps one range in every season of a league, chosen so about
-  99% of player-seasons fit, rounded to multiples of 5 and always including zero and
-  the replacement level. A value beyond the range sits at the edge with an arrow, and
-  its popup still shows the real number.
+- **Axis.** One range per position for every season of a league; a value beyond it sits
+  at the edge with an arrow (`Calculations.txt`, section 17).
 
 The data is built at export time from stored files (rosters, users, stats, projections,
 injury statuses and WAR), so nothing extra is stored under `data/`:
@@ -380,30 +240,12 @@ taxi, reserve and injured flags); `positions/index.json` lists the seasons.
 
 ## Games
 
-Every simulation run also stores, for each week it plays, a forecast per game: each
-team's mean score, a shared 2-point histogram of both teams' simulated scores (per-mille
-shares), each team's win probability (ties split) and the lineup the model used, with a
-replacement-level fill marked by an empty player id. Playoff weeks that Sleeper has not
-paired yet get a projected bracket: teams seeded by expected seed, the league's own
-bracket rules, and the team with the higher win probability advancing from each game (in
-a toilet bowl, the team more likely to score lower). Each projected game says how often
-that pairing happened across the simulations. Sleeper fills its bracket from the live
-standings all season, so a pairing only counts as real once the week before it is final.
-Consolation brackets are not shown; toilet bowls are.
-
-`ffapp games` keeps a log per game for the current and later weeks. Each entry holds the
-run time, both teams' model lineups and win probability, and every rostered player's
-projection with whether his NFL game has kicked off (from the stored schedule; without
-one, midnight Eastern on the projection's game date). An entry is added only when
-something other than the time changed, and a player who has kicked off keeps his last
-projection from before kickoff in every later entry.
-
-Once a week is final, each game gets a **prediction of record**: the lineup each manager
-actually started, every player at his last logged projection before kickoff (else his
-stored projection, empty slots 0), simulated 10,000 times with the same noise model and
-one week of roster drift, with a seed fixed per league, season and week. It is computed
-once and kept. Weeks that finished before the log existed use the forecast made as of
-the week before instead, marked `pre-week`; for 2026 that is weeks 1 to 10.
+Every simulation run also stores a Forecast per game (mean scores, win probability, a shared
+score histogram, the lineup used) and a projected playoff bracket for weeks Sleeper has not
+paired. `ffapp games` keeps a per-game log of projections frozen at kickoff, and once a week is
+final each game gets a fixed prediction of record from the lineups the managers started. How
+they are calculated: `Calculations.txt`, section 10 (Game forecasts). Files:
+`data/games/<league>/<season>/week_NN.json`.
 
 Each team row shows its score block beside the win probability: before kickoff, the
 forecast (mean simulated points, labelled "forecast"); once a game is live or final, the
@@ -439,18 +281,9 @@ recomputes them).
 ### Live weeks
 
 Once the first NFL game of the next week kicks off (from the stored schedule, which also
-keeps each game's quarter, clock and score), runs score that week live. A starting slot
-whose player has kicked off holds the player the manager started there, from Sleeper's
-lineup for the week; a player on the bench when his game started is not used. Each locked
-starter scores `fixed + share * (projected + bias) + sqrt(share) * (residual - bias)`:
-`fixed` is his points so far (Sleeper's per-player points, league scoring), `share` is the
-share of his 60-minute game still to play (1 before kickoff, 0 when final, in overtime or
-without a clock), and `bias` is the mean miss of the residual pool he draws from. So a final
-player scores exactly his points, and in progress the projection and its bias scale with
-the time left while the scatter scales with its square root (about 71% of a full game's
-spread at half time). With `fixed` 0 and `share` 1 this is the usual `projected + residual`.
-Open slots keep the model's best pick from players who have not kicked off. Injuries and
-benchings during a game are not visible until it is final.
+keeps each game's quarter, clock and score), runs score that week live. A starting slot whose player has kicked off holds the player the manager started there,
+scoring his points so far plus his projection for the time left (`Calculations.txt`,
+section 12). Injuries and benchings during a game are not visible until it is final.
 
 A live run writes `data/odds/<league>/<season>/live.json` and leaves the as-of result for the
 completed weeks frozen at its last pre-kickoff version, so the odds history and the
@@ -460,44 +293,17 @@ the file exists.
 
 ### Win probability added
 
-Every starter with a score gets his win probability added: his team's chance of beating the
-opponent with his projection replaced by his score, minus the chance with his projection,
-everyone else as projected. Both come from a normal distribution of the margin with the
-mean and spread of the game's pre-kickoff simulation (the prediction of record, or during
-the live week a provisional one built the same way each run); when his score is known his
-own share of the spread (from the noise model) is removed. A player in progress uses his
-projected final (`so far + share * projection`) and keeps `share` of his variance. Weeks
-before the log existed use the pre-week forecast's margin and each starter's stored
-projection. The values show how big a swing each performance was; they do not add up to the
-team's change.
+Every starter with a score shows how much it moved his team's chance of winning against his
+projection, everyone else as projected. How it is calculated: `Calculations.txt`, section 13.
 
 ## How the simulation works
 
-1. **As-of point**: the last week Sleeper has fully scored (`last_scored_leg`). A week
-   with Thursday's game played but not yet scored counts as unplayed.
-2. **Rosters**: current rosters minus IR and taxi squad (backfilled weeks use the
-   roster each team carried into the following week).
-3. **Lineups**: the best legal lineup by projected points, per week, using the
-   league's roster slots (FLEX takes RB/WR/TE). Every slot is worth at least that
-   week's replacement level for its position (`simulation.replacement_top_n` best
-   free agents by projection, averaged), standing in for the pickup a manager would
-   make for a bye, an injury or a thin bench.
-4. **Noise**: each simulated player score is the projection plus a residual drawn
-   from the history of actual-minus-projected points for that position and
-   projection band, across both leagues' stored seasons.
-5. **Roster drift**: real rosters change, so a team's edge today only partly
-   survives. For each league the stored seasons give how much of a team's projected
-   edge over the league mean remains k weeks ahead (a reversion factor) and how much
-   random drift accumulates. Each simulated week shrinks every team by that factor and
-   adds a per-run drift that persists from week to week. The factors live in
-   `data/model/<league>.json` and in every odds result under `model`.
-6. **Season**: remaining weeks on the real schedule, standings by wins (ties =
-   half) then points, 6-team playoffs with two byes and a losers bracket, following
-   each league's Sleeper settings (`playoff_seed_type` = re-seeding,
-   `playoff_type` = consolation vs toilet bowl). `verify-brackets` proves these rules
-   reproduce every completed season.
-7. **Outputs** per team: projected record and the chance of making the playoffs, a
-   first-round bye, the final, the title, the losers bracket, and last place.
+Each Forecast plays the rest of the season 10,000 times from the last fully scored week:
+best projected lineups with a replacement-level floor, score noise learned from past
+seasons, roster drift for weeks further out, the real schedule, and each league's own
+playoff and losers-bracket rules. The calculation is documented step by step in
+`Calculations.txt`, sections 4 to 9; `verify-brackets` proves the bracket rules reproduce
+every completed season.
 
 ## Calibration
 
@@ -509,29 +315,11 @@ live ones, and the comparison with real results is written to
 `data/calibration/report.json` and `data/calibration/report.md` (plus per-season rows
 under `data/calibration/rows/`). The run takes about a minute.
 
-The report answers three questions, from most to least data:
-
-1. **Score level** (about 1,500 team-weeks): is the noise the right width? Each real
-   team score is placed within its simulated distribution for that week. If the noise
-   is right, the percentile histogram is flat and the 50/80/95% ranges contain the real
-   score 50/80/95% of the time. Piles at the ends mean too narrow; a hump in the middle
-   means too wide. This is the figure that justifies touching `residual_scale`.
-2. **Game level** (about 750 games): are next-week win chances right? Favourites shown
-   at 60-70% should win 60-70% of the time.
-3. **Season level** (108 team-seasons): are the published playoff, bye, final, title,
-   losers-bracket, last-place and bottom-two chances right, and are they better than a
-   naive standings baseline? Reliability bins show "teams shown at X% got there Y% of
-   the time"; the Brier score and the skill against the baseline summarise it. Rows
-   after an outcome is decided are left out.
-
-It also measures the **lineup gap**: how many points the best projected lineup would
-have added to the lineup each manager actually started, and reports the **roster drift
-diagnostic**: for each league and horizon, how well a team's projected strength
-predicts its true strength that many weeks ahead (slope and residual noise), under
-the frozen roster and under the replacement-floored roster. A floored slope near 1
-means the floor removes most of the frozen-roster bias; it is also the evidence for
-choosing `replacement_top_n` (the repo config uses 5 on that evidence). `--no-replacement-floor` and `--no-roster-drift` replay
-without one piece so each can be measured alone; the report records the switches.
+The report checks the noise width (score level), next-week win chances (game level) and the
+published season chances against a standings baseline (season level), plus the lineup gap
+and the roster-drift diagnostic. The measures are defined in `Calculations.txt`, section 18.
+`--no-replacement-floor` and `--no-roster-drift` replay without one piece so each can be
+measured alone; the report records the switches.
 
 The optional knob `simulation.residual_scale` is deliberately off by default. Change it
 only when the score-level coverage is off across all seasons and both leagues, never to
@@ -647,8 +435,11 @@ tab names and table column headers are not part of the file).
 
 ### Layout check
 
-`tests/layout/` loads every page in the installed Chrome at 375, 440 (current large phones), 768, 1000 and
-1280 px, drives every control through its states (the refresh relay, `version.json`
+`tests/layout/` loads every page in three browser engines: Chromium (the installed Chrome,
+standing for Chrome and Edge) at 360, 390, 414, 440, 768, 1000 and 1280 px, and WebKit
+(Safari's engine) and Firefox at 390, 440 and 1280 px for the engine-sensitive tests. The phone
+widths follow StatCounter's US mobile screen statistics (reviewed yearly; see
+`openspec/config.yaml`). It drives every control through its states (the refresh relay, `version.json`
 and `data/index.json` are simulated, so no refresh starts) and fails when anything
 the control is not designed to change moves or resizes, or when the page scrolls
 sideways. `tests/layout/controls.py` is the registry of controls, their states and
@@ -661,12 +452,32 @@ layout that only just fits on one machine can overflow on another). Run it local
 
 ```bash
 pip install -e ".[dev,browser]"
+python -m playwright install webkit firefox
 LAYOUT_REQUIRED=1 pytest tests/layout
 ```
 
-Without Playwright or Chrome the layout tests skip (the data refresh job runs that
-way); `LAYOUT_REQUIRED=1`, set by the code-push workflow, turns a missing browser
-into a failure.
+Without Playwright or a browser engine the layout tests skip (the data refresh job runs that
+way); `LAYOUT_REQUIRED=1`, set by the code-push workflow, turns a missing engine into a
+failure.
+
+### Standards checks
+
+The project standards (browsers, phone widths, WCAG 2.2 AA, Material Design 3 usability,
+nomenclature and APA style, calculation docs) are written in `openspec/config.yaml` and
+summarised in `CLAUDE.md`. Four checks enforce the checkable ones:
+
+- `tests/layout/test_accessibility.py` runs axe-core (vendored in `tests/layout/vendor/`)
+  with the WCAG 2.2 A and AA rules on every view at 390 and 1280 px, and checks that
+  controls are at least 48 x 48 px at 360 and 440 px (inline links, chart canvases and the
+  Positions dots are exempt);
+- `tests/test_nomenclature.py` flags retired terms ("owner", "odds", "chances",
+  "predictions", and "projected" meaning a forecast) in `site-copy.txt`;
+- `tests/test_calculations_doc.py` checks every calculation module has a section in
+  `Calculations.txt` with all its headings.
+
+The first three start from baselines in `tests/baselines/` listing today's gaps. A new
+finding fails at once; a fixed one fails until its baseline entry is removed, so the
+lists only shrink. `UPDATE_BASELINES=1` rewrites a baseline on purpose.
 
 After `git pull`, run `python -m ffapp export` before opening the site locally:
 `site/data/` is whatever the last export wrote, and an older export may lack

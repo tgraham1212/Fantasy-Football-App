@@ -237,9 +237,10 @@ CONTROLS: tuple[Control, ...] = (
     Control("position dot", "positions", ".pos-dot",
             (State("focused", focus_first(".pos-card[data-pos='RB'] .pos-dot")), State("blurred", blur_active),
              State("injured", focus_first(".pos-dot[data-status]")), State("taxi", focus_first(".pos-dot[data-taxi]"))),
-            regions=(".pos-pop",)),
+            # a focused dot draws a thicker outline (its designed focus state); Firefox counts it in the box
+            regions=(".pos-pop",), self_moves=True),
     Control("position dot (past)", "positions-past", ".pos-dot",
-            (State("focused", focus_first(".pos-card[data-pos='QB'] .pos-dot")),), regions=(".pos-pop",)),
+            (State("focused", focus_first(".pos-card[data-pos='QB'] .pos-dot")),), regions=(".pos-pop",), self_moves=True),
 
     # Player WAR page
     Control("war season", "war", "#war-season", (State("other season", select_first_other("#war-season")),),

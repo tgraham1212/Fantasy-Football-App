@@ -41,7 +41,12 @@ jobs:
       - name: Install
         run: pip install -e ".[dev,browser]"
 
-      # The layout check drives the Chrome preinstalled on the runner; it must not skip here.
+      # Chromium tests use the Chrome preinstalled on the runner; WebKit (Safari's engine) and
+      # Firefox come from Playwright's own builds.
+      - name: Install WebKit and Firefox
+        run: python -m playwright install --with-deps webkit firefox
+
+      # The layout check must not skip here.
       - name: Test (with the layout check)
         env:
           LAYOUT_REQUIRED: "1"
