@@ -26,7 +26,7 @@ The Player WAR page SHALL default to the league's current season, labelled with 
 - **THEN** the page shows the merged-cut note instead of the yearly-cut note
 
 ### Requirement: Position leaderboards
-The page SHALL show one table per lineup position with the top 10 players by WAR, laid out in two columns in the order QB and RB, WR and TE, DEF and K. A league without a position SHALL omit that table, and a table left alone on the last row SHALL be centred. Compact columns SHALL be rank, name, NFL team, fantasy owner and WAR.
+The page SHALL show one table per lineup position with the top 10 players by WAR, laid out in two columns in the order QB and RB, WR and TE, DEF and K. A league without a position SHALL omit that table, and a table left alone on the last row SHALL be centred. Compact columns SHALL be rank, name, NFL team, Manager (the fantasy manager holding the player) and WAR.
 
 #### Scenario: Redraft layout
 - **WHEN** the redraft page is shown on a desktop width
@@ -63,7 +63,7 @@ The fantasy owner shown for a player-season SHALL be the manager whose roster he
 - **THEN** the owner cell shows a dash
 
 ### Requirement: Expanded list
-Each table SHALL have an expand control that opens a scrollable overlay listing every player with a WAR at that position for the selected season or mode, with columns rank, name, NFL team, owner, games played (GP), points scored (PS), the position's stat columns, WAR, and year in All-Time Seasons mode. The table SHALL be the overlay's only scroll area: it fills the overlay's height below the title and hint, and the overlay itself never scrolls.
+Each table SHALL have an expand control that opens a scrollable overlay listing every player with a WAR at that position for the selected season or mode, with columns rank, name, NFL team, Manager, games played (GP), points scored (PS), the position's stat columns, WAR, and year in All-Time Seasons mode. The table SHALL be the overlay's only scroll area: it fills the overlay's height below the title and hint, and the overlay itself never scrolls. Below 600 px the name column SHALL stay pinned to the table's left edge while the table scrolls sideways.
 
 #### Scenario: Open the full list
 - **WHEN** the visitor expands the RB table for 2024
@@ -76,6 +76,10 @@ Each table SHALL have an expand control that opens a scrollable overlay listing 
 #### Scenario: One scroll bar
 - **WHEN** the quarterback list for 2026 is longer than the screen
 - **THEN** only the table scrolls, its header stays in view, and the overlay's title and close button never scroll away
+
+#### Scenario: Scroll sideways on a phone
+- **WHEN** a visitor on a phone scrolls the quarterback list to the right
+- **THEN** the player names stay at the left edge beside the stat columns
 
 ### Requirement: Position stat columns
 The expanded list's stat columns SHALL depend on the position: QB pass yds, pass TD, INT, rush yds, rush TD; RB rush yds, rush TD, rec, rec yds, rec TD; WR and TE rec, rec yds, rec TD, rush yds; K FG made, FG att, XP made; DEF sacks, INT, fumble rec, TD, points allowed per game. All SHALL be season totals from the stored stat lines except points allowed per game, which is the mean over games played.

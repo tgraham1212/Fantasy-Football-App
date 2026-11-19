@@ -7,11 +7,15 @@ Catches layout faults before they ship: every page is loaded in a real browser a
 ## Requirements
 
 ### Requirement: Layout check
-A browser test SHALL load each page of the site at widths of 375, 768, 1000 and 1280 px and SHALL fail when the page scrolls sideways at any width, naming the page and width.
+A browser test SHALL load each page of the site at widths of 375, 440, 768, 1000 and 1280 px (440 standing for current large phones) and SHALL fail when the page scrolls sideways at any width, naming the page and width.
 
 #### Scenario: Overflowing note
 - **WHEN** a message under a button runs past the right edge at 1000 px
 - **THEN** the layout check fails naming the page and the width
+
+#### Scenario: Large phone width
+- **WHEN** a Games card is cramped side by side at 440 px
+- **THEN** the layout check fails at 440 px
 
 ### Requirement: Controls keep the layout
 For every control on every page, the layout check SHALL drive the control through each of its states and SHALL fail when an element outside the control's declared effect moves or changes size, naming the control, state, element and width. A control's declared effect SHALL list what it is designed to change (for example, an expander may move what sits below it). External services SHALL be simulated so the check starts no refresh.
