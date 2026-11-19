@@ -1,8 +1,8 @@
 # Fantasy Football App
 
-Playoff odds and league history for two Sleeper leagues. A Python job pulls each
+Playoff forecasts and league history for two Sleeper leagues. A Python job pulls each
 league's history and Sleeper's player projections, simulates the rest of the
-season 10,000 times, keeps a week-by-week odds history, and publishes a static
+season 10,000 times, keeps a week-by-week forecast history, and publishes a static
 website. GitHub Actions runs it daily.
 
 ## Setup
@@ -37,10 +37,10 @@ Global options: `--config PATH` (default `config/leagues.yaml`), `--data PATH`
 | `ratings` | Rate every manager across all stored seasons from weekly points (see Manager ratings) and write `data/ratings/<league>.json`. |
 | `snapshot` | Capture ESPN start-percentage snapshots (one per stored season that has none, the in-progress season again on every run until it is complete, plus the current regular-season week) and the ESPN-to-Sleeper player crosswalk into `data/espn/`, then report any widely started player the crosswalk could not match. |
 | `schedule` | Store the NFL schedule (kickoff times, game states, byes) from ESPN's public scoreboard for the current and next week into `data/nfl/`; `--all` stores every week of the season. |
-| `games` | Update this season's game files in `data/games/`: a log entry per game for the current and later weeks, and the prediction of record for weeks that have finished (see Games). `--force-records` recomputes every record. |
+| `games` | Update this season's game files in `data/games/`: a log entry per game for the current and later weeks, and the forecast of record for weeks that have finished (see Games). `--force-records` recomputes every record. |
 | `war` | Compute every player's Wins Above Replacement for every stored league-season (see Player WAR) and write `data/war/<league>/<season>.json`. |
 | `refresh` | `sync`, `projections`, `stats`, `schedule`, `snapshot`, `ratings`, `replacement`, `war`, `simulate`, `games`, `export` in order, stopping at the first failure with a non-zero exit, except that a failed `schedule` or `snapshot` is skipped with a warning so the odds never depend on ESPN. This is what the scheduled job runs. |
-| `calibrate` | Replay every completed season through the simulation and score the odds against what happened (see Calibration). Not part of `refresh`. `--runs N`, `--seed N`, `--residual-scale X` evaluate a candidate scale without touching the config. |
+| `calibrate` | Replay every completed season through the simulation and score the forecasts against what happened (see Calibration). Not part of `refresh`. `--runs N`, `--seed N`, `--residual-scale X` evaluate a candidate scale without touching the config. |
 
 First-time setup of a fresh clone, in order:
 
@@ -129,8 +129,8 @@ data/
   war/<league>/<season>.json                   every player's WAR for that league-season, with the weekly detail
   nfl/<season>/week_NN.json                    NFL games for the week: teams, kickoff (UTC), state, byes (ESPN scoreboard)
   injuries/<season>/week_NN.json               {player_id: Sleeper injury status} as last seen during that week
-  games/<league>/<season>/week_NN.json         per game: the projection log, the latest forecast and the prediction of record
-  odds/<league>/<season>/asof_NN.json          one simulation result per as-of week (the odds history)
+  games/<league>/<season>/week_NN.json         per game: the projection log, the latest forecast and the forecast of record
+  odds/<league>/<season>/asof_NN.json          one simulation result per as-of week (the forecast history)
 site/data/<league>.json, index.json            what the website reads
 site/data/<league>/positions/<season>.json     positional rankings per season, plus positions/index.json (see Positional Rankings)
 ```
@@ -243,7 +243,7 @@ taxi, reserve and injured flags); `positions/index.json` lists the seasons.
 Every simulation run also stores a Forecast per game (mean scores, win probability, a shared
 score histogram, the lineup used) and a projected playoff bracket for weeks Sleeper has not
 paired. `ffapp games` keeps a per-game log of projections frozen at kickoff, and once a week is
-final each game gets a fixed prediction of record from the lineups the managers started. How
+final each game gets a fixed forecast of record from the lineups the managers started. How
 they are calculated: `Calculations.txt`, section 10 (Game forecasts). Files:
 `data/games/<league>/<season>/week_NN.json`.
 
@@ -286,9 +286,9 @@ scoring his points so far plus his projection for the time left (`Calculations.t
 section 12). Injuries and benchings during a game are not visible until it is final.
 
 A live run writes `data/odds/<league>/<season>/live.json` and leaves the as-of result for the
-completed weeks frozen at its last pre-kickoff version, so the odds history and the
+completed weeks frozen at its last pre-kickoff version, so the forecast history and the
 look-backs never see partial weeks. When the week is final, the next run writes the new
-as-of result and removes the live file. The Predictions table shows the live chances while
+as-of result and removes the live file. The Forecasts table shows the live forecasts while
 the file exists.
 
 ### Win probability added
@@ -310,7 +310,7 @@ every completed season.
 `python -m ffapp calibrate` replays every stored season with status complete (dynasty
 2022-2025, redraft 2021-2025) as of every week from preseason to the last playoff
 round, using the production simulation and score noise learned from the *other*
-seasons only. The replay odds are stored in `data/odds/<league>/<season>/` like the
+seasons only. The replayed forecasts are stored in `data/odds/<league>/<season>/` like the
 live ones, and the comparison with real results is written to
 `data/calibration/report.json` and `data/calibration/report.md` (plus per-season rows
 under `data/calibration/rows/`). The run takes about a minute.
@@ -339,7 +339,7 @@ workflow. URL options: `#dynasty` / `#redraft` picks the league, `?team=<roster_
 highlights a team, `?metric=playoffs|bye|title|avoid_losers_bye|last` picks the
 chart, `?theme=dark|light` forces a theme.
 
-The odds table follows the FiveThirtyEight layout: ELO (the manager's current
+The forecast table follows the FiveThirtyEight layout: ELO (the manager's current
 rating, see Manager ratings) and its change over the last rated week, **Manager** (bold
 name with team name and record), projected
 record, then four chance columns filled on a white-to-blue ramp. Columns left of Manager are
@@ -356,7 +356,7 @@ ascending. Hovering a chance shows its change since the previous week. Each team
 has a fixed colour (the dot beside the manager name) that matches its line in the
 chart; the palette comes from `tools/team_palette.py`.
 
-Under the odds chart, the rating chart plots every manager who has ever played in
+Under the forecast chart, the rating chart plots every manager who has ever played in
 the league: **Rating** (the Openskill mean) or **Z-score** (career mean z), over
 **This season**, **Last 3 seasons** or **All time**, with each season start marked on
 the axis. Current members keep their table colour; former members use three greys
@@ -365,7 +365,7 @@ and contrast), dashed and then dotted once the greys repeat. Clicking a line or 
 table row highlights that manager in both charts. The card says ratings are not yet
 available when the export carried none.
 
-Each league has four sub-tabs, **Predictions** (the table and charts above),
+Each league has four sub-tabs, **Forecasts** (the table and charts above),
 **Games**, **Positions** and **Player WAR**, kept in the URL (`#redraft/war`,
 `#redraft/games/10`, `#redraft/positions`). On a phone the sub-tab row scrolls
 sideways under a finger (it snaps to a tab, fades on the side with more tabs, and
@@ -381,7 +381,7 @@ them. The bottom of the page explains the calculation with a flow chart and walk
 through Kittle and Bowers in 2024 week by week from the league's own data. Seasons
 before the first weekly-cut season are noted as using a yearly replacement cut.
 
-`calibration.html` ("How good are these odds?", linked from the footer) shows the
+`calibration.html` ("How Good Are These Forecasts?", linked from the footer) shows the
 calibration report: predicted-vs-observed reliability per outcome, the score-noise
 percentile histogram and interval coverage, head-to-head win-chance bins, the lineup
 gap and the caveats. The export copies `data/calibration/report.json` to

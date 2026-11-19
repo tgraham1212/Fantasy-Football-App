@@ -140,12 +140,12 @@ function renderNote() {
   let text;
   if (W.kind === "final") {
     text = W.source === "pre-week"
-      ? /*copy:GAME-02*/`Final. Shown against the forecast made before the week (after week ${W.forecast_as_of}), from before the projection log began. A check marks the winner; the lines on each chart are the actual scores.`
-      : /*copy:GAME-03*/"Final. Shown against the prediction of record: the lineups the managers started, each player at his last projection before kickoff. A check marks the winner; the lines on each chart are the actual scores.";
+      ? /*copy:GAME-02*/`Final. Shown against the forecast made before the week (after week ${W.forecast_as_of}), from before the Sleeper projection log began. A check marks the winner; the lines on each chart are the actual scores.`
+      : /*copy:GAME-03*/"Final. Shown against the forecast of record: the lineups the managers started, each player at his last projection before kickoff. A check marks the winner; the lines on each chart are the actual scores.";
   } else {
     text = /*copy:GAME-04*/`Forecast from the simulation run ${formatTime(W.generated_at)} (after week ${W.forecast_as_of}), 10,000 simulations per game. Each chart shows the spread of simulated scores.`;
     if (W.games.some((g) => g.projected)) {
-      text += /*copy:GAME-05*/" Playoff pairings are projected: teams seeded by expected finish, the favourite advancing; each game says how often that pairing happened in the simulations.";
+      text += /*copy:GAME-05*/"Playoff pairings are forecast: teams seeded by expected finish, the favourite advancing; each game says how often that pairing happened in the simulations.";
     }
     text += /*copy:GAME-06*/" Lineups are the model's best projected lineup; players listed as out can still appear in it until their projection drops.";
     if (W.live) {
@@ -153,7 +153,7 @@ function renderNote() {
     }
   }
   if (W.games.some((g) => g.teams.some((t) => t.lineup.some((r) => r.wpa != null)))) {
-    text += /*copy:GAME-08*/" Percentages beside scored players are win probability added: how much that score moved the team's chance against the pre-kickoff forecast, everyone else as projected. They show the size of each swing and do not add up to the team's total.";
+    text += /*copy:GAME-08*/"Percentages beside scored players are win probability added: how much that score moved the team's win probability against the pre-kickoff forecast, everyone else at their Sleeper projections. They show the size of each swing and do not add up to the team's total.";
   }
   $("games-note").textContent = text;
 }
@@ -170,7 +170,7 @@ function gameLabel(g) {
   let name = PLACE_LABEL[g.place] || (g.round === 1 ? "Quarterfinal" : g.round === 2 ? "Semifinal" : "Playoffs");
   if (g.bracket === "losers") name = g.place === 1 ? "Toilet bowl final" : g.place ? `Toilet bowl, ${PLACE_LABEL[g.place].toLowerCase()}` : `Toilet bowl ${name.toLowerCase()}`;
   const seeds = g.seeds && g.seeds.every((s) => s) ? ` · #${g.seeds[0]} v #${g.seeds[1]}` : "";
-  const projected = g.projected ? /*copy:GAME-10*/` · projected, happens in ${Math.round((g.frequency || 0) * 100)}% of simulations` : "";
+  const projected = g.projected ? /*copy:GAME-10*/`· forecast, happens in ${Math.round((g.frequency || 0) * 100)}% of simulations` : "";
   return `${bracket && !name.startsWith("Toilet") ? bracket + " " : ""}${name}${seeds}${projected}`;
 }
 

@@ -573,7 +573,7 @@ function renderChart() {
   const sel = L.teams.find((t) => t.roster_id === state.selected);
   $("chart-note").textContent = sel
     ? /*copy:PRED-17*/`${sel.display_name || sel.team_name} is highlighted. Click the team again to clear.`
-    : /*copy:PRED-18*/"Hover for every team's chance after a given week; Click a line or a table row to highlight one team.";
+    : /*copy:PRED-18*/"Hover for every team's forecast after a given week; Click a line or a table row to highlight one team.";
 }
 
 // -- rating chart -----------------------------------------------------------------------------------

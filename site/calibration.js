@@ -141,7 +141,7 @@ function renderHow() {
   const keys = leagueKeys();
   const withData = keys.filter((k) => state.leagues[k] && (state.leagues[k].replacement || state.leagues[k].model));
   const n = R.replacement_top_n || (withData.length && state.leagues[withData[0]].replacement && state.leagues[withData[0]].replacement.top_n);
-  if (n) $("how-floor").textContent = /*copy:CAL-25*/`Here that means the best ${n} free agents at each position, averaged, using this week's projections.`;
+  if (n) $("how-floor").textContent = /*copy:CAL-25*/`Here that means the best ${n} free agents at each position, averaged, using this week's Sleeper projections.`;
 
   const driftBits = [];
   const tables = [];

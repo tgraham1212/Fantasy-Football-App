@@ -241,7 +241,7 @@ Formula:
   bracket, finish last, avoid the bottom two ("Avoid Loser's Bye")
   projected record = mean simulated wins and losses
 In plain English:
-  The percentages on the Predictions table are the share of the 10,000 simulated seasons in
+  The percentages on the Forecasts table are the share of the 10,000 simulated seasons in
   which each team got there.
 Assumptions and decisions:
   - The table's first chance column depends on the league: a toilet-bowl league shows
@@ -259,14 +259,14 @@ Depends on:    4, 5, 6, 7
 Formula:
   per game, from the runs: mean score per team; win probability = runs won / runs
   (a tie counts half for each team); a shared 2-point histogram of both teams' scores
-  prediction of record (final weeks): the starters each manager used, each at his last
+  forecast of record (final weeks): the starters each manager used, each at his last
   logged projection before kickoff (else his stored projection, empty slots 0), simulated
   10,000 times with one week of drift and a seed fixed per league, season and week
   projected playoff games: teams seeded by expected seed; the team with the higher win
   probability advances (in a toilet bowl, the one more likely to score lower)
 In plain English:
   Every game gets its own forecast from the same simulation. Once a week is over, each
-  game also gets a fixed "prediction of record" to compare with what happened.
+  game also gets a fixed "forecast of record" to compare with what happened.
 Assumptions and decisions:
   - The record uses the managers' real starters, not the forecast before the first kickoff
     (owner's choice). Weeks before the log existed use the forecast made the week before.
@@ -326,7 +326,7 @@ Assumptions and decisions:
 13. WIN PROBABILITY ADDED
 ================================================================
 Code:          src/ffapp/games.py
-Data sources:  The game's pre-kickoff simulation (the prediction of record, or a provisional
+Data sources:  The game's pre-kickoff simulation (the forecast of record, or a provisional
                one during the live week), each starter's projection and score, the noise
                pools for his own spread.
 Depends on:    4, 10, 12

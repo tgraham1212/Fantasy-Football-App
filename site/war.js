@@ -210,7 +210,7 @@ function noteText() {
   const first = state.index.first_weekly;
   const parts = [];
   if (state.selection === "all") {
-    parts.push(state.mode === "career" ? /*copy:WAR-12*/"Career: each player's WAR summed over their seasons in this league; owner and team from their latest season." : /*copy:WAR-13*/"Every player-season in this league ranked together.");
+    parts.push(state.mode === "career" ? /*copy:WAR-12*/"Career: each player's WAR summed over their seasons in this league; manager and team from their latest season." : /*copy:WAR-13*/"Every player-season in this league ranked together.");
     const yearly = state.index.seasons.filter((s) => cutOf(s.season) === "yearly");
     const merged = state.index.seasons.filter((s) => cutOf(s.season) === "merged");
     if (yearly.length) parts.push(first ? /*copy:WAR-14*/`Seasons before ${first} use a yearly replacement cut (one start-percentage snapshot per season) instead of a weekly one.` : /*copy:WAR-15*/"Completed seasons so far use a yearly replacement cut (one start-percentage snapshot per season); weekly cuts begin once a full season of weekly snapshots exists.");
@@ -221,7 +221,7 @@ function noteText() {
     if (s && cutOf(s.season) === "yearly") parts.push(YEARLY_NOTE);
     if (s && cutOf(s.season) === "merged") parts.push(MERGED_NOTE);
   }
-  parts.push(/*copy:WAR-18*/"WAR is wins above a replacement-level player over the regular season. Hover an owner to see who else held the player that season.");
+  parts.push(/*copy:WAR-18*/"WAR is wins above a replacement-level player over the regular season. Hover a manager's name to see who else held the player that season.");
   return parts.join(" ");
 }
 
@@ -349,7 +349,7 @@ async function renderWalkthrough() {
   box.hidden = false;
   box.innerHTML = `
     <h3>${/*copy:WAR-19*/"Worked example: Kittle and Bowers, 2024"}</h3>
-    <p class="hint">${/*copy:WAR-20*/`${escapeHtml(state.leagueName)}, 2024 constants: TE slot mean ${te.toFixed(1)}, opponent spread ${sd.toFixed(1)}, TE replacement level ${repl.level.toFixed(1)} (a replacement tight end earns ${repl.baseline_wins.toFixed(2)} expected wins over ${weeks.length} weeks). Each week's win chance is the share of the opponent distribution below the league mean plus (score − ${te.toFixed(1)}).`}</p>
+    <p class="hint">${/*copy:WAR-20*/`${escapeHtml(state.leagueName)}, 2024 constants: TE slot mean ${te.toFixed(1)}, opponent spread ${sd.toFixed(1)}, TE replacement level ${repl.level.toFixed(1)} (a replacement tight end earns ${repl.baseline_wins.toFixed(2)} expected wins over ${weeks.length} weeks). Each week's win probability is the share of the opponent distribution below the league mean plus (score − ${te.toFixed(1)}).`}</p>
     <div class="table-wrap" tabindex="0" role="region" aria-label="Worked example"><table class="plain walkthrough">
       <thead><tr><th scope="col">Week</th><th scope="col" class="num" colspan="2">Kittle: score, win chance</th><th scope="col" class="num" colspan="2">Bowers: score, win chance</th></tr></thead>
       <tbody>${weeks.map((week, i) => `<tr><th scope="row">${week}</th>${cell(kittle.weekly[i])}${cell(bowers.weekly[i])}</tr>`).join("")}</tbody>

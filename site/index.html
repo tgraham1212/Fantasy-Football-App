@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-copy="HDR-01">Taco Tuesdays at Chris Carter's</title>
-  <meta name="description" content="Monte Carlo playoff odds for our Sleeper fantasy football leagues, updated after every week.">
+  <meta name="description" content="Monte Carlo forecasts for our Sleeper fantasy football leagues, updated after every week.">
   <link rel="stylesheet" href="styles.css?v=__BUILD__">
 </head>
 <body>
@@ -25,7 +25,7 @@
 
   <main id="main" hidden>
     <nav class="subtabs" id="subtabs" aria-label="Page">
-      <button type="button" data-page="predictions" aria-pressed="true">Predictions</button>
+      <button type="button" data-page="predictions" aria-pressed="true">Forecasts</button>
       <button type="button" data-page="games" aria-pressed="false">Games</button>
       <button type="button" data-page="positions" aria-pressed="false">Positions</button>
       <button type="button" data-page="war" aria-pressed="false">Player WAR</button>
@@ -35,12 +35,7 @@
     <section class="card summary">
       <h2 id="league-title"></h2>
       <p class="fresh" id="freshness"></p>
-      <p data-copy="PRED-01" class="explain">
-        Every remaining week is simulated 10,000 times using each team's current roster, the real schedule,
-        Sleeper's player projections and how far real scores have strayed from projections in the past.
-        The playoffs and losers bracket are played out with the league's actual rules. These are chances,
-        not predictions: a team at 70% misses roughly three times in ten.
-      </p>
+      <p data-copy="PRED-01" class="explain">Every remaining week is simulated 10,000 times using each team's current roster, the real schedule, Sleeper's player projections and how far real scores have strayed from projections in the past. The playoffs and losers bracket are played out with the league's actual rules. These are forecasts, not certainties: a team at 70% misses roughly three times in ten.</p>
     </section>
 
     <section class="card">
@@ -53,7 +48,7 @@
           <thead>
             <tr class="group-row">
               <td colspan="4" class="group-blank"></td>
-              <th colspan="4" scope="colgroup" class="group">Playoff chances</th>
+              <th colspan="4" scope="colgroup" class="group">Playoff Forecast</th>
             </tr>
             <tr class="head-row">
               <th scope="col" class="col-elo" data-col="elo"><button type="button" class="sort">ELO</button></th>
@@ -176,8 +171,8 @@
             <li data-copy="WAR-04"><strong>Consensus lineup.</strong> Each week the most-started players with a game fill every position's starting slots for 12 teams, then the most-started leftover RB, WR and TE fill the flex.</li>
             <li data-copy="WAR-05"><strong>Slot means and spread.</strong> Over the season, each slot's average points and variance from those lineups. The opponent is a normal distribution: mean = sum of slot means, spread = square root of the summed variances.</li>
             <li data-copy="WAR-06"><strong>Replacement cut.</strong> The three most-started players past each position's cut are that week's replacement players; their season average is the replacement level.</li>
-            <li data-copy="WAR-07"><strong>Weekly win chance.</strong> A player's week is their actual points in a lineup whose other slots sit at the slot means, so the win chance is the share of the opponent distribution below the league mean plus (score − slot mean). A week with no game played takes the replacement level; a game played for zero counts as zero.</li>
-            <li data-copy="WAR-08"><strong>Expected wins and WAR.</strong> Win chances sum over regular-season weeks 1 to 14. WAR subtracts what a replacement-level player would earn every week, so a replacement season is exactly 0.</li>
+            <li data-copy="WAR-07"><strong>Weekly win probability.</strong> A player's week is their actual points in a lineup whose other slots sit at the slot means, so the win probability is the share of the opponent distribution below the league mean plus (score − slot mean). A week with no game played takes the replacement level; a game played for zero counts as zero.</li>
+            <li data-copy="WAR-08"><strong>Expected wins and WAR.</strong> Win probabilities sum over regular-season weeks 1 to 14. WAR subtracts what a replacement-level player would earn every week, so a replacement season is exactly 0.</li>
           </ol>
           <div id="war-walkthrough" class="walkthrough" hidden></div>
         </section>
@@ -197,7 +192,7 @@
   <p data-copy="MSG-08" class="status" id="status">Loading&hellip;</p>
 
   <footer>
-    <p data-copy="HDR-04">Data from the Sleeper API. Projections by Rotowire via Sleeper. Refreshed daily. <a href="calibration.html">How good are these odds?</a></p>
+    <p data-copy="HDR-04">Data from the Sleeper API. Projections by Rotowire via Sleeper. Refreshed daily. <a href="calibration.html">How Good Are These Forecasts?</a></p>
   </footer>
 
   <script src="vendor/chart.umd.js?v=__BUILD__"></script>
