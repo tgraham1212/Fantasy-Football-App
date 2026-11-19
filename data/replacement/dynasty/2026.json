@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-19T01:07:17+00:00",
+ "generated_at": "2026-11-19T18:03:54+00:00",
  "league_key": "dynasty",
  "prior_weeks": 4.0,
  "season": "2026",
@@ -11,7 +11,7 @@
     "2024",
     "2023"
    ],
-   "projected_mean": 7.54,
+   "projected_mean": 7.61,
    "value": 8.29,
    "weeks_played": 10
   },
@@ -33,7 +33,7 @@
     "2024",
     "2023"
    ],
-   "projected_mean": 13.46,
+   "projected_mean": 13.3,
    "value": 13.98,
    "weeks_played": 10
   },
@@ -44,7 +44,7 @@
     "2024",
     "2023"
    ],
-   "projected_mean": 4.59,
+   "projected_mean": 4.4,
    "value": 3.53,
    "weeks_played": 10
   },
@@ -55,7 +55,7 @@
     "2024",
     "2023"
    ],
-   "projected_mean": 5.83,
+   "projected_mean": 5.84,
    "value": 6.18,
    "weeks_played": 10
   },
@@ -228,10 +228,10 @@
      "DAL",
      "LAC",
      "NYJ",
-     "NYG",
-     "LV"
+     "BAL",
+     "NYG"
     ],
-    "projected": 6.73,
+    "projected": 6.96,
     "realised": null
    },
    "K": {
@@ -243,7 +243,7 @@
      "7839",
      "11792"
     ],
-    "projected": 9.5,
+    "projected": 9.53,
     "realised": null
    },
    "QB": {
@@ -251,23 +251,23 @@
     "players": [
      "1373",
      "13425",
-     "3257",
      "5870",
+     "12494",
      "13272"
     ],
-    "projected": 11.22,
+    "projected": 10.92,
     "realised": null
    },
    "RB": {
     "available": 41,
     "players": [
-     "9511",
      "6039",
      "9227",
      "6130",
-     "4718"
+     "4718",
+     "11577"
     ],
-    "projected": 4.34,
+    "projected": 3.87,
     "realised": null
    },
    "TE": {
@@ -276,14 +276,14 @@
      "7600",
      "11593",
      "9479",
-     "8111",
-     "12498"
+     "12502",
+     "8111"
     ],
-    "projected": 5.68,
+    "projected": 5.8,
     "realised": null
    },
    "WR": {
-    "available": 88,
+    "available": 87,
     "players": [
      "12540",
      "8135",
@@ -291,21 +291,21 @@
      "12485",
      "6427"
     ],
-    "projected": 6.07,
+    "projected": 6.06,
     "realised": null
    }
   },
   "12": {
    "DEF": {
-    "available": 12,
+    "available": 13,
     "players": [
-     "WAS",
+     "CLE",
      "DAL",
      "NYJ",
      "NYG",
      "NE"
     ],
-    "projected": 8.35,
+    "projected": 8.4,
     "realised": null
    },
    "K": {
@@ -321,27 +321,27 @@
     "realised": null
    },
    "QB": {
-    "available": 6,
+    "available": 5,
     "players": [
      "1373",
-     "4017",
      "13272",
+     "12494",
      "11292",
-     "3257"
+     "5870"
     ],
-    "projected": 14.28,
+    "projected": 13.41,
     "realised": null
    },
    "RB": {
     "available": 49,
     "players": [
-     "9511",
      "6130",
      "6039",
      "7608",
-     "8207"
+     "8207",
+     "9227"
     ],
-    "projected": 4.49,
+    "projected": 4.16,
     "realised": null
    },
    "TE": {
@@ -353,11 +353,11 @@
      "12498",
      "9479"
     ],
-    "projected": 5.74,
+    "projected": 5.7,
     "realised": null
    },
    "WR": {
-    "available": 108,
+    "available": 107,
     "players": [
      "12540",
      "3634",
@@ -365,7 +365,7 @@
      "8119",
      "6427"
     ],
-    "projected": 5.99,
+    "projected": 6.0,
     "realised": null
    }
   },
@@ -373,13 +373,13 @@
    "DEF": {
     "available": 10,
     "players": [
-     "WAS",
      "ARI",
+     "CLE",
      "ATL",
      "TEN",
      "NE"
     ],
-    "projected": 6.76,
+    "projected": 6.62,
     "realised": null
    },
    "K": {
@@ -395,12 +395,13 @@
     "realised": null
    },
    "QB": {
-    "available": 2,
+    "available": 3,
     "players": [
-     "4017",
-     "13272"
+     "11292",
+     "13272",
+     "12494"
     ],
-    "projected": 13.43,
+    "projected": 12.1,
     "realised": null
    },
    "RB": {
@@ -408,11 +409,11 @@
     "players": [
      "6039",
      "7608",
-     "9511",
      "11655",
-     "8207"
+     "8207",
+     "9227"
     ],
-    "projected": 4.46,
+    "projected": 4.19,
     "realised": null
    },
    "TE": {
@@ -428,7 +429,7 @@
     "realised": null
    },
    "WR": {
-    "available": 89,
+    "available": 88,
     "players": [
      "12540",
      "8119",
@@ -442,15 +443,15 @@
   },
   "14": {
    "DEF": {
-    "available": 10,
+    "available": 11,
     "players": [
+     "CLE",
      "NE",
+     "BAL",
      "LV",
-     "ATL",
-     "NO",
-     "NYJ"
+     "ATL"
     ],
-    "projected": 7.17,
+    "projected": 7.51,
     "realised": null
    },
    "K": {
@@ -466,26 +467,24 @@
     "realised": null
    },
    "QB": {
-    "available": 4,
+    "available": 2,
     "players": [
      "1373",
-     "4017",
-     "3257",
      "5870"
     ],
-    "projected": 12.24,
+    "projected": 12.2,
     "realised": null
    },
    "RB": {
     "available": 49,
     "players": [
-     "9511",
      "6039",
      "7608",
      "11655",
-     "11643"
+     "11643",
+     "8208"
     ],
-    "projected": 4.33,
+    "projected": 3.62,
     "realised": null
    },
    "TE": {
@@ -501,7 +500,7 @@
     "realised": null
    },
    "WR": {
-    "available": 101,
+    "available": 100,
     "players": [
      "12540",
      "3634",
@@ -515,15 +514,15 @@
   },
   "15": {
    "DEF": {
-    "available": 12,
+    "available": 13,
     "players": [
      "NYG",
+     "CLE",
      "NYJ",
      "TEN",
-     "ARI",
-     "WAS"
+     "ARI"
     ],
-    "projected": 7.47,
+    "projected": 7.58,
     "realised": null
    },
    "K": {
@@ -539,15 +538,13 @@
     "realised": null
    },
    "QB": {
-    "available": 5,
+    "available": 3,
     "players": [
      "1373",
-     "4017",
      "13272",
-     "3257",
      "5870"
     ],
-    "projected": 14.15,
+    "projected": 14.62,
     "realised": null
    },
    "RB": {
@@ -555,11 +552,11 @@
     "players": [
      "6039",
      "11655",
-     "9511",
      "8207",
-     "9227"
+     "9227",
+     "8208"
     ],
-    "projected": 4.07,
+    "projected": 3.64,
     "realised": null
    },
    "TE": {
@@ -575,7 +572,7 @@
     "realised": null
    },
    "WR": {
-    "available": 109,
+    "available": 108,
     "players": [
      "12540",
      "8119",
@@ -589,15 +586,15 @@
   },
   "16": {
    "DEF": {
-    "available": 12,
+    "available": 13,
     "players": [
+     "BAL",
      "LV",
      "NO",
      "NE",
-     "ATL",
-     "MIA"
+     "CLE"
     ],
-    "projected": 7.55,
+    "projected": 7.92,
     "realised": null
    },
    "K": {
@@ -613,27 +610,25 @@
     "realised": null
    },
    "QB": {
-    "available": 5,
+    "available": 3,
     "players": [
      "1373",
-     "4017",
      "13272",
-     "3257",
      "5870"
     ],
-    "projected": 13.42,
+    "projected": 13.72,
     "realised": null
    },
    "RB": {
     "available": 52,
     "players": [
      "11655",
-     "9511",
      "6039",
      "8207",
-     "9227"
+     "9227",
+     "11643"
     ],
-    "projected": 4.22,
+    "projected": 3.64,
     "realised": null
    },
    "TE": {
@@ -649,7 +644,7 @@
     "realised": null
    },
    "WR": {
-    "available": 110,
+    "available": 109,
     "players": [
      "12540",
      "8119",
@@ -663,15 +658,15 @@
   },
   "17": {
    "DEF": {
-    "available": 12,
+    "available": 13,
     "players": [
+     "CLE",
      "NE",
      "LV",
      "ATL",
-     "NO",
-     "ARI"
+     "NO"
     ],
-    "projected": 7.3,
+    "projected": 7.54,
     "realised": null
    },
    "K": {
@@ -687,15 +682,13 @@
     "realised": null
    },
    "QB": {
-    "available": 5,
+    "available": 3,
     "players": [
-     "4017",
      "13272",
-     "3257",
      "1373",
      "5870"
     ],
-    "projected": 13.31,
+    "projected": 12.23,
     "realised": null
    },
    "RB": {
@@ -703,11 +696,11 @@
     "players": [
      "11655",
      "6039",
-     "9511",
      "8207",
-     "9227"
+     "9227",
+     "8208"
     ],
-    "projected": 4.52,
+    "projected": 4.04,
     "realised": null
    },
    "TE": {
@@ -723,7 +716,7 @@
     "realised": null
    },
    "WR": {
-    "available": 110,
+    "available": 109,
     "players": [
      "12540",
      "8119",
