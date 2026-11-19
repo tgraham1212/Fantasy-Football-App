@@ -5,7 +5,7 @@
   --surface: #fcfcfb;
   --ink: #0b0b0b;
   --ink-2: #52514e;
-  --muted: #716f6a;  /* OKLCH L .543, hue and chroma of the old #898781; >= 4.5:1 on --page */
+  --muted: #6b6964;  /* OKLCH L .522, hue and chroma of the old #898781; >= 4.5:1 on hovered and selected rows */
   --grid: #e1e0d9;
   --axis: #c3c2b7;
   --border: rgba(11, 11, 11, 0.10);
@@ -59,7 +59,7 @@
     --surface: #1a1a19;
     --ink: #f0efec;
     --ink-2: #c3c2b7;
-    --muted: #898781;
+    --muted: #8f8d87;  /* OKLCH L .643; >= 4.5:1 on hovered and selected rows */
     --grid: #2c2c2a;
     --axis: #383835;
     --border: rgba(255, 255, 255, 0.10);
@@ -106,7 +106,7 @@
   --surface: #1a1a19;
   --ink: #f0efec;
   --ink-2: #c3c2b7;
-  --muted: #898781;
+  --muted: #8f8d87;  /* OKLCH L .643; >= 4.5:1 on hovered and selected rows */
   --grid: #2c2c2a;
   --axis: #383835;
   --border: rgba(255, 255, 255, 0.10);
@@ -232,6 +232,7 @@ th[aria-sort="ascending"] .sort::after { content: "\25B4"; }
 tbody tr { cursor: pointer; }
 tbody td { background: var(--surface); }
 tbody tr:hover td { background: color-mix(in srgb, var(--surface), var(--ink) 4%); }
+table.walkthrough tbody tr:hover td { background: none; }  /* a static worked example; its blue mark needs the plain card */
 tbody tr[aria-selected="true"] td { background: color-mix(in srgb, var(--surface), var(--accent) 12%); }
 tbody tr[aria-selected="true"] .col-elo { box-shadow: inset 3px 0 0 var(--accent); }
 
@@ -637,4 +638,47 @@ footer { color: var(--muted); font-size: 0.8rem; text-align: center; padding-top
 @media (max-width: 420px) {
   .pos-chart { grid-template-columns: 84px minmax(0, 1fr); }
   .pos-label .owner-name { font-size: 0.8rem; }
+}
+
+/* Touch targets (Material Design 3: 48 x 48 px on phones). Phones only; desktop is unchanged.
+   A: controls that were a few px short get a real 48 px box.
+   B: compact chips keep their look and get a transparent tap area (::before) that stops short of
+      their neighbours; rows and scroll strips get room so nothing clips or overlaps it.
+   C: dense rows: a sort header's button fills its cell, and "Full Lineup" is 48 px tall.
+   tests/layout/test_accessibility.py probes each control's 48 px square by hit testing. */
+@media (max-width: 599.98px) {
+  /* A */
+  .leagues button, .subtabs button, .select-label select, .week-control select { min-height: 48px; }
+  .nav-link { display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; min-height: 48px; }
+  .theme, .week-control .step, .dialog-head .close { width: 48px; height: 48px; flex: none; }
+
+  /* B: tap areas, measured from the padding box (inside the 1 px border): 32 px chips extend 9 px
+     up and down, 25 px chips 13 px, the borderless 23 px Model / Actual buttons 13 px. */
+  .metrics button, .expand, .view-toggle button { position: relative; }
+  .metrics button::before, .expand::before { content: ""; position: absolute; left: -1px; right: -1px; }
+  .view-toggle button::before { content: ""; position: absolute; left: 0; right: 0; }
+  .metrics button::before, .expand::before { top: -9px; bottom: -9px; }
+  .metrics.small button::before { top: -13px; bottom: -13px; }
+  .range-row { margin-top: 14px; }           /* keeps the range chips' tap areas off the chart */
+  .view-toggle button::before { top: -13px; bottom: -13px; }
+  .metrics { row-gap: 17px; }                 /* wrapped chip rows: tap areas meet, never overlap (17, not 16: rows are ~31.5 px) */
+  .switchers { row-gap: 16px; }
+  #metric-switcher { padding-block: 8px; }    /* the scrolling strip would clip the tap areas */
+  .view-toggle { overflow: visible; }         /* overflow: hidden clipped them; round the ends instead */
+  .game-label { padding-block: 4px; }         /* room for the Model / Actual tap areas above the scores */
+  .view-toggle button:first-child { border-radius: 999px 0 0 999px; }
+  .view-toggle button:last-child { border-radius: 0 999px 999px 0; }
+
+  /* C: the whole header cell is the sort button; its label (one <span>) sits at the bottom as before */
+  thead th:has(> .sort), #odds-table thead th:has(> .sort) { padding: 0; }
+  th .sort {
+    display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;
+    box-sizing: border-box; width: 100%; min-width: 48px; min-height: 48px; padding: 6px 20px 6px 6px;
+  }
+  th.num .sort { align-items: safe flex-end; margin-left: auto; }  /* safe: a long word overflows away from
+                                                                     the neighbour; .col-chance caps the width */
+  #odds-table th.col-owner .sort { align-items: safe center; padding-left: 20px; }
+  th[aria-sort] .sort::after { right: 6px; bottom: 6px; }
+  .col-chance .sort { max-width: calc(7.5em + 12px); }  /* the button now holds the cell's 6 px side padding */
+  .team-players summary { padding-block: 14.5px; }
 }

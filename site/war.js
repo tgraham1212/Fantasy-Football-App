@@ -309,7 +309,7 @@ function renderDialog() {
   $("war-dialog-title").textContent = `${POSITION_LABEL[pos]} · ${scope}`;
   const table = $("war-full");
   table.innerHTML = `
-    <thead><tr>${cols.map((c) => `<th scope="col" class="${c.num ? "num" : ""}" data-col="${c.key}"><button type="button" class="sort">${escapeHtml(c.label)}</button></th>`).join("")}</tr></thead>
+    <thead><tr>${cols.map((c) => `<th scope="col" class="${c.num ? "num" : ""}" data-col="${c.key}"><button type="button" class="sort"><span>${escapeHtml(c.label)}</span></button></th>`).join("")}</tr></thead>
     <tbody></tbody>`;
   wireHeaders(table, (key) => { state.sort = nextSort(state.sort, key); renderDialogBody(); });
   renderDialogBody();

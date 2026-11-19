@@ -66,27 +66,71 @@ DESCRIBE_JS = """(e) => {
 }"""
 
 
-def _small_controls(page, view):
-    return page.evaluate("""([query, target, describe]) => {
-      const describeFn = eval(describe);
-      const out = [];
-      for (const e of document.querySelectorAll(query)) {
-        if (!e.getClientRects().length || getComputedStyle(e).visibility === 'hidden') continue;
-        if (e.closest('canvas') || e.matches('.pos-dot')) continue;                 // charts: keyboard alternative instead
-        if (e.matches('a') && e.closest('p, li') && !e.matches('.nav-link')) continue;  // inline links in sentences (WCAG exception)
-        const r = e.getBoundingClientRect();
-        if (r.width < target - 0.5 || r.height < target - 0.5) out.push(describeFn(e));
+PROBE_JS = """async ([query, target, describe]) => {
+  const describeFn = eval(describe);
+  const frame = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+  const modal = document.querySelector('dialog[open]');
+  const out = {};
+  const isSticky = (n) => { for (; n; n = n.parentElement) if (getComputedStyle(n).position === 'sticky') return true; return false; };
+  const probe = (e) => {
+    const r = e.getBoundingClientRect();
+    // a control larger than the target (a table row, a scroll box) is probed over its visible part;
+    // anything smaller gets a full target-sized square, so clipping of its tap area still fails
+    let v = { left: r.left, top: r.top, right: r.right, bottom: r.bottom };
+    for (let a = e.parentElement; a; a = a.parentElement) {
+      if (getComputedStyle(a).overflow === 'visible') continue;
+      const c = a.getBoundingClientRect();
+      v = { left: Math.max(v.left, c.left), top: Math.max(v.top, c.top), right: Math.min(v.right, c.right), bottom: Math.min(v.bottom, c.bottom) };
+    }
+    v = { left: Math.max(v.left, 0), top: Math.max(v.top, 0), right: Math.min(v.right, innerWidth), bottom: Math.min(v.bottom, innerHeight) };
+    const span = (own, lo, hi) => own > target ? [(lo + hi) / 2, Math.max(hi - lo, 2) - 2] : null;
+    const sx = span(r.width, v.left, v.right), sy = span(r.height, v.top, v.bottom);
+    const cx = sx ? sx[0] : r.left + r.width / 2, w = sx ? sx[1] : target - 2;   // inset 1 px
+    const cy = sy ? sy[0] : r.top + r.height / 2, h = sy ? sy[1] : target - 2;
+    for (const [fx, fy] of [[-1,-1],[0,-1],[1,-1],[-1,0],[0,0],[1,0],[-1,1],[0,1],[1,1]]) {
+      const corner = fx && fy ? 6 : 0;                                           // corners 7 px in: rounded corners
+      const x = cx + fx * (w / 2 - corner), y = cy + fy * (h / 2 - corner);
+      const hit = document.elementFromPoint(x, y);
+      if (!hit || !(hit === e || e.contains(hit))) {
+        return { hit, why: `${Math.round(r.width)} x ${Math.round(r.height)} px, point (${fx}, ${fy}) hits ${hit ? describeFn(hit) : 'nothing'}` };
       }
-      return [...new Set(out)];
-    }""", [CONTROL_QUERY, TARGET, DESCRIBE_JS])
+    }
+    return null;
+  };
+  for (const e of document.querySelectorAll(query)) {
+    if (!e.getClientRects().length || getComputedStyle(e).visibility === 'hidden') continue;
+    if (e.closest('canvas') || e.matches('.pos-dot')) continue;                 // charts: keyboard alternative instead
+    if (e.matches('a') && e.closest('p, li') && !e.matches('.nav-link')) continue;  // inline links in sentences (WCAG exception)
+    if (modal && !modal.contains(e)) continue;                                   // inert behind an open dialog
+    e.scrollIntoView({ block: 'center', inline: 'center' });
+    await frame();                                                               // let snap scrolling settle
+    let fail = probe(e);
+    if (fail && fail.hit && isSticky(fail.hit) && !isSticky(e)) {                // under a pinned column: scroll it clear,
+      e.scrollIntoView({ block: 'center', inline: 'end' });                      // as a reader would, and try again
+      await frame();
+      fail = probe(e);
+    }
+    if (fail) out[describeFn(e)] = fail.why;
+  }
+  return out;
+}"""
+
+
+def _small_controls(page, view) -> dict[str, str]:
+    """Controls whose 48 x 48 px tap area (or own box, if larger) does not all respond to them:
+    too small, clipped by a container, or overlapped by a neighbour's tap area."""
+    return page.evaluate(PROBE_JS, [CONTROL_QUERY, TARGET, DESCRIBE_JS])
 
 
 def test_touch_targets_on_phones(open_page):
-    found = set()
+    found, detail = set(), {}
     for view in VIEWS_CHECKED:
         for width in (360, 440):
             page = _open(open_page, view, width)
-            found |= {f"{view} | {c}" for c in _small_controls(page, view)}
+            for control, why in _small_controls(page, view).items():
+                found.add(f"{view} | {control}")
+                detail.setdefault(f"{view} | {control}", f"{width} px: {why}")
             page.close()
-    problems = compare("touch", found, "control under 48 x 48 px")
+    problems = compare("touch", found, "control without a 48 x 48 px tap area")
+    problems = [f"{p}  [{detail[k]}]" if (k := p.split(": ", 1)[-1]) in detail else p for p in problems]
     assert not problems, "\n".join(problems[:40]) + (f"\n... {len(problems) - 40} more" if len(problems) > 40 else "")

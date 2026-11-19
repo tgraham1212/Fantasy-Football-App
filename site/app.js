@@ -307,7 +307,7 @@ function renderHead() {
   const L = state.league;
   const bottom = bottomColumn(L);
   const bottomBtn = $("bottom-head");
-  bottomBtn.innerHTML = bottom.key === "last" ? "#1 Pick" : "Avoid<br>Loser's Bye";
+  bottomBtn.innerHTML = bottom.key === "last" ? "<span>#1 Pick</span>" : "<span>Avoid<br>Loser's Bye</span>";
   bottomBtn.title = bottom.description || "";
   markSorted(document.querySelectorAll("#odds-table thead th[data-col]"), state.sort);
 }

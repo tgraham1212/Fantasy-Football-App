@@ -3,7 +3,8 @@
 axe-core checks the rendered HTML in light and dark mode, but it cannot measure text drawn in the
 SVG charts, which reads the same tokens through cssVar(). This test checks the tokens
 themselves:
-- text at 4.5:1 against every background it sits on;
+- text at 4.5:1 against every background it sits on, including table rows that are hovered
+  (surface mixed with 4% ink) or selected (surface mixed with 12% accent), as styles.css paints them;
 - focus rings and chart lines at 3:1 against the page and cards.
 
 Every hex token must be either checked or exempt with a reason, so a new colour has to be
@@ -22,6 +23,9 @@ from team_palette import contrast  # noqa: E402  (one implementation of the WCAG
 
 CSS = ROOT / "site" / "styles.css"
 SURFACES = ("page", "surface")
+ROWS = {"hovered row": ("ink", 0.04), "selected row": ("accent", 0.12)}  # color-mix over --surface
+TEXT_ON_ROWS = ("ink", "ink-2", "muted")  # the text used inside highlightable table rows (the worked
+# example's blue fill mark sits in table.walkthrough, which has no hover highlight)
 TEXT_ON_SURFACES = ("ink", "ink-2", "muted", "accent", "good", "bad", "gold")
 TEXT_ON_FILLS = (  # (text, fill): text drawn on a coloured background
     ("accent-ink", "accent-fill"),  # selected league button
@@ -52,6 +56,13 @@ def token_blocks(css: str) -> dict[str, dict[str, str]]:
     return {"light": light, "dark": {**light, **hexes(media)}, "dark-toggle": {**light, **hexes(toggle)}}
 
 
+def mix(base: str, other: str, share: float) -> str:
+    """color-mix(in srgb, base, other share), as the row highlights are painted."""
+    a = [int(base[i:i + 2], 16) for i in (1, 3, 5)]
+    b = [int(other[i:i + 2], 16) for i in (1, 3, 5)]
+    return "#" + "".join(f"{round(x * (1 - share) + y * share):02x}" for x, y in zip(a, b))
+
+
 def problems(css: str) -> list[str]:
     blocks = token_blocks(css)
     out = []
@@ -62,21 +73,24 @@ def problems(css: str) -> list[str]:
     for mode in ("light", "dark"):
         t = blocks[mode]
 
+        rows = {name: mix(t["surface"], t[tok], share) for name, (tok, share) in ROWS.items()}
+
         def value(name: str) -> str:
-            return name if name.startswith("#") else t[name]
+            return name if name.startswith("#") else rows[name] if name in rows else t[name]
 
         def label(name: str) -> str:
-            return name if name.startswith("#") else f"--{name}"
+            return name if name.startswith("#") or name in rows else f"--{name}"
 
         lines = tuple(k for k in t if re.fullmatch(r"(team|former)-\d+", k))
         pairs = [(fg, bg, TEXT_RATIO) for fg in TEXT_ON_SURFACES for bg in SURFACES]
+        pairs += [(fg, bg, TEXT_RATIO) for fg in TEXT_ON_ROWS for bg in rows]
         pairs += [(fg, bg, TEXT_RATIO) for fg, bg in TEXT_ON_FILLS]
         pairs += [(fg, bg, NON_TEXT_RATIO) for fg in NON_TEXT + lines for bg in SURFACES]
         for fg, bg, need in pairs:
             ratio = contrast(value(fg), value(bg))
             if ratio < need:
                 out.append(f"{mode}: {label(fg)} on {label(bg)} is {ratio:.2f}:1, needs {need}:1")
-        checked = {n for fg, bg, _ in pairs for n in (fg, bg)}
+        checked = {n for fg, bg, _ in pairs for n in (fg, bg)} - set(rows)
         for name in sorted(set(t) - checked - set(EXEMPT)):
             out.append(f"{mode}: --{name} is neither checked nor exempt; add it to a pair or to EXEMPT")
     return out
