@@ -7,14 +7,14 @@ Gives league members a public website where they can see their team's current pl
 ## Requirements
 
 ### Requirement: League pages
-The site SHALL have a page for each configured league that shows that league's current season. Visitors SHALL be able to switch between leagues. Each league page SHALL have four sub-tabs in this order: "Predictions" (the odds table and charts), "Games", "Positions" and "Player WAR". The selected sub-tab SHALL be kept in the page URL, so a link opens on that sub-tab, and SHALL be kept when switching league.
+The site SHALL have a page for each configured league that shows that league's current season. Visitors SHALL be able to switch between leagues. Each league page SHALL have four sub-tabs in this order: "Forecasts" (the forecast table and charts), "Games", "Positions" and "Player WAR". The selected sub-tab SHALL be kept in the page URL, so a link opens on that sub-tab, and SHALL be kept when switching league.
 
 #### Scenario: Switch league
 - **WHEN** a visitor on the dynasty page picks the redraft league
-- **THEN** the redraft league's odds are shown
+- **THEN** the redraft league's forecasts are shown
 
 #### Scenario: Open the WAR sub-tab
-- **WHEN** a visitor on the redraft Predictions sub-tab picks "Player WAR"
+- **WHEN** a visitor on the redraft Forecasts sub-tab picks "Player WAR"
 - **THEN** the redraft Player WAR page is shown and the URL identifies both the league and the sub-tab
 
 #### Scenario: Link to a sub-tab
@@ -22,7 +22,7 @@ The site SHALL have a page for each configured league that shows that league's c
 - **THEN** the page opens on the dynasty Player WAR page
 
 #### Scenario: Open the Games sub-tab
-- **WHEN** a visitor picks "Games", which sits between "Predictions" and "Positions"
+- **WHEN** a visitor picks "Games", which sits between "Forecasts" and "Positions"
 - **THEN** the league's Games page is shown and the URL identifies the league and the Games sub-tab
 
 #### Scenario: Open the Positions sub-tab
@@ -234,18 +234,18 @@ The ELO and 1-week ELO change columns SHALL show each team's current manager rat
 - **THEN** the change cell shows +40
 
 ### Requirement: Grouped chance headers
-The four chance columns SHALL sit under a single "Playoff chances" group header, and every column header SHALL use small uppercase labels that wrap to two lines where needed.
+The four chance columns SHALL sit under a single "Playoff Forecast" group header, and every column header SHALL use small uppercase labels that wrap to two lines where needed.
 
 #### Scenario: Header layout
 - **WHEN** a visitor views the table on a desktop-width screen
-- **THEN** a "Playoff chances" label spans exactly the four chance columns, above their individual headers
+- **THEN** a "Playoff Forecast" label spans exactly the four chance columns, above their individual headers
 
 ### Requirement: Calibration page
-The site SHALL have a calibration page, reachable from every league page, that shows how well past odds matched real outcomes: for each season outcome, predicted chance against observed rate with the number of cases behind each point; observed against nominal coverage of the score intervals; the Brier skill against the baseline; the lineup gap per league; when the calibration was produced, how many seasons it covers and the residual scale used; and the known caveats.
+The site SHALL have a calibration page, reachable from every league page, titled "How Good Are These Forecasts?", that shows how well past forecasts matched real outcomes: for each season outcome, forecast percentage against observed rate with the number of cases behind each point; observed against nominal coverage of the score intervals; the Brier skill against the baseline; the lineup gap per league; when the calibration was produced, how many seasons it covers and the residual scale used; and the known caveats.
 
 #### Scenario: Visitor checks the odds
 - **WHEN** a visitor opens the calibration page after a calibration report has been published
-- **THEN** they can see, for playoff chances, how often teams shown at each level of chance actually made the playoffs
+- **THEN** they can see, for the playoff forecast, how often teams shown at each forecast level actually made the playoffs
 
 #### Scenario: Calibration not yet run
 - **WHEN** the site is published without a calibration report
@@ -435,11 +435,11 @@ The calibration page SHALL explain, in plain language for league members, how th
 - **THEN** it states whether the replacement floor and roster drift were on for that report and the N used
 
 ### Requirement: Live odds on the Predictions page
-While a week is live, the Predictions table SHALL show the live result's chances, labelled with how many of the week's NFL games are final, and its change tooltips SHALL compare with the as-of result the live run started from. The odds-over-time chart SHALL keep plotting only stored as-of results.
+While a week is live, the Forecasts table SHALL show the live result's forecasts, labelled with how many of the week's NFL games are final, and its change tooltips SHALL compare with the as-of result the live run started from. The forecast-over-time chart SHALL keep plotting only stored as-of results.
 
 #### Scenario: Saturday of week 11
-- **WHEN** a visitor opens the Predictions page on Saturday of week 11
-- **THEN** the table shows the live chances labelled "Live: 1 of 14 games final" and the chart's last point is still as of week 10
+- **WHEN** a visitor opens the Forecasts page on Saturday of week 11
+- **THEN** the table shows the live forecasts labelled "Live: 1 of 14 games final" and the chart's last point is still as of week 10
 
 ### Requirement: Deploy on code push
 A push to the main branch that changes site code (anything under the site folder other than its data files) SHALL run the tests and the layout check and, when they pass, deploy the site with the current data. It SHALL never run at the same time as a data refresh.
