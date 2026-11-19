@@ -153,7 +153,7 @@ function renderNote() {
     }
   }
   if (W.games.some((g) => g.teams.some((t) => t.lineup.some((r) => r.wpa != null)))) {
-    text += /*copy:GAME-08*/"Percentages beside scored players are win probability added: how much that score moved the team's win probability against the pre-kickoff forecast, everyone else at their Sleeper projections. They show the size of each swing and do not add up to the team's total.";
+    text += " " + /*copy:GAME-08*/"Percentages beside scored players are win probability added: how much that score moved the team's win probability against the pre-kickoff forecast, everyone else at their Sleeper projections. They show the size of each swing and do not add up to the team's total.";
   }
   $("games-note").textContent = text;
 }

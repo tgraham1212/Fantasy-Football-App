@@ -22,7 +22,12 @@ context: |
     (9.5%), 384 (9.0%), 360 (4.6%), 402 (4.3%), 393 (4.1%). Tested at 360, 390, 414 and 440 px
     (440 = largest current iPhone, the owner's phone), plus 768, 1000 and 1280. Re-check the
     statistics yearly and when a new phone width enters the top six.
-  - Accessibility: WCAG 2.2 AA, checked with axe-core in the layout check.
+  - Accessibility: WCAG 2.2 AA, checked with axe-core in the layout check, in light and dark mode.
+  - Colour: colours are defined and adjusted in OKLCH (reference: https://oklch.fyi/). Fix a
+    contrast problem by changing lightness (L) and keeping hue and chroma; derive new colours
+    from existing hues (tools/team_palette.py has the OKLCH helpers). Text needs 4.5:1 and focus
+    rings and chart lines 3:1, in both modes, checked by tests/test_colour_contrast.py, which
+    also makes every new colour token be checked or exempted with a reason.
   - Material Design 3: FOLLOW its usability rules (touch targets of at least 48 x 48 px on
     phones, visible focus and pressed states, a consistent type scale). DO NOT adopt its visual
     system (components, colour roles, shapes, elevation); the site keeps its own look.

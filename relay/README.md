@@ -53,14 +53,15 @@ Variables and secrets, add two plain-text variables:
 | Name | Value |
 |---|---|
 | `REPO` | `tgraham1212/Fantasy-Football-App` (owner/name of this repository) |
-| `SITE_ORIGIN` | `https://tgraham1212.github.io` (the published site's origin, no path, no trailing slash) |
+| `SITE_ORIGIN` | `https://fantasyfoosball.net` (the published site's origin, no path, no trailing slash; change it whenever the site's domain changes, or Refresh Data is refused) |
 
 Optional: `WORKFLOW` (default `refresh.yml`) and `REF` (default `main`).
 
 Check it from a terminal (the origin header must match `SITE_ORIGIN`):
 
 ```bash
-curl -H "Origin: https://tgraham1212.github.io" https://ffapp-refresh.<your-account>.workers.dev/status
+# in Windows PowerShell type curl.exe: plain curl there is Invoke-WebRequest and rejects -H
+curl -H "Origin: https://fantasyfoosball.net" https://ffapp-refresh.<your-account>.workers.dev/status
 # {"available":true,"minutes":0,"last_start":null}
 ```
 

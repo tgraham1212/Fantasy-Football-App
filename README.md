@@ -3,7 +3,7 @@
 Playoff forecasts and league history for two Sleeper leagues. A Python job pulls each
 league's history and Sleeper's player projections, simulates the rest of the
 season 10,000 times, keeps a week-by-week forecast history, and publishes a static
-website. GitHub Actions runs it daily.
+website at https://fantasyfoosball.net. GitHub Actions runs it daily.
 
 ## Setup
 
@@ -335,7 +335,13 @@ publishes the calibration page.
 
 `site/` is static: `index.html`, `styles.css`, `app.js`, a pinned copy of Chart.js
 in `site/vendor/`, and the exported data. It is deployed to GitHub Pages by the
-workflow. URL options: `#dynasty` / `#redraft` picks the league, `?team=<roster_id>`
+workflow and served at https://fantasyfoosball.net. The custom domain is set in the
+repository's Settings -> Pages (no CNAME file, since Actions deploys), with DNS at Cloudflare
+(four GitHub `A` records for the bare domain and a `www` CNAME to `tgraham1212.github.io`,
+all DNS-only) and a `_github-pages-challenge-tgraham1212` TXT record that verifies the
+domain on the account; keep that record. The old `tgraham1212.github.io/Fantasy-Football-App`
+address redirects to it. If the domain ever changes, update the relay's `SITE_ORIGIN` at
+the same time (see `relay/README.md`) or Refresh Data stops working. URL options: `#dynasty` / `#redraft` picks the league, `?team=<roster_id>`
 highlights a team, `?metric=playoffs|bye|title|avoid_losers_bye|last` picks the
 chart, `?theme=dark|light` forces a theme.
 

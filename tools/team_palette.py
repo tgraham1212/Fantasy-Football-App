@@ -36,7 +36,10 @@ from __future__ import annotations
 import math
 import sys
 
-BRAND_HUE = 258.0  # OKLCH hue of the light-theme accent #2a78d6
+# Start hue of the team palette. It sits near the accent blue's measured hue (255.5 for both the
+# old #2a78d6 and the current #2170cd, which differ only in lightness); kept at 258 so the
+# published team colours do not change.
+BRAND_HUE = 258.0
 
 # Slots strictly alternate dark/light so that list neighbours differ in lightness
 # as well as hue. Hues that only hold chroma when light (orange, teal, cyan, pink,

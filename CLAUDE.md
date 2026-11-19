@@ -21,7 +21,10 @@ outside a planned change.
 - **Browsers:** Chrome, Safari, Edge and Firefox on desktop; Chrome and Safari on phones.
 - **Phone widths:** 360, 390, 414 and 440 px (StatCounter US mobile stats, October 2026),
   plus 768, 1000 and 1280. Review the statistics yearly.
-- **Accessibility:** WCAG 2.2 AA (axe-core in the layout check).
+- **Accessibility:** WCAG 2.2 AA (axe-core in the layout check, light and dark mode).
+- **Colour:** define and adjust colours in OKLCH (https://oklch.fyi/); fix contrast by changing
+  lightness only, keeping hue and chroma; derive new colours from existing hues. Text 4.5:1,
+  focus rings and chart lines 3:1, both modes (`tests/test_colour_contrast.py`).
 - **Material Design 3:** follow its usability rules (48 x 48 px touch targets on phones,
   visible focus and pressed states, consistent type scale); do not adopt its visual system.
 - **Nomenclature** in anything people read (not code identifiers): Managers, Team Names,

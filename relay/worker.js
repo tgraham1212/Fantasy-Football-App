@@ -14,7 +14,7 @@
  * Settings (Cloudflare dashboard -> the Worker -> Settings -> Variables and secrets):
  *   GITHUB_TOKEN  secret: fine-grained token, this repository only, "Actions: Read and write"
  *   REPO          e.g. "tgraham1212/Fantasy-Football-App"
- *   SITE_ORIGIN   e.g. "https://tgraham1212.github.io"
+ *   SITE_ORIGIN   e.g. "https://fantasyfoosball.net"
  *   WORKFLOW      optional, default "refresh.yml";  REF  optional, default "main"
  */
 

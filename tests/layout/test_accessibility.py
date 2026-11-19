@@ -1,4 +1,4 @@
-"""Accessibility (WCAG 2.2 AA, axe-core) and Material Design 3 touch targets, in Chromium.
+"""Accessibility (WCAG 2.2 AA, axe-core, light and dark mode) and Material Design 3 touch targets, in Chromium.
 
 Both compare against baselines in tests/baselines/ that may only shrink: a new finding fails,
 and a listed finding that is gone fails until it is removed (UPDATE_BASELINES=1 rewrites)."""
@@ -26,13 +26,16 @@ def _open(open_page, view, width):
     return page
 
 
-def _axe_findings(page, view, width):
+def _axe_findings(page, view, width, mode):
+    # data-theme wins over the OS preference; the media-query dark block has the same tokens
+    # (tests/test_colour_contrast.py checks that)
+    page.evaluate("(m) => document.documentElement.setAttribute('data-theme', m)", mode)
     page.add_script_tag(path=str(AXE))
     result = page.evaluate("""(tags) => axe.run(document, { runOnly: { type: 'tag', values: tags }, resultTypes: ['violations'] })
         .then((r) => r.violations.flatMap((v) => v.nodes.map((n) => `${v.id} | ${n.target.join(' ')}`)))""", AXE_TAGS)
     # positional selectors (row and column indexes) change with the data, so drop them: a
     # recurring problem then counts once per view and width, and daily data refreshes stay stable
-    return {f"{view} | {width} | {_generic(f)}" for f in result}
+    return {f"{view} | {width} | {mode} | {_generic(f)}" for f in result}
 
 
 def _generic(finding: str) -> str:
@@ -47,9 +50,10 @@ def test_accessibility_wcag_22_aa(open_page):
     found = set()
     for view in VIEWS_CHECKED:
         for width in (390, 1280):
-            page = _open(open_page, view, width)
-            found |= _axe_findings(page, view, width)
-            page.close()
+            for mode in ("light", "dark"):
+                page = _open(open_page, view, width)
+                found |= _axe_findings(page, view, width, mode)
+                page.close()
     problems = compare("axe", found, "accessibility violation")
     assert not problems, "\n".join(problems[:40]) + (f"\n... {len(problems) - 40} more" if len(problems) > 40 else "")
 
