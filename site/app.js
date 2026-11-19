@@ -25,8 +25,8 @@ const state = {
 };
 
 const RATING_METRICS = [
-  { key: "mu", label: "Rating", title: /*copy:PRED-06*/"Manager rating over time", note: /*copy:PRED-07*/"Openskill rating of each manager's weekly points rank; 1000 is average" },
-  { key: "career_z", label: "Z-score", title: /*copy:PRED-08*/"Career z-score over time", note: /*copy:PRED-09*/"Career mean of weekly z-scores: standard deviations above or below that week's league average" },
+  { key: "mu", label: "Rating", note: /*copy:PRED-07*/"Openskill rating of each manager's weekly points rank; 1000 is average" },
+  { key: "career_z", label: "Z-score", note: /*copy:PRED-09*/"Average number of standard deviations above or below that week's league average score" },
 ];
 const RATING_RANGES = [
   { key: "season", label: "This season" },
@@ -111,10 +111,10 @@ function bottomColumn(L) {
 function metricsFor(L) {
   const bottom = bottomColumn(L);
   return [
-    { key: bottom.key, label: bottom.label, title: /*copy:PRED-10*/`${bottom.label} chances by week` },
-    { key: "playoffs", label: "Make playoffs", title: /*copy:PRED-11*/"Playoff chances by week" },
-    { key: "bye", label: "First-round bye", title: /*copy:PRED-12*/"First-round bye chances by week" },
-    { key: "title", label: "Win championship", title: /*copy:PRED-13*/"Championship chances by week" },
+    { key: bottom.key, label: bottom.label },
+    { key: "playoffs", label: "Make playoffs" },
+    { key: "bye", label: "First-round bye" },
+    { key: "title", label: "Win championship" },
   ];
 }
 
@@ -220,7 +220,6 @@ function renderSummary() {
     ? /*copy:PRED-14*/`Live: week ${L.live.week}, ${L.live.games_final} of ${L.live.games_total} games final`
     : L.as_of_week === 0 ? "Preseason" : /*copy:PRED-15*/`After week ${L.as_of_week} of ${L.regular_season_weeks}`;
   $("freshness").textContent = /*copy:PRED-16*/`${asOf} · updated ${formatDate(L.generated_at)} · ${L.runs.toLocaleString()} simulations`;
-  document.title = `${L.league_name} – Playoff Odds`;
 }
 
 // -- table ---------------------------------------------------------------------------
@@ -458,7 +457,6 @@ function renderChart() {
   const L = state.league;
   const metrics = metricsFor(L);
   const metric = metrics.find((m) => m.key === state.metric) || metrics[1];
-  $("chart-title").textContent = metric.title;
   const weeks = L.history.weeks;
   const canvas = $("odds-chart");
   const narrow = canvas.parentElement.clientWidth < 560;
@@ -557,7 +555,7 @@ function renderChart() {
   const sel = L.teams.find((t) => t.roster_id === state.selected);
   $("chart-note").textContent = sel
     ? /*copy:PRED-17*/`${sel.display_name || sel.team_name} is highlighted. Click the team again to clear.`
-    : /*copy:PRED-18*/"Each line is a team, in the colour shown beside its name in the table. Hover for every team's chance after a given week; click a line or a table row to highlight one team.";
+    : /*copy:PRED-18*/"Hover for every team's chance after a given week; Click a line or a table row to highlight one team.";
 }
 
 // -- rating chart -----------------------------------------------------------------------------------
@@ -629,7 +627,6 @@ function renderRatingChart() {
   const L = state.league;
   const R = L.ratings;
   const metric = RATING_METRICS.find((m) => m.key === state.ratingMetric) || RATING_METRICS[0];
-  $("rating-title").textContent = metric.title;
   if (!R || !R.weeks?.length) {
     $("rating-wrap").hidden = true;
     $("rating-metric").hidden = true;
@@ -766,7 +763,7 @@ function renderRatingChart() {
   const sel = datasets.find((d) => d.isSelected);
   $("rating-note").textContent = sel
     ? /*copy:PRED-20*/`${sel.label} is highlighted. Click the line again to clear.`
-    : /*copy:PRED-21*/`${metric.note}. Regular-season weeks only; each season's end-of-year owner is credited with that roster's weeks. Current members keep their table colour; former members are grey (dashed when a grey repeats).`;
+    : /*copy:PRED-21*/`${metric.note}. Regular-season only.`;
 }
 
 // -- loading ------------------------------------------------------------------------------------

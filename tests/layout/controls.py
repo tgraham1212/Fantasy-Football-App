@@ -207,13 +207,13 @@ CONTROLS: tuple[Control, ...] = (
             grow=("main section.card",), below="#chart-note"),
     Control("chart metric", "predictions", "#metric-switcher button",
             (State("other metric", click("#metric-switcher button[aria-pressed='false']")),),
-            grow=("main section.card",), below="#chart-title"),
+            grow=("main section.card",), below="#metric-switcher"),
     Control("rating metric", "predictions", "#rating-metric button",
             (State("other metric", click("#rating-metric button[aria-pressed='false']")),),
-            grow=("main section.card",), below="#rating-title"),
+            grow=("main section.card",), below="#rating-card .card-head"),
     Control("rating range", "predictions", "#rating-range button",
             (State("other range", click("#rating-range button[aria-pressed='false']")),),
-            grow=("main section.card",), below="#rating-title"),
+            grow=("main section.card",), below="#rating-card .card-head"),
 
     # Games page
     Control("week arrows", "games", "#games-prev, #games-next",
