@@ -466,6 +466,12 @@ Without Playwright or a browser engine the layout tests skip (the data refresh j
 way); `LAYOUT_REQUIRED=1`, set by the code-push workflow, turns a missing engine into a
 failure.
 
+The full layout check takes about 15 minutes, so any test run prints a progress line about
+once a minute: tests done of the total, time so far, an estimate of the time left, failures
+so far and the test running now (`tests/progress.py`). It appears in the terminal and in the
+GitHub Actions log. `PROGRESS_SECONDS=30` changes the interval; `PROGRESS_SECONDS=0` turns
+it off.
+
 ### Standards checks
 
 The project standards (browsers, phone widths, WCAG 2.2 AA, Material Design 3 usability,

@@ -9,6 +9,8 @@ from ffapp.store import Store
 from ffapp.sync import sync_league
 from tests.fixtures import DYNASTY, FixtureSession, load
 
+pytest_plugins = ["tests.progress"]  # a progress line about once a minute on long runs
+
 DYNASTY_CFG = LeagueConfig(key="dynasty", league_id=DYNASTY["2026"], name="Taco Tuesdays")
 
 
