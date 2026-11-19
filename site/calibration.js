@@ -207,7 +207,6 @@ function radiusFor(count, maxCount) {
 function renderReliability() {
   const R = state.report;
   const key = state.outcome;
-  $("reliability-title").textContent = /*copy:CAL-38*/`${outcomeLabel(key)}: predicted vs observed`;
   const canvas = $("reliability-chart");
   const narrow = canvas.parentElement.clientWidth < 560;
   const surface = cssVar("--surface");

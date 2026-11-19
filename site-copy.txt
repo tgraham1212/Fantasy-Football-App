@@ -498,7 +498,7 @@ TEXT:
 ${leagueName(key)}: drift is currently switched off.
 
 [CAL-32] score bias note
-WHERE: site/calibration.js line 438 (generated)
+WHERE: site/calibration.js line 437 (generated)
 TEXT:
 On average the simulation expected ${signed(sc.mean_bias, 1)} points more than teams actually scored (${signed(sc.mean_bias_sim_lineup, 1)} against the simulated lineup's own actual points). Typical simulated spread for one team-week: ±${num(sc.mean_sim_sd, 1)} points.
 
@@ -527,33 +527,28 @@ WHERE: site/calibration.js line 116 (generated)
 TEXT:
 <strong>Score noise:</strong> real scores fell inside the simulated 80% range ${pct(sc.coverage["80"], 1)} of the time and inside the 95% range ${pct(sc.coverage["95"], 1)} of the time, over ${sc.team_weeks.toLocaleString()} team-weeks.
 
-[CAL-38] generated text
-WHERE: site/calibration.js line 210 (generated)
-TEXT:
-${outcomeLabel(key)}: predicted vs observed
-
 [CAL-39] generated text
-WHERE: site/calibration.js line 281 (generated)
+WHERE: site/calibration.js line 280 (generated)
 TEXT:
 Shown at ${Math.round(r.lo * 100)}–${Math.round(r.hi * 100)}% (average ${Math.round(r.x)}%)
 
 [CAL-40] generated text
-WHERE: site/calibration.js line 282 (generated)
+WHERE: site/calibration.js line 281 (generated)
 TEXT:
 Happened ${Math.round(r.y)}% of the time
 
 [CAL-41] generated text
-WHERE: site/calibration.js line 380 (generated)
+WHERE: site/calibration.js line 379 (generated)
 TEXT:
 Real score in the ${items[0].label}th percentile of its simulation
 
 [CAL-42] generated text
-WHERE: site/calibration.js line 387 (generated)
+WHERE: site/calibration.js line 386 (generated)
 TEXT:
 Percentile of the real score within its simulated range
 
 [CAL-43] generated text
-WHERE: site/calibration.js line 443 (generated)
+WHERE: site/calibration.js line 442 (generated)
 TEXT:
 ${g.games.toLocaleString()} regular-season games · Brier ${num(g.brier, 4)} (0.25 = coin flip)
 
