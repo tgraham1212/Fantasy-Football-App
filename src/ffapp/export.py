@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+from datetime import datetime
 from pathlib import Path
 
 from ffapp.bracket import BracketRules
@@ -257,7 +258,8 @@ def war_export(store: Store, league_key: str) -> dict | None:
     return {"index": index, "files": files}
 
 
-def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE_DATA) -> list[Path]:
+def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE_DATA,
+                last_refresh: datetime | None = None) -> list[Path]:
     """Write one file per league plus an index. Raises ExportError if any league has no odds."""
     out_dir = Path(out_dir)
     exports = {key: league_export(store, config, key) for key in config.leagues}  # all or nothing
@@ -316,7 +318,10 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
         )
     index["refresh_url"] = config.site.refresh_url
     last_run = store.root / "refresh" / "last_run.json"
-    index["last_refresh"] = (read_json(last_run) or {}).get("started_at") if last_run.exists() else None
+    if last_refresh is not None:  # a refresh in progress: its own start time (see cmd_refresh)
+        index["last_refresh"] = last_refresh.isoformat(timespec="seconds")
+    else:
+        index["last_refresh"] = (read_json(last_run) or {}).get("started_at") if last_run.exists() else None
     index["calibration"] = None
     report_path = store.root / "calibration" / "report.json"
     if report_path.exists():

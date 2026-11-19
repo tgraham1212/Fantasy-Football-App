@@ -331,7 +331,9 @@ def cmd_export(ctx: Context) -> int:
     from ffapp.export import ExportError, export_site
 
     try:
-        written = export_site(ctx.store, ctx.config, ctx.args.site_data)
+        # inside `refresh` the site shows this run's start time; last_run.json is only written
+        # after the export (the last step) succeeds, so it would still hold the previous run's
+        written = export_site(ctx.store, ctx.config, ctx.args.site_data, last_refresh=getattr(ctx.args, "refresh_started", None))
     except ExportError as exc:
         print(f"FAILED   export: {exc}", file=sys.stderr)
         return 1
@@ -352,6 +354,7 @@ def cmd_refresh(ctx: Context) -> int:
     from ffapp.schedule import write_last_run
 
     started = datetime.now(timezone.utc)  # stored only once the run succeeds, so a failed run changes nothing
+    ctx.args.refresh_started = started  # the export step publishes it as the site's "Updated" time
     skipped: list[str] = []
     for name, handler in REFRESH_STEPS:
         print(f"== {name}")

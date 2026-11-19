@@ -67,6 +67,10 @@ def test_refresh_runs_every_step_when_sources_work(tmp_path):
     assert (tmp_path / "data" / "odds" / "dynasty" / "2026" / "live.json").exists()  # the fixture schedule has week 10 under way
     assert (tmp_path / "site-data" / "dynasty.json").exists()
     assert (tmp_path / "site-data" / "index.json").exists()
+    # the site's "Updated" time is this run's start, the same moment last_run.json records
+    index = json.loads((tmp_path / "site-data" / "index.json").read_text(encoding="utf-8"))
+    last_run = json.loads((tmp_path / "data" / "refresh" / "last_run.json").read_text(encoding="utf-8"))
+    assert index["last_refresh"] == last_run["started_at"]
 
 
 def test_stats_command_writes_current_season(tmp_path):

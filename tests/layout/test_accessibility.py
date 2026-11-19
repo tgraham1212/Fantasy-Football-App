@@ -13,6 +13,7 @@ from tests.baselines import compare
 from tests.layout.controls import CONTROL_QUERY, VIEWS
 
 AXE = Path(__file__).resolve().parent / "vendor" / "axe.min.js"
+WIDE_FONT = "* { font-family: Verdana, 'DejaVu Sans', sans-serif !important; }"  # as in test_layout.py
 VIEWS_CHECKED = ("predictions", "games", "games-final", "positions", "positions-past", "war", "war-all", "war-dialog", "calibration")
 AXE_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]
 TARGET = 48  # px, Material Design 3 touch target
@@ -71,8 +72,9 @@ PROBE_JS = """async ([query, target, describe]) => {
   const frame = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
   const modal = document.querySelector('dialog[open]');
   const out = {};
-  const isSticky = (n) => { for (; n; n = n.parentElement) if (getComputedStyle(n).position === 'sticky') return true; return false; };
-  const probe = (e) => {
+  // a pinned column: sticky with a left offset (a header row that sticks to the top doesn't count)
+  const pinnedOf = (n) => { for (; n; n = n.parentElement) { const cs = getComputedStyle(n); if (cs.position === 'sticky' && cs.left !== 'auto') return n; } return null; };
+  const probe = (e, coverRight = -Infinity) => {   // coverRight: right edge of a pinned column over it
     const r = e.getBoundingClientRect();
     // a control larger than the target (a table row, a scroll box) is probed over its visible part;
     // anything smaller gets a full target-sized square, so clipping of its tap area still fails
@@ -82,8 +84,9 @@ PROBE_JS = """async ([query, target, describe]) => {
       const c = a.getBoundingClientRect();
       v = { left: Math.max(v.left, c.left), top: Math.max(v.top, c.top), right: Math.min(v.right, c.right), bottom: Math.min(v.bottom, c.bottom) };
     }
-    v = { left: Math.max(v.left, 0), top: Math.max(v.top, 0), right: Math.min(v.right, innerWidth), bottom: Math.min(v.bottom, innerHeight) };
-    const span = (own, lo, hi) => own > target ? [(lo + hi) / 2, Math.max(hi - lo, 2) - 2] : null;
+    v = { left: Math.max(v.left, 0, coverRight), top: Math.max(v.top, 0), right: Math.min(v.right, innerWidth), bottom: Math.min(v.bottom, innerHeight) };
+    // the visible part is probed, but never less than the target: a mostly hidden control still fails
+    const span = (own, lo, hi) => own > target ? [(lo + hi) / 2, Math.max(hi - lo, target) - 2] : null;
     const sx = span(r.width, v.left, v.right), sy = span(r.height, v.top, v.bottom);
     const cx = sx ? sx[0] : r.left + r.width / 2, w = sx ? sx[1] : target - 2;   // inset 1 px
     const cy = sy ? sy[0] : r.top + r.height / 2, h = sy ? sy[1] : target - 2;
@@ -105,11 +108,13 @@ PROBE_JS = """async ([query, target, describe]) => {
     e.scrollIntoView({ block: 'center', inline: 'center' });
     await frame();                                                               // let snap scrolling settle
     let fail = probe(e);
-    if (fail && fail.hit && isSticky(fail.hit) && !isSticky(e)) {                // under a pinned column: scroll it clear,
+    if (fail && fail.hit && pinnedOf(fail.hit) && !pinnedOf(e)) {                // under a pinned column: scroll it clear,
       e.scrollIntoView({ block: 'center', inline: 'end' });                      // as a reader would, and try again
       await frame();
       fail = probe(e);
-    }
+      const pin = fail && fail.hit && pinnedOf(fail.hit);                        // still partly under it (a wide pinned
+      if (pin) fail = probe(e, pin.getBoundingClientRect().right);               // column): a reader taps the part beside
+    }                                                                            // it, which must be 48 px too
     if (fail) out[describeFn(e)] = fail.why;
   }
   return out;
@@ -124,12 +129,17 @@ def _small_controls(page, view) -> dict[str, str]:
 
 def test_touch_targets_on_phones(open_page):
     found, detail = set(), {}
+    # 360 px also with a wide font: Linux draws wider text than Windows, so chips that fit one row
+    # here wrap there, and a pinned column grows (both broke tap areas only on the CI runner)
     for view in VIEWS_CHECKED:
-        for width in (360, 440):
+        for width, wide in ((360, False), (440, False), (360, True)):
             page = _open(open_page, view, width)
+            if wide:
+                page.add_style_tag(content=WIDE_FONT)
+                page.wait_for_timeout(300)
             for control, why in _small_controls(page, view).items():
                 found.add(f"{view} | {control}")
-                detail.setdefault(f"{view} | {control}", f"{width} px: {why}")
+                detail.setdefault(f"{view} | {control}", f"{width} px{' (wide font)' if wide else ''}: {why}")
             page.close()
     problems = compare("touch", found, "control without a 48 x 48 px tap area")
     problems = [f"{p}  [{detail[k]}]" if (k := p.split(": ", 1)[-1]) in detail else p for p in problems]

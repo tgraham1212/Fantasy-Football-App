@@ -487,9 +487,10 @@ table.war.full thead th[aria-sort] { background: var(--ink); }
 .team-players { min-width: 0; font-size: 0.82rem; }
 .team-players .tp-name { font-weight: 650; margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 /* Each list is one grid: the name column is as wide as the list's longest name, so points (then
-   win probability added) line up right after the names; kickoff times sit at the right edge. */
+   win probability added) line up right after the names; kickoff times sit at the right edge and
+   always keep their own width (names shorten with an ellipsis instead of being drawn over). */
 .team-players ul { list-style: none; margin: 0; padding: 0; display: grid; row-gap: 2px; column-gap: 6px;
-  grid-template-columns: 2.6em minmax(0, max-content) auto auto 1fr; align-items: baseline; }
+  grid-template-columns: 2.6em minmax(0, max-content) auto auto minmax(max-content, 1fr); align-items: baseline; }
 .team-players li { display: contents; }
 .team-players li > .pos { grid-column: 1; }
 .team-players li > .pname { grid-column: 2; padding-right: 6px; }
@@ -659,6 +660,7 @@ footer { color: var(--muted); font-size: 0.8rem; text-align: center; padding-top
   .view-toggle button::before { content: ""; position: absolute; left: 0; right: 0; }
   .metrics button::before, .expand::before { top: -9px; bottom: -9px; }
   .metrics.small button::before { top: -13px; bottom: -13px; }
+  .metrics.small { row-gap: 25px; }           /* if the range chips wrap (wide fonts): 12 px above and below each */
   .range-row { margin-top: 14px; }           /* keeps the range chips' tap areas off the chart */
   .view-toggle button::before { top: -13px; bottom: -13px; }
   .metrics { row-gap: 17px; }                 /* wrapped chip rows: tap areas meet, never overlap (17, not 16: rows are ~31.5 px) */

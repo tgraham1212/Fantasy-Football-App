@@ -405,3 +405,29 @@ def test_pinned_columns_cover_nothing_before_scrolling(open_page, engine, view, 
       return out;
     }""", [rows, cell])
     assert not covered, f"{view} at {width}px: " + "; ".join(covered)
+
+
+@pytest.mark.parametrize("width", WIDTHS)
+def test_lineup_columns_never_overlap(open_page, width):
+    """Kickoff times, points and win probability added must never be drawn over each other (the
+    kickoff column collapsed to nothing beside long names and its text spilled over the points)."""
+    page, relay, ctx = open_view(open_page, "games", width)
+    page.evaluate("document.querySelectorAll('.team-players details').forEach((d) => { d.open = true; })")
+    found = page.evaluate("""() => {
+      const out = []; let kicks = 0;
+      // painted text extent: a Range covers text that overflows its box; the name keeps its clipped box
+      const box = (e) => { if (e.matches('.pname')) return e.getBoundingClientRect();
+        const r = document.createRange(); r.selectNodeContents(e); return r.getBoundingClientRect(); };
+      for (const li of document.querySelectorAll('.team-players ul:not(.out) li')) {
+        const parts = [...li.children].filter((e) => e.matches('.pos, .pname, .pts, .wpa, .kick') && e.textContent.trim())
+          .map((e) => [e.className, box(e)]).filter(([, r]) => r.width && r.height);
+        kicks += parts.some(([n]) => n.includes('kick'));
+        for (let a = 0; a < parts.length; a++) for (let b = a + 1; b < parts.length; b++) {
+          const [na, ra] = parts[a], [nb, rb] = parts[b];
+          if (Math.min(ra.right, rb.right) - Math.max(ra.left, rb.left) > 0.5) out.push(`${li.textContent.trim().slice(0, 30)}: ${na} overlaps ${nb}`);
+        }
+      }
+      return { out, kicks };
+    }""")
+    assert found["kicks"], "the Games view shows no kickoff times, so the check proves nothing"
+    assert not found["out"], f"{width}px:\n" + "\n".join(found["out"][:12])

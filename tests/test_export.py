@@ -338,3 +338,16 @@ def test_export_writes_positional_rankings(seeded_store, dynasty_config, tmp_pat
     again = tmp_path / "again"
     export_site(seeded_store, dynasty_config, again)
     assert (again / "dynasty" / "positions" / f"{seasons[-1]}.json").read_text(encoding="utf-8") == (out / "dynasty" / "positions" / f"{seasons[-1]}.json").read_text(encoding="utf-8")
+
+
+def test_refresh_export_shows_this_runs_start_not_the_previous_one(seeded_store, dynasty_config, tmp_path):
+    """Inside `refresh`, last_run.json still holds the previous run until the export (the last step)
+    succeeds, so the export is handed this run's start time instead."""
+    from datetime import datetime, timezone
+
+    simulate_weeks(seeded_store, dynasty_config, [0, 1])
+    write_json(seeded_store.root / "refresh" / "last_run.json", {"started_at": "2026-11-19T01:06:53+00:00"})
+    out = tmp_path / "site-data"
+    export_site(seeded_store, dynasty_config, out, last_refresh=datetime(2026, 11, 19, 18, 3, 29, tzinfo=timezone.utc))
+    index = json.loads((out / "index.json").read_text(encoding="utf-8"))
+    assert index["last_refresh"] == "2026-11-19T18:03:29+00:00"

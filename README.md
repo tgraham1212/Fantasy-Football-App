@@ -511,7 +511,9 @@ current and next week of the NFL schedule and decides from it. It refreshes when
 kicks off within the next 60 minutes or a game has gone final since the last refresh
 (a final game counts when it kicked off after four hours before the last run), and never
 within three hours of the last refresh's start, which a successful refresh records in
-`data/refresh/last_run.json`. Replayed over week 11 of 2026 (Eastern time), that gives
+`data/refresh/last_run.json`. The site's "Updated … ago" note under Refresh Data shows
+the same start time: the export (the run's last step) is handed it directly, because
+`last_run.json` is only written once that step has succeeded. Replayed over week 11 of 2026 (Eastern time), that gives
 7:20 pm Thursday before the night game and 12:20 am after it; on Sunday 12:20 pm before
 the 1 pm games, 3:20 pm before the 4 pm games, 6:20 pm once the early games are final
 (two hours before the night game), 9:20 pm once the late games are final and 12:20 am
