@@ -230,10 +230,17 @@ tbody tr:hover td { background: color-mix(in srgb, var(--surface), var(--ink) 4%
 tbody tr[aria-selected="true"] td { background: color-mix(in srgb, var(--surface), var(--accent) 12%); }
 tbody tr[aria-selected="true"] .col-elo { box-shadow: inset 3px 0 0 var(--accent); }
 
-/* Fixed widths for the three leading columns so they can be pinned as a group (>= 600px). */
-.col-elo { width: 62px; min-width: 62px; }
-.col-elo-change { width: 64px; min-width: 64px; }
-.col-owner { min-width: 190px; max-width: 250px; white-space: normal; }
+/* Forecast table: compact rows, slightly larger text; columns left of Manager left-aligned, Manager
+   centred, columns right of it right-aligned (headers and cells alike). Fixed widths for the leading
+   columns so they can be pinned (all three at >= 600px, Manager alone below). */
+#odds-table th, #odds-table td { padding: 6px 8px; }
+#odds-table tbody td { font-size: 1.04rem; }
+#odds-table .col-elo, #odds-table .col-elo-change { text-align: left; }
+#odds-table .col-owner, #odds-table th.col-owner .sort { text-align: center; }
+#odds-table .col-owner .owner-name { font-weight: 700; white-space: nowrap; }
+.col-elo { width: 50px; min-width: 50px; }
+.col-elo-change { width: 56px; min-width: 56px; }
+.col-owner { min-width: 170px; white-space: nowrap; }
 .col-proj { min-width: 96px; }
 .col-chance { min-width: 92px; }
 .col-chance .sort { white-space: normal; max-width: 7.5em; }
@@ -256,10 +263,18 @@ td.chance.chance-low { color: var(--ink-2); font-weight: 500; }
 @media (min-width: 600px) {
   .col-elo, .col-elo-change, .col-owner { position: sticky; z-index: 1; }
   .col-elo { left: 0; }
-  .col-elo-change { left: 62px; }
-  .col-owner { left: 126px; box-shadow: 1px 0 0 var(--grid); }
+  .col-elo-change { left: 50px; }
+  .col-owner { left: 106px; box-shadow: 1px 0 0 var(--grid); }
   thead .col-elo, thead .col-elo-change, thead .col-owner { background: var(--surface); z-index: 2; }
   thead th[aria-sort].col-owner { background: var(--ink); }
+}
+/* Phones: only the Manager column stays pinned; ELO and 1-week change scroll away beneath it. */
+@media (max-width: 599.98px) {
+  /* the left shadow covers the scroll container's padding strip, so nothing peeks past the pinned column */
+  #odds-table .col-owner { position: sticky; left: 0; z-index: 1; box-shadow: -14px 0 0 var(--surface), 1px 0 0 var(--grid); }
+  #odds-table thead .col-owner { background: var(--surface); z-index: 2; }
+  #odds-table thead th[aria-sort].col-owner { background: var(--ink); }
+  #odds-table th, #odds-table td { padding: 6px 6px; }
 }
 
 /* Metric switcher */
@@ -269,6 +284,16 @@ td.chance.chance-low { color: var(--ink-2); font-weight: 500; }
   font: inherit; font-size: 0.85rem; font-weight: 600; padding: 5px 11px; border-radius: 999px; cursor: pointer;
 }
 .metrics button[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+/* Smaller secondary buttons (the rating chart's time range, below the chart). */
+.metrics.small button { font-size: 0.75rem; padding: 3px 9px; }
+.range-row { margin-top: 8px; }
+/* Phones: the odds chart's metric buttons form one strip that scrolls sideways under a finger. */
+@media (max-width: 599.98px) {
+  #metric-switcher { flex: 1 1 100%; min-width: 0; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden;
+    scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; }
+  #metric-switcher::-webkit-scrollbar { display: none; }
+  #metric-switcher button { flex: none; white-space: nowrap; scroll-snap-align: start; }
+}
 
 .chart-wrap { position: relative; height: 420px; }
 .switchers { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; }
@@ -282,7 +307,7 @@ td.chance.chance-low { color: var(--ink-2); font-weight: 500; }
   .chart-wrap { height: 340px; }
   .card { padding: 14px; border-radius: 12px; }
   .table-wrap { margin: 0 -14px; padding: 0 14px; }
-  .col-owner { min-width: 160px; max-width: 190px; }
+  .col-owner { min-width: 150px; }
   th, td { padding: 8px 8px; }
   h1 { font-size: 1.3rem; }
 }
@@ -326,9 +351,9 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
   scrollbar-width: none; -webkit-overflow-scrolling: touch;
 }
 .subtabs::-webkit-scrollbar { display: none; }
-.subtabs.fade-right { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
-.subtabs.fade-left { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 32px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 32px), transparent); }
-.subtabs.fade-left.fade-right { -webkit-mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent); mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent); }
+.subtabs.fade-right, #metric-switcher.fade-right { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
+.subtabs.fade-left, #metric-switcher.fade-left { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 32px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 32px), transparent); }
+.subtabs.fade-left.fade-right, #metric-switcher.fade-left.fade-right { -webkit-mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent); mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent); }
 .subtabs button {
   appearance: none; border: 0; background: none; color: var(--ink-2); font: inherit; font-weight: 600;
   padding: 8px 14px 10px; cursor: pointer; border-bottom: 2px solid transparent;
@@ -400,6 +425,12 @@ dialog#war-dialog::backdrop { background: rgba(0, 0, 0, 0.45); }
 table.war.full { min-width: 640px; }
 table.war.full thead th { position: sticky; top: 0; background: var(--surface); z-index: 1; }
 table.war.full thead th[aria-sort] { background: var(--ink); }
+/* Phones: the player name stays pinned to the left edge while the full list scrolls sideways. */
+@media (max-width: 599.98px) {
+  table.war.full td.name, table.war.full th[data-col="name"] { position: sticky; left: 0; box-shadow: -14px 0 0 var(--surface), 1px 0 0 var(--grid); }
+  table.war.full td.name { background: var(--surface); z-index: 1; }
+  table.war.full thead th[data-col="name"] { z-index: 3; }
+}
 @media (max-width: 700px) {
   .war-grid { grid-template-columns: minmax(0, 1fr); }
   .war-table:last-child:nth-child(odd) { width: auto; justify-self: stretch; }
@@ -429,15 +460,15 @@ table.war.full thead th[aria-sort] { background: var(--ink); }
 .game-label { color: var(--ink-2); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
 .game-body { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 12px; align-items: center; }
 .game-rows { display: grid; gap: 8px; }
-.game-team { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; gap: 8px; }
-.game-team .swatch { margin-right: 0; }
+.game-team { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: start; gap: 8px; }
+.game-team .swatch { margin-right: 0; align-self: start; margin-top: 0.45em; }
+.game-team .win { align-self: center; }
 .game-team .who { min-width: 0; }
 .game-team .owner-name { display: block; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .game-team .team { display: block; color: var(--muted); font-size: 0.78rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .game-team .mean { text-align: right; line-height: 1.15; font-variant-numeric: tabular-nums; }
 .game-team .mean .num { display: block; font-weight: 650; }
-.game-team .mean .unit, .game-team .mean .actual { display: block; color: var(--muted); font-size: 0.72rem; }
-.game-team .mean .actual { color: var(--ink-2); font-weight: 600; }
+.game-team .mean .unit { display: block; color: var(--muted); font-size: 0.72rem; white-space: nowrap; }
 .game-team .win { min-width: 4.4em; padding: 6px 8px; border-radius: 8px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
 .game-team .win .check { margin-right: 4px; }
 .game-team .bye-tag { grid-column: 3 / -1; justify-self: end; color: var(--ink-2); font-weight: 650; }
@@ -446,8 +477,16 @@ table.war.full thead th[aria-sort] { background: var(--ink); }
 .game-players { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; border-top: 1px solid var(--grid); padding-top: 10px; }
 .team-players { min-width: 0; font-size: 0.82rem; }
 .team-players .tp-name { font-weight: 650; margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.team-players ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
-.team-players li { display: grid; grid-template-columns: 2.6em minmax(0, 1fr) auto; gap: 6px; }
+/* Each list is one grid: the name column is as wide as the list's longest name, so points (then
+   win probability added) line up right after the names; kickoff times sit at the right edge. */
+.team-players ul { list-style: none; margin: 0; padding: 0; display: grid; row-gap: 2px; column-gap: 6px;
+  grid-template-columns: 2.6em minmax(0, max-content) auto auto 1fr; align-items: baseline; }
+.team-players li { display: contents; }
+.team-players li > .pos { grid-column: 1; }
+.team-players li > .pname { grid-column: 2; padding-right: 6px; }
+.team-players li > .pts { grid-column: 3; text-align: right; }
+.team-players li > .wpa { grid-column: 4; }
+.team-players li > .kick { grid-column: 5; justify-self: end; }
 .team-players li .pos { color: var(--muted); font-weight: 600; }
 .team-players li .pname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .team-players li .pts { font-variant-numeric: tabular-nums; color: var(--ink-2); }
@@ -456,15 +495,19 @@ table.war.full thead th[aria-sort] { background: var(--ink); }
 .team-players summary { cursor: pointer; color: var(--accent); font-weight: 600; }
 .team-players details ul { margin-top: 4px; }
 .team-players .out-label { margin-top: 8px; color: var(--ink-2); font-weight: 650; }
-.team-players ul.out li { grid-template-columns: minmax(0, 1fr) auto; }
+.team-players ul.out { grid-template-columns: minmax(0, max-content) auto; column-gap: 0.9em; justify-content: start; }
+.team-players ul.out li > .pname { grid-column: 1; }
+.team-players ul.out li > .reason { grid-column: 2; }
 .team-players ul.out .reason { color: var(--bad); font-weight: 600; }
 @media (max-width: 700px) {
   .games-cards { grid-template-columns: minmax(0, 1fr); }
   .games-cards > .game-card:last-child:nth-child(odd) { width: auto; justify-self: stretch; }
   .game-card { padding: 14px; }
 }
-@media (max-width: 420px) {
+/* Phones: the chart moves under the team rows so the rows get the card's full width. */
+@media (max-width: 599.98px) {
   .game-body { grid-template-columns: minmax(0, 1fr); }
+  .game-team .win { min-width: 3.4em; padding: 4px 6px; font-size: 0.92rem; }
 }
 /* Phones: stack the two teams' player lists so names get the card's width. */
 @media (max-width: 559.98px) {
@@ -486,6 +529,7 @@ table.war.full thead th[aria-sort] { background: var(--ink); }
   /* phones: the note sits beside the button on its own row, in a fixed width */
   .top:has(#refresh-box:not([hidden])) { row-gap: 12px; padding-bottom: 12px; }
   .refresh { grid-column: 1 / -1; grid-row: 4; display: flex; align-items: center; gap: 10px; justify-self: stretch; min-width: 0; }
+  .top:not(:has(.pages)) .refresh { grid-row: 3; } /* league pages have no page link row any more */
   .refresh-note { position: static; transform: none; flex: 1 1 0; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 }
 
@@ -500,14 +544,16 @@ table.war.full thead th[aria-sort] { background: var(--ink); }
 .live-badge .arc-out { animation: live-wave 1.6s ease-in-out infinite; animation-delay: 0.35s; }
 @media (prefers-reduced-motion: reduce) { .live-badge .arc { animation: none; } }
 .game-card.live { border-color: color-mix(in srgb, var(--live), var(--border) 60%); }
-.team-players li { grid-template-columns: 2.6em minmax(0, 1fr) auto auto; }
-.game-card.no-aside .team-players ul:not(.out) li { grid-template-columns: 2.6em minmax(0, 1fr) auto; }
-.team-players .aside { text-align: right; font-variant-numeric: tabular-nums; min-width: 0; }
+.team-players .aside { text-align: right; font-variant-numeric: tabular-nums; min-width: 0; white-space: nowrap; }
 .team-players .aside.kick { color: var(--muted); font-size: 0.72rem; font-weight: 600; white-space: nowrap; }
 .team-players .st-bench { color: var(--muted); border: 1px solid var(--axis); border-radius: 4px; padding: 0 3px; line-height: 1.2; font-weight: 700; }
-.game-team .who .choices { display: block; font-size: 0.72rem; font-weight: 700; color: var(--ink-2); }
-.game-team .who .choices.up { color: var(--good); }
-.game-team .who .choices.down { color: var(--bad); }
+/* Lineup choices sits on its own line under the forecasted line, right-aligned; it reaches left into
+   the free space under the team name, so it never widens the score column or squeezes the name. */
+.game-team .mean { position: relative; }
+.game-team .mean:has(.choices) { padding-bottom: 1.4em; }
+.game-team .mean .choices { position: absolute; right: 0; bottom: 0; font-size: 0.72rem; font-weight: 700; color: var(--ink-2); white-space: nowrap; }
+.game-team .mean .choices.up { color: var(--good); }
+.game-team .mean .choices.down { color: var(--bad); }
 .game-label .rebuilt { font-size: 0.7rem; font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--muted); border: 1px dashed var(--axis); border-radius: 4px; padding: 0 4px; }
 .view-toggle { margin-left: auto; display: inline-flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; text-transform: none; letter-spacing: 0; }
 .view-toggle button { appearance: none; border: 0; background: transparent; color: var(--ink-2); font: inherit; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; cursor: pointer; }
@@ -524,7 +570,6 @@ table.war.full thead th[aria-sort] { background: var(--ink); }
 .team-players .wpa { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; font-size: 0.78rem; }
 .team-players .wpa.up { color: var(--good); }
 .team-players .wpa.down { color: var(--bad); }
-.team-players ul.out li { grid-template-columns: minmax(0, 1fr) auto; }
 
 .status { color: var(--muted); text-align: center; padding: 24px 0; }
 .status.error { color: var(--bad); }

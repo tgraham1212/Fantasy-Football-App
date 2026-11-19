@@ -254,7 +254,7 @@ function renderGrid() {
     box.innerHTML = `
       <div class="war-table-head"><h3>${POSITION_LABEL[pos]}</h3><span class="hint">Top ${TOP_N} by WAR</span></div>
       <div class="war-scroll"><table class="plain war">
-        <thead><tr><th scope="col" class="num rank">#</th><th scope="col">Name</th><th scope="col">NFL</th><th scope="col">Owner</th>${extraHeader()}<th scope="col" class="num">WAR</th></tr></thead>
+        <thead><tr><th scope="col" class="num rank">#</th><th scope="col">Name</th><th scope="col">NFL</th><th scope="col">Manager</th>${extraHeader()}<th scope="col" class="num">WAR</th></tr></thead>
         <tbody>${rows.map((r) => `<tr><td class="num rank">${r.rank}</td><td class="name">${escapeHtml(r.name)}</td><td class="muted">${escapeHtml(r.team || "")}</td>${ownerCell(r)}${extraCell(r)}<td class="num war-value">${fmtWar(r.war)}</td></tr>`).join("")}</tbody>
       </table></div>
       <button type="button" class="expand" data-pos="${pos}" aria-label="Show every ${POSITION_LABEL[pos].toLowerCase()} with a WAR"><span aria-hidden="true">&#x2922;</span> Full list</button>`;
@@ -270,7 +270,7 @@ function dialogColumns(pos) {
     { key: "rank", label: "#", num: true, value: (r) => -r.rank, cell: (r) => r.rank },
     { key: "name", label: "Name", text: (r) => r.name.toLowerCase(), cell: (r) => escapeHtml(r.name) },
     { key: "team", label: "NFL", text: (r) => (r.team || "").toLowerCase(), cell: (r) => escapeHtml(r.team || "") },
-    { key: "owner", label: "Owner", text: (r) => (r.owner || "￿").toLowerCase(), cell: null },
+    { key: "owner", label: "Manager", text: (r) => (r.owner || "￿").toLowerCase(), cell: null },
   ];
   if (state.selection === "all") {
     cols.push(state.mode === "career"

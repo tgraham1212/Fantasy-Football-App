@@ -405,6 +405,14 @@ one week of roster drift, with a seed fixed per league, season and week. It is c
 once and kept. Weeks that finished before the log existed use the forecast made as of
 the week before instead, marked `pre-week`; for 2026 that is weeks 1 to 10.
 
+Each team row shows its score block beside the win probability: before kickoff, the
+forecast (mean simulated points, labelled "forecast"); once a game is live or final, the
+current or final score in large type with the forecast beneath it ("forecasted") and the
+team's lineup choices under that. On screens narrower than 600 px the chart moves under the
+team rows so names and scores get the card's width. In the lineups, points (then win
+probability added) sit just after the longest name of each list and line up as a column,
+kickoff times sit at the right edge, and "Not playing" reasons follow the name.
+
 ### Model and actual lineups
 
 Finished and live game cards have a **Model | Actual** toggle (upcoming weeks show the model
@@ -544,16 +552,20 @@ highlights a team, `?metric=playoffs|bye|title|avoid_losers_bye|last` picks the
 chart, `?theme=dark|light` forces a theme.
 
 The odds table follows the FiveThirtyEight layout: ELO (the manager's current
-rating, see Manager ratings) and its change over the last rated week, owner with
-team name and record, projected
-record, then four chance columns filled on a white-to-blue ramp. The first chance
+rating, see Manager ratings) and its change over the last rated week, **Manager** (bold
+name with team name and record), projected
+record, then four chance columns filled on a white-to-blue ramp. Columns left of Manager are
+left-aligned, Manager is centred and the columns right of it are right-aligned (headers and
+cells alike). On a phone the table scrolls sideways inside its box with the Manager column
+pinned to the left edge, so ELO and 1-week change scroll away while the names stay beside the
+chances; wider screens pin the first three columns. The first chance
 column depends on the league: a toilet-bowl league shows **Avoid Loser's Bye**
 (finishing outside the bottom two), a dynasty league with a consolation bracket
 shows **#1 Pick** (finishing last). The export decides this from Sleeper's
 `playoff_type` and `type` settings (`bottom_column` in `site/data/<league>.json`).
 Rows start in standings order; clicking a header sorts descending, clicking again
 ascending. Hovering a chance shows its change since the previous week. Each team
-has a fixed colour (the dot beside the owner name) that matches its line in the
+has a fixed colour (the dot beside the manager name) that matches its line in the
 chart; the palette comes from `tools/team_palette.py`.
 
 Under the odds chart, the rating chart plots every manager who has ever played in
@@ -573,14 +585,15 @@ opens scrolled to the selected tab); the page itself never scrolls sideways. The
 10 per position in two columns (QB and RB, WR and TE, DEF and K; a league without a
 kicker slot centres its last table), for the current season by default, any past
 season, or **All-Time** with a toggle between player-seasons and careers. Each table
-expands into a full sortable list with games, points and the position's stats. The
-owner column is the manager holding the player at the end of that season (the current
+expands into a full sortable list with games, points and the position's stats (on a phone
+the player name stays pinned while the list scrolls sideways). The
+Manager column is the manager holding the player at the end of that season (the current
 roster for the season in progress); hovering it lists any other managers who held
 them. The bottom of the page explains the calculation with a flow chart and walks
 through Kittle and Bowers in 2024 week by week from the league's own data. Seasons
 before the first weekly-cut season are noted as using a yearly replacement cut.
 
-`calibration.html` ("How good are these odds?", linked from the header) shows the
+`calibration.html` ("How good are these odds?", linked from the footer) shows the
 calibration report: predicted-vs-observed reliability per outcome, the score-noise
 percentile histogram and interval coverage, head-to-head win-chance bins, the lineup
 gap and the caveats. The export copies `data/calibration/report.json` to
@@ -634,7 +647,7 @@ tab names and table column headers are not part of the file).
 
 ### Layout check
 
-`tests/layout/` loads every page in the installed Chrome at 375, 768, 1000 and
+`tests/layout/` loads every page in the installed Chrome at 375, 440 (current large phones), 768, 1000 and
 1280 px, drives every control through its states (the refresh relay, `version.json`
 and `data/index.json` are simulated, so no refresh starts) and fails when anything
 the control is not designed to change moves or resizes, or when the page scrolls

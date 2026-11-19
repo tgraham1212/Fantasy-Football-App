@@ -128,7 +128,7 @@ function standingsCompare(a, b) {
 }
 
 /* Sortable columns. `value` gives the natural "first click" ordering: highest first
-   for numbers; for Owner the natural order is A to Z, so its value is negated rank. */
+   for numbers; for Manager the natural order is A to Z, so its value is negated rank. */
 function columnsFor(L) {
   const bottom = bottomColumn(L);
   return {
@@ -273,15 +273,21 @@ function initSubtabs() {
   const menu = $("subtabs");
   for (const btn of menu.querySelectorAll("button")) btn.addEventListener("click", () => showPage(btn.dataset.page));
   menu.addEventListener("scroll", updateSubtabFade, { passive: true });
-  addEventListener("resize", () => { revealSelectedSubtab(); updateSubtabFade(); });
+  addEventListener("resize", () => { revealSelectedSubtab(); updateSubtabFade(); updateStripFade($("metric-switcher")); });
+  $("metric-switcher").addEventListener("scroll", () => updateStripFade($("metric-switcher")), { passive: true });
 }
 
 /* On a phone the sub-tab row scrolls sideways: fade whichever edge has more tabs beyond it. */
 function updateSubtabFade() {
-  const menu = $("subtabs");
-  const max = menu.scrollWidth - menu.clientWidth;
-  menu.classList.toggle("fade-left", max > 1 && menu.scrollLeft > 1);
-  menu.classList.toggle("fade-right", max > 1 && menu.scrollLeft < max - 1);
+  updateStripFade($("subtabs"));
+}
+
+/* A sideways-scrolling strip fades whichever edge has more items beyond it. */
+function updateStripFade(strip) {
+  if (!strip) return;
+  const max = strip.scrollWidth - strip.clientWidth;
+  strip.classList.toggle("fade-left", max > 1 && strip.scrollLeft > 1);
+  strip.classList.toggle("fade-right", max > 1 && strip.scrollLeft < max - 1);
 }
 
 /* Bring the selected sub-tab into the visible strip by scrolling the strip alone (never
@@ -330,8 +336,8 @@ function renderTable() {
     tr.tabIndex = 0;
     tr.setAttribute("aria-selected", String(state.selected === t.roster_id));
     tr.innerHTML = `
-      <td class="num col-elo">${t.elo == null ? "" : Math.round(t.elo)}</td>
-      <td class="num col-elo-change">${eloDelta(t.elo_change)}</td>
+      <td class="col-elo">${t.elo == null ? "" : Math.round(t.elo)}</td>
+      <td class="col-elo-change">${eloDelta(t.elo_change)}</td>
       <td class="col-owner">
         <span class="owner-name"><span class="swatch" style="--team: var(${state.colors[t.roster_id] || "--accent"})" aria-hidden="true"></span>${escapeHtml(t.display_name ?? "")}<span class="record">${record(t)}</span></span>
         <span class="team">${escapeHtml(t.team_name)}</span>
@@ -388,9 +394,21 @@ function renderMetrics() {
     });
     box.appendChild(btn);
   }
+  requestAnimationFrame(() => updateStripFade(box));
 }
 
 // -- chart ---------------------------------------------------------------------------------
+
+/* Right padding for the end labels: room for every label on wide screens; on narrow screens only the
+   highlighted team is labelled, so room for that one label, and almost none when nothing is highlighted. */
+function labelPadding(datasets, narrow) {
+  if (!narrow) return 160;
+  const selected = datasets.find((d) => d.isSelected);
+  if (!selected) return 10;
+  const ctx = document.createElement("canvas").getContext("2d");
+  ctx.font = '600 11.5px system-ui, -apple-system, "Segoe UI", sans-serif';
+  return Math.ceil(ctx.measureText(selected.shortLabel || "").width) + 22;
+}
 
 /* Direct labels at each line's end: a dot in the team colour, then the name in ink.
    On narrow screens only the selected team is labeled. */
@@ -501,7 +519,7 @@ function renderChart() {
       responsive: true,
       maintainAspectRatio: false,
       animation: false,
-      layout: { padding: { right: narrow ? 104 : 160, top: 8 } },
+      layout: { padding: { right: labelPadding(datasets, narrow), top: 8 } },
       interaction: { mode: "index", intersect: false },
       onClick(evt, elements, chart) {
         const hits = chart.getElementsAtEventForMode(evt, "nearest", { intersect: false }, true);
@@ -697,7 +715,7 @@ function renderRatingChart() {
       responsive: true,
       maintainAspectRatio: false,
       animation: false,
-      layout: { padding: { right: narrow ? 104 : 160, top: 8 } },
+      layout: { padding: { right: labelPadding(datasets, narrow), top: 8 } },
       interaction: { mode: "index", intersect: false },
       onClick(evt, elements, chart) {
         const hits = chart.getElementsAtEventForMode(evt, "nearest", { intersect: false }, true);

@@ -33,7 +33,7 @@ TEXT:
 Monte Carlo Forecast & Statistics for Fantasy Football
 
 [HDR-04] paragraph
-WHERE: site/index.html line 203
+WHERE: site/index.html line 200
 TEXT:
 Data from the Sleeper API. Projections by Rotowire via Sleeper. Refreshed daily. <a href="calibration.html">How good are these odds?</a>
 
@@ -43,17 +43,17 @@ Data from the Sleeper API. Projections by Rotowire via Sleeper. Refreshed daily.
 ##############################################################################
 
 [PRED-01] paragraph
-WHERE: site/index.html line 39
+WHERE: site/index.html line 38
 TEXT:
 Every remaining week is simulated 10,000 times using each team's current roster, the real schedule, Sleeper's player projections and how far real scores have strayed from projections in the past. The playoffs and losers bracket are played out with the league's actual rules. These are chances, not predictions: a team at 70% misses roughly three times in ten.
 
 [PRED-02] heading
-WHERE: site/index.html line 49
+WHERE: site/index.html line 48
 TEXT:
 End of Season Forecast
 
 [PRED-03] paragraph
-WHERE: site/index.html line 50
+WHERE: site/index.html line 49
 TEXT:
 Click a header to sort, a row to highlight it in the charts below; hover a % for the change from last week.
 
@@ -83,37 +83,37 @@ TEXT:
 ${asOf} · updated ${formatDate(L.generated_at)} · ${L.runs.toLocaleString()} simulations
 
 [PRED-17] odds chart note (a team highlighted)
-WHERE: site/app.js line 557 (generated)
+WHERE: site/app.js line 575 (generated)
 TEXT:
 ${sel.display_name || sel.team_name} is highlighted. Click the team again to clear.
 
 [PRED-18] odds chart note (nothing highlighted)
-WHERE: site/app.js line 558 (generated)
+WHERE: site/app.js line 576 (generated)
 TEXT:
 Hover for every team's chance after a given week; Click a line or a table row to highlight one team.
 
 [PRED-19] rating chart: no ratings yet
-WHERE: site/app.js line 634 (generated)
+WHERE: site/app.js line 652 (generated)
 TEXT:
 Manager ratings are not yet available for this league.
 
 [PRED-20] rating chart note (a manager highlighted)
-WHERE: site/app.js line 765 (generated)
+WHERE: site/app.js line 783 (generated)
 TEXT:
 ${sel.label} is highlighted. Click the line again to clear.
 
 [PRED-21] rating chart note (follows the description above)
-WHERE: site/app.js line 766 (generated)
+WHERE: site/app.js line 784 (generated)
 TEXT:
 ${metric.note}. Regular-season only.
 
 [PRED-22] generated text
-WHERE: site/app.js line 727 (generated)
+WHERE: site/app.js line 745 (generated)
 TEXT:
 ${w.season}, preseason (after reversion)
 
 [PRED-23] generated text
-WHERE: site/app.js line 727 (generated)
+WHERE: site/app.js line 745 (generated)
 TEXT:
 ${w.season}, after week ${w.week}
 
@@ -123,7 +123,7 @@ ${w.season}, after week ${w.week}
 ##############################################################################
 
 [GAME-01] paragraph
-WHERE: site/index.html line 110
+WHERE: site/index.html line 107
 TEXT:
 Games are not yet available for this league: the game forecasts have not been exported.
 
@@ -173,14 +173,24 @@ TEXT:
 · projected, happens in ${Math.round((g.frequency || 0) * 100)}% of simulations
 
 [GAME-11] generated text
-WHERE: site/games.js line 328 (generated)
+WHERE: site/games.js line 331 (generated)
 TEXT:
 First-round bye · #${b.seed} seed in the ${where}
 
 [GAME-12] generated text
-WHERE: site/games.js line 379 (generated)
+WHERE: site/games.js line 382 (generated)
 TEXT:
 No games stored for this week.
+
+[GAME-13] score label: upcoming games
+WHERE: site/games.js line 192 (generated)
+TEXT:
+forecast
+
+[GAME-14] score label: finished and live games (after the forecast)
+WHERE: site/games.js line 190 (generated)
+TEXT:
+forecasted
 
 
 ##############################################################################
@@ -188,17 +198,17 @@ No games stored for this week.
 ##############################################################################
 
 [POS-01] heading
-WHERE: site/index.html line 120
+WHERE: site/index.html line 117
 TEXT:
 Positional Rankings
 
 [POS-02] paragraph
-WHERE: site/index.html line 128
+WHERE: site/index.html line 125
 TEXT:
 Each dot is a rostered player at his points per game. The dotted line is the position's replacement level from Player WAR. A dotted outline marks a taxi-squad player, and a red cross marks a player who is out (Out, Doubtful, IR, PUP, suspended, not active or did not report). Hover or tap a dot for the player.
 
 [POS-03] paragraph
-WHERE: site/index.html line 129
+WHERE: site/index.html line 126
 TEXT:
 Positional rankings are not yet available for this league: the site data has not been exported.
 
@@ -223,47 +233,47 @@ Points per game from projected points for weeks ${weeks[0]} to ${last}, for each
 ##############################################################################
 
 [WAR-01] paragraph
-WHERE: site/index.html line 151
+WHERE: site/index.html line 148
 TEXT:
 WAR is not yet available for this league: the start-percentage snapshots and WAR files have not been exported.
 
 [WAR-02] heading
-WHERE: site/index.html line 158
+WHERE: site/index.html line 155
 TEXT:
 How WAR is calculated
 
 [WAR-03] list item
-WHERE: site/index.html line 178
+WHERE: site/index.html line 175
 TEXT:
 <strong>Start percentage.</strong> ESPN publishes the share of its leagues starting each player. Seasons up to 2026 have one frozen value per player; from 2027 the value is captured every week.
 
 [WAR-04] list item
-WHERE: site/index.html line 179
+WHERE: site/index.html line 176
 TEXT:
 <strong>Consensus lineup.</strong> Each week the most-started players with a game fill every position's starting slots for 12 teams, then the most-started leftover RB, WR and TE fill the flex.
 
 [WAR-05] list item
-WHERE: site/index.html line 180
+WHERE: site/index.html line 177
 TEXT:
 <strong>Slot means and spread.</strong> Over the season, each slot's average points and variance from those lineups. The opponent is a normal distribution: mean = sum of slot means, spread = square root of the summed variances.
 
 [WAR-06] list item
-WHERE: site/index.html line 181
+WHERE: site/index.html line 178
 TEXT:
 <strong>Replacement cut.</strong> The three most-started players past each position's cut are that week's replacement players; their season average is the replacement level.
 
 [WAR-07] list item
-WHERE: site/index.html line 182
+WHERE: site/index.html line 179
 TEXT:
 <strong>Weekly win chance.</strong> A player's week is their actual points in a lineup whose other slots sit at the slot means, so the win chance is the share of the opponent distribution below the league mean plus (score − slot mean). A week with no game played takes the replacement level; a game played for zero counts as zero.
 
 [WAR-08] list item
-WHERE: site/index.html line 183
+WHERE: site/index.html line 180
 TEXT:
 <strong>Expected wins and WAR.</strong> Win chances sum over regular-season weeks 1 to 14. WAR subtracts what a replacement-level player would earn every week, so a replacement season is exactly 0.
 
 [WAR-09] paragraph
-WHERE: site/index.html line 195
+WHERE: site/index.html line 192
 TEXT:
 Click a header to sort; click again to flip. # is the WAR rank.
 
@@ -623,7 +633,7 @@ TEXT:
 A new version of the site is available.
 
 [MSG-08] paragraph
-WHERE: site/index.html line 200
+WHERE: site/index.html line 197
 TEXT:
 Loading&hellip;
 

@@ -185,7 +185,6 @@ CONTROLS: tuple[Control, ...] = (
     Control("league switcher", "predictions", "#league-switcher button",
             (State("other league", click("#league-switcher button[aria-pressed='false']", 900)),),
             regions=("#page-predictions", "#page-games", "#page-positions", "#page-war"), below="#subtabs"),
-    Control("calibration link", "predictions", "a.nav-link[href='calibration.html']"),
     Control("odds link", "calibration", ".pages a.nav-link"),
     Control("footer link", "predictions", "footer a"),
     Control("footer link (calibration)", "calibration", "footer a"),
@@ -211,9 +210,10 @@ CONTROLS: tuple[Control, ...] = (
     Control("rating metric", "predictions", "#rating-metric button",
             (State("other metric", click("#rating-metric button[aria-pressed='false']")),),
             grow=("main section.card",), below="#rating-card .card-head"),
+    # the range buttons sit below the rating chart; picking a range redraws the chart above them
     Control("rating range", "predictions", "#rating-range button",
             (State("other range", click("#rating-range button[aria-pressed='false']")),),
-            grow=("main section.card",), below="#rating-card .card-head"),
+            grow=("main section.card",), below="#rating-range"),
 
     # Games page
     Control("week arrows", "games", "#games-prev, #games-next",

@@ -290,3 +290,79 @@ def test_popup_shows_status_and_taxi_lines(open_page, which, text_class):
     assert line.count() == 1
     expected = page.locator(f".pos-dot[{which}]").first.get_attribute("data-status") if which == "data-status" else "Taxi"
     assert line.inner_text() == expected
+
+
+
+def _scroll_and_left(page, container, cell):
+    return page.evaluate("""([container, cell]) => {
+      const box = document.querySelector(container);
+      box.scrollLeft = box.scrollWidth;
+      const c = document.querySelector(cell).getBoundingClientRect(), b = box.getBoundingClientRect();
+      const style = getComputedStyle(box);
+      return { scrolled: box.scrollLeft, cellLeft: c.left, contentLeft: b.left + parseFloat(style.paddingLeft) };
+    }""", [container, cell])
+
+
+def test_forecast_table_pins_the_manager_column_on_phones(open_page):
+    page, relay, ctx = open_view(open_page, "predictions", 375)
+    r = _scroll_and_left(page, "#page-predictions .table-wrap", "#odds-body td.col-owner")
+    assert r["scrolled"] > 0, "the forecast table should scroll sideways at 375 px"
+    assert abs(r["cellLeft"] - r["contentLeft"]) <= 1, f"the Manager column did not stay at the left edge: {r}"
+
+
+def test_war_full_list_pins_the_name_column_on_phones(open_page):
+    page, relay, ctx = open_view(open_page, "war-dialog", 375)
+    r = _scroll_and_left(page, "#war-dialog .dialog-table", "#war-full td.name")
+    assert r["scrolled"] > 0, "the full list should scroll sideways at 375 px"
+    assert abs(r["cellLeft"] - r["contentLeft"]) <= 1, f"the name column did not stay at the left edge: {r}"
+
+
+@pytest.mark.parametrize("view", ["games", "games-final"])
+def test_games_cards_stack_and_team_rows_do_not_overlap_on_large_phones(open_page, view):
+    page, relay, ctx = open_view(open_page, view, 440)
+    problems = page.evaluate("""() => {
+      const out = [];
+      document.querySelectorAll('.game-body').forEach((b, i) => {
+        if (getComputedStyle(b).gridTemplateColumns.trim().split(/\\s+/).length !== 1) out.push(`card ${i} is not stacked`);
+      });
+      document.querySelectorAll('.game-team').forEach((row, i) => {
+        const parts = [...row.querySelectorAll('.owner-name, .team, .mean .num, .mean .unit, .mean .choices, .win')]
+          .map((e) => [e.className, e.getBoundingClientRect()]).filter(([, r]) => r.width && r.height);
+        for (let a = 0; a < parts.length; a++) for (let b = a + 1; b < parts.length; b++) {
+          const [na, ra] = parts[a], [nb, rb] = parts[b];
+          const overlap = Math.min(ra.right, rb.right) - Math.max(ra.left, rb.left) > 1 && Math.min(ra.bottom, rb.bottom) - Math.max(ra.top, rb.top) > 1;
+          if (overlap) out.push(`row ${i}: ${na} overlaps ${nb}`);
+        }
+      });
+      return out;
+    }""")
+    assert not problems, "\n".join(problems[:12])
+
+
+def test_finished_cards_show_the_actual_score_first(open_page):
+    page, relay, ctx = open_view(open_page, "games-final", 1280)
+    blocks = page.evaluate("""() => [...document.querySelectorAll('.game-card .game-team .mean')].slice(0, 4).map((m) => m.innerText.split('\\n'))""")
+    assert blocks, "no score blocks found"
+    for lines in blocks:
+        assert lines[1].endswith("forecasted"), lines
+
+
+def test_charts_reach_the_card_edge_on_phones(open_page):
+    page, relay, ctx = open_view(open_page, "predictions", 375)
+    gaps = page.evaluate("""() => ['odds-chart', 'rating-chart'].map((id) => {
+      const chart = Chart.getChart(id), canvas = document.getElementById(id);
+      return canvas.getBoundingClientRect().width - chart.chartArea.right;
+    })""")
+    # Chart.js keeps half of the last x-axis label inside the canvas (about 10 px); the old reserved
+    # label strip was 104 px, so 24 px still catches it
+    assert all(g <= 24 for g in gaps), f"empty space right of the chart plots: {gaps}"
+
+
+def test_metric_buttons_form_one_swipe_strip_on_phones(open_page):
+    page, relay, ctx = open_view(open_page, "predictions", 375)
+    tops = page.evaluate("""() => [...document.querySelectorAll('#metric-switcher button')].map((b) => Math.round(b.getBoundingClientRect().top))""")
+    assert len(set(tops)) == 1, f"metric buttons wrap onto more than one line: {tops}"
+    y = page.evaluate("scrollY")
+    page.evaluate("document.getElementById('metric-switcher').scrollLeft = 200")
+    page.wait_for_timeout(150)
+    assert page.evaluate("scrollY") == y and page.evaluate("document.documentElement.scrollWidth") <= 375

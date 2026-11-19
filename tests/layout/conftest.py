@@ -21,7 +21,7 @@ import pytest
 from ffapp.stamp import stamp_site
 
 SITE = Path(__file__).resolve().parents[2] / "site"
-WIDTHS = (375, 768, 1000, 1280)
+WIDTHS = (375, 440, 768, 1000, 1280)  # 440: current large phones
 HEIGHT = 860
 
 

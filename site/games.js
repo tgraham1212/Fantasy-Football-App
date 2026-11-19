@@ -184,16 +184,17 @@ function choicesLine(t) {
 function teamRow(g, t) {
   const color = cssVar(state.colorOf(t.roster_id));
   const won = g.winner != null && g.winner === t.roster_id;
-  let actual = t.actual != null ? `<span class="actual">${t.actual.toFixed(1)} actual</span>` : "";
-  if (t.points_so_far != null) {
-    actual = `<span class="actual">${t.points_so_far.toFixed(1)} so far</span><span class="unit">${t.to_play} to play</span>`;
-  }
-  const meanLabel = t.points_so_far != null ? "proj final" : "avg pts";
+  const live = t.points_so_far != null;
+  const scored = live ? t.points_so_far : t.actual;
+  const score = scored != null
+    ? `<span class="num">${scored.toFixed(1)}</span><span class="unit">${t.mean.toFixed(1)} ${/*copy:GAME-14*/"forecasted"}</span>`
+      + (live ? `<span class="unit">${t.to_play} to play</span>` : "") + choicesLine(t)
+    : `<span class="num">${t.mean.toFixed(1)}</span><span class="unit">${/*copy:GAME-13*/"forecast"}</span>`;
   return `
     <div class="game-team">
       <span class="swatch" style="--team: ${color}" aria-hidden="true"></span>
-      <span class="who"><span class="owner-name">${escapeHtml(t.display_name || `Roster ${t.roster_id}`)}</span><span class="team">${escapeHtml(t.team_name || "")}</span>${choicesLine(t)}</span>
-      <span class="mean"><span class="num">${t.mean.toFixed(1)}</span><span class="unit">${meanLabel}</span>${actual}</span>
+      <span class="who"><span class="owner-name">${escapeHtml(t.display_name || `Roster ${t.roster_id}`)}</span><span class="team">${escapeHtml(t.team_name || "")}</span></span>
+      <span class="mean">${score}</span>
       <span class="win" style="${winFill(t.win_prob)}" title="Win probability">${won ? '<span class="check" aria-label="won">&#10003;</span>' : ""}${Math.round(t.win_prob * 100)}%</span>
     </div>`;
 }
@@ -215,15 +216,17 @@ function statusTag(r) {
   return tags;
 }
 
-/* Right-hand column: win probability added for a scored starter, else the kickoff time for a player yet to play. */
-function asideTag(r) {
-  if (r.wpa != null) {
-    const pts = Math.round(r.wpa * 100);
-    const cls = pts > 0 ? "up" : pts < 0 ? "down" : "";
-    return `<span class="aside wpa ${cls}" title="Win probability added">${pts > 0 ? "+" : ""}${pts}%</span>`;
-  }
-  if (r.kickoff && !r.status) return `<span class="aside kick">${escapeHtml(kickoffLabel(r.kickoff))}</span>`;
-  return `<span class="aside"></span>`;
+/* Win probability added for a scored starter, shown right after his points. */
+function wpaTag(r) {
+  if (r.wpa == null) return "";
+  const pts = Math.round(r.wpa * 100);
+  const cls = pts > 0 ? "up" : pts < 0 ? "down" : "";
+  return `<span class="aside wpa ${cls}" title="Win probability added">${pts > 0 ? "+" : ""}${pts}%</span>`;
+}
+
+/* Kickoff time for a player yet to play, in the right-hand column. */
+function kickTag(r) {
+  return r.kickoff && !r.status ? `<span class="aside kick">${escapeHtml(kickoffLabel(r.kickoff))}</span>` : "";
 }
 
 function hasAside(teams) {
@@ -245,7 +248,7 @@ function playerLine(r, label, aside) {
   const value = scored ? `<span class="pts scored" title="Projected ${Number(r.projected).toFixed(1)}">${Number(r.points).toFixed(1)}</span>`
     : `<span class="pts">${Number(r.projected).toFixed(1)}</span>`;
   const cls = [r.replacement ? "fill" : "", r.status ? `is-${r.status}` : ""].filter(Boolean).join(" ");
-  return `<li${cls ? ` class="${cls}"` : ""}><span class="pos">${escapeHtml(label)}</span><span class="pname"><span class="nm">${playerName(r)}</span>${statusTag(r)}</span>${value}${aside ? asideTag(r) : ""}</li>`;
+  return `<li${cls ? ` class="${cls}"` : ""}><span class="pos">${escapeHtml(label)}</span><span class="pname"><span class="nm">${playerName(r)}</span>${statusTag(r)}</span>${value}${aside ? wpaTag(r) + kickTag(r) : ""}</li>`;
 }
 
 function teamPlayers(t, aside, open) {

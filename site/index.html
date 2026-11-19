@@ -14,7 +14,6 @@
       <p data-copy="HDR-03" class="sub">Monte Carlo Forecast & Statistics for Fantasy Football</p>
     </div>
     <nav class="leagues" id="league-switcher" aria-label="League"></nav>
-    <nav class="pages" aria-label="Pages"><a class="nav-link" href="calibration.html">How good are these odds?</a></nav>
     <div class="refresh" id="refresh-box" hidden>
       <button type="button" class="nav-link refresh-btn" id="refresh-btn">Refresh Data</button>
       <span class="refresh-note" id="refresh-note" aria-live="polite"></span>
@@ -57,9 +56,9 @@
               <th colspan="4" scope="colgroup" class="group">Playoff chances</th>
             </tr>
             <tr class="head-row">
-              <th scope="col" class="num col-elo" data-col="elo"><button type="button" class="sort">ELO</button></th>
-              <th scope="col" class="num col-elo-change" data-col="elo_change"><button type="button" class="sort">1-week<br>change</button></th>
-              <th scope="col" class="col-owner" data-col="owner"><button type="button" class="sort">Owner</button></th>
+              <th scope="col" class="col-elo" data-col="elo"><button type="button" class="sort">ELO</button></th>
+              <th scope="col" class="col-elo-change" data-col="elo_change"><button type="button" class="sort">1-week<br>change</button></th>
+              <th scope="col" class="col-owner" data-col="owner"><button type="button" class="sort">Manager</button></th>
               <th scope="col" class="num col-proj" data-col="proj"><button type="button" class="sort">Projected<br>record</button></th>
               <th scope="col" class="num col-chance" data-col="bottom"><button type="button" class="sort" id="bottom-head">Avoid<br>Loser's Bye</button></th>
               <th scope="col" class="num col-chance" data-col="playoffs"><button type="button" class="sort">Make<br>playoffs</button></th>
@@ -84,14 +83,12 @@
 
     <section class="card" id="rating-card">
       <div class="card-head">
-        <div class="switchers">
-          <div class="metrics" id="rating-metric" role="group" aria-label="Rating series"></div>
-          <div class="metrics" id="rating-range" role="group" aria-label="Time range"></div>
-        </div>
+        <div class="metrics" id="rating-metric" role="group" aria-label="Rating series"></div>
       </div>
       <div class="chart-wrap" id="rating-wrap">
         <canvas id="rating-chart" role="img" aria-label="Line chart of each manager's rating after every regular-season week since the league began"></canvas>
       </div>
+      <div class="metrics small range-row" id="rating-range" role="group" aria-label="Time range"></div>
       <p class="hint" id="rating-note"></p>
     </section>
     </div>
