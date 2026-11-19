@@ -253,7 +253,7 @@ function renderGrid() {
     box.className = "war-table";
     box.innerHTML = `
       <div class="war-table-head"><h3>${POSITION_LABEL[pos]}</h3><span class="hint">Top ${TOP_N} by WAR</span></div>
-      <div class="war-scroll"><table class="plain war">
+      <div class="war-scroll" tabindex="0" role="region" aria-label="${POSITION_LABEL[pos]} leaderboard"><table class="plain war">
         <thead><tr><th scope="col" class="num rank">#</th><th scope="col">Name</th><th scope="col">NFL</th><th scope="col">Manager</th>${extraHeader()}<th scope="col" class="num">WAR</th></tr></thead>
         <tbody>${rows.map((r) => `<tr><td class="num rank">${r.rank}</td><td class="name">${escapeHtml(r.name)}</td><td class="muted">${escapeHtml(r.team || "")}</td>${ownerCell(r)}${extraCell(r)}<td class="num war-value">${fmtWar(r.war)}</td></tr>`).join("")}</tbody>
       </table></div>
@@ -350,7 +350,7 @@ async function renderWalkthrough() {
   box.innerHTML = `
     <h3>${/*copy:WAR-19*/"Worked example: Kittle and Bowers, 2024"}</h3>
     <p class="hint">${/*copy:WAR-20*/`${escapeHtml(state.leagueName)}, 2024 constants: TE slot mean ${te.toFixed(1)}, opponent spread ${sd.toFixed(1)}, TE replacement level ${repl.level.toFixed(1)} (a replacement tight end earns ${repl.baseline_wins.toFixed(2)} expected wins over ${weeks.length} weeks). Each week's win chance is the share of the opponent distribution below the league mean plus (score − ${te.toFixed(1)}).`}</p>
-    <div class="table-wrap"><table class="plain walkthrough">
+    <div class="table-wrap" tabindex="0" role="region" aria-label="Worked example"><table class="plain walkthrough">
       <thead><tr><th scope="col">Week</th><th scope="col" class="num" colspan="2">Kittle: score, win chance</th><th scope="col" class="num" colspan="2">Bowers: score, win chance</th></tr></thead>
       <tbody>${weeks.map((week, i) => `<tr><th scope="row">${week}</th>${cell(kittle.weekly[i])}${cell(bowers.weekly[i])}</tr>`).join("")}</tbody>
       <tfoot>

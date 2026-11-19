@@ -197,6 +197,8 @@ CONTROLS: tuple[Control, ...] = (
     Control("update check (games)", "games-final", "body", UPDATE_STATES, regions=("#version-note",)),
     Control("update check (calibration)", "calibration", "body", UPDATE_STATES, regions=("#version-note",)),
     Control("version note", "predictions", "#version-note button"),
+    # scrolling table boxes are focusable so keyboard users can scroll them (no states of their own)
+    Control("table scroll region", "predictions", ".table-wrap[tabindex], .war-scroll[tabindex]"),
 
     # Predictions page
     Control("odds sort", "predictions", "#odds-table thead button.sort",

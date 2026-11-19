@@ -153,7 +153,7 @@ function renderHow() {
     if (rep && rep.levels) {
       const cells = (obj, digits) => POSITIONS.map((p) => `<td class="num">${obj && obj[p] != null ? obj[p].toFixed(digits) : "–"}</td>`).join("");
       tables.push(`<div><h3>${/*copy:CAL-26*/`${name}: what a replacement-level player scores`}</h3>
-        <div class="table-wrap"><table class="plain"><thead><tr><th scope="col"></th>${POSITIONS.map((p) => `<th scope="col" class="num">${p}</th>`).join("")}</tr></thead>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="${name} replacement levels"><table class="plain"><thead><tr><th scope="col"></th>${POSITIONS.map((p) => `<th scope="col" class="num">${p}</th>`).join("")}</tr></thead>
         <tbody><tr><th scope="row">Week ${rep.week} (projected)</th>${cells(rep.levels, 1)}</tr>
         <tr><th scope="row">Season value (actual, shrunk)</th>${cells(rep.season, 1)}</tr></tbody></table></div>
         <p class="hint">${/*copy:CAL-27*/"Points per week under this league's scoring. The season value is what those pickups have really scored so far, blended with earlier seasons early in the year."}</p></div>`);

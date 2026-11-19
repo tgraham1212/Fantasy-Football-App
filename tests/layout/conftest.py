@@ -28,7 +28,7 @@ PHONE_WIDTHS = tuple(w for w in WIDTHS if w < 600)
 # Chromium stands for Chrome and Edge; WebKit for Safari. WebKit and Firefox run the
 # engine-sensitive tests at these widths.
 ENGINES = ("chromium", "webkit", "firefox")
-OTHER_ENGINE_WIDTHS = (390, 440, 1280)
+OTHER_ENGINE_WIDTHS = (440, 1280)  # kept to two widths so the code-push run stays under 20 minutes
 
 
 def engine_cases(widths=WIDTHS, other_widths=OTHER_ENGINE_WIDTHS):

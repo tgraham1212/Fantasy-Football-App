@@ -59,7 +59,7 @@
         <canvas id="reliability-chart" role="img" aria-label="Scatter chart of predicted chance against observed rate for each league"></canvas>
       </div>
       <p data-copy="CAL-13" class="hint">Each dot is one 10-point band of predicted chance; its size is the number of cases in the band. Dots on the diagonal are perfectly calibrated; above it the odds were too cautious, below it too confident. Hover a dot for the numbers.</p>
-      <div class="table-wrap"><table class="plain" id="season-table"></table></div>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Season outcomes table"><table class="plain" id="season-table"></table></div>
       <p data-copy="CAL-14" class="hint">Brier score: mean squared error of the chances (0 is perfect, 0.25 is a coin flip on a 50/50 outcome). The baseline reads the standings: base rate before the season, then each team's record extrapolated over the remaining weeks. Skill is how much better the simulation is than that baseline (1 = perfect, 0 = no better).</p>
     </section>
 
@@ -72,7 +72,7 @@
           <canvas id="pit-chart" role="img" aria-label="Bar chart of where actual team scores fell within their simulated distributions"></canvas>
         </div>
         <div>
-          <div class="table-wrap"><table class="plain" id="coverage-table"></table></div>
+          <div class="table-wrap" tabindex="0" role="region" aria-label="Score coverage table"><table class="plain" id="coverage-table"></table></div>
           <p class="hint" id="bias-note"></p>
         </div>
       </div>
@@ -84,14 +84,14 @@
         <h2 data-copy="CAL-17">Head-to-head games</h2>
         <p class="hint" id="game-summary"></p>
       </div>
-      <div class="table-wrap"><table class="plain" id="game-table"></table></div>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Head-to-head games table"><table class="plain" id="game-table"></table></div>
     </section>
 
     <section class="card">
       <div class="card-head">
         <h2 data-copy="CAL-18">Lineup gap</h2>
       </div>
-      <div class="table-wrap"><table class="plain" id="lineup-table"></table></div>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Lineup gap table"><table class="plain" id="lineup-table"></table></div>
       <p data-copy="CAL-19" class="hint">The simulation starts each team's best projected lineup. Real managers do not always. The gap is what the best projected lineup would have added, in projected points and in the points those players actually scored.</p>
     </section>
 

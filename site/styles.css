@@ -202,6 +202,8 @@ main { display: grid; gap: 16px; }
 
 /* ---- Odds table -------------------------------------------------------------- */
 /* Scrolls inside its own container on narrow screens. */
+/* scrolling table boxes take keyboard focus (WCAG: scrollable regions must be reachable) */
+.table-wrap:focus-visible, .war-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .table-wrap { position: relative; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -18px; padding: 0 18px; }
 table { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 760px; font-variant-numeric: tabular-nums; }
 th, td { padding: 9px 10px; text-align: left; border-bottom: 1px solid var(--grid); white-space: nowrap; vertical-align: middle; }
