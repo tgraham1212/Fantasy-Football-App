@@ -1,7 +1,7 @@
 ## MODIFIED Requirements
 
 ### Requirement: Season tile layout
-Every tile SHALL share one layout: a fixed first line holding a 32 px image or a large number, then a detail line, so images and numbers line up across the bar. Tile text SHALL scale with the tile's width within set limits, and on the narrowest tiles the small label icons SHALL hide before any text is cut. The Last Result score SHALL never wrap and both crests SHALL stay inside the tile, the score shrinking first. Each tile SHALL link to the page its number comes from. On phones the tiles SHALL form two columns, the seventh spanning both.
+Every tile SHALL share one layout: a fixed first line holding a 32 px image or a large number, then a detail line, so images and numbers line up across the bar. Tile text SHALL scale with the tile's width; on the narrowest tiles label icons SHALL hide first. The Last Result score SHALL never wrap and both crests SHALL stay inside the tile, the score shrinking first. Each tile SHALL link to the page its number comes from. On phones the tiles SHALL form two columns, the seventh spanning both.
 
 #### Scenario: Narrow tile
 - **WHEN** the Last Result tile is at its narrowest

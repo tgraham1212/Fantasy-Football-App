@@ -24,7 +24,7 @@ Each game SHALL be a card in a two-column layout (one column below 900 px, a lon
 - **THEN** cards stack in one column and no lineup's points, win probability added or game clock overlap
 
 ### Requirement: Live cards
-During the live week, a card SHALL show a "LIVE" badge and live border (a signal icon whose arcs are neon green with a moving gradient, held still for visitors who prefer reduced motion) only while at least one starter on either team, not counting replacement fills, is in a game in progress. Once either team in a game has a starter whose game has kicked off, both teams SHALL show their points so far as the large number (0.0 when none of theirs has played) with the projected final beneath labelled "forecasted", and how many of their starters have not yet kicked off.
+During the live week, a card SHALL show a "LIVE" badge and border (a signal icon with neon green arcs and a moving gradient, still for reduced motion) only while a starter on either team, not a replacement fill, is in a game in progress. Once either team has a starter whose game has kicked off, both teams SHALL show their points so far as the large number (0.0 if none) with the projected final beneath labelled "forecasted", and how many of their starters have not yet kicked off.
 
 #### Scenario: Saturday of week 11
 - **WHEN** a visitor opens week 11 on Saturday after Thursday's game, with no game in progress

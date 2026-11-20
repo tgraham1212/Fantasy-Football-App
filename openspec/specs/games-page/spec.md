@@ -18,7 +18,7 @@ The Games page SHALL open on the current NFL week and offer a dropdown of every 
 - **THEN** week 10 is shown
 
 ### Requirement: Matchup cards
-Each game SHALL be a card in a two-column layout (one column on phones, a lone last card centred), with the two teams stacked. Each team row SHALL show the manager's colour dot as on the Predictions table, the manager name with the team name beneath, a score block and the win probability. For a game not yet started, the score block SHALL show the mean simulated points labelled "forecast". For a finished or live game, it SHALL show the actual (or current) score as the large number and, beneath it in smaller type, the forecast labelled "forecasted". To the right of the rows, a chart SHALL overlay both teams' score distributions, each shaded in its manager colour. Below 600 px the chart SHALL move beneath the team rows so the rows use the card's full width, and the win probability box SHALL be smaller.
+Each game SHALL be a card in a two-column layout (one column below 900 px, a lone last card centred), with the two teams stacked. Each team row SHALL show the manager's colour dot as on the Predictions table, the manager name with the team name beneath, a score block and the win probability. For a game not yet started, the score block SHALL show the mean simulated points labelled "forecast". For a finished or live game, it SHALL show the actual (or current) score as the large number and, beneath it in smaller type, the forecast labelled "forecasted". To the right of the rows, a chart SHALL overlay both teams' score distributions, each shaded in its manager colour. Below 600 px the chart SHALL move beneath the team rows so the rows use the card's full width, and the win probability box SHALL be smaller.
 
 #### Scenario: Card contents
 - **WHEN** week 11's card for two teams is shown
@@ -35,6 +35,10 @@ Each game SHALL be a card in a two-column layout (one column on phones, a lone l
 #### Scenario: Large phone
 - **WHEN** the page is shown at 440 px
 - **THEN** each card shows its team rows across the full card width with the chart beneath them, and no manager name is cut short while the card has room for it
+
+#### Scenario: Tablet width
+- **WHEN** the page is shown at 768 px during a live week
+- **THEN** cards stack in one column and no lineup's points, win probability added or game clock overlap
 
 ### Requirement: Win probability fill
 The win probability cell SHALL be filled on a diverging scale validated with the project's colour tool: neutral grey at 50%, a progressively stronger green toward 100% and red toward 0%, with text that keeps at least 4.5:1 contrast at every step, in both themes.
@@ -91,22 +95,34 @@ Each league's site data SHALL include, per week of the current season, the cards
 - **THEN** the site builds and the Games page says games are not yet available
 
 ### Requirement: Live cards
-During the live week, each card SHALL show a "LIVE" badge (a signal icon whose arcs are neon green with a moving gradient, held still for visitors who prefer reduced motion), each team's points so far as the large number with its projected final beneath it labelled "forecasted", as on a finished card, and how many of its starters have not yet kicked off.
+During the live week, a card SHALL show a "LIVE" badge and border (a signal icon with neon green arcs and a moving gradient, still for reduced motion) only while a starter on either team, not a replacement fill, is in a game in progress. Once either team has a starter whose game has kicked off, both teams SHALL show their points so far as the large number (0.0 if none) with the projected final beneath labelled "forecasted", and how many of their starters have not yet kicked off.
 
 #### Scenario: Saturday of week 11
-- **WHEN** a visitor opens week 11 on Saturday after Thursday's game
-- **THEN** every week-11 card shows the LIVE badge, each team's points so far large with its forecasted final beneath, and the count of starters still to play
+- **WHEN** a visitor opens week 11 on Saturday after Thursday's game, with no game in progress
+- **THEN** no week-11 card shows the LIVE badge, and cards where a starter played Thursday show each team's points so far large with its forecasted final beneath and the count of starters still to play
+
+#### Scenario: Starter in progress
+- **WHEN** one team in a game has a starter in the 3rd quarter of Thursday's game
+- **THEN** that card shows the LIVE badge and border, and cards with no starter in that game do not
+
+#### Scenario: Only one team has started
+- **WHEN** one team has 14.2 points from Thursday and the other has no starter who has played
+- **THEN** the other team shows 0.0 large, its forecasted final beneath and its count of starters to play, laid out the same as the first team
 
 #### Scenario: Reduced motion
 - **WHEN** the visitor's system asks for reduced motion
 - **THEN** the badge shows without animation
 
 ### Requirement: Player game status
-In every lineup list on a live or finished week, each starter SHALL show his game status: in progress in green with a dot and the game clock; final in bold dark text, with an "F" tag on the live week only; not yet started in grey with the kickoff time; each with his points so far when he has any.
+In every lineup list on a live or finished week, each starter SHALL show his game status: in progress in green with a dot and the game clock in the row's right-hand column; final in bold dark text, with an "F" tag on the live week only; not yet started in grey with the kickoff time in the right-hand column; each with his points so far when he has any.
 
 #### Scenario: Mixed slate
 - **WHEN** a team has a Thursday starter (final), a starter in the 3rd quarter and one playing Sunday night
 - **THEN** they show "F", "Q3 4:12" in green and the Sunday night kickoff time in grey
+
+#### Scenario: Clock beside a long name on desktop
+- **WHEN** a starter with a long name is in the 3rd quarter at 1280 px
+- **THEN** "Q3 4:12" shows in the right-hand column and his name keeps its full space
 
 #### Scenario: Past week
 - **WHEN** a visitor opens finished week 9
@@ -160,7 +176,7 @@ The "Full Lineup" control SHALL open and close both teams' full lineups in a car
 - **THEN** the opponent's Full Lineup opens too
 
 ### Requirement: Player row layout
-Each player row SHALL show the slot or position, the name with any live status beside it, the points or projection, the win probability added for scored starters in the actual view directly after the points, and a right-hand column holding the kickoff time for players yet to play; the right-hand column SHALL take no width when a card has nothing to put there. Within each team's list, the points or projections SHALL form one aligned column placed just after the longest name, not at the far edge of the card. On screens narrower than 560 px the two teams' player lists SHALL stack, each under its team name, so names use the card's width, and a replacement fill SHALL read "Free agent".
+Each player row SHALL show the slot or position, the name with any final tag, the points or projection, the win probability added for scored starters in the actual view directly after the points, and a right-hand column holding the game clock for a player in progress or the kickoff time for one yet to play; the right-hand column SHALL take no width when a card has nothing to put there. Names SHALL follow the player name standard. Within each team's list, the points or projections SHALL form one aligned column placed just after the longest name, not at the far edge of the card. Below 560 px the two teams' lists SHALL stack, each under its team name, and a replacement fill SHALL read "Free agent".
 
 #### Scenario: Upcoming player
 - **WHEN** a player's game is on Sunday at 1:00
@@ -168,7 +184,7 @@ Each player row SHALL show the slot or position, the name with any live status b
 
 #### Scenario: Phone
 - **WHEN** a visitor opens a game card on a 375 px phone
-- **THEN** the first team's lineup shows above the second team's and every name in the lineups shows in full
+- **THEN** the first team's lineup shows above the second team's and every name shows in full or, where it does not fit, as first initial and last name, never cut
 
 #### Scenario: Free agent on a phone
 - **WHEN** a lineup has a replacement fill on a 375 px phone
