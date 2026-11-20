@@ -52,7 +52,7 @@ The win probability cell SHALL be filled on a diverging scale validated with the
 - **THEN** both cells are close to the neutral grey
 
 ### Requirement: Key players
-Below each card, each team SHALL list four key players from the lineup of the view shown: the quarterback, the highest-projected running back, the highest-projected wide receiver, and the highest-projected remaining RB, WR or TE, each with projected points; a slot the model fills at replacement level is listed as a free agent. An expand control labelled "Full Lineup" SHALL show the full lineup of the view shown, with free-agent fills labelled as replacement level.
+In states F1, F2, C and P2, each team SHALL list four key players from the lineup of the view shown: the quarterback, the highest-projected running back, the highest-projected wide receiver, and the highest-projected remaining RB, WR or TE, with projected points; a replacement fill is listed as a free agent. A "Full Lineup" control SHALL show the full lineup, with free-agent fills labelled as replacement level.
 
 #### Scenario: Key four
 - **WHEN** a team's model lineup has RBs projected 18 and 11, WRs 16 and 13, and a TE at 9
@@ -74,11 +74,15 @@ Below each card, each team SHALL list rostered players expected not to play that
 - **THEN** he is listed under that team as PUP
 
 ### Requirement: Finished weeks
-For a finished week, each card SHALL show the selected view's forecast, a check mark in the winner's win probability cell, and a vertical line on each team's distribution at its actual score in the team's colour. A pre-week forecast used for a week before the log existed SHALL be labelled as such.
+For a finished week (PW), and for a game whose starters have all finished (O1 to O3), each card SHALL show the selected view's forecast, a check mark in the winner's win probability cell, and a vertical line on each team's distribution at its actual score in the team's colour. A pre-week forecast used for a week before the log existed SHALL be labelled as such.
 
 #### Scenario: Week 10 look-back
 - **WHEN** a visitor selects week 10 after it is final
 - **THEN** each card shows the record's probabilities, a check on the winner, and both actual scores as lines on the chart
+
+#### Scenario: Unofficial winner
+- **WHEN** every player in a game has finished on Monday night but Sleeper has not scored the week
+- **THEN** the card shows a check on the leading team alongside the Unofficial chip
 
 ### Requirement: Playoff weeks
 Playoff weeks SHALL show the projected bracket until Sleeper sets real pairings: games ordered with the 1 seed's side at the top and the 2 seed's side at the bottom, each projected card labelled with how often that pairing happened in the simulations, a bye card for each team with a first-round bye, and toilet bowl games below the winners bracket where the league plays one.
@@ -95,7 +99,7 @@ Each league's site data SHALL include, per week of the current season, the cards
 - **THEN** the site builds and the Games page says games are not yet available
 
 ### Requirement: Live cards
-During the live week, a card SHALL show a "LIVE" badge and border (a signal icon with neon green arcs and a moving gradient, still for reduced motion) only while a starter on either team, not a replacement fill, is in a game in progress. Once either team has a starter whose game has kicked off, both teams SHALL show their points so far as the large number (0.0 if none) with the projected final beneath labelled "forecasted", and how many of their starters have not yet kicked off.
+During the live week, only a card in state L1 SHALL show the "LIVE" badge and border (a signal icon with neon green arcs and a moving gradient, still for reduced motion). Once either team has a starter whose game has kicked off, both teams SHALL show their points so far as the large number (0.0 if none) with the projected final beneath labelled "forecasted", and how many of their starters have not yet kicked off.
 
 #### Scenario: Saturday of week 11
 - **WHEN** a visitor opens week 11 on Saturday after Thursday's game, with no game in progress
@@ -112,6 +116,10 @@ During the live week, a card SHALL show a "LIVE" badge and border (a signal icon
 #### Scenario: Reduced motion
 - **WHEN** the visitor's system asks for reduced motion
 - **THEN** the badge shows without animation
+
+#### Scenario: Only the bench is playing
+- **WHEN** a card is in L2 because only a bench player is playing
+- **THEN** it shows no LIVE badge
 
 ### Requirement: Player game status
 In every lineup list on a live or finished week, each starter SHALL show his game status: in progress in green with a dot and the game clock in the row's right-hand column; final in bold dark text, with an "F" tag on the live week only; not yet started in grey with the kickoff time in the right-hand column; each with his points so far when he has any.
@@ -140,7 +148,7 @@ Every starter with an actual score, live or final, SHALL show his win probabilit
 - **THEN** no win probability added is shown for him
 
 ### Requirement: Lineup view toggle
-Finished and live game cards SHALL offer a "Model | Actual" toggle that switches the card's lineups, key players, means, win probabilities and chart between the two stored views, opening on Actual. Actual scores SHALL be drawn on the chart in both views. Upcoming weeks SHALL show the model view without a toggle. A rebuilt actual view SHALL be labelled as rebuilt.
+Cards in states P2, L1, L2, P1, O1, O2, O3 and PW SHALL offer a "Model | Actual" toggle that switches the card's lineups, key players, means, win probabilities and chart between the two stored views, opening on Actual. Actual scores SHALL be drawn in both views. Cards in F1, F2 and C SHALL show the model view without a toggle. A rebuilt actual view SHALL be labelled as rebuilt.
 
 #### Scenario: Look-back on Actual
 - **WHEN** a visitor opens finished week 10
@@ -153,6 +161,10 @@ Finished and live game cards SHALL offer a "Model | Actual" toggle that switches
 #### Scenario: Upcoming week
 - **WHEN** a visitor opens week 13 before it starts
 - **THEN** the cards show the model view and no toggle
+
+#### Scenario: Untouched card in the live week
+- **WHEN** some NFL games of the current week have started but no player in a card has kicked off (state C)
+- **THEN** that card shows no toggle
 
 ### Requirement: Lineup choices shown
 On finished and live cards, each team SHALL show "Lineup choices: +N" (or minus) beneath the forecasted line of its score block, the points versus the model lineup, explained on hover, green when positive and red when negative, in both views.
@@ -169,7 +181,7 @@ In the model view of a finished or live card, a model pick the manager did not s
 - **THEN** his row shows "BN" and his points, with no win probability added
 
 ### Requirement: Linked full lineups
-The "Full Lineup" control SHALL open and close both teams' full lineups in a card together.
+Where a card shows the "Full Lineup" control, it SHALL open and close both teams' full lineups in that card together.
 
 #### Scenario: Expand one side
 - **WHEN** a visitor expands one team's Full Lineup
@@ -189,3 +201,29 @@ Each player row SHALL show the slot or position, the name with any final tag, th
 #### Scenario: Free agent on a phone
 - **WHEN** a lineup has a replacement fill on a 375 px phone
 - **THEN** the row reads "Free agent" and fits on one line
+
+### Requirement: Full lineups while games are on
+In states L1, L2 and P1, in both views, each team SHALL show its full lineup in place of the key players, with no "Full Lineup" control, so every starter's game clock, final tag and points are visible.
+
+#### Scenario: Playing starter at FLEX
+- **WHEN** a team's only playing starter is its FLEX in the 1st quarter
+- **THEN** his row and green clock show without expanding anything
+
+### Requirement: Impact-ranked key players
+In the Actual view of states O1, O2, O3 and PW, each team's key players SHALL be its four starters with the largest win probability added in either direction, largest first. Ties on the whole percentage shown SHALL be broken by position: QB, RB, WR, TE, DEF, K. The Model view of these states SHALL show the full lineup, since win probability added exists only for the managers' real starters.
+
+#### Scenario: Ranking with a tie
+- **WHEN** a team's starters have win probability added of +31%, +23%, −15%, +13% and +13% for a QB and a WR
+- **THEN** its key players are the +31%, +23% and −15% starters and then the QB
+
+### Requirement: Card chips
+Cards SHALL show these chips in the card header:
+- a grey **Bench playing** chip with a dot in L2 and O2;
+- a **Bench to play** chip in O1;
+- an **Unofficial** chip, explained on hover as not yet scored by Sleeper, in O1, O2 and O3.
+
+PW cards SHALL show none of them.
+
+#### Scenario: Starters done, bench playing
+- **WHEN** a card is in O2
+- **THEN** its header shows the Unofficial and Bench playing chips, and no LIVE badge
