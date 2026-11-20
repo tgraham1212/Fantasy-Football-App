@@ -7,7 +7,7 @@ Gives league members a public website where they can see their team's current pl
 ## Requirements
 
 ### Requirement: League pages
-The site SHALL have a page for each configured league that shows that league's current season. Visitors SHALL be able to switch between leagues. Each league page SHALL have four sub-tabs in this order: "Forecasts" (the forecast table and charts), "Games", "Positions" and "Player WAR". The selected sub-tab SHALL be kept in the page URL, so a link opens on that sub-tab, and SHALL be kept when switching league.
+The site SHALL have a page for each configured league that shows that league's current season. Visitors SHALL be able to switch between leagues. Each league page SHALL have five sub-tabs in this order: "Forecasts" (the forecast table and charts), "Games", "Positions", "Managers" and "Player WAR". The selected sub-tab SHALL be kept in the page URL, so a link opens on that sub-tab, and SHALL be kept when switching league.
 
 #### Scenario: Switch league
 - **WHEN** a visitor on the dynasty page picks the redraft league
@@ -26,8 +26,12 @@ The site SHALL have a page for each configured league that shows that league's c
 - **THEN** the league's Games page is shown and the URL identifies the league and the Games sub-tab
 
 #### Scenario: Open the Positions sub-tab
-- **WHEN** a visitor picks "Positions", which sits between "Games" and "Player WAR"
+- **WHEN** a visitor picks "Positions", which sits between "Games" and "Managers"
 - **THEN** the league's Positional Rankings page is shown and the URL identifies the league and the Positions sub-tab
+
+#### Scenario: Open the Managers sub-tab
+- **WHEN** a visitor picks "Managers", which sits between "Positions" and "Player WAR"
+- **THEN** the league's Managers page is shown and the URL identifies the league, the Managers sub-tab and the manager
 
 ### Requirement: Current odds table
 Each league page SHALL show a table with one row per team and these columns in order: ELO, 1-week ELO change, Manager (the manager's display name in bold with the team name beneath it and the current record beside the name), projected final record, and four chance columns: the league's bottom column (see "League-dependent bottom column"), make playoffs, first-round bye, win championship. Until a visitor sorts the table, rows SHALL be in league standings order: wins (a tie counts half), then points scored. Columns left of Manager SHALL be left-aligned, the Manager column centred, and columns right of it right-aligned, headers and cells alike. The table SHALL be compact: the ELO and 1-week change columns no wider than their content needs, tight row padding, and text a step larger than body text.
