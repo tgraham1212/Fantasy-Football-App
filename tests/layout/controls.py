@@ -139,6 +139,13 @@ def select_first_other(selector: str):
     return act
 
 
+def select_value(selector: str, value: str):
+    def act(page, relay, ctx):
+        page.select_option(selector, value)
+        page.wait_for_timeout(500)
+    return act
+
+
 def refresh_answer(code, body=None):
     def act(page, relay, ctx):
         relay.refresh = "abort" if code == "abort" else (code, body or {})
@@ -287,7 +294,11 @@ CONTROLS: tuple[Control, ...] = (
     Control("moves season arrows", "managers-moves", ".mgr-moves-prev, .mgr-moves-next",
             (State("older", click(".mgr-moves-prev")), State("newer", click(".mgr-moves-next"))), regions=("#mgr-moves",), below=".mgr-cardtabs"),
     Control("moves season", "managers-moves", "#mgr-moves-season", (State("other season", select_first_other("#mgr-moves-season")),), regions=("#mgr-moves",), below=".mgr-cardtabs"),
-    Control("moves filter", "managers", ".mgr-controls .filter"),
+    Control("moves all seasons", "managers-moves", "#mgr-moves-season", (State("all seasons", select_value("#mgr-moves-season", "all")),),
+            regions=("#mgr-moves",), below=".mgr-cardtabs"),
+    Control("moves filter", "managers-moves", "#mgr-moves-filter",
+            (State("waivers", select_value("#mgr-moves-filter", "waiver")), State("free agents", select_value("#mgr-moves-filter", "free_agent")),
+             State("trades", select_value("#mgr-moves-filter", "trade"))), regions=("#mgr-moves",), below=".mgr-cardtabs"),
     Control("manager scroll region", "managers", ".mgr-scroll[tabindex]"),
     Control("news show more", "managers", ".mgr-showmore", (State("shown", click(".mgr-showmore")),), regions=(".mgr-news",), below=".mgr-cardtabs", self_moves=True),
     # manager names elsewhere link here (inline text links; app.js opens the Managers page)

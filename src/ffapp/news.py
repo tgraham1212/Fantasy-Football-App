@@ -20,13 +20,22 @@ STREAK_MIN = 3
 TRENDING_TOP = 10
 PLAYER_STORIES_PER_WEEK = 3
 PLAYER_TYPES = {"injury", "practice", "depth", "trending", "milestone", "totw"}
+MOVES_STORIES_PER_WEEK = 3
+MOVES_TYPES = {"trade", "big_bid", "pays_off", "got_away", "outbid"}
+BIG_BID_SHARE = 0.25          # a won bid of 25% of the season budget (or the season's biggest) is a story
+OUTBID_BIG_SHARE = 0.20       # a lost bid of 20% of the budget is a story whatever the gap ...
+OUTBID_CLOSE_SHARE = 0.05     # ... and one lost by $3 or less (or on priority) when it was at least 5%
+OUTBID_CLOSE = 3
+PAYS_OFF_WAR = 1.0            # pays off / got away: a window's running WAR passing +1.0
 PRIORITY = {  # higher first; also decides the feature story
     "final_season": 11, "record": 10, "forecast_big": 9, "result": 8, "rivalry_result": 7, "streak": 6, "forecast": 5,
-    "milestone": 4, "injury": 4, "totw": 3, "depth": 3, "practice": 2, "trending": 2, "rivalry_preview": 2,
+    "milestone": 4, "injury": 4, "trade": 4, "totw": 3, "depth": 3, "big_bid": 3, "pays_off": 3, "got_away": 3,
+    "practice": 2, "trending": 2, "rivalry_preview": 2, "outbid": 2,
 }
 LINK = {"result": "games", "rivalry_result": "games", "rivalry_preview": "games", "forecast": "predictions", "forecast_big": "predictions",
         "record": "managers", "streak": "managers", "final_season": "managers", "milestone": "war", "injury": "positions",
-        "practice": "positions", "depth": "positions", "trending": "positions", "totw": "games"}
+        "practice": "positions", "depth": "positions", "trending": "positions", "totw": "games",
+        "trade": "managers", "big_bid": "managers", "pays_off": "managers", "got_away": "managers", "outbid": "managers"}
 PRACTICE_STORY = {"DNP", "Limited", "LP"}
 FEATURE_TYPES = {"result", "rivalry_result", "record", "forecast_big", "final_season"}
 
@@ -185,6 +194,8 @@ def manager_stories(store: Store, league_key: str, manager, ctx: dict) -> list[d
         if int(cumulative[pid]) > int(before) and cumulative[pid] >= 1:
             stories.append(Story("milestone", season, week, week_date(season, week), {"player": player(pid), "war": int(cumulative[pid])}))
 
+    stories += moves_stories(season, rid, user, data, ctx)
+
     # rivalry preview for the coming week
     upcoming = (ctx["current_week"] or 0)
     if manager.current and rivals and rivals.rivalry_week.get(season) == upcoming and upcoming not in {g.week for g in games}:
@@ -200,16 +211,76 @@ def manager_stories(store: Store, league_key: str, manager, ctx: dict) -> list[d
     return [s.export() for s in order_stories(stories)]
 
 
+def moves_stories(season: str, rid: int, user: str, data, ctx: dict) -> list[Story]:
+    """Trade, big bid, pickup pays off, got away and outbid stories for one manager's season, from
+    the league's moves (``ctx["moves"]``, built by ``ffapp.moves``)."""
+    lm = ctx.get("moves")
+    if lm is None:
+        return []
+    bucket = lm.moves.get(user, {}).get(season)
+    budget = int((data.league.get("settings") or {}).get("waiver_budget") or 0)
+    names_by_user = ctx["names_by_user"]
+    out: list[Story] = []
+    at = lambda week: week_date(season, week, "thu")  # noqa: E731  moves settle mid-week
+
+    if bucket:
+        for side in bucket["trades"]:
+            opp = side["with"][0] if side["with"] else None
+            out.append(Story("trade", season, side["week"], at(side["week"]), {
+                "opp": names_by_user.get(opp, ""), "opp_user": opp,
+                "got": [p["name"] for p in side["got"]["players"]], "got_picks": side["got"]["picks"], "got_faab": side["got"]["faab"],
+                "gave": [p["name"] for p in side["gave"]["players"]], "gave_picks": side["gave"]["picks"], "gave_faab": side["gave"]["faab"]}))
+        won = [r for r in bucket["added"] if r["via"] == "waiver" and r.get("bid")]
+        biggest = max(won, key=lambda r: (r["bid"], -r["week"]), default=None)
+        for r in won:
+            if (budget and r["bid"] >= BIG_BID_SHARE * budget) or r is biggest:
+                out.append(Story("big_bid", season, r["week"], at(r["week"]), {"player": r["name"], "bid": r["bid"], "next": r.get("next")}))
+
+    # pays off / got away: the running WAR of this season's moves, week by week, passing +1.0
+    war = ctx["weekly_war"]
+    held = ctx["held_weeks"]
+    owners = ctx["owners"].get(season, {})
+    weeks = sorted({w for (s, w, r) in held if s == season and r == rid})
+    for kind, rows in (("pays_off", (bucket or {}).get("added", [])), ("got_away", (bucket or {}).get("dropped", []))):
+        for r in rows:
+            total = 0.0
+            for week in (w for w in weeks if w >= r["week"]):
+                on_team = r["pid"] in held.get((season, week, rid), set())
+                if on_team != (kind == "pays_off"):
+                    break   # the window ends: he left (an add) or came back (a drop)
+                before = total
+                total += war.get((season, week, r["pid"]), 0.0)
+                if before < PAYS_OFF_WAR <= total:
+                    fields = {"player": r["name"], "since": r["week"], "war": round(total, 1)}
+                    if kind == "got_away":
+                        team = next((owners.get(other) for (s, w, other), players in held.items()
+                                     if s == season and w == week and other != rid and r["pid"] in players), None)
+                        fields.update({"team": names_by_user.get(team) if team else None, "team_user": team})
+                    out.append(Story(kind, season, week, week_date(season, week), fields))
+                    break
+
+    for b in lm.bids:
+        if b.won or b.user != user or b.season != season or not budget:
+            continue
+        gap = (b.winning_bid or 0) - b.bid
+        if b.bid >= OUTBID_BIG_SHARE * budget or (gap <= OUTBID_CLOSE and b.bid >= OUTBID_CLOSE_SHARE * budget):
+            out.append(Story("outbid", season, b.week, at(b.week), {
+                "player": ctx["names"][season][0].get(b.player) or b.player, "bid": b.bid, "winning_bid": b.winning_bid,
+                "winner": names_by_user.get(b.winner, ""), "winner_user": b.winner, "tied": gap == 0}))
+    return out
+
+
 def order_stories(stories: list[Story]) -> list[Story]:
-    """Cap player stories at three per week (highest priority kept), sort newest first, and move the
-    feature story (the latest week's highest priority) to the front."""
+    """Cap player stories, and separately Moves stories, at three per week (highest priority kept),
+    sort newest first, and move the feature story (the latest week's highest priority) to the front."""
     kept: list[Story] = []
     by_week: dict[int, list[Story]] = {}
     for s in stories:
         by_week.setdefault(s.week, []).append(s)
     for week, items in by_week.items():
         players = sorted((s for s in items if s.type in PLAYER_TYPES), key=lambda s: -s.priority)[:PLAYER_STORIES_PER_WEEK]
-        kept.extend([s for s in items if s.type not in PLAYER_TYPES] + players)
+        moves = sorted((s for s in items if s.type in MOVES_TYPES), key=lambda s: -s.priority)[:MOVES_STORIES_PER_WEEK]
+        kept.extend([s for s in items if s.type not in PLAYER_TYPES and s.type not in MOVES_TYPES] + players + moves)
     kept.sort(key=lambda s: (s.week, s.at, s.priority), reverse=True)
     if kept:
         # the feature comes from the latest week with a game (or a retired manager's final-season

@@ -71,10 +71,27 @@ class SyncReport:
     fetched: list[tuple[str, str]] = field(default_factory=list)  # (league_key, season)
     skipped: list[tuple[str, str]] = field(default_factory=list)
     errors: list[tuple[str, str]] = field(default_factory=list)  # (league_key, message)
+    warnings: list[tuple[str, str]] = field(default_factory=list)  # (league_key, message): never fail the sync
+    transactions: list[tuple[str, str]] = field(default_factory=list)  # (league_key, season) transactions saved
 
     @property
     def ok(self) -> bool:
         return not self.errors
+
+
+def sync_transactions(client: SleeperClient, store: Store, league_key: str, league: dict) -> str | None:
+    """Fetch and store every week's transactions for one league-season (the season's weeks; Sleeper
+    files offseason moves under week 1 and keeps week 0 empty). All weeks are fetched before any is
+    written, so a failure keeps the files stored last time. Returns a warning message on failure."""
+    league_id = str(league["league_id"])
+    season = str(league["season"])
+    try:
+        weeks = {week: client.transactions(league_id, week) or [] for week in season_weeks(league)}
+    except SleeperError as exc:
+        log.warning("transactions %s %s failed: %s", league_key, season, exc)
+        return f"transactions for season {season} not updated: {exc}"
+    store.write_transactions(league_key, season, weeks)
+    return None
 
 
 def sync_league(client: SleeperClient, store: Store, league: LeagueConfig, *, full: bool = False) -> SyncReport:
@@ -96,6 +113,8 @@ def sync_league(client: SleeperClient, store: Store, league: LeagueConfig, *, fu
         stored = store.read_league(league.key, season)
         if not full and stored is not None and stored.get("status") == "complete":
             report.skipped.append((league.key, season))
+            if not store.has_transactions(league.key, season):   # once, for seasons stored before transactions were kept
+                _transactions(client, store, league.key, raw, report)
             continue
         try:
             data = fetch_season(client, raw)
@@ -106,7 +125,16 @@ def sync_league(client: SleeperClient, store: Store, league: LeagueConfig, *, fu
         store.write_season(league.key, data)
         report.fetched.append((league.key, season))
         log.info("synced %s %s (%s)", league.key, season, data.status)
+        _transactions(client, store, league.key, raw, report)
     return report
+
+
+def _transactions(client: SleeperClient, store: Store, league_key: str, raw: dict, report: SyncReport) -> None:
+    warning = sync_transactions(client, store, league_key, raw)
+    if warning:
+        report.warnings.append((league_key, warning))
+    else:
+        report.transactions.append((league_key, str(raw["season"])))
 
 
 def sync_all(client: SleeperClient, store: Store, config: Config, *, full: bool = False) -> SyncReport:
@@ -116,4 +144,6 @@ def sync_all(client: SleeperClient, store: Store, config: Config, *, full: bool 
         total.fetched += part.fetched
         total.skipped += part.skipped
         total.errors += part.errors
+        total.warnings += part.warnings
+        total.transactions += part.transactions
     return total

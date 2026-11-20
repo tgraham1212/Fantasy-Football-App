@@ -121,15 +121,15 @@ def test_routine_sync_skips_complete_seasons_and_full_refetches(tmp_path):
     assert report.ok
     assert sorted(s for _, s in report.fetched) == ["2022", "2023", "2024", "2025", "2026"]
     first_run_calls = len(session.calls)
-    # 5 league objects + per season (users, rosters, 17 matchups, 2 brackets)
-    assert first_run_calls == 5 + 5 * (2 + 17 + 2)
+    # 5 league objects + per season (users, rosters, 17 matchups, 2 brackets, 17 weeks of transactions)
+    assert first_run_calls == 5 + 5 * (2 + 17 + 2 + 17)
 
     client, session = make_client()
     report = sync_all(client, store, config)
     assert report.ok
     assert sorted(s for _, s in report.skipped) == ["2022", "2023", "2024", "2025"]
     assert [s for _, s in report.fetched] == ["2026"]
-    assert len(session.calls) == 5 + (2 + 17 + 2), "only the in-progress season is fetched"
+    assert len(session.calls) == 5 + (2 + 17 + 2 + 17), "only the in-progress season is fetched"
 
     client, session = make_client()
     report = sync_all(client, store, config, full=True)
@@ -145,3 +145,53 @@ def test_in_progress_season_stores_unplayed_weeks(tmp_path):
     week14 = store.read_matchups("dynasty", "2026", 14)
     assert all(t["points"] > 0 for t in week9)
     assert all(t["points"] == 0 for t in week14) and all(t["matchup_id"] for t in week14)
+
+
+# -- managers-moves: transactions -----------------------------------------------
+
+
+def test_transactions_saved_for_every_week(tmp_path):
+    store = Store(tmp_path)
+    week3 = [{"type": "free_agent", "status": "complete", "adds": {"1": 2}, "drops": None, "leg": 3}]
+    client, _ = make_client({f"league/{DYNASTY['2025']}/transactions/3.json": week3})
+    assert sync_league(client, store, DYNASTY_CFG).ok
+    saved = store.read_transactions("dynasty", "2025")
+    assert sorted(saved) == list(season_weeks(store.read_league("dynasty", "2025")))
+    assert saved[3] == week3 and saved[4] == []
+
+
+def test_completed_season_without_transactions_is_backfilled_once(tmp_path):
+    store = Store(tmp_path)
+    config = Config(leagues={"dynasty": DYNASTY_CFG})
+    client, _ = make_client()
+    assert sync_all(client, store, config).ok
+    # as stored before transactions were kept
+    import shutil
+    shutil.rmtree(tmp_path / "leagues" / "dynasty" / "2024" / "transactions")
+
+    client, session = make_client()
+    report = sync_all(client, store, config)
+    assert ("dynasty", "2024") in report.skipped and ("dynasty", "2024") in report.transactions
+    assert sum("/transactions/" in c and DYNASTY["2024"] in c for c in session.calls) == 17
+    assert store.has_transactions("dynasty", "2024")
+
+    client, session = make_client()
+    report = sync_all(client, store, config)
+    assert not any(DYNASTY["2024"] in c and "/transactions/" in c for c in session.calls), "fetched only once"
+    assert report.transactions == [("dynasty", "2026")], "the current season is fetched again every sync"
+
+
+def test_transactions_failure_keeps_files_and_only_warns(tmp_path):
+    store = Store(tmp_path)
+    config = Config(leagues={"dynasty": DYNASTY_CFG})
+    week5 = [{"type": "waiver", "status": "complete", "adds": {"9": 1}, "drops": None, "leg": 5, "settings": {"waiver_bid": 7}}]
+    client, _ = make_client({f"league/{DYNASTY['2026']}/transactions/5.json": week5})
+    assert sync_all(client, store, config).ok
+    before = tree_digest(tmp_path / "leagues" / "dynasty" / "2026" / "transactions")
+
+    failing, _ = make_client({f"league/{DYNASTY['2026']}/transactions/9.json": 500})
+    report = sync_all(failing, store, config)
+    assert report.ok, "a transactions failure never fails the sync"
+    assert report.warnings and "2026" in report.warnings[0][1]
+    assert ("dynasty", "2026") in report.fetched, "matchups still sync"
+    assert tree_digest(tmp_path / "leagues" / "dynasty" / "2026" / "transactions") == before

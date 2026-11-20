@@ -15,6 +15,7 @@ const state = {
   histTab: "hist",
   cardTab: "roster",
   movesSeason: null,
+  movesFilter: "all",
 };
 
 const $ = (id) => document.getElementById(id);
@@ -78,6 +79,7 @@ export function selectManager(nameOrId) {
   if (!id) return false;
   state.selected = id;
   state.movesSeason = null;
+  state.movesFilter = "all";
   if (state.data) { fillPicker(); render(); }
   state.onChange();
   return true;
@@ -126,6 +128,7 @@ export function initManagers() {
   });
   $("mgr-content").addEventListener("change", (e) => {
     if (e.target.id === "mgr-moves-season") { state.movesSeason = e.target.value; renderMoves(); }
+    if (e.target.id === "mgr-moves-filter") { state.movesFilter = e.target.value; renderMoves(); }
   });
   addEventListener("resize", () => { if (visible()) { fitBanners(); fitNames($("mgr-content")); } });
 }
@@ -175,10 +178,25 @@ function nameAttrs(name, position) {
 
 /* After rendering (and on resize): shorten only the names that overflow. Hidden elements measure 0
    wide and are left full; they are fitted again when shown. */
+/* Text wider than its box, measured to the fraction of a pixel (scrollWidth rounds, and a name
+   over by under a pixel still gets an ellipsis). */
+function overflows(el) {
+  const box = el.getBoundingClientRect().width;
+  if (!box) return false;
+  const r = document.createRange();
+  r.selectNodeContents(el);
+  return r.getBoundingClientRect().width > box + 0.01;
+}
+
 function fitNames(root) {
-  for (const el of (root || document).querySelectorAll("[data-short]")) {
-    el.textContent = el.dataset.full;
-    if (el.clientWidth && el.scrollWidth > el.clientWidth + 1) el.textContent = el.dataset.short;
+  const over = overflows;
+  for (const el of (root || document).querySelectorAll("[data-short], .fitname")) {
+    el.classList.remove("fit-wrap");
+    if (el.dataset.short) {
+      el.textContent = el.dataset.full;
+      if (over(el)) el.textContent = el.dataset.short;
+    }
+    if (over(el)) el.classList.add("fit-wrap");   // even the short form is too wide: wrap it, never cut it
   }
 }
 
@@ -487,9 +505,49 @@ function movesSeasons(m) {
 function stepMovesSeason(delta) {
   const m = state.byId[state.selected];
   const seasons = movesSeasons(m);
+  if (state.movesSeason === "all") { state.movesSeason = delta < 0 ? seasons[seasons.length - 1] : seasons[0]; renderMoves(); return; }
   const i = seasons.indexOf(state.movesSeason);
   const next = seasons[i - delta];   // the list runs newest first: "previous" is older
   if (next) { state.movesSeason = next; renderMoves(); }
+}
+
+/* WAR chip on the roster card's colours; "no games" when the move's window held no game for him,
+   "no games yet" when nothing after the move has been scored. */
+function moveChip(r) {
+  if (r.war == null) return `<span class="mgr-chip none">${r.pending ? /*copy:MGR-19*/"no games yet" : "no games"}</span>`;
+  const w = Math.round(r.war * 10) / 10 || 0;   // no "−0.0": tiny values round to 0.0
+  const tier = w >= 1 ? "r5" : w >= 0.3 ? "r4" : w > -0.1 ? "r3" : w > -0.4 ? "r2" : "r1";
+  return `<span class="mgr-chip ${tier}">${signed(w)}</span>`;
+}
+
+function moveWeek(r, all) {
+  return all ? `week&nbsp;${r.week}, ${r.season}` : `week&nbsp;${r.week}`;
+}
+
+function moveRow(r, kind, all) {
+  let how;
+  if (kind === "added") {
+    if (r.via === "waiver") {
+      const tip = r.next != null ? `Next bid $${r.next}` : "No other bids";
+      how = `Waiver · $${r.bid}${r.tied ? ` · <span title="${/*copy:MGR-20*/"Tied with the next bid and won on waiver priority"}">tied</span>` : r.over > 0 ? ` <span class="over" title="${tip}">+$${r.over}</span>` : ""}`;
+    } else how = r.via === "commissioner" ? "Commissioner" : "Free agent";
+  } else {
+    how = r.by ? `Claimed by ${managerLink(r.by)}` : r.via === "commissioner" ? "Commissioner" : "To waivers";
+  }
+  return `<div class="mgr-mv"><span class="p">${shortName(r.name, r.pos)}</span><span class="how">${how} · ${moveWeek(r, all)}</span><span class="war">${moveChip(r)}</span></div>`;
+}
+
+function tradeBlock(t, all) {
+  const items = (side) => [
+    ...side.players.map((p) => `<span class="it">${shortName(p.name, p.pos)}${moveChip(p)}</span>`),
+    ...side.picks.map((p) => `<span class="it"><span class="tag">${p.season} ${ordinal(p.round)}</span></span>`),
+    ...(side.faab ? [`<span class="it"><span class="tag">$${side.faab} FAAB</span></span>`] : []),
+  ].join("") || '<span class="it none">–</span>';
+  const sum = (side) => side.players.reduce((a, p) => a + (p.war || 0), 0);
+  const scored = [...t.got.players, ...t.gave.players].some((p) => p.war != null);
+  const net = scored ? `<div class="net"><span>${/*copy:MGR-21*/"WAR since the trade"}</span><span>${moveChip({ war: sum(t.got) })} vs ${moveChip({ war: sum(t.gave) })}</span></div>` : "";
+  return `<div class="mgr-trade"><div class="with"><span>with ${t.with.map((u) => managerLink(u)).join(", ")}</span><span class="wk">${moveWeek(t, all)}</span></div>
+    <div class="sides"><div><span class="lbl">Got</span>${items(t.got)}</div><div><span class="lbl">Gave</span>${items(t.gave)}</div></div>${net}</div>`;
 }
 
 function renderMoves() {
@@ -497,13 +555,38 @@ function renderMoves() {
   const box = $("mgr-moves");
   if (!m || !box) return;
   const seasons = movesSeasons(m);
-  if (!state.movesSeason || !seasons.includes(state.movesSeason)) state.movesSeason = seasons[0] || null;
-  const f = state.movesSeason ? m.faab[state.movesSeason] : null;
+  if (!state.movesSeason || (state.movesSeason !== "all" && !seasons.includes(state.movesSeason))) state.movesSeason = seasons[0] || null;
+  const all = state.movesSeason === "all";
+  const picked = all ? seasons : state.movesSeason ? [state.movesSeason] : [];
+  const tagged = (key) => picked.flatMap((s) => ((m.moves || {})[s] || {})[key]?.map((r) => ({ ...r, season: s })) || []);
+  const filter = state.movesFilter;
+  const keep = (r) => filter === "all" || r.via === filter;
+  const added = filter === "trade" ? [] : tagged("added").filter(keep).reverse();
+  const dropped = filter === "trade" ? [] : tagged("dropped").filter(keep).reverse();
+  const trades = filter === "all" || filter === "trade" ? tagged("trades").reverse() : [];
+
+  // FAAB meter: one season, or every season added up
+  const faabs = picked.map((s) => m.faab[s]).filter(Boolean);
+  const spent = faabs.reduce((a, f) => a + f.spent, 0), budget = faabs.reduce((a, f) => a + f.budget, 0);
+  const overpaid = faabs.reduce((a, f) => a + (f.overpaid || 0), 0);
+  const biggest = faabs.map((f, i) => f.biggest && { ...f.biggest, season: picked[i] }).filter(Boolean).sort((a, b) => b.bid - a.bid)[0];
+  const meter = budget ? `<div class="mgr-meter"><div class="mt"><span>FAAB spent</span><b>$${spent} of $${budget}</b></div>
+      <div class="mb"><span style="width: ${Math.min(100, Math.round((100 * spent) / budget))}%"></span></div>
+      <div class="ms"><span>${biggest ? `Biggest bid: $${biggest.bid} on ${shortName(biggest.name)} (${moveWeek(biggest, all)})` : /*copy:MGR-22*/"No winning bids yet"}</span><span>Overpaid <b>$${overpaid}</b></span></div></div>` : "";
+
   const IN = '<svg class="ic in" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M12 6v12M6 12h12"/></svg>';
   const OUT = '<svg class="ic out" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M6 12h12"/></svg>';
-  const skel = (n) => Array.from({ length: n }, () => '<div class="mgr-skel-row" aria-hidden="true"><span><i></i><i class="short"></i></span><i></i></div>').join("");
-  const meter = f ? `<div class="mgr-meter"><div class="mt"><span>FAAB spent</span><b>$${f.spent} of $${f.budget}</b></div>
-      <div class="mb"><span style="width: ${Math.min(100, Math.round((100 * f.spent) / f.budget))}%"></span></div></div>` : "";
+  const TR = '<svg class="ic tr" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M7 9h10l-3-3M17 15H7l3 3"/></svg>';
+  const warSum = (rows) => Math.round(rows.reduce((a, r) => a + (r.war || 0), 0) * 10) / 10 || 0;
+  const none = `<p class="mgr-none">None</p>`;
+  const group = (icon, title, count, total, body) =>
+    `<div class="mgr-grp"><h4 class="ih">${icon}${title} (${count})${total ? `<span class="tot">${total}</span>` : ""}</h4>${body || none}</div>`;
+  const lists = [
+    filter !== "trade" ? group(IN, "Added", added.length, added.length ? `$${added.reduce((a, r) => a + (r.bid || 0), 0)} · ${signed(warSum(added))} WAR` : "", added.map((r) => moveRow(r, "added", all)).join("")) : "",
+    filter !== "trade" ? group(OUT, "Dropped", dropped.length, dropped.length ? `${signed(warSum(dropped))} WAR elsewhere` : "", dropped.map((r) => moveRow(r, "dropped", all)).join("")) : "",
+    filter === "all" || filter === "trade" ? group(TR, "Trades", trades.length, "", trades.map((t) => tradeBlock(t, all)).join("")) : "",
+  ].join("");
+
   const p = m.players || {};
   const playerRows = [
     [/*copy:MGR-17*/"Most seasons on this team", p.most_seasons ? shortName(p.most_seasons.name) : "–", p.most_seasons ? `${p.most_seasons.seasons} season${p.most_seasons.seasons === 1 ? "" : "s"}` : ""],
@@ -511,16 +594,15 @@ function renderMoves() {
   ];
   const players = `<div class="mgr-grp"><h4>Players</h4><div class="mgr-players">${playerRows
     .map(([k, v, n]) => `<div class="r"><span class="pk">${k}</span><span class="pv">${v}</span><span class="pn">${n}</span></div>`).join("")}</div></div>`;
+  const filters = [["all", "All moves"], ["waiver", "Waivers"], ["free_agent", "Free agents"], ["trade", "Trades"]];
   box.innerHTML = `<div class="mgr-card-head"><h3>Moves</h3></div>
     <div class="mgr-controls"><button type="button" class="mgr-moves-prev" aria-label="Previous season">&#8249;</button>
-      <select id="mgr-moves-season" aria-label="Season">${seasons.map((s) => `<option value="${s}"${s === state.movesSeason ? " selected" : ""}>${s}</option>`).join("")}</select>
+      <select id="mgr-moves-season" aria-label="Season">${seasons.map((s) => `<option value="${s}"${s === state.movesSeason ? " selected" : ""}>${s}</option>`).join("")}<option value="all"${all ? " selected" : ""}>All seasons</option></select>
       <button type="button" class="mgr-moves-next" aria-label="Next season">&#8250;</button>
-      <select class="filter" aria-label="Filter" disabled><option>All moves</option></select></div>
+      <select id="mgr-moves-filter" class="filter" aria-label="Filter">${filters.map(([v, l]) => `<option value="${v}"${v === filter ? " selected" : ""}>${l}</option>`).join("")}</select></div>
     <div class="mgr-scroll" tabindex="0" role="region" aria-label="Moves"><div class="mgr-panel">
       ${meter}
-      <p class="mgr-msg">${/*copy:MGR-10*/"Adds, drops and trades arrive with the transaction history. FAAB and the player history below are already live."}</p>
-      <div class="mgr-grp"><h4 class="ih">${IN}Added</h4>${skel(3)}</div>
-      <div class="mgr-grp"><h4 class="ih">${OUT}Dropped</h4>${skel(2)}</div>
+      ${lists}
       ${players}
     </div></div><div></div>`;
   fitNames(box);
@@ -541,13 +623,21 @@ const NEWS_ICON = {
   inj: '<svg viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg>',
   move: '<svg viewBox="0 0 24 24"><path d="M7 9h10l-3-3 1.4-1.4L21 10.2 15.4 16 14 14.6l3-3H7zm10 6H7l3 3-1.4 1.4L3 13.8 8.6 8 10 9.4l-3 3h10z"/></svg>',
   star: ICON.star, trophy: TROPHY,
+  money: '<svg viewBox="0 0 24 24"><path d="M11 3h2v2.1c2 .3 3.5 1.6 3.5 3.4h-2c0-.9-1-1.7-2.5-1.7s-2.5.7-2.5 1.6c0 .8.7 1.3 2.8 1.8 2.6.6 4.2 1.5 4.2 3.7 0 1.8-1.5 3-3.5 3.3V19h-2v-1.8c-2.1-.3-3.6-1.6-3.6-3.5h2c0 1 1.1 1.8 2.6 1.8 1.6 0 2.5-.7 2.5-1.6 0-.9-.8-1.4-2.9-1.9-2.4-.6-4.1-1.5-4.1-3.6 0-1.7 1.4-2.9 3.5-3.3z"/></svg>',
 };
+
+/* "2027 2nd" for a pick, "$5 FAAB" for budget sent: the parts of one side of a trade, as a phrase. */
+function tradeSide(players, picks, faab) {
+  const parts = [...(players || []).map(escapeHtml), ...(picks || []).map((p) => `${p.season} ${ordinal(p.round)}`), ...(faab ? [`$${faab} FAAB`] : [])];
+  if (parts.length <= 1) return parts[0] || "";
+  return `${parts.slice(0, -1).join(", ")} and ${parts[parts.length - 1]}`;
+}
 
 /* One story's headline, body (feature only), category and thumbnail. Every sentence is a template
    with a copy ID, so the owner can reword any story type in site-copy.txt. */
 function storyText(s, m) {
   const f = s.fields;
-  const team = escapeHtml(m.team_name);
+  const team = escapeHtml(String(m.team_name || "").trim());   // Sleeper keeps stray spaces in some team names
   const opp = escapeHtml(f.opp || "");
   const score = f.points != null ? `${fmt1(f.points)}–${fmt1(f.opp_points)}` : "";
   switch (s.type) {
@@ -595,6 +685,20 @@ function storyText(s, m) {
     case "final_season":
       return { cat: "Season", thumb: ["rec", NEWS_ICON.trophy],
         head: f.place ? /*copy:NEWS-24*/`${team} close their final season in ${ordinal(f.place)} place` : /*copy:NEWS-25*/`${team} close their final season, ${f.season}`, body: "" };
+    case "trade":
+      return { cat: "Trade", thumb: ["move", NEWS_ICON.move],
+        head: /*copy:NEWS-27*/`${team} trade ${tradeSide(f.gave, f.gave_picks, f.gave_faab)} to ${opp} for ${tradeSide(f.got, f.got_picks, f.got_faab)}`, body: "" };
+    case "big_bid":
+      return { cat: "Waivers", thumb: ["lg", NEWS_ICON.money],
+        head: f.next != null ? /*copy:NEWS-28*/`${team} win ${escapeHtml(f.player)} for $${f.bid}; the next bid was $${f.next}` : /*copy:NEWS-29*/`${team} win ${escapeHtml(f.player)} for $${f.bid} with no other bids`, body: "" };
+    case "pays_off":
+      return { cat: "Pickup", thumb: ["up", NEWS_ICON.up], head: /*copy:NEWS-30*/`${escapeHtml(f.player)}, picked up in week ${f.since}, passes +1.0 WAR for ${team}`, body: "" };
+    case "got_away":
+      return { cat: "Got away", thumb: ["down", NEWS_ICON.down],
+        head: f.team ? /*copy:NEWS-31*/`${escapeHtml(f.player)}, dropped in week ${f.since}, passes +1.0 WAR for ${escapeHtml(f.team)}` : /*copy:NEWS-32*/`${escapeHtml(f.player)}, dropped in week ${f.since}, passes +1.0 WAR since leaving`, body: "" };
+    case "outbid":
+      return { cat: "Outbid", thumb: ["down", NEWS_ICON.money],
+        head: f.tied ? /*copy:NEWS-33*/`Lost ${escapeHtml(f.player)} on waiver priority: ${team} and ${escapeHtml(f.winner)} both bid $${f.bid}` : /*copy:NEWS-34*/`Outbid on ${escapeHtml(f.player)}: ${team}'s $${f.bid} lost to ${escapeHtml(f.winner)}'s $${f.winning_bid}`, body: "" };
     default:
       return { cat: "News", thumb: ["lg", NEWS_ICON.star], head: "", body: "" };
   }

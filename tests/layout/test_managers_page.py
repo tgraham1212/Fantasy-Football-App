@@ -134,3 +134,34 @@ def test_manager_names_open_their_page(open_page, view):
     assert not page.locator("#page-managers").is_hidden(), view
     assert page.locator("#mgr-select option:checked").inner_text().split(" · ")[0] == name
     assert page.evaluate("location.hash").endswith(f"/managers/{name}") or page.evaluate("decodeURIComponent(location.hash)").endswith(f"/managers/{name}")
+
+
+# text wider than its box to the fraction of a pixel (an ellipsis shows from 0.01 px over)
+FRACTION_CUT_JS = """(sel) => [...document.querySelectorAll(sel)].filter((e) => {
+  if (!e.getClientRects().length || getComputedStyle(e).whiteSpace === 'normal') return false;
+  const r = document.createRange(); r.selectNodeContents(e);
+  return r.getBoundingClientRect().width > e.getBoundingClientRect().width + 0.5; }).map((e) => e.textContent.trim().slice(0, 40))"""
+
+
+@pytest.mark.parametrize("wide", [False, True], ids=["font", "wide-font"])
+@pytest.mark.parametrize("width", WIDTHS)
+def test_moves_card_cuts_nothing(open_page, width, wide):
+    """Moves rows and trade blocks (managers-moves): no player name or "how" line cut, nothing
+    outside the card, no sideways scroll, for one season, All seasons and the Trades filter."""
+    page, _, _ = open_view(open_page, "managers-moves", width)
+    if wide:
+        page.add_style_tag(content=WIDE_FONT)
+        page.evaluate("window.dispatchEvent(new Event('resize'))")
+        page.wait_for_timeout(400)
+    problems = []
+    for season, filt in ((None, "all"), ("all", "all"), ("all", "trade")):
+        if season:
+            page.select_option("#mgr-moves-season", season)
+        page.select_option("#mgr-moves-filter", filt)
+        page.wait_for_timeout(300)
+        label = f"{season or 'season'}/{filt}"
+        assert page.locator("#mgr-moves .mgr-mv, #mgr-moves .mgr-trade").count(), f"{label}: no moves shown, the check proves nothing"
+        problems += [f"{label}: cut {t}" for t in page.evaluate(FRACTION_CUT_JS, "#mgr-moves .fitname, #mgr-moves .mgr-mv .how")]
+        problems += [f"{label}: outside {o}" for o in page.evaluate(OUTSIDE_JS, ["#mgr-moves", ".mgr-mv > *, .mgr-trade, .mgr-trade .it, .mgr-meter .ms > *"])]
+        problems += [f"{label}: sideways scroll" for _ in page.evaluate("() => [...document.querySelectorAll('#mgr-moves .mgr-scroll')].filter((e) => e.scrollWidth > e.clientWidth + 1).map(() => 1)")]
+    assert not problems, f"{width}px: " + "; ".join(problems[:12])

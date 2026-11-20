@@ -566,6 +566,37 @@ def player_names(store: Store, league_key: str) -> dict[str, str]:
     return out
 
 
+def move_player_info(store: Store, league_key: str) -> tuple[dict[str, str], dict[str, str]]:
+    """(player_id -> name, player_id -> position) for every player in the league's transactions:
+    the WAR files first (newest season wins), then the season's stat and projection records for
+    players who never had a game, then the ESPN crosswalk (Sleeper names)."""
+    from ffapp.news import stat_names
+    from ffapp.war import read_war, war_seasons
+
+    names: dict[str, str] = {}
+    positions: dict[str, str] = {}
+    for season in war_seasons(store, league_key):
+        for pid, player in ((read_war(store, league_key, season) or {}).get("players") or {}).items():
+            if player.get("name"):
+                names[str(pid)] = player["name"]
+            if player.get("position"):
+                positions[str(pid)] = player["position"]
+    for season in store.seasons(league_key):
+        wanted = {str(p) for week in store.read_transactions(league_key, season).values() for t in week
+                  for side in ("adds", "drops") for p in (t.get(side) or {})}
+        if wanted - names.keys():
+            more_names, more_pos = stat_names(store, season)
+            for pid in wanted - names.keys():
+                if pid in more_names:
+                    names[pid] = more_names[pid]
+                    positions.setdefault(pid, more_pos.get(pid))
+    for pid, info in (store.read_crosswalk() or {}).items():   # last: Sleeper's player list as saved for ESPN matching
+        if pid not in names and info.get("name"):
+            names[pid] = info["name"]
+            positions.setdefault(pid, info.get("position"))
+    return names, positions
+
+
 def faab_by_season(store: Store, league_key: str, user: str) -> dict[str, dict]:
     """season -> {spent, budget} from Sleeper's FAAB used per roster and the league's budget."""
     out: dict[str, dict] = {}
@@ -660,6 +691,7 @@ def _roster_rows(data: SeasonData, rid: int, team: dict | None, statuses: dict[s
 def managers_export(store: Store, config, league_key: str, league_payload: dict, games_payload: dict | None,
                     positions_payload: dict | None) -> dict:
     """Every block the Managers page shows, for every current and retired manager of one league."""
+    from ffapp.moves import league_moves
     from ffapp.news import league_context, manager_stories
     from ffapp.ratings import read_ratings
 
@@ -676,8 +708,13 @@ def managers_export(store: Store, config, league_key: str, league_payload: dict,
     pnames = player_names(store, league_key)
     carry = not BracketRules.from_league(store.read_season(league_key, store.seasons(league_key)[-1]).league).toilet_bowl
     ratings = (read_ratings(store, league_key) or {}).get("managers", {})
-    news_ctx = league_context(store, league_key, managers, games, rivals)
     seasons_data = {s: store.read_season(league_key, s) for s in store.seasons(league_key)}
+    owners_by_season = {s: roster_owners(store, league_key, s) for s in seasons_data}
+    wins_by_user = {uid: windows(timeline, held.get(uid, {}), war, carry) for uid in managers}
+    move_names, move_positions = move_player_info(store, league_key)
+    lm = league_moves(store, league_key, owners_by_season, timeline, wins_by_user, war, move_names, move_positions)
+    news_ctx = league_context(store, league_key, managers, games, rivals)
+    news_ctx["moves"] = lm
     places = {s: final_places(d) for s, d in seasons_data.items()}
     pos_files = (positions_payload or {}).get("files", {})
     current = league_payload["season"]
@@ -698,7 +735,7 @@ def managers_export(store: Store, config, league_key: str, league_payload: dict,
         team = next((t for t in team_file.get("teams", []) if int(t["roster_id"]) == rid), None)
         own_games = [g for g in games if g.user == uid and g.season == season]
         rating = (ratings.get(uid) or {}).get("history") or []
-        wins = windows(timeline, held.get(uid, {}), war, carry)
+        wins = wins_by_user[uid]
         player_pts = _season_points_by_player(data, rid)
         top = max(player_pts.items(), key=lambda kv: kv[1], default=None)
         played_any = bool(own_games)
@@ -740,7 +777,8 @@ def managers_export(store: Store, config, league_key: str, league_payload: dict,
             "head_to_head": _h2h_rows(h2h, names, rival_uid),
             "records": recs.get(uid, {}),
             "rivalry": rivalry_record(games, rivals, uid) if rivals else None,
-            "faab": faab_by_season(store, league_key, uid),
+            "faab": {s: {**f, **lm.faab.get(uid, {}).get(s, {"biggest": None, "overpaid": 0})} for s, f in faab_by_season(store, league_key, uid).items()},
+            "moves": lm.moves.get(uid, {}),
             "players": players_block(wins, pnames),
             "news": manager_stories(store, league_key, m, news_ctx),
         })

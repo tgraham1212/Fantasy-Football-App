@@ -263,10 +263,20 @@ function nameAttrs(name, position) {
 
 /* After rendering (and on resize): shorten only the names that overflow. Hidden elements measure 0
    wide and are left full; they are fitted again when shown. */
+/* Text wider than its box, measured to the fraction of a pixel (scrollWidth rounds, and a name
+   over by under a pixel still gets an ellipsis). */
+function overflows(el) {
+  const box = el.getBoundingClientRect().width;
+  if (!box) return false;
+  const r = document.createRange();
+  r.selectNodeContents(el);
+  return r.getBoundingClientRect().width > box + 0.01;
+}
+
 function fitNames(root) {
   for (const el of (root || document).querySelectorAll("[data-short]")) {
     el.textContent = el.dataset.full;
-    if (el.clientWidth && el.scrollWidth > el.clientWidth + 1) el.textContent = el.dataset.short;
+    if (overflows(el)) el.textContent = el.dataset.short;
   }
   // a replacement fill drops its "(replacement level)" bracket the same way
   for (const more of (root || document).querySelectorAll(".fa-more")) {

@@ -134,6 +134,11 @@ class SleeperClient:
     def losers_bracket(self, league_id: str) -> list:
         return self.get_json(f"{self._api_base}/league/{league_id}/losers_bracket")
 
+    def transactions(self, league_id: str, week: int) -> list:
+        """Every transaction Sleeper filed under ``week`` (its "round"): waivers won and failed,
+        free agents, trades and commissioner moves. Offseason moves are filed under week 1."""
+        return self.get_json(f"{self._api_base}/league/{league_id}/transactions/{week}")
+
     def state(self, sport: str = "nfl") -> dict:
         return self.get_json(f"{self._api_base}/state/{sport}")
 

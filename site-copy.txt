@@ -173,12 +173,12 @@ TEXT:
 · forecast, happens in ${Math.round((g.frequency || 0) * 100)}% of simulations
 
 [GAME-11] generated text
-WHERE: site/games.js line 370 (generated)
+WHERE: site/games.js line 386 (generated)
 TEXT:
 First-round bye · #${b.seed} seed in the ${where}
 
 [GAME-12] generated text
-WHERE: site/games.js line 421 (generated)
+WHERE: site/games.js line 437 (generated)
 TEXT:
 No games stored for this week.
 
@@ -673,134 +673,174 @@ Couldn't start, try later
 ##############################################################################
 
 [NEWS-01] generated text
-WHERE: site/managers.js line 558 (generated)
+WHERE: site/managers.js line 648 (generated)
 TEXT:
 ${team} and ${opp} finish level at ${score}
 
 [NEWS-02] generated text
-WHERE: site/managers.js line 558 (generated)
+WHERE: site/managers.js line 648 (generated)
 TEXT:
 ${team} beat ${opp} ${score}
 
 [NEWS-03] generated text
-WHERE: site/managers.js line 558 (generated)
+WHERE: site/managers.js line 648 (generated)
 TEXT:
 ${team} fall to ${opp} ${score}
 
 [NEWS-04] generated text
-WHERE: site/managers.js line 559 (generated)
+WHERE: site/managers.js line 649 (generated)
 TEXT:
 ${escapeHtml(f.top_player)} led the way with ${fmt1(f.top_points)} points.
 
 [NEWS-05] generated text
-WHERE: site/managers.js line 564 (generated)
+WHERE: site/managers.js line 654 (generated)
 TEXT:
 Rivalry week goes to ${team}, ${score} over ${opp}
 
 [NEWS-06] generated text
-WHERE: site/managers.js line 564 (generated)
+WHERE: site/managers.js line 654 (generated)
 TEXT:
 ${opp} take rivalry week from ${team}, ${score}
 
 [NEWS-07] generated text
-WHERE: site/managers.js line 567 (generated)
+WHERE: site/managers.js line 657 (generated)
 TEXT:
 Rivalry week is next: ${team} face ${opp}
 
 [NEWS-08] generated text
-WHERE: site/managers.js line 571 (generated)
+WHERE: site/managers.js line 661 (generated)
 TEXT:
 Playoff forecast up ${Math.round(f.change * 100)} to ${pct(f.to)}
 
 [NEWS-09] generated text
-WHERE: site/managers.js line 571 (generated)
+WHERE: site/managers.js line 661 (generated)
 TEXT:
 Playoff forecast down ${Math.round(-f.change * 100)} to ${pct(f.to)}
 
 [NEWS-10] generated text
-WHERE: site/managers.js line 575 (generated)
+WHERE: site/managers.js line 665 (generated)
 TEXT:
 New team high: ${fmt1(f.value)}, #${f.rank} all time in the league
 
 [NEWS-11] generated text
-WHERE: site/managers.js line 575 (generated)
+WHERE: site/managers.js line 665 (generated)
 TEXT:
 New team high: ${fmt1(f.value)}, beating ${fmt1(f.previous)}
 
 [NEWS-12] generated text
-WHERE: site/managers.js line 578 (generated)
+WHERE: site/managers.js line 668 (generated)
 TEXT:
 ${f.length} straight wins for ${team}
 
 [NEWS-13] generated text
-WHERE: site/managers.js line 578 (generated)
+WHERE: site/managers.js line 668 (generated)
 TEXT:
 ${f.length} straight losses for ${team}
 
 [NEWS-14] generated text
-WHERE: site/managers.js line 580 (generated)
+WHERE: site/managers.js line 670 (generated)
 TEXT:
 ${escapeHtml(f.player)} passes +${f.war}.0 WAR for ${team}
 
 [NEWS-15] generated text
-WHERE: site/managers.js line 583 (generated)
+WHERE: site/managers.js line 673 (generated)
 TEXT:
 ${escapeHtml(f.player)} listed as ${escapeHtml(f.status)} (${escapeHtml(String(f.body_part).toLowerCase())})
 
 [NEWS-16] generated text
-WHERE: site/managers.js line 583 (generated)
+WHERE: site/managers.js line 673 (generated)
 TEXT:
 ${escapeHtml(f.player)} listed as ${escapeHtml(f.status)}
 
 [NEWS-17] generated text
-WHERE: site/managers.js line 586 (generated)
+WHERE: site/managers.js line 676 (generated)
 TEXT:
 ${escapeHtml(f.player)} did not practise this week
 
 [NEWS-18] generated text
-WHERE: site/managers.js line 586 (generated)
+WHERE: site/managers.js line 676 (generated)
 TEXT:
 ${escapeHtml(f.player)} limited in practice this week
 
 [NEWS-19] generated text
-WHERE: site/managers.js line 589 (generated)
+WHERE: site/managers.js line 679 (generated)
 TEXT:
 ${escapeHtml(f.player)} moves up to ${escapeHtml(f.depth_pos || "")}${f.to} on the depth chart
 
 [NEWS-20] generated text
-WHERE: site/managers.js line 589 (generated)
+WHERE: site/managers.js line 679 (generated)
 TEXT:
 ${escapeHtml(f.player)} drops to ${escapeHtml(f.depth_pos || "")}${f.to} on the depth chart
 
 [NEWS-21] generated text
-WHERE: site/managers.js line 591 (generated)
+WHERE: site/managers.js line 681 (generated)
 TEXT:
 ${escapeHtml(f.player)} is the ${ordinal(f.rank)} most-added player on Sleeper today
 
 [NEWS-22] generated text
-WHERE: site/managers.js line 594 (generated)
+WHERE: site/managers.js line 684 (generated)
 TEXT:
 Team of the Week: ${escapeHtml(f.players[0])} makes the cut
 
 [NEWS-23] generated text
-WHERE: site/managers.js line 594 (generated)
+WHERE: site/managers.js line 684 (generated)
 TEXT:
 Team of the Week: ${f.players.map(escapeHtml).join(" and ")} make the cut
 
 [NEWS-24] generated text
-WHERE: site/managers.js line 597 (generated)
+WHERE: site/managers.js line 687 (generated)
 TEXT:
 ${team} close their final season in ${ordinal(f.place)} place
 
 [NEWS-25] generated text
-WHERE: site/managers.js line 597 (generated)
+WHERE: site/managers.js line 687 (generated)
 TEXT:
 ${team} close their final season, ${f.season}
 
 [NEWS-26] generated text
-WHERE: site/managers.js line 565 (generated)
+WHERE: site/managers.js line 655 (generated)
 TEXT:
 ${escapeHtml(f.top_player)} led the way with ${fmt1(f.top_points)} points.
+
+[NEWS-27] generated text
+WHERE: site/managers.js line 690 (generated)
+TEXT:
+${team} trade ${tradeSide(f.gave, f.gave_picks, f.gave_faab)} to ${opp} for ${tradeSide(f.got, f.got_picks, f.got_faab)}
+
+[NEWS-28] generated text
+WHERE: site/managers.js line 693 (generated)
+TEXT:
+${team} win ${escapeHtml(f.player)} for $${f.bid}; the next bid was $${f.next}
+
+[NEWS-29] generated text
+WHERE: site/managers.js line 693 (generated)
+TEXT:
+${team} win ${escapeHtml(f.player)} for $${f.bid} with no other bids
+
+[NEWS-30] generated text
+WHERE: site/managers.js line 695 (generated)
+TEXT:
+${escapeHtml(f.player)}, picked up in week ${f.since}, passes +1.0 WAR for ${team}
+
+[NEWS-31] generated text
+WHERE: site/managers.js line 698 (generated)
+TEXT:
+${escapeHtml(f.player)}, dropped in week ${f.since}, passes +1.0 WAR for ${escapeHtml(f.team)}
+
+[NEWS-32] generated text
+WHERE: site/managers.js line 698 (generated)
+TEXT:
+${escapeHtml(f.player)}, dropped in week ${f.since}, passes +1.0 WAR since leaving
+
+[NEWS-33] generated text
+WHERE: site/managers.js line 701 (generated)
+TEXT:
+Lost ${escapeHtml(f.player)} on waiver priority: ${team} and ${escapeHtml(f.winner)} both bid $${f.bid}
+
+[NEWS-34] generated text
+WHERE: site/managers.js line 701 (generated)
+TEXT:
+Outbid on ${escapeHtml(f.player)}: ${team}'s $${f.bid} lost to ${escapeHtml(f.winner)}'s $${f.winning_bid}
 
 
 ##############################################################################
@@ -813,81 +853,96 @@ TEXT:
 Manager pages are not yet available for this league: the site data has not been exported.
 
 [MGR-03] generated text
-WHERE: site/managers.js line 241 (generated)
+WHERE: site/managers.js line 259 (generated)
 TEXT:
 Form, oldest first: ${five.map((r) => WORD[r]).join(", ")}
 
 [MGR-04] generated text
-WHERE: site/managers.js line 356 (generated)
+WHERE: site/managers.js line 374 (generated)
 TEXT:
 No roster is stored for this manager.
 
 [MGR-05] generated text
-WHERE: site/managers.js line 391 (generated)
+WHERE: site/managers.js line 409 (generated)
 TEXT:
 ${escapeHtml(m.name)} founded ${escapeHtml(m.team_name)} in ${m.first}. Since then: ${titles === 1 ? "one title" : `${titles} titles`}, ${trips === 1 ? "one playoff trip" : `${trips} playoff trips`} and a ${record(m.all_time)} regular-season record.
 
 [MGR-06] generated text
-WHERE: site/managers.js line 392 (generated)
+WHERE: site/managers.js line 410 (generated)
 TEXT:
 ${escapeHtml(m.name)} managed in the league from ${m.first} to ${m.last}: ${titles === 1 ? "one title" : `${titles} titles`}, ${trips === 1 ? "one playoff trip" : `${trips} playoff trips`} and a ${record(m.all_time)} regular-season record.
 
 [MGR-07] generated text
-WHERE: site/managers.js line 423 (generated)
+WHERE: site/managers.js line 441 (generated)
 TEXT:
 No finished season yet.
 
 [MGR-08] generated text
-WHERE: site/managers.js line 430 (generated)
+WHERE: site/managers.js line 448 (generated)
 TEXT:
 Final finish each season: ${fin.map((f) => `${f.season} ${ordinal(f.place)}`).join(", ")}
 
 [MGR-09] generated text
-WHERE: site/managers.js line 448 (generated)
+WHERE: site/managers.js line 466 (generated)
 TEXT:
 No games played yet.
 
-[MGR-10] generated text
-WHERE: site/managers.js line 521 (generated)
-TEXT:
-Adds, drops and trades arrive with the transaction history. FAAB and the player history below are already live.
-
 [MGR-11] generated text
-WHERE: site/managers.js line 607 (generated)
+WHERE: site/managers.js line 711 (generated)
 TEXT:
 No news yet this season.
 
 [MGR-12] generated text
-WHERE: site/managers.js line 478 (generated)
+WHERE: site/managers.js line 496 (generated)
 TEXT:
 No games played yet.
 
 [MGR-13] generated text
-WHERE: site/managers.js line 381 (generated)
+WHERE: site/managers.js line 399 (generated)
 TEXT:
 Wins above all-play pace
 
 [MGR-14] generated text
-WHERE: site/managers.js line 382 (generated)
+WHERE: site/managers.js line 400 (generated)
 TEXT:
 Points against vs league average
 
 [MGR-15] generated text
-WHERE: site/managers.js line 383 (generated)
+WHERE: site/managers.js line 401 (generated)
 TEXT:
 Points left on bench (all-time)
 
 [MGR-16] generated text
-WHERE: site/managers.js line 458 (generated)
+WHERE: site/managers.js line 476 (generated)
 TEXT:
 Most points in a season
 
 [MGR-17] generated text
-WHERE: site/managers.js line 509 (generated)
+WHERE: site/managers.js line 592 (generated)
 TEXT:
 Most seasons on this team
 
 [MGR-18] generated text
-WHERE: site/managers.js line 510 (generated)
+WHERE: site/managers.js line 593 (generated)
 TEXT:
 The one that got away
+
+[MGR-19] generated text
+WHERE: site/managers.js line 517 (generated)
+TEXT:
+no games yet
+
+[MGR-20] generated text
+WHERE: site/managers.js line 532 (generated)
+TEXT:
+Tied with the next bid and won on waiver priority
+
+[MGR-21] generated text
+WHERE: site/managers.js line 548 (generated)
+TEXT:
+WAR since the trade
+
+[MGR-22] generated text
+WHERE: site/managers.js line 575 (generated)
+TEXT:
+No winning bids yet

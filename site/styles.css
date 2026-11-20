@@ -60,7 +60,7 @@
   --banner-gold: #e4b750; --banner-gold-i: #3c2b02; --banner-gold-edge: #b58a21; --banner-bowl: #8d6850; --banner-bowl-i: #fbf3ef; --banner-bowl-edge: #6b4c38;
   --rod: #8a8780; --form-w: #1f8a2e; --form-l: #d03b3b; --form-d: #8f8e88;
   --rank1-f: #f6dc8c; --rank1-i: #4a3400; --rank2-f: #e2e3e8; --rank2-i: #3c3d45; --rank3-f: #f0d0b4; --rank3-i: #5c2f0e;
-  --rival-f: #fbe3f1; --rival-i: #8a1f63; --score-f: #ebeae6; --zone-f: #eef6ec; --skel-f: #ebeae6; --meter-f: #ebeae6;
+  --rival-f: #fbe3f1; --rival-i: #8a1f63; --score-f: #ebeae6; --zone-f: #eef6ec; --meter-f: #ebeae6;
   --th-res-f: #e6eefa; --th-res-i: #0d3b75; --th-up-f: #dff2df; --th-up-i: #1c5a22; --th-down-f: #fbe1df; --th-down-i: #8a1f17;
   --th-inj-f: #fde2e2; --th-inj-i: #a32121; --th-rec-f: #fbefd2; --th-rec-i: #6e4d00; --th-lg-f: #ece8f8; --th-lg-i: #4a3a8a;
   --th-move-f: #e5f4f1; --th-move-i: #0f5348; --feat-a: #1b5aa3; --feat-b: #0d2f5c; --feat-i: #ffffff;
@@ -120,7 +120,7 @@
     --banner-gold: #d9aa3f; --banner-gold-i: #2a1e00; --banner-gold-edge: #f0c766; --banner-bowl: #7a5a46; --banner-bowl-i: #fbf3ef; --banner-bowl-edge: #a3836d;
     --rod: #6d6b66; --form-w: #2e8f3a; --form-l: #c0393a; --form-d: #696862;
     --rank1-f: #5a4508; --rank1-i: #ffe9a8; --rank2-f: #3a3b42; --rank2-i: #e4e5ec; --rank3-f: #4f2c12; --rank3-i: #f6d6bd;
-    --rival-f: #4a1736; --rival-i: #f4a6d3; --score-f: #2a2a28; --zone-f: #1d2a1d; --skel-f: #2c2c2a; --meter-f: #2c2c2a;
+    --rival-f: #4a1736; --rival-i: #f4a6d3; --score-f: #2a2a28; --zone-f: #1d2a1d; --meter-f: #2c2c2a;
     --th-res-f: #16294a; --th-res-i: #cfe0fa; --th-up-f: #183a1b; --th-up-i: #cdeccf; --th-down-f: #4a1a17; --th-down-i: #fbd0cb;
     --th-inj-f: #4a1a1a; --th-inj-i: #ffb4b4; --th-rec-f: #3d2e08; --th-rec-i: #f3d68a; --th-lg-f: #2a2347; --th-lg-i: #d9d1fb;
     --th-move-f: #123a34; --th-move-i: #c4ece4; --feat-a: #1e4f8c; --feat-b: #0b1f3d; --feat-i: #ffffff;
@@ -180,7 +180,7 @@
   --banner-gold: #d9aa3f; --banner-gold-i: #2a1e00; --banner-gold-edge: #f0c766; --banner-bowl: #7a5a46; --banner-bowl-i: #fbf3ef; --banner-bowl-edge: #a3836d;
   --rod: #6d6b66; --form-w: #2e8f3a; --form-l: #c0393a; --form-d: #696862;
   --rank1-f: #5a4508; --rank1-i: #ffe9a8; --rank2-f: #3a3b42; --rank2-i: #e4e5ec; --rank3-f: #4f2c12; --rank3-i: #f6d6bd;
-  --rival-f: #4a1736; --rival-i: #f4a6d3; --score-f: #2a2a28; --zone-f: #1d2a1d; --skel-f: #2c2c2a; --meter-f: #2c2c2a;
+  --rival-f: #4a1736; --rival-i: #f4a6d3; --score-f: #2a2a28; --zone-f: #1d2a1d; --meter-f: #2c2c2a;
   --th-res-f: #16294a; --th-res-i: #cfe0fa; --th-up-f: #183a1b; --th-up-i: #cdeccf; --th-down-f: #4a1a17; --th-down-i: #fbd0cb;
   --th-inj-f: #4a1a1a; --th-inj-i: #ffb4b4; --th-rec-f: #3d2e08; --th-rec-i: #f3d68a; --th-lg-f: #2a2347; --th-lg-i: #d9d1fb;
   --th-move-f: #123a34; --th-move-i: #c4ece4; --feat-a: #1e4f8c; --feat-b: #0b1f3d; --feat-i: #ffffff;
@@ -819,7 +819,7 @@ a.mgr-tile:hover { border-color: var(--axis); }
 /* cards: equal height, the roster widest, each scrolling vertically inside itself */
 .mgr-cardtabs { display: none; }
 .mgr-cards { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 12px; }
-.mgr-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; display: grid; grid-template-rows: auto auto 1fr auto; overflow: hidden; height: 640px; min-width: 0; }
+.mgr-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto 1fr auto; overflow: hidden; height: 640px; min-width: 0; }
 .mgr-card-head { padding: 12px 14px 6px; } .mgr-card-head h3 { margin: 0; font-size: 1rem; }
 .mgr-scroll { overflow-y: auto; overflow-x: hidden; scrollbar-gutter: stable; min-height: 0; }
 .mgr-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
@@ -903,8 +903,28 @@ a.mgr-tile:hover { border-color: var(--axis); }
 .mgr-grp .ic { width: 22px; height: 22px; flex: none; } .mgr-grp .ic circle { opacity: 0.15; } .mgr-grp .ic path { stroke-width: 2.4; stroke-linecap: round; fill: none; }
 .mgr-grp .ic.in circle { fill: var(--form-w); } .mgr-grp .ic.in path { stroke: var(--form-w); }
 .mgr-grp .ic.out circle { fill: var(--form-l); } .mgr-grp .ic.out path { stroke: var(--form-l); }
-.mgr-skel-row { display: grid; grid-template-columns: 1fr 52px; gap: 10px; align-items: center; height: 40px; border-bottom: 1px solid var(--grid); }
-.mgr-skel-row span { display: grid; gap: 5px; } .mgr-skel-row i { display: block; height: 12px; border-radius: 6px; background: var(--skel-f); } .mgr-skel-row i.short { width: 60%; }
+.mgr-grp .ic.tr circle { fill: var(--accent); } .mgr-grp .ic.tr path { stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+.mgr-grp h4 .tot { margin-left: auto; font-size: 0.72rem; font-weight: 500; color: var(--ink-2); font-variant-numeric: tabular-nums; text-align: right; }
+.mgr-meter .ms { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; color: var(--muted); font-size: 0.7rem; }
+.mgr-meter .ms b { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.mgr-meter .ms .fitname { display: inline; }
+/* a move: the player, then how and when on a second line; the WAR chip on the right */
+.mgr-mv { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 8px; align-items: center; padding: 4px 0; border-bottom: 1px solid var(--grid); min-height: 40px; }
+.mgr-mv .p { font-weight: 650; font-size: 0.84rem; min-width: 0; }
+.mgr-mv .how { grid-column: 1; color: var(--ink-2); font-size: 0.7rem; line-height: 1.35; overflow-wrap: anywhere; }   /* wraps, never cut */
+.mgr-mv .war { grid-column: 2; grid-row: 1 / span 2; }
+.mgr-mv .over { color: var(--bad); font-weight: 650; }
+.mgr-chip.none { background: transparent; color: var(--muted); border: 1px dashed var(--axis); font-weight: 600; font-size: 0.66rem; }
+.mgr-none { margin: 0; font-size: 0.74rem; color: var(--muted); }
+.mgr-trade { border: 1px solid var(--grid); border-radius: 8px; padding: 8px; display: grid; gap: 6px; font-size: 0.76rem; }
+.mgr-trade .with { display: flex; justify-content: space-between; gap: 8px; font-weight: 650; } .mgr-trade .with .wk { color: var(--muted); font-weight: 500; font-size: 0.7rem; white-space: nowrap; }
+.mgr-trade .sides { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mgr-trade .sides > div { display: grid; gap: 3px; align-content: start; min-width: 0; }
+.mgr-trade .lbl { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); font-weight: 700; }
+.mgr-trade .it { display: flex; justify-content: space-between; align-items: center; gap: 4px; min-width: 0; }
+.mgr-trade .it .mgr-chip { min-width: 34px; font-size: 0.68rem; padding: 2px 3px; }
+.mgr-trade .tag { font-size: 0.7rem; font-weight: 700; color: var(--ink-2); background: var(--meter-f); border-radius: 4px; padding: 1px 5px; white-space: nowrap; }
+.mgr-trade .net { display: flex; justify-content: space-between; align-items: center; gap: 6px; border-top: 1px solid var(--grid); padding-top: 5px; }
 .mgr-players { display: grid; gap: 6px; font-size: 0.78rem; } .mgr-players .r { display: grid; grid-template-columns: 1fr auto; gap: 1px 8px; }
 .mgr-players .pk { color: var(--muted); font-size: 0.7rem; grid-column: 1 / -1; } .mgr-players .pv { font-weight: 650; } .mgr-players .pn { color: var(--ink-2); text-align: right; font-variant-numeric: tabular-nums; }
 /* team news */
@@ -962,3 +982,4 @@ a.mgr-tile:hover { border-color: var(--axis); }
 
 /* a fitted player name (managers.js): a block so it can be measured, shortened when it overflows */
 .fitname { display: block; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fitname.fit-wrap { white-space: normal; overflow-wrap: anywhere; }   /* the name standard: wrap rather than cut */

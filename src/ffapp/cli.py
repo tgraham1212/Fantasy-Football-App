@@ -95,6 +95,10 @@ def cmd_sync(ctx: Context) -> int:
         print(f"synced   {key} {season}")
     for key, season in report.skipped:
         print(f"skipped  {key} {season} (complete)")
+    for key, season in report.transactions:
+        print(f"saved    {key} {season} transactions")
+    for key, message in report.warnings:   # a transactions failure never fails the sync
+        print(warning_line("Sync kept stored transactions", f"{key}: {message}"))
     for key, message in report.errors:
         print(f"FAILED   {key}: {message}", file=sys.stderr)
     return 0 if report.ok else 1

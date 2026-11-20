@@ -79,8 +79,8 @@ class FixtureSession:
                 return f"league/{parts[0]}.json"
             if len(parts) == 2 and parts[1] in {"users", "rosters", "winners_bracket", "losers_bracket"}:
                 return f"league/{parts[0]}/{parts[1]}.json"
-            if len(parts) == 3 and parts[1] == "matchups":
-                return f"league/{parts[0]}/matchups/{parts[2]}.json"
+            if len(parts) == 3 and parts[1] in {"matchups", "transactions"}:
+                return f"league/{parts[0]}/{parts[1]}/{parts[2]}.json"
             return None
         if path.startswith("/v1/state/"):
             return f"state/{path.removeprefix('/v1/state/')}.json"
@@ -111,5 +111,6 @@ class FixtureSession:
             return _FixtureResponse(200, payload)
         file = SLEEPER_ROOT / relative
         if not file.exists():
-            return _FixtureResponse(404)
+            # no recorded transactions for a week reads as a week without any, as Sleeper answers
+            return _FixtureResponse(200, []) if "/transactions/" in relative else _FixtureResponse(404)
         return _FixtureResponse(200, json.loads(file.read_text(encoding="utf-8")))

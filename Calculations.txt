@@ -39,6 +39,7 @@ Sections
  18. Calibration
  19. Manager history
  20. Team news
+ 21. Moves
 
 
 ================================================================
@@ -582,9 +583,10 @@ Assumptions and decisions:
 Code:          src/ffapp/news.py
 Data sources:  The games of section 19, the forecast history (data/odds), saved statuses
                and player details (data/injuries, data/players), Sleeper's trending adds
-               (data/trending), weekly WAR, the rivals block. Exported inside
-               managers.json; the page writes each story from a template in site-copy.txt.
-Depends on:    3, 9, 16, 19
+               (data/trending), weekly WAR, the rivals block, and the moves of section 21.
+               Exported inside managers.json; the page writes each story from a template
+               in site-copy.txt.
+Depends on:    3, 9, 16, 19, 21
 Formula:
   stories for the current season only (a retired manager's last season):
     result (with the top-scoring starter); rivalry result and preview
@@ -599,9 +601,19 @@ Formula:
     Team of the Week: the best legal lineup from every rostered player's points that week,
       shown only when it includes one of the manager's players
     final season: for retired managers, their last season and place
+    Moves stories (budget B = the season's waiver budget):
+      trade: every trade, with what each side got (players, picks, FAAB)
+      big bid: a won bid >= 0.25 B, or the season's biggest won bid, with the next bid
+      pays off: once, in the week an added move's running WAR (weeks on the team from the
+        move) first reaches +1.0
+      got away: once, in the week a dropped move's running WAR (weeks away from the move
+        until back) first reaches +1.0, naming the team he is on that week
+      outbid: a lost bid b with b >= 0.20 B, or (winning bid - b <= 3, a tie included)
+        with b >= 0.05 B
   date: games end on the Monday "week" weeks after Labor Day; Thursday for practice,
     injuries, depth charts and previews
-  order: newest first; at most 3 player stories per team per week (highest priority kept);
+  order: newest first; at most 3 player stories and, separately, 3 Moves stories per team
+    per week (highest priority kept);
     the feature story is the latest game week's highest priority story: final season >
     record > forecast move of 20 points or more > result
 In plain English:
@@ -609,6 +621,48 @@ In plain English:
   with the most important story of the latest week shown large.
 Assumptions and decisions:
   - Thresholds keep the feed readable: small forecast moves and too many injury stories
-    in one week are left out.
+    in one week are left out. Moves thresholds are shares of the budget, because dynasty's
+    budget rose from $100 to $150 in 2025; Moves stories have their own cap so a busy
+    trade week cannot push out injury news.
   - The text is not generated here: the page writes it from editable templates, so the
     owner can reword any story type in site-copy.txt.
+
+
+================================================================
+21. MOVES
+================================================================
+Code:          src/ffapp/moves.py
+Data sources:  Stored Sleeper transactions (data/leagues/<league>/<season>/transactions/),
+               the move windows and weekly WAR of section 19, player names from the WAR
+               files, stat records and the ESPN crosswalk. Exported inside managers.json.
+Depends on:    16, 19
+Formula:
+  moves: each completed waiver, free-agent or commissioner transaction gives one added or
+    dropped row per player for the roster's manager; each trade gives one side per roster
+    with the players, picks (season, round) and FAAB (waiver_budget amounts) got and gave;
+    players in a trade are never added or dropped rows; drafted players never appear
+  claimed by: on a dropped row, the next other manager to add the player while he is away
+  move week: Sleeper's leg (offseason moves are filed under week 1 of the next season)
+  move WAR: the WAR of the player's matching window (added for an add or a player got,
+    departed for a drop or a player given) starting at the first matchup week at or after
+    the move and before his next move with this manager
+    no games: no week inside that window had a game for him
+    pending ("no games yet"): nothing after the move has been scored yet
+    picks carry no WAR
+  waiver overpay: for a won claim with bid b, let f = the highest failed bid for the same
+    player in the same waiver run (same status_updated) with f <= b
+    overpay = b - f; with no such f, overpay = b; when f = b the claim is "tied" (won on
+    waiver priority) and overpay = 0
+  season FAAB: overpaid = the sum of overpay over the season's won claims;
+    biggest = the largest winning bid (earliest week on a tie)
+In plain English:
+  Every add, drop and trade a manager made, what each was worth in WAR for as long as it
+  lasted, and how much more than necessary they paid at waivers.
+Assumptions and decisions:
+  - Overpay is hindsight: a bid nobody else made could have been $0, so it counts in full.
+  - A failed bid above the winner's lost for another reason (such as roster space), so it
+    does not count as the next bid.
+  - Move WAR reuses the window sums of section 19, so it agrees with Best Player All-Time
+    and the one that got away.
+  - Picks get no WAR until trade trees follow each pick to the player drafted with it.
+

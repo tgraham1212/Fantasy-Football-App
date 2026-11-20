@@ -52,7 +52,6 @@ EXEMPT = {
     "banner-gold-edge": "decorative outline on a banner whose year is checked against its fill",
     "banner-bowl-edge": "decorative outline on a banner whose year is checked against its fill",
     "zone-f": "decorative band behind the playoff places on the finishes chart",
-    "skel-f": "placeholder skeleton rows with no text",
 }
 TEXT_RATIO, NON_TEXT_RATIO = 4.5, 3.0
 

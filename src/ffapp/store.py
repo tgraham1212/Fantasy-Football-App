@@ -6,6 +6,7 @@ data/
                                 /rosters.json         raw rosters list
                                 /brackets.json        {"winners": [...], "losers": [...]}
                                 /matchups/week_NN.json raw matchups list
+                                /transactions/week_NN.json raw transactions list
   projections/<season>/week_NN.json                   {player_id: projection record}
   odds/<league_key>/<season>/asof_NN.json             simulation results
 
@@ -87,6 +88,9 @@ class Store:
 
     def matchup_path(self, league_key: str, season: str, week: int) -> Path:
         return self.season_dir(league_key, season) / "matchups" / f"week_{int(week):02d}.json"
+
+    def transactions_path(self, league_key: str, season: str, week: int) -> Path:
+        return self.season_dir(league_key, season) / "transactions" / f"week_{int(week):02d}.json"
 
     def projections_path(self, season: str, week: int) -> Path:
         return self.root / "projections" / str(season) / f"week_{int(week):02d}.json"
@@ -228,6 +232,24 @@ class Store:
     def read_matchups(self, league_key: str, season: str, week: int) -> list:
         path = self.matchup_path(league_key, season, week)
         return read_json(path) if path.exists() else []
+
+    def has_transactions(self, league_key: str, season: str) -> bool:
+        return (self.season_dir(league_key, season) / "transactions").is_dir()
+
+    def read_transactions(self, league_key: str, season: str) -> dict[int, list]:
+        """Week -> the raw transactions Sleeper filed under it; empty when none are stored."""
+        base = self.season_dir(league_key, season) / "transactions"
+        out: dict[int, list] = {}
+        if base.is_dir():
+            for p in sorted(base.iterdir()):
+                m = _WEEK_RE.match(p.name)
+                if m:
+                    out[int(m.group(1))] = read_json(p)
+        return out
+
+    def write_transactions(self, league_key: str, season: str, weeks: dict[int, list]) -> None:
+        for week, rows in sorted(weeks.items()):
+            write_json(self.transactions_path(league_key, season, week), rows)
 
     def read_season(self, league_key: str, season: str) -> SeasonData:
         league = self.read_league(league_key, season)
