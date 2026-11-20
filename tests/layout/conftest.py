@@ -26,7 +26,7 @@ SITE = Path(__file__).resolve().parents[2] / "site"
 WIDTHS = (360, 390, 414, 440, 768, 1000, 1280)
 PHONE_WIDTHS = tuple(w for w in WIDTHS if w < 600)
 # Linux (the CI runner) draws wider text than Windows: layout tests that measure text also run with this font
-WIDE_FONT = "* { font-family: Verdana, 'DejaVu Sans', sans-serif !important; }"
+WIDE_FONT = "* { font-family: Verdana, 'DejaVu Sans', sans-serif !important; letter-spacing: 0.02em !important; }"
 # Chromium stands for Chrome and Edge; WebKit for Safari. WebKit and Firefox run the
 # engine-sensitive tests at these widths.
 ENGINES = ("chromium", "webkit", "firefox")

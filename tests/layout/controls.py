@@ -140,8 +140,10 @@ def select_first_other(selector: str):
 
 
 def select_value(selector: str, value: str):
+    """Choose an option by script, as a visitor's change would (like ``click``: no actionability
+    wait, which timed out on the CI runner's WebKit while the select was on screen)."""
     def act(page, relay, ctx):
-        page.select_option(selector, value)
+        page.locator(selector).first.evaluate("(s, v) => { s.value = v; s.dispatchEvent(new Event('change', { bubbles: true })); }", value)
         page.wait_for_timeout(500)
     return act
 
