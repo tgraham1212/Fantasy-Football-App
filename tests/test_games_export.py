@@ -120,3 +120,33 @@ def test_export_logged_week_views(seeded_store, dynasty_config, tmp_path):
     game = json.loads((out / "dynasty" / "games" / f"week_{WEEK:02d}.json").read_text(encoding="utf-8"))["games"][0]
     assert game["views"]["actual"]["source"] == "log" and game["views"]["model"]["source"] == "model"
     assert game["default_view"] == "actual"
+
+
+def test_export_card_states_and_impact_key_players(seeded_store, dynasty_config, tmp_path):
+    """Every card carries its state (games-page-states); finished cards rank key players by win
+    probability added and show the full lineup in the Model view."""
+    from ffapp.card_states import POSITION_ORDER, STATES
+
+    prepare(seeded_store, dynasty_config)
+    update_games(seeded_store, dynasty_config, "dynasty", now=datetime(2026, 11, 19, 12, tzinfo=timezone.utc))
+    out = tmp_path / "site-data"
+    export_site(seeded_store, dynasty_config, out)
+    read = lambda w: json.loads((out / "dynasty" / "games" / f"week_{w:02d}.json").read_text(encoding="utf-8"))
+    assert {g["state"] for g in read(AS_OF)["games"]} == {"final"}
+    assert {g["state"] for g in read(AS_OF + 1)["games"]} == {"not_started"}   # nothing has kicked off
+    assert {g["state"] for g in read(AS_OF + 2)["games"]} == {"scheduled"}
+    assert {g["state"] for g in read(15)["games"]} == {"projected"}
+    assert all(g["state"] in STATES for w in (AS_OF, AS_OF + 1, 15) for g in read(w)["games"])
+
+    finished = read(AS_OF)["games"][0]
+    for team in finished["views"]["actual"]["teams"]:
+        keys = team["key_players"]
+        ranks = [(-abs(round((k["wpa"] or 0) * 100)), POSITION_ORDER.get(k["position"], 9)) for k in keys]
+        assert len(keys) == 4 and ranks == sorted(ranks), "largest win probability added first, ties by position"
+    assert all(t["key_players"] == [] for t in finished["views"]["model"]["teams"]), "Model view shows the full lineup"
+
+    # every game of the current week over, as the schedule saw it: games over, unofficial (O3)
+    schedule = seeded_store.read_nfl_week("2026", AS_OF + 1)
+    seeded_store.write_nfl_week("2026", AS_OF + 1, {**schedule, "games": [{**g, "state": "final"} for g in schedule["games"]]})
+    export_site(seeded_store, dynasty_config, out)
+    assert {g["state"] for g in read(AS_OF + 1)["games"]} == {"all_done"}

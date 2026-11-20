@@ -594,6 +594,12 @@ table.war.full thead th[aria-sort] { background: var(--ink); }
 .live-badge .arc-out { animation: live-wave 1.6s ease-in-out infinite; animation-delay: 0.35s; }
 @media (prefers-reduced-motion: reduce) { .live-badge .arc { animation: none; } }
 .game-card.live { border-color: color-mix(in srgb, var(--live), var(--border) 60%); }
+/* card-state chips (docs/games-page-states.md): Bench playing (dot), Bench to play, Unofficial (dashed) */
+.state-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 700; padding: 2px 9px; border-radius: 999px;
+  border: 1.5px solid var(--axis); color: var(--ink-2); background: var(--surface); white-space: nowrap; text-transform: none; letter-spacing: 0; }
+.state-chip i { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); }
+.state-chip.unofficial { border-style: dashed; }
+.team-players ul.lineup-full { margin-top: 2px; }
 .team-players .aside { text-align: right; font-variant-numeric: tabular-nums; min-width: 0; white-space: nowrap; }
 .team-players .aside.kick { color: var(--muted); font-size: 0.72rem; font-weight: 600; white-space: nowrap; }
 .team-players .st-bench { color: var(--muted); border: 1px solid var(--axis); border-radius: 4px; padding: 0 3px; line-height: 1.2; font-weight: 700; }

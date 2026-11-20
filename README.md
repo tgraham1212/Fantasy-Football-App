@@ -288,10 +288,21 @@ team rows so names and scores get the card's width. In the lineups, points (then
 probability added) sit just after the longest name of each list and line up as a column,
 kickoff times sit at the right edge, and "Not playing" reasons follow the name.
 
+### Card states
+
+Every card is in one of 11 states (future, current but not started, live, paused, games over
+and past week, with their variations), worked out by the exporter from the managers' real
+starters and bench and stored on the card as `state`; the page draws each state from one
+table. Live and paused cards show both full lineups; finished cards rank their key players by
+win probability added and show the winner check, with an "Unofficial" chip until Sleeper scores
+the week. The states, every transition between them, the rules and a screenshot of each state:
+[`docs/games-page-states.md`](docs/games-page-states.md) (`Calculations.txt`, section 22). Redraw
+the screenshots after changing the cards with `python -X utf8 tools/games_states_gallery.py`.
+
 ### Model and actual lineups
 
-Finished and live game cards have a **Model | Actual** toggle (upcoming weeks show the model
-only). Both are pre-kickoff forecasts simulated with the same model and no results; only the
+Cards where play has started or finished have a **Model | Actual** toggle (future weeks and
+current-week cards nobody has kicked off in show the model only). Both are pre-kickoff forecasts simulated with the same model and no results; only the
 lineup differs:
 
 - **Model**: each roster's best legal lineup that week, every player at his last projection

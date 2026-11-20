@@ -13,8 +13,8 @@ from tests.baselines import compare
 from tests.layout.controls import CONTROL_QUERY, VIEWS
 
 AXE = Path(__file__).resolve().parent / "vendor" / "axe.min.js"
-WIDE_FONT = "* { font-family: Verdana, 'DejaVu Sans', sans-serif !important; }"  # as in test_layout.py
-VIEWS_CHECKED = ("predictions", "games", "games-final", "positions", "positions-past", "war", "war-all", "war-dialog", "calibration",
+from tests.layout.conftest import WIDE_FONT  # noqa: E402  (shared with the other layout tests)
+VIEWS_CHECKED = ("predictions", "games", "games-final", "games-states", "positions", "positions-past", "war", "war-all", "war-dialog", "calibration",
                  "managers", "managers-retired", "managers-redraft")
 AXE_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]
 TARGET = 48  # px, Material Design 3 touch target

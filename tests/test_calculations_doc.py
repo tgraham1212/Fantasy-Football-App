@@ -14,7 +14,7 @@ DOC = ROOT / "Calculations.txt"
 CALCULATION_MODULES = (
     "scoring.py", "stats.py", "projections.py", "injuries.py", "noise.py", "lineup.py", "drift.py",
     "simulate.py", "odds.py", "standings.py", "bracket.py", "forecast.py", "games.py", "views.py",
-    "live.py", "replacement.py", "ratings.py", "war.py", "espn.py", "positions.py", "calibrate.py", "managers.py", "news.py", "moves.py",
+    "live.py", "replacement.py", "ratings.py", "war.py", "espn.py", "positions.py", "calibrate.py", "managers.py", "news.py", "moves.py", "card_states.py",
 )
 HEADINGS = ("Code:", "Data sources:", "Depends on:", "Formula:", "In plain English:", "Assumptions and decisions:")
 

@@ -57,6 +57,12 @@ def _games_final(page):
     page.wait_for_selector(".view-toggle")
 
 
+def _games_states(page):
+    """The fixture week with one card per state (tests/layout/game_states.py)."""
+    from tests.layout.game_states import open_states
+    open_states(page)
+
+
 PAST_SEASON = "2024"
 RETIRED = "TateFM"  # a dynasty manager who left after 2023
 
@@ -76,6 +82,7 @@ VIEWS = {
     "predictions": View("predictions", f"index.html#{LEAGUE}"),
     "games": View("games", f"index.html#{LEAGUE}/games"),
     "games-final": View("games-final", f"index.html#{LEAGUE}/games/{FINAL_WEEK}", _games_final),
+    "games-states": View("games-states", f"index.html#{LEAGUE}/games", _games_states),
     "positions": View("positions", f"index.html#{LEAGUE}/positions"),
     "positions-past": View("positions-past", f"index.html#{LEAGUE}/positions", _positions_past),
     "war": View("war", f"index.html#{LEAGUE}/war"),
@@ -245,7 +252,8 @@ CONTROLS: tuple[Control, ...] = (
             regions=("#games-content",), grow=("main section.card",), below="#games-note"),
     Control("week select", "games", "#games-week", (State("other week", select_first_other("#games-week")),),
             regions=("#games-content",), grow=("main section.card",), below="#games-note"),
-    Control("full lineup", "games", "details.lineup summary",
+    # the Full Lineup control exists only in states with key players: checked on the fixture week, which always has them
+    Control("full lineup", "games-states", "details.lineup summary",
             (State("open", click("details.lineup summary")), State("close", click("details.lineup summary"))),
             grow=(".game-card",), below="self"),
     Control("lineup view", "games-final", ".view-toggle button",
@@ -306,6 +314,11 @@ CONTROLS: tuple[Control, ...] = (
     # manager names elsewhere link here (inline text links; app.js opens the Managers page)
     Control("manager name links", "predictions", "a.manager-link"),
     Control("manager name links (games)", "games", "a.manager-link"),
+    Control("manager name links (game states)", "games-states", "a.manager-link"),
+    Control("lineup view (game states)", "games-states", ".view-toggle button",
+            (State("model", click(".game-card[data-state='scoring'] .view-toggle button[data-view='model']")),
+             State("actual", click(".game-card[data-state='scoring'] .view-toggle button[data-view='actual']"))),
+            grow=(".game-card",), below=".game-card[data-state='scoring'] .view-toggle", self_moves=False),
     Control("manager name links (positions)", "positions", "a.manager-link"),
     Control("manager name links (war)", "war", "a.manager-link"),
     Control("manager arrows (retired)", "managers-retired", "#mgr-prev, #mgr-next", (State("next", click("#mgr-next", 600)),), regions=("#mgr-content",), below="#mgr-picker"),

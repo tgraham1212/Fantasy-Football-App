@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1392 640" width="1392" height="640" role="img" aria-labelledby="dg-t" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+  <style>
+.grp-pre { fill: #eef1f6; stroke: #93a0b8; } .grp-live { fill: #e8f5ea; stroke: #4f9a5c; }
+.grp-pause { fill: #fbf2e1; stroke: #c08a2c; } .grp-over { fill: #e8f0fb; stroke: #4f7cc0; }
+.grp-past { fill: #efeeeb; stroke: #8c8a84; } .grp { stroke-width: 1.5; }
+.gl { font-weight: 700; font-size: 13px; letter-spacing: 0.06em; fill: #4c5058; }
+.st { fill: #ffffff; stroke: #2b2f36; stroke-width: 1.4; }
+.sid { font-weight: 800; font-size: 12.5px; fill: #14161a; } .stt { font-weight: 700; font-size: 12.5px; fill: #14161a; }
+.sd { font-size: 11.5px; fill: #4c5058; }
+.e { fill: none; stroke: #2b2f36; stroke-width: 1.5; } .e.snap { stroke: #b4530b; stroke-dasharray: 6 4; stroke-width: 1.6; }
+.bd { fill: #ffffff; stroke: #2b2f36; stroke-width: 1.2; } .bd.snap { stroke: #b4530b; }
+.bt { font-size: 10.5px; font-weight: 800; fill: #14161a; text-anchor: middle; dominant-baseline: central; } .bt.snap { fill: #b4530b; }
+.ah { fill: #2b2f36; } .ah-s { fill: #b4530b; }
+</style>
+  <rect width="1392" height="640" fill="#ffffff"/>
+      <title id="dg-t">Game card states: pre game, live, paused, games over and past week, with numbered transitions</title>
+      <defs>
+        <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+        <marker id="as" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah-s" d="M0,0 L10,5 L0,10 z"/></marker>
+      </defs>
+
+      <!-- groups -->
+      <rect class="grp grp-pre" x="12" y="80" width="258" height="440" rx="12"/><text class="gl" x="26" y="102">PRE GAME</text>
+      <rect class="grp grp-live" x="316" y="80" width="230" height="440" rx="12"/><text class="gl" x="330" y="102">LIVE</text>
+      <rect class="grp grp-pause" x="606" y="80" width="230" height="440" rx="12"/><text class="gl" x="620" y="102">PAUSED</text>
+      <rect class="grp grp-over" x="896" y="80" width="230" height="440" rx="12"/><text class="gl" x="910" y="102">GAMES OVER</text>
+      <rect class="grp grp-past" x="1176" y="80" width="204" height="440" rx="12"/><text class="gl" x="1190" y="102">PAST</text>
+
+      <!-- states -->
+      <g><rect class="st" x="40" y="120" width="210" height="66" rx="8"/>
+        <text x="52" y="141"><tspan class="sid">F1 </tspan><tspan class="stt">Future, projected</tspan></text>
+        <text class="sd" x="52" y="159">Playoff pairing still forecast</text><text class="sd" x="52" y="175">(shown with its % of simulations)</text></g>
+      <g><rect class="st" x="40" y="226" width="210" height="58" rx="8"/>
+        <text x="52" y="247"><tspan class="sid">F2 </tspan><tspan class="stt">Future, scheduled</tspan></text>
+        <text class="sd" x="52" y="266">Pairing known, a later week</text></g>
+      <g><rect class="st" x="40" y="400" width="210" height="70" rx="8"/>
+        <text x="52" y="421"><tspan class="sid">C </tspan><tspan class="stt">Current week, not started</tspan></text>
+        <text class="sd" x="52" y="440">No player on either team</text><text class="sd" x="52" y="456">has kicked off</text></g>
+
+      <g><rect class="st" x="336" y="130" width="190" height="84" rx="8"/>
+        <text x="348" y="151"><tspan class="sid">L1 </tspan><tspan class="stt">Points being scored</tspan></text>
+        <text class="sd" x="348" y="170">A starter on either team</text><text class="sd" x="348" y="186">is playing</text></g>
+      <g><rect class="st" x="336" y="330" width="190" height="84" rx="8"/>
+        <text x="348" y="351"><tspan class="sid">L2 </tspan><tspan class="stt">No points being scored</tspan></text>
+        <text class="sd" x="348" y="370">No starter playing; a bench</text><text class="sd" x="348" y="386">player is; starters still to play</text></g>
+
+      <g><rect class="st" x="626" y="130" width="190" height="84" rx="8"/>
+        <text x="638" y="151"><tspan class="sid">P1 </tspan><tspan class="stt">Paused, scoring started</tspan></text>
+        <text class="sd" x="638" y="170">Nobody playing; some starters</text><text class="sd" x="638" y="186">have played, some still to play</text></g>
+      <g><rect class="st" x="626" y="330" width="190" height="84" rx="8"/>
+        <text x="638" y="351"><tspan class="sid">P2 </tspan><tspan class="stt">Paused, no points yet</tspan></text>
+        <text class="sd" x="638" y="370">Nobody playing; no starter has</text><text class="sd" x="638" y="386">played; some bench players have</text></g>
+
+      <g><rect class="st" x="916" y="120" width="190" height="64" rx="8"/>
+        <text x="928" y="141"><tspan class="sid">O1 </tspan><tspan class="stt">Starters done</tspan></text>
+        <text class="sd" x="928" y="160">Bench still to play, none playing</text></g>
+      <g><rect class="st" x="916" y="250" width="190" height="64" rx="8"/>
+        <text x="928" y="271"><tspan class="sid">O2 </tspan><tspan class="stt">Starters done</tspan></text>
+        <text class="sd" x="928" y="290">A bench player is playing</text></g>
+      <g><rect class="st" x="916" y="400" width="190" height="70" rx="8"/>
+        <text x="928" y="421"><tspan class="sid">O3 </tspan><tspan class="stt">All players done</tspan></text>
+        <text class="sd" x="928" y="440">Unofficial: Sleeper has not</text><text class="sd" x="928" y="456">scored the week yet</text></g>
+
+      <g><rect class="st" x="1196" y="400" width="164" height="70" rx="8"/>
+        <text x="1208" y="421"><tspan class="sid">PW </tspan><tspan class="stt">Past week</tspan></text>
+        <text class="sd" x="1208" y="440">Official: Sleeper scored</text><text class="sd" x="1208" y="456">the week</text></g>
+
+      <!-- logical transitions -->
+      <path class="e" marker-end="url(#a)" d="M141,284 V397"/>
+      <path class="e" marker-end="url(#a)" d="M40,153 H24 V435 H37"/>
+      <path class="e" marker-end="url(#a)" d="M250,420 H290 V172 H333"/>
+      <path class="e" marker-end="url(#a)" d="M250,450 H302 V372 H333"/>
+      <path class="e" marker-end="url(#a)" d="M400,214 V327"/>
+      <path class="e" marker-end="url(#a)" d="M462,330 V217"/>
+      <path class="e" marker-end="url(#a)" d="M526,160 H623"/>
+      <path class="e" marker-end="url(#a)" d="M626,192 H529"/>
+      <path class="e" marker-end="url(#a)" d="M526,360 H623"/>
+      <path class="e" marker-end="url(#a)" d="M626,394 H529"/>
+      <path class="e" marker-end="url(#a)" d="M526,338 L636,219"/>
+      <path class="e" marker-end="url(#a)" d="M652,214 L531,350"/>
+      <path class="e" marker-end="url(#a)" d="M626,334 L531,216"/>
+      <path class="e" marker-end="url(#a)" d="M380,130 V40 H1011 V117"/>
+      <path class="e" marker-end="url(#a)" d="M420,130 V54 H866 V282 H913"/>
+      <path class="e" marker-end="url(#a)" d="M480,130 V68 H852 V435 H913"/>
+      <path class="e" marker-end="url(#a)" d="M816,172 H913"/>
+      <path class="e" marker-end="url(#a)" d="M990,184 V247"/>
+      <path class="e" marker-end="url(#a)" d="M1040,250 V187"/>
+      <path class="e" marker-end="url(#a)" d="M1011,314 V397"/>
+      <path class="e" marker-end="url(#a)" d="M1106,435 H1193"/>
+
+      <!-- snapshot-only transitions -->
+      <path class="e snap" marker-end="url(#as)" d="M120,470 V606 H842 V198 H819"/>
+      <path class="e snap" marker-end="url(#as)" d="M170,470 V584 H721 V417"/>
+
+      <!-- number badges -->
+      <g><circle class="bd" cx="141" cy="340" r="10"/><text class="bt" x="141" y="340">1</text></g>
+      <g><circle class="bd" cx="24" cy="300" r="10"/><text class="bt" x="24" y="300">2</text></g>
+      <g><circle class="bd" cx="290" cy="250" r="10"/><text class="bt" x="290" y="250">3</text></g>
+      <g><circle class="bd" cx="302" cy="414" r="10"/><text class="bt" x="302" y="414">4</text></g>
+      <g><circle class="bd" cx="400" cy="270" r="10"/><text class="bt" x="400" y="270">5</text></g>
+      <g><circle class="bd" cx="462" cy="270" r="10"/><text class="bt" x="462" y="270">6</text></g>
+      <g><circle class="bd" cx="560" cy="160" r="10"/><text class="bt" x="560" y="160">7</text></g>
+      <g><circle class="bd" cx="596" cy="192" r="10"/><text class="bt" x="596" y="192">8</text></g>
+      <g><circle class="bd" cx="560" cy="360" r="10"/><text class="bt" x="560" y="360">9</text></g>
+      <g><circle class="bd" cx="596" cy="394" r="10"/><text class="bt" x="596" y="394">10</text></g>
+      <g><circle class="bd" cx="616" cy="241" r="10"/><text class="bt" x="616" y="241">11</text></g>
+      <g><circle class="bd" cx="552" cy="326" r="10"/><text class="bt" x="552" y="326">12</text></g>
+      <g><circle class="bd" cx="551" cy="241" r="10"/><text class="bt" x="551" y="241">13</text></g>
+      <g><circle class="bd" cx="700" cy="40" r="10"/><text class="bt" x="700" y="40">14</text></g>
+      <g><circle class="bd" cx="760" cy="54" r="10"/><text class="bt" x="760" y="54">15</text></g>
+      <g><circle class="bd" cx="660" cy="68" r="10"/><text class="bt" x="660" y="68">16</text></g>
+      <g><circle class="bd" cx="890" cy="172" r="10"/><text class="bt" x="890" y="172">17</text></g>
+      <g><circle class="bd" cx="990" cy="216" r="10"/><text class="bt" x="990" y="216">18</text></g>
+      <g><circle class="bd" cx="1040" cy="218" r="10"/><text class="bt" x="1040" y="218">19</text></g>
+      <g><circle class="bd" cx="1011" cy="356" r="10"/><text class="bt" x="1011" y="356">20</text></g>
+      <g><circle class="bd" cx="1150" cy="435" r="10"/><text class="bt" x="1150" y="435">21</text></g>
+      <g><circle class="bd snap" cx="480" cy="606" r="10"/><text class="bt snap" x="480" y="606">A</text></g>
+      <g><circle class="bd snap" cx="450" cy="584" r="10"/><text class="bt snap" x="450" y="584">B</text></g>
+    </svg>

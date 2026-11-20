@@ -3,22 +3,27 @@
 ``site/data/<league>/games/index.json``: the season, the current week and every week with
 its label and kind (``final``, ``current``, ``upcoming``). ``week_NN.json``: the week's games
 ready to draw. Finished weeks show the prediction of record with actual scores; other weeks
-show the latest forecast. Each team carries its owner, mean, win probability, the three key
-players, the full lineup with names, and who is expected not to play.
+show the latest forecast. Each team carries its owner, mean, win probability, the four key
+players, the full lineup with names, and who is expected not to play. Each card carries its
+``state`` (docs/games-page-states.md), which decides how the page draws it.
 """
 
 from __future__ import annotations
 
 from ffapp.bracket import BracketRules
+from ffapp.card_states import GAMES_OVER, card_state, impact_ranked
 from ffapp.config import Config
 from ffapp.games import game_key, season_weeks
 from ffapp.injuries import not_playing
 from ffapp.league import resolve_settings
+from ffapp.live import player_team
 from ffapp.odds import completed_weeks, current_season
 from ffapp.schedule import Schedule
 from ffapp.store import Store
 
 FLEX_KEY = ("RB", "WR", "TE")
+IMPACT_STATES = (*GAMES_OVER, "final")   # key players ranked by win probability added; full lineup in the Model view
+EMPTY_SLOTS = {"0", "", "None"}
 
 
 def player_names(store: Store, season: str, week: int) -> dict[str, str]:
@@ -97,6 +102,7 @@ def games_export(store: Store, config: Config, league_key: str, owners: dict[int
     as_of = completed_weeks(data.league)
     crosswalk = store.read_crosswalk() or {}
     teams_of = {pid: rec.get("team") for pid, rec in crosswalk.items() if rec.get("team")}
+    schedule = Schedule(store, season)
     current_roster = {int(r["roster_id"]): [str(p) for p in (r.get("players") or [])] for r in data.rosters}
     weeks_out: dict[int, dict] = {}
     index_weeks = []
@@ -114,7 +120,6 @@ def games_export(store: Store, config: Config, league_key: str, owners: dict[int
         scoring = resolve_settings(config, league_key, data.league, week)
         week_rows = {int(r["roster_id"]): [str(p) for p in (r.get("players") or [])] for r in data.matchups.get(week, [])}
         week_points = {int(r["roster_id"]): {str(k): float(v or 0.0) for k, v in (r.get("players_points") or {}).items()} for r in data.matchups.get(week, [])}
-        schedule = Schedule(store, season)
         kickoff_of = {}
         if not final:
             for pid, rec in projections.items():
@@ -126,14 +131,47 @@ def games_export(store: Store, config: Config, league_key: str, owners: dict[int
         live_week = bool(block.get("live"))
         starters_of = {int(r["roster_id"]): {str(p) for p in (r.get("starters") or []) if str(p) not in ("0", "")} for r in data.matchups.get(week, [])}
 
-        def team_out(t: dict, i: int, actual_scores: list | None, view: str, played: bool) -> dict:
+        matchup_rows = {int(r["roster_id"]): r for r in data.matchups.get(week, [])}
+
+        def game_state_of(pid: str, live_status: dict[str, str]) -> str:
+            """none / scheduled / in_progress / final for one rostered player (a starter's live row wins)."""
+            if pid in EMPTY_SLOTS:
+                return "none"
+            if pid in live_status:
+                return live_status[pid]
+            team = player_team(pid, projections.get(pid), crosswalk)
+            game = schedule.game_for(week, team) if team else None
+            return game["state"] if game else "none"
+
+        def card_state_of(g: dict, pair_views: dict | None) -> str:
+            if kind != "current":
+                return card_state(kind, bool(g.get("projected")), [])
+            live_status = {}
+            for t in ((pair_views or {}).get("actual") or {}).get("teams", []):
+                for r in t.get("lineup", []):
+                    if len(r) >= 8 and r[1] and r[4]:
+                        live_status[str(r[1])] = r[4]
+            teams = []
+            for t in g["teams"]:
+                row = matchup_rows.get(int(t["roster_id"])) or {}
+                starters = [str(p) for p in row.get("starters") or []]
+                bench = [str(p) for p in row.get("players") or [] if str(p) not in starters]
+                teams.append({"starters": [game_state_of(p, live_status) for p in starters] or ["scheduled"],
+                              "bench": [game_state_of(p, live_status) for p in bench]})
+            return card_state(kind, bool(g.get("projected")), teams)
+
+        def team_out(t: dict, i: int, actual_scores: list | None, view: str, played: bool, state: str) -> dict:
             rid = int(t["roster_id"])
             roster = week_rows.get(rid) if final and week_rows.get(rid) else current_roster.get(rid, [])
             out = not_playing(store, season, week, roster, projections, scoring, teams_of)
             owner = owners.get(rid, {})
             wpa = t.get("wpa") if view == "actual" else None
             rows = named(t["lineup"], names, final=final, points=week_points.get(rid), wpa=wpa, kickoffs=kickoff_of)
-            keys = named(key_players(t["lineup"]), names, final=final, points=week_points.get(rid), wpa=wpa, kickoffs=kickoff_of)
+            if state in IMPACT_STATES:
+                # finished games: the starters who swung the result most; the Model view shows the full lineup
+                keys = impact_ranked([r for r in rows if r["player_id"]]) if view == "actual" else []
+            else:
+                keys = named(key_players(t["lineup"]), names, final=final, points=week_points.get(rid), wpa=wpa, kickoffs=kickoff_of)
             if view == "model" and played:
                 started = starters_of.get(rid, set())
                 for row in rows + keys:
@@ -158,6 +196,7 @@ def games_export(store: Store, config: Config, league_key: str, owners: dict[int
             pair = game_key(*(t["roster_id"] for t in g["teams"]))
             pair_views = stored_views.get(pair) if (final or live_week) else None
             actual_scores = g.get("actual")
+            state = card_state_of(g, pair_views)
             views = {}
             if pair_views:
                 for name in ("model", "actual"):
@@ -165,12 +204,18 @@ def games_export(store: Store, config: Config, league_key: str, owners: dict[int
                     order = [t["roster_id"] for t in g["teams"]]
                     vteams = sorted(v["teams"], key=lambda t: order.index(t["roster_id"]))
                     hist = v["hist"] if vteams[0]["roster_id"] == v["teams"][0]["roster_id"] else {**v["hist"], "shares": list(reversed(v["hist"]["shares"]))}
-                    views[name] = {"source": v.get("source"), "hist": hist, "teams": [team_out(t, i, actual_scores, name, True) for i, t in enumerate(vteams)]}
+                    views[name] = {"source": v.get("source"), "hist": hist, "teams": [team_out(t, i, actual_scores, name, True, state) for i, t in enumerate(vteams)]}
                 default = "actual"
             else:
                 name = "actual" if final else "model"  # records without views fall back to the record as the actual view
-                views[name] = {"source": g.get("source") or block.get("source", "forecast"), "hist": g["hist"], "teams": [team_out(t, i, actual_scores, name, False) for i, t in enumerate(g["teams"])]}
+                views[name] = {"source": g.get("source") or block.get("source", "forecast"), "hist": g["hist"], "teams": [team_out(t, i, actual_scores, name, False, state) for i, t in enumerate(g["teams"])]}
                 default = name
+            leader = None
+            if state in GAMES_OVER:
+                # the winner check before Sleeper scores the week: whoever is ahead (none on a tie)
+                pts = [(t.get("points_so_far") if t.get("points_so_far") is not None else t.get("actual"), t["roster_id"]) for t in views[default]["teams"]]
+                if all(p is not None for p, _ in pts) and pts[0][0] != pts[1][0]:
+                    leader = max(pts)[1]
             games.append(
                 {
                     "key": g["key"],
@@ -182,6 +227,8 @@ def games_export(store: Store, config: Config, league_key: str, owners: dict[int
                     "frequency": g.get("frequency"),
                     "seeds": g.get("seeds"),
                     "winner": g.get("winner"),
+                    "leader": leader,
+                    "state": state,
                     "default_view": default,
                     "views": views,
                     "hist": views[default]["hist"],

@@ -16,6 +16,39 @@ const state = {
 };
 
 const PLACE_LABEL = { 1: "Championship", 3: "3rd place", 5: "5th place" };
+
+/* How each card state looks (docs/games-page-states.md). The exporter sets the state from the
+   managers' real lineups; nothing here guesses it from which numbers happen to exist.
+   lineup: "key" key players + Full Lineup control; "full" the full lineup, no control;
+   "impact" key players ranked by win probability added in Actual, full lineup in Model.
+   score: "forecast" the forecast; "live" points so far, forecasted, to play; "final" the score and forecasted.
+   ftag: an "F" on finished starters (a week in play). */
+const KEY = { badge: false, chips: [], lineup: "key", toggle: false, check: false, score: "forecast", ftag: false };
+const CARD_LOOK = {
+  projected: KEY,                                                                                                      // F1
+  scheduled: KEY,                                                                                                      // F2
+  not_started: KEY,                                                                                                    // C
+  scoring: { badge: true, chips: [], lineup: "full", toggle: true, check: false, score: "live", ftag: true },          // L1
+  bench_only: { badge: false, chips: ["bench"], lineup: "full", toggle: true, check: false, score: "live", ftag: true }, // L2
+  paused: { badge: false, chips: [], lineup: "full", toggle: true, check: false, score: "live", ftag: true },          // P1
+  paused_no_points: { badge: false, chips: [], lineup: "key", toggle: true, check: false, score: "forecast", ftag: true }, // P2
+  starters_done: { badge: false, chips: ["unofficial", "bench_left"], lineup: "impact", toggle: true, check: true, score: "final", ftag: true },          // O1
+  starters_done_bench_playing: { badge: false, chips: ["unofficial", "bench"], lineup: "impact", toggle: true, check: true, score: "final", ftag: true }, // O2
+  all_done: { badge: false, chips: ["unofficial"], lineup: "impact", toggle: true, check: true, score: "final", ftag: true },                             // O3
+  final: { badge: false, chips: [], lineup: "impact", toggle: true, check: true, score: "final", ftag: false },                                         // PW
+};
+const CHIP = {
+  bench: `<span class="state-chip"><i aria-hidden="true"></i>Bench playing</span>`,
+  bench_left: `<span class="state-chip">Bench to play</span>`,
+  unofficial: `<span class="state-chip unofficial" title="${/*copy:GAME-15*/"Sleeper has not scored this week yet, so the result is not official"}">Unofficial</span>`,
+};
+
+/* A card's state; week files from before states were exported fall back by week kind. */
+function cardState(g) {
+  if (g.state && CARD_LOOK[g.state]) return g.state;
+  const W = state.weeks[state.week] || {};
+  return W.kind === "final" ? "final" : W.kind === "upcoming" ? (g.projected ? "projected" : "scheduled") : "not_started";
+}
 const LIVE_BADGE = `<span class="live-badge" role="img" aria-label="Live">
   <svg viewBox="0 0 24 24" aria-hidden="true">
     <path class="arc arc-out" d="M5.3 5.3a9.5 9.5 0 0 0 0 13.4"/><path class="arc arc-in" d="M8.2 8.2a5.4 5.4 0 0 0 0 7.6"/>
@@ -189,12 +222,14 @@ function choicesLine(t) {
 
 function teamRow(g, t) {
   const color = cssVar(state.colorOf(t.roster_id));
-  const won = g.winner != null && g.winner === t.roster_id;
-  const live = t.points_so_far != null;
-  const scored = live ? t.points_so_far : t.actual;
-  const score = scored != null
+  const look = CARD_LOOK[g.state];
+  const ahead = g.winner != null ? g.winner : g.leader;   // games over before Sleeper scores the week: whoever is ahead
+  const won = look.check && ahead != null && ahead === t.roster_id;
+  const scored = t.points_so_far != null ? t.points_so_far : t.actual;
+  const mode = look.score !== "forecast" && scored != null ? look.score : "forecast";
+  const score = mode !== "forecast"
     ? `<span class="num">${scored.toFixed(1)}</span><span class="unit">${t.mean.toFixed(1)} ${/*copy:GAME-14*/"forecasted"}</span>`
-      + (live ? `<span class="unit">${t.to_play} to play</span>` : "") + choicesLine(t)
+      + (mode === "live" && t.to_play != null ? `<span class="unit">${t.to_play} to play</span>` : "") + choicesLine(t)
     : `<span class="num">${t.mean.toFixed(1)}</span><span class="unit">${/*copy:GAME-13*/"forecast"}</span>`;
   return `
     <div class="game-team">
@@ -213,11 +248,12 @@ function kickoffLabel(iso) {
   return `${day} ${h}:${String(d.getMinutes()).padStart(2, "0")}`; // compact: "Sun 1:00"
 }
 
-/* Beside the name: "F" for a final game on the live week, plus "BN" for a benched model pick. The
-   clock of a game in progress sits in the right-hand column (kickTag), so the name keeps its room. */
-function statusTag(r) {
+/* Beside the name: "F" for a finished starter while the week is in play (the card's state says so),
+   plus "BN" for a benched model pick. The clock of a game in progress sits in the right-hand column
+   (kickTag), so the name keeps its room. */
+function statusTag(r, look) {
   let tags = "";
-  if (r.status === "final" && state.weeks[state.week]?.live) tags += `<span class="st st-final" title="Final">F</span>`;
+  if (r.status === "final" && look && look.ftag) tags += `<span class="st st-final" title="Final">F</span>`;
   if (r.benched) tags += `<span class="st st-bench" title="The manager did not start him">BN</span>`;
   return tags;
 }
@@ -240,13 +276,6 @@ function hasAside(teams) {
   return teams.some((t) => [...t.lineup, ...t.key_players].some((r) => r.wpa != null || r.status === "in_progress" || (r.kickoff && !r.status)));
 }
 
-/* A card is live only while one of its managers' real starters is in a game in progress (bench
-   players and starters still to kick off don't count). */
-function cardIsLive(g) {
-  if (!state.weeks[state.week]?.live) return false;
-  const actual = (g.views && g.views.actual) || g;
-  return (actual.teams || []).some((t) => (t.lineup || []).some((r) => r.status === "in_progress"));
-}
 
 /* The site's name standard: a player's full name, or "A. St. Brown" (a defense: its nickname) only
    when the full name does not fit its space; the full name stays in the tooltip. */
@@ -296,23 +325,27 @@ function playerName(r) {
 }
 
 /* One player line: label (position or slot), name with status, points (or projection), aside. */
-function playerLine(r, label, aside) {
+function playerLine(r, label, aside, look) {
   const scored = r.points != null;
   const value = scored ? `<span class="pts scored" title="Projected ${Number(r.projected).toFixed(1)}">${Number(r.points).toFixed(1)}</span>`
     : `<span class="pts">${Number(r.projected).toFixed(1)}</span>`;
   const cls = [r.replacement ? "fill" : "", r.status ? `is-${r.status}` : ""].filter(Boolean).join(" ");
-  return `<li${cls ? ` class="${cls}"` : ""}><span class="pos">${escapeHtml(label)}</span><span class="pname"><span class="nm"${r.replacement ? "" : nameAttrs(r.name, r.position)}>${playerName(r)}</span>${statusTag(r)}</span>${value}${aside ? wpaTag(r) + kickTag(r) : ""}</li>`;
+  return `<li${cls ? ` class="${cls}"` : ""}><span class="pos">${escapeHtml(label)}</span><span class="pname"><span class="nm"${r.replacement ? "" : nameAttrs(r.name, r.position)}>${playerName(r)}</span>${statusTag(r, look)}</span>${value}${aside ? wpaTag(r) + kickTag(r) : ""}</li>`;
 }
 
-function teamPlayers(t, aside, open) {
+/* Key players with a Full Lineup control, or the full lineup on its own (live and paused cards, and the
+   Model view of finished ones). */
+function teamPlayers(t, aside, open, look, view) {
+  const full = look.lineup === "full" || (look.lineup === "impact" && view === "model");
   const out = t.not_playing.length
     ? `<p class="out-label">Not playing</p><ul class="out">${t.not_playing.map((o) => `<li><span class="pname">${escapeHtml(o.name)}</span><span class="reason">${escapeHtml(o.reason)}</span></li>`).join("")}</ul>`
     : "";
   return `
     <div class="team-players">
       <p class="tp-name">${managerLink(t.display_name)}</p>
-      <ul class="key">${t.key_players.map((r) => playerLine(r, r.position, aside)).join("")}</ul>
-      <details class="lineup"${open ? " open" : ""}><summary>Full Lineup</summary><ul>${t.lineup.map((r) => playerLine(r, r.slot, aside)).join("")}</ul></details>
+      ${full ? `<ul class="lineup-full">${t.lineup.map((r) => playerLine(r, r.slot, aside, look)).join("")}</ul>`
+        : `<ul class="key">${t.key_players.map((r) => playerLine(r, r.position, aside, look)).join("")}</ul>
+      <details class="lineup"${open ? " open" : ""}><summary>Full Lineup</summary><ul>${t.lineup.map((r) => playerLine(r, r.slot, aside, look)).join("")}</ul></details>`}
       ${out}
     </div>`;
 }
@@ -324,7 +357,8 @@ function viewKey(g) {
 /* The game as the selected view shows it: that view's teams and histogram. */
 function viewed(g) {
   const views = g.views || { [g.default_view || "model"]: { teams: g.teams, hist: g.hist } };
-  const name = views[state.viewOf[viewKey(g)]] ? state.viewOf[viewKey(g)] : g.default_view || Object.keys(views)[0];
+  const chosen = CARD_LOOK[cardState(g)].toggle ? state.viewOf[viewKey(g)] : null;   // no toggle: the default view
+  const name = views[chosen] ? chosen : g.default_view || Object.keys(views)[0];
   return { ...g, view: name, source: views[name].source, teams: views[name].teams, hist: views[name].hist, both: Boolean(views.model && views.actual) };
 }
 
@@ -335,21 +369,24 @@ function viewToggle(v) {
 }
 
 function cardHtml(g, idx) {
-  const v = viewed(g);
+  const st = cardState(g);
+  const look = CARD_LOOK[st];
+  const v = { ...viewed(g), state: st };
   const label = gameLabel(g);
-  const live = cardIsLive(g);
+  const live = look.badge;
   const rebuilt = v.view === "actual" && v.source === "rebuilt" ? `<span class="rebuilt" title="Rebuilt from the managers' starters at their stored projections (before the projection log began)">rebuilt</span>` : "";
-  const toggle = viewToggle(v);
-  const head = live || label || toggle ? `<div class="game-label">${live ? LIVE_BADGE : ""}${label ? `<span>${escapeHtml(label)}</span>` : ""}${rebuilt}${toggle}</div>` : "";
+  const toggle = look.toggle ? viewToggle(v) : "";
+  const chips = look.chips.map((c) => CHIP[c]).join("");
+  const head = live || chips || label || toggle ? `<div class="game-label">${live ? LIVE_BADGE : ""}${chips}${label ? `<span>${escapeHtml(label)}</span>` : ""}${rebuilt}${toggle}</div>` : "";
   const aside = hasAside(v.teams);
   return `
-    <section class="game-card${g.projected ? " projected" : ""}${live ? " live" : ""}${aside ? "" : " no-aside"}" data-card="${idx}">
+    <section class="game-card${g.projected ? " projected" : ""}${live ? " live" : ""}${aside ? "" : " no-aside"}" data-card="${idx}" data-state="${st}">
       ${head}
       <div class="game-body">
         <div class="game-rows">${v.teams.map((t) => teamRow(v, t)).join("")}</div>
         <div class="game-chart"><canvas id="game-chart-${idx}" role="img" aria-label="Simulated score distributions for ${escapeHtml(v.teams.map((t) => t.display_name).join(" and "))}"></canvas></div>
       </div>
-      <div class="game-players">${v.teams.map((t) => teamPlayers(t, aside, state.openOf[viewKey(g)])).join("")}</div>
+      <div class="game-players">${v.teams.map((t) => teamPlayers(t, aside, state.openOf[viewKey(g)], look, v.view)).join("")}</div>
     </section>`;
 }
 

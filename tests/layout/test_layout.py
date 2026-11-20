@@ -118,7 +118,7 @@ def test_control_keeps_the_layout(open_page, engine, control: Control, width: in
     assert not problems, f"{control.name} at {width}px:\n  " + "\n  ".join(problems)
 
 
-COVERAGE_VIEWS = ("predictions", "games", "games-final", "positions", "positions-past", "war", "war-all", "war-dialog", "calibration",
+COVERAGE_VIEWS = ("predictions", "games", "games-final", "games-states", "positions", "positions-past", "war", "war-all", "war-dialog", "calibration",
                   "managers", "managers-retired", "managers-redraft")
 
 
@@ -167,14 +167,18 @@ def test_phone_lineups_show_full_names(open_page):
 def test_data_swap_keeps_the_visitors_place(open_page):
     from tests.layout.controls import new_data
     page, relay, ctx = open_view(open_page, "games-final", 1280)
-    page.click(".game-card[data-card='0'] .view-toggle button[data-view='model']")
+    # a past week: Full Lineup is opened in the Actual view (its Model view always shows the full lineup)
     page.click(".game-card[data-card='0'] details.lineup summary")
+    page.click(".game-card[data-card='0'] .view-toggle button[data-view='model']")
     page.wait_for_timeout(300)
     new_data(page, relay, ctx)
     assert page.locator("#refresh-note").inner_text() == "Updated just now" or not page.locator("#refresh-btn").is_visible()
     assert page.eval_on_selector("#games-week", "s => s.value") == "10"
     assert page.get_attribute(".game-card[data-card='0'] .view-toggle button[data-view='model']", "aria-pressed") == "true"
-    assert page.eval_on_selector(".game-card[data-card='0'] details.lineup", "d => d.open")
+    assert page.locator(".game-card[data-card='0'] ul.lineup-full").count() == 2
+    page.click(".game-card[data-card='0'] .view-toggle button[data-view='actual']")
+    page.wait_for_timeout(300)
+    assert page.eval_on_selector(".game-card[data-card='0'] details.lineup", "d => d.open"), "the open lineup is kept"
     assert page.url.endswith("/games/10")
 
 
@@ -408,14 +412,15 @@ def test_pinned_columns_cover_nothing_before_scrolling(open_page, engine, view, 
     assert not covered, f"{view} at {width}px: " + "; ".join(covered)
 
 
+@pytest.mark.parametrize("view", ["games", "games-states"])
 @pytest.mark.parametrize("wide", [False, True], ids=["font", "wide-font"])
 @pytest.mark.parametrize("width", WIDTHS)
-def test_lineup_columns_never_overlap(open_page, width, wide):
+def test_lineup_columns_never_overlap(open_page, width, wide, view):
     """Kickoff times, points and win probability added must never be drawn over each other (the
     kickoff column collapsed to nothing beside long names and its text spilled over the points).
     The wide-font pass matches the CI runner's fonts, where win probability added once ran into
     the game clock at 1000 px."""
-    page, relay, ctx = open_view(open_page, "games", width)
+    page, relay, ctx = open_view(open_page, view, width)
     page.evaluate("document.querySelectorAll('.team-players details').forEach((d) => { d.open = true; })")
     if wide:
         page.add_style_tag(content=WIDE_FONT)

@@ -143,11 +143,13 @@
     "width": 2.0
    },
    "key": "1-9",
+   "leader": null,
    "match": null,
    "place": null,
    "projected": false,
    "round": null,
    "seeds": null,
+   "state": "final",
    "teams": [
     {
      "actual": 182.14,
@@ -156,15 +158,15 @@
       {
        "clock": null,
        "kickoff": null,
-       "name": "Lamar Jackson",
-       "player_id": "4881",
-       "points": 20.44,
-       "position": "QB",
-       "projected": 24.0,
+       "name": "Bijan Robinson",
+       "player_id": "9509",
+       "points": 36.3,
+       "position": "RB",
+       "projected": 18.0,
        "replacement": false,
-       "slot": "QB",
+       "slot": "RB",
        "status": "final",
-       "wpa": -0.041
+       "wpa": 0.206
       },
       {
        "clock": null,
@@ -182,28 +184,28 @@
       {
        "clock": null,
        "kickoff": null,
-       "name": "CeeDee Lamb",
-       "player_id": "6786",
-       "points": 18.7,
+       "name": "Drake London",
+       "player_id": "8112",
+       "points": 25.9,
        "position": "WR",
-       "projected": 14.4,
+       "projected": 11.1,
        "replacement": false,
        "slot": "WR",
        "status": "final",
-       "wpa": 0.055
+       "wpa": 0.169
       },
       {
        "clock": null,
        "kickoff": null,
-       "name": "Bijan Robinson",
-       "player_id": "9509",
-       "points": 36.3,
-       "position": "RB",
-       "projected": 18.0,
+       "name": "Jacksonville Jaguars",
+       "player_id": "JAX",
+       "points": 18.0,
+       "position": "DEF",
+       "projected": 7.4,
        "replacement": false,
-       "slot": "RB",
+       "slot": "DEF",
        "status": "final",
-       "wpa": 0.206
+       "wpa": 0.123
       }
      ],
      "lineup": [
@@ -334,6 +336,19 @@
       {
        "clock": null,
        "kickoff": null,
+       "name": "Green Bay Packers",
+       "player_id": "GB",
+       "points": -2.0,
+       "position": "DEF",
+       "projected": 9.7,
+       "replacement": false,
+       "slot": "DEF",
+       "status": "final",
+       "wpa": -0.136
+      },
+      {
+       "clock": null,
+       "kickoff": null,
        "name": "Joe Burrow",
        "player_id": "6770",
        "points": 22.58,
@@ -343,19 +358,6 @@
        "slot": "QB",
        "status": "final",
        "wpa": 0.073
-      },
-      {
-       "clock": null,
-       "kickoff": null,
-       "name": "Christian McCaffrey",
-       "player_id": "4034",
-       "points": 19.6,
-       "position": "RB",
-       "projected": 18.4,
-       "replacement": false,
-       "slot": "RB",
-       "status": "final",
-       "wpa": 0.011
       },
       {
        "clock": null,
@@ -373,15 +375,15 @@
       {
        "clock": null,
        "kickoff": null,
-       "name": "Kenneth Walker III",
-       "player_id": "8151",
-       "points": 20.3,
-       "position": "RB",
-       "projected": 18.4,
+       "name": "Mark Andrews",
+       "player_id": "5012",
+       "points": 3.9,
+       "position": "TE",
+       "projected": 9.6,
        "replacement": false,
-       "slot": "RB",
+       "slot": "TE",
        "status": "final",
-       "wpa": 0.02
+       "wpa": -0.069
       }
      ],
      "lineup": [
@@ -673,15 +675,15 @@
         {
          "clock": null,
          "kickoff": null,
-         "name": "Lamar Jackson",
-         "player_id": "4881",
-         "points": 20.44,
-         "position": "QB",
-         "projected": 24.0,
+         "name": "Bijan Robinson",
+         "player_id": "9509",
+         "points": 36.3,
+         "position": "RB",
+         "projected": 18.0,
          "replacement": false,
-         "slot": "QB",
+         "slot": "RB",
          "status": "final",
-         "wpa": -0.041
+         "wpa": 0.206
         },
         {
          "clock": null,
@@ -699,28 +701,28 @@
         {
          "clock": null,
          "kickoff": null,
-         "name": "CeeDee Lamb",
-         "player_id": "6786",
-         "points": 18.7,
+         "name": "Drake London",
+         "player_id": "8112",
+         "points": 25.9,
          "position": "WR",
-         "projected": 14.4,
+         "projected": 11.1,
          "replacement": false,
          "slot": "WR",
          "status": "final",
-         "wpa": 0.055
+         "wpa": 0.169
         },
         {
          "clock": null,
          "kickoff": null,
-         "name": "Bijan Robinson",
-         "player_id": "9509",
-         "points": 36.3,
-         "position": "RB",
-         "projected": 18.0,
+         "name": "Jacksonville Jaguars",
+         "player_id": "JAX",
+         "points": 18.0,
+         "position": "DEF",
+         "projected": 7.4,
          "replacement": false,
-         "slot": "RB",
+         "slot": "DEF",
          "status": "final",
-         "wpa": 0.206
+         "wpa": 0.123
         }
        ],
        "lineup": [
@@ -851,6 +853,19 @@
         {
          "clock": null,
          "kickoff": null,
+         "name": "Green Bay Packers",
+         "player_id": "GB",
+         "points": -2.0,
+         "position": "DEF",
+         "projected": 9.7,
+         "replacement": false,
+         "slot": "DEF",
+         "status": "final",
+         "wpa": -0.136
+        },
+        {
+         "clock": null,
+         "kickoff": null,
          "name": "Joe Burrow",
          "player_id": "6770",
          "points": 22.58,
@@ -860,19 +875,6 @@
          "slot": "QB",
          "status": "final",
          "wpa": 0.073
-        },
-        {
-         "clock": null,
-         "kickoff": null,
-         "name": "Christian McCaffrey",
-         "player_id": "4034",
-         "points": 19.6,
-         "position": "RB",
-         "projected": 18.4,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": 0.011
         },
         {
          "clock": null,
@@ -890,15 +892,15 @@
         {
          "clock": null,
          "kickoff": null,
-         "name": "Kenneth Walker III",
-         "player_id": "8151",
-         "points": 20.3,
-         "position": "RB",
-         "projected": 18.4,
+         "name": "Mark Andrews",
+         "player_id": "5012",
+         "points": 3.9,
+         "position": "TE",
+         "projected": 9.6,
          "replacement": false,
-         "slot": "RB",
+         "slot": "TE",
          "status": "final",
-         "wpa": 0.02
+         "wpa": -0.069
         }
        ],
        "lineup": [
@@ -1188,64 +1190,7 @@
       {
        "actual": 182.14,
        "display_name": "Gixxersean1",
-       "key_players": [
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Lamar Jackson",
-         "player_id": "4881",
-         "points": 20.44,
-         "position": "QB",
-         "projected": 24.0,
-         "replacement": false,
-         "slot": "QB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Jahmyr Gibbs",
-         "player_id": "9221",
-         "points": 37.9,
-         "position": "RB",
-         "projected": 21.4,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "CeeDee Lamb",
-         "player_id": "6786",
-         "points": 18.7,
-         "position": "WR",
-         "projected": 14.4,
-         "replacement": false,
-         "slot": "WR",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Bijan Robinson",
-         "player_id": "9509",
-         "points": 36.3,
-         "position": "RB",
-         "projected": 18.0,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        }
-       ],
+       "key_players": [],
        "lineup": [
         {
          "benched": false,
@@ -1378,64 +1323,7 @@
       {
        "actual": 105.28,
        "display_name": "khar432",
-       "key_players": [
-        {
-         "benched": true,
-         "clock": null,
-         "kickoff": null,
-         "name": "Trevor Lawrence",
-         "player_id": "7523",
-         "points": 19.78,
-         "position": "QB",
-         "projected": 18.7,
-         "replacement": false,
-         "slot": "QB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Christian McCaffrey",
-         "player_id": "4034",
-         "points": 19.6,
-         "position": "RB",
-         "projected": 18.4,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Christian Watson",
-         "player_id": "8167",
-         "points": 19.1,
-         "position": "WR",
-         "projected": 13.6,
-         "replacement": false,
-         "slot": "WR",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Kenneth Walker III",
-         "player_id": "8151",
-         "points": 20.3,
-         "position": "RB",
-         "projected": 18.4,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        }
-       ],
+       "key_players": [],
        "lineup": [
         {
          "benched": true,
@@ -1721,55 +1609,18 @@
     "width": 2.0
    },
    "key": "2-3",
+   "leader": null,
    "match": null,
    "place": null,
    "projected": false,
    "round": null,
    "seeds": null,
+   "state": "final",
    "teams": [
     {
      "actual": 60.58,
      "display_name": "MattCyg",
      "key_players": [
-      {
-       "clock": null,
-       "kickoff": null,
-       "name": "Jordan Love",
-       "player_id": "6804",
-       "points": 20.48,
-       "position": "QB",
-       "projected": 15.4,
-       "replacement": false,
-       "slot": "QB",
-       "status": "final",
-       "wpa": 0.065
-      },
-      {
-       "clock": null,
-       "kickoff": null,
-       "name": "Ashton Jeanty",
-       "player_id": "12527",
-       "points": 10.8,
-       "position": "RB",
-       "projected": 13.9,
-       "replacement": false,
-       "slot": "RB",
-       "status": "final",
-       "wpa": -0.046
-      },
-      {
-       "clock": null,
-       "kickoff": null,
-       "name": "Rashod Bateman",
-       "player_id": "7571",
-       "points": 4.7,
-       "position": "WR",
-       "projected": 9.2,
-       "replacement": false,
-       "slot": "WR",
-       "status": "final",
-       "wpa": -0.062
-      },
       {
        "clock": null,
        "kickoff": null,
@@ -1782,6 +1633,45 @@
        "slot": "RB",
        "status": "final",
        "wpa": -0.108
+      },
+      {
+       "clock": null,
+       "kickoff": null,
+       "name": "Isaiah Likely",
+       "player_id": "8131",
+       "points": 2.3,
+       "position": "TE",
+       "projected": 7.9,
+       "replacement": false,
+       "slot": "TE",
+       "status": "final",
+       "wpa": -0.074
+      },
+      {
+       "clock": null,
+       "kickoff": null,
+       "name": "Carolina Panthers",
+       "player_id": "CAR",
+       "points": 4.0,
+       "position": "DEF",
+       "projected": 9.3,
+       "replacement": false,
+       "slot": "DEF",
+       "status": "final",
+       "wpa": -0.072
+      },
+      {
+       "clock": null,
+       "kickoff": null,
+       "name": "Jordan Love",
+       "player_id": "6804",
+       "points": 20.48,
+       "position": "QB",
+       "projected": 15.4,
+       "replacement": false,
+       "slot": "QB",
+       "status": "final",
+       "wpa": 0.065
       }
      ],
      "lineup": [
@@ -1922,41 +1812,28 @@
       {
        "clock": null,
        "kickoff": null,
-       "name": "Bryce Young",
-       "player_id": "9228",
-       "points": 13.64,
-       "position": "QB",
-       "projected": 15.5,
-       "replacement": false,
-       "slot": "QB",
-       "status": "final",
-       "wpa": -0.019
-      },
-      {
-       "clock": null,
-       "kickoff": null,
-       "name": "James Cook III",
-       "player_id": "8138",
-       "points": 21.4,
-       "position": "RB",
-       "projected": 15.5,
-       "replacement": false,
-       "slot": "RB",
-       "status": "final",
-       "wpa": 0.082
-      },
-      {
-       "clock": null,
-       "kickoff": null,
-       "name": "Parker Washington",
-       "player_id": "9487",
-       "points": 11.5,
+       "name": "Matthew Golden",
+       "player_id": "12501",
+       "points": 20.5,
        "position": "WR",
-       "projected": 12.7,
+       "projected": 9.2,
        "replacement": false,
        "slot": "WR",
        "status": "final",
-       "wpa": -0.011
+       "wpa": 0.139
+      },
+      {
+       "clock": null,
+       "kickoff": null,
+       "name": "Michael Wilson",
+       "player_id": "10232",
+       "points": 20.4,
+       "position": "WR",
+       "projected": 10.0,
+       "replacement": false,
+       "slot": "FLEX",
+       "status": "final",
+       "wpa": 0.13
       },
       {
        "clock": null,
@@ -1970,6 +1847,19 @@
        "slot": "RB",
        "status": "final",
        "wpa": 0.092
+      },
+      {
+       "clock": null,
+       "kickoff": null,
+       "name": "James Cook III",
+       "player_id": "8138",
+       "points": 21.4,
+       "position": "RB",
+       "projected": 15.5,
+       "replacement": false,
+       "slot": "RB",
+       "status": "final",
+       "wpa": 0.082
       }
      ],
      "lineup": [
@@ -2236,45 +2126,6 @@
         {
          "clock": null,
          "kickoff": null,
-         "name": "Jordan Love",
-         "player_id": "6804",
-         "points": 20.48,
-         "position": "QB",
-         "projected": 15.4,
-         "replacement": false,
-         "slot": "QB",
-         "status": "final",
-         "wpa": 0.065
-        },
-        {
-         "clock": null,
-         "kickoff": null,
-         "name": "Ashton Jeanty",
-         "player_id": "12527",
-         "points": 10.8,
-         "position": "RB",
-         "projected": 13.9,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": -0.046
-        },
-        {
-         "clock": null,
-         "kickoff": null,
-         "name": "Rashod Bateman",
-         "player_id": "7571",
-         "points": 4.7,
-         "position": "WR",
-         "projected": 9.2,
-         "replacement": false,
-         "slot": "WR",
-         "status": "final",
-         "wpa": -0.062
-        },
-        {
-         "clock": null,
-         "kickoff": null,
          "name": "TreVeyon Henderson",
          "player_id": "12529",
          "points": 3.4,
@@ -2284,6 +2135,45 @@
          "slot": "RB",
          "status": "final",
          "wpa": -0.108
+        },
+        {
+         "clock": null,
+         "kickoff": null,
+         "name": "Isaiah Likely",
+         "player_id": "8131",
+         "points": 2.3,
+         "position": "TE",
+         "projected": 7.9,
+         "replacement": false,
+         "slot": "TE",
+         "status": "final",
+         "wpa": -0.074
+        },
+        {
+         "clock": null,
+         "kickoff": null,
+         "name": "Carolina Panthers",
+         "player_id": "CAR",
+         "points": 4.0,
+         "position": "DEF",
+         "projected": 9.3,
+         "replacement": false,
+         "slot": "DEF",
+         "status": "final",
+         "wpa": -0.072
+        },
+        {
+         "clock": null,
+         "kickoff": null,
+         "name": "Jordan Love",
+         "player_id": "6804",
+         "points": 20.48,
+         "position": "QB",
+         "projected": 15.4,
+         "replacement": false,
+         "slot": "QB",
+         "status": "final",
+         "wpa": 0.065
         }
        ],
        "lineup": [
@@ -2424,41 +2314,28 @@
         {
          "clock": null,
          "kickoff": null,
-         "name": "Bryce Young",
-         "player_id": "9228",
-         "points": 13.64,
-         "position": "QB",
-         "projected": 15.5,
-         "replacement": false,
-         "slot": "QB",
-         "status": "final",
-         "wpa": -0.019
-        },
-        {
-         "clock": null,
-         "kickoff": null,
-         "name": "James Cook III",
-         "player_id": "8138",
-         "points": 21.4,
-         "position": "RB",
-         "projected": 15.5,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": 0.082
-        },
-        {
-         "clock": null,
-         "kickoff": null,
-         "name": "Parker Washington",
-         "player_id": "9487",
-         "points": 11.5,
+         "name": "Matthew Golden",
+         "player_id": "12501",
+         "points": 20.5,
          "position": "WR",
-         "projected": 12.7,
+         "projected": 9.2,
          "replacement": false,
          "slot": "WR",
          "status": "final",
-         "wpa": -0.011
+         "wpa": 0.139
+        },
+        {
+         "clock": null,
+         "kickoff": null,
+         "name": "Michael Wilson",
+         "player_id": "10232",
+         "points": 20.4,
+         "position": "WR",
+         "projected": 10.0,
+         "replacement": false,
+         "slot": "FLEX",
+         "status": "final",
+         "wpa": 0.13
         },
         {
          "clock": null,
@@ -2472,6 +2349,19 @@
          "slot": "RB",
          "status": "final",
          "wpa": 0.092
+        },
+        {
+         "clock": null,
+         "kickoff": null,
+         "name": "James Cook III",
+         "player_id": "8138",
+         "points": 21.4,
+         "position": "RB",
+         "projected": 15.5,
+         "replacement": false,
+         "slot": "RB",
+         "status": "final",
+         "wpa": 0.082
         }
        ],
        "lineup": [
@@ -2734,64 +2624,7 @@
       {
        "actual": 60.58,
        "display_name": "MattCyg",
-       "key_players": [
-        {
-         "benched": true,
-         "clock": null,
-         "kickoff": null,
-         "name": "Sam Darnold",
-         "player_id": "4943",
-         "points": 29.66,
-         "position": "QB",
-         "projected": 16.4,
-         "replacement": false,
-         "slot": "QB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Ashton Jeanty",
-         "player_id": "12527",
-         "points": 10.8,
-         "position": "RB",
-         "projected": 13.9,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Rashod Bateman",
-         "player_id": "7571",
-         "points": 4.7,
-         "position": "WR",
-         "projected": 9.2,
-         "replacement": false,
-         "slot": "WR",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "TreVeyon Henderson",
-         "player_id": "12529",
-         "points": 3.4,
-         "position": "RB",
-         "projected": 11.6,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        }
-       ],
+       "key_players": [],
        "lineup": [
         {
          "benched": true,
@@ -2934,64 +2767,7 @@
       {
        "actual": 116.04,
        "display_name": "zagaplooza",
-       "key_players": [
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Bryce Young",
-         "player_id": "9228",
-         "points": 13.64,
-         "position": "QB",
-         "projected": 15.5,
-         "replacement": false,
-         "slot": "QB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "James Cook III",
-         "player_id": "8138",
-         "points": 21.4,
-         "position": "RB",
-         "projected": 15.5,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Parker Washington",
-         "player_id": "9487",
-         "points": 11.5,
-         "position": "WR",
-         "projected": 12.7,
-         "replacement": false,
-         "slot": "WR",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Jaylen Warren",
-         "player_id": "8228",
-         "points": 21.1,
-         "position": "RB",
-         "projected": 14.4,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        }
-       ],
+       "key_players": [],
        "lineup": [
         {
          "benched": false,
@@ -3250,16 +3026,31 @@
     "width": 2.0
    },
    "key": "4-12",
+   "leader": null,
    "match": null,
    "place": null,
    "projected": false,
    "round": null,
    "seeds": null,
+   "state": "final",
    "teams": [
     {
      "actual": 104.88,
      "display_name": "alwaysflexin",
      "key_players": [
+      {
+       "clock": null,
+       "kickoff": null,
+       "name": "George Kittle",
+       "player_id": "4217",
+       "points": 23.2,
+       "position": "TE",
+       "projected": 10.1,
+       "replacement": false,
+       "slot": "FLEX",
+       "status": "final",
+       "wpa": 0.189
+      },
       {
        "clock": null,
        "kickoff": null,
@@ -3276,32 +3067,6 @@
       {
        "clock": null,
        "kickoff": null,
-       "name": "Aaron Jones Sr.",
-       "player_id": "4199",
-       "points": 11.7,
-       "position": "RB",
-       "projected": 11.8,
-       "replacement": false,
-       "slot": "RB",
-       "status": "final",
-       "wpa": -0.003
-      },
-      {
-       "clock": null,
-       "kickoff": null,
-       "name": "Zay Flowers",
-       "player_id": "9997",
-       "points": 12.9,
-       "position": "WR",
-       "projected": 11.9,
-       "replacement": false,
-       "slot": "WR",
-       "status": "final",
-       "wpa": 0.013
-      },
-      {
-       "clock": null,
-       "kickoff": null,
        "name": "Dalton Kincaid",
        "player_id": "10236",
        "points": 2.8,
@@ -3311,6 +3076,19 @@
        "slot": "TE",
        "status": "final",
        "wpa": -0.115
+      },
+      {
+       "clock": null,
+       "kickoff": null,
+       "name": "New England Patriots",
+       "player_id": "NE",
+       "points": -1.0,
+       "position": "DEF",
+       "projected": 7.3,
+       "replacement": false,
+       "slot": "DEF",
+       "status": "final",
+       "wpa": -0.119
       }
      ],
      "lineup": [
@@ -3461,15 +3239,15 @@
       {
        "clock": null,
        "kickoff": null,
-       "name": "Jared Goff",
-       "player_id": "3163",
-       "points": 19.36,
-       "position": "QB",
-       "projected": 19.3,
+       "name": "Jadarian Price",
+       "player_id": "13286",
+       "points": 0.7,
+       "position": "RB",
+       "projected": 9.5,
        "replacement": false,
-       "slot": "QB",
+       "slot": "FLEX",
        "status": "final",
-       "wpa": 0.003
+       "wpa": -0.129
       },
       {
        "clock": null,
@@ -3487,15 +3265,15 @@
       {
        "clock": null,
        "kickoff": null,
-       "name": "Denzel Boston",
-       "player_id": "13346",
-       "points": 7.1,
-       "position": "WR",
-       "projected": 8.5,
+       "name": "Philadelphia Eagles",
+       "player_id": "PHI",
+       "points": 2.0,
+       "position": "DEF",
+       "projected": 9.5,
        "replacement": false,
-       "slot": "WR",
+       "slot": "DEF",
        "status": "final",
-       "wpa": -0.02
+       "wpa": -0.11
       },
       {
        "clock": null,
@@ -3763,6 +3541,19 @@
         {
          "clock": null,
          "kickoff": null,
+         "name": "George Kittle",
+         "player_id": "4217",
+         "points": 23.2,
+         "position": "TE",
+         "projected": 10.1,
+         "replacement": false,
+         "slot": "FLEX",
+         "status": "final",
+         "wpa": 0.189
+        },
+        {
+         "clock": null,
+         "kickoff": null,
          "name": "Brock Purdy",
          "player_id": "8183",
          "points": 31.28,
@@ -3776,32 +3567,6 @@
         {
          "clock": null,
          "kickoff": null,
-         "name": "Aaron Jones Sr.",
-         "player_id": "4199",
-         "points": 11.7,
-         "position": "RB",
-         "projected": 11.8,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": -0.003
-        },
-        {
-         "clock": null,
-         "kickoff": null,
-         "name": "Zay Flowers",
-         "player_id": "9997",
-         "points": 12.9,
-         "position": "WR",
-         "projected": 11.9,
-         "replacement": false,
-         "slot": "WR",
-         "status": "final",
-         "wpa": 0.013
-        },
-        {
-         "clock": null,
-         "kickoff": null,
          "name": "Dalton Kincaid",
          "player_id": "10236",
          "points": 2.8,
@@ -3811,6 +3576,19 @@
          "slot": "TE",
          "status": "final",
          "wpa": -0.115
+        },
+        {
+         "clock": null,
+         "kickoff": null,
+         "name": "New England Patriots",
+         "player_id": "NE",
+         "points": -1.0,
+         "position": "DEF",
+         "projected": 7.3,
+         "replacement": false,
+         "slot": "DEF",
+         "status": "final",
+         "wpa": -0.119
         }
        ],
        "lineup": [
@@ -3961,15 +3739,15 @@
         {
          "clock": null,
          "kickoff": null,
-         "name": "Jared Goff",
-         "player_id": "3163",
-         "points": 19.36,
-         "position": "QB",
-         "projected": 19.3,
+         "name": "Jadarian Price",
+         "player_id": "13286",
+         "points": 0.7,
+         "position": "RB",
+         "projected": 9.5,
          "replacement": false,
-         "slot": "QB",
+         "slot": "FLEX",
          "status": "final",
-         "wpa": 0.003
+         "wpa": -0.129
         },
         {
          "clock": null,
@@ -3987,15 +3765,15 @@
         {
          "clock": null,
          "kickoff": null,
-         "name": "Denzel Boston",
-         "player_id": "13346",
-         "points": 7.1,
-         "position": "WR",
-         "projected": 8.5,
+         "name": "Philadelphia Eagles",
+         "player_id": "PHI",
+         "points": 2.0,
+         "position": "DEF",
+         "projected": 9.5,
          "replacement": false,
-         "slot": "WR",
+         "slot": "DEF",
          "status": "final",
-         "wpa": -0.02
+         "wpa": -0.11
         },
         {
          "clock": null,
@@ -4265,64 +4043,7 @@
       {
        "actual": 104.88,
        "display_name": "alwaysflexin",
-       "key_players": [
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Brock Purdy",
-         "player_id": "8183",
-         "points": 31.28,
-         "position": "QB",
-         "projected": 20.9,
-         "replacement": false,
-         "slot": "QB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Aaron Jones Sr.",
-         "player_id": "4199",
-         "points": 11.7,
-         "position": "RB",
-         "projected": 11.8,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Zay Flowers",
-         "player_id": "9997",
-         "points": 12.9,
-         "position": "WR",
-         "projected": 11.9,
-         "replacement": false,
-         "slot": "WR",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Dalton Kincaid",
-         "player_id": "10236",
-         "points": 2.8,
-         "position": "TE",
-         "projected": 10.8,
-         "replacement": false,
-         "slot": "TE",
-         "status": "final",
-         "wpa": null
-        }
-       ],
+       "key_players": [],
        "lineup": [
         {
          "benched": false,
@@ -4475,64 +4196,7 @@
       {
        "actual": 65.66,
        "display_name": "CheefWiggum",
-       "key_players": [
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Jared Goff",
-         "player_id": "3163",
-         "points": 19.36,
-         "position": "QB",
-         "projected": 19.3,
-         "replacement": false,
-         "slot": "QB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "David Montgomery",
-         "player_id": "5892",
-         "points": 5.8,
-         "position": "RB",
-         "projected": 13.4,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": true,
-         "clock": null,
-         "kickoff": null,
-         "name": "Jameson Williams",
-         "player_id": "8148",
-         "points": 6.9,
-         "position": "WR",
-         "projected": 10.9,
-         "replacement": false,
-         "slot": "WR",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Jeremiyah Love",
-         "player_id": "13287",
-         "points": 19.4,
-         "position": "RB",
-         "projected": 12.8,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        }
-       ],
+       "key_players": [],
        "lineup": [
         {
          "benched": false,
@@ -4807,11 +4471,13 @@
     "width": 2.0
    },
    "key": "5-11",
+   "leader": null,
    "match": null,
    "place": null,
    "projected": false,
    "round": null,
    "seeds": null,
+   "state": "final",
    "teams": [
     {
      "actual": 96.24,
@@ -4820,41 +4486,28 @@
       {
        "clock": null,
        "kickoff": null,
-       "name": "Patrick Mahomes",
-       "player_id": "4046",
-       "points": 15.94,
-       "position": "QB",
-       "projected": 20.2,
-       "replacement": false,
-       "slot": "QB",
-       "status": "final",
-       "wpa": -0.052
-      },
-      {
-       "clock": null,
-       "kickoff": null,
-       "name": "Saquon Barkley",
-       "player_id": "4866",
-       "points": 8.5,
-       "position": "RB",
-       "projected": 14.9,
-       "replacement": false,
-       "slot": "RB",
-       "status": "final",
-       "wpa": -0.081
-      },
-      {
-       "clock": null,
-       "kickoff": null,
-       "name": "Ja'Marr Chase",
-       "player_id": "7564",
-       "points": 20.3,
+       "name": "Garrett Wilson",
+       "player_id": "8146",
+       "points": 23.7,
        "position": "WR",
-       "projected": 13.9,
+       "projected": 13.1,
        "replacement": false,
        "slot": "WR",
        "status": "final",
-       "wpa": 0.084
+       "wpa": 0.132
+      },
+      {
+       "clock": null,
+       "kickoff": null,
+       "name": "Jalen Coker",
+       "player_id": "11646",
+       "points": 2.8,
+       "position": "WR",
+       "projected": 12.1,
+       "replacement": false,
+       "slot": "FLEX",
+       "status": "final",
+       "wpa": -0.121
       },
       {
        "clock": null,
@@ -4868,6 +4521,19 @@
        "slot": "RB",
        "status": "final",
        "wpa": -0.092
+      },
+      {
+       "clock": null,
+       "kickoff": null,
+       "name": "Saquon Barkley",
+       "player_id": "4866",
+       "points": 8.5,
+       "position": "RB",
+       "projected": 14.9,
+       "replacement": false,
+       "slot": "RB",
+       "status": "final",
+       "wpa": -0.081
       }
      ],
      "lineup": [
@@ -5008,6 +4674,45 @@
       {
        "clock": null,
        "kickoff": null,
+       "name": "Tetairoa McMillan",
+       "player_id": "12526",
+       "points": 2.7,
+       "position": "WR",
+       "projected": 11.9,
+       "replacement": false,
+       "slot": "FLEX",
+       "status": "final",
+       "wpa": -0.116
+      },
+      {
+       "clock": null,
+       "kickoff": null,
+       "name": "Denver Broncos",
+       "player_id": "DEN",
+       "points": 14.0,
+       "position": "DEF",
+       "projected": 7.2,
+       "replacement": false,
+       "slot": "DEF",
+       "status": "final",
+       "wpa": 0.088
+      },
+      {
+       "clock": null,
+       "kickoff": null,
+       "name": "Kyle Pitts Sr.",
+       "player_id": "7553",
+       "points": 1.0,
+       "position": "TE",
+       "projected": 7.7,
+       "replacement": false,
+       "slot": "TE",
+       "status": "final",
+       "wpa": -0.084
+      },
+      {
+       "clock": null,
+       "kickoff": null,
        "name": "Baker Mayfield",
        "player_id": "4892",
        "points": 11.28,
@@ -5017,45 +4722,6 @@
        "slot": "QB",
        "status": "final",
        "wpa": -0.055
-      },
-      {
-       "clock": null,
-       "kickoff": null,
-       "name": "Cam Skattebo",
-       "player_id": "12481",
-       "points": 11.5,
-       "position": "RB",
-       "projected": 14.2,
-       "replacement": false,
-       "slot": "RB",
-       "status": "final",
-       "wpa": -0.039
-      },
-      {
-       "clock": null,
-       "kickoff": null,
-       "name": "Chris Olave",
-       "player_id": "8144",
-       "points": 17.2,
-       "position": "WR",
-       "projected": 15.0,
-       "replacement": false,
-       "slot": "WR",
-       "status": "final",
-       "wpa": 0.024
-      },
-      {
-       "clock": null,
-       "kickoff": null,
-       "name": "D'Andre Swift",
-       "player_id": "6790",
-       "points": 9.8,
-       "position": "RB",
-       "projected": 13.1,
-       "replacement": false,
-       "slot": "RB",
-       "status": "final",
-       "wpa": -0.046
       }
      ],
      "lineup": [
@@ -5331,41 +4997,28 @@
         {
          "clock": null,
          "kickoff": null,
-         "name": "Patrick Mahomes",
-         "player_id": "4046",
-         "points": 15.94,
-         "position": "QB",
-         "projected": 20.2,
-         "replacement": false,
-         "slot": "QB",
-         "status": "final",
-         "wpa": -0.052
-        },
-        {
-         "clock": null,
-         "kickoff": null,
-         "name": "Saquon Barkley",
-         "player_id": "4866",
-         "points": 8.5,
-         "position": "RB",
-         "projected": 14.9,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": -0.081
-        },
-        {
-         "clock": null,
-         "kickoff": null,
-         "name": "Ja'Marr Chase",
-         "player_id": "7564",
-         "points": 20.3,
+         "name": "Garrett Wilson",
+         "player_id": "8146",
+         "points": 23.7,
          "position": "WR",
-         "projected": 13.9,
+         "projected": 13.1,
          "replacement": false,
          "slot": "WR",
          "status": "final",
-         "wpa": 0.084
+         "wpa": 0.132
+        },
+        {
+         "clock": null,
+         "kickoff": null,
+         "name": "Jalen Coker",
+         "player_id": "11646",
+         "points": 2.8,
+         "position": "WR",
+         "projected": 12.1,
+         "replacement": false,
+         "slot": "FLEX",
+         "status": "final",
+         "wpa": -0.121
         },
         {
          "clock": null,
@@ -5379,6 +5032,19 @@
          "slot": "RB",
          "status": "final",
          "wpa": -0.092
+        },
+        {
+         "clock": null,
+         "kickoff": null,
+         "name": "Saquon Barkley",
+         "player_id": "4866",
+         "points": 8.5,
+         "position": "RB",
+         "projected": 14.9,
+         "replacement": false,
+         "slot": "RB",
+         "status": "final",
+         "wpa": -0.081
         }
        ],
        "lineup": [
@@ -5519,6 +5185,45 @@
         {
          "clock": null,
          "kickoff": null,
+         "name": "Tetairoa McMillan",
+         "player_id": "12526",
+         "points": 2.7,
+         "position": "WR",
+         "projected": 11.9,
+         "replacement": false,
+         "slot": "FLEX",
+         "status": "final",
+         "wpa": -0.116
+        },
+        {
+         "clock": null,
+         "kickoff": null,
+         "name": "Denver Broncos",
+         "player_id": "DEN",
+         "points": 14.0,
+         "position": "DEF",
+         "projected": 7.2,
+         "replacement": false,
+         "slot": "DEF",
+         "status": "final",
+         "wpa": 0.088
+        },
+        {
+         "clock": null,
+         "kickoff": null,
+         "name": "Kyle Pitts Sr.",
+         "player_id": "7553",
+         "points": 1.0,
+         "position": "TE",
+         "projected": 7.7,
+         "replacement": false,
+         "slot": "TE",
+         "status": "final",
+         "wpa": -0.084
+        },
+        {
+         "clock": null,
+         "kickoff": null,
          "name": "Baker Mayfield",
          "player_id": "4892",
          "points": 11.28,
@@ -5528,45 +5233,6 @@
          "slot": "QB",
          "status": "final",
          "wpa": -0.055
-        },
-        {
-         "clock": null,
-         "kickoff": null,
-         "name": "Cam Skattebo",
-         "player_id": "12481",
-         "points": 11.5,
-         "position": "RB",
-         "projected": 14.2,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": -0.039
-        },
-        {
-         "clock": null,
-         "kickoff": null,
-         "name": "Chris Olave",
-         "player_id": "8144",
-         "points": 17.2,
-         "position": "WR",
-         "projected": 15.0,
-         "replacement": false,
-         "slot": "WR",
-         "status": "final",
-         "wpa": 0.024
-        },
-        {
-         "clock": null,
-         "kickoff": null,
-         "name": "D'Andre Swift",
-         "player_id": "6790",
-         "points": 9.8,
-         "position": "RB",
-         "projected": 13.1,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": -0.046
         }
        ],
        "lineup": [
@@ -5840,64 +5506,7 @@
       {
        "actual": 96.24,
        "display_name": "corygraham12",
-       "key_players": [
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Patrick Mahomes",
-         "player_id": "4046",
-         "points": 15.94,
-         "position": "QB",
-         "projected": 20.2,
-         "replacement": false,
-         "slot": "QB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Saquon Barkley",
-         "player_id": "4866",
-         "points": 8.5,
-         "position": "RB",
-         "projected": 14.9,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Ja'Marr Chase",
-         "player_id": "7564",
-         "points": 20.3,
-         "position": "WR",
-         "projected": 13.9,
-         "replacement": false,
-         "slot": "WR",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Breece Hall",
-         "player_id": "8155",
-         "points": 7.0,
-         "position": "RB",
-         "projected": 14.2,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        }
-       ],
+       "key_players": [],
        "lineup": [
         {
          "benched": false,
@@ -6040,64 +5649,7 @@
       {
        "actual": 79.18,
        "display_name": "Z28kid86",
-       "key_players": [
-        {
-         "benched": true,
-         "clock": null,
-         "kickoff": null,
-         "name": "Jacoby Brissett",
-         "player_id": "3257",
-         "points": 25.6,
-         "position": "QB",
-         "projected": 15.4,
-         "replacement": false,
-         "slot": "QB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Cam Skattebo",
-         "player_id": "12481",
-         "points": 11.5,
-         "position": "RB",
-         "projected": 14.2,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Chris Olave",
-         "player_id": "8144",
-         "points": 17.2,
-         "position": "WR",
-         "projected": 15.0,
-         "replacement": false,
-         "slot": "WR",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "D'Andre Swift",
-         "player_id": "6790",
-         "points": 9.8,
-         "position": "RB",
-         "projected": 13.1,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        }
-       ],
+       "key_players": [],
        "lineup": [
         {
          "benched": true,
@@ -6371,29 +5923,18 @@
     "width": 2.0
    },
    "key": "6-8",
+   "leader": null,
    "match": null,
    "place": null,
    "projected": false,
    "round": null,
    "seeds": null,
+   "state": "final",
    "teams": [
     {
      "actual": 87.14,
      "display_name": "gonzas",
      "key_players": [
-      {
-       "clock": null,
-       "kickoff": null,
-       "name": "Dak Prescott",
-       "player_id": "3294",
-       "points": 18.94,
-       "position": "QB",
-       "projected": 18.4,
-       "replacement": false,
-       "slot": "QB",
-       "status": "final",
-       "wpa": 0.008
-      },
       {
        "clock": null,
        "kickoff": null,
@@ -6406,6 +5947,19 @@
        "slot": "RB",
        "status": "final",
        "wpa": -0.166
+      },
+      {
+       "clock": null,
+       "kickoff": null,
+       "name": "Minnesota Vikings",
+       "player_id": "MIN",
+       "points": 17.0,
+       "position": "DEF",
+       "projected": 9.4,
+       "replacement": false,
+       "slot": "DEF",
+       "status": "final",
+       "wpa": 0.099
       },
       {
        "clock": null,
@@ -6567,19 +6121,6 @@
       {
        "clock": null,
        "kickoff": null,
-       "name": "Kyler Murray",
-       "player_id": "5849",
-       "points": 10.42,
-       "position": "QB",
-       "projected": 17.0,
-       "replacement": false,
-       "slot": "QB",
-       "status": "final",
-       "wpa": -0.087
-      },
-      {
-       "clock": null,
-       "kickoff": null,
        "name": "Jonathan Taylor",
        "player_id": "6813",
        "points": 8.2,
@@ -6593,28 +6134,41 @@
       {
        "clock": null,
        "kickoff": null,
-       "name": "Mike Evans",
-       "player_id": "2216",
-       "points": 10.9,
-       "position": "WR",
-       "projected": 10.7,
+       "name": "Kyler Murray",
+       "player_id": "5849",
+       "points": 10.42,
+       "position": "QB",
+       "projected": 17.0,
        "replacement": false,
-       "slot": "WR",
+       "slot": "QB",
        "status": "final",
-       "wpa": 0.002
+       "wpa": -0.087
       },
       {
        "clock": null,
        "kickoff": null,
-       "name": "Derrick Henry",
-       "player_id": "3198",
-       "points": 21.4,
+       "name": "Kyren Williams",
+       "player_id": "8150",
+       "points": 18.8,
        "position": "RB",
-       "projected": 18.2,
+       "projected": 12.5,
        "replacement": false,
-       "slot": "RB",
+       "slot": "FLEX",
        "status": "final",
-       "wpa": 0.042
+       "wpa": 0.083
+      },
+      {
+       "clock": null,
+       "kickoff": null,
+       "name": "Houston Texans",
+       "player_id": "HOU",
+       "points": 15.0,
+       "position": "DEF",
+       "projected": 8.6,
+       "replacement": false,
+       "slot": "DEF",
+       "status": "final",
+       "wpa": 0.084
       }
      ],
      "lineup": [
@@ -6884,19 +6438,6 @@
         {
          "clock": null,
          "kickoff": null,
-         "name": "Dak Prescott",
-         "player_id": "3294",
-         "points": 18.94,
-         "position": "QB",
-         "projected": 18.4,
-         "replacement": false,
-         "slot": "QB",
-         "status": "final",
-         "wpa": 0.008
-        },
-        {
-         "clock": null,
-         "kickoff": null,
          "name": "De'Von Achane",
          "player_id": "9226",
          "points": 1.7,
@@ -6906,6 +6447,19 @@
          "slot": "RB",
          "status": "final",
          "wpa": -0.166
+        },
+        {
+         "clock": null,
+         "kickoff": null,
+         "name": "Minnesota Vikings",
+         "player_id": "MIN",
+         "points": 17.0,
+         "position": "DEF",
+         "projected": 9.4,
+         "replacement": false,
+         "slot": "DEF",
+         "status": "final",
+         "wpa": 0.099
         },
         {
          "clock": null,
@@ -7067,19 +6621,6 @@
         {
          "clock": null,
          "kickoff": null,
-         "name": "Kyler Murray",
-         "player_id": "5849",
-         "points": 10.42,
-         "position": "QB",
-         "projected": 17.0,
-         "replacement": false,
-         "slot": "QB",
-         "status": "final",
-         "wpa": -0.087
-        },
-        {
-         "clock": null,
-         "kickoff": null,
          "name": "Jonathan Taylor",
          "player_id": "6813",
          "points": 8.2,
@@ -7093,28 +6634,41 @@
         {
          "clock": null,
          "kickoff": null,
-         "name": "Mike Evans",
-         "player_id": "2216",
-         "points": 10.9,
-         "position": "WR",
-         "projected": 10.7,
+         "name": "Kyler Murray",
+         "player_id": "5849",
+         "points": 10.42,
+         "position": "QB",
+         "projected": 17.0,
          "replacement": false,
-         "slot": "WR",
+         "slot": "QB",
          "status": "final",
-         "wpa": 0.002
+         "wpa": -0.087
         },
         {
          "clock": null,
          "kickoff": null,
-         "name": "Derrick Henry",
-         "player_id": "3198",
-         "points": 21.4,
+         "name": "Kyren Williams",
+         "player_id": "8150",
+         "points": 18.8,
          "position": "RB",
-         "projected": 18.2,
+         "projected": 12.5,
          "replacement": false,
-         "slot": "RB",
+         "slot": "FLEX",
          "status": "final",
-         "wpa": 0.042
+         "wpa": 0.083
+        },
+        {
+         "clock": null,
+         "kickoff": null,
+         "name": "Houston Texans",
+         "player_id": "HOU",
+         "points": 15.0,
+         "position": "DEF",
+         "projected": 8.6,
+         "replacement": false,
+         "slot": "DEF",
+         "status": "final",
+         "wpa": 0.084
         }
        ],
        "lineup": [
@@ -7384,64 +6938,7 @@
       {
        "actual": 87.14,
        "display_name": "gonzas",
-       "key_players": [
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Dak Prescott",
-         "player_id": "3294",
-         "points": 18.94,
-         "position": "QB",
-         "projected": 18.4,
-         "replacement": false,
-         "slot": "QB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "De'Von Achane",
-         "player_id": "9226",
-         "points": 1.7,
-         "position": "RB",
-         "projected": 14.4,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Amon-Ra St. Brown",
-         "player_id": "7547",
-         "points": 9.9,
-         "position": "WR",
-         "projected": 16.4,
-         "replacement": false,
-         "slot": "WR",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Chase Brown",
-         "player_id": "9224",
-         "points": 7.9,
-         "position": "RB",
-         "projected": 14.2,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        }
-       ],
+       "key_players": [],
        "lineup": [
         {
          "benched": false,
@@ -7579,64 +7076,7 @@
       {
        "actual": 99.02,
        "display_name": "tg1212",
-       "key_players": [
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Kyler Murray",
-         "player_id": "5849",
-         "points": 10.42,
-         "position": "QB",
-         "projected": 17.0,
-         "replacement": false,
-         "slot": "QB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Jonathan Taylor",
-         "player_id": "6813",
-         "points": 8.2,
-         "position": "RB",
-         "projected": 18.4,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Mike Evans",
-         "player_id": "2216",
-         "points": 10.9,
-         "position": "WR",
-         "projected": 10.7,
-         "replacement": false,
-         "slot": "WR",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Derrick Henry",
-         "player_id": "3198",
-         "points": 21.4,
-         "position": "RB",
-         "projected": 18.2,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        }
-       ],
+       "key_players": [],
        "lineup": [
         {
          "benched": false,
@@ -7916,11 +7356,13 @@
     "width": 2.0
    },
    "key": "7-10",
+   "leader": null,
    "match": null,
    "place": null,
    "projected": false,
    "round": null,
    "seeds": null,
+   "state": "final",
    "teams": [
     {
      "actual": 100.36,
@@ -7929,28 +7371,15 @@
       {
        "clock": null,
        "kickoff": null,
-       "name": "Josh Allen",
-       "player_id": "4984",
-       "points": 16.96,
-       "position": "QB",
-       "projected": 22.6,
+       "name": "Juwan Johnson",
+       "player_id": "7002",
+       "points": 19.3,
+       "position": "TE",
+       "projected": 8.3,
        "replacement": false,
-       "slot": "QB",
+       "slot": "TE",
        "status": "final",
-       "wpa": -0.077
-      },
-      {
-       "clock": null,
-       "kickoff": null,
-       "name": "Quinshon Judkins",
-       "player_id": "12512",
-       "points": 8.9,
-       "position": "RB",
-       "projected": 11.3,
-       "replacement": false,
-       "slot": "RB",
-       "status": "final",
-       "wpa": -0.037
+       "wpa": 0.146
       },
       {
        "clock": null,
@@ -7964,6 +7393,19 @@
        "slot": "WR",
        "status": "final",
        "wpa": 0.093
+      },
+      {
+       "clock": null,
+       "kickoff": null,
+       "name": "Josh Allen",
+       "player_id": "4984",
+       "points": 16.96,
+       "position": "QB",
+       "projected": 22.6,
+       "replacement": false,
+       "slot": "QB",
+       "status": "final",
+       "wpa": -0.077
       },
       {
        "clock": null,
@@ -8130,19 +7572,6 @@
       {
        "clock": null,
        "kickoff": null,
-       "name": "Chuba Hubbard",
-       "player_id": "7594",
-       "points": 13.0,
-       "position": "RB",
-       "projected": 13.4,
-       "replacement": false,
-       "slot": "RB",
-       "status": "final",
-       "wpa": 0.002
-      },
-      {
-       "clock": null,
-       "kickoff": null,
        "name": "Jaxon Smith-Njigba",
        "player_id": "9488",
        "points": 32.36,
@@ -8156,15 +7585,28 @@
       {
        "clock": null,
        "kickoff": null,
-       "name": "Omarion Hampton",
-       "player_id": "12507",
-       "points": 5.6,
-       "position": "RB",
-       "projected": 13.0,
+       "name": "Seattle Seahawks",
+       "player_id": "SEA",
+       "points": 2.0,
+       "position": "DEF",
+       "projected": 10.2,
        "replacement": false,
-       "slot": "RB",
+       "slot": "DEF",
        "status": "final",
-       "wpa": -0.094
+       "wpa": -0.106
+      },
+      {
+       "clock": null,
+       "kickoff": null,
+       "name": "Luther Burden III",
+       "player_id": "12519",
+       "points": 16.3,
+       "position": "WR",
+       "projected": 8.4,
+       "replacement": false,
+       "slot": "FLEX",
+       "status": "final",
+       "wpa": 0.097
       }
      ],
      "lineup": [
@@ -8450,28 +7892,15 @@
         {
          "clock": null,
          "kickoff": null,
-         "name": "Josh Allen",
-         "player_id": "4984",
-         "points": 16.96,
-         "position": "QB",
-         "projected": 22.6,
+         "name": "Juwan Johnson",
+         "player_id": "7002",
+         "points": 19.3,
+         "position": "TE",
+         "projected": 8.3,
          "replacement": false,
-         "slot": "QB",
+         "slot": "TE",
          "status": "final",
-         "wpa": -0.077
-        },
-        {
-         "clock": null,
-         "kickoff": null,
-         "name": "Quinshon Judkins",
-         "player_id": "12512",
-         "points": 8.9,
-         "position": "RB",
-         "projected": 11.3,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": -0.037
+         "wpa": 0.146
         },
         {
          "clock": null,
@@ -8485,6 +7914,19 @@
          "slot": "WR",
          "status": "final",
          "wpa": 0.093
+        },
+        {
+         "clock": null,
+         "kickoff": null,
+         "name": "Josh Allen",
+         "player_id": "4984",
+         "points": 16.96,
+         "position": "QB",
+         "projected": 22.6,
+         "replacement": false,
+         "slot": "QB",
+         "status": "final",
+         "wpa": -0.077
         },
         {
          "clock": null,
@@ -8651,19 +8093,6 @@
         {
          "clock": null,
          "kickoff": null,
-         "name": "Chuba Hubbard",
-         "player_id": "7594",
-         "points": 13.0,
-         "position": "RB",
-         "projected": 13.4,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": 0.002
-        },
-        {
-         "clock": null,
-         "kickoff": null,
          "name": "Jaxon Smith-Njigba",
          "player_id": "9488",
          "points": 32.36,
@@ -8677,15 +8106,28 @@
         {
          "clock": null,
          "kickoff": null,
-         "name": "Omarion Hampton",
-         "player_id": "12507",
-         "points": 5.6,
-         "position": "RB",
-         "projected": 13.0,
+         "name": "Seattle Seahawks",
+         "player_id": "SEA",
+         "points": 2.0,
+         "position": "DEF",
+         "projected": 10.2,
          "replacement": false,
-         "slot": "RB",
+         "slot": "DEF",
          "status": "final",
-         "wpa": -0.094
+         "wpa": -0.106
+        },
+        {
+         "clock": null,
+         "kickoff": null,
+         "name": "Luther Burden III",
+         "player_id": "12519",
+         "points": 16.3,
+         "position": "WR",
+         "projected": 8.4,
+         "replacement": false,
+         "slot": "FLEX",
+         "status": "final",
+         "wpa": 0.097
         }
        ],
        "lineup": [
@@ -8965,64 +8407,7 @@
       {
        "actual": 100.36,
        "display_name": "Jdeguire",
-       "key_players": [
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Josh Allen",
-         "player_id": "4984",
-         "points": 16.96,
-         "position": "QB",
-         "projected": 22.6,
-         "replacement": false,
-         "slot": "QB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Quinshon Judkins",
-         "player_id": "12512",
-         "points": 8.9,
-         "position": "RB",
-         "projected": 11.3,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Davante Adams",
-         "player_id": "2133",
-         "points": 19.2,
-         "position": "WR",
-         "projected": 11.8,
-         "replacement": false,
-         "slot": "WR",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Bhayshul Tuten",
-         "player_id": "12490",
-         "points": 16.0,
-         "position": "RB",
-         "projected": 10.5,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        }
-       ],
+       "key_players": [],
        "lineup": [
         {
          "benched": false,
@@ -9165,64 +8550,7 @@
       {
        "actual": 82.82,
        "display_name": "KingDso",
-       "key_players": [
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Drake Maye",
-         "player_id": "11564",
-         "points": 3.76,
-         "position": "QB",
-         "projected": 17.7,
-         "replacement": false,
-         "slot": "QB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Chuba Hubbard",
-         "player_id": "7594",
-         "points": 13.0,
-         "position": "RB",
-         "projected": 13.4,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Jaxon Smith-Njigba",
-         "player_id": "9488",
-         "points": 32.36,
-         "position": "WR",
-         "projected": 18.6,
-         "replacement": false,
-         "slot": "WR",
-         "status": "final",
-         "wpa": null
-        },
-        {
-         "benched": false,
-         "clock": null,
-         "kickoff": null,
-         "name": "Omarion Hampton",
-         "player_id": "12507",
-         "points": 5.6,
-         "position": "RB",
-         "projected": 13.0,
-         "replacement": false,
-         "slot": "RB",
-         "status": "final",
-         "wpa": null
-        }
-       ],
+       "key_players": [],
        "lineup": [
         {
          "benched": false,

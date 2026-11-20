@@ -40,6 +40,7 @@ Sections
  19. Manager history
  20. Team news
  21. Moves
+ 22. Game card states
 
 
 ================================================================
@@ -667,4 +668,50 @@ Assumptions and decisions:
   - Move WAR reuses the window sums of section 19, so it agrees with Best Player All-Time
     and the one that got away.
   - Picks get no WAR until trade trees follow each pick to the player drafted with it.
+
+
+================================================================
+22. GAME CARD STATES
+================================================================
+Code:          src/ffapp/card_states.py (used by src/ffapp/games_export.py)
+Data sources:  The week's matchup rosters (the managers' real starters and bench), the
+               stored NFL schedule (each game's state at the last refresh), the live
+               lineup rows of the forecast, Sleeper's last scored week, and win
+               probability added (section 13). Exported on every card as "state".
+Depends on:    7, 9, 13
+Formula:
+  player game state: none (bye or empty slot), scheduled, in_progress or final, from his
+    NFL team's game in the stored schedule; a starter's live row status wins when set
+  card state (both teams together):
+    final week (Sleeper scored it)              -> final (PW)
+    later week                                   -> projected (F1) if the pairing is a
+                                                    forecast, else scheduled (F2)
+    current week:
+      nobody has kicked off                      -> not_started (C)
+      a starter is playing                       -> scoring (L1)
+      every starter finished (none counts):
+        a bench player playing                   -> starters_done_bench_playing (O2)
+        a bench player still to play             -> starters_done (O1)
+        otherwise                                -> all_done (O3)
+      starters still to play, none playing:
+        a bench player playing                   -> bench_only (L2)
+        some starter has played                  -> paused (P1)
+        otherwise                                -> paused_no_points (P2)
+  key players for O1, O2, O3 and PW (Actual view): the 4 starters with the largest
+    |round(100 * win probability added)|, largest first; ties by position QB, RB, WR, TE,
+    DEF, K. The Model view of these states shows the full lineup.
+  leader (O1 to O3): the team with more points so far gets the winner check; a tie, none.
+In plain English:
+  Every game card is in one named state, worked out from who has played, who is playing and
+  who is still to play on both rosters, and the page draws each state its own way.
+Assumptions and decisions:
+  - Real lineups decide, so switching between the Model and Actual views never changes a
+    card's state.
+  - A player with no game (bye, empty slot) can never score, so he is finished from the
+    start; a ruled-out player is finished only when his team's game ends. ESPN reports a
+    postponed game as not started (still to play) and a cancelled one as over (0 points).
+  - A week becomes past only when Sleeper scores it; until then a finished game is
+    unofficial (O1 to O3) though it already shows the winner check.
+  - The site refreshes on a schedule, so a card can skip states between refreshes (for
+    example from not started straight to paused after Thursday night).
 
