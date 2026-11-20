@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import pytest
 
-from tests.layout.conftest import OTHER_ENGINE_WIDTHS, PHONE_WIDTHS, WIDTHS, engine_cases
+from tests.layout.conftest import OTHER_ENGINE_WIDTHS, PHONE_WIDTHS, WIDE_FONT, WIDTHS, engine_cases
 from tests.layout.controls import CONTROL_QUERY, CONTROLS, INSIDE, LANDMARKS, VIEWS, Control
 
 TOLERANCE = 0.5
@@ -408,12 +408,19 @@ def test_pinned_columns_cover_nothing_before_scrolling(open_page, engine, view, 
     assert not covered, f"{view} at {width}px: " + "; ".join(covered)
 
 
+@pytest.mark.parametrize("wide", [False, True], ids=["font", "wide-font"])
 @pytest.mark.parametrize("width", WIDTHS)
-def test_lineup_columns_never_overlap(open_page, width):
+def test_lineup_columns_never_overlap(open_page, width, wide):
     """Kickoff times, points and win probability added must never be drawn over each other (the
-    kickoff column collapsed to nothing beside long names and its text spilled over the points)."""
+    kickoff column collapsed to nothing beside long names and its text spilled over the points).
+    The wide-font pass matches the CI runner's fonts, where win probability added once ran into
+    the game clock at 1000 px."""
     page, relay, ctx = open_view(open_page, "games", width)
     page.evaluate("document.querySelectorAll('.team-players details').forEach((d) => { d.open = true; })")
+    if wide:
+        page.add_style_tag(content=WIDE_FONT)
+        page.evaluate("window.dispatchEvent(new Event('resize'))")   # names are fitted again after the font change
+        page.wait_for_timeout(400)
     found = page.evaluate("""() => {
       const out = []; let kicks = 0;
       // painted text extent: a Range covers text that overflows its box; the name keeps its clipped box

@@ -527,9 +527,10 @@ table.war.full thead th[aria-sort] { background: var(--ink); }
 .team-players .tp-name { font-weight: 650; margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 /* Each list is one grid: the name column is as wide as the list's longest name, so points (then
    win probability added) line up right after the names; kickoff times sit at the right edge and
-   always keep their own width (names shorten with an ellipsis instead of being drawn over). */
+   always keep their own width. Points and win probability added keep their full width too, so the
+   name is the only column that gives way (it is shortened by the name standard, never drawn over). */
 .team-players ul { list-style: none; margin: 0; padding: 0; display: grid; row-gap: 2px; column-gap: 6px;
-  grid-template-columns: 2.6em minmax(0, max-content) auto auto minmax(max-content, 1fr); align-items: baseline; }
+  grid-template-columns: 2.6em minmax(0, max-content) max-content max-content minmax(max-content, 1fr); align-items: baseline; }
 .team-players li { display: contents; }
 .team-players li > .pos { grid-column: 1; }
 .team-players li > .pname { grid-column: 2; padding-right: 6px; }

@@ -8,7 +8,7 @@ import json
 
 import pytest
 
-from tests.layout.conftest import PHONE_WIDTHS, WIDTHS
+from tests.layout.conftest import PHONE_WIDTHS, WIDE_FONT, WIDTHS
 from tests.layout.test_layout import OVERFLOW_JS, open_view
 
 CUT_JS = """(sel) => [...document.querySelectorAll(sel)].filter((e) => e.getClientRects().length && e.scrollWidth > e.clientWidth + 1)
@@ -50,9 +50,6 @@ def test_link_names_the_manager_and_arrows_update_the_url(open_page):
     page.wait_for_timeout(400)
     name = page.locator("#mgr-select option:checked").inner_text().split(" · ")[0]
     assert page.evaluate("location.hash").endswith(f"/managers/{name}")
-
-
-WIDE_FONT = "* { font-family: Verdana, 'DejaVu Sans', sans-serif !important; }"  # Linux draws wider text than Windows
 
 
 @pytest.mark.parametrize("wide", [False, True], ids=["font", "wide-font"])
