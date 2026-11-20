@@ -361,7 +361,7 @@
     {
      "at": "2026-11-19",
      "fields": {
-      "body_part": null,
+      "body_part": "Finger",
       "player": "Josh Jacobs",
       "status": "Out"
      },
@@ -499,6 +499,16 @@
     {
      "at": "2026-10-19",
      "fields": {
+      "player": "Kenneth Walker III",
+      "war": 1
+     },
+     "link": "war",
+     "type": "milestone",
+     "week": 6
+    },
+    {
+     "at": "2026-10-19",
+     "fields": {
       "players": [
        "Trey Smack",
        "Kenneth Walker III",
@@ -549,16 +559,6 @@
      },
      "link": "managers",
      "type": "streak",
-     "week": 4
-    },
-    {
-     "at": "2026-10-05",
-     "fields": {
-      "player": "Kenneth Walker III",
-      "war": 1
-     },
-     "link": "war",
-     "type": "milestone",
      "week": 4
     },
     {
@@ -768,12 +768,12 @@
     }
    },
    "replacement": {
-    "DEF": 5.63,
-    "K": 9.77,
-    "QB": 16.44,
-    "RB": 10.14,
+    "DEF": 5.27,
+    "K": 9.4,
+    "QB": 16.1,
+    "RB": 11.57,
     "TE": 7.24,
-    "WR": 7.85
+    "WR": 7.87
    },
    "rival": {
     "name": "micaelaconnors",
@@ -858,7 +858,7 @@
      "nfl_team": "DEN",
      "player_id": "7526",
      "position": "WR",
-     "ppg": 8.12,
+     "ppg": 8.11,
      "slot": "FLEX",
      "status": "Questionable"
     },
@@ -908,7 +908,7 @@
      "nfl_team": "SEA",
      "player_id": "9488",
      "position": "WR",
-     "ppg": 22.17,
+     "ppg": 22.19,
      "slot": "BN",
      "status": null
     },
@@ -918,7 +918,7 @@
      "nfl_team": "SEA",
      "player_id": "9753",
      "position": "RB",
-     "ppg": 9.04,
+     "ppg": 9.03,
      "slot": "BN",
      "status": null
     },
@@ -969,8 +969,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": 0.0,
-     "playoffs": 1.0
+     "change": -0.0001,
+     "playoffs": 0.9999
     },
     "last_result": {
      "opp": "Jdeguire",
@@ -990,7 +990,7 @@
      "opp_user": "739272868935974912",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.3175
+     "win_prob": 0.2466
     },
     "points_for": 1190.42,
     "position": 1,
@@ -1366,6 +1366,16 @@
      "week": 10
     },
     {
+     "at": "2026-11-20",
+     "fields": {
+      "player": "Michael Mayer",
+      "rank": 5
+     },
+     "link": "positions",
+     "type": "trending",
+     "week": 11
+    },
+    {
      "at": "2026-11-09",
      "fields": {
       "opp": "tg1212",
@@ -1695,12 +1705,12 @@
     }
    },
    "replacement": {
-    "DEF": 5.63,
-    "K": 9.77,
-    "QB": 16.44,
-    "RB": 10.14,
+    "DEF": 5.27,
+    "K": 9.4,
+    "QB": 16.1,
+    "RB": 11.57,
     "TE": 7.24,
-    "WR": 7.85
+    "WR": 7.87
    },
    "rival": {
     "name": "TateFM",
@@ -1735,7 +1745,7 @@
      "nfl_team": "MIA",
      "player_id": "12495",
      "position": "RB",
-     "ppg": 11.37,
+     "ppg": 11.39,
      "slot": "RB",
      "status": null
     },
@@ -1765,7 +1775,7 @@
      "nfl_team": "BAL",
      "player_id": "9997",
      "position": "WR",
-     "ppg": 14.03,
+     "ppg": 14.02,
      "slot": "WR",
      "status": null
     },
@@ -1775,7 +1785,7 @@
      "nfl_team": "BUF",
      "player_id": "10236",
      "position": "TE",
-     "ppg": 8.35,
+     "ppg": 8.34,
      "slot": "TE",
      "status": "Questionable"
     },
@@ -1785,7 +1795,7 @@
      "nfl_team": "SF",
      "player_id": "5872",
      "position": "WR",
-     "ppg": 10.75,
+     "ppg": 10.76,
      "slot": "FLEX",
      "status": null
     },
@@ -1917,7 +1927,7 @@
      "opp_user": "739328545955999744",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.3902
+     "win_prob": 0.3811
     },
     "points_for": 879.4,
     "position": 12,
@@ -2286,9 +2296,19 @@
      "week": 10
     },
     {
+     "at": "2026-11-20",
+     "fields": {
+      "player": "Mark Andrews",
+      "rank": 9
+     },
+     "link": "positions",
+     "type": "trending",
+     "week": 11
+    },
+    {
      "at": "2026-11-19",
      "fields": {
-      "body_part": null,
+      "body_part": "Hamstring",
       "player": "A.J. Brown",
       "status": "Out"
      },
@@ -2299,7 +2319,7 @@
     {
      "at": "2026-11-19",
      "fields": {
-      "body_part": null,
+      "body_part": "Thumb",
       "player": "Jordan Addison",
       "status": "Out"
      },
@@ -2553,7 +2573,7 @@
      "name": "Patrick Mahomes",
      "player_id": "4046",
      "seasons": 4,
-     "war": 4.57
+     "war": 4.63
     },
     "got_away": {
      "from": [
@@ -2640,12 +2660,12 @@
     }
    },
    "replacement": {
-    "DEF": 5.63,
-    "K": 9.77,
-    "QB": 16.44,
-    "RB": 10.14,
+    "DEF": 5.27,
+    "K": 9.4,
+    "QB": 16.1,
+    "RB": 11.57,
     "TE": 7.24,
-    "WR": 7.85
+    "WR": 7.87
    },
    "rival": {
     "name": "jrizzo15",
@@ -2690,7 +2710,7 @@
      "nfl_team": "ARI",
      "player_id": "8122",
      "position": "RB",
-     "ppg": 5.08,
+     "ppg": 5.07,
      "slot": "RB",
      "status": null
     },
@@ -2730,7 +2750,7 @@
      "nfl_team": "PIT",
      "player_id": "5846",
      "position": "WR",
-     "ppg": 8.35,
+     "ppg": 8.34,
      "slot": "FLEX",
      "status": null
     },
@@ -2810,7 +2830,7 @@
      "nfl_team": "HOU",
      "player_id": "5892",
      "position": "RB",
-     "ppg": 9.2,
+     "ppg": 9.19,
      "slot": "IR",
      "status": null
     }
@@ -2841,8 +2861,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": 0.0001,
-     "playoffs": 0.0004
+     "change": 0.0,
+     "playoffs": 0.0003
     },
     "last_result": {
      "opp": "DeekBurg",
@@ -2862,7 +2882,7 @@
      "opp_user": "75490097898078208",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.2115
+     "win_prob": 0.2988
     },
     "points_for": 872.78,
     "position": 11,
@@ -3193,7 +3213,7 @@
       "season": "2026"
      }
     ],
-    "forecast_finish": 6,
+    "forecast_finish": 7,
     "honours": {
      "champion": [
       "2022"
@@ -3337,16 +3357,6 @@
      },
      "link": "predictions",
      "type": "forecast",
-     "week": 7
-    },
-    {
-     "at": "2026-10-26",
-     "fields": {
-      "player": "Jonathan Taylor",
-      "war": 1
-     },
-     "link": "war",
-     "type": "milestone",
      "week": 7
     },
     {
@@ -3627,12 +3637,12 @@
     }
    },
    "replacement": {
-    "DEF": 5.63,
-    "K": 9.77,
-    "QB": 16.44,
-    "RB": 10.14,
+    "DEF": 5.27,
+    "K": 9.4,
+    "QB": 16.1,
+    "RB": 11.57,
     "TE": 7.24,
-    "WR": 7.85
+    "WR": 7.87
    },
    "rival": {
     "name": "khar432",
@@ -3677,7 +3687,7 @@
      "nfl_team": "NYJ",
      "player_id": "8155",
      "position": "RB",
-     "ppg": 11.57,
+     "ppg": 11.58,
      "slot": "RB",
      "status": null
     },
@@ -3687,7 +3697,7 @@
      "nfl_team": "KC",
      "player_id": "10229",
      "position": "WR",
-     "ppg": 11.29,
+     "ppg": 11.3,
      "slot": "WR",
      "status": null
     },
@@ -3697,7 +3707,7 @@
      "nfl_team": "MIA",
      "player_id": "13296",
      "position": "WR",
-     "ppg": 9.25,
+     "ppg": 9.23,
      "slot": "WR",
      "status": "Questionable"
     },
@@ -3767,7 +3777,7 @@
      "nfl_team": "NYJ",
      "player_id": "11625",
      "position": "WR",
-     "ppg": 9.82,
+     "ppg": 9.81,
      "slot": "BN",
      "status": null
     },
@@ -3828,8 +3838,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": 0.0,
-     "playoffs": 0.5285
+     "change": -0.0873,
+     "playoffs": 0.4412
     },
     "last_result": {
      "opp": "corygraham12",
@@ -3849,7 +3859,7 @@
      "opp_user": "727642823544893440",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.6159
+     "win_prob": 0.4352
     },
     "points_for": 1104.74,
     "position": 6,
@@ -3870,7 +3880,7 @@
    "user_id": "739353143170727936",
    "week_points": {
     "bench": 0.0,
-    "starters": 5.2,
+    "starters": 8.1,
     "week": 11
    }
   },
@@ -4228,7 +4238,7 @@
     {
      "at": "2026-11-19",
      "fields": {
-      "body_part": null,
+      "body_part": "Knee",
       "player": "RJ Harvey",
       "status": "IR"
      },
@@ -4637,12 +4647,12 @@
     }
    },
    "replacement": {
-    "DEF": 5.63,
-    "K": 9.77,
-    "QB": 16.44,
-    "RB": 10.14,
+    "DEF": 5.27,
+    "K": 9.4,
+    "QB": 16.1,
+    "RB": 11.57,
     "TE": 7.24,
-    "WR": 7.85
+    "WR": 7.87
    },
    "rival": {
     "name": "djernberg",
@@ -4667,7 +4677,7 @@
      "nfl_team": "HOU",
      "player_id": "9758",
      "position": "QB",
-     "ppg": 20.14,
+     "ppg": 20.12,
      "slot": "QB",
      "status": null
     },
@@ -4677,7 +4687,7 @@
      "nfl_team": "BAL",
      "player_id": "3198",
      "position": "RB",
-     "ppg": 14.81,
+     "ppg": 14.8,
      "slot": "RB",
      "status": null
     },
@@ -4717,7 +4727,7 @@
      "nfl_team": "SF",
      "player_id": "4217",
      "position": "TE",
-     "ppg": 11.55,
+     "ppg": 11.56,
      "slot": "TE",
      "status": null
     },
@@ -4848,8 +4858,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": 0.0019,
-     "playoffs": 0.1561
+     "change": 0.0173,
+     "playoffs": 0.1715
     },
     "last_result": {
      "opp": "TateFM",
@@ -4869,7 +4879,7 @@
      "opp_user": "739284972489293824",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.6825
+     "win_prob": 0.7534
     },
     "points_for": 1084.98,
     "position": 9,
@@ -4890,7 +4900,7 @@
    "user_id": "739272868935974912",
    "week_points": {
     "bench": 0.0,
-    "starters": 4.72,
+    "starters": 20.46,
     "week": 11
    }
   },
@@ -5242,7 +5252,7 @@
     {
      "at": "2026-11-19",
      "fields": {
-      "body_part": null,
+      "body_part": "Neck",
       "player": "Michael Wilson",
       "status": "IR"
      },
@@ -5253,7 +5263,7 @@
     {
      "at": "2026-11-19",
      "fields": {
-      "body_part": null,
+      "body_part": "Ankle",
       "player": "Jeremiyah Love",
       "status": "IR"
      },
@@ -5580,12 +5590,12 @@
     }
    },
    "replacement": {
-    "DEF": 5.63,
-    "K": 9.77,
-    "QB": 16.44,
-    "RB": 10.14,
+    "DEF": 5.27,
+    "K": 9.4,
+    "QB": 16.1,
+    "RB": 11.57,
     "TE": 7.24,
-    "WR": 7.85
+    "WR": 7.87
    },
    "rival": {
     "name": "Jdeguire",
@@ -5640,7 +5650,7 @@
      "nfl_team": "BUF",
      "player_id": "4983",
      "position": "WR",
-     "ppg": 10.11,
+     "ppg": 10.1,
      "slot": "WR",
      "status": null
     },
@@ -5791,8 +5801,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": -0.0016,
-     "playoffs": 0.0077
+     "change": 0.0001,
+     "playoffs": 0.0094
     },
     "last_result": {
      "opp": "micaelaconnors",
@@ -5812,7 +5822,7 @@
      "opp_user": "740044489435017216",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.426
+     "win_prob": 0.4086
     },
     "points_for": 1012.3,
     "position": 10,
@@ -6139,7 +6149,7 @@
       "season": "2026"
      }
     ],
-    "forecast_finish": 7,
+    "forecast_finish": 6,
     "honours": {
      "playoffs": [
       "2022",
@@ -6182,9 +6192,29 @@
      "week": 10
     },
     {
+     "at": "2026-11-20",
+     "fields": {
+      "player": "Xavier Hutchinson",
+      "rank": 2
+     },
+     "link": "positions",
+     "type": "trending",
+     "week": 11
+    },
+    {
+     "at": "2026-11-20",
+     "fields": {
+      "player": "Cairo Santos",
+      "rank": 4
+     },
+     "link": "positions",
+     "type": "trending",
+     "week": 11
+    },
+    {
      "at": "2026-11-19",
      "fields": {
-      "body_part": null,
+      "body_part": "Knee - MCL",
       "player": "Puka Nacua",
       "status": "IR"
      },
@@ -6617,12 +6647,12 @@
     }
    },
    "replacement": {
-    "DEF": 5.63,
-    "K": 9.77,
-    "QB": 16.44,
-    "RB": 10.14,
+    "DEF": 5.27,
+    "K": 9.4,
+    "QB": 16.1,
+    "RB": 11.57,
     "TE": 7.24,
-    "WR": 7.85
+    "WR": 7.87
    },
    "rival": {
     "name": "tg1212",
@@ -6657,7 +6687,7 @@
      "nfl_team": "PIT",
      "player_id": "8228",
      "position": "RB",
-     "ppg": 14.37,
+     "ppg": 14.38,
      "slot": "RB",
      "status": null
     },
@@ -6687,7 +6717,7 @@
      "nfl_team": "NYJ",
      "player_id": "8146",
      "position": "WR",
-     "ppg": 11.72,
+     "ppg": 11.71,
      "slot": "WR",
      "status": null
     },
@@ -6707,7 +6737,7 @@
      "nfl_team": "TEN",
      "player_id": "13279",
      "position": "WR",
-     "ppg": 9.07,
+     "ppg": 9.06,
      "slot": "FLEX",
      "status": "Questionable"
     },
@@ -6737,7 +6767,7 @@
      "nfl_team": "HOU",
      "player_id": "10218",
      "position": "WR",
-     "ppg": 7.24,
+     "ppg": 7.23,
      "slot": "BN",
      "status": null
     },
@@ -6823,8 +6853,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": 0.0048,
-     "playoffs": 0.4107
+     "change": 0.0423,
+     "playoffs": 0.4482
     },
     "last_result": {
      "opp": "NickLove17",
@@ -6844,7 +6874,7 @@
      "opp_user": "739298321264496640",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.6056
+     "win_prob": 0.6619
     },
     "points_for": 1073.7,
     "position": 7,
@@ -7217,7 +7247,7 @@
     {
      "at": "2026-11-19",
      "fields": {
-      "body_part": null,
+      "body_part": "Coach's Decision",
       "player": "Emanuel Wilson",
       "status": "Out"
      },
@@ -7228,7 +7258,7 @@
     {
      "at": "2026-11-19",
      "fields": {
-      "body_part": null,
+      "body_part": "Hamstring",
       "player": "Brian Robinson Jr.",
       "status": "IR"
      },
@@ -7657,12 +7687,12 @@
     }
    },
    "replacement": {
-    "DEF": 5.63,
-    "K": 9.77,
-    "QB": 16.44,
-    "RB": 10.14,
+    "DEF": 5.27,
+    "K": 9.4,
+    "QB": 16.1,
+    "RB": 11.57,
     "TE": 7.24,
-    "WR": 7.85
+    "WR": 7.87
    },
    "rival": {
     "name": "corygraham12",
@@ -7707,7 +7737,7 @@
      "nfl_team": "DEN",
      "player_id": "13345",
      "position": "RB",
-     "ppg": 13.9,
+     "ppg": 13.92,
      "slot": "RB",
      "status": null
     },
@@ -7797,7 +7827,7 @@
      "nfl_team": "SEA",
      "player_id": "13286",
      "position": "RB",
-     "ppg": 6.55,
+     "ppg": 6.54,
      "slot": "BN",
      "status": null
     },
@@ -7868,8 +7898,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": -0.0049,
-     "playoffs": 0.16
+     "change": 0.0164,
+     "playoffs": 0.1813
     },
     "last_result": {
      "opp": "khar432",
@@ -7889,7 +7919,7 @@
      "opp_user": "739294851916541952",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.6098
+     "win_prob": 0.6189
     },
     "points_for": 1085.24,
     "position": 8,
@@ -8218,7 +8248,7 @@
       "season": "2026"
      }
     ],
-    "forecast_finish": 4,
+    "forecast_finish": 3,
     "honours": {
      "champion": [
       "2024"
@@ -8271,6 +8301,26 @@
      "week": 10
     },
     {
+     "at": "2026-11-20",
+     "fields": {
+      "player": "Pat Bryant",
+      "rank": 7
+     },
+     "link": "positions",
+     "type": "trending",
+     "week": 11
+    },
+    {
+     "at": "2026-11-20",
+     "fields": {
+      "player": "Elic Ayomanor",
+      "rank": 8
+     },
+     "link": "positions",
+     "type": "trending",
+     "week": 11
+    },
+    {
      "at": "2026-11-16",
      "fields": {
       "change": 0.113,
@@ -8279,6 +8329,16 @@
      },
      "link": "predictions",
      "type": "forecast",
+     "week": 10
+    },
+    {
+     "at": "2026-11-16",
+     "fields": {
+      "player": "James Cook III",
+      "war": 1
+     },
+     "link": "war",
+     "type": "milestone",
      "week": 10
     },
     {
@@ -8306,16 +8366,6 @@
      },
      "link": "games",
      "type": "result",
-     "week": 9
-    },
-    {
-     "at": "2026-11-09",
-     "fields": {
-      "player": "James Cook III",
-      "war": 1
-     },
-     "link": "war",
-     "type": "milestone",
      "week": 9
     },
     {
@@ -8649,12 +8699,12 @@
     }
    },
    "replacement": {
-    "DEF": 5.63,
-    "K": 9.77,
-    "QB": 16.44,
-    "RB": 10.14,
+    "DEF": 5.27,
+    "K": 9.4,
+    "QB": 16.1,
+    "RB": 11.57,
     "TE": 7.24,
-    "WR": 7.85
+    "WR": 7.87
    },
    "rival": {
     "name": "shanhynes",
@@ -8749,7 +8799,7 @@
      "nfl_team": "HOU",
      "player_id": "3451",
      "position": "K",
-     "ppg": 11.31,
+     "ppg": 11.3,
      "slot": "K",
      "status": null
     },
@@ -8769,7 +8819,7 @@
      "nfl_team": "DEN",
      "player_id": "12492",
      "position": "WR",
-     "ppg": 7.78,
+     "ppg": 7.77,
      "slot": "BN",
      "status": null
     },
@@ -8830,8 +8880,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": -0.0013,
-     "playoffs": 0.9609
+     "change": 0.0107,
+     "playoffs": 0.9729
     },
     "last_result": {
      "opp": "kjern17",
@@ -8851,7 +8901,7 @@
      "opp_user": "739353143170727936",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.3841
+     "win_prob": 0.5648
     },
     "points_for": 1081.86,
     "position": 3,
@@ -8872,7 +8922,7 @@
    "user_id": "727642823544893440",
    "week_points": {
     "bench": 0.0,
-    "starters": 1.0,
+    "starters": 5.7,
     "week": 11
    }
   },
@@ -9218,15 +9268,35 @@
      "week": 10
     },
     {
+     "at": "2026-11-20",
+     "fields": {
+      "player": "Detroit Lions",
+      "rank": 1
+     },
+     "link": "positions",
+     "type": "trending",
+     "week": 11
+    },
+    {
      "at": "2026-11-19",
      "fields": {
-      "body_part": null,
+      "body_part": "Hamstring",
       "player": "Davante Adams",
       "status": "IR"
      },
      "link": "positions",
      "type": "injury",
      "week": 11
+    },
+    {
+     "at": "2026-11-16",
+     "fields": {
+      "player": "Christian McCaffrey",
+      "war": 1
+     },
+     "link": "war",
+     "type": "milestone",
+     "week": 10
     },
     {
      "at": "2026-11-16",
@@ -9270,16 +9340,6 @@
      "at": "2026-11-09",
      "fields": {
       "player": "Matthew Golden",
-      "war": 1
-     },
-     "link": "war",
-     "type": "milestone",
-     "week": 9
-    },
-    {
-     "at": "2026-11-09",
-     "fields": {
-      "player": "Christian McCaffrey",
       "war": 1
      },
      "link": "war",
@@ -9650,12 +9710,12 @@
     }
    },
    "replacement": {
-    "DEF": 5.63,
-    "K": 9.77,
-    "QB": 16.44,
-    "RB": 10.14,
+    "DEF": 5.27,
+    "K": 9.4,
+    "QB": 16.1,
+    "RB": 11.57,
     "TE": 7.24,
-    "WR": 7.85
+    "WR": 7.87
    },
    "rival": {
     "name": "NickLove17",
@@ -9680,7 +9740,7 @@
      "nfl_team": "DEN",
      "player_id": "11563",
      "position": "QB",
-     "ppg": 15.38,
+     "ppg": 15.36,
      "slot": "QB",
      "status": null
     },
@@ -9690,7 +9750,7 @@
      "nfl_team": "TEN",
      "player_id": "5967",
      "position": "RB",
-     "ppg": 13.48,
+     "ppg": 13.49,
      "slot": "RB",
      "status": null
     },
@@ -9740,7 +9800,7 @@
      "nfl_team": "MIA",
      "player_id": "11610",
      "position": "WR",
-     "ppg": 7.92,
+     "ppg": 7.91,
      "slot": "FLEX",
      "status": null
     },
@@ -9861,8 +9921,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": -0.0111,
-     "playoffs": 0.8136
+     "change": -0.0051,
+     "playoffs": 0.8196
     },
     "last_result": {
      "opp": "tg1212",
@@ -9882,7 +9942,7 @@
      "opp_user": "739705195117895680",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.3944
+     "win_prob": 0.3381
     },
     "points_for": 1125.08,
     "position": 5,
@@ -9902,9 +9962,9 @@
    },
    "user_id": "739298321264496640",
    "week_points": {
-    "bench": 28.06,
-    "starters": 123.6,
-    "week": 10
+    "bench": 0.0,
+    "starters": 2.7,
+    "week": 11
    }
   },
   {
@@ -10254,7 +10314,7 @@
     {
      "at": "2026-11-19",
      "fields": {
-      "body_part": null,
+      "body_part": "Thumb",
       "player": "Lamar Jackson",
       "status": "IR"
      },
@@ -10276,6 +10336,16 @@
      },
      "link": "games",
      "type": "result",
+     "week": 9
+    },
+    {
+     "at": "2026-11-09",
+     "fields": {
+      "player": "Bijan Robinson",
+      "war": 1
+     },
+     "link": "war",
+     "type": "milestone",
      "week": 9
     },
     {
@@ -10344,16 +10414,6 @@
      "week": 7
     },
     {
-     "at": "2026-10-26",
-     "fields": {
-      "player": "Bijan Robinson",
-      "war": 1
-     },
-     "link": "war",
-     "type": "milestone",
-     "week": 7
-    },
-    {
      "at": "2026-10-19",
      "fields": {
       "opp": "NickLove17",
@@ -10404,16 +10464,6 @@
      },
      "link": "managers",
      "type": "streak",
-     "week": 5
-    },
-    {
-     "at": "2026-10-12",
-     "fields": {
-      "player": "Bijan Robinson",
-      "war": 1
-     },
-     "link": "war",
-     "type": "milestone",
      "week": 5
     },
     {
@@ -10540,7 +10590,7 @@
      "name": "Bijan Robinson",
      "player_id": "9509",
      "seasons": 2,
-     "war": 3.74
+     "war": 3.49
     },
     "got_away": {
      "from": [
@@ -10627,12 +10677,12 @@
     }
    },
    "replacement": {
-    "DEF": 5.63,
-    "K": 9.77,
-    "QB": 16.44,
-    "RB": 10.14,
+    "DEF": 5.27,
+    "K": 9.4,
+    "QB": 16.1,
+    "RB": 11.57,
     "TE": 7.24,
-    "WR": 7.85
+    "WR": 7.87
    },
    "rival": {
     "name": "DeekBurg",
@@ -10657,7 +10707,7 @@
      "nfl_team": "DET",
      "player_id": "3163",
      "position": "QB",
-     "ppg": 18.52,
+     "ppg": 18.51,
      "slot": "QB",
      "status": null
     },
@@ -10687,7 +10737,7 @@
      "nfl_team": "DET",
      "player_id": "8148",
      "position": "WR",
-     "ppg": 10.99,
+     "ppg": 10.98,
      "slot": "WR",
      "status": null
     },
@@ -10717,7 +10767,7 @@
      "nfl_team": "JAX",
      "player_id": "9487",
      "position": "WR",
-     "ppg": 13.37,
+     "ppg": 13.36,
      "slot": "FLEX",
      "status": null
     },
@@ -10727,7 +10777,7 @@
      "nfl_team": "DET",
      "player_id": "11539",
      "position": "K",
-     "ppg": 9.49,
+     "ppg": 9.48,
      "slot": "K",
      "status": null
     },
@@ -10838,8 +10888,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": 0.0003,
-     "playoffs": 0.9991
+     "change": 0.0008,
+     "playoffs": 0.9996
     },
     "last_result": {
      "opp": "jrizzo15",
@@ -10859,7 +10909,7 @@
      "opp_user": "740075424440332288",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.574
+     "win_prob": 0.5914
     },
     "points_for": 1111.64,
     "position": 2,
@@ -10879,8 +10929,8 @@
    },
    "user_id": "740044489435017216",
    "week_points": {
-    "bench": 1.0,
-    "starters": 7.0,
+    "bench": 3.9,
+    "starters": 15.0,
     "week": 11
    }
   },
@@ -11186,7 +11236,7 @@
       "season": "2026"
      }
     ],
-    "forecast_finish": 3,
+    "forecast_finish": 4,
     "honours": {
      "playoffs": [
       "2021",
@@ -11222,11 +11272,32 @@
      "week": 10
     },
     {
+     "at": "2026-11-20",
+     "fields": {
+      "player": "Seth McGowan",
+      "rank": 6
+     },
+     "link": "positions",
+     "type": "trending",
+     "week": 11
+    },
+    {
      "at": "2026-11-19",
      "fields": {
-      "body_part": null,
+      "body_part": "Groin",
       "player": "Jacory Croskey-Merritt",
       "status": "IR"
+     },
+     "link": "positions",
+     "type": "injury",
+     "week": 11
+    },
+    {
+     "at": "2026-11-19",
+     "fields": {
+      "body_part": "Hamstring",
+      "player": "Seth McGowan",
+      "status": "Out"
      },
      "link": "positions",
      "type": "injury",
@@ -11408,6 +11479,16 @@
     {
      "at": "2026-10-12",
      "fields": {
+      "player": "Jahmyr Gibbs",
+      "war": 1
+     },
+     "link": "war",
+     "type": "milestone",
+     "week": 5
+    },
+    {
+     "at": "2026-10-12",
+     "fields": {
       "players": [
        "Jahmyr Gibbs"
       ]
@@ -11441,16 +11522,6 @@
      },
      "link": "predictions",
      "type": "forecast",
-     "week": 4
-    },
-    {
-     "at": "2026-10-05",
-     "fields": {
-      "player": "Jahmyr Gibbs",
-      "war": 1
-     },
-     "link": "war",
-     "type": "milestone",
      "week": 4
     },
     {
@@ -11552,7 +11623,7 @@
      "name": "Jahmyr Gibbs",
      "player_id": "9221",
      "seasons": 2,
-     "war": 5.18
+     "war": 4.96
     },
     "got_away": {
      "from": [
@@ -11639,12 +11710,12 @@
     }
    },
    "replacement": {
-    "DEF": 5.63,
-    "K": 9.77,
-    "QB": 16.44,
-    "RB": 10.14,
+    "DEF": 5.27,
+    "K": 9.4,
+    "QB": 16.1,
+    "RB": 11.57,
     "TE": 7.24,
-    "WR": 7.85
+    "WR": 7.87
    },
    "rival": {
     "name": "kjern17",
@@ -11669,7 +11740,7 @@
      "nfl_team": "SF",
      "player_id": "8183",
      "position": "QB",
-     "ppg": 21.23,
+     "ppg": 21.24,
      "slot": "QB",
      "status": null
     },
@@ -11709,7 +11780,7 @@
      "nfl_team": "HOU",
      "player_id": "7569",
      "position": "WR",
-     "ppg": 13.96,
+     "ppg": 13.95,
      "slot": "WR",
      "status": null
     },
@@ -11769,7 +11840,7 @@
      "nfl_team": "NYJ",
      "player_id": "13276",
      "position": "WR",
-     "ppg": 11.15,
+     "ppg": 11.13,
      "slot": "BN",
      "status": "Questionable"
     },
@@ -11781,7 +11852,7 @@
      "position": "RB",
      "ppg": 5.11,
      "slot": "BN",
-     "status": null
+     "status": "Out"
     },
     {
      "bye": false,
@@ -11789,7 +11860,7 @@
      "nfl_team": "SF",
      "player_id": "2216",
      "position": "WR",
-     "ppg": 12.57,
+     "ppg": 12.58,
      "slot": "BN",
      "status": "Questionable"
     },
@@ -11835,8 +11906,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": 0.0118,
-     "playoffs": 0.963
+     "change": 0.0049,
+     "playoffs": 0.9561
     },
     "last_result": {
      "opp": "shanhynes",
@@ -11856,7 +11927,7 @@
      "opp_user": "740067972349095936",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.7885
+     "win_prob": 0.7012
     },
     "points_for": 1135.44,
     "position": 4,
@@ -11876,8 +11947,8 @@
    },
    "user_id": "75490097898078208",
    "week_points": {
-    "bench": 0.5,
-    "starters": 10.7,
+    "bench": 1.3,
+    "starters": 13.3,
     "week": 11
    }
   }
