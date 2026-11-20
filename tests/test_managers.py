@@ -194,3 +194,12 @@ def test_faab_by_season_reads_budget_and_used(seeded_store):
     manager = next(iter(managers_for_league(seeded_store, "dynasty").values()))
     faab = faab_by_season(seeded_store, "dynasty", manager.user_id)
     assert faab and all(0 <= v["spent"] <= v["budget"] * 1.5 and v["budget"] > 0 for v in faab.values())
+
+
+def test_redraft_got_away_counts_only_the_latest_season():
+    from ffapp.managers import Window
+    old = Window("p1", "departed", ("2025", 3), ("2025", 14), [("2025", w) for w in range(3, 15)], war=4.0)
+    now = Window("p2", "departed", ("2026", 5), ("2026", 10), [("2026", w) for w in range(5, 11)], war=0.8)
+    assert players_block([old, now], {"p1": "Old Star", "p2": "New Guy"})["got_away"]["name"] == "Old Star", "dynasty: the whole history"
+    assert players_block([old, now], {"p1": "Old Star", "p2": "New Guy"}, got_away_season="2026")["got_away"]["name"] == "New Guy", "redraft: this season only"
+

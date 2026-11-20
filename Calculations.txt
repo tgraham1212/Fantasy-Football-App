@@ -562,7 +562,9 @@ Formula:
     carry over
   best player all-time = the most WAR summed over a player's added windows
   most seasons = seasons with at least one week on the team
-  the one that got away = the largest single departed window (shown when above 0)
+  the one that got away = the largest single departed window (shown when above 0); in redraft
+    only windows starting in the manager's latest season count (rosters start over each year),
+    in dynasty the whole history
 In plain English:
   Everything on a manager's page is worked out here once: where they finished each year,
   what they won, how they did against each other manager, their best and worst games

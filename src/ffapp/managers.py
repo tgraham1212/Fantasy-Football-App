@@ -534,9 +534,10 @@ def windows(timeline: list[tuple[str, int]], user_weeks: dict[tuple[str, int], s
     return out
 
 
-def players_block(wins: list[Window], names: dict[str, str]) -> dict:
+def players_block(wins: list[Window], names: dict[str, str], got_away_season: str | None = None) -> dict:
     """Best Player All-Time (most WAR in weeks on the team), most seasons on the team, and the one
-    that got away (the largest single departed window)."""
+    that got away (the largest single departed window; with ``got_away_season``, as in redraft, only
+    windows that start in that season count)."""
     added: dict[str, dict] = {}
     for w in wins:
         if w.kind != "added":
@@ -546,7 +547,8 @@ def players_block(wins: list[Window], names: dict[str, str]) -> dict:
         row["seasons"].update(s for s, _ in w.weeks)
     best = max(added.items(), key=lambda kv: kv[1]["war"], default=None)
     most = max(added.items(), key=lambda kv: (len(kv[1]["seasons"]), kv[1]["war"]), default=None)
-    away = max((w for w in wins if w.kind == "departed"), key=lambda w: w.war, default=None)
+    away = max((w for w in wins if w.kind == "departed" and (got_away_season is None or w.start[0] == got_away_season)),
+               key=lambda w: w.war, default=None)
     return {
         "best": {"player_id": best[0], "name": names.get(best[0], best[0]), "war": round(best[1]["war"], 2), "seasons": len(best[1]["seasons"])} if best else None,
         "most_seasons": {"player_id": most[0], "name": names.get(most[0], most[0]), "seasons": len(most[1]["seasons"])} if most else None,
@@ -779,7 +781,8 @@ def managers_export(store: Store, config, league_key: str, league_payload: dict,
             "rivalry": rivalry_record(games, rivals, uid) if rivals else None,
             "faab": {s: {**f, **lm.faab.get(uid, {}).get(s, {"biggest": None, "overpaid": 0})} for s, f in faab_by_season(store, league_key, uid).items()},
             "moves": lm.moves.get(uid, {}),
-            "players": players_block(wins, pnames),
+            # redraft rosters start over each year, so the one that got away is this season's; dynasty keeps the whole history
+            "players": players_block(wins, pnames, got_away_season=None if carry else season),
             "news": manager_stories(store, league_key, m, news_ctx),
         })
     return {"league_key": league_key, "season": current, "toilet_bowl": not carry, "managers": out}

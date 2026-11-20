@@ -89,7 +89,7 @@ Each window SHALL sum the player's WAR over its weeks, whichever roster he was o
 - **THEN** there are two departed windows (weeks 3–6 and 12 onward) and one added window (weeks 7–11)
 
 ### Requirement: Best players
-Best Player All-Time SHALL be the player with the most WAR in weeks on the manager's team across all seasons, with his WAR and seasons on the team. "Most seasons on this team" SHALL count seasons with at least one week on the roster. "The one that got away" SHALL be the player with the most WAR in a single departed window.
+Best Player All-Time SHALL be the player with the most WAR in weeks on the manager's team across all seasons, with his WAR and seasons on the team. "Most seasons on this team" SHALL count seasons with at least one week on the roster. "The one that got away" SHALL be the player with the most WAR in a single departed window: in redraft, among windows starting in the manager's latest season; in dynasty, across the whole team history.
 
 #### Scenario: Got away
 - **WHEN** a player produced +4.1 WAR elsewhere after the manager dropped him and never returned
