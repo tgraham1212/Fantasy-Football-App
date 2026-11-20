@@ -25,6 +25,8 @@ outside a planned change.
 - **Colour:** define and adjust colours in OKLCH (https://oklch.fyi/); fix contrast by changing
   lightness only, keeping hue and chroma; derive new colours from existing hues. Text 4.5:1,
   focus rings and chart lines 3:1, both modes (`tests/test_colour_contrast.py`).
+- **Player names:** full name; first initial + last name ("A. St. Brown", a defence by its
+  nickname) only when it does not fit; full name in the tooltip; never cut off (`fitNames`).
 - **Material Design 3:** follow its usability rules (48 x 48 px touch targets on phones,
   visible focus and pressed states, consistent type scale); do not adopt its visual system.
 - **Nomenclature** in anything people read (not code identifiers): Managers, Team Names,

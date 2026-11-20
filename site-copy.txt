@@ -128,67 +128,67 @@ TEXT:
 Games are not yet available for this league: the game forecasts have not been exported.
 
 [GAME-02] page note: finished week (before the projection log)
-WHERE: site/games.js line 143 (generated)
+WHERE: site/games.js line 149 (generated)
 TEXT:
 Final. Shown against the forecast made before the week (after week ${W.forecast_as_of}), from before the Sleeper projection log began. A check marks the winner; the lines on each chart are the actual scores.
 
 [GAME-03] page note: finished week
-WHERE: site/games.js line 144 (generated)
+WHERE: site/games.js line 150 (generated)
 TEXT:
 Final. Shown against the forecast of record: the lineups the managers started, each player at his last projection before kickoff. A check marks the winner; the lines on each chart are the actual scores.
 
 [GAME-04] page note: upcoming week
-WHERE: site/games.js line 146 (generated)
+WHERE: site/games.js line 152 (generated)
 TEXT:
 Forecast from the simulation run ${formatTime(W.generated_at)} (after week ${W.forecast_as_of}), 10,000 simulations per game. Each chart shows the spread of simulated scores.
 
 [GAME-05] page note add-on: playoff weeks
-WHERE: site/games.js line 148 (generated)
+WHERE: site/games.js line 154 (generated)
 TEXT:
 Playoff pairings are forecast: teams seeded by expected finish, the favourite advancing; each game says how often that pairing happened in the simulations.
 
 [GAME-06] page note add-on: model lineups
-WHERE: site/games.js line 150 (generated)
+WHERE: site/games.js line 156 (generated)
 TEXT:
 Lineups are the model's best projected lineup; players listed as out can still appear in it until their projection drops.
 
 [GAME-07] page note: live week
-WHERE: site/games.js line 152 (generated)
+WHERE: site/games.js line 158 (generated)
 TEXT:
 Live, from the run ${formatTime(W.generated_at)}. Players whose games have started are locked in the slot their manager started them in: final scores count as they are, games in progress count points so far plus the projection for the time left. Injuries or benchings during a game only show once it is final. The site refreshes before and after each slate of games.
 
 [GAME-08] page note add-on: win probability added
-WHERE: site/games.js line 156 (generated)
+WHERE: site/games.js line 162 (generated)
 TEXT:
 Percentages beside scored players are win probability added: how much that score moved the team's win probability against the pre-kickoff forecast, everyone else at their Sleeper projections. They show the size of each swing and do not add up to the team's total.
 
 [GAME-09] lineup choices tooltip
-WHERE: site/games.js line 181 (generated)
+WHERE: site/games.js line 187 (generated)
 TEXT:
 <span class="choices ${cls}" title="Points vs the model lineup: what the manager's starters scored minus what the model's picks scored">Lineup choices: ${v > 0 ? "+" : ""}${v.toFixed(1)}</span>
 
 [GAME-10] generated text
-WHERE: site/games.js line 173 (generated)
+WHERE: site/games.js line 179 (generated)
 TEXT:
 · forecast, happens in ${Math.round((g.frequency || 0) * 100)}% of simulations
 
 [GAME-11] generated text
-WHERE: site/games.js line 331 (generated)
+WHERE: site/games.js line 370 (generated)
 TEXT:
 First-round bye · #${b.seed} seed in the ${where}
 
 [GAME-12] generated text
-WHERE: site/games.js line 382 (generated)
+WHERE: site/games.js line 421 (generated)
 TEXT:
 No games stored for this week.
 
 [GAME-13] score label: upcoming games
-WHERE: site/games.js line 192 (generated)
+WHERE: site/games.js line 198 (generated)
 TEXT:
 forecast
 
 [GAME-14] score label: finished and live games (after the forecast)
-WHERE: site/games.js line 190 (generated)
+WHERE: site/games.js line 196 (generated)
 TEXT:
 forecasted
 
@@ -213,17 +213,17 @@ TEXT:
 Positional rankings are not yet available for this league: the site data has not been exported.
 
 [POS-04] page note: completed season
-WHERE: site/positions.js line 97 (generated)
+WHERE: site/positions.js line 103 (generated)
 TEXT:
 Regular-season points per game (weeks ${weeks[0]} to ${last}) for each team's final roster.
 
 [POS-05] page note: season in progress
-WHERE: site/positions.js line 99 (generated)
+WHERE: site/positions.js line 105 (generated)
 TEXT:
 Points per game: actual points through week ${payload.final_through} plus Sleeper's projected points for weeks ${payload.final_through + 1} to ${last}, for each team's current roster.
 
 [POS-06] page note: before any week is final
-WHERE: site/positions.js line 100 (generated)
+WHERE: site/positions.js line 106 (generated)
 TEXT:
 Points per game from Sleeper's projected points for weeks ${weeks[0]} to ${last}, for each team's current roster.
 
@@ -278,72 +278,72 @@ TEXT:
 Click a header to sort; click again to flip. # is the WAR rank.
 
 [WAR-10] season note: merged cut (current season)
-WHERE: site/war.js line 199 (generated)
+WHERE: site/war.js line 205 (generated)
 TEXT:
 This season is only partly captured by weekly start-percentage snapshots, so it uses a merged replacement cut: weeks with their own snapshot use it, and the rest rank each player by his highest start percentage from weeks he played (or his ownership if he is injured and was never seen active). It settles as more weeks are captured.
 
 [WAR-11] season note: yearly cut
-WHERE: site/war.js line 200 (generated)
+WHERE: site/war.js line 206 (generated)
 TEXT:
 This season uses a yearly replacement cut: one start-percentage snapshot picks the consensus lineups and the replacement players for every week.
 
 [WAR-12] All-Time note: careers
-WHERE: site/war.js line 213 (generated)
+WHERE: site/war.js line 219 (generated)
 TEXT:
 Career: each player's WAR summed over their seasons in this league; manager and team from their latest season.
 
 [WAR-13] All-Time note: seasons
-WHERE: site/war.js line 213 (generated)
+WHERE: site/war.js line 219 (generated)
 TEXT:
 Every player-season in this league ranked together.
 
 [WAR-14] All-Time note: yearly seasons (once weekly seasons exist)
-WHERE: site/war.js line 216 (generated)
+WHERE: site/war.js line 222 (generated)
 TEXT:
 Seasons before ${first} use a yearly replacement cut (one start-percentage snapshot per season) instead of a weekly one.
 
 [WAR-15] All-Time note: yearly seasons (now)
-WHERE: site/war.js line 216 (generated)
+WHERE: site/war.js line 222 (generated)
 TEXT:
 Completed seasons so far use a yearly replacement cut (one start-percentage snapshot per season); weekly cuts begin once a full season of weekly snapshots exists.
 
 [WAR-16] All-Time note: merged seasons
-WHERE: site/war.js line 217 (generated)
+WHERE: site/war.js line 223 (generated)
 TEXT:
 ${merged.map((s) => s.season).join(", ")} ${merged.length > 1 ? "use" : "uses"} a merged cut from the weekly snapshots captured so far.
 
 [WAR-17] season note: season in progress
-WHERE: site/war.js line 220 (generated)
+WHERE: site/war.js line 226 (generated)
 TEXT:
 Regular-season weeks 1 to ${s.through_week} so far; values settle as the season's averages fill in.
 
 [WAR-18] closing note on every view
-WHERE: site/war.js line 224 (generated)
+WHERE: site/war.js line 230 (generated)
 TEXT:
 WAR is wins above a replacement-level player over the regular season. Hover a manager's name to see who else held the player that season.
 
 [WAR-19] generated text
-WHERE: site/war.js line 353 (generated)
+WHERE: site/war.js line 359 (generated)
 TEXT:
 Worked example: Kittle and Bowers, 2024
 
 [WAR-20] generated text
-WHERE: site/war.js line 354 (generated)
+WHERE: site/war.js line 360 (generated)
 TEXT:
 ${escapeHtml(state.leagueName)}, 2024 constants: TE slot mean ${te.toFixed(1)}, opponent spread ${sd.toFixed(1)}, TE replacement level ${repl.level.toFixed(1)} (a replacement tight end earns ${(repl.baseline_wins / weeks.length).toFixed(3)} expected wins per week). Each week's win probability is the share of the opponent distribution below the league mean plus (score − ${te.toFixed(1)}).
 
 [WAR-21] generated text
-WHERE: site/war.js line 364 (generated)
+WHERE: site/war.js line 370 (generated)
 TEXT:
 Weeks without a game (bye or ruled out) add nothing: WAR counts only the weeks a player was active, against a replacement player over those same weeks. Kittle played ${kittle.weekly.filter((w) => w.played).length} of ${weeks.length} weeks and still finished ahead of Bowers (${bowers.games} games) on the strength of his per-game scoring.
 
 [WAR-24] generated text
-WHERE: site/war.js line 350 (generated)
+WHERE: site/war.js line 356 (generated)
 TEXT:
 Bye
 
 [WAR-25] generated text
-WHERE: site/war.js line 350 (generated)
+WHERE: site/war.js line 356 (generated)
 TEXT:
 Out
 
@@ -673,132 +673,132 @@ Couldn't start, try later
 ##############################################################################
 
 [NEWS-01] generated text
-WHERE: site/managers.js line 532 (generated)
+WHERE: site/managers.js line 558 (generated)
 TEXT:
 ${team} and ${opp} finish level at ${score}
 
 [NEWS-02] generated text
-WHERE: site/managers.js line 532 (generated)
+WHERE: site/managers.js line 558 (generated)
 TEXT:
 ${team} beat ${opp} ${score}
 
 [NEWS-03] generated text
-WHERE: site/managers.js line 532 (generated)
+WHERE: site/managers.js line 558 (generated)
 TEXT:
 ${team} fall to ${opp} ${score}
 
 [NEWS-04] generated text
-WHERE: site/managers.js line 533 (generated)
+WHERE: site/managers.js line 559 (generated)
 TEXT:
 ${escapeHtml(f.top_player)} led the way with ${fmt1(f.top_points)} points.
 
 [NEWS-05] generated text
-WHERE: site/managers.js line 538 (generated)
+WHERE: site/managers.js line 564 (generated)
 TEXT:
 Rivalry week goes to ${team}, ${score} over ${opp}
 
 [NEWS-06] generated text
-WHERE: site/managers.js line 538 (generated)
+WHERE: site/managers.js line 564 (generated)
 TEXT:
 ${opp} take rivalry week from ${team}, ${score}
 
 [NEWS-07] generated text
-WHERE: site/managers.js line 541 (generated)
+WHERE: site/managers.js line 567 (generated)
 TEXT:
 Rivalry week is next: ${team} face ${opp}
 
 [NEWS-08] generated text
-WHERE: site/managers.js line 545 (generated)
+WHERE: site/managers.js line 571 (generated)
 TEXT:
 Playoff forecast up ${Math.round(f.change * 100)} to ${pct(f.to)}
 
 [NEWS-09] generated text
-WHERE: site/managers.js line 545 (generated)
+WHERE: site/managers.js line 571 (generated)
 TEXT:
 Playoff forecast down ${Math.round(-f.change * 100)} to ${pct(f.to)}
 
 [NEWS-10] generated text
-WHERE: site/managers.js line 549 (generated)
+WHERE: site/managers.js line 575 (generated)
 TEXT:
 New team high: ${fmt1(f.value)}, #${f.rank} all time in the league
 
 [NEWS-11] generated text
-WHERE: site/managers.js line 549 (generated)
+WHERE: site/managers.js line 575 (generated)
 TEXT:
 New team high: ${fmt1(f.value)}, beating ${fmt1(f.previous)}
 
 [NEWS-12] generated text
-WHERE: site/managers.js line 552 (generated)
+WHERE: site/managers.js line 578 (generated)
 TEXT:
 ${f.length} straight wins for ${team}
 
 [NEWS-13] generated text
-WHERE: site/managers.js line 552 (generated)
+WHERE: site/managers.js line 578 (generated)
 TEXT:
 ${f.length} straight losses for ${team}
 
 [NEWS-14] generated text
-WHERE: site/managers.js line 554 (generated)
+WHERE: site/managers.js line 580 (generated)
 TEXT:
 ${escapeHtml(f.player)} passes +${f.war}.0 WAR for ${team}
 
 [NEWS-15] generated text
-WHERE: site/managers.js line 557 (generated)
+WHERE: site/managers.js line 583 (generated)
 TEXT:
 ${escapeHtml(f.player)} listed as ${escapeHtml(f.status)} (${escapeHtml(String(f.body_part).toLowerCase())})
 
 [NEWS-16] generated text
-WHERE: site/managers.js line 557 (generated)
+WHERE: site/managers.js line 583 (generated)
 TEXT:
 ${escapeHtml(f.player)} listed as ${escapeHtml(f.status)}
 
 [NEWS-17] generated text
-WHERE: site/managers.js line 560 (generated)
+WHERE: site/managers.js line 586 (generated)
 TEXT:
 ${escapeHtml(f.player)} did not practise this week
 
 [NEWS-18] generated text
-WHERE: site/managers.js line 560 (generated)
+WHERE: site/managers.js line 586 (generated)
 TEXT:
 ${escapeHtml(f.player)} limited in practice this week
 
 [NEWS-19] generated text
-WHERE: site/managers.js line 563 (generated)
+WHERE: site/managers.js line 589 (generated)
 TEXT:
 ${escapeHtml(f.player)} moves up to ${escapeHtml(f.depth_pos || "")}${f.to} on the depth chart
 
 [NEWS-20] generated text
-WHERE: site/managers.js line 563 (generated)
+WHERE: site/managers.js line 589 (generated)
 TEXT:
 ${escapeHtml(f.player)} drops to ${escapeHtml(f.depth_pos || "")}${f.to} on the depth chart
 
 [NEWS-21] generated text
-WHERE: site/managers.js line 565 (generated)
+WHERE: site/managers.js line 591 (generated)
 TEXT:
 ${escapeHtml(f.player)} is the ${ordinal(f.rank)} most-added player on Sleeper today
 
 [NEWS-22] generated text
-WHERE: site/managers.js line 568 (generated)
+WHERE: site/managers.js line 594 (generated)
 TEXT:
 Team of the Week: ${escapeHtml(f.players[0])} makes the cut
 
 [NEWS-23] generated text
-WHERE: site/managers.js line 568 (generated)
+WHERE: site/managers.js line 594 (generated)
 TEXT:
 Team of the Week: ${f.players.map(escapeHtml).join(" and ")} make the cut
 
 [NEWS-24] generated text
-WHERE: site/managers.js line 571 (generated)
+WHERE: site/managers.js line 597 (generated)
 TEXT:
 ${team} close their final season in ${ordinal(f.place)} place
 
 [NEWS-25] generated text
-WHERE: site/managers.js line 571 (generated)
+WHERE: site/managers.js line 597 (generated)
 TEXT:
 ${team} close their final season, ${f.season}
 
 [NEWS-26] generated text
-WHERE: site/managers.js line 539 (generated)
+WHERE: site/managers.js line 565 (generated)
 TEXT:
 ${escapeHtml(f.top_player)} led the way with ${fmt1(f.top_points)} points.
 
@@ -813,81 +813,81 @@ TEXT:
 Manager pages are not yet available for this league: the site data has not been exported.
 
 [MGR-03] generated text
-WHERE: site/managers.js line 216 (generated)
+WHERE: site/managers.js line 241 (generated)
 TEXT:
 Form, oldest first: ${five.map((r) => WORD[r]).join(", ")}
 
 [MGR-04] generated text
-WHERE: site/managers.js line 331 (generated)
+WHERE: site/managers.js line 356 (generated)
 TEXT:
 No roster is stored for this manager.
 
 [MGR-05] generated text
-WHERE: site/managers.js line 366 (generated)
+WHERE: site/managers.js line 391 (generated)
 TEXT:
 ${escapeHtml(m.name)} founded ${escapeHtml(m.team_name)} in ${m.first}. Since then: ${titles === 1 ? "one title" : `${titles} titles`}, ${trips === 1 ? "one playoff trip" : `${trips} playoff trips`} and a ${record(m.all_time)} regular-season record.
 
 [MGR-06] generated text
-WHERE: site/managers.js line 367 (generated)
+WHERE: site/managers.js line 392 (generated)
 TEXT:
 ${escapeHtml(m.name)} managed in the league from ${m.first} to ${m.last}: ${titles === 1 ? "one title" : `${titles} titles`}, ${trips === 1 ? "one playoff trip" : `${trips} playoff trips`} and a ${record(m.all_time)} regular-season record.
 
 [MGR-07] generated text
-WHERE: site/managers.js line 398 (generated)
+WHERE: site/managers.js line 423 (generated)
 TEXT:
 No finished season yet.
 
 [MGR-08] generated text
-WHERE: site/managers.js line 405 (generated)
+WHERE: site/managers.js line 430 (generated)
 TEXT:
 Final finish each season: ${fin.map((f) => `${f.season} ${ordinal(f.place)}`).join(", ")}
 
 [MGR-09] generated text
-WHERE: site/managers.js line 423 (generated)
+WHERE: site/managers.js line 448 (generated)
 TEXT:
 No games played yet.
 
 [MGR-10] generated text
-WHERE: site/managers.js line 496 (generated)
+WHERE: site/managers.js line 521 (generated)
 TEXT:
 Adds, drops and trades arrive with the transaction history. FAAB and the player history below are already live.
 
 [MGR-11] generated text
-WHERE: site/managers.js line 581 (generated)
+WHERE: site/managers.js line 607 (generated)
 TEXT:
 No news yet this season.
 
 [MGR-12] generated text
-WHERE: site/managers.js line 453 (generated)
+WHERE: site/managers.js line 478 (generated)
 TEXT:
 No games played yet.
 
 [MGR-13] generated text
-WHERE: site/managers.js line 356 (generated)
+WHERE: site/managers.js line 381 (generated)
 TEXT:
 Wins above all-play pace
 
 [MGR-14] generated text
-WHERE: site/managers.js line 357 (generated)
+WHERE: site/managers.js line 382 (generated)
 TEXT:
 Points against vs league average
 
 [MGR-15] generated text
-WHERE: site/managers.js line 358 (generated)
+WHERE: site/managers.js line 383 (generated)
 TEXT:
 Points left on bench (all-time)
 
 [MGR-16] generated text
-WHERE: site/managers.js line 433 (generated)
+WHERE: site/managers.js line 458 (generated)
 TEXT:
 Most points in a season
 
 [MGR-17] generated text
-WHERE: site/managers.js line 484 (generated)
+WHERE: site/managers.js line 509 (generated)
 TEXT:
 Most seasons on this team
 
 [MGR-18] generated text
-WHERE: site/managers.js line 485 (generated)
+WHERE: site/managers.js line 510 (generated)
 TEXT:
 The one that got away

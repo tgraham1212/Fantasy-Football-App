@@ -157,7 +157,11 @@ def test_live_forecast_rows_and_log_keep_pre_kickoff_projections(seeded_store, d
     assert locked_rows, "the first NFL team kicked off, so some starters are locked"
     assert all(row[4] in ("final", "in_progress") for row in locked_rows)
     live_teams = [t for t in teams if "points_so_far" in t]
-    assert live_teams and all(t["to_play"] < len(t["lineup"]) for t in live_teams)
+    assert live_teams and all(t["to_play"] < len(t["lineup"]) for t in live_teams if any(len(r) == 8 for r in t["lineup"]))
+    # once either side has started, both teams show points so far (0.0 and all to play when theirs haven't)
+    for g in stored["forecast"]["games"]:
+        if any(len(r) == 8 for t in g["teams"] for r in t["lineup"]):
+            assert all("points_so_far" in t for t in g["teams"])
     # the log: a player locked on Saturday keeps the projection he had on Thursday
     for key, entries in stored["log"].items():
         if len(entries) < 2:

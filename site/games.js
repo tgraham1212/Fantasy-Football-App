@@ -213,11 +213,11 @@ function kickoffLabel(iso) {
   return `${day} ${h}:${String(d.getMinutes()).padStart(2, "0")}`; // compact: "Sun 1:00"
 }
 
-/* Beside the name: live state only (in progress; "F" on the live week), plus "BN" for a benched model pick. */
+/* Beside the name: "F" for a final game on the live week, plus "BN" for a benched model pick. The
+   clock of a game in progress sits in the right-hand column (kickTag), so the name keeps its room. */
 function statusTag(r) {
   let tags = "";
-  if (r.status === "in_progress") tags += `<span class="st st-live"><span class="st-dot" aria-hidden="true"></span>${escapeHtml(r.clock || "Live")}</span>`;
-  else if (r.status === "final" && state.weeks[state.week]?.live) tags += `<span class="st st-final" title="Final">F</span>`;
+  if (r.status === "final" && state.weeks[state.week]?.live) tags += `<span class="st st-final" title="Final">F</span>`;
   if (r.benched) tags += `<span class="st st-bench" title="The manager did not start him">BN</span>`;
   return tags;
 }
@@ -230,13 +230,50 @@ function wpaTag(r) {
   return `<span class="aside wpa ${cls}" title="Win probability added">${pts > 0 ? "+" : ""}${pts}%</span>`;
 }
 
-/* Kickoff time for a player yet to play, in the right-hand column. */
+/* The right-hand column: the kickoff time for a player yet to play, or the clock of his game in progress. */
 function kickTag(r) {
+  if (r.status === "in_progress") return `<span class="aside kick st-live"><span class="st-dot" aria-hidden="true"></span>${escapeHtml(r.clock || "Live")}</span>`;
   return r.kickoff && !r.status ? `<span class="aside kick">${escapeHtml(kickoffLabel(r.kickoff))}</span>` : "";
 }
 
 function hasAside(teams) {
-  return teams.some((t) => [...t.lineup, ...t.key_players].some((r) => r.wpa != null || (r.kickoff && !r.status)));
+  return teams.some((t) => [...t.lineup, ...t.key_players].some((r) => r.wpa != null || r.status === "in_progress" || (r.kickoff && !r.status)));
+}
+
+/* A card is live only while one of its managers' real starters is in a game in progress (bench
+   players and starters still to kick off don't count). */
+function cardIsLive(g) {
+  if (!state.weeks[state.week]?.live) return false;
+  const actual = (g.views && g.views.actual) || g;
+  return (actual.teams || []).some((t) => (t.lineup || []).some((r) => r.status === "in_progress"));
+}
+
+/* The site's name standard: a player's full name, or "A. St. Brown" (a defense: its nickname) only
+   when the full name does not fit its space; the full name stays in the tooltip. */
+function shortPlayerName(name, position) {
+  const parts = String(name || "").trim().split(/\s+/);
+  if (position === "DEF") return parts[parts.length - 1];
+  return parts.length > 1 ? `${parts[0][0]}. ${parts.slice(1).join(" ")}` : name;
+}
+
+function nameAttrs(name, position) {
+  const short = shortPlayerName(name, position);
+  return short && short !== name ? ` title="${escapeHtml(name)}" data-full="${escapeHtml(name)}" data-short="${escapeHtml(short)}"` : "";
+}
+
+/* After rendering (and on resize): shorten only the names that overflow. Hidden elements measure 0
+   wide and are left full; they are fitted again when shown. */
+function fitNames(root) {
+  for (const el of (root || document).querySelectorAll("[data-short]")) {
+    el.textContent = el.dataset.full;
+    if (el.clientWidth && el.scrollWidth > el.clientWidth + 1) el.textContent = el.dataset.short;
+  }
+  // a replacement fill drops its "(replacement level)" bracket the same way
+  for (const more of (root || document).querySelectorAll(".fa-more")) {
+    const nm = more.parentElement;
+    more.hidden = false;
+    if (nm.clientWidth && nm.scrollWidth > nm.clientWidth + 1) more.hidden = true;
+  }
 }
 
 /* A replacement fill reads "Free agent (replacement level)"; the bracket hides on phones. */
@@ -254,7 +291,7 @@ function playerLine(r, label, aside) {
   const value = scored ? `<span class="pts scored" title="Projected ${Number(r.projected).toFixed(1)}">${Number(r.points).toFixed(1)}</span>`
     : `<span class="pts">${Number(r.projected).toFixed(1)}</span>`;
   const cls = [r.replacement ? "fill" : "", r.status ? `is-${r.status}` : ""].filter(Boolean).join(" ");
-  return `<li${cls ? ` class="${cls}"` : ""}><span class="pos">${escapeHtml(label)}</span><span class="pname"><span class="nm">${playerName(r)}</span>${statusTag(r)}</span>${value}${aside ? wpaTag(r) + kickTag(r) : ""}</li>`;
+  return `<li${cls ? ` class="${cls}"` : ""}><span class="pos">${escapeHtml(label)}</span><span class="pname"><span class="nm"${r.replacement ? "" : nameAttrs(r.name, r.position)}>${playerName(r)}</span>${statusTag(r)}</span>${value}${aside ? wpaTag(r) + kickTag(r) : ""}</li>`;
 }
 
 function teamPlayers(t, aside, open) {
@@ -290,7 +327,7 @@ function viewToggle(v) {
 function cardHtml(g, idx) {
   const v = viewed(g);
   const label = gameLabel(g);
-  const live = state.weeks[state.week]?.live;
+  const live = cardIsLive(g);
   const rebuilt = v.view === "actual" && v.source === "rebuilt" ? `<span class="rebuilt" title="Rebuilt from the managers' starters at their stored projections (before the projection log began)">rebuilt</span>` : "";
   const toggle = viewToggle(v);
   const head = live || label || toggle ? `<div class="game-label">${live ? LIVE_BADGE : ""}${label ? `<span>${escapeHtml(label)}</span>` : ""}${rebuilt}${toggle}</div>` : "";
@@ -318,11 +355,13 @@ function wireCard(idx) {
       if (state.charts[g.key]) state.charts[g.key].destroy();
       drawChart($(`game-chart-${idx}`), viewed(g), g.key);
       wireCard(idx);
+      fitNames(document.querySelector(`.game-card[data-card="${idx}"]`));
     });
   }
   const details = [...card.querySelectorAll("details.lineup")];
   for (const d of details) {
     d.addEventListener("toggle", () => {
+      fitNames(d);  // names in a list that was closed were measured at zero width
       state.openOf[viewKey(state.cards[idx])] = d.open;
       for (const other of details) if (other !== d && other.open !== d.open) other.open = d.open;
     });
@@ -390,6 +429,7 @@ function renderCards() {
     drawChart($(`game-chart-${i}`), viewed(g), g.key);
     wireCard(i);
   }
+  fitNames(grid);
 }
 
 /* Vertical lines at the actual scores, in each team's colour. */
@@ -483,3 +523,9 @@ export function initGames(onWeek) {
 export function showGames() {
   rerenderGames();
 }
+
+let fitTimer = null;
+addEventListener("resize", () => {
+  clearTimeout(fitTimer);
+  fitTimer = setTimeout(() => fitNames(document.getElementById("games-grid")), 150);
+});

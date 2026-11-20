@@ -52,13 +52,20 @@ def test_link_names_the_manager_and_arrows_update_the_url(open_page):
     assert page.evaluate("location.hash").endswith(f"/managers/{name}")
 
 
+WIDE_FONT = "* { font-family: Verdana, 'DejaVu Sans', sans-serif !important; }"  # Linux draws wider text than Windows
+
+
+@pytest.mark.parametrize("wide", [False, True], ids=["font", "wide-font"])
 @pytest.mark.parametrize("width", WIDTHS)
-def test_tiles_fit_the_worst_case(open_page, width):
+def test_tiles_fit_the_worst_case(open_page, width, wide):
     page, _, _ = open_view(open_page, "managers", width)
     page.route("**/managers.json", _worst_case)
     page.reload()
     page.wait_for_load_state("networkidle")
-    page.wait_for_timeout(400)
+    if wide:
+        page.add_style_tag(content=WIDE_FONT)
+        page.evaluate("window.dispatchEvent(new Event('resize'))")   # names are fitted again after the font change
+    page.wait_for_timeout(500)
     cut = page.evaluate(CUT_JS, ".mgr-tile .main, .mgr-tile .l2, .mgr-tile-k .lbl")
     outside = page.evaluate(OUTSIDE_JS, [".mgr-tile", ".mgr-score > *, .mgr-crest, .mgr-head"])
     problems = page.evaluate(OVERFLOW_JS, ["#mgr-content"])

@@ -239,5 +239,6 @@ def test_refresh_continues_past_a_trending_failure_with_a_warning(tmp_path, caps
     overrides = {**projections_for_2026(), **stats_for_2026(), "players/nfl/trending/add.json": 503}
     assert run(tmp_path, cfg, "refresh", overrides=overrides) == 0
     out = capsys.readouterr().out
-    assert "WARNING  Refresh skipped a step: trending failed" in out
+    # a plain warning line locally, a GitHub annotation under Actions
+    assert "Refresh skipped a step: trending failed" in out or "Refresh skipped a step::trending failed" in out
     assert (tmp_path / "site-data" / "index.json").exists()

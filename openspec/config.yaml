@@ -28,6 +28,11 @@ context: |
     from existing hues (tools/team_palette.py has the OKLCH helpers). Text needs 4.5:1 and focus
     rings and chart lines 3:1, in both modes, checked by tests/test_colour_contrast.py, which
     also makes every new colour token be checked or exempted with a reason.
+  - Player names: show a player's full name; switch to first initial and last name
+    ("A. St. Brown"; a defence by its team nickname) only when the full name does not fit its
+    space, keep the full name in a tooltip, and never cut a name off. Fit names after rendering
+    and again on resize or when hidden content is shown (shortPlayerName, nameAttrs and fitNames
+    in site/games.js and site/managers.js).
   - Material Design 3: FOLLOW its usability rules (touch targets of at least 48 x 48 px on
     phones, visible focus and pressed states, a consistent type scale). DO NOT adopt its visual
     system (components, colour roles, shapes, elevation); the site keeps its own look.

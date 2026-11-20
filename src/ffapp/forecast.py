@@ -72,15 +72,19 @@ def game(inputs: SimInputs, result: SimResult, week: int, rid_a: int, rid_b: int
     sb = result.weekly_scores[week][:, index[rid_b]]
     pa = win_probability(sa, sb)
     teams = []
+    lineups = {rid: inputs.starters.get(rid, {}).get(week, []) for rid in (rid_a, rid_b)}
+    # once either side has a starter under way, both show points so far and starters to play,
+    # so a team still waiting on its first kickoff reads 0.0 like its opponent's live score
+    started = any(st.status for lineup in lineups.values() for st in lineup)
     for rid, s, p in ((rid_a, sa, pa), (rid_b, sb, 1.0 - pa)):
-        lineup = inputs.starters.get(rid, {}).get(week, [])
+        lineup = lineups[rid]
         team = {
             "roster_id": rid,
             "mean": round(float(np.mean(s)), 2),
             "win_prob": round(p, 4),
             "lineup": lineup_rows(lineup),
         }
-        if any(st.status for st in lineup):
+        if started:
             team.update(live_totals(lineup))
         teams.append(team)
     key = extra.pop("key", None) or "-".join(str(r) for r in sorted((rid_a, rid_b)))

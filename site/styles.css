@@ -548,7 +548,7 @@ table.war.full thead th[aria-sort] { background: var(--ink); }
 .team-players ul.out li > .pname { grid-column: 1; }
 .team-players ul.out li > .reason { grid-column: 2; }
 .team-players ul.out .reason { color: var(--bad); font-weight: 600; }
-@media (max-width: 700px) {
+@media (max-width: 899.98px) {   /* one card per row: a live row needs points, win probability added and the clock side by side */
   .games-cards { grid-template-columns: minmax(0, 1fr); }
   .games-cards > .game-card:last-child:nth-child(odd) { width: auto; justify-self: stretch; }
   .game-card { padding: 14px; }
@@ -613,6 +613,7 @@ table.war.full thead th[aria-sort] { background: var(--ink); }
 .team-players li .pts.scored { color: var(--ink); font-weight: 700; }
 .team-players .st { flex: none; font-size: 0.72rem; font-weight: 700; }
 .team-players .st-live { color: var(--good); display: inline-flex; align-items: center; gap: 3px; }
+.team-players .aside.kick.st-live { color: var(--good); }   /* the clock of a game in progress, in the kickoff column */
 .team-players .st-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--live); box-shadow: 0 0 0 2px var(--live-dim); }
 .team-players .st-final { color: var(--ink); border: 1.5px solid var(--ink); border-radius: 4px; padding: 0 3px; line-height: 1.2; }
 .team-players .st-sched { color: var(--muted); font-weight: 600; }
@@ -801,11 +802,14 @@ a.mgr-tile:hover { border-color: var(--axis); }
 .mgr-tile.dim .big, .mgr-tile.dim .main { color: var(--muted); }
 .mgr-score { display: flex; align-items: center; justify-content: center; gap: 5px; width: 100%; }
 .mgr-score b { background: var(--score-f); border: 1px solid var(--border); border-radius: 6px; padding: 3px 6px; font-size: 0.84rem; white-space: nowrap; flex: none; font-variant-numeric: tabular-nums; }
-@container (max-width: 150px) { .mgr-score { gap: 3px; } .mgr-score b { font-size: 0.74rem; padding: 2px 4px; } }
-/* a narrow tile (the phone grid, or the worst-case names on desktop): tighter text, no label icon */
+/* tile text scales with the tile's own width (cqi), down to a floor, so the longest names and the
+   widest fonts (Linux draws wider text than Windows) fit; a narrow tile also drops the label icon */
+.mgr-tile-k { font-size: clamp(0.58rem, 6.4cqi, 0.72rem); }
+.mgr-tile .main { font-size: clamp(0.7rem, 7.6cqi, 0.9rem); }
+.mgr-tile-body .l2 { font-size: clamp(0.6rem, 6.6cqi, 0.78rem); }
+.mgr-score b { font-size: clamp(0.6rem, 7.4cqi, 0.84rem); }
 @container (max-width: 185px) {
-  .mgr-tile-k { font-size: 0.66rem; } .mgr-tile-k .lbl svg { display: none; }
-  .mgr-tile .main { font-size: 0.82rem; } .mgr-tile-body .l1 { gap: 6px; } .mgr-tile-body .l2 { font-size: 0.74rem; }
+  .mgr-tile-k .lbl svg { display: none; } .mgr-tile-body .l1 { gap: 6px; } .mgr-score { gap: 3px; } .mgr-score b { padding: 2px 4px; }
 }
 .mgr .res { font-weight: 800; } .mgr .res.w { color: var(--good); } .mgr .res.l { color: var(--bad); }
 .mgr .up { color: var(--good); font-weight: 700; } .mgr .down { color: var(--bad); font-weight: 700; }
@@ -954,3 +958,6 @@ a.mgr-tile:hover { border-color: var(--axis); }
   .mgr-showmore { display: block; font: inherit; font-size: 0.8rem; font-weight: 650; padding: 10px; min-height: 48px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--ink); }
   .mgr-story.late { display: none; }
 }
+
+/* a fitted player name (managers.js): a block so it can be measured, shortened when it overflows */
+.fitname { display: block; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

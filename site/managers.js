@@ -118,20 +118,20 @@ export function initManagers() {
     const link = e.target.closest("[data-manager]");
     if (link) { e.preventDefault(); selectManager(link.dataset.manager); scrollTo({ top: 0 }); return; }
     const tab = e.target.closest("[data-htab]");
-    if (tab) { state.histTab = tab.dataset.htab; renderHistoryTabs(); return; }
+    if (tab) { state.histTab = tab.dataset.htab; renderHistoryTabs(); fitNames($("mgr-content")); return; }
     const card = e.target.closest("[data-card-tab]");
-    if (card) { state.cardTab = card.dataset.cardTab; renderCardTabs(); return; }
+    if (card) { state.cardTab = card.dataset.cardTab; renderCardTabs(); fitNames($("mgr-content")); return; }
     if (e.target.closest(".mgr-moves-prev, .mgr-moves-next")) { stepMovesSeason(e.target.closest(".mgr-moves-prev") ? -1 : 1); return; }
     if (e.target.closest(".mgr-showmore")) { $("mgr-content").querySelectorAll(".mgr-story.late").forEach((s) => s.classList.remove("late")); e.target.closest(".mgr-showmore").remove(); }
   });
   $("mgr-content").addEventListener("change", (e) => {
     if (e.target.id === "mgr-moves-season") { state.movesSeason = e.target.value; renderMoves(); }
   });
-  addEventListener("resize", () => { if (visible()) fitBanners(); });
+  addEventListener("resize", () => { if (visible()) { fitBanners(); fitNames($("mgr-content")); } });
 }
 
 export function showManagers() {
-  if (state.data) fitBanners();
+  if (state.data) { fitBanners(); fitNames($("mgr-content")); }
 }
 
 // -- shared pieces ------------------------------------------------------------------------------------
@@ -160,12 +160,31 @@ function headshot(pid) {
   return `<span class="mgr-head" aria-hidden="true">${pid ? `<img src="${escapeHtml(HEADSHOT(pid))}" alt="" loading="lazy" referrerpolicy="no-referrer" data-fallback="head">` : ""}</span>`;
 }
 
-/* "Amon-Ra St. Brown" -> "A. St. Brown"; a defense shows its nickname ("Kansas City Chiefs" -> "Chiefs"). */
+/* The site's name standard: a player's full name, or "A. St. Brown" (a defense: its nickname) only
+   when the full name does not fit its space; the full name stays in the tooltip. */
+function shortPlayerName(name, position) {
+  const parts = String(name || "").trim().split(/\s+/);
+  if (position === "DEF") return parts[parts.length - 1];
+  return parts.length > 1 ? `${parts[0][0]}. ${parts.slice(1).join(" ")}` : name;
+}
+
+function nameAttrs(name, position) {
+  const short = shortPlayerName(name, position);
+  return short && short !== name ? ` title="${escapeHtml(name)}" data-full="${escapeHtml(name)}" data-short="${escapeHtml(short)}"` : "";
+}
+
+/* After rendering (and on resize): shorten only the names that overflow. Hidden elements measure 0
+   wide and are left full; they are fitted again when shown. */
+function fitNames(root) {
+  for (const el of (root || document).querySelectorAll("[data-short]")) {
+    el.textContent = el.dataset.full;
+    if (el.clientWidth && el.scrollWidth > el.clientWidth + 1) el.textContent = el.dataset.short;
+  }
+}
+
+/* A player's name in a tile or card, fitted after rendering (the name standard above). */
 function shortName(name, position) {
-  const parts = String(name || "").split(" ");
-  if (position === "DEF") return `<span title="${escapeHtml(name)}">${escapeHtml(parts[parts.length - 1])}</span>`;
-  if (parts.length < 2) return escapeHtml(name);
-  return `<span title="${escapeHtml(name)}">${escapeHtml(parts[0][0])}. ${escapeHtml(parts.slice(1).join(" "))}</span>`;
+  return `<span class="fitname"${nameAttrs(name, position)}>${escapeHtml(name)}</span>`;
 }
 
 function managerLink(userId, label) {
@@ -203,6 +222,7 @@ function render() {
   renderCardTabs();
   wireImages(root);
   fitBanners();
+  fitNames(root);
 }
 
 function renderCardTabs() {
@@ -503,6 +523,7 @@ function renderMoves() {
       <div class="mgr-grp"><h4 class="ih">${OUT}Dropped</h4>${skel(2)}</div>
       ${players}
     </div></div><div></div>`;
+  fitNames(box);
 }
 
 // -- card 4: team news -----------------------------------------------------------------------------------
