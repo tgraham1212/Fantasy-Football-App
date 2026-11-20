@@ -11,6 +11,12 @@ leagues:
   redraft:
     league_id: "1389347876550770688"
     name: Chris Carter's Fall Guys
+    # Fixed rivals, as pairs of roster ids (a rivalry follows the team when its manager
+    # changes), and each season's rivalry week (null = none that season). Read by the
+    # Managers page; leagues without this block use the nemesis rule instead.
+    rivals:
+      pairs: [[1, 9], [11, 2], [3, 6], [4, 7], [10, 5], [12, 8]]
+      rivalry_week: {"2021": 7, "2022": 7, "2023": 7, "2024": 7, "2025": 7, "2026": null}
 site:
   refresh_url: https://ffapp-refresh.tgraham1212.workers.dev
 # Optional website settings. `refresh_url` is the address of the refresh relay (a Cloudflare

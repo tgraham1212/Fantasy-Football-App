@@ -201,6 +201,39 @@ Doubtful, IR, PUP, Sus, NA, DNR, in `src/ffapp/injuries.py`): the Games cards' n
 list, the Player WAR ownership fallback, and the red cross on the Positions page. Details:
 `Calculations.txt`, section 3 (Out statuses).
 
+## Managers
+
+The **Managers** sub-tab shows one manager at a time, after Football Manager's club page.
+Pick a manager from the dropdown or step through them with the arrows (current managers
+first, then "Retired"); any manager's name in a table on the other pages opens their page.
+
+- **Team info bar:** the team logo (else the Sleeper avatar, else initials in the team
+  colour), the team name, champion banners and toilet bowl banners (redraft), the form of
+  the last five games as bars (win up, loss down, a draw or no game on the line), and
+  Founded, All-Time record, Rating and Rival.
+- **Season info bar:** Current League Position, Last Result, Next Matchup (with a Rivalry
+  Week badge), Manager win rate, Top Scorer (projected before week 1), Best Player
+  All-Time (most WAR in weeks on the team) and Playoff Forecast.
+- **Roster:** the lineup with slot pills in Sleeper's position colours, status badges and
+  points per game coloured against the position's replacement level.
+- **Team History:** the finishes chart, honours and luck (all-play record, points against
+  and points left on bench), head to head against every opponent, and records ranked
+  against league history (#1 to #3 All Time).
+- **Moves:** FAAB spent and the player history (most seasons on the team, the one that got
+  away). The adds, drops and trades lists arrive with the transactions sync.
+- **Team News:** short stories from the data (results, forecast moves, injuries, practice
+  reports, depth-chart moves, trending adds, records, streaks, WAR milestones, rivalry
+  week, Team of the Week), each written from a template in `site-copy.txt`.
+
+Everything comes from `site/data/<league>/managers.json`, built by `src/ffapp/managers.py`
+and `src/ffapp/news.py` (`Calculations.txt`, sections 19 and 20). Redraft rivals and each
+season's rivalry week are set in `config/leagues.yaml` under the league's `rivals` block
+(pairs of roster ids, so a rivalry follows the team); a league without one uses the
+nemesis (the worst head-to-head record over at least four games). Each refresh also saves
+Sleeper's player details (`data/players/<season>/week_NN.json`: injury body part, practice
+participation, depth chart) and trending adds (`data/trending/<season>/<date>.json`) for
+the news.
+
 ## Positional Rankings
 
 The **Positions** sub-tab compares every manager's roster position by position, in the
@@ -371,9 +404,9 @@ and contrast), dashed and then dotted once the greys repeat. Clicking a line or 
 table row highlights that manager in both charts. The card says ratings are not yet
 available when the export carried none.
 
-Each league has four sub-tabs, **Forecasts** (the table and charts above),
-**Games**, **Positions** and **Player WAR**, kept in the URL (`#redraft/war`,
-`#redraft/games/10`, `#redraft/positions`). On a phone the sub-tab row scrolls
+Each league has five sub-tabs, **Forecasts** (the table and charts above),
+**Games**, **Positions**, **Managers** and **Player WAR**, kept in the URL (`#redraft/war`,
+`#redraft/games/10`, `#redraft/positions`, `#redraft/managers/tg1212`). On a phone the sub-tab row scrolls
 sideways under a finger (it snaps to a tab, fades on the side with more tabs, and
 opens scrolled to the selected tab); the page itself never scrolls sideways. The Player WAR page shows the top
 10 per position in two columns (QB and RB, WR and TE, DEF and K; a league without a

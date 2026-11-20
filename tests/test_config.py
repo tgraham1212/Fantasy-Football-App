@@ -200,3 +200,28 @@ def test_site_refresh_url_invalid(site):
     raw["site"] = site
     with pytest.raises(ConfigError):
         parse_config(raw)
+
+
+def test_repo_redraft_rivals_follow_the_team():
+    rivals = load_config(REPO_ROOT / "config" / "leagues.yaml").leagues["redraft"].rivals
+    assert rivals.rival_of(1) == 9 and rivals.rival_of(9) == 1 and rivals.rival_of(8) == 12
+    assert rivals.rivalry_week["2025"] == 7 and rivals.rivalry_week["2026"] is None
+
+
+def test_league_without_rivals_uses_none():
+    assert parse_config(valid_raw()).leagues["dynasty"].rivals is None
+
+
+@pytest.mark.parametrize("rivals, message", [
+    ({"pairs": [[1, 1]]}, "two different"),
+    ({"pairs": [[1, 2], [2, 3]]}, "only one rival"),
+    ({"pairs": [[0, 2]]}, "positive roster ids"),
+    ({"pairs": []}, "non-empty"),
+    ({"pairs": [[1, 2]], "rivalry_week": {"2025": 30}}, "week number or null"),
+    ({"pairs": [[1, 2]], "colour": "red"}, "unknown keys"),
+])
+def test_bad_rivals_rejected(rivals, message):
+    raw = valid_raw()
+    raw["leagues"]["redraft"]["rivals"] = rivals
+    with pytest.raises(ConfigError, match=message):
+        parse_config(raw)

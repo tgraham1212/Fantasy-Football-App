@@ -51,6 +51,63 @@ def save_injuries(store: Store, state: dict, players_payload: dict) -> tuple[str
     return season, week
 
 
+DETAIL_FIELDS = {  # Sleeper player-list field -> saved name
+    "injury_body_part": "body_part",
+    "practice_participation": "practice",
+    "depth_chart_order": "depth",
+    "depth_chart_position": "depth_pos",
+}
+
+
+def details_from_players(payload: dict, rostered: set[str]) -> dict[str, dict]:
+    """``{player_id: {body_part, practice, depth, depth_pos}}`` for rostered fantasy-position players,
+    keeping only the fields that are set; players with none set are left out."""
+    out: dict[str, dict] = {}
+    for pid, rec in (payload or {}).items():
+        if str(pid) not in rostered or not isinstance(rec, dict) or rec.get("position") not in FANTASY_POSITIONS:
+            continue
+        fields = {name: rec[key] for key, name in DETAIL_FIELDS.items() if rec.get(key) not in (None, "")}
+        if fields:
+            out[str(pid)] = fields
+    return dict(sorted(out.items()))
+
+
+def rostered_players(store: Store, leagues) -> set[str]:
+    """Every player on a current-season roster (starters, bench, IR, taxi) in the configured leagues."""
+    out: set[str] = set()
+    for key in leagues:
+        seasons = store.seasons(key)
+        if not seasons:
+            continue
+        for roster in store.read_rosters(key, seasons[-1]):
+            for field_name in ("players", "reserve", "taxi"):
+                out.update(str(p) for p in roster.get(field_name) or [])
+    return out
+
+
+def save_player_details(store: Store, state: dict, players_payload: dict, rostered: set[str]) -> tuple[str, int] | None:
+    """Save the current week's body part, practice participation and depth chart for rostered players
+    (the last save of the week wins); returns (season, week) written, or None outside the season."""
+    if state.get("season_type") not in SAVE_SEASON_TYPES or not state.get("week"):
+        return None
+    season, week = str(state.get("season")), int(state["week"])
+    store.write_player_details(season, week, details_from_players(players_payload, rostered))
+    log.info("player details %s week %d saved", season, week)
+    return season, week
+
+
+def save_trending(store: Store, client, state: dict, now) -> Path:
+    """Save Sleeper's trending adds with the time saved (one file per day; a later refresh that day
+    replaces it); returns the path written."""
+    from ffapp.store import write_json
+
+    adds = client.trending_adds()
+    season = str(state.get("season") or now.year)
+    path = store.trending_path(season, now.strftime("%Y-%m-%d"))
+    write_json(path, {"saved_at": now.isoformat(timespec="seconds"), "adds": adds})
+    return path
+
+
 def statuses_for_week(store: Store, season: str, week: int) -> dict[str, str] | None:
     """The week's saved statuses; for a week after the latest save, the latest save (today's news is
     the best guess for upcoming weeks); None for weeks before saving began."""

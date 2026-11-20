@@ -30,6 +30,12 @@ const $ = (id) => document.getElementById(id);
 const escapeHtml = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const visible = () => !$("page-positions").hidden;
 
+/* A manager's name as a link to their Managers page (app.js opens it). */
+function managerLink(name) {
+  if (!name) return "";
+  return `<a class="manager-link" href="#${state.leagueKey || ""}/managers/${encodeURIComponent(name)}" data-manager-link="${escapeHtml(name)}">${escapeHtml(name)}</a>`;
+}
+
 async function fetchJson(path) {
   const res = await fetch(path, { cache: "no-cache" });
   if (!res.ok) throw new Error(`${path}: HTTP ${res.status}`);
@@ -216,7 +222,7 @@ function renderChart(card, layout, rowH, colors) {
     const manager = r.team.display_name || r.team.team_name || `Roster ${r.team.roster_id}`;
     const team = r.team.display_name ? r.team.team_name || "" : "";
     return `<div class="pos-label" title="${escapeHtml(team ? `${manager} (${team})` : manager)}">
-      <span class="owner-name">${escapeHtml(manager)}</span>${team ? `<span class="team">${escapeHtml(team)}</span>` : ""}
+      <span class="owner-name">${r.team.display_name ? managerLink(manager) : escapeHtml(manager)}</span>${team ? `<span class="team">${escapeHtml(team)}</span>` : ""}
     </div>`;
   }).join("");
 

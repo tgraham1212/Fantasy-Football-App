@@ -141,6 +141,10 @@ class SleeperClient:
         """The full player list (large; Sleeper asks for at most one fetch a day)."""
         return self.get_json(f"{self._api_base}/players/{sport}")
 
+    def trending_adds(self, sport: str = "nfl", hours: int = 24, limit: int = 25) -> list:
+        """The most-added players across Sleeper over the last ``hours``: ``[{player_id, count}]``."""
+        return self.get_json(f"{self._api_base}/players/{sport}/trending/add?lookback_hours={hours}&limit={limit}")
+
     # -- undocumented projections endpoint -----------------------------------
 
     def projections(self, season: str | int, week: int) -> Any:

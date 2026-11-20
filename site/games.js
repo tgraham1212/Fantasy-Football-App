@@ -26,6 +26,12 @@ const $ = (id) => document.getElementById(id);
 const escapeHtml = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const cssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
+/* A manager's name as a link to their Managers page (app.js opens it). */
+function managerLink(name) {
+  if (!name) return "";
+  return `<a class="manager-link" href="#${state.leagueKey || ""}/managers/${encodeURIComponent(name)}" data-manager-link="${escapeHtml(name)}">${escapeHtml(name)}</a>`;
+}
+
 function withAlpha(hex, alpha) {
   const h = hex.replace("#", "");
   const full = h.length === 3 ? h.split("").map((c) => c + c).join("") : h.slice(0, 6);
@@ -193,7 +199,7 @@ function teamRow(g, t) {
   return `
     <div class="game-team">
       <span class="swatch" style="--team: ${color}" aria-hidden="true"></span>
-      <span class="who"><span class="owner-name">${escapeHtml(t.display_name || `Roster ${t.roster_id}`)}</span><span class="team">${escapeHtml(t.team_name || "")}</span></span>
+      <span class="who"><span class="owner-name">${t.display_name ? managerLink(t.display_name) : `Roster ${t.roster_id}`}</span><span class="team">${escapeHtml(t.team_name || "")}</span></span>
       <span class="mean">${score}</span>
       <span class="win" style="${winFill(t.win_prob)}" title="Win probability">${won ? '<span class="check" aria-label="won">&#10003;</span>' : ""}${Math.round(t.win_prob * 100)}%</span>
     </div>`;
@@ -257,7 +263,7 @@ function teamPlayers(t, aside, open) {
     : "";
   return `
     <div class="team-players">
-      <p class="tp-name">${escapeHtml(t.display_name || "")}</p>
+      <p class="tp-name">${managerLink(t.display_name)}</p>
       <ul class="key">${t.key_players.map((r) => playerLine(r, r.position, aside)).join("")}</ul>
       <details class="lineup"${open ? " open" : ""}><summary>Full Lineup</summary><ul>${t.lineup.map((r) => playerLine(r, r.slot, aside)).join("")}</ul></details>
       ${out}
@@ -330,7 +336,7 @@ function byeHtml(b) {
     <section class="game-card bye">
       <p class="game-label">${/*copy:GAME-11*/`First-round bye · #${b.seed} seed in the ${where}`}</p>
       <div class="game-team"><span class="swatch" style="--team: ${color}" aria-hidden="true"></span>
-        <span class="who"><span class="owner-name">${escapeHtml(b.display_name || `Roster ${b.roster_id}`)}</span><span class="team">${escapeHtml(b.team_name || "")}</span></span>
+        <span class="who"><span class="owner-name">${b.display_name ? managerLink(b.display_name) : `Roster ${b.roster_id}`}</span><span class="team">${escapeHtml(b.team_name || "")}</span></span>
         <span class="bye-tag">Bye</span></div>
     </section>`;
 }

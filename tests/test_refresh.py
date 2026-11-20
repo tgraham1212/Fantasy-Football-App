@@ -96,7 +96,7 @@ def test_refresh_steps_in_order():
     from ffapp.cli import REFRESH_STEPS
 
     assert [name for name, _ in REFRESH_STEPS] == [
-        "sync", "projections", "stats", "schedule", "snapshot", "ratings", "replacement", "war", "simulate", "games", "export",
+        "sync", "projections", "stats", "schedule", "snapshot", "trending", "ratings", "replacement", "war", "simulate", "games", "export",
     ]
 
 
@@ -232,3 +232,12 @@ def test_should_run_writes_github_output(tmp_path, monkeypatch):
     monkeypatch.setenv("GITHUB_OUTPUT", str(out))
     assert run(tmp_path, cfg, "should-run", "--mode", "manual") == 0
     assert out.read_text(encoding="utf-8") == "run=true" + chr(10)
+
+
+def test_refresh_continues_past_a_trending_failure_with_a_warning(tmp_path, capsys):
+    cfg = write_config(tmp_path)
+    overrides = {**projections_for_2026(), **stats_for_2026(), "players/nfl/trending/add.json": 503}
+    assert run(tmp_path, cfg, "refresh", overrides=overrides) == 0
+    out = capsys.readouterr().out
+    assert "WARNING  Refresh skipped a step: trending failed" in out
+    assert (tmp_path / "site-data" / "index.json").exists()

@@ -209,6 +209,22 @@ def replacement_summary(store: Store, league_key: str, season: str, as_of_week: 
     }
 
 
+def teams_playing(store: Store, season: str, week: int) -> set[str]:
+    """NFL teams with at least one stat line in a week (a team with none was on its bye)."""
+    return {str(rec.get("team")) for rec in store.read_stats(season, week).values() if rec.get("team")}
+
+
+def _with_missed_reasons(store: Store, season: str, player: dict) -> dict:
+    """A walkthrough player with each missed week marked "Bye" (his team did not play) or "Out"."""
+    team = player.get("team")
+    weekly = []
+    for row in player.get("weekly", []):
+        if not row.get("played"):
+            row = {**row, "reason": "Bye" if team and team not in teams_playing(store, season, row["week"]) else "Out"}
+        weekly.append(row)
+    return {**player, "weekly": weekly}
+
+
 def war_export(store: Store, league_key: str) -> dict | None:
     """Per season: slim leaderboard rows with owner names, plus an index; None when the league has no WAR files."""
     seasons = war_seasons(store, league_key)
@@ -250,7 +266,7 @@ def war_export(store: Store, league_key: str) -> dict | None:
             "players": rows,
         }
         if season == WALKTHROUGH_SEASON and all(pid in stored.get("players", {}) for pid in WALKTHROUGH_PLAYERS):
-            payload["walkthrough"] = {pid: stored["players"][pid] for pid in WALKTHROUGH_PLAYERS}
+            payload["walkthrough"] = {pid: _with_missed_reasons(store, season, stored["players"][pid]) for pid in WALKTHROUGH_PLAYERS}
         files[season] = payload
         index["seasons"].append({"season": season, "cut": payload["cut"], "through_week": payload["through_week"], "file": f"{season}.json"})
         if payload["cut"] == "weekly" and index["first_weekly"] is None:
@@ -303,6 +319,15 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
             write_json(positions_index, positions["index"])
             written.append(positions_index)
             positions_entry = {"file": f"{key}/positions/index.json", "current": positions["index"]["current"]}
+        managers_entry = None
+        if store.seasons(key):
+            from ffapp.managers import managers_export
+
+            managers = managers_export(store, config, key, payload, games, positions)
+            managers_path = out_dir / key / "managers.json"
+            write_json(managers_path, managers)
+            written.append(managers_path)
+            managers_entry = {"file": f"{key}/managers.json", "count": len(managers["managers"])}
         index["leagues"].append(
             {
                 "key": key,
@@ -314,6 +339,7 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
                 "war": war_entry,
                 "games": games_entry,
                 "positions": positions_entry,
+                "managers": managers_entry,
             }
         )
     index["refresh_url"] = config.site.refresh_url

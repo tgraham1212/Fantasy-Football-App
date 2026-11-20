@@ -14,7 +14,7 @@ DOC = ROOT / "Calculations.txt"
 CALCULATION_MODULES = (
     "scoring.py", "stats.py", "projections.py", "injuries.py", "noise.py", "lineup.py", "drift.py",
     "simulate.py", "odds.py", "standings.py", "bracket.py", "forecast.py", "games.py", "views.py",
-    "live.py", "replacement.py", "ratings.py", "war.py", "espn.py", "positions.py", "calibrate.py",
+    "live.py", "replacement.py", "ratings.py", "war.py", "espn.py", "positions.py", "calibrate.py", "managers.py", "news.py",
 )
 HEADINGS = ("Code:", "Data sources:", "Depends on:", "Formula:", "In plain English:", "Assumptions and decisions:")
 
@@ -39,7 +39,7 @@ def test_every_calculation_module_has_a_section():
 
 def test_every_section_has_all_headings():
     found = sections()
-    assert len(found) >= 18, f"expected at least 18 sections, found {len(found)}"
+    assert len(found) >= 20, f"expected at least 20 sections, found {len(found)}"
     problems = [f"{name}: missing {h}" for name, body in found.items() for h in HEADINGS if not re.search(rf"^{re.escape(h)}", body, flags=re.M)]
     assert not problems, "\n".join(problems)
 

@@ -14,7 +14,8 @@ from tests.layout.controls import CONTROL_QUERY, VIEWS
 
 AXE = Path(__file__).resolve().parent / "vendor" / "axe.min.js"
 WIDE_FONT = "* { font-family: Verdana, 'DejaVu Sans', sans-serif !important; }"  # as in test_layout.py
-VIEWS_CHECKED = ("predictions", "games", "games-final", "positions", "positions-past", "war", "war-all", "war-dialog", "calibration")
+VIEWS_CHECKED = ("predictions", "games", "games-final", "positions", "positions-past", "war", "war-all", "war-dialog", "calibration",
+                 "managers", "managers-retired", "managers-redraft")
 AXE_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]
 TARGET = 48  # px, Material Design 3 touch target
 
@@ -104,6 +105,7 @@ PROBE_JS = """async ([query, target, describe]) => {
     if (!e.getClientRects().length || getComputedStyle(e).visibility === 'hidden') continue;
     if (e.closest('canvas') || e.matches('.pos-dot')) continue;                 // charts: keyboard alternative instead
     if (e.matches('a') && e.closest('p, li') && !e.matches('.nav-link')) continue;  // inline links in sentences (WCAG exception)
+    if (e.matches('a.manager-link')) continue;  // a manager's name inside a table row: an inline text link (WCAG 2.5.8 inline exception)
     if (modal && !modal.contains(e)) continue;                                   // inert behind an open dialog
     e.scrollIntoView({ block: 'center', inline: 'center' });
     await frame();                                                               // let snap scrolling settle

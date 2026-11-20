@@ -129,6 +129,12 @@ class Store:
     def injuries_path(self, season: str, week: int) -> Path:
         return self.root / "injuries" / str(season) / f"week_{int(week):02d}.json"
 
+    def player_details_path(self, season: str, week: int) -> Path:
+        return self.root / "players" / str(season) / f"week_{int(week):02d}.json"
+
+    def trending_path(self, season: str, day: str) -> Path:
+        return self.root / "trending" / str(season) / f"{day}.json"
+
     def games_path(self, league_key: str, season: str, week: int) -> Path:
         return self.root / "games" / league_key / str(season) / f"week_{int(week):02d}.json"
 
@@ -328,6 +334,13 @@ class Store:
 
     def write_injuries(self, season: str, week: int, statuses: dict[str, str]) -> None:
         write_json(self.injuries_path(season, week), statuses)
+
+    def read_player_details(self, season: str, week: int) -> dict[str, dict] | None:
+        path = self.player_details_path(season, week)
+        return read_json(path) if path.exists() else None
+
+    def write_player_details(self, season: str, week: int, details: dict[str, dict]) -> None:
+        write_json(self.player_details_path(season, week), details)
 
     def read_games(self, league_key: str, season: str, week: int) -> dict | None:
         path = self.games_path(league_key, season, week)

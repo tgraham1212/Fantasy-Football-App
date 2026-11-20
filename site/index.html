@@ -28,6 +28,7 @@
       <button type="button" data-page="predictions" aria-pressed="true">Forecasts</button>
       <button type="button" data-page="games" aria-pressed="false">Games</button>
       <button type="button" data-page="positions" aria-pressed="false">Positions</button>
+      <button type="button" data-page="managers" aria-pressed="false">Managers</button>
       <button type="button" data-page="war" aria-pressed="false">Player WAR</button>
     </nav>
 
@@ -123,6 +124,17 @@
       <div id="positions-content" hidden>
         <div class="pos-grid" id="positions-grid"></div>
       </div>
+    </div>
+
+    <div id="page-managers" hidden>
+      <div class="mgr-picker" id="mgr-picker">
+        <label class="mgr-picker-label" for="mgr-select">Manager</label>
+        <button type="button" class="mgr-step" id="mgr-prev" aria-label="Previous manager">&#8249;</button>
+        <select id="mgr-select" aria-label="Manager"></select>
+        <button type="button" class="mgr-step" id="mgr-next" aria-label="Next manager">&#8250;</button>
+      </div>
+      <p data-copy="MGR-02" class="explain" id="mgr-unavailable" hidden>Manager pages are not yet available for this league: the site data has not been exported.</p>
+      <div class="mgr" id="mgr-content" hidden></div>
     </div>
 
     <div id="page-war" hidden>

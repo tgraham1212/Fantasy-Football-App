@@ -70,19 +70,32 @@ def constants():
     return Constants(slot_mean={"TE": 9.2}, slot_var={"TE": 0.0}, opponent_mean=100.0, opponent_sd=20.7, replacement={"TE": 6.1})
 
 
-def test_player_weeks_fill_missed_weeks_with_replacement_and_keep_zero_when_played():
-    rows, total = player_weeks({1: 31.3, 3: 0.0}, [1, 2, 3], "TE", constants())
-    assert [r["played"] for r in rows] == [True, False, True]
-    assert rows[1]["score"] == 6.1 and rows[1]["p"] == pytest.approx(win_probability(6.1, 9.2, 20.7), abs=1e-4)
+def test_player_weeks_count_only_active_weeks_and_keep_zero_when_played():
+    rows, total, active = player_weeks({1: 31.3, 3: 0.0}, [1, 2, 3], "TE", constants())
+    assert [r["played"] for r in rows] == [True, False, True] and active == 2
+    assert rows[1] == {"week": 2, "score": None, "played": False, "p": None}   # a missed week adds nothing
     assert rows[2]["score"] == 0.0 and rows[2]["p"] == pytest.approx(win_probability(0.0, 9.2, 20.7), abs=1e-4)
-    assert total == pytest.approx(sum(r["p"] for r in rows), abs=1e-3)
+    assert total == pytest.approx(rows[0]["p"] + rows[2]["p"], abs=1e-3)
 
 
 def test_replacement_season_has_zero_war_and_spec_example_gives_154():
     c = constants()
-    rows, total = player_weeks({w: 6.1 for w in range(1, 15)}, list(range(1, 15)), "TE", c)
-    assert total - baseline_wins("TE", 14, c) == pytest.approx(0.0, abs=1e-9)
+    rows, total, active = player_weeks({w: 6.1 for w in range(1, 15)}, list(range(1, 15)), "TE", c)
+    assert total - baseline_wins("TE", active, c) == pytest.approx(0.0, abs=1e-9)
     assert 7.70 - 6.16 == pytest.approx(1.54)
+
+
+def test_active_weeks_war_equals_the_old_replacement_fill_definition():
+    """The earlier definition scored every missed week at the replacement level over all weeks; each
+    such week cancelled against the baseline, so WAR is the same to rounding."""
+    c = constants()
+    scores = {1: 31.3, 2: 0.0, 5: 12.4, 9: 3.3, 14: 18.0}
+    weeks = list(range(1, 15))
+    _, total, active = player_weeks(scores, weeks, "TE", c)
+    new = total - baseline_wins("TE", active, c)
+    old_total = sum(win_probability(scores.get(w, 6.1), 9.2, 20.7) for w in weeks)
+    old = old_total - baseline_wins("TE", len(weeks), c)
+    assert new == pytest.approx(old, abs=1e-9)
 
 
 # -- cut mode --------------------------------------------------------------------------------
@@ -201,7 +214,7 @@ def test_build_war_on_a_synthetic_season(tmp_path):
     assert war["players"]["q3"]["war"] == pytest.approx(0.0, abs=1e-6)  # q3 is the replacement QB both weeks
     assert war["players"]["r5"]["war"] < 0  # below the RB replacement level in week 1
     for pos, rep in war["replacement"].items():
-        rows, total = player_weeks({1: rep["level"], 2: rep["level"]}, [1, 2], pos, Constants(
+        rows, total, _active = player_weeks({1: rep["level"], 2: rep["level"]}, [1, 2], pos, Constants(
             slot_mean=war["constants"]["slot_mean"], slot_var={}, opponent_mean=0, opponent_sd=war["constants"]["opponent_sd"], replacement={pos: rep["level"]}))
         assert total == pytest.approx(rep["baseline_wins"], abs=1e-3)
 

@@ -34,6 +34,12 @@ const escapeHtml = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", 
 const fmtWar = (v) => (v == null ? "" : (v >= 0 ? "+" : "") + v.toFixed(2));
 const fmtStat = (key, v) => (v == null ? "" : PER_GAME.has(key) ? Number(v).toFixed(1) : String(Math.round(v)));
 
+/* A manager's name as a link to their Managers page (app.js opens it). */
+function managerLink(name) {
+  if (!name) return "";
+  return `<a class="manager-link" href="#${state.leagueKey || ""}/managers/${encodeURIComponent(name)}" data-manager-link="${escapeHtml(name)}">${escapeHtml(name)}</a>`;
+}
+
 async function fetchJson(path) {
   const res = await fetch(path, { cache: "no-cache" });
   if (!res.ok) throw new Error(`${path}: HTTP ${res.status}`);
@@ -231,7 +237,7 @@ function ownerCell(row) {
   const title = others.length ? `Also held by: ${others.join(", ")}` : "";
   const marker = others.length ? ` <span class="also" aria-hidden="true">+${others.length}</span>` : "";
   const sr = others.length ? `<span class="sr-only">, also held by ${escapeHtml(others.join(", "))}</span>` : "";
-  return `<td class="war-owner"><span${title ? ` title="${escapeHtml(title)}"` : ""}>${escapeHtml(row.owner)}${marker}${sr}</span></td>`;
+  return `<td class="war-owner"><span${title ? ` title="${escapeHtml(title)}"` : ""}>${managerLink(row.owner)}${marker}${sr}</span></td>`;
 }
 
 function extraHeader() {
@@ -345,21 +351,23 @@ async function renderWalkthrough() {
   const sd = payload.constants.opponent_sd;
   const repl = payload.replacement.TE;
   const weeks = kittle.weekly.map((w) => w.week);
-  const cell = (w) => (w.played ? `<td class="num">${w.score.toFixed(1)}</td>` : `<td class="num fill" title="No game: replacement level used">${w.score.toFixed(1)}<span class="fill-mark" aria-hidden="true">*</span><span class="sr-only"> (replacement fill)</span></td>`) + `<td class="num p">${(w.p * 100).toFixed(0)}%</td>`;
+  // a week he did not play adds nothing: it reads Bye or Out, with no score or win probability
+  const cell = (w) => (w.played ? `<td class="num">${w.score.toFixed(1)}</td><td class="num p">${(w.p * 100).toFixed(0)}%</td>`
+    : `<td class="num missed" colspan="2">${w.reason === "Bye" ? /*copy:WAR-24*/"Bye" : /*copy:WAR-25*/"Out"}</td>`);
   box.hidden = false;
   box.innerHTML = `
     <h3>${/*copy:WAR-19*/"Worked example: Kittle and Bowers, 2024"}</h3>
-    <p class="hint">${/*copy:WAR-20*/`${escapeHtml(state.leagueName)}, 2024 constants: TE slot mean ${te.toFixed(1)}, opponent spread ${sd.toFixed(1)}, TE replacement level ${repl.level.toFixed(1)} (a replacement tight end earns ${repl.baseline_wins.toFixed(2)} expected wins over ${weeks.length} weeks). Each week's win probability is the share of the opponent distribution below the league mean plus (score − ${te.toFixed(1)}).`}</p>
+    <p class="hint">${/*copy:WAR-20*/`${escapeHtml(state.leagueName)}, 2024 constants: TE slot mean ${te.toFixed(1)}, opponent spread ${sd.toFixed(1)}, TE replacement level ${repl.level.toFixed(1)} (a replacement tight end earns ${(repl.baseline_wins / weeks.length).toFixed(3)} expected wins per week). Each week's win probability is the share of the opponent distribution below the league mean plus (score − ${te.toFixed(1)}).`}</p>
     <div class="table-wrap" tabindex="0" role="region" aria-label="Worked example"><table class="plain walkthrough">
       <thead><tr><th scope="col">Week</th><th scope="col" class="num" colspan="2">Kittle: score, win chance</th><th scope="col" class="num" colspan="2">Bowers: score, win chance</th></tr></thead>
       <tbody>${weeks.map((week, i) => `<tr><th scope="row">${week}</th>${cell(kittle.weekly[i])}${cell(bowers.weekly[i])}</tr>`).join("")}</tbody>
       <tfoot>
         <tr><th scope="row">Expected wins</th><td class="num" colspan="2">${kittle.exp_wins.toFixed(2)}</td><td class="num" colspan="2">${bowers.exp_wins.toFixed(2)}</td></tr>
-        <tr><th scope="row">Minus replacement</th><td class="num" colspan="2">−${repl.baseline_wins.toFixed(2)}</td><td class="num" colspan="2">−${repl.baseline_wins.toFixed(2)}</td></tr>
+        <tr><th scope="row">Minus replacement</th><td class="num" colspan="2">−${(kittle.exp_wins - kittle.war).toFixed(2)}</td><td class="num" colspan="2">−${(bowers.exp_wins - bowers.war).toFixed(2)}</td></tr>
         <tr class="total"><th scope="row">WAR</th><td class="num" colspan="2">${fmtWar(kittle.war)}</td><td class="num" colspan="2">${fmtWar(bowers.war)}</td></tr>
       </tfoot>
     </table></div>
-    <p class="hint">${/*copy:WAR-21*/`* a week with no game played, filled at the replacement level. Kittle missed ${kittle.weekly.filter((w) => !w.played).length} of ${weeks.length} weeks and still finished ahead of Bowers (${bowers.games} games) on the strength of his per-game scoring; the replacement fill keeps a missed week from counting as a zero.`}</p>`;
+    <p class="hint">${/*copy:WAR-21*/`Weeks without a game (bye or ruled out) add nothing: WAR counts only the weeks a player was active, against a replacement player over those same weeks. Kittle played ${kittle.weekly.filter((w) => w.played).length} of ${weeks.length} weeks and still finished ahead of Bowers (${bowers.games} games) on the strength of his per-game scoring.`}</p>`;
 }
 
 // -- wiring ----------------------------------------------------------------------------------------

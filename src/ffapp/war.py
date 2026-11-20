@@ -7,9 +7,11 @@ players past each position's cut are the week's replacement players. Over the se
 those lineups give a slot mean and variance per position; the opponent is a normal
 distribution with the summed means and variances. A player's week is their actual
 points in a lineup whose other slots sit at the slot means, so their win probability
-is Phi((score - slot mean) / spread). Missed weeks score the position's replacement
-level. Expected wins is the sum over the regular season; WAR subtracts what a player
-scoring the replacement level every week would earn.
+is Phi((score - slot mean) / spread). WAR accumulates only over the weeks a player was
+active: expected wins is the sum of his weekly win probabilities over those weeks, and WAR
+subtracts what a player scoring the replacement level would earn in the same weeks, so a bye or
+a week he was ruled out adds nothing. (This equals the earlier definition, which scored missed
+weeks at the replacement level and so gave each of them exactly zero.)
 
 A season uses the weekly cut when every scored week has a weekly snapshot, the yearly cut
 (every week from the season snapshot) when none has, and the merged cut when some have: those
@@ -176,18 +178,23 @@ def win_probability(score: float, slot_mean: float, spread: float) -> float:
     return normal_cdf((score - slot_mean) / spread)
 
 
-def player_weeks(scores: dict[int, float | None], weeks: list[int], position: str, constants: Constants) -> tuple[list[dict], float]:
-    """Per week: the score used (actual, or the replacement level when not played) and its win probability."""
+def player_weeks(scores: dict[int, float | None], weeks: list[int], position: str, constants: Constants) -> tuple[list[dict], float, int]:
+    """Per week: the actual score and its win probability for weeks played; weeks not played are kept
+    (``played`` False, no score or probability) for the walkthrough but add nothing. Returns the rows,
+    the expected wins over active weeks and the number of active weeks."""
     rows = []
     total = 0.0
+    active = 0
     for week in weeks:
         actual = scores.get(week)
-        was_played = actual is not None
-        score = actual if was_played else constants.replacement[position]
-        p = win_probability(score, constants.slot_mean[position], constants.opponent_sd)
+        if actual is None:
+            rows.append({"week": week, "score": None, "played": False, "p": None})
+            continue
+        p = win_probability(actual, constants.slot_mean[position], constants.opponent_sd)
         total += p
-        rows.append({"week": week, "score": round(score, 2), "played": was_played, "p": round(p, 4)})
-    return rows, total
+        active += 1
+        rows.append({"week": week, "score": round(actual, 2), "played": True, "p": round(p, 4)})
+    return rows, total, active
 
 
 def baseline_wins(position: str, weeks: int, constants: Constants) -> float:
@@ -402,8 +409,8 @@ def build_war(store: Store, config: Config, league_key: str, season: str) -> dic
         if position not in positions:
             continue
         scores = {w: actual_points(lines[w], resolve_settings(config, league_key, data.league, w)) for w in lines}
-        weekly, exp_wins = player_weeks(scores, weeks, position, constants)
-        baseline = baseline_wins(position, len(weeks), constants)
+        weekly, exp_wins, active = player_weeks(scores, weeks, position, constants)
+        baseline = baseline_wins(position, active, constants)
         owner, holders = owner_attribution(pid, held, current)
         name = f"{last.get('first_name') or ''} {last.get('last_name') or ''}".strip() or pid
         players[pid] = {

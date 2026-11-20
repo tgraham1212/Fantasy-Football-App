@@ -23,10 +23,27 @@ class ConfigError(ValueError):
 
 
 @dataclass(frozen=True)
+class Rivals:
+    """Fixed rivals: pairs of roster ids (a rivalry follows the team) and each season's rivalry week."""
+
+    pairs: tuple[tuple[int, int], ...]
+    rivalry_week: dict[str, int | None] = field(default_factory=dict)
+
+    def rival_of(self, roster_id: int) -> int | None:
+        for a, b in self.pairs:
+            if roster_id == a:
+                return b
+            if roster_id == b:
+                return a
+        return None
+
+
+@dataclass(frozen=True)
 class LeagueConfig:
     key: str
     league_id: str
     name: str
+    rivals: Rivals | None = None
 
 
 @dataclass(frozen=True)
@@ -73,7 +90,8 @@ class Config:
 
 _TOP_KEYS = {"leagues", "overrides", "simulation", "ratings", "site"}
 _SITE_KEYS = {"refresh_url"}
-_LEAGUE_KEYS = {"league_id", "name"}
+_LEAGUE_KEYS = {"league_id", "name", "rivals"}
+_RIVALS_KEYS = {"pairs", "rivalry_week"}
 _OVERRIDE_KEYS = {"league", "season", "from_week", "scoring"}
 _SIMULATION_KEYS = {"residual_scale", "replacement_top_n", "prior_weeks"}
 _RATINGS_KEYS = {"revert", "early_k", "start_mu", "start_sigma", "ewma_weight"}
@@ -106,7 +124,39 @@ def _parse_league(key: str, raw: Any) -> LeagueConfig:
     name = mapping.get("name", key)
     if not isinstance(name, str) or not name:
         raise ConfigError(f"{where}.name must be a non-empty string")
-    return LeagueConfig(key=key, league_id=league_id, name=name)
+    return LeagueConfig(key=key, league_id=league_id, name=name, rivals=_parse_rivals(mapping.get("rivals"), where))
+
+
+def _parse_rivals(raw: Any, where: str) -> Rivals | None:
+    if raw is None:
+        return None
+    where = f"{where}.rivals"
+    mapping = _require_mapping(raw, where)
+    _reject_unknown(mapping, _RIVALS_KEYS, where)
+    pairs_raw = mapping.get("pairs")
+    if not isinstance(pairs_raw, list) or not pairs_raw:
+        raise ConfigError(f"{where}.pairs must be a non-empty list of [roster_id, roster_id] pairs")
+    pairs: list[tuple[int, int]] = []
+    seen: set[int] = set()
+    for i, pair in enumerate(pairs_raw):
+        ok = isinstance(pair, list) and len(pair) == 2 and all(isinstance(r, int) and not isinstance(r, bool) and r >= 1 for r in pair)
+        if not ok or pair[0] == pair[1]:
+            raise ConfigError(f"{where}.pairs[{i}] must be two different positive roster ids, got {pair!r}")
+        if seen & set(pair):
+            raise ConfigError(f"{where}.pairs[{i}]: a roster can have only one rival, got {pair!r}")
+        seen |= set(pair)
+        pairs.append((pair[0], pair[1]))
+    weeks_raw = mapping.get("rivalry_week") or {}
+    weeks = _require_mapping(weeks_raw, f"{where}.rivalry_week")
+    rivalry_week: dict[str, int | None] = {}
+    for season, week in weeks.items():
+        season = str(season)
+        if not (season.isdigit() and len(season) == 4):
+            raise ConfigError(f"{where}.rivalry_week keys must be 4-digit seasons, got {season!r}")
+        if week is not None and (isinstance(week, bool) or not isinstance(week, int) or not 1 <= week <= 18):
+            raise ConfigError(f"{where}.rivalry_week.{season} must be a week number or null, got {week!r}")
+        rivalry_week[season] = week
+    return Rivals(pairs=tuple(pairs), rivalry_week=rivalry_week)
 
 
 def _parse_override(index: int, raw: Any, league_keys: set[str]) -> ScoringOverride:

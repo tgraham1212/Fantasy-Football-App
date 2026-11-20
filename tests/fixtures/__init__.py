@@ -10,6 +10,7 @@ sleeper/state/nfl.json                   GET /v1/state/nfl
 sleeper/projections/<season>/<week>.json GET projections/nfl/<season>/<week> (trimmed)
 sleeper/stats/<season>/<week>.json       GET stats/nfl/<season>/<week> (trimmed: fixture players + free agents)
 sleeper/players/nfl.json                 GET /v1/players/nfl (trimmed to the players the ESPN fixture names)
+sleeper/players/nfl/trending/add.json    GET /v1/players/nfl/trending/add (three of the fixture players)
 sleeper/espn/players.json                ESPN seasons/<any>/players (2024 top 40 per position, served for every season and week)
 sleeper/espn/scoreboard/<week>.json      ESPN site scoreboard (weeks 10 final and 11 scheduled of 2026, trimmed)
 

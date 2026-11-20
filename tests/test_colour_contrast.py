@@ -32,12 +32,27 @@ TEXT_ON_FILLS = (  # (text, fill): text drawn on a coloured background
     ("win-ink", "win-hi"), ("win-ink", "win-mid"), ("win-ink", "win-lo"),  # Games win-probability bar
     ("fill-ink", "fill-hi"), ("chance-ink", "fill-lo"),  # forecast heat cells, both ends of the ramp
     ("#0b0b0b", "pill-good"), ("#0b0b0b", "pill-bad"),  # rating pills: fixed black text in .elo-delta
+    # Managers page: slot pills, status badges, PPG chips, banners, rank tags, news thumbnails
+    ("pos-qb-i", "pos-qb-f"), ("pos-rb-i", "pos-rb-f"), ("pos-wr-i", "pos-wr-f"), ("pos-te-i", "pos-te-f"),
+    ("pos-k-i", "pos-k-f"), ("pos-def-i", "pos-def-f"), ("ink", "pos-rb-f"), ("ink", "pos-wr-f"), ("ink", "pos-te-f"),  # FLEX thirds
+    ("pill-ir-i", "pill-ir-f"), ("pill-tx-i", "pill-tx-f"), ("badge-q-i", "badge-q-f"),
+    ("tier1-i", "tier1-f"), ("tier2-i", "tier2-f"), ("tier3-i", "tier3-f"), ("tier4-i", "tier4-f"), ("tier5-i", "tier5-f"),
+    ("banner-gold-i", "banner-gold"), ("banner-bowl-i", "banner-bowl"),
+    ("rank1-i", "rank1-f"), ("rank2-i", "rank2-f"), ("rank3-i", "rank3-f"), ("rival-i", "rival-f"),
+    ("ink", "score-f"), ("ink-2", "meter-f"),
+    ("th-res-i", "th-res-f"), ("th-up-i", "th-up-f"), ("th-down-i", "th-down-f"), ("th-inj-i", "th-inj-f"),
+    ("th-rec-i", "th-rec-f"), ("th-lg-i", "th-lg-f"), ("th-move-i", "th-move-f"),
+    ("feat-i", "feat-a"), ("feat-i", "feat-b"),  # the feature picture's gradient, both ends
 )
-NON_TEXT = ("accent",)  # focus ring; team and former-member chart lines are added below
+NON_TEXT = ("accent", "form-w", "form-l", "form-d", "rod")  # focus ring, form bars, banner rod; team lines added below
 EXEMPT = {
     "grid": "decorative gridlines; the data never depends on them",
     "axis": "decorative axis rules and chip outlines next to text",
     "live": "animated live signal, always shown beside the word 'Live'",
+    "banner-gold-edge": "decorative outline on a banner whose year is checked against its fill",
+    "banner-bowl-edge": "decorative outline on a banner whose year is checked against its fill",
+    "zone-f": "decorative band behind the playoff places on the finishes chart",
+    "skel-f": "placeholder skeleton rows with no text",
 }
 TEXT_RATIO, NON_TEXT_RATIO = 4.5, 3.0
 

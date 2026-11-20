@@ -37,6 +37,8 @@ Sections
  16. Player WAR
  17. Positional rankings
  18. Calibration
+ 19. Manager history
+ 20. Team news
 
 
 ================================================================
@@ -422,10 +424,11 @@ Formula:
     points at each position over the season so far
   opponent ~ N(mu_opp, sd_opp), mu_opp = sum(slots * m_pos), sd_opp = sqrt(sum(slots * v_pos))
   replacement level R_pos = mean of the replacement players' actual points
-  weekly win probability = Phi((score - m_pos) / sd_opp)
-    (score = R_pos for a week with no game; 0 for a game played for zero points)
-  expected wins = sum of weekly win probabilities over regular-season weeks 1 to 14
-  WAR = expected wins - (weeks * Phi((R_pos - m_pos) / sd_opp))
+  weekly win probability = Phi((score - m_pos) / sd_opp), for weeks the player was active
+    (a game played for zero points counts as 0; a bye or a week ruled out has no entry)
+  expected wins = sum of weekly win probabilities over the active regular-season weeks
+  WAR = expected wins - (active weeks * Phi((R_pos - m_pos) / sd_opp))
+      = sum over active weeks of [Phi((score - m_pos) / sd_opp) - Phi((R_pos - m_pos) / sd_opp)]
   Cut mode: weekly (every scored week has its own snapshot), yearly (none has: the season
   snapshot ranks every week), merged (some have):
     merged start % = highest percent started in a trusted weekly snapshot (a scored week
@@ -439,7 +442,10 @@ In plain English:
 Assumptions and decisions:
   - Follows the Stathole Sports method chosen by the owner, with the league's own scoring.
   - Only the opponent varies in the win probability (owner confirmed this is deliberate).
-  - Missed weeks count at replacement level, so injuries are not zeros.
+  - WAR accumulates only over weeks the player was active: a bye or a week he was ruled out
+    adds nothing, and a game played for zero points counts as zero. (The earlier wording scored
+    missed weeks at the replacement level; each such week cancelled exactly, so the values
+    are the same, checked for all 6,407 stored player-seasons on 2026-11-19.)
   - The merged cut exists because ESPN's in-season "season" start percentage is only the
     current week's figure (2026 season.json matched week 11 exactly). Ranking every week by
     it treated anyone on a bye or hurt that week as a bench player all season: the 2026 RB
@@ -510,3 +516,99 @@ Assumptions and decisions:
     independent team-seasons or games.
   - residual_scale may change only when score-level coverage is off across all seasons and
     both leagues, never to make one season's playoff bins look better.
+
+
+================================================================
+19. MANAGER HISTORY
+================================================================
+Code:          src/ffapp/managers.py
+Data sources:  Stored matchups (scores, weekly rosters, starters), winners and losers
+               brackets, rosters (Sleeper's potential points, FAAB used), users (names,
+               team names, logos, avatars), the rivals block in config/leagues.yaml, manager
+               ratings, the forecast export, the Games export, positions files and WAR files.
+               Exported to site/data/<league>/managers.json.
+Depends on:    7, 8, 15, 16, 17
+Formula:
+  identity: one manager per Sleeper user id across seasons (vacant rosters read as their
+    inherited owner); current when holding a roster in the latest season, else retired
+  games: every finished regular-season game and winners-bracket playoff game, from both
+    sides; weeks after Sleeper's last scored week are left out
+  final place: winners bracket placement game p gives place p to its winner and p + 1 to its
+    loser; in a toilet bowl Sleeper's "winner" w is the lower scorer who advanced, so
+    w gets 13 - p and the loser 12 - p (the p-1 winner is last: the toilet bowl champion);
+    in a consolation bracket w gets 6 + p and the loser 7 + p. Without finished brackets
+    the regular-season order (wins, then points for) is used
+  honours: champion (place 1), runner-up (2), regular-season 1st, most points for,
+    playoffs (place <= playoff teams), toilet bowl (last place, toilet-bowl leagues only)
+  head to head: per opponent W-L-T, playoff W-L, points for and against, last result
+  records: highest and lowest score, biggest win and loss (margin), closest loss, longest
+    win and losing streak (within a season), most regular-season points in a season;
+    rank = 1 + the number of league entries ever that beat it (ties share a rank; lowest
+    score and closest loss rank lowest first)
+  all-play: each regular-season week, the score against every other team's that week
+  wins above all-play pace = actual wins - (all-play win share * games)
+  points against vs league = mean points against per game - league mean per game
+  points left on bench = sum over seasons of (Sleeper potential points - actual points)
+  rival: the config pair's other roster in the manager's latest season; without a rivals
+    block, the nemesis = the opponent with the lowest head-to-head win share over at least
+    4 games (ties: the larger points deficit)
+  rivalry week record: W-L-T in each season's rivalry week against the rival roster
+  form: the last five results of the current season, oldest first
+  move windows (from weekly matchup rosters): added = consecutive weeks on the team;
+    departed = from leaving until back on the team, or the latest week; each window sums
+    the player's weekly WAR, Phi((score - m_pos) / sd) - Phi((R_pos - m_pos) / sd), over its
+    active weeks wherever he played; redraft windows end with their season, dynasty windows
+    carry over
+  best player all-time = the most WAR summed over a player's added windows
+  most seasons = seasons with at least one week on the team
+  the one that got away = the largest single departed window (shown when above 0)
+In plain English:
+  Everything on a manager's page is worked out here once: where they finished each year,
+  what they won, how they did against each other manager, their best and worst games
+  ranked against the whole league's history, how lucky the schedule was, who their rival
+  is, and which players did the most for (or after leaving) their team.
+Assumptions and decisions:
+  - The toilet bowl champion is the team that "wins" by losing the final: last place. The
+    reading of Sleeper's losers bracket was checked against the stored playoff scores.
+  - Records include winners-bracket playoff games; luck figures use the regular season only.
+  - Rivals follow the roster, so a team keeps its rival when its manager changes; a renamed
+    account (SpookyCast, later Jdeguire) is one manager under the latest name.
+  - Window WAR uses the same weekly quantity as Player WAR, so windows add up exactly.
+
+
+================================================================
+20. TEAM NEWS
+================================================================
+Code:          src/ffapp/news.py
+Data sources:  The games of section 19, the forecast history (data/odds), saved statuses
+               and player details (data/injuries, data/players), Sleeper's trending adds
+               (data/trending), weekly WAR, the rivals block. Exported inside
+               managers.json; the page writes each story from a template in site-copy.txt.
+Depends on:    3, 9, 16, 19
+Formula:
+  stories for the current season only (a retired manager's last season):
+    result (with the top-scoring starter); rivalry result and preview
+    forecast move: |playoff forecast change in a week| >= 10 points
+    record: a score above the manager's best before this season, with its league rank
+    streak: 3 or more wins or losses in a row
+    injury: a rostered player newly given an out status (section 3)
+    practice: a rostered starter listed DNP or Limited
+    depth chart: a rostered player's depth-chart order changing between weeks
+    trending: a rostered player in Sleeper's 10 most-added
+    milestone: a player's season WAR on the team passing a whole number
+    Team of the Week: the best legal lineup from every rostered player's points that week,
+      shown only when it includes one of the manager's players
+    final season: for retired managers, their last season and place
+  date: games end on the Monday "week" weeks after Labor Day; Thursday for practice,
+    injuries, depth charts and previews
+  order: newest first; at most 3 player stories per team per week (highest priority kept);
+    the feature story is the latest game week's highest priority story: final season >
+    record > forecast move of 20 points or more > result
+In plain English:
+  Short headlines about each manager's season, generated from data the site already has,
+  with the most important story of the latest week shown large.
+Assumptions and decisions:
+  - Thresholds keep the feed readable: small forecast moves and too many injury stories
+    in one week are left out.
+  - The text is not generated here: the page writes it from editable templates, so the
+    owner can reword any story type in site-copy.txt.

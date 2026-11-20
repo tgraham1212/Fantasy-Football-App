@@ -28,6 +28,7 @@ LANDMARKS = (
     "main section.card", ".card-head", "#games-controls > *", ".game-card", ".game-card .view-toggle",
     ".war-table", "#war-controls", "#war-dialog", "#war-dialog .dialog-head", "#war-dialog-close",
     "#outcome-switcher", "footer", "#positions-controls", ".pos-card",
+    "#mgr-picker", ".mgr-bar", ".mgr-season", ".mgr-cardtabs", ".mgr-card",
 )
 # Elements that must stay inside the screen horizontally.
 INSIDE = ("header.top > *", "#refresh-note", "#version-note", "#subtabs")
@@ -57,6 +58,13 @@ def _games_final(page):
 
 
 PAST_SEASON = "2024"
+RETIRED = "TateFM"  # a dynasty manager who left after 2023
+
+
+def _moves_card(page):
+    """On a phone only one card shows: open the Moves card (desktop shows all four anyway)."""
+    page.locator("[data-card-tab='moves']").first.evaluate("e => e.click()")
+    page.wait_for_timeout(200)
 
 
 def _positions_past(page):
@@ -74,6 +82,10 @@ VIEWS = {
     "war-all": View("war-all", f"index.html#{LEAGUE}/war", _war_all),
     "war-dialog": View("war-dialog", f"index.html#{LEAGUE}/war", _war_dialog),
     "calibration": View("calibration", "calibration.html"),
+    "managers": View("managers", f"index.html#{LEAGUE}/managers"),
+    "managers-retired": View("managers-retired", f"index.html#{LEAGUE}/managers/{RETIRED}"),
+    "managers-redraft": View("managers-redraft", "index.html#redraft/managers"),
+    "managers-moves": View("managers-moves", f"index.html#{LEAGUE}/managers", _moves_card),
 }
 
 
@@ -184,15 +196,16 @@ CONTROLS: tuple[Control, ...] = (
     Control("theme (calibration)", "calibration", "#theme-toggle", (State("toggled", click("#theme-toggle")),)),
     Control("league switcher", "predictions", "#league-switcher button",
             (State("other league", click("#league-switcher button[aria-pressed='false']", 900)),),
-            regions=("#page-predictions", "#page-games", "#page-positions", "#page-war"), below="#subtabs"),
+            regions=("#page-predictions", "#page-games", "#page-positions", "#page-managers", "#page-war"), below="#subtabs"),
     Control("odds link", "calibration", ".pages a.nav-link"),
     Control("footer link", "predictions", "footer a"),
     Control("footer link (calibration)", "calibration", "footer a"),
     # on a phone the sub-tab strip scrolls to keep the picked tab in view, so the tabs move inside it
     Control("sub-tabs", "predictions", "#subtabs button",
             (State("games", click("#subtabs [data-page='games']", 900)), State("positions", click("#subtabs [data-page='positions']", 900)),
+             State("managers", click("#subtabs [data-page='managers']", 900)),
              State("war", click("#subtabs [data-page='war']", 900)), State("predictions", click("#subtabs [data-page='predictions']", 900))),
-            regions=("#page-predictions", "#page-games", "#page-positions", "#page-war", "#subtabs"), below="self", self_moves=True),
+            regions=("#page-predictions", "#page-games", "#page-positions", "#page-managers", "#page-war", "#subtabs"), below="self", self_moves=True),
     Control("update check", "predictions", "body", UPDATE_STATES, regions=("#version-note",)),
     Control("update check (games)", "games-final", "body", UPDATE_STATES, regions=("#version-note",)),
     Control("update check (calibration)", "calibration", "body", UPDATE_STATES, regions=("#version-note",)),
@@ -256,6 +269,33 @@ CONTROLS: tuple[Control, ...] = (
             regions=("#war-full",)),
     Control("full list close", "war-dialog", "#war-dialog-close", (State("closed", click("#war-dialog-close")),),
             regions=("#war-dialog",), self_moves=True),
+
+    # Managers page
+    Control("manager arrows", "managers", "#mgr-prev, #mgr-next",
+            (State("previous", click("#mgr-prev", 600)), State("next", click("#mgr-next", 600))), regions=("#mgr-content",), below="#mgr-picker"),
+    Control("manager select", "managers", "#mgr-select", (State("other manager", select_first_other("#mgr-select")),), regions=("#mgr-content",), below="#mgr-picker"),
+    Control("manager link", "managers", "#mgr-content a[data-manager]",
+            (State("rival", click("#mgr-content .mgr-fact a[data-manager]", 600)),), regions=("#mgr-content",), below="#mgr-picker", self_moves=True),
+    Control("manager page link", "managers", "#mgr-content a[data-goto], #mgr-content a.mgr-story, #mgr-content a.mgr-feat"),
+    Control("history tabs", "managers", ".mgr-htabs button",
+            (State("head to head", click(".mgr-htabs [data-htab='h2h']")), State("records", click(".mgr-htabs [data-htab='rec']")),
+             State("history", click(".mgr-htabs [data-htab='hist']"))), regions=(".mgr-history .mgr-scroll",), below=".mgr-cardtabs"),
+    Control("card tabs", "managers", ".mgr-cardtabs button",
+            (State("history", click(".mgr-cardtabs [data-card-tab='history']")), State("moves", click(".mgr-cardtabs [data-card-tab='moves']")),
+             State("news", click(".mgr-cardtabs [data-card-tab='news']")), State("roster", click(".mgr-cardtabs [data-card-tab='roster']"))),
+            regions=(".mgr-cards",), below=".mgr-cardtabs"),
+    Control("moves season arrows", "managers-moves", ".mgr-moves-prev, .mgr-moves-next",
+            (State("older", click(".mgr-moves-prev")), State("newer", click(".mgr-moves-next"))), regions=("#mgr-moves",), below=".mgr-cardtabs"),
+    Control("moves season", "managers-moves", "#mgr-moves-season", (State("other season", select_first_other("#mgr-moves-season")),), regions=("#mgr-moves",), below=".mgr-cardtabs"),
+    Control("moves filter", "managers", ".mgr-controls .filter"),
+    Control("manager scroll region", "managers", ".mgr-scroll[tabindex]"),
+    Control("news show more", "managers", ".mgr-showmore", (State("shown", click(".mgr-showmore")),), regions=(".mgr-news",), below=".mgr-cardtabs", self_moves=True),
+    # manager names elsewhere link here (inline text links; app.js opens the Managers page)
+    Control("manager name links", "predictions", "a.manager-link"),
+    Control("manager name links (games)", "games", "a.manager-link"),
+    Control("manager name links (positions)", "positions", "a.manager-link"),
+    Control("manager name links (war)", "war", "a.manager-link"),
+    Control("manager arrows (retired)", "managers-retired", "#mgr-prev, #mgr-next", (State("next", click("#mgr-next", 600)),), regions=("#mgr-content",), below="#mgr-picker"),
 
     # Calibration page
     Control("outcome", "calibration", "#outcome-switcher button",

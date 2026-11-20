@@ -118,7 +118,8 @@ def test_control_keeps_the_layout(open_page, engine, control: Control, width: in
     assert not problems, f"{control.name} at {width}px:\n  " + "\n  ".join(problems)
 
 
-COVERAGE_VIEWS = ("predictions", "games", "games-final", "positions", "positions-past", "war", "war-all", "war-dialog", "calibration")
+COVERAGE_VIEWS = ("predictions", "games", "games-final", "positions", "positions-past", "war", "war-all", "war-dialog", "calibration",
+                  "managers", "managers-retired", "managers-redraft")
 
 
 @pytest.mark.parametrize("view", COVERAGE_VIEWS)

@@ -42,6 +42,7 @@ def build_parser() -> argparse.ArgumentParser:
     sched = sub.add_parser("schedule", help="Store the NFL schedule (kickoffs, game states) for the current and next week into data/nfl")
     sched.add_argument("--all", action="store_true", help="Store every week of the current season")
     sub.add_parser("snapshot", help="Capture ESPN start-percentage snapshots and the player crosswalk into data/espn")
+    sub.add_parser("trending", help="Save Sleeper's trending adds (last 24 hours) into data/trending")
     sub.add_parser("ratings", help="Rate every manager across all stored seasons and write data/ratings")
     sub.add_parser("replacement", help="Write replacement-level values for every stored season to data/replacement")
     sub.add_parser("war", help="Compute every player's Wins Above Replacement per league-season into data/war")
@@ -61,7 +62,7 @@ def build_parser() -> argparse.ArgumentParser:
     cal.add_argument("--no-replacement-floor", action="store_true", help="Replay without the replacement-level lineup floor (evaluation only)")
     cal.add_argument("--no-roster-drift", action="store_true", help="Replay without roster drift (evaluation only)")
     sub.add_parser("export", help="Write site/data/*.json for the website")
-    refresh = sub.add_parser("refresh", help="sync, projections, stats, schedule, snapshot, ratings, replacement, war, simulate, games and export in order")
+    refresh = sub.add_parser("refresh", help="sync, projections, stats, schedule, snapshot, trending, ratings, replacement, war, simulate, games and export in order")
     refresh.set_defaults(full=False, backfill=False, backfill_season=False, runs=10_000, seed=None)
     stamp = sub.add_parser("stamp-site", help="Before a deploy: stamp script and stylesheet URLs with the site code fingerprint and write version.json")
     stamp.add_argument("--site", type=Path, default=Path("site"), help="site directory (default site/)")
@@ -163,18 +164,22 @@ def cmd_snapshot(ctx: Context) -> int:
         print(f"wrote    {ctx.store.espn_week_path(*report.week_written)}")
     for message in report.errors:
         print(f"FAILED   snapshot {message}", file=sys.stderr)
-    from ffapp.injuries import save_injuries
+    from ffapp.injuries import rostered_players, save_injuries, save_player_details
 
     try:
         players_payload = ctx.client.players()
         changed = refresh_crosswalk(ctx.client, ctx.store, players_payload)
-        saved = save_injuries(ctx.store, ctx.client.state(), players_payload)
+        state = ctx.client.state()
+        saved = save_injuries(ctx.store, state, players_payload)
+        details = save_player_details(ctx.store, state, players_payload, rostered_players(ctx.store, ctx.config.leagues))
     except SleeperError as exc:
         print(f"FAILED   crosswalk: {exc}", file=sys.stderr)
         return 1
     print(f"crosswalk {'updated' if changed else 'unchanged'}")
     if saved:
         print(f"wrote    {ctx.store.injuries_path(*saved)}")
+    if details:
+        print(f"wrote    {ctx.store.player_details_path(*details)}")
     crosswalk = ctx.store.read_crosswalk() or {}
     for season in seasons_in_scope(ctx.store, ctx.config.leagues):
         snapshots = [(season, ctx.store.read_espn_season(season))]
@@ -187,6 +192,22 @@ def cmd_snapshot(ctx: Context) -> int:
             for u in unmatched:
                 print(f"unmatched {label}: {u.name} ({u.position}) started {u.started}%")
     return 0 if report.ok else 1
+
+
+def cmd_trending(ctx: Context) -> int:
+    """Save Sleeper's trending adds for the Managers page's news (an optional refresh step)."""
+    from datetime import datetime, timezone
+
+    from ffapp.injuries import save_trending
+    from ffapp.sleeper import SleeperError
+
+    try:
+        path = save_trending(ctx.store, ctx.client, ctx.client.state(), datetime.now(timezone.utc))
+    except SleeperError as exc:
+        print(f"FAILED   trending: {exc}", file=sys.stderr)
+        return 1
+    print(f"wrote    {path}")
+    return 0
 
 
 def cmd_ratings(ctx: Context) -> int:
@@ -384,6 +405,7 @@ REFRESH_STEPS = (
     ("stats", cmd_stats),
     ("schedule", cmd_schedule),
     ("snapshot", cmd_snapshot),
+    ("trending", cmd_trending),
     ("ratings", cmd_ratings),
     ("replacement", cmd_replacement),
     ("war", cmd_war),
@@ -391,7 +413,7 @@ REFRESH_STEPS = (
     ("games", cmd_games),
     ("export", cmd_export),
 )
-OPTIONAL_STEPS = frozenset({"schedule", "snapshot"})
+OPTIONAL_STEPS = frozenset({"schedule", "snapshot", "trending"})
 
 HANDLERS = {
     "should-run": cmd_should_run,
@@ -400,6 +422,7 @@ HANDLERS = {
     "stats": cmd_stats,
     "schedule": cmd_schedule,
     "snapshot": cmd_snapshot,
+    "trending": cmd_trending,
     "ratings": cmd_ratings,
     "replacement": cmd_replacement,
     "war": cmd_war,

@@ -4,6 +4,7 @@ import { markSorted, nextSort } from "./sorting.js?v=__BUILD__";
 import { initWar, loadWar, reloadWar } from "./war.js?v=__BUILD__";
 import { initPositions, loadPositions, reloadPositions, showPositions } from "./positions.js?v=__BUILD__";
 import { currentWeek, initGames, loadGames, reloadGames, rerenderGames, showGames } from "./games.js?v=__BUILD__";
+import { initManagers, loadManagers, managerSlug, reloadManagers, selectManager, showManagers } from "./managers.js?v=__BUILD__";
 import { initRefresh } from "./refresh.js?v=__BUILD__";
 import { initUpdates } from "./updates.js?v=__BUILD__";
 
@@ -238,12 +239,13 @@ function initTableHead() {
 // -- sub-tabs ------------------------------------------------------------------------
 
 function parseHash() {
-  const [league, page, week] = location.hash.replace("#", "").split("/");
-  const n = Number(week);
+  const [league, page, extra] = location.hash.replace("#", "").split("/");
+  const n = Number(extra);
   return {
     league: league || "",
-    page: page === "war" || page === "games" || page === "positions" ? page : "predictions",
+    page: ["war", "games", "positions", "managers"].includes(page) ? page : "predictions",
     week: page === "games" && Number.isInteger(n) && n > 0 ? n : null,
+    manager: page === "managers" && extra ? extra : null,
   };
 }
 
@@ -251,6 +253,7 @@ function writeHash() {
   const key = state.league ? state.league.league_key : "";
   let suffix = state.page === "predictions" ? "" : `/${state.page}`;
   if (state.page === "games" && currentWeek() != null) suffix += `/${currentWeek()}`;
+  if (state.page === "managers" && managerSlug()) suffix += `/${managerSlug()}`;
   try { history.replaceState(null, "", `#${key}${suffix}`); } catch (e) { /* ignore */ }
 }
 
@@ -260,6 +263,7 @@ function showPage(page) {
   $("page-war").hidden = page !== "war";
   $("page-games").hidden = page !== "games";
   $("page-positions").hidden = page !== "positions";
+  $("page-managers").hidden = page !== "managers";
   for (const btn of $("subtabs").querySelectorAll("button")) btn.setAttribute("aria-pressed", String(btn.dataset.page === page));
   revealSelectedSubtab();
   updateSubtabFade();
@@ -267,6 +271,7 @@ function showPage(page) {
   if (page === "predictions") renderChart(); // the canvas had no size while hidden
   if (page === "games") showGames();
   if (page === "positions") showPositions();
+  if (page === "managers") showManagers();
 }
 
 function initSubtabs() {
@@ -339,7 +344,7 @@ function renderTable() {
       <td class="col-elo">${t.elo == null ? "" : Math.round(t.elo)}</td>
       <td class="col-elo-change">${eloDelta(t.elo_change)}</td>
       <td class="col-owner">
-        <span class="owner-name"><span class="swatch" style="--team: var(${state.colors[t.roster_id] || "--accent"})" aria-hidden="true"></span>${escapeHtml(t.display_name ?? "")}<span class="record">${record(t)}</span></span>
+        <span class="owner-name"><span class="swatch" style="--team: var(${state.colors[t.roster_id] || "--accent"})" aria-hidden="true"></span>${managerLink(t.display_name)}<span class="record">${record(t)}</span></span>
         <span class="team">${escapeHtml(t.team_name)}</span>
       </td>
       <td class="num col-proj">${projRecord(t)}</td>
@@ -784,6 +789,28 @@ function renderRatingChart() {
     : /*copy:PRED-21*/`${metric.note}. Regular-season only.`;
 }
 
+// -- links to manager pages ----------------------------------------------------------------------------
+
+const LEAGUE = () => state.league?.league_key || "";
+/* A manager's name as a link to their Managers page (app.js opens it). */
+function managerLink(name) {
+  if (!name) return "";
+  return `<a class="manager-link" href="#${LEAGUE()}/managers/${encodeURIComponent(name)}" data-manager-link="${escapeHtml(name)}">${escapeHtml(name)}</a>`;
+}
+
+/* Any element carrying data-manager-link (a manager's name in a table) opens that manager's page. */
+function initManagerLinks() {
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest("[data-manager-link]");
+    if (!link) return;
+    e.preventDefault();
+    e.stopPropagation();   // capture phase: a forecast row must not also toggle its highlight
+    showPage("managers");
+    selectManager(link.dataset.managerLink);
+    scrollTo({ top: 0 });
+  }, true);
+}
+
 // -- loading ------------------------------------------------------------------------------------
 
 async function fetchJson(path) {
@@ -794,7 +821,7 @@ async function fetchJson(path) {
 
 /* `keep` (new data for the league already shown) keeps the sort, highlight and chart choices and
    asks the Games and Player WAR pages to reload in place; `week` is the Games week from the URL. */
-async function loadLeague(key, { keep = false, week = null } = {}) {
+async function loadLeague(key, { keep = false, week = null, manager = null } = {}) {
   const entry = state.index.leagues.find((l) => l.key === key) || state.index.leagues[0];
   const payload = await fetchJson(`data/${entry.file}`);
   if (keep) {
@@ -815,6 +842,7 @@ async function loadLeague(key, { keep = false, week = null } = {}) {
     showPage(state.page);
     await reloadGames();
     await reloadPositions();
+    await reloadManagers();
     await reloadWar();
     return;
   }
@@ -842,6 +870,7 @@ async function loadLeague(key, { keep = false, week = null } = {}) {
   showPage(state.page);
   await loadGames(entry.key, payload.league_name, entry.games, (rid) => state.colors[rid] || "--accent", week);
   await loadPositions(entry.key, entry.positions, ownerColor);
+  await loadManagers(entry.key, payload.league_name, entry.managers, ownerColor, manager, () => writeHash(), (page) => showPage(page));
   await loadWar(entry.key, payload.league_name, entry.war);
 }
 
@@ -852,13 +881,15 @@ async function main() {
   initWar();
   initPositions();
   initGames(() => writeHash());
+  initManagers();
+  initManagerLinks();
   try {
     state.index = await fetchJson("data/index.json");
     if (!state.index.leagues?.length) throw new Error("no leagues exported");
     initRefresh(state.index);
     const wanted = parseHash();
     state.page = wanted.page;
-    await loadLeague(wanted.league, { week: wanted.week });
+    await loadLeague(wanted.league, { week: wanted.week, manager: wanted.manager });
     // New data deployed while the page is open: swap it in, keeping the visitor's place.
     initUpdates(state.index.last_refresh, async (index) => {
       state.index = index;
