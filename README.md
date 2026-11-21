@@ -581,6 +581,10 @@ limits and what happens when something fails are in
 [`docs/refresh-modes.md`](docs/refresh-modes.md), with a diagram. Redraw the diagram after
 changing a mode, trigger or step with `python -X utf8 tools/refresh_modes_diagram.py`.
 
+How the simulation works, from its sources to the pages that show its Forecasts, is in
+[`docs/simulation.md`](docs/simulation.md), with a diagram. Redraw it with
+`python -X utf8 tools/simulation_diagram.py`.
+
 | Mode | Hot runs (`hot.yml`) | Cold runs (`refresh.yml`) |
 |---|---|---|
 | Off-season | Off | Daily at 11:00 UTC |

@@ -36,6 +36,11 @@ outside a planned change.
 - **Style:** APA; title case for titles and headings.
 - **Calculations:** documented in `Calculations.txt`; a change to a calculation updates its
   section in the same change.
+- **Feature docs:** a feature worth explaining gets `docs/<feature>.md` (Code, Runs, Tests;
+  Diagram; sources, storage, calculations, where it shows; Keeping This Document Current) and a
+  diagram drawn by `tools/<feature>_diagram.py`. It's a living document: a change touching a file
+  registered for it in `tests/test_feature_docs.py` updates the doc and redraws the diagram in
+  the same change. Model: `docs/simulation.md`.
 - Existing gaps are listed in `tests/baselines/`; baselines may only shrink.
 
 ## This machine

@@ -46,6 +46,18 @@ context: |
     data sources, dependencies, plain-English description, assumptions and decisions). A
     change that alters a calculation updates its section in the same change; a new
     calculation module gets a section and is added to tests/test_calculations_doc.py.
+  - Feature docs: a feature or subsystem whose flow is worth explaining gets docs/<feature>.md,
+    a living document with a generated diagram. The doc opens with what the feature does, then
+    Code, Runs and Tests bullets naming its files; a "## Diagram" section shows
+    images/<feature>/diagram.svg, says how to read it and gives the redraw command; the body
+    answers where the data comes from, where it is stored, how it is calculated (citing
+    Calculations.txt sections as "Calc N") and where it shows on the site; it ends with
+    "## Keeping This Document Current". The diagram is drawn by tools/<feature>_diagram.py
+    (Python writing SVG, never edited by hand), and its wording matches the doc. Each doc is
+    registered in tests/test_feature_docs.py with the code files whose changes must update
+    it; a change that touches one of those files updates the doc and redraws its diagram in
+    the same change. The test fails on a stale diagram, an unregistered doc, or a cited path
+    or Calc section that does not exist. Nomenclature and APA style apply.
 
 # Project context (optional)
 # Add only constraints that should guide OpenSpec artifacts and workflows.
@@ -65,6 +77,14 @@ context: |
 #       - Always state what is out of scope
 #     tasks:
 #       - Break tasks into chunks of max 2 hours
+rules:
+  tasks:
+    - When the change touches a file registered for a feature doc in tests/test_feature_docs.py
+      (FEATURE_DOCS), include a task to update that docs/<feature>.md and redraw its diagram with
+      tools/<feature>_diagram.py. When the change adds a feature whose flow is worth explaining,
+      include a task to write its feature doc and diagram generator and register them.
+  design:
+    - Name the feature docs (docs/<feature>.md) the change affects, or say that none are affected.
 
 # Per-operation guidance (optional)
 # Add advisory guidance for how apply and archive work should be conducted.

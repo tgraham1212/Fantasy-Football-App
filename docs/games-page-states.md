@@ -135,3 +135,13 @@ python -X utf8 tools/games_states_gallery.py
 Past week, Model view (full lineup):
 
 ![PW past week, Model view](images/games-states/PW-final-model.png)
+
+## Keeping This Document Current
+
+- Change this document, the diagram and `Calculations.txt` section 22 together whenever a state, a
+  transition or a card's look changes (`src/ffapp/card_states.py`, `src/ffapp/games_export.py`,
+  `site/games.js`).
+- Redraw the gallery with `python -X utf8 tools/games_states_gallery.py` after any change to how game
+  cards look.
+- The diagram above was drawn by hand before the feature-docs standard. Give it a generator
+  script under `tools/` the next time it changes.
