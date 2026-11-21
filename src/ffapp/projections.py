@@ -82,13 +82,15 @@ class UpsertResult:
         return self.added + self.updated + self.unchanged
 
 
-def upsert_week(store: Store, season: str, week: int, rows: list[dict]) -> UpsertResult:
+def upsert_week(store: Store, season: str, week: int, rows: list[dict], *, future: bool = False) -> UpsertResult:
     """Merge one week's rows into the store, keeping only the newest version per player.
 
     - rows without a points projection are dropped
     - a stored record is replaced only when the incoming ``last_modified`` is newer
     - players already stored but absent from ``rows`` are kept
     - a response with no projections at all leaves the stored file untouched
+    - ``future`` (a week after the current one) writes to the rebuilt, uncommitted folder; a week
+      that has become current is written to the committed folder even when nothing changed
     """
     result = UpsertResult(season=str(season), week=int(week))
     incoming: dict[str, dict] = {}
@@ -112,8 +114,9 @@ def upsert_week(store: Store, season: str, week: int, rows: list[dict]) -> Upser
             result.updated += 1
         else:
             result.unchanged += 1
-    if result.added or result.updated:
-        store.write_projections(season, week, merged)
+    promote = not future and bool(merged) and not store.projections_path(season, week).exists()
+    if result.added or result.updated or promote:
+        store.write_projections(season, week, merged, future=future)
         result.written = True
     return result
 
@@ -134,8 +137,21 @@ class RefreshReport:
         return not self.errors
 
 
-def refresh_season(client: SleeperClient, store: Store, season: str, weeks=REGULAR_SEASON_WEEKS) -> RefreshReport:
-    """Fetch every week of a season, then write. A failure anywhere writes nothing for that season."""
+def current_week(client: SleeperClient, season: str) -> int | None:
+    """The NFL's current week when ``season`` is under way (Sleeper's NFL state), else None."""
+    try:
+        state = client.state()
+    except SleeperError:
+        return None
+    if str(state.get("season") or "") != str(season) or state.get("season_type") not in ("regular", "post"):
+        return None
+    return int(state.get("week") or 0) or None
+
+
+def refresh_season(client: SleeperClient, store: Store, season: str, weeks=REGULAR_SEASON_WEEKS, *, current: int | None = None) -> RefreshReport:
+    """Fetch every week of a season, then write. A failure anywhere writes nothing for that season.
+
+    Weeks after ``current`` are future weeks: rebuilt each run and never committed."""
     report = RefreshReport()
     fetched: dict[int, list[dict]] = {}
     for week in weeks:
@@ -146,7 +162,7 @@ def refresh_season(client: SleeperClient, store: Store, season: str, weeks=REGUL
             log.error("projections %s week %s failed: %s", season, week, exc)
             return report
     for week, rows in fetched.items():
-        result = upsert_week(store, season, week, rows)
+        result = upsert_week(store, season, week, rows, future=current is not None and week > current)
         report.results.append(result)
         log.info(
             "projections %s week %02d: +%d ~%d =%d (dropped %d)%s",
@@ -173,7 +189,7 @@ def refresh_projections(client: SleeperClient, store: Store, league_keys, *, bac
     targets = seasons if backfill else seasons[-1:]
     total = RefreshReport()
     for season in targets:
-        part = refresh_season(client, store, season)
+        part = refresh_season(client, store, season, current=current_week(client, season))
         total.results += part.results
         total.errors += part.errors
     return total

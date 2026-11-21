@@ -52,7 +52,13 @@ class _Quiet(http.server.SimpleHTTPRequestHandler):
 
 @pytest.fixture(scope="session")
 def site_copy(tmp_path_factory) -> Path:
-    """The site with its data, stamped exactly as a deploy stamps it."""
+    """The site with its data, stamped exactly as a deploy stamps it. site/data is not in git, so a
+    clean checkout builds it offline from the committed records first (``ffapp build``)."""
+    if not (SITE / "data" / "index.json").exists():
+        import subprocess
+        import sys
+
+        subprocess.run([sys.executable, "-X", "utf8", "-m", "ffapp", "build"], cwd=SITE.parent, check=True)
     dest = tmp_path_factory.mktemp("layout") / "site"
     shutil.copytree(SITE, dest, ignore=shutil.ignore_patterns("__pycache__", "version.json"))
     stamp_site(dest)
@@ -109,11 +115,12 @@ def relay_url(site_copy) -> str | None:
 
 
 class Relay:
-    """Simulated refresh relay: what /status and /refresh answer."""
+    """Simulated refresh relay: what /status, /refresh and /live answer."""
 
     def __init__(self):
-        self.status = {"available": True}
-        self.refresh = (202, {"started": True, "minutes": 15})  # or (code, body), or "abort"
+        self.status = {"available": True, "mode": "quiet", "reason": None}
+        self.refresh = (202, {"started": True, "minutes": 5, "mode": "quiet"})  # or (code, body), or "abort"
+        self.live = None  # the live bundle (a dict), or None for "no bundle" (204)
 
 
 @pytest.fixture
@@ -133,6 +140,12 @@ def open_page(browser, base_url, relay_url):
                 url = route.request.url
                 if url.endswith("/status"):
                     return route.fulfill(status=200, json=relay.status, headers=cors)
+                if "/live" in url:
+                    if relay.live == "abort":
+                        return route.abort()
+                    if relay.live is None:
+                        return route.fulfill(status=204, body="", headers=cors)
+                    return route.fulfill(status=200, json=relay.live, headers=cors)
                 if relay.refresh == "abort":
                     return route.abort()
                 code, body = relay.refresh

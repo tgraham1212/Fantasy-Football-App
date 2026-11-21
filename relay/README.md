@@ -1,13 +1,24 @@
 # Refresh relay
 
-A Cloudflare Worker that lets the site's **Refresh** button start the "Refresh odds"
-workflow. The site is static, so it cannot hold a GitHub token; the Worker holds one,
-accepts requests only from the published site, and refuses a new refresh within 15 minutes
-of the last one's start (scheduled or manual). Until it is set up, the button stays hidden
-and the site works as before.
+A Cloudflare Worker with three jobs (the whole design: [`docs/refresh-modes.md`](../docs/refresh-modes.md)):
 
-Everything runs on free tiers: Cloudflare Workers allows 100,000 requests a day, and the
-token makes a few GitHub API calls per page load.
+- **The refresh clock.** Every minute it works out the refresh mode (Off-season, Quiet or Live)
+  and starts the GitHub workflows that are due: `hot.yml` back to back during games and every
+  15 minutes otherwise in season, `refresh.yml` (the cold run) every 15 minutes in season and
+  when a slate of games goes final.
+- **The live bundle.** Each hot run uploads this week's live forecast and game cards as one
+  bundle; the Worker keeps it in a KV namespace and the site's pages fetch it.
+- **The Refresh Data button.** The site is static, so it cannot hold a GitHub token; the Worker
+  holds one, accepts button presses only from the published site, and starts a hot and a cold
+  run (a cold run in the off-season), at most once every 5 minutes and never while games are in
+  progress (they refresh every minute anyway).
+
+Until it is set up the button stays hidden, there are no live updates, and the site refreshes
+once a day from GitHub's own schedule.
+
+Everything runs on free plans: Cloudflare Workers allows 100,000 requests a day and KV 1,000
+writes a day (the Worker keeps to under 1,000: one write per hot run, skipped when nothing
+changed and stopped at 950 a day).
 
 ## 1. Create the GitHub token
 
@@ -21,71 +32,94 @@ token makes a few GitHub API calls per page load.
 5. Generate and copy the token. It can start and list workflow runs in this one repository
    and nothing else: it cannot push code or read private data.
 
-## 2. Create the Worker
+## 2. Create the hot-run secret
 
-1. Sign up at <https://dash.cloudflare.com> (free plan).
-2. Register your account's `workers.dev` subdomain (once per account; Wrangler refuses to
-   publish until it exists): dashboard → **Workers & Pages** → set up the subdomain when
-   prompted, or **Account details → Subdomain → Change**. Pick any free name; the Worker's
-   address becomes `https://ffapp-refresh.<subdomain>.workers.dev`. A new subdomain can take
-   a few minutes to start resolving. Newer Wrangler versions also offer to register it
-   during the deploy below.
-3. From this folder, deploy the Worker with Wrangler (Cloudflare's CLI, run through `npx`,
-   nothing to install globally):
+The hot and cold runs prove who they are to the Worker with a shared secret, `HOT_TOKEN`: any
+long random string, kept in two places and nowhere else.
+
+1. Make one, for example in PowerShell:
+   `[Convert]::ToBase64String((1..32 | ForEach-Object { Get-Random -Maximum 256 }))`
+2. GitHub → this repository → Settings → Secrets and variables → Actions → **New repository
+   secret**: name `HOT_TOKEN`, the string as its value.
+3. Keep it to hand for step 4.
+
+## 3. Create the Worker and its KV namespace
+
+1. Sign up at <https://dash.cloudflare.com> (free plan) and register your account's
+   `workers.dev` subdomain (dashboard → **Workers & Pages**; once per account).
+2. From this folder, log in and create the KV namespace:
 
    ```bash
    cd relay
    npx wrangler login
-   npx wrangler deploy worker.js --name ffapp-refresh --compatibility-date 2026-11-01
+   npx wrangler kv namespace create LIVE
    ```
 
-   Wrangler prints the Worker's address, e.g. `https://ffapp-refresh.<your-account>.workers.dev`.
+   Wrangler prints an `id`. Paste it into `wrangler.toml` in place of
+   `PASTE_THE_KV_NAMESPACE_ID_HERE` (the id is not a secret; commit it).
+3. Check `REPO` and `SITE_ORIGIN` in `wrangler.toml` (the published site's origin, no path, no
+   trailing slash; change it whenever the site's domain changes, or Refresh Data is refused).
+4. Deploy:
 
-## 3. Set the Worker's settings
+   ```bash
+   npx wrangler deploy
+   ```
+
+   This publishes the Worker, binds the KV namespace as `LIVE` and turns on the clock (a cron
+   trigger every minute). Wrangler prints the Worker's address, e.g.
+   `https://ffapp-refresh.<your-account>.workers.dev`.
+
+## 4. Set the Worker's secrets
 
 ```bash
-npx wrangler secret put GITHUB_TOKEN --name ffapp-refresh   # paste the token when asked
+npx wrangler secret put GITHUB_TOKEN   # paste the token from step 1
+npx wrangler secret put HOT_TOKEN      # paste the string from step 2
 ```
 
-Then in the Cloudflare dashboard → Workers & Pages → `ffapp-refresh` → Settings →
-Variables and secrets, add two plain-text variables:
-
-| Name | Value |
-|---|---|
-| `REPO` | `tgraham1212/Fantasy-Football-App` (owner/name of this repository) |
-| `SITE_ORIGIN` | `https://fantasyfoosball.net` (the published site's origin, no path, no trailing slash; change it whenever the site's domain changes, or Refresh Data is refused) |
-
-Optional: `WORKFLOW` (default `refresh.yml`) and `REF` (default `main`).
+Optional plain variables: `WORKFLOW` (default `refresh.yml`), `HOT_WORKFLOW` (default
+`hot.yml`) and `REF` (default `main`).
 
 Check it from a terminal (the origin header must match `SITE_ORIGIN`):
 
 ```bash
 # in Windows PowerShell type curl.exe: plain curl there is Invoke-WebRequest and rejects -H
 curl -H "Origin: https://fantasyfoosball.net" https://ffapp-refresh.<your-account>.workers.dev/status
-# {"available":true,"minutes":0,"last_start":null}
+# {"available":true,"minutes":0,"last_start":null,"mode":"quiet","reason":null}
 ```
 
-## 4. Turn the button on
+Until the first cold run uploads the schedule summary the mode reads `quiet`, so the clock
+starts a cold run within a minute; that run uploads the summary.
 
-Add the Worker's address to `config/leagues.yaml`:
+## 5. Turn the button and live updates on
+
+The Worker's address goes in `config/leagues.yaml`:
 
 ```yaml
 site:
   refresh_url: https://ffapp-refresh.<your-account>.workers.dev
 ```
 
-Commit and push; the next refresh's export puts the address in `site/data/index.json` and
-the button appears on both pages.
+The workflows read it from there too (to upload the bundle and the schedule summary). Commit
+and push; the next deploy puts it in `site/data/index.json` and the pages show the button and
+read the live bundle.
 
 ## How it decides
 
-- `GET /status` → `{available, minutes, last_start}`; `POST /refresh` → `202 {started}` or
-  `429 {minutes}`. Any other origin gets `403` and GitHub is never called.
-- It lists the workflow's runs from the last 15 minutes. A manual run counts from when it
-  was created (queued runs included); a scheduled run counts only if its `refresh` job ran,
-  so hourly checks that decided not to refresh do not hold the button.
-- GitHub can take a few seconds to list a run it just started, so the Worker also remembers
-  its own last dispatch; two clicks a few seconds apart start one run.
+- `GET /status` → `{available, minutes, last_start, mode, reason}`, where `reason` is `live`
+  (games in progress), `running` (a hot run, or in the off-season a cold run, is going),
+  `cooldown` (a button refresh started under 5 minutes ago) or `null`. `POST /refresh` → `202
+  {started, mode}`, `409 {reason: "live"}` or `429 {minutes, reason}`. Any other origin gets
+  `403` and GitHub is never called.
+- `GET /live?since=<time>` → the bundle, or `204` when there is none newer than `since`.
+  `PUT /live` and `PUT /schedule` need `Authorization: Bearer <HOT_TOKEN>`; `PUT /live` also
+  needs `X-Bundle-Meta` (base64 JSON: the content hash, the time and each game's state), which
+  the Worker keeps as the KV entry's metadata so it never has to parse the bundle.
+- The mode: Off-season when the summary says no league is in season; Live when a game's
+  kickoff has passed and neither the summary nor the latest bundle shows it final (a game
+  counts as final 6 hours after kickoff regardless); otherwise Quiet.
+- GitHub is the source of truth for runs: the Worker lists the workflow's recent runs. It
+  also remembers its own dispatches for a minute, since a new run takes a few seconds to
+  show up; two clicks a few seconds apart start one refresh.
 
 ## Tests
 
@@ -95,5 +129,8 @@ node --test relay/worker.test.mjs
 
 ## Turning it off
 
-Remove `site.refresh_url` from the config (the button disappears on the next deploy), then
-delete the Worker in the Cloudflare dashboard and revoke the token on GitHub.
+Comment out the `[triggers]` block in `wrangler.toml` and deploy again to stop the clock (the
+site then refreshes daily from GitHub's schedule), or remove `site.refresh_url` from the config
+to hide the button and stop live updates as well. To remove it entirely, delete the Worker
+and the KV namespace in the Cloudflare dashboard, revoke the GitHub token and delete the
+`HOT_TOKEN` repository secret.

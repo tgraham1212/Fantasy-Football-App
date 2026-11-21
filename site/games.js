@@ -1,5 +1,7 @@
 /* Games page: this season's matchups week by week with the model's forecast per game. */
 
+import { fetchData } from "./data.js?v=__BUILD__";
+
 const state = {
   leagueKey: null,
   leagueName: "",
@@ -71,11 +73,8 @@ function withAlpha(hex, alpha) {
   return `#${full}${Math.round(alpha * 255).toString(16).padStart(2, "0")}`;
 }
 
-async function fetchJson(path) {
-  const res = await fetch(path, { cache: "no-cache" });
-  if (!res.ok) throw new Error(`${path}: HTTP ${res.status}`);
-  return res.json();
-}
+/* Deployed files, or the live bundle's newer copy of them (data.js). */
+const fetchJson = fetchData;
 
 // -- loading ----------------------------------------------------------------------------------
 

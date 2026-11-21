@@ -7,6 +7,7 @@ import { currentWeek, initGames, loadGames, reloadGames, rerenderGames, showGame
 import { initManagers, loadManagers, managerSlug, reloadManagers, selectManager, showManagers } from "./managers.js?v=__BUILD__";
 import { initRefresh } from "./refresh.js?v=__BUILD__";
 import { initUpdates } from "./updates.js?v=__BUILD__";
+import { fetchData } from "./data.js?v=__BUILD__";
 
 const DEFAULT_BOTTOM = { key: "avoid_losers_bye", label: "Avoid Loser's Bye", description: "" };
 
@@ -813,11 +814,8 @@ function initManagerLinks() {
 
 // -- loading ------------------------------------------------------------------------------------
 
-async function fetchJson(path) {
-  const res = await fetch(path, { cache: "no-cache" });
-  if (!res.ok) throw new Error(`${path}: HTTP ${res.status}`);
-  return res.json();
-}
+/* Deployed files, or the live bundle's newer copy of them (data.js). */
+const fetchJson = fetchData;
 
 /* `keep` (new data for the league already shown) keeps the sort, highlight and chart choices and
    asks the Games and Player WAR pages to reload in place; `week` is the Games week from the URL. */
@@ -891,7 +889,7 @@ async function main() {
     state.page = wanted.page;
     await loadLeague(wanted.league, { week: wanted.week, manager: wanted.manager });
     // New data deployed while the page is open: swap it in, keeping the visitor's place.
-    initUpdates(state.index.last_refresh, async (index) => {
+    initUpdates(state.index, async (index) => {
       state.index = index;
       await loadLeague(state.league.league_key, { keep: true });
     });

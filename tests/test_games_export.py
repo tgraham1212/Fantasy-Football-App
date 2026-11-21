@@ -97,9 +97,12 @@ def test_export_lineup_views(seeded_store, dynasty_config, tmp_path):
     assert list(upcoming["views"]) == ["model"] and upcoming["default_view"] == "model"
 
     # a finished week without views falls back to its record as the actual view
-    stored = seeded_store.read_games("dynasty", "2026", AS_OF)
-    stored.pop("views")
-    write_json(seeded_store.games_path("dynasty", "2026", AS_OF), stored)
+    from ffapp.store import read_json
+
+    derived_path = seeded_store.games_derived_path("dynasty", "2026", AS_OF)  # views are rebuilt data
+    derived = read_json(derived_path)
+    derived.pop("views")
+    write_json(derived_path, derived)
     export_site(seeded_store, dynasty_config, out)
     fallback = read(AS_OF)["games"][0]
     assert list(fallback["views"]) == ["actual"] and fallback["views"]["actual"]["source"] == "pre-week"

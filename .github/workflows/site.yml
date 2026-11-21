@@ -1,8 +1,8 @@
 name: Site deploy
 
-# A push that changes site code runs the tests and the layout check, then deploys the site
-# with the data already on main, so new code goes live without waiting for the next data
-# refresh. Data commits from the refresh workflow use the workflow token and never trigger
+# A push that changes site code builds the site data (from the latest cold run's build cache,
+# or offline from the committed records), runs the tests and the layout check, then deploys, so
+# new code goes live without waiting for the next data refresh. Data commits from the refresh workflow use the workflow token and never trigger
 # this; the path filter leaves data out as well.
 on:
   push:
@@ -41,6 +41,30 @@ jobs:
       - name: Install
         run: pip install -e ".[dev,browser]"
 
+      # site/data is not in git: restore the latest cold run's build, or rebuild it offline.
+      - name: Restore the build cache
+        id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/projections-future
+            data/games-derived
+            data/nfl-live
+            data/model
+            data/ratings
+            data/replacement
+            data/war
+            data/odds/*/*/live.json
+            data/refresh
+            site/data
+          key: build-none
+          restore-keys: build-
+
+      - name: Build site data offline (no build cache)
+        if: steps.cache.outputs.cache-matched-key == ''
+        run: python -m ffapp build
+
+
       # Chromium tests use the Chrome preinstalled on the runner; WebKit (Safari's engine) and
       # Firefox come from Playwright's own builds.
       - name: Install WebKit and Firefox
@@ -69,6 +93,29 @@ jobs:
 
       - name: Install
         run: pip install -e .
+
+      # site/data is not in git: restore the latest cold run's build, or rebuild it offline.
+      - name: Restore the build cache
+        id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/projections-future
+            data/games-derived
+            data/nfl-live
+            data/model
+            data/ratings
+            data/replacement
+            data/war
+            data/odds/*/*/live.json
+            data/refresh
+            site/data
+          key: build-none
+          restore-keys: build-
+
+      - name: Build site data offline (no build cache)
+        if: steps.cache.outputs.cache-matched-key == ''
+        run: python -m ffapp build
 
       # Every deploy stamps through this command (see the refresh workflow).
       - name: Stamp site

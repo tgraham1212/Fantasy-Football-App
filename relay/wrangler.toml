@@ -1,0 +1,21 @@
+# The refresh relay (see README.md and docs/refresh-modes.md). Deploy from this folder with
+#   npx wrangler deploy
+# Secrets (GITHUB_TOKEN, HOT_TOKEN) and the plain variables set in the dashboard are kept.
+name = "ffapp-refresh"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+keep_vars = true
+
+[vars]
+REPO = "tgraham1212/Fantasy-Football-App"
+SITE_ORIGIN = "https://fantasyfoosball.net"
+
+# The live bundle, the schedule summary, the slates already handled and the last button press.
+# Create it once with `npx wrangler kv namespace create LIVE` and paste the id it prints here.
+[[kv_namespaces]]
+binding = "LIVE"
+id = "50b166f5af0d4b61a082b14b8d9c2108"
+
+# The refresh clock: every minute.
+[triggers]
+crons = ["* * * * *"]

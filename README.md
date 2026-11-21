@@ -37,9 +37,12 @@ Global options: `--config PATH` (default `config/leagues.yaml`), `--data PATH`
 | `ratings` | Rate every manager across all stored seasons from weekly points (see Manager ratings) and write `data/ratings/<league>.json`. |
 | `snapshot` | Capture ESPN start-percentage snapshots (one per stored season that has none, the in-progress season again on every run until it is complete, plus the current regular-season week) and the ESPN-to-Sleeper player crosswalk into `data/espn/`, then report any widely started player the crosswalk could not match. |
 | `schedule` | Store the NFL schedule (kickoff times, game states, byes) from ESPN's public scoreboard for the current and next week into `data/nfl/`; `--all` stores every week of the season. |
-| `games` | Update this season's game files in `data/games/`: a log entry per game for the current and later weeks, and the forecast of record for weeks that have finished (see Games). `--force-records` recomputes every record. |
+| `games` | Update this season's game files: a log entry per game of the current week and the forecast of record for weeks that have finished in `data/games/`, and the latest forecasts and lineup views in `data/games-derived/` (see Games). `--force-records` recomputes every record. |
 | `war` | Compute every player's Wins Above Replacement for every stored league-season (see Player WAR) and write `data/war/<league>/<season>.json`. |
-| `refresh` | `sync`, `projections`, `stats`, `schedule`, `snapshot`, `ratings`, `replacement`, `war`, `simulate`, `games`, `export` in order, stopping at the first failure with a non-zero exit, except that a failed `schedule` or `snapshot` is skipped with a warning so the odds never depend on ESPN. This is what the scheduled job runs. |
+| `refresh` | The cold run: `sync`, `projections`, `stats`, `schedule`, `snapshot`, `trending`, `ratings`, `replacement`, `war`, `simulate`, `slates`, `games`, `export` in order, stopping at the first failure with a non-zero exit, except that a failed `schedule`, `snapshot` or `trending` is skipped with a warning so the odds never depend on ESPN. `--mode live` skips the simulation and the slate forecasts (the hot runs own the live forecast); the relay passes the mode (see Refresh modes). |
+| `build` | Rebuild every derived file (ratings, replacement levels, WAR, odds, game views and `site/data/`) offline from the committed records. Run it after cloning or pulling, before opening the site locally. |
+| `hot` | The hot run: this week's live scores, forecast and game cards as one bundle file (`--out PATH`, plus `PATH.meta` for the relay), built on a scratch copy so `data/` never changes (see Refresh modes). |
+| `site-hash` | Print a hash of `site/` that ignores refresh times; the cold run deploys only when it changes. |
 | `calibrate` | Replay every completed season through the simulation and score the forecasts against what happened (see Calibration). Not part of `refresh`. `--runs N`, `--seed N`, `--residual-scale X` evaluate a candidate scale without touching the config. |
 
 First-time setup of a fresh clone, in order:
@@ -60,6 +63,10 @@ python -m ffapp simulate --backfill-season
 python -m ffapp export
 python -m http.server 8000 -d site   # then open http://localhost:8000 (and /calibration.html)
 ```
+
+After cloning or pulling an existing checkout, `python -X utf8 -m ffapp build` is enough:
+`site/data/` and the other derived files are not in git (see Data layout), and the build
+rebuilds them offline from the committed records.
 
 ## Configuration: `config/leagues.yaml`
 
@@ -110,7 +117,11 @@ overrides: []
 
 ## Data layout
 
-Everything is plain JSON so it diffs well in git.
+Everything is plain JSON so it diffs well in git. Only records are committed, and only when
+they change; derived data is rebuilt by every run, carried between runs in a GitHub Actions
+cache and never committed (it is in `.gitignore`). Which folder is which, what rebuilds each
+derived one and what reads it: [`docs/refresh-modes.md`](docs/refresh-modes.md), "Where Data
+Lives". `tests/test_storage_tiers.py` keeps the two in step.
 
 ```
 data/
@@ -120,18 +131,24 @@ data/
                             matchups/week_NN.json
   projections/<season>/week_NN.json            {player_id: {position, team, opponent, company, last_modified, stats}}
   stats/<season>/week_NN.json                  same shape, actual stat lines for every player who played (free agents included)
-  replacement/<league>/<season>.json           weekly replacement levels by position and the season values (see Replacement level)
-  model/<league>.json                          roster-drift factors by weeks ahead, estimated from the stored seasons
-  ratings/<league>.json                        every manager's rating history by week (see Manager ratings)
+  projections-future/<season>/week_NN.json     weeks after the current one (rebuilt, not committed)
+  replacement/<league>/<season>.json           weekly replacement levels by position and the season values (rebuilt; see Replacement level)
+  model/<league>.json                          roster-drift factors by weeks ahead, estimated from the stored seasons (rebuilt)
+  ratings/<league>.json                        every manager's rating history by week (rebuilt; see Manager ratings)
   espn/<season>/season.json                    ESPN start/roster percentages, one frozen snapshot per season (see Player WAR)
   espn/<season>/week_NN.json                   the same, captured weekly from the 2026 season on
   espn/crosswalk.json                          Sleeper's player list trimmed to id, ESPN id, name and position
-  war/<league>/<season>.json                   every player's WAR for that league-season, with the weekly detail
-  nfl/<season>/week_NN.json                    NFL games for the week: teams, kickoff (UTC), state, byes (ESPN scoreboard)
+  war/<league>/<season>.json                   every player's WAR for that league-season, with the weekly detail (rebuilt)
+  nfl/<season>/week_NN.json                    NFL games for the week: teams, kickoff (UTC), state, final scores, byes (ESPN scoreboard)
+  nfl-live/<season>/week_NN.json               the same with the fetch time and live clocks and scores (rebuilt)
   injuries/<season>/week_NN.json               {player_id: Sleeper injury status} as last seen during that week
-  games/<league>/<season>/week_NN.json         per game: the projection log, the latest forecast and the forecast of record
+  games/<league>/<season>/week_NN.json         per game: the projection log and the forecast of record
+  games-derived/<league>/<season>/week_NN.json the latest forecast, lineup views and live baseline (rebuilt)
   odds/<league>/<season>/asof_NN.json          one simulation result per as-of week (the forecast history)
-site/data/<league>.json, index.json            what the website reads
+  odds/<league>/<season>/slates_NN.json        the live forecast as each slate of week NN went final
+  odds/<league>/<season>/live.json             the latest live forecast (rebuilt)
+  refresh/                                     last run time, schedule summary, site hash (rebuilt)
+site/data/<league>.json, index.json            what the website reads (rebuilt)
 site/data/<league>/positions/<season>.json     positional rankings per season, plus positions/index.json (see Positional Rankings)
 ```
 
@@ -372,7 +389,7 @@ with roughly ±5 points of noise each. Try a value first with
 `python -m ffapp calibrate --residual-scale 1.1`, which leaves the config alone and
 records the scale it used in the report.
 
-Commit `data/odds`, `data/calibration` and `site/data` after a run; the next deploy
+Commit `data/odds` and `data/calibration` after a run; the next cold run that deploys
 publishes the calibration page.
 
 ## Website
@@ -440,15 +457,19 @@ It only changes when `calibrate` is re-run and its outputs committed.
 
 ### Live updates and the new version note
 
-An open page checks once a minute, while its tab is visible, whether newer data or
-newer site code has been deployed (`site/updates.js`). Newer data with the same code
-is swapped in without a reload: the league, sub-tab, Games week (kept in the URL as
+An open page checks once a minute (every 30 seconds while a game is in progress), while
+its tab is visible, whether newer data, a newer live bundle from the refresh relay or newer
+site code is out (`site/updates.js`). Newer data with the same code is swapped in without a
+reload, whether it was deployed or came in a live bundle (`site/data.js` lays the bundle's
+files over the deployed ones, so switching weeks shows them too): the league, sub-tab, Games week (kept in the URL as
 `#dynasty/games/10`), each card's Model or Actual view, open lineups, table sorts,
 the highlighted team and an open full list all stay as they were, and the note under
 **Refresh Data** reads "Updated just now". This covers a refresh a visitor started
 and the scheduled refreshes alike. After a visitor starts a refresh the note reads
-"Started, back in ~5 min" (the full sentence is its tooltip) and, if no new data has
-arrived 20 minutes later, "Refresh didn't finish".
+"Started, back in ~1 min" ("~5 min" in the off-season, when only a cold run starts; the
+full sentence is its tooltip) and, if no new data has arrived 10 minutes later, "Refresh
+didn't finish". While games are in progress the button is held with "Live updates on", and
+while a refresh is already running with "Refresh running".
 
 Newer code is never paired with the old page: when `version.json` carries a
 different fingerprint from the page's own (`site/version.js`, see the stamp below),
@@ -506,8 +527,7 @@ python -m playwright install webkit firefox
 LAYOUT_REQUIRED=1 pytest tests/layout
 ```
 
-Without Playwright or a browser engine the layout tests skip (the data refresh job runs that
-way); `LAYOUT_REQUIRED=1`, set by the code-push workflow, turns a missing engine into a
+Without Playwright or a browser engine the layout tests skip; `LAYOUT_REQUIRED=1`, set by the code-push workflow, turns a missing engine into a
 failure.
 
 The full layout check takes about 15 minutes, so any test run prints a progress line about
@@ -535,9 +555,9 @@ The first three start from baselines in `tests/baselines/` listing today's gaps.
 finding fails at once; a fixed one fails until its baseline entry is removed, so the
 lists only shrink. `UPDATE_BASELINES=1` rewrites a baseline on purpose.
 
-After `git pull`, run `python -m ffapp export` before opening the site locally:
-`site/data/` is whatever the last export wrote, and an older export may lack
-fields the page expects.
+After `git pull`, run `python -X utf8 -m ffapp build` before opening the site locally:
+`site/data/` is not in git, and an older build may lack fields the page expects. The
+layout check builds it by itself when it is missing.
 
 Every local script reference, stylesheet link and module import in `site/` ends in
 `?v=__BUILD__`. Every deploy runs `python -m ffapp stamp-site`, which fingerprints the
@@ -552,40 +572,44 @@ the placeholder or a deploying workflow skips `stamp-site`, so add the placehold
 any new script, stylesheet or import, and stamp any new deploy through the command.
 Do not run `stamp-site` in your checkout: it rewrites the site files in place.
 
-## Scheduled job
+## Refresh modes
 
-`.github/workflows/refresh.yml` has two schedules. `0 11 * * *` is the daily run at
-11:00 UTC (after Monday night's game is scored) and always refreshes. `20 * * * *` is an
-hourly check: a small `gate` job runs `python -m ffapp should-run`, which stores the
-current and next week of the NFL schedule and decides from it. It refreshes when a game
-kicks off within the next 60 minutes or a game has gone final since the last refresh
-(a final game counts when it kicked off after four hours before the last run), and never
-within three hours of the last refresh's start, which a successful refresh records in
-`data/refresh/last_run.json`. The site's "Updated … ago" note under Refresh Data shows
-the same start time: the export (the run's last step) is handed it directly, because
-`last_run.json` is only written once that step has succeeded. Replayed over week 11 of 2026 (Eastern time), that gives
-7:20 pm Thursday before the night game and 12:20 am after it; on Sunday 12:20 pm before
-the 1 pm games, 3:20 pm before the 4 pm games, 6:20 pm once the early games are final
-(two hours before the night game), 9:20 pm once the late games are final and 12:20 am
-after the night game; 7:20 pm Monday and 12:20 am Tuesday around Monday night; plus the
-daily run at 6 am. Manual starts always refresh; if the scoreboard cannot be read,
-the hourly check skips that hour and the daily run goes ahead anyway.
+The data refreshes in two kinds of run, and how often each runs depends on one of three
+modes. The modes, their transitions, both runs' steps, where each kind of data lives, the
+limits and what happens when something fails are in
+[`docs/refresh-modes.md`](docs/refresh-modes.md), with a diagram. Redraw the diagram after
+changing a mode, trigger or step with `python -X utf8 tools/refresh_modes_diagram.py`.
 
-When the gate says so, the `refresh` job runs the tests, `python -m ffapp refresh`,
-commits `data/` and `site/data/` if anything changed, and deploys `site/` to GitHub
-Pages.
-A failure at any step ends the run before the commit and deploy, so the published
-site keeps its last good state. The one exception is the ESPN `snapshot` step: if
-ESPN is unreachable the run continues with the snapshots already stored and ends
-with a warning annotation on the job naming the skipped step. After the data commit
-and before the upload, `python -m ffapp stamp-site` stamps the script and stylesheet
-URLs with the code fingerprint and writes `version.json` (see above). It runs on the
-runner only, so no stamp is ever committed. GitHub Pages must be set to deploy
-from **GitHub Actions** in the repository settings.
+| Mode | Hot runs (`hot.yml`) | Cold runs (`refresh.yml`) |
+|---|---|---|
+| Off-season | Off | Daily at 11:00 UTC |
+| Quiet (in season, no game in progress) | Every 15 min | Every 15 min |
+| Live (a game in progress) | Back to back, about every 1 to 1.5 min | Every 15 min without the simulation, plus one when a slate goes final |
+
+- **The refresh relay is the clock.** A Cloudflare cron trigger runs `relay/worker.js` every
+  minute; it works out the mode from the schedule summary the cold run uploads and the game
+  states in the latest live bundle, and starts the runs that are due. GitHub's own
+  `0 11 * * *` schedule on `refresh.yml` is the fallback if the relay stops.
+- **A hot run** (`python -m ffapp hot`) fetches this week's matchups and the scoreboard,
+  simulates the live week and builds this week's game cards, and uploads them to the relay's
+  KV store as one bundle. It never commits or deploys.
+- **A cold run** (`python -m ffapp refresh`) syncs everything, rebuilds the derived data,
+  commits `data/` only when a record changed and deploys `site/` only when what visitors see
+  changed (`ffapp site-hash`). It no longer runs the test suite: tests run on code pushes.
+  A failure at any step ends the run before the commit and deploy, so the published
+  site keeps its last good state. The one exception is the ESPN `snapshot` step (and
+  `schedule` and `trending`): if it fails the run continues with the data already stored
+  and ends with a warning annotation on the job naming the skipped step. Before the upload,
+  `python -m ffapp stamp-site` stamps the script and stylesheet URLs with the code
+  fingerprint and writes `version.json` (see above). It runs on the runner only, so no
+  stamp is ever committed. GitHub Pages must be set to deploy from **GitHub Actions** in the
+  repository settings.
+- **The build cache** carries the derived data from each cold run to the next run, the hot
+  runs and the code deploy (`actions/cache`, key prefix `build-`).
 
 `.github/workflows/site.yml` deploys code: a push to `main` that changes site code,
-the Python package, the tests or `pyproject.toml` runs the full test suite with the
-browser layout check required, then stamps and deploys the site with the data on
-`main`. It shares the refresh's concurrency group, so the two never overlap. A
-failing layout check stops that deploy; the next data refresh still deploys whatever
-is on `main`, so fix forward.
+the Python package, the tests or `pyproject.toml` restores the latest build cache (or runs
+`ffapp build`), runs the full test suite with the browser layout check required, then stamps
+and deploys the site with that data. It shares the cold run's concurrency group, so the two never overlap. A
+failing layout check stops that deploy; the next cold run that deploys still deploys
+whatever is on `main`, so fix forward.

@@ -63,10 +63,14 @@ def test_refresh_runs_every_step_when_sources_work(tmp_path):
     code = run(tmp_path, cfg, "refresh", overrides={**projections_for_2026(), **stats_for_2026()})
     assert code == 0
     assert (tmp_path / "data" / "leagues" / "dynasty" / "2026" / "league.json").exists()
-    assert (tmp_path / "data" / "projections" / "2026" / "week_17.json").exists()
+    # the state fixture says week 10: weeks up to 10 are records, later weeks are rebuilt (not committed)
+    assert (tmp_path / "data" / "projections" / "2026" / "week_10.json").exists()
+    assert (tmp_path / "data" / "projections-future" / "2026" / "week_17.json").exists()
+    assert not (tmp_path / "data" / "projections" / "2026" / "week_17.json").exists()
     assert (tmp_path / "data" / "odds" / "dynasty" / "2026" / "live.json").exists()  # the fixture schedule has week 10 under way
     assert (tmp_path / "site-data" / "dynasty.json").exists()
     assert (tmp_path / "site-data" / "index.json").exists()
+    assert (tmp_path / "data" / "refresh" / "schedule_summary.json").exists()
     # the site's "Updated" time is this run's start, the same moment last_run.json records
     index = json.loads((tmp_path / "site-data" / "index.json").read_text(encoding="utf-8"))
     last_run = json.loads((tmp_path / "data" / "refresh" / "last_run.json").read_text(encoding="utf-8"))
@@ -96,7 +100,7 @@ def test_refresh_steps_in_order():
     from ffapp.cli import REFRESH_STEPS
 
     assert [name for name, _ in REFRESH_STEPS] == [
-        "sync", "projections", "stats", "schedule", "snapshot", "trending", "ratings", "replacement", "war", "simulate", "games", "export",
+        "sync", "projections", "stats", "schedule", "snapshot", "trending", "ratings", "replacement", "war", "simulate", "slates", "games", "export",
     ]
 
 
@@ -226,12 +230,28 @@ def test_schedule_failure_continues_with_a_warning_and_games_failure_stops(tmp_p
     assert (tmp_path / "data" / "refresh" / "last_run.json").read_text(encoding="utf-8") == before  # a failed run records nothing
 
 
-def test_should_run_writes_github_output(tmp_path, monkeypatch):
+def test_schedule_writes_summary_changed_to_github_output(tmp_path, monkeypatch):
     cfg = write_config(tmp_path)
+    assert run(tmp_path, cfg, "sync") == 0
     out = tmp_path / "gh_output"
     monkeypatch.setenv("GITHUB_OUTPUT", str(out))
-    assert run(tmp_path, cfg, "should-run", "--mode", "manual") == 0
-    assert out.read_text(encoding="utf-8") == "run=true" + chr(10)
+    assert run(tmp_path, cfg, "schedule") == 0
+    assert run(tmp_path, cfg, "schedule") == 0
+    assert out.read_text(encoding="utf-8") == "summary_changed=true" + chr(10) + "summary_changed=false" + chr(10)
+
+
+def test_live_mode_skips_the_simulation(tmp_path, capsys):
+    cfg = write_config(tmp_path)
+    overrides = {**projections_for_2026(), **stats_for_2026()}
+    assert run(tmp_path, cfg, "refresh", overrides=overrides) == 0  # the build cache a live run starts from
+    live = tmp_path / "data" / "odds" / "dynasty" / "2026" / "live.json"
+    before = live.read_text(encoding="utf-8")
+    capsys.readouterr()
+    assert run(tmp_path, cfg, "refresh", "--mode", "live", overrides=overrides) == 0
+    out = capsys.readouterr().out
+    assert "== simulate (skipped in live mode)" in out and "== slates (skipped in live mode)" in out
+    assert live.read_text(encoding="utf-8") == before, "the live forecast is the hot runs' job"
+    assert (tmp_path / "site-data" / "index.json").exists()
 
 
 def test_refresh_continues_past_a_trending_failure_with_a_warning(tmp_path, capsys):

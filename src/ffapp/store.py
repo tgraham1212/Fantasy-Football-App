@@ -9,6 +9,18 @@ data/
                                 /transactions/week_NN.json raw transactions list
   projections/<season>/week_NN.json                   {player_id: projection record}
   odds/<league_key>/<season>/asof_NN.json             simulation results
+  odds/<league_key>/<season>/slates_NN.json           forecast as each slate of week NN went final
+  games/<league_key>/<season>/week_NN.json            game log and prediction of record
+
+Derived data is rebuilt by every run and never committed (docs/refresh-modes.md, "Where
+Data Lives"); ``DERIVED_PATHS`` lists it, relative to the data root:
+
+  projections-future/<season>/week_NN.json            projections for weeks after the current one
+  games-derived/<league_key>/<season>/week_NN.json    game files' forecast, views and baseline
+  nfl-live/<season>/week_NN.json                      the latest scoreboard, with live clocks and scores
+  ratings/, replacement/, war/, model/                recomputed from the records
+  odds/<league_key>/<season>/live.json                the latest live forecast
+  refresh/                                            last run time, schedule summary, site hash
 
 Every write goes to a temp file in the same directory and is swapped in with
 ``os.replace`` so a crash never leaves a half-written file behind.
@@ -25,6 +37,10 @@ from pathlib import Path
 from typing import Any
 
 DEFAULT_DATA_ROOT = Path("data")
+# Rebuilt by every run, never committed (glob patterns relative to the data root).
+DERIVED_PATHS = ("projections-future", "games-derived", "nfl-live", "model", "ratings", "replacement", "war", "odds/*/*/live.json", "refresh")
+# The parts of a game file that are records; everything else in it is rebuilt.
+GAME_RECORD_KEYS = ("league_key", "season", "week", "log", "record")
 _SEASON_RE = re.compile(r"^\d{4}$")
 _WEEK_RE = re.compile(r"^week_(\d{2})\.json$")
 _ASOF_RE = re.compile(r"^asof_(\d{2})\.json$")
@@ -49,6 +65,17 @@ def read_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def write_if_changed(path: Path, payload: dict, ignore: tuple[str, ...]) -> bool:
+    """Write ``payload`` unless the stored file differs from it only in the ``ignore`` keys (times),
+    so a run that found nothing new leaves the record, and git, unchanged. True when written."""
+    if path.exists():
+        old = read_json(path)
+        if isinstance(old, dict) and {k: v for k, v in old.items() if k not in ignore} == {k: v for k, v in payload.items() if k not in ignore}:
+            return False
+    write_json(path, payload)
+    return True
+
+
 @dataclass
 class SeasonData:
     """Everything stored for one league-season."""
@@ -71,6 +98,17 @@ class SeasonData:
     @property
     def status(self) -> str:
         return str(self.league.get("status", ""))
+
+
+def nfl_record(payload: dict) -> dict:
+    """The committed part of a stored NFL week: no fetch time; clocks and scores only once final."""
+    games = []
+    for game in payload.get("games") or []:
+        kept = {k: game[k] for k in ("home", "away", "kickoff_utc", "state") if k in game}
+        if game.get("state") == "final":
+            kept.update({k: game.get(k) for k in ("home_score", "away_score") if k in game})
+        games.append(kept)
+    return {"season": payload.get("season"), "week": payload.get("week"), "games": games, "byes": payload.get("byes") or []}
 
 
 class Store:
@@ -130,6 +168,9 @@ class Store:
     def nfl_week_path(self, season: str, week: int) -> Path:
         return self.root / "nfl" / str(season) / f"week_{int(week):02d}.json"
 
+    def nfl_live_path(self, season: str, week: int) -> Path:
+        return self.root / "nfl-live" / str(season) / f"week_{int(week):02d}.json"
+
     def injuries_path(self, season: str, week: int) -> Path:
         return self.root / "injuries" / str(season) / f"week_{int(week):02d}.json"
 
@@ -141,6 +182,15 @@ class Store:
 
     def games_path(self, league_key: str, season: str, week: int) -> Path:
         return self.root / "games" / league_key / str(season) / f"week_{int(week):02d}.json"
+
+    def games_derived_path(self, league_key: str, season: str, week: int) -> Path:
+        return self.root / "games-derived" / league_key / str(season) / f"week_{int(week):02d}.json"
+
+    def future_projections_path(self, season: str, week: int) -> Path:
+        return self.root / "projections-future" / str(season) / f"week_{int(week):02d}.json"
+
+    def slates_path(self, league_key: str, season: str, week: int) -> Path:
+        return self.root / "odds" / league_key / str(season) / f"slates_{int(week):02d}.json"
 
     # -- league seasons ------------------------------------------------------
 
@@ -279,11 +329,20 @@ class Store:
     # -- projections ---------------------------------------------------------
 
     def read_projections(self, season: str, week: int) -> dict[str, dict]:
-        path = self.projections_path(season, week)
-        return read_json(path) if path.exists() else {}
+        """The committed week if there is one, else the rebuilt future week, else nothing."""
+        for path in (self.projections_path(season, week), self.future_projections_path(season, week)):
+            if path.exists():
+                return read_json(path)
+        return {}
 
-    def write_projections(self, season: str, week: int, records: dict[str, dict]) -> None:
+    def write_projections(self, season: str, week: int, records: dict[str, dict], *, future: bool = False) -> None:
+        """A week after the current one goes to the rebuilt (uncommitted) folder; the current and
+        earlier weeks are records. Once a week becomes current its future copy is removed."""
+        if future:
+            write_json(self.future_projections_path(season, week), records)
+            return
         write_json(self.projections_path(season, week), records)
+        self.future_projections_path(season, week).unlink(missing_ok=True)
 
     def projection_seasons(self) -> list[str]:
         base = self.root / "projections"
@@ -292,10 +351,11 @@ class Store:
         return sorted(p.name for p in base.iterdir() if p.is_dir() and _SEASON_RE.match(p.name))
 
     def projection_weeks(self, season: str) -> list[int]:
-        base = self.root / "projections" / str(season)
-        if not base.exists():
-            return []
-        return sorted(int(m.group(1)) for p in base.iterdir() if (m := _WEEK_RE.match(p.name)))
+        weeks: set[int] = set()
+        for base in (self.root / "projections" / str(season), self.root / "projections-future" / str(season)):
+            if base.exists():
+                weeks.update(int(m.group(1)) for p in base.iterdir() if (m := _WEEK_RE.match(p.name)))
+        return sorted(weeks)
 
     # -- actual stats ---------------------------------------------------------
 
@@ -319,14 +379,14 @@ class Store:
         return read_json(path) if path.exists() else None
 
     def write_espn_season(self, season: str, payload: dict) -> None:
-        write_json(self.espn_season_path(season), payload)
+        write_if_changed(self.espn_season_path(season), payload, ("captured_at",))
 
     def read_espn_week(self, season: str, week: int) -> dict | None:
         path = self.espn_week_path(season, week)
         return read_json(path) if path.exists() else None
 
     def write_espn_week(self, season: str, week: int, payload: dict) -> None:
-        write_json(self.espn_week_path(season, week), payload)
+        write_if_changed(self.espn_week_path(season, week), payload, ("captured_at",))
 
     def espn_weeks(self, season: str) -> list[int]:
         base = self.root / "espn" / str(season)
@@ -344,11 +404,20 @@ class Store:
     # -- NFL schedule, injuries, game logs ----------------------------------------
 
     def read_nfl_week(self, season: str, week: int) -> dict | None:
-        path = self.nfl_week_path(season, week)
-        return read_json(path) if path.exists() else None
+        """The latest scoreboard copy (with live clocks and scores) when this run has one, else the record."""
+        for path in (self.nfl_live_path(season, week), self.nfl_week_path(season, week)):
+            if path.exists():
+                return read_json(path)
+        return None
 
     def write_nfl_week(self, season: str, week: int, payload: dict) -> None:
-        write_json(self.nfl_week_path(season, week), payload)
+        """Write the full scoreboard copy (rebuilt, uncommitted) and, only when it changed, the
+        record: teams, kickoff, state and final scores, without the fetch time or live clocks."""
+        write_json(self.nfl_live_path(season, week), payload)
+        record = nfl_record(payload)
+        path = self.nfl_week_path(season, week)
+        if not path.exists() or nfl_record(read_json(path)) != record:
+            write_json(path, record)
 
     def read_injuries(self, season: str, week: int) -> dict[str, str] | None:
         path = self.injuries_path(season, week)
@@ -365,11 +434,34 @@ class Store:
         write_json(self.player_details_path(season, week), details)
 
     def read_games(self, league_key: str, season: str, week: int) -> dict | None:
+        """The week's game file: its committed record part merged with its rebuilt part."""
         path = self.games_path(league_key, season, week)
-        return read_json(path) if path.exists() else None
+        derived = self.games_derived_path(league_key, season, week)
+        if not path.exists() and not derived.exists():
+            return None
+        merged = read_json(path) if path.exists() else {}
+        if derived.exists():
+            merged.update(read_json(derived))
+        return merged
 
     def write_games(self, league_key: str, season: str, week: int, payload: dict) -> None:
-        write_json(self.games_path(league_key, season, week), payload)
+        """Split the game file: records (log, prediction of record) to ``games/``, written only
+        when they changed; the forecast, views and baseline to ``games-derived/``."""
+        record = {k: payload[k] for k in GAME_RECORD_KEYS if k in payload}
+        derived = {k: v for k, v in payload.items() if k not in GAME_RECORD_KEYS}
+        path = self.games_path(league_key, season, week)
+        if not path.exists() or read_json(path) != record:
+            write_json(path, record)
+        dpath = self.games_derived_path(league_key, season, week)
+        if derived and (not dpath.exists() or read_json(dpath) != derived):
+            write_json(dpath, derived)
+
+    def read_slates(self, league_key: str, season: str, week: int) -> dict:
+        path = self.slates_path(league_key, season, week)
+        return read_json(path) if path.exists() else {}
+
+    def write_slates(self, league_key: str, season: str, week: int, payload: dict) -> None:
+        write_json(self.slates_path(league_key, season, week), payload)
 
     # -- odds history --------------------------------------------------------
 
@@ -384,4 +476,5 @@ class Store:
         return read_json(path) if path.exists() else None
 
     def write_odds(self, league_key: str, season: str, as_of_week: int, payload: dict) -> None:
-        write_json(self.odds_path(league_key, season, as_of_week), payload)
+        """Skipped when only the time changed, so an unchanged forecast is not a new record."""
+        write_if_changed(self.odds_path(league_key, season, as_of_week), payload, ("generated_at",))

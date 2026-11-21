@@ -7,7 +7,8 @@ outside a planned change.
 ## Workflow
 - Features go through OpenSpec: explore, propose, apply, then commit, push and archive with
   spec sync, each step when the owner asks.
-- Before pushing, fetch: the daily refresh commits `data/` and `site/data/`.
+- Before pushing, fetch: the cold refresh commits `data/` records (every 15 minutes in season,
+  only on change). `site/data/` and other derived data are not in git: `python -m ffapp build`.
 
 ## Site rules
 - Every deploy stamps through `python -m ffapp stamp-site`; never stamp by hand. New script,

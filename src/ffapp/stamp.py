@@ -51,3 +51,33 @@ def stamp_site(site: Path) -> str:
             path.write_text(text.replace(PLACEHOLDER, fp), encoding="utf-8", newline="")
     (site / VERSION_FILE).write_text(json.dumps({"code": fp}) + "\n", encoding="utf-8")
     return fp
+
+
+# Keys that change on every run without changing what the site shows.
+TIME_KEYS = frozenset({"generated_at", "last_refresh", "fetched_at", "at"})
+
+
+def _strip_times(value):
+    if isinstance(value, dict):
+        return {k: _strip_times(v) for k, v in value.items() if k not in TIME_KEYS}
+    if isinstance(value, list):
+        return [_strip_times(v) for v in value]
+    return value
+
+
+def site_hash(site: Path) -> str:
+    """Hash of the whole unstamped site (code and data) ignoring refresh times, so the cold run
+    deploys only when what visitors see would change (docs/refresh-modes.md)."""
+    digest = hashlib.sha256()
+    for path in sorted((p for p in site.rglob("*") if p.is_file()), key=lambda p: p.relative_to(site).as_posix()):
+        rel = path.relative_to(site).as_posix()
+        if rel == VERSION_FILE or "__pycache__" in rel:
+            continue
+        data = path.read_bytes().replace(b"\r\n", b"\n")
+        if path.suffix == ".json":
+            try:
+                data = json.dumps(_strip_times(json.loads(data)), sort_keys=True).encode("utf-8")
+            except ValueError:
+                pass
+        digest.update(rel.encode("utf-8") + b"\0" + data + b"\0")
+    return digest.hexdigest()[:16]

@@ -1,13 +1,17 @@
-/* The "Refresh Data" button: asks the refresh relay (a Cloudflare Worker, see relay/README.md) to
-   start the data refresh. Shown only when the export carried a relay address. The note under it
-   stays short (at most 22 characters) so it never moves the layout; the full sentence is its
+/* The "Refresh Data" button: asks the refresh relay (a Cloudflare Worker, see relay/README.md and
+   docs/refresh-modes.md) to start a refresh: a hot run and a cold run in season, a cold run in the
+   off-season. While games are in progress it is held ("Live updates on"): the data already
+   refreshes about every minute. Shown only when the export carried a relay address. The note under
+   it stays short (at most 22 characters) so it never moves the layout; the full sentence is its
    tooltip. The update check (updates.js) calls dataArrived() when new data is swapped in. */
 
 const POLL_MS = 60_000;
-const GIVE_UP_MS = 20 * 60_000; // a started refresh that has not landed by then did not finish
+const GIVE_UP_MS = 10 * 60_000; // a started refresh that has not landed by then did not finish
 const box = () => document.getElementById("refresh-box");
 
-const state = { url: null, lastRefresh: null, held: 0, note: null, busy: false, timer: null, waitTimer: null };
+// reason: why the button is held - "live" (games in progress), "running" (a refresh is going),
+// "cooldown" (one started a few minutes ago) - or null.
+const state = { url: null, lastRefresh: null, held: 0, reason: null, note: null, busy: false, timer: null, waitTimer: null };
 
 function minutesSince(iso) {
   if (!iso) return null;
@@ -32,10 +36,16 @@ function render() {
   const btn = document.getElementById("refresh-btn");
   const note = document.getElementById("refresh-note");
   if (!btn || !note) return;
-  btn.disabled = state.busy || state.held > 0;
+  btn.disabled = state.busy || state.held > 0 || state.reason === "live" || state.reason === "running";
   let short, full;
   if (state.note) ({ short, full } = state.note);
-  else if (state.held > 0) {
+  else if (state.reason === "live") {
+    short = /*copy:MSG-14*/"Live updates on";
+    full = /*copy:MSG-15*/"Games are in progress, so the data refreshes by itself about every minute.";
+  } else if (state.reason === "running") {
+    short = /*copy:MSG-16*/"Refresh running";
+    full = /*copy:MSG-17*/"A refresh is already running. The new data shows here by itself when it lands.";
+  } else if (state.held > 0) {
     short = `Available in ${state.held} min`;
     full = /*copy:MSG-01*/`A refresh ran recently. The next one can start in ${state.held} min.`;
   } else {
@@ -55,9 +65,13 @@ async function call(method, path) {
 async function poll() {
   try {
     const { status, body } = await call("GET", "/status");
-    if (status === 200) state.held = body.available ? 0 : body.minutes || 0;
+    if (status === 200) {
+      state.reason = body.available ? null : body.reason || "cooldown";
+      state.held = body.available || state.reason !== "cooldown" ? 0 : body.minutes || 0;
+    }
   } catch (e) {
     state.held = 0; // relay unreachable: keep the button usable and say when the data was refreshed
+    state.reason = null;
   }
   render();
 }
@@ -66,7 +80,7 @@ function waitForData() {
   clearTimeout(state.waitTimer);
   state.waitTimer = setTimeout(() => {
     state.waitTimer = null;
-    say("Refresh didn't finish", /*copy:MSG-03*/"No new data arrived within 20 minutes of the refresh starting. Try again later.", true);
+    say("Refresh didn't finish", /*copy:MSG-03*/"No new data arrived within 10 minutes of the refresh starting. Try again later.", true);
     render();
   }, GIVE_UP_MS);
 }
@@ -78,11 +92,18 @@ async function refresh() {
   try {
     const { status, body } = await call("POST", "/refresh");
     if (status === 202) {
-      state.held = body.minutes || 15;
-      say(/*copy:MSG-11*/"Started, back in ~5 min", /*copy:MSG-04*/"Refresh started. The new data shows here by itself in about 5 minutes.");
+      state.held = body.minutes || 5;
+      state.reason = "cooldown";
+      if (body.mode === "offseason") say(/*copy:MSG-18*/"Started, back in ~5 min", /*copy:MSG-19*/"Refresh started. The new data shows here by itself in about 5 minutes.");
+      else say(/*copy:MSG-11*/"Started, back in ~1 min", /*copy:MSG-04*/"Refresh started. The new data shows here by itself in about a minute.");
       waitForData();
+    } else if (status === 409) {
+      state.reason = "live";
+      state.held = 0;
+      state.note = null;
     } else if (status === 429) {
-      state.held = body.minutes || 1;
+      state.reason = body.reason || "cooldown";
+      state.held = state.reason === "cooldown" ? body.minutes || 1 : 0;
       state.note = null;
     } else {
       say(/*copy:MSG-12*/"Couldn't start, try later", /*copy:MSG-05*/"Could not start a refresh. Try again later.");
@@ -116,6 +137,7 @@ export function initRefresh(index) {
   clearInterval(state.timer);
   state.timer = setInterval(() => {
     if (state.held > 0) state.held -= 1;
+    if (state.held === 0 && state.reason === "cooldown") state.reason = null;
     if (state.held === 0 && state.note && !state.busy && !state.waitTimer && !state.note.sticky) state.note = null;
     render();
     poll();

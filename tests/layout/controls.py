@@ -16,10 +16,12 @@ may make the page scroll sideways.
 from __future__ import annotations
 
 import json
+from pathlib import Path
 from dataclasses import dataclass, field
 from typing import Callable
 
 LEAGUE = "dynasty"
+SITE_DATA = Path(__file__).resolve().parents[2] / "site" / "data"  # what the layout check serves
 FINAL_WEEK = 10  # a finished week: cards have the Model | Actual toggle
 
 # Elements whose boxes are compared before and after every state.
@@ -163,12 +165,43 @@ def refresh_answer(code, body=None):
     return act
 
 
-def relay_held(page, relay, ctx):
-    relay.status = {"available": False, "minutes": 9}
-    page.reload()
-    page.wait_for_load_state("networkidle")
-    ctx["setup"](page)
-    page.wait_for_timeout(400)
+def relay_status(status):
+    """The relay reports this /status (held after a press, a refresh running, games live)."""
+    def act(page, relay, ctx):
+        relay.status = status
+        page.reload()
+        page.wait_for_load_state("networkidle")
+        ctx["setup"](page)
+        page.wait_for_timeout(400)
+    return act
+
+
+relay_held = relay_status({"available": False, "minutes": 3, "reason": "cooldown", "mode": "quiet"})
+
+
+def live_bundle(site_data: Path, league: str, week: int, label: str, generated_at: str = "2099-01-01T00:00:00+00:00") -> dict:
+    """A live bundle as the hot run builds it, from the deployed files, with week ``week``'s label in
+    the games index changed to ``label`` so a test can see which copy the page shows."""
+    games_index = json.loads((site_data / league / "games" / "index.json").read_text(encoding="utf-8"))
+    for entry in games_index["weeks"]:
+        if entry["week"] == week:
+            entry["label"] = label
+    week_file = f"{league}/games/week_{week:02d}.json"
+    return {
+        "generated_at": generated_at,
+        "games": {"2099-01-KC@BUF": "in_progress"},
+        "files": {
+            f"{league}.json": json.loads((site_data / f"{league}.json").read_text(encoding="utf-8")),
+            f"{league}/games/index.json": games_index,
+            week_file: json.loads((site_data / week_file).read_text(encoding="utf-8")),
+        },
+    }
+
+
+def new_bundle(page, relay, ctx):
+    """The hot run writes a newer live bundle: the page swaps it in place."""
+    relay.live = live_bundle(SITE_DATA, LEAGUE, FINAL_WEEK, "Week 10 (live)")
+    _trigger_check(page)
 
 
 def _trigger_check(page):
@@ -196,9 +229,14 @@ def new_version(page, relay, ctx):
 REFRESH_STATES = (
     State("failed", refresh_answer(500)),
     State("unreachable", refresh_answer("abort")),
-    State("started", refresh_answer(202, {"started": True, "minutes": 15})),
+    State("started", refresh_answer(202, {"started": True, "minutes": 5, "mode": "quiet"})),
 )
-UPDATE_STATES = (State("new data", new_data), State("new version", new_version))
+UPDATE_STATES = (State("new data", new_data), State("new bundle", new_bundle), State("new version", new_version))
+HELD_STATES = (
+    State("held", relay_held),
+    State("running", relay_status({"available": False, "minutes": 1, "reason": "running", "mode": "quiet"})),
+    State("live", relay_status({"available": False, "minutes": 0, "reason": "live", "mode": "live"})),
+)
 
 
 # -- the registry ------------------------------------------------------------------------------------
@@ -206,7 +244,7 @@ UPDATE_STATES = (State("new data", new_data), State("new version", new_version))
 CONTROLS: tuple[Control, ...] = (
     # header, on every page
     Control("refresh", "predictions", "#refresh-btn", REFRESH_STATES),
-    Control("refresh held", "predictions", "#refresh-btn", (State("held", relay_held),)),
+    Control("refresh held", "predictions", "#refresh-btn", HELD_STATES),
     Control("refresh (calibration)", "calibration", "#refresh-btn", REFRESH_STATES),
     Control("theme", "predictions", "#theme-toggle", (State("toggled", click("#theme-toggle")), State("back", click("#theme-toggle")))),
     Control("theme (calibration)", "calibration", "#theme-toggle", (State("toggled", click("#theme-toggle")),)),

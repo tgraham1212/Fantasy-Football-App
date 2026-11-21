@@ -182,6 +182,60 @@ def test_data_swap_keeps_the_visitors_place(open_page):
     assert page.url.endswith("/games/10")
 
 
+def week_labels(page):
+    return page.eval_on_selector_all("#games-week option", "os => os.map((o) => o.textContent)")
+
+
+def test_live_bundle_swap_keeps_the_visitors_place(open_page):
+    from tests.layout.controls import FINAL_WEEK, LEAGUE, SITE_DATA, _trigger_check, live_bundle
+    page, relay, ctx = open_view(open_page, "games-final", 1280)
+    page.click(".game-card[data-card='0'] .view-toggle button[data-view='model']")
+    page.wait_for_timeout(300)
+    relay.live = live_bundle(SITE_DATA, LEAGUE, FINAL_WEEK, "Week 10 (live)")
+    _trigger_check(page)
+    assert "Week 10 (live)" in week_labels(page), "the page shows the bundle's copy"
+    assert page.eval_on_selector("#games-week", "s => s.value") == "10"
+    assert page.get_attribute(".game-card[data-card='0'] .view-toggle button[data-view='model']", "aria-pressed") == "true"
+    assert page.locator("#refresh-note").inner_text() == "Updated just now" or not page.locator("#refresh-btn").is_visible()
+
+
+def test_older_bundle_and_relay_down_are_ignored(open_page):
+    from tests.layout.controls import FINAL_WEEK, LEAGUE, SITE_DATA, _trigger_check, live_bundle
+    page, relay, ctx = open_view(open_page, "games-final", 1280)
+    relay.live = live_bundle(SITE_DATA, LEAGUE, FINAL_WEEK, "Week 10 (old)", generated_at="2000-01-01T00:00:00+00:00")
+    _trigger_check(page)
+    assert "Week 10 (old)" not in week_labels(page), "a bundle older than the deployed data is ignored"
+    relay.live = "abort"
+    _trigger_check(page)
+    assert page.locator(".game-card").count() > 0 and page.eval_on_selector("#games-week", "s => s.value") == "10"
+
+
+@pytest.mark.parametrize("status, note, disabled", [
+    ({"available": False, "minutes": 0, "reason": "live", "mode": "live"}, "Live updates on", True),
+    ({"available": False, "minutes": 1, "reason": "running", "mode": "quiet"}, "Refresh running", True),
+    ({"available": False, "minutes": 3, "reason": "cooldown", "mode": "quiet"}, "Available in 3 min", True),
+])
+def test_refresh_note_by_relay_status(open_page, relay_url, status, note, disabled):
+    from tests.layout.conftest import Relay
+    if not relay_url:
+        pytest.skip("the export carries no relay address")
+    relay = Relay()
+    relay.status = status
+    page, _ = open_page("index.html", 390, relay)
+    assert page.locator("#refresh-note").inner_text() == note
+    assert page.locator("#refresh-btn").is_disabled() is disabled
+
+
+def test_started_refresh_says_back_in_a_minute(open_page, relay_url):
+    from tests.layout.controls import refresh_answer
+    if not relay_url:
+        pytest.skip("the export carries no relay address")
+    page, relay = open_page("index.html", 390)
+    refresh_answer(202, {"started": True, "minutes": 5, "mode": "quiet"})(page, relay, {})
+    assert page.locator("#refresh-note").inner_text() == "Started, back in ~1 min"
+    assert "about a minute" in page.get_attribute("#refresh-note", "title")
+
+
 WIDE_FONT = "* { font-family: Verdana, 'DejaVu Sans', sans-serif !important; }"
 
 

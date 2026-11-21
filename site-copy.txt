@@ -58,62 +58,62 @@ TEXT:
 Click a header to sort, a row to highlight it in the charts below; hover a % for the change from last week.
 
 [PRED-07] rating chart description: rating
-WHERE: site/app.js line 29 (generated)
+WHERE: site/app.js line 30 (generated)
 TEXT:
 Openskill rating of each manager's weekly points rank; 1000 is average
 
 [PRED-09] rating chart description: z-score
-WHERE: site/app.js line 30 (generated)
+WHERE: site/app.js line 31 (generated)
 TEXT:
 Average number of standard deviations above or below that week's league average score
 
 [PRED-14] summary line: live week
-WHERE: site/app.js line 221 (generated)
+WHERE: site/app.js line 222 (generated)
 TEXT:
 Live: week ${L.live.week}, ${L.live.games_final} of ${L.live.games_total} games final
 
 [PRED-15] summary line: before or after a week
-WHERE: site/app.js line 222 (generated)
+WHERE: site/app.js line 223 (generated)
 TEXT:
 After week ${L.as_of_week} of ${L.regular_season_weeks}
 
 [PRED-16] summary line under the league title
-WHERE: site/app.js line 223 (generated)
+WHERE: site/app.js line 224 (generated)
 TEXT:
 ${asOf} · updated ${formatDate(L.generated_at)} · ${L.runs.toLocaleString()} simulations
 
 [PRED-17] odds chart note (a team highlighted)
-WHERE: site/app.js line 580 (generated)
+WHERE: site/app.js line 581 (generated)
 TEXT:
 ${sel.display_name || sel.team_name} is highlighted. Click the team again to clear.
 
 [PRED-18] odds chart note (nothing highlighted)
-WHERE: site/app.js line 581 (generated)
+WHERE: site/app.js line 582 (generated)
 TEXT:
 Hover for every team's forecast after a given week; Click a line or a table row to highlight one team.
 
 [PRED-19] rating chart: no ratings yet
-WHERE: site/app.js line 657 (generated)
+WHERE: site/app.js line 658 (generated)
 TEXT:
 Manager ratings are not yet available for this league.
 
 [PRED-20] rating chart note (a manager highlighted)
-WHERE: site/app.js line 788 (generated)
+WHERE: site/app.js line 789 (generated)
 TEXT:
 ${sel.label} is highlighted. Click the line again to clear.
 
 [PRED-21] rating chart note (follows the description above)
-WHERE: site/app.js line 789 (generated)
+WHERE: site/app.js line 790 (generated)
 TEXT:
 ${metric.note}. Regular-season only.
 
 [PRED-22] generated text
-WHERE: site/app.js line 750 (generated)
+WHERE: site/app.js line 751 (generated)
 TEXT:
 ${w.season}, preseason (after reversion)
 
 [PRED-23] generated text
-WHERE: site/app.js line 750 (generated)
+WHERE: site/app.js line 751 (generated)
 TEXT:
 ${w.season}, after week ${w.week}
 
@@ -128,72 +128,72 @@ TEXT:
 Games are not yet available for this league: the game forecasts have not been exported.
 
 [GAME-02] page note: finished week (before the projection log)
-WHERE: site/games.js line 182 (generated)
+WHERE: site/games.js line 181 (generated)
 TEXT:
 Final. Shown against the forecast made before the week (after week ${W.forecast_as_of}), from before the Sleeper projection log began. A check marks the winner; the lines on each chart are the actual scores.
 
 [GAME-03] page note: finished week
-WHERE: site/games.js line 183 (generated)
+WHERE: site/games.js line 182 (generated)
 TEXT:
 Final. Shown against the forecast of record: the lineups the managers started, each player at his last projection before kickoff. A check marks the winner; the lines on each chart are the actual scores.
 
 [GAME-04] page note: upcoming week
-WHERE: site/games.js line 185 (generated)
+WHERE: site/games.js line 184 (generated)
 TEXT:
 Forecast from the simulation run ${formatTime(W.generated_at)} (after week ${W.forecast_as_of}), 10,000 simulations per game. Each chart shows the spread of simulated scores.
 
 [GAME-05] page note add-on: playoff weeks
-WHERE: site/games.js line 187 (generated)
+WHERE: site/games.js line 186 (generated)
 TEXT:
 Playoff pairings are forecast: teams seeded by expected finish, the favourite advancing; each game says how often that pairing happened in the simulations.
 
 [GAME-06] page note add-on: model lineups
-WHERE: site/games.js line 189 (generated)
+WHERE: site/games.js line 188 (generated)
 TEXT:
 Lineups are the model's best projected lineup; players listed as out can still appear in it until their projection drops.
 
 [GAME-07] page note: live week
-WHERE: site/games.js line 191 (generated)
+WHERE: site/games.js line 190 (generated)
 TEXT:
 Live, from the run ${formatTime(W.generated_at)}. Players whose games have started are locked in the slot their manager started them in: final scores count as they are, games in progress count points so far plus the projection for the time left. Injuries or benchings during a game only show once it is final. The site refreshes before and after each slate of games.
 
 [GAME-08] page note add-on: win probability added
-WHERE: site/games.js line 195 (generated)
+WHERE: site/games.js line 194 (generated)
 TEXT:
 Percentages beside scored players are win probability added: how much that score moved the team's win probability against the pre-kickoff forecast, everyone else at their Sleeper projections. They show the size of each swing and do not add up to the team's total.
 
 [GAME-09] lineup choices tooltip
-WHERE: site/games.js line 220 (generated)
+WHERE: site/games.js line 219 (generated)
 TEXT:
 <span class="choices ${cls}" title="Points vs the model lineup: what the manager's starters scored minus what the model's picks scored">Lineup choices: ${v > 0 ? "+" : ""}${v.toFixed(1)}</span>
 
 [GAME-10] generated text
-WHERE: site/games.js line 212 (generated)
+WHERE: site/games.js line 211 (generated)
 TEXT:
 · forecast, happens in ${Math.round((g.frequency || 0) * 100)}% of simulations
 
 [GAME-11] generated text
-WHERE: site/games.js line 423 (generated)
+WHERE: site/games.js line 422 (generated)
 TEXT:
 First-round bye · #${b.seed} seed in the ${where}
 
 [GAME-12] generated text
-WHERE: site/games.js line 474 (generated)
+WHERE: site/games.js line 473 (generated)
 TEXT:
 No games stored for this week.
 
 [GAME-13] score label: upcoming games
-WHERE: site/games.js line 233 (generated)
+WHERE: site/games.js line 232 (generated)
 TEXT:
 forecast
 
 [GAME-14] score label: finished and live games (after the forecast)
-WHERE: site/games.js line 231 (generated)
+WHERE: site/games.js line 230 (generated)
 TEXT:
 forecasted
 
 [GAME-15] generated text
-WHERE: site/games.js line 43 (generated)
+WHERE: site/games.js line 45 (generated)
 TEXT:
 Sleeper has not scored this week yet, so the result is not official
 
@@ -608,37 +608,37 @@ stayed out of the bottom two
 ##############################################################################
 
 [MSG-01] refresh: held
-WHERE: site/refresh.js line 40 (generated)
+WHERE: site/refresh.js line 50 (generated)
 TEXT:
 A refresh ran recently. The next one can start in ${state.held} min.
 
 [MSG-02] refresh: last refreshed
-WHERE: site/refresh.js line 43 (generated)
+WHERE: site/refresh.js line 53 (generated)
 TEXT:
 Data last refreshed ${new Date(state.lastRefresh).toLocaleString()}.
 
 [MSG-03] refresh: did not finish
-WHERE: site/refresh.js line 69 (generated)
+WHERE: site/refresh.js line 83 (generated)
 TEXT:
-No new data arrived within 20 minutes of the refresh starting. Try again later.
+No new data arrived within 10 minutes of the refresh starting. Try again later.
 
 [MSG-04] refresh: started
-WHERE: site/refresh.js line 82 (generated)
+WHERE: site/refresh.js line 98 (generated)
 TEXT:
-Refresh started. The new data shows here by itself in about 5 minutes.
+Refresh started. The new data shows here by itself in about a minute.
 
 [MSG-05] refresh: could not start
-WHERE: site/refresh.js line 88 (generated)
+WHERE: site/refresh.js line 109 (generated)
 TEXT:
 Could not start a refresh. Try again later.
 
 [MSG-06] refresh: unreachable
-WHERE: site/refresh.js line 91 (generated)
+WHERE: site/refresh.js line 112 (generated)
 TEXT:
 Could not reach the refresh service. Try again later.
 
 [MSG-07] new version note
-WHERE: site/updates.js line 29 (generated)
+WHERE: site/updates.js line 37 (generated)
 TEXT:
 A new version of the site is available.
 
@@ -653,24 +653,54 @@ TEXT:
 Loading&hellip;
 
 [MSG-10] generated text
-WHERE: site/refresh.js line 76 (generated)
+WHERE: site/refresh.js line 90 (generated)
 TEXT:
 Asking for a data refresh…
 
 [MSG-11] generated text
-WHERE: site/refresh.js line 82 (generated)
+WHERE: site/refresh.js line 98 (generated)
 TEXT:
-Started, back in ~5 min
+Started, back in ~1 min
 
 [MSG-12] generated text
-WHERE: site/refresh.js line 88 (generated)
+WHERE: site/refresh.js line 109 (generated)
 TEXT:
 Couldn't start, try later
 
 [MSG-13] generated text
-WHERE: site/refresh.js line 91 (generated)
+WHERE: site/refresh.js line 112 (generated)
 TEXT:
 Couldn't start, try later
+
+[MSG-14] generated text
+WHERE: site/refresh.js line 43 (generated)
+TEXT:
+Live updates on
+
+[MSG-15] generated text
+WHERE: site/refresh.js line 44 (generated)
+TEXT:
+Games are in progress, so the data refreshes by itself about every minute.
+
+[MSG-16] generated text
+WHERE: site/refresh.js line 46 (generated)
+TEXT:
+Refresh running
+
+[MSG-17] generated text
+WHERE: site/refresh.js line 47 (generated)
+TEXT:
+A refresh is already running. The new data shows here by itself when it lands.
+
+[MSG-18] generated text
+WHERE: site/refresh.js line 97 (generated)
+TEXT:
+Started, back in ~5 min
+
+[MSG-19] generated text
+WHERE: site/refresh.js line 97 (generated)
+TEXT:
+Refresh started. The new data shows here by itself in about 5 minutes.
 
 
 ##############################################################################

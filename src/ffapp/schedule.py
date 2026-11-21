@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import logging
 from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 
 from ffapp.sleeper import SleeperClient, SleeperError
 from ffapp.store import Store
@@ -212,12 +212,13 @@ class Schedule:
         return {t for g in data["games"] for t in (g["home"], g["away"])}
 
 
-# -- when to run the refresh ------------------------------------------------------------------
+# -- the run record and the schedule summary ----------------------------------------------------
+#
+# Both live under data/refresh/, which is rebuilt each run and never committed. The summary is
+# what the refresh relay's clock decides the refresh mode from (docs/refresh-modes.md); the cold
+# run uploads it to the relay when its hash changes.
 
-KICKOFF_WINDOW = timedelta(minutes=60)
-SPACING = timedelta(hours=3)
-GAME_LENGTH = timedelta(hours=4)  # a final game counts as new when it kicked off after (last run - this)
-MODES = ("check", "daily", "manual")
+SUMMARY_FILE = "schedule_summary.json"
 
 
 def last_run_path(store: Store):
@@ -240,27 +241,49 @@ def write_last_run(store: Store, at: datetime) -> None:
     write_json(last_run_path(store), {"started_at": at.isoformat(timespec="seconds")})
 
 
-@dataclass
-class RunDecision:
-    run: bool
-    reason: str
+def schedule_summary(store: Store, league_keys, state: dict | None) -> dict:
+    """What the relay's clock needs: whether it is the off-season, and every stored game of the
+    current and next NFL week with its kickoff (epoch ms), slate (its kickoff time) and state.
+
+    Off-season: no configured league's latest stored season is in season (Sleeper's league status
+    ``in_season``). Without Sleeper's NFL state the summary carries no games.
+    """
+    statuses = []
+    for key in league_keys:
+        seasons = store.seasons(key)
+        league = store.read_league(key, seasons[-1]) if seasons else None
+        statuses.append(str((league or {}).get("status") or ""))
+    offseason = "in_season" not in statuses
+    season = str((state or {}).get("season") or "")
+    week = int((state or {}).get("week") or 0)
+    games = []
+    if season and week and not offseason:
+        for w in (week, week + 1):
+            for game in (store.read_nfl_week(season, w) or {}).get("games") or []:
+                kickoff = parse_iso(game["kickoff_utc"])
+                games.append({
+                    "id": f"{season}-{w:02d}-{game['away']}@{game['home']}",
+                    "week": w,
+                    "kickoff": int(kickoff.timestamp() * 1000),
+                    "slate": kickoff.isoformat(),
+                    "state": game.get("state") or "scheduled",
+                })
+    games.sort(key=lambda g: (g["kickoff"], g["id"]))
+    return {"season": season, "week": week, "offseason": offseason, "games": games}
 
 
-def should_run(client: SleeperClient, store: Store, now: datetime, mode: str = "check") -> RunDecision:
-    """Decide whether the scheduled job runs the full refresh now (see the refresh-scheduling spec)."""
-    report = refresh_schedule(client, store)
-    if mode in ("daily", "manual"):
-        return RunDecision(True, f"{mode} run" + ("" if report.ok else " (schedule unavailable: " + "; ".join(report.errors) + ")"))
-    if not report.ok:
-        return RunDecision(False, "scoreboard unavailable: " + "; ".join(report.errors))
-    last = read_last_run(store)
-    if last is not None and now - last < SPACING:
-        return RunDecision(False, f"last full run started {int((now - last).total_seconds() // 60)} min ago")
-    for season, week in report.written:
-        for game in (store.read_nfl_week(season, week) or {}).get("games", []):
-            kickoff = parse_iso(game["kickoff_utc"])
-            if game["state"] == "scheduled" and now < kickoff <= now + KICKOFF_WINDOW:
-                return RunDecision(True, f"{game['away']} at {game['home']} kicks off at {game['kickoff_utc']}")
-            if game["state"] == "final" and (last is None or kickoff > last - GAME_LENGTH):
-                return RunDecision(True, f"{game['away']} at {game['home']} went final since the last run")
-    return RunDecision(False, "no kickoff within the hour and no game final since the last run")
+def summary_hash(summary: dict) -> str:
+    import hashlib
+    import json
+
+    return hashlib.sha256(json.dumps(summary, sort_keys=True).encode("utf-8")).hexdigest()[:16]
+
+
+def write_summary(store: Store, summary: dict) -> bool:
+    """Write the summary; True when it differs from the one stored (so the relay needs it)."""
+    from ffapp.store import read_json, write_json
+
+    path = store.root / "refresh" / SUMMARY_FILE
+    old = read_json(path) if path.exists() else None
+    write_json(path, summary)
+    return old is None or summary_hash(old) != summary_hash(summary)

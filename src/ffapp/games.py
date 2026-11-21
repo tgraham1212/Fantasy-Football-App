@@ -380,7 +380,8 @@ def record_from_pre_week(store: Store, league_key: str, data: SeasonData, week: 
 
 
 def update_games(store: Store, config: Config, league_key: str, *, now: datetime | None = None, force_records: bool = False) -> list[int]:
-    """Append log entries for the current and later weeks and write records for final weeks; returns weeks written."""
+    """Append log entries for the current week, refresh later weeks' forecasts and write records for
+    final weeks; returns weeks written. Later weeks are logged once they become the current week."""
     now = now or datetime.now(timezone.utc)
     season = current_season(store, league_key)
     if season is None:
@@ -410,13 +411,14 @@ def update_games(store: Store, config: Config, league_key: str, *, now: datetime
         if week > as_of and str(week) in forecasts:
             forecast = forecasts[str(week)]
             stored["forecast"] = {"as_of_week": as_of, "generated_at": payload.get("generated_at"), "live": (payload.get("live") or {}).get("week") == week, **forecast}
-            projections = store.read_projections(season, week)
-            scoring = resolve_settings(config, league_key, data.league, week)
-            for game in forecast["games"]:
-                entries = stored["log"].setdefault(game["key"], [])
-                entry = build_entry(game, entries, rosters, projections, scoring, schedule, week, crosswalk, now)
-                if not entries or not same_entry(entries[-1], entry):
-                    entries.append(entry)
+            if week == as_of + 1:  # only the current week is logged
+                projections = store.read_projections(season, week)
+                scoring = resolve_settings(config, league_key, data.league, week)
+                for game in forecast["games"]:
+                    entries = stored["log"].setdefault(game["key"], [])
+                    entry = build_entry(game, entries, rosters, projections, scoring, schedule, week, crosswalk, now)
+                    if not entries or not same_entry(entries[-1], entry):
+                        entries.append(entry)
             if week == live_week_no and data.matchups.get(week):
                 nz, dr = models()
                 stored["baseline"] = live_baseline(store, config, league_key, data, week, stored["log"], nz, dr)

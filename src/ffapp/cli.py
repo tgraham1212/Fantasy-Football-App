@@ -13,8 +13,10 @@ from ffapp.config import DEFAULT_CONFIG_PATH, Config, ConfigError, load_config
 from ffapp.sleeper import SleeperClient
 from ffapp.store import DEFAULT_DATA_ROOT, Store
 
-COMMANDS = ("should-run", "sync", "projections", "stats", "schedule", "snapshot", "ratings", "replacement", "war", "simulate", "games", "verify-brackets", "export", "refresh", "calibrate", "stamp-site", "site-copy")
+COMMANDS = ("sync", "projections", "stats", "schedule", "snapshot", "ratings", "replacement", "war", "simulate", "games", "verify-brackets", "export", "refresh", "build", "hot", "site-hash", "calibrate", "stamp-site", "site-copy")
 log = logging.getLogger("ffapp")
+# The cold run's modes, passed by the relay's clock (docs/refresh-modes.md).
+REFRESH_MODES = ("full", "quiet", "live", "slate", "offseason", "daily", "manual")
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -37,8 +39,6 @@ def build_parser() -> argparse.ArgumentParser:
     stats = sub.add_parser("stats", help="Refresh stored weekly player stats (actual stat lines)")
     stats.add_argument("--backfill", action="store_true", help="Fetch every season in scope, not just the current one")
 
-    gate = sub.add_parser("should-run", help="Decide whether the scheduled job runs the full refresh now (prints run=true|false)")
-    gate.add_argument("--mode", choices=("check", "daily", "manual"), default="check", help="daily and manual always run")
     sched = sub.add_parser("schedule", help="Store the NFL schedule (kickoffs, game states) for the current and next week into data/nfl")
     sched.add_argument("--all", action="store_true", help="Store every week of the current season")
     sub.add_parser("snapshot", help="Capture ESPN start-percentage snapshots and the player crosswalk into data/espn")
@@ -62,8 +62,17 @@ def build_parser() -> argparse.ArgumentParser:
     cal.add_argument("--no-replacement-floor", action="store_true", help="Replay without the replacement-level lineup floor (evaluation only)")
     cal.add_argument("--no-roster-drift", action="store_true", help="Replay without roster drift (evaluation only)")
     sub.add_parser("export", help="Write site/data/*.json for the website")
-    refresh = sub.add_parser("refresh", help="sync, projections, stats, schedule, snapshot, trending, ratings, replacement, war, simulate, games and export in order")
+    refresh = sub.add_parser("refresh", help="The cold run: sync, projections, stats, schedule, snapshot, trending, ratings, replacement, war, simulate, slates, games and export in order")
+    refresh.add_argument("--mode", choices=REFRESH_MODES, default="full",
+                         help="live skips the simulation (the hot runs own the live forecast); every other mode runs every step")
     refresh.set_defaults(full=False, backfill=False, backfill_season=False, runs=10_000, seed=None)
+    build = sub.add_parser("build", help="Rebuild every derived file (ratings, replacement, WAR, odds, game views, site/data) offline from the committed records")
+    build.set_defaults(backfill_season=False, runs=10_000, seed=None)
+    hot = sub.add_parser("hot", help="The hot run: this week's live scores, forecast and game cards into one bundle file (never changes the data folder)")
+    hot.add_argument("--out", type=Path, required=True, help="where to write the bundle JSON")
+    hot.add_argument("--runs", type=int, default=10_000, help="Simulation runs (default 10000)")
+    site_hash = sub.add_parser("site-hash", help="Print a hash of the site folder that ignores refresh times (deploy only when it changes)")
+    site_hash.add_argument("--site", type=Path, default=Path("site"), help="site directory (default site/)")
     stamp = sub.add_parser("stamp-site", help="Before a deploy: stamp script and stylesheet URLs with the site code fingerprint and write version.json")
     stamp.add_argument("--site", type=Path, default=Path("site"), help="site directory (default site/)")
     copy = sub.add_parser("site-copy", help="Regenerate site-copy.txt from the site code; --check reports drift and pending edits; --apply writes confirmed edits into the code")
@@ -130,21 +139,6 @@ def cmd_stats(ctx: Context) -> int:
     return 0 if report.ok else 1
 
 
-def cmd_should_run(ctx: Context) -> int:
-    from datetime import datetime, timezone
-
-    from ffapp.schedule import should_run
-
-    decision = should_run(ctx.client, ctx.store, datetime.now(timezone.utc), ctx.args.mode)
-    line = f"run={'true' if decision.run else 'false'}"
-    print(f"{line}  ({decision.reason})")
-    output = os.environ.get("GITHUB_OUTPUT")
-    if output:
-        with open(output, "a", encoding="utf-8") as fh:
-            fh.write(line + "\n")
-    return 0
-
-
 def cmd_schedule(ctx: Context) -> int:
     from ffapp.schedule import refresh_schedule
 
@@ -153,7 +147,31 @@ def cmd_schedule(ctx: Context) -> int:
         print(f"wrote    {ctx.store.nfl_week_path(season, week)}")
     for message in report.errors:
         print(f"FAILED   schedule {message}", file=sys.stderr)
+    write_schedule_summary(ctx)
     return 0 if report.ok else 1
+
+
+def write_schedule_summary(ctx: Context) -> None:
+    """The relay's clock decides the refresh mode from this summary; the workflow uploads it when
+    it changed (``summary_changed=true`` in the step outputs)."""
+    from ffapp.schedule import schedule_summary, write_summary
+    from ffapp.sleeper import SleeperError
+
+    try:
+        state = ctx.client.state()
+    except SleeperError as exc:
+        print(f"FAILED   schedule summary: {exc}", file=sys.stderr)
+        return
+    changed = write_summary(ctx.store, schedule_summary(ctx.store, ctx.config.leagues, state))
+    print(f"summary  {'changed' if changed else 'unchanged'}")
+    github_output("summary_changed", "true" if changed else "false")
+
+
+def github_output(name: str, value: str) -> None:
+    output = os.environ.get("GITHUB_OUTPUT")
+    if output:
+        with open(output, "a", encoding="utf-8") as fh:
+            fh.write(f"{name}={value}\n")
 
 
 def cmd_snapshot(ctx: Context) -> int:
@@ -317,6 +335,16 @@ def cmd_simulate(ctx: Context) -> int:
     return 0 if failed == 0 else 1
 
 
+def cmd_slates(ctx: Context) -> int:
+    """Store the live forecast of every slate that has just gone final (data/odds/.../slates_NN.json)."""
+    from ffapp.slates import capture_slates
+
+    for key in ctx.config.leagues:
+        for slate in capture_slates(ctx.store, key):
+            print(f"slate    {key} {slate} stored")
+    return 0
+
+
 def cmd_calibrate(ctx: Context) -> int:
     from ffapp.calibrate import calibration_dir, run_calibration
 
@@ -368,7 +396,10 @@ def cmd_export(ctx: Context) -> int:
 
 
 def cmd_refresh(ctx: Context) -> int:
-    """The scheduled pipeline: each step runs only if the one before succeeded.
+    """The cold run: each step runs only if the one before succeeded.
+
+    ``--mode live`` skips the simulation and the slate forecasts: during games the hot runs own the
+    live forecast, and the slate-final run (``--mode slate``) simulates and stores the slate.
 
     Steps in ``OPTIONAL_STEPS`` may fail without stopping the run (the ESPN snapshot:
     WAR works from the snapshots already stored and the odds must not depend on ESPN);
@@ -381,7 +412,11 @@ def cmd_refresh(ctx: Context) -> int:
     started = datetime.now(timezone.utc)  # stored only once the run succeeds, so a failed run changes nothing
     ctx.args.refresh_started = started  # the export step publishes it as the site's "Updated" time
     skipped: list[str] = []
+    mode = getattr(ctx.args, "mode", "full")
     for name, handler in REFRESH_STEPS:
+        if mode == "live" and name in LIVE_SKIPS:
+            print(f"== {name} (skipped in live mode)")
+            continue
         print(f"== {name}")
         code = handler(ctx)
         if code != 0 and name in OPTIONAL_STEPS:
@@ -393,6 +428,45 @@ def cmd_refresh(ctx: Context) -> int:
     write_last_run(ctx.store, started)
     for reason in skipped:
         print(warning_line("Refresh skipped a step", reason))
+    return 0
+
+
+def cmd_build(ctx: Context) -> int:
+    """Rebuild every derived file offline from the committed records (a fresh clone, a lost cache)."""
+    for name, handler in BUILD_STEPS:
+        print(f"== {name}")
+        code = handler(ctx)
+        if code != 0:
+            print(f"build stopped: {name} failed (exit {code})", file=sys.stderr)
+            return code
+    return 0
+
+
+def cmd_hot(ctx: Context) -> int:
+    from ffapp.hot import HotError, run_hot
+    from ffapp.store import write_json
+
+    try:
+        result = run_hot(ctx.client, ctx.config, ctx.store.root, runs=ctx.args.runs)
+    except (HotError, ValueError, FileNotFoundError) as exc:
+        print(f"FAILED   hot: {exc}", file=sys.stderr)
+        return 1
+    for note in result.notes:
+        print(note)
+    from ffapp.hot import bundle_meta
+
+    write_json(ctx.args.out, result.bundle)
+    meta = Path(f"{ctx.args.out}.meta")
+    meta.write_text(bundle_meta(result.bundle), encoding="ascii")
+    print(f"wrote    {ctx.args.out} (hash {result.bundle['hash']}) and {meta}")
+    github_output("hash", result.bundle["hash"])
+    return 0
+
+
+def cmd_site_hash(args) -> int:
+    from ffapp.stamp import site_hash
+
+    print(site_hash(args.site))
     return 0
 
 
@@ -414,13 +488,23 @@ REFRESH_STEPS = (
     ("replacement", cmd_replacement),
     ("war", cmd_war),
     ("simulate", cmd_simulate),
+    ("slates", cmd_slates),
     ("games", cmd_games),
     ("export", cmd_export),
 )
 OPTIONAL_STEPS = frozenset({"schedule", "snapshot", "trending"})
+LIVE_SKIPS = frozenset({"simulate", "slates"})
+# Offline: no step here may call Sleeper or ESPN.
+BUILD_STEPS = (
+    ("ratings", cmd_ratings),
+    ("replacement", cmd_replacement),
+    ("war", cmd_war),
+    ("simulate", cmd_simulate),
+    ("games", cmd_games),
+    ("export", cmd_export),
+)
 
 HANDLERS = {
-    "should-run": cmd_should_run,
     "sync": cmd_sync,
     "projections": cmd_projections,
     "stats": cmd_stats,
@@ -435,6 +519,8 @@ HANDLERS = {
     "verify-brackets": cmd_verify_brackets,
     "export": cmd_export,
     "refresh": cmd_refresh,
+    "build": cmd_build,
+    "hot": cmd_hot,
     "calibrate": cmd_calibrate,
 }
 
@@ -451,6 +537,8 @@ def main(argv: Sequence[str] | None = None, client: SleeperClient | None = None)
         from ffapp.stamp import stamp_site
         print(f"stamped {args.site} with {stamp_site(args.site)}")
         return 0
+    if args.command == "site-hash":  # needs no league config
+        return cmd_site_hash(args)
     if args.command == "site-copy":  # needs no league config
         return cmd_site_copy(args)
     try:

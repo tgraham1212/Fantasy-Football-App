@@ -256,9 +256,10 @@ Assumptions and decisions:
 ================================================================
 10. GAME FORECASTS
 ================================================================
-Code:          src/ffapp/forecast.py, src/ffapp/games.py
+Code:          src/ffapp/forecast.py, src/ffapp/games.py, src/ffapp/slates.py
 Data sources:  The simulation runs; the game log of projections frozen at kickoff
-               (data/games/<league>/<season>/week_NN.json).
+               (data/games/<league>/<season>/week_NN.json); slate forecasts
+               (data/odds/<league>/<season>/slates_NN.json).
 Depends on:    4, 5, 6, 7
 Formula:
   per game, from the runs: mean score per team; win probability = runs won / runs
@@ -268,6 +269,10 @@ Formula:
   10,000 times with one week of drift and a seed fixed per league, season and week
   projected playoff games: teams seeded by expected seed; the team with the higher win
   probability advances (in a toilet bowl, the one more likely to score lower)
+  game log: one entry per game of the current week per cold run (every 15 minutes in season),
+  appended only when a lineup, projection, kickoff state or win probability changed
+  slate forecast: the live forecast stored by the first simulating cold run after every game of
+  a slate (games sharing a kickoff time) is final, if it kicked off within the last 8 hours
 In plain English:
   Every game gets its own forecast from the same simulation. Once a week is over, each
   game also gets a fixed "forecast of record" to compare with what happened.
@@ -276,6 +281,13 @@ Assumptions and decisions:
     (owner's choice). Weeks before the log existed use the forecast made the week before.
   - A pairing only counts as real once the week before it is final, because Sleeper fills
     its bracket from the live standings all season.
+  - Only the current week is logged: a later week is logged from when it becomes current,
+    which is days before its first kickoff, so its kickoff-frozen projections are unaffected.
+    With cold runs every 15 minutes, a player's frozen projection is at most 15 minutes older
+    than his kickoff (it was up to 3 hours with the old hourly check).
+  - The live forecast between cold runs comes from the hot runs (docs/refresh-modes.md) and is
+    not logged; cold runs during games skip the simulation, so the log's win probability then
+    is the latest cold forecast, and the slate-final run simulates afresh.
 
 
 ================================================================

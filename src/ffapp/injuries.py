@@ -99,12 +99,12 @@ def save_player_details(store: Store, state: dict, players_payload: dict, roster
 def save_trending(store: Store, client, state: dict, now) -> Path:
     """Save Sleeper's trending adds with the time saved (one file per day; a later refresh that day
     replaces it); returns the path written."""
-    from ffapp.store import write_json
+    from ffapp.store import write_if_changed
 
     adds = client.trending_adds()
     season = str(state.get("season") or now.year)
     path = store.trending_path(season, now.strftime("%Y-%m-%d"))
-    write_json(path, {"saved_at": now.isoformat(timespec="seconds"), "adds": adds})
+    write_if_changed(path, {"saved_at": now.isoformat(timespec="seconds"), "adds": adds}, ("saved_at",))  # unchanged adds: no new record
     return path
 
 

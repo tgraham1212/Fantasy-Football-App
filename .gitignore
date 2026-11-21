@@ -7,5 +7,19 @@ dist/
 .venv/
 
 # Wrangler's local login and account cache (never commit)
+.wrangler/
 relay/.wrangler/
 site/version.json
+
+# Rebuilt by every run, never committed (docs/refresh-modes.md, "Where Data Lives"; keep in step
+# with DERIVED_PATHS in src/ffapp/store.py). Build locally with: python -X utf8 -m ffapp build
+site/data/
+data/projections-future/
+data/games-derived/
+data/nfl-live/
+data/model/
+data/ratings/
+data/replacement/
+data/war/
+data/odds/*/*/live.json
+data/refresh/

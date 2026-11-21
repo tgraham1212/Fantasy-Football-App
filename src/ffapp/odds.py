@@ -127,6 +127,19 @@ def lineup_from_projections(
     return apply_floor(lineup, slots, floor) if floor is not None else lineup
 
 
+def forecast_projections(store: Store, season: str, week: int) -> dict[str, dict]:
+    """A future week's projections; when they are missing (the rebuilt future weeks were not in the
+    build cache), the latest earlier stored week stands in, and the fallback is logged."""
+    projections = store.read_projections(season, week)
+    if projections:
+        return projections
+    earlier = [w for w in store.projection_weeks(season) if w < week]
+    if not earlier:
+        return projections
+    log.warning("projections %s week %d missing: using week %d instead", season, week, earlier[-1])
+    return store.read_projections(season, earlier[-1])
+
+
 def replacement_floor_for_week(
     store: Store, config: Config, league_key: str, data: SeasonData, week: int, rostered: set[str]
 ) -> dict[str, float]:
@@ -180,7 +193,7 @@ def build_inputs(
     strength: dict[int, dict[int, float]] = {}
     floors: dict[int, dict[str, float]] = {}
     for week in future_weeks:
-        projections = store.read_projections(data.season, week)
+        projections = forecast_projections(store, data.season, week)
         scoring = resolve_settings(config, league_key, data.league, week)
         floor = None
         if replacement_floor:
