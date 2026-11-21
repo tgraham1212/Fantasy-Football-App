@@ -3030,7 +3030,7 @@
        "pid": "13296",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.1,
+       "war": -0.09,
        "week": 1
       },
       {
@@ -3048,7 +3048,7 @@
        "pid": "13337",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.25,
+       "war": -0.01,
        "week": 2
       },
       {
@@ -3068,7 +3068,7 @@
        "pid": "11792",
        "pos": "K",
        "via": "waiver",
-       "war": 0.26,
+       "war": 0.25,
        "week": 4
       },
       {
@@ -3084,7 +3084,7 @@
        "pid": "11581",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.38,
+       "war": -0.26,
        "week": 5
       },
       {
@@ -3092,7 +3092,7 @@
        "pid": "13301",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.07,
+       "war": -0.06,
        "week": 5
       },
       {
@@ -3155,6 +3155,15 @@
        "via": "waiver",
        "war": null,
        "week": 10
+      },
+      {
+       "name": "Justice Hill",
+       "pending": true,
+       "pid": "5995",
+       "pos": "RB",
+       "via": "free_agent",
+       "war": null,
+       "week": 11
       }
      ],
      "dropped": [
@@ -3198,7 +3207,7 @@
        "pid": "13296",
        "pos": "WR",
        "via": "waiver",
-       "war": 0.18,
+       "war": 0.21,
        "week": 3
       },
       {
@@ -3248,7 +3257,7 @@
        "pid": "13301",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.09,
+       "war": -0.06,
        "week": 5
       },
       {
@@ -3265,7 +3274,7 @@
        "pid": "11581",
        "pos": "RB",
        "via": "waiver",
-       "war": -0.11,
+       "war": -0.08,
        "week": 9
       },
       {
@@ -3286,6 +3295,15 @@
        "via": "waiver",
        "war": null,
        "week": 10
+      },
+      {
+       "name": "Tampa Bay Buccaneers",
+       "pending": true,
+       "pid": "TB",
+       "pos": "DEF",
+       "via": "free_agent",
+       "war": null,
+       "week": 11
       }
      ],
      "trades": []
@@ -3310,10 +3328,31 @@
      "week": 10
     },
     {
+     "at": "2026-11-21",
+     "fields": {
+      "player": "Justice Hill",
+      "rank": 3
+     },
+     "link": "positions",
+     "type": "trending",
+     "week": 11
+    },
+    {
      "at": "2026-11-19",
      "fields": {
       "body_part": "Finger",
       "player": "Josh Jacobs",
+      "status": "Out"
+     },
+     "link": "positions",
+     "type": "injury",
+     "week": 11
+    },
+    {
+     "at": "2026-11-19",
+     "fields": {
+      "body_part": "Groin",
+      "player": "Kenneth Walker III",
       "status": "Out"
      },
      "link": "positions",
@@ -3450,16 +3489,6 @@
     {
      "at": "2026-10-19",
      "fields": {
-      "player": "Kenneth Walker III",
-      "war": 1
-     },
-     "link": "war",
-     "type": "milestone",
-     "week": 6
-    },
-    {
-     "at": "2026-10-19",
-     "fields": {
       "players": [
        "Trey Smack",
        "Kenneth Walker III",
@@ -3510,6 +3539,16 @@
      },
      "link": "managers",
      "type": "streak",
+     "week": 4
+    },
+    {
+     "at": "2026-10-05",
+     "fields": {
+      "player": "Kenneth Walker III",
+      "war": 1
+     },
+     "link": "war",
+     "type": "milestone",
      "week": 4
     },
     {
@@ -3733,9 +3772,9 @@
     "DEF": 5.27,
     "K": 9.4,
     "QB": 16.17,
-    "RB": 11.55,
-    "TE": 7.26,
-    "WR": 8.7
+    "RB": 9.93,
+    "TE": 6.59,
+    "WR": 8.26
    },
    "rival": {
     "name": "micaelaconnors",
@@ -3760,7 +3799,7 @@
      "nfl_team": "DAL",
      "player_id": "3294",
      "position": "QB",
-     "ppg": 19.77,
+     "ppg": 19.78,
      "slot": "QB",
      "status": null
     },
@@ -3770,19 +3809,19 @@
      "nfl_team": "KC",
      "player_id": "13337",
      "position": "RB",
-     "ppg": 8.7,
+     "ppg": 8.85,
      "slot": "RB",
      "status": null
     },
     {
      "bye": false,
-     "name": "Kenneth Walker III",
-     "nfl_team": "KC",
-     "player_id": "8151",
+     "name": "Justice Hill",
+     "nfl_team": "BAL",
+     "player_id": "5995",
      "position": "RB",
-     "ppg": 21.42,
+     "ppg": 5.78,
      "slot": "RB",
-     "status": "Questionable"
+     "status": null
     },
     {
      "bye": false,
@@ -3790,9 +3829,9 @@
      "nfl_team": "NO",
      "player_id": "13281",
      "position": "WR",
-     "ppg": 8.69,
+     "ppg": 8.68,
      "slot": "WR",
-     "status": "Questionable"
+     "status": null
     },
     {
      "bye": false,
@@ -3800,7 +3839,7 @@
      "nfl_team": "CAR",
      "player_id": "12526",
      "position": "WR",
-     "ppg": 11.87,
+     "ppg": 11.88,
      "slot": "WR",
      "status": null
     },
@@ -3822,7 +3861,7 @@
      "position": "WR",
      "ppg": 8.11,
      "slot": "FLEX",
-     "status": "Questionable"
+     "status": null
     },
     {
      "bye": false,
@@ -3850,9 +3889,19 @@
      "nfl_team": "NE",
      "player_id": "7611",
      "position": "RB",
-     "ppg": 10.44,
+     "ppg": 10.31,
      "slot": "BN",
      "status": null
+    },
+    {
+     "bye": false,
+     "name": "Kenneth Walker III",
+     "nfl_team": "KC",
+     "player_id": "8151",
+     "position": "RB",
+     "ppg": 21.42,
+     "slot": "BN",
+     "status": "Out"
     },
     {
      "bye": true,
@@ -3870,7 +3919,7 @@
      "nfl_team": "SEA",
      "player_id": "9488",
      "position": "WR",
-     "ppg": 22.17,
+     "ppg": 22.16,
      "slot": "BN",
      "status": null
     },
@@ -3880,17 +3929,7 @@
      "nfl_team": "SEA",
      "player_id": "9753",
      "position": "RB",
-     "ppg": 9.04,
-     "slot": "BN",
-     "status": null
-    },
-    {
-     "bye": false,
-     "name": "Tampa Bay Buccaneers",
-     "nfl_team": "TB",
-     "player_id": "TB",
-     "position": "DEF",
-     "ppg": 8.79,
+     "ppg": 9.05,
      "slot": "BN",
      "status": null
     },
@@ -3952,7 +3991,7 @@
      "opp_user": "739272868935974912",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.2357
+     "win_prob": 0.2701
     },
     "points_for": 1190.42,
     "position": 1,
@@ -6549,7 +6588,7 @@
        "pid": "12495",
        "pos": "RB",
        "via": "waiver",
-       "war": 0.12,
+       "war": 0.3,
        "week": 3
       },
       {
@@ -6557,7 +6596,7 @@
        "pid": "3634",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.33,
+       "war": -0.31,
        "week": 4
       },
       {
@@ -6575,7 +6614,7 @@
        "pid": "11439",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.07,
+       "war": -0.04,
        "week": 6
       },
       {
@@ -6583,7 +6622,7 @@
        "pid": "11647",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.52,
+       "war": -0.4,
        "week": 6
       },
       {
@@ -6599,7 +6638,7 @@
        "pid": "9482",
        "pos": "TE",
        "via": "free_agent",
-       "war": -0.19,
+       "war": -0.14,
        "week": 7
       },
       {
@@ -6623,7 +6662,7 @@
        "pid": "7561",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.23,
+       "war": -0.17,
        "week": 8
       },
       {
@@ -6641,7 +6680,7 @@
        "pid": "8676",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.28,
+       "war": -0.24,
        "week": 3
       },
       {
@@ -6666,7 +6705,7 @@
        "pid": "13305",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.66,
+       "war": -0.51,
        "week": 6
       },
       {
@@ -6691,7 +6730,7 @@
        "pid": "3634",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.1,
+       "war": -0.09,
        "week": 7
       },
       {
@@ -6759,7 +6798,7 @@
      "week": 10
     },
     {
-     "at": "2026-11-20",
+     "at": "2026-11-21",
      "fields": {
       "player": "Michael Mayer",
       "rank": 5
@@ -7123,9 +7162,9 @@
     "DEF": 5.27,
     "K": 9.4,
     "QB": 16.17,
-    "RB": 11.55,
-    "TE": 7.26,
-    "WR": 8.7
+    "RB": 9.93,
+    "TE": 6.59,
+    "WR": 8.26
    },
    "rival": {
     "name": "TateFM",
@@ -7150,7 +7189,7 @@
      "nfl_team": "MIN",
      "player_id": "1166",
      "position": "QB",
-     "ppg": 18.35,
+     "ppg": 18.36,
      "slot": "QB",
      "status": null
     },
@@ -7170,7 +7209,7 @@
      "nfl_team": "NYG",
      "player_id": "12481",
      "position": "RB",
-     "ppg": 13.45,
+     "ppg": 13.46,
      "slot": "RB",
      "status": null
     },
@@ -7200,7 +7239,7 @@
      "nfl_team": "BUF",
      "player_id": "10236",
      "position": "TE",
-     "ppg": 8.35,
+     "ppg": 8.34,
      "slot": "TE",
      "status": "Doubtful"
     },
@@ -7210,7 +7249,7 @@
      "nfl_team": "SF",
      "player_id": "5872",
      "position": "WR",
-     "ppg": 10.75,
+     "ppg": 10.74,
      "slot": "FLEX",
      "status": null
     },
@@ -7240,7 +7279,7 @@
      "nfl_team": "JAX",
      "player_id": "11631",
      "position": "WR",
-     "ppg": 4.7,
+     "ppg": 4.72,
      "slot": "BN",
      "status": null
     },
@@ -7342,7 +7381,7 @@
      "opp_user": "739328545955999744",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.3836
+     "win_prob": 0.3849
     },
     "points_for": 879.4,
     "position": 12,
@@ -9646,7 +9685,7 @@
        "pid": "4147",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.16,
+       "war": -0.13,
        "week": 8
       },
       {
@@ -9654,7 +9693,7 @@
        "pid": "4035",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.09,
+       "war": -0.06,
        "week": 9
       },
       {
@@ -9670,7 +9709,7 @@
        "pid": "8122",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.16,
+       "war": -0.13,
        "week": 10
       },
       {
@@ -9678,7 +9717,7 @@
        "pid": "5846",
        "pos": "WR",
        "via": "free_agent",
-       "war": 0.1,
+       "war": 0.11,
        "week": 10
       }
      ],
@@ -9689,7 +9728,7 @@
        "pid": "4035",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.16,
+       "war": -0.07,
        "week": 5
       },
       {
@@ -9716,7 +9755,7 @@
        "pid": "4147",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.12,
+       "war": -0.06,
        "week": 9
       },
       {
@@ -9741,7 +9780,7 @@
        "pid": "4035",
        "pos": "RB",
        "via": "free_agent",
-       "war": 0.06,
+       "war": 0.09,
        "week": 10
       }
      ],
@@ -9767,7 +9806,7 @@
      "week": 10
     },
     {
-     "at": "2026-11-20",
+     "at": "2026-11-21",
      "fields": {
       "player": "Mark Andrews",
       "rank": 9
@@ -9828,16 +9867,6 @@
     {
      "at": "2026-11-09",
      "fields": {
-      "player": "Tee Higgins",
-      "war": 1
-     },
-     "link": "war",
-     "type": "milestone",
-     "week": 9
-    },
-    {
-     "at": "2026-11-09",
-     "fields": {
       "players": [
        "Buffalo Bills"
       ]
@@ -9870,6 +9899,16 @@
      },
      "link": "managers",
      "type": "streak",
+     "week": 8
+    },
+    {
+     "at": "2026-11-02",
+     "fields": {
+      "player": "Tee Higgins",
+      "war": 1
+     },
+     "link": "war",
+     "type": "milestone",
      "week": 8
     },
     {
@@ -10134,9 +10173,9 @@
     "DEF": 5.27,
     "K": 9.4,
     "QB": 16.17,
-    "RB": 11.55,
-    "TE": 7.26,
-    "WR": 8.7
+    "RB": 9.93,
+    "TE": 6.59,
+    "WR": 8.26
    },
    "rival": {
     "name": "jrizzo15",
@@ -10161,7 +10200,7 @@
      "nfl_team": "KC",
      "player_id": "4046",
      "position": "QB",
-     "ppg": 19.56,
+     "ppg": 20.0,
      "slot": "QB",
      "status": null
     },
@@ -10191,7 +10230,7 @@
      "nfl_team": "CIN",
      "player_id": "6801",
      "position": "WR",
-     "ppg": 15.58,
+     "ppg": 15.59,
      "slot": "WR",
      "status": null
     },
@@ -10201,7 +10240,7 @@
      "nfl_team": "NE",
      "player_id": "5859",
      "position": "WR",
-     "ppg": 7.24,
+     "ppg": 6.63,
      "slot": "WR",
      "status": "Out"
     },
@@ -10251,7 +10290,7 @@
      "nfl_team": "CHI",
      "player_id": "11560",
      "position": "QB",
-     "ppg": 18.83,
+     "ppg": 18.82,
      "slot": "BN",
      "status": null
     },
@@ -10271,7 +10310,7 @@
      "nfl_team": "PHI",
      "player_id": "4866",
      "position": "RB",
-     "ppg": 10.21,
+     "ppg": 10.23,
      "slot": "BN",
      "status": null
     },
@@ -10332,8 +10371,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": 0.0001,
-     "playoffs": 0.0004
+     "change": 0.0003,
+     "playoffs": 0.0006
     },
     "last_result": {
      "opp": "DeekBurg",
@@ -10353,7 +10392,7 @@
      "opp_user": "75490097898078208",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.2995
+     "win_prob": 0.3739
     },
     "points_for": 872.78,
     "position": 11,
@@ -14113,7 +14152,7 @@
        "pid": "11643",
        "pos": "RB",
        "via": "waiver",
-       "war": -0.18,
+       "war": -0.15,
        "week": 3
       },
       {
@@ -14124,7 +14163,7 @@
        "pid": "12185",
        "pos": "K",
        "via": "waiver",
-       "war": 0.25,
+       "war": 0.24,
        "week": 3
       },
       {
@@ -14135,7 +14174,7 @@
        "pid": "11576",
        "pos": "RB",
        "via": "waiver",
-       "war": 0.09,
+       "war": 0.29,
        "week": 3
       },
       {
@@ -14143,7 +14182,7 @@
        "pid": "11577",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.07,
+       "war": -0.04,
        "week": 5
       },
       {
@@ -14151,7 +14190,7 @@
        "pid": "3271",
        "pos": "TE",
        "via": "free_agent",
-       "war": 0.06,
+       "war": 0.08,
        "week": 5
       },
       {
@@ -14167,7 +14206,7 @@
        "pid": "8129",
        "pos": "RB",
        "via": "free_agent",
-       "war": 0.02,
+       "war": 0.08,
        "week": 6
       },
       {
@@ -14195,7 +14234,7 @@
        "pid": "10213",
        "pos": "WR",
        "via": "waiver",
-       "war": 0.04,
+       "war": 0.06,
        "week": 6
       },
       {
@@ -14219,7 +14258,7 @@
        "pid": "11610",
        "pos": "WR",
        "via": "free_agent",
-       "war": 0.0,
+       "war": 0.02,
        "week": 7
       },
       {
@@ -14237,7 +14276,7 @@
        "pid": "13424",
        "pos": "RB",
        "via": "waiver",
-       "war": -0.16,
+       "war": -0.1,
        "week": 7
       },
       {
@@ -14247,7 +14286,7 @@
        "pid": "13296",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.02,
+       "war": 0.0,
        "week": 7
       },
       {
@@ -14265,7 +14304,7 @@
        "pid": "11625",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.02,
+       "war": -0.01,
        "week": 8
       },
       {
@@ -14281,7 +14320,7 @@
        "pid": "4993",
        "pos": "TE",
        "via": "free_agent",
-       "war": -0.19,
+       "war": -0.17,
        "week": 9
       },
       {
@@ -14352,7 +14391,7 @@
        "pid": "8126",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.1,
+       "war": -0.04,
        "week": 2
       },
       {
@@ -14369,7 +14408,7 @@
        "pid": "11628",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.21,
+       "war": -0.18,
        "week": 3
       },
       {
@@ -14387,7 +14426,7 @@
        "pid": "11637",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.06,
+       "war": -0.02,
        "week": 3
       },
       {
@@ -14403,7 +14442,7 @@
        "pid": "11643",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.7,
+       "war": -0.58,
        "week": 5
       },
       {
@@ -14411,7 +14450,7 @@
        "pid": "5045",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.09,
+       "war": -0.05,
        "week": 5
       },
       {
@@ -14420,7 +14459,7 @@
        "pid": "3271",
        "pos": "TE",
        "via": "free_agent",
-       "war": -0.33,
+       "war": -0.27,
        "week": 6
       },
       {
@@ -14514,7 +14553,7 @@
        "pid": "11610",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.04,
+       "war": -0.02,
        "week": 8
       },
       {
@@ -14531,7 +14570,7 @@
        "pid": "8134",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.05,
+       "war": -0.04,
        "week": 9
       },
       {
@@ -14557,7 +14596,7 @@
        "pid": "13424",
        "pos": "RB",
        "via": "free_agent",
-       "war": 0.04,
+       "war": 0.07,
        "week": 10
       },
       {
@@ -14619,6 +14658,16 @@
      "week": 10
     },
     {
+     "at": "2026-11-21",
+     "fields": {
+      "player": "Adonai Mitchell",
+      "rank": 7
+     },
+     "link": "positions",
+     "type": "trending",
+     "week": 11
+    },
+    {
      "at": "2026-11-16",
      "fields": {
       "length": 3,
@@ -14642,6 +14691,16 @@
      },
      "link": "games",
      "type": "result",
+     "week": 9
+    },
+    {
+     "at": "2026-11-09",
+     "fields": {
+      "player": "Bucky Irving",
+      "war": 1
+     },
+     "link": "war",
+     "type": "milestone",
      "week": 9
     },
     {
@@ -14717,6 +14776,16 @@
      },
      "link": "predictions",
      "type": "forecast",
+     "week": 7
+    },
+    {
+     "at": "2026-10-26",
+     "fields": {
+      "player": "Jonathan Taylor",
+      "war": 1
+     },
+     "link": "war",
+     "type": "milestone",
      "week": 7
     },
     {
@@ -15062,9 +15131,9 @@
     "DEF": 5.27,
     "K": 9.4,
     "QB": 16.17,
-    "RB": 11.55,
-    "TE": 7.26,
-    "WR": 8.7
+    "RB": 9.93,
+    "TE": 6.59,
+    "WR": 8.26
    },
    "rival": {
     "name": "khar432",
@@ -15099,7 +15168,7 @@
      "nfl_team": "IND",
      "player_id": "6813",
      "position": "RB",
-     "ppg": 15.02,
+     "ppg": 15.0,
      "slot": "RB",
      "status": null
     },
@@ -15119,7 +15188,7 @@
      "nfl_team": "KC",
      "player_id": "10229",
      "position": "WR",
-     "ppg": 11.29,
+     "ppg": 11.54,
      "slot": "WR",
      "status": null
     },
@@ -15131,7 +15200,7 @@
      "position": "WR",
      "ppg": 9.24,
      "slot": "WR",
-     "status": "Questionable"
+     "status": null
     },
     {
      "bye": false,
@@ -15139,7 +15208,7 @@
      "nfl_team": "KC",
      "player_id": "1466",
      "position": "TE",
-     "ppg": 9.78,
+     "ppg": 9.93,
      "slot": "TE",
      "status": null
     },
@@ -15260,8 +15329,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": -0.0813,
-     "playoffs": 0.4472
+     "change": -0.06,
+     "playoffs": 0.4685
     },
     "last_result": {
      "opp": "corygraham12",
@@ -15281,7 +15350,7 @@
      "opp_user": "727642823544893440",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.4648
+     "win_prob": 0.5211
     },
     "points_for": 1104.74,
     "position": 6,
@@ -18085,7 +18154,7 @@
        "pid": "11370",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.46,
+       "war": -0.37,
        "week": 2
       },
       {
@@ -18095,7 +18164,7 @@
        "pid": "11624",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.27,
+       "war": -0.23,
        "week": 2
       },
       {
@@ -18111,7 +18180,7 @@
        "pid": "8126",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.21,
+       "war": -0.17,
        "week": 4
       },
       {
@@ -18143,7 +18212,7 @@
        "pid": "7567",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.2,
+       "war": -0.08,
        "week": 6
       },
       {
@@ -18151,7 +18220,7 @@
        "pid": "12491",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.28,
+       "war": -0.22,
        "week": 6
       },
       {
@@ -18159,7 +18228,7 @@
        "pid": "3214",
        "pos": "TE",
        "via": "free_agent",
-       "war": -0.05,
+       "war": -0.04,
        "week": 8
       },
       {
@@ -18167,7 +18236,7 @@
        "pid": "10219",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.2,
+       "war": -0.11,
        "week": 8
       },
       {
@@ -18183,7 +18252,7 @@
        "pid": "4663",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.08,
+       "war": -0.05,
        "week": 10
       },
       {
@@ -18212,7 +18281,7 @@
        "pid": "HOU",
        "pos": "DEF",
        "via": "waiver",
-       "war": 0.29,
+       "war": 0.28,
        "week": 1
       },
       {
@@ -18220,7 +18289,7 @@
        "pid": "12469",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.27,
+       "war": -0.15,
        "week": 2
       },
       {
@@ -18237,7 +18306,7 @@
        "pid": "9504",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.01,
+       "war": 0.03,
        "week": 4
       },
       {
@@ -18245,7 +18314,7 @@
        "pid": "3214",
        "pos": "TE",
        "via": "free_agent",
-       "war": 0.27,
+       "war": 0.32,
        "week": 4
       },
       {
@@ -18269,7 +18338,7 @@
        "pid": "11370",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.18,
+       "war": -0.15,
        "week": 5
       },
       {
@@ -18278,7 +18347,7 @@
        "pid": "11610",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.03,
+       "war": -0.0,
        "week": 6
       },
       {
@@ -18296,7 +18365,7 @@
        "pid": "12491",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.29,
+       "war": -0.2,
        "week": 8
       },
       {
@@ -18305,7 +18374,7 @@
        "pid": "3214",
        "pos": "TE",
        "via": "free_agent",
-       "war": -0.11,
+       "war": -0.09,
        "week": 9
       },
       {
@@ -18358,10 +18427,10 @@
      "week": 10
     },
     {
-     "at": "2026-11-20",
+     "at": "2026-11-21",
      "fields": {
       "player": "Chris Rodriguez Jr.",
-      "rank": 6
+      "rank": 8
      },
      "link": "positions",
      "type": "trending",
@@ -18451,6 +18520,16 @@
      },
      "link": "managers",
      "type": "streak",
+     "week": 8
+    },
+    {
+     "at": "2026-11-02",
+     "fields": {
+      "player": "D'Andre Swift",
+      "war": 1
+     },
+     "link": "war",
+     "type": "milestone",
      "week": 8
     },
     {
@@ -18558,6 +18637,16 @@
      },
      "link": "predictions",
      "type": "forecast",
+     "week": 4
+    },
+    {
+     "at": "2026-10-05",
+     "fields": {
+      "player": "CeeDee Lamb",
+      "war": 1
+     },
+     "link": "war",
+     "type": "milestone",
      "week": 4
     },
     {
@@ -18693,7 +18782,7 @@
      "name": "George Kittle",
      "player_id": "4217",
      "seasons": 3,
-     "war": 3.64
+     "war": 3.75
     },
     "got_away": {
      "from": [
@@ -18783,9 +18872,9 @@
     "DEF": 5.27,
     "K": 9.4,
     "QB": 16.17,
-    "RB": 11.55,
-    "TE": 7.26,
-    "WR": 8.7
+    "RB": 9.93,
+    "TE": 6.59,
+    "WR": 8.26
    },
    "rival": {
     "name": "djernberg",
@@ -18830,7 +18919,7 @@
      "nfl_team": "CHI",
      "player_id": "6790",
      "position": "RB",
-     "ppg": 15.78,
+     "ppg": 15.79,
      "slot": "RB",
      "status": null
     },
@@ -18850,7 +18939,7 @@
      "nfl_team": "WAS",
      "player_id": "2449",
      "position": "WR",
-     "ppg": 11.31,
+     "ppg": 11.32,
      "slot": "WR",
      "status": null
     },
@@ -18860,7 +18949,7 @@
      "nfl_team": "SF",
      "player_id": "4217",
      "position": "TE",
-     "ppg": 11.55,
+     "ppg": 11.54,
      "slot": "TE",
      "status": null
     },
@@ -18902,7 +18991,7 @@
      "position": "RB",
      "ppg": 5.81,
      "slot": "BN",
-     "status": "Questionable"
+     "status": null
     },
     {
      "bye": false,
@@ -18910,7 +18999,7 @@
      "nfl_team": "KC",
      "player_id": "11624",
      "position": "WR",
-     "ppg": 5.86,
+     "ppg": 5.95,
      "slot": "BN",
      "status": null
     },
@@ -18991,8 +19080,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": 0.0182,
-     "playoffs": 0.1724
+     "change": 0.0057,
+     "playoffs": 0.1599
     },
     "last_result": {
      "opp": "TateFM",
@@ -19012,7 +19101,7 @@
      "opp_user": "739284972489293824",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.7643
+     "win_prob": 0.7299
     },
     "points_for": 1084.98,
     "position": 9,
@@ -20671,7 +20760,7 @@
        "pid": "6130",
        "pos": "RB",
        "via": "waiver",
-       "war": -0.18,
+       "war": -0.15,
        "week": 1
       },
       {
@@ -20682,7 +20771,7 @@
        "pid": "11834",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.19,
+       "war": -0.13,
        "week": 1
       },
       {
@@ -20692,7 +20781,7 @@
        "pid": "7571",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.12,
+       "war": -0.11,
        "week": 2
       },
       {
@@ -20711,7 +20800,7 @@
        "pid": "8136",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.14,
+       "war": -0.02,
        "week": 6
       },
       {
@@ -20731,7 +20820,7 @@
        "pos": "RB",
        "tied": true,
        "via": "waiver",
-       "war": -0.3,
+       "war": -0.24,
        "week": 8
       },
       {
@@ -20768,7 +20857,7 @@
        "pid": "11655",
        "pos": "RB",
        "via": "waiver",
-       "war": -0.46,
+       "war": -0.32,
        "week": 1
       },
       {
@@ -20777,7 +20866,7 @@
        "pid": "11624",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.23,
+       "war": -0.18,
        "week": 1
       },
       {
@@ -20785,7 +20874,7 @@
        "pid": "6130",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.11,
+       "war": -0.05,
        "week": 3
       },
       {
@@ -20793,7 +20882,7 @@
        "pid": "7571",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.36,
+       "war": -0.32,
        "week": 5
       },
       {
@@ -20818,7 +20907,7 @@
        "pid": "7002",
        "pos": "TE",
        "via": "free_agent",
-       "war": -0.0,
+       "war": 0.02,
        "week": 8
       },
       {
@@ -20858,7 +20947,7 @@
           "name": "Jameson Williams",
           "pid": "8148",
           "pos": "WR",
-          "war": 0.27
+          "war": 0.3
          }
         ]
        },
@@ -20870,13 +20959,13 @@
           "name": "Luther Burden III",
           "pid": "12519",
           "pos": "WR",
-          "war": 0.59
+          "war": 0.62
          },
          {
           "name": "Juwan Johnson",
           "pid": "7002",
           "pos": "TE",
-          "war": -0.11
+          "war": -0.09
          }
         ]
        },
@@ -21216,7 +21305,7 @@
      "name": "Jameson Williams",
      "player_id": "8148",
      "returned": false,
-     "war": 0.27
+     "war": 0.3
     },
     "most_seasons": {
      "name": "Kyle Pitts Sr.",
@@ -21296,9 +21385,9 @@
     "DEF": 5.27,
     "K": 9.4,
     "QB": 16.17,
-    "RB": 11.55,
-    "TE": 7.26,
-    "WR": 8.7
+    "RB": 9.93,
+    "TE": 6.59,
+    "WR": 8.26
    },
    "rival": {
     "name": "Jdeguire",
@@ -21353,7 +21442,7 @@
      "nfl_team": "BUF",
      "player_id": "4983",
      "position": "WR",
-     "ppg": 10.11,
+     "ppg": 10.1,
      "slot": "WR",
      "status": null
     },
@@ -21363,7 +21452,7 @@
      "nfl_team": "CHI",
      "player_id": "12519",
      "position": "WR",
-     "ppg": 12.72,
+     "ppg": 12.71,
      "slot": "WR",
      "status": null
     },
@@ -21373,7 +21462,7 @@
      "nfl_team": "PHI",
      "player_id": "5022",
      "position": "TE",
-     "ppg": 8.43,
+     "ppg": 8.44,
      "slot": "TE",
      "status": null
     },
@@ -21445,7 +21534,7 @@
      "position": "RB",
      "ppg": 7.92,
      "slot": "BN",
-     "status": null
+     "status": "Questionable"
     },
     {
      "bye": true,
@@ -21504,8 +21593,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": 0.0002,
-     "playoffs": 0.0095
+     "change": -0.0007,
+     "playoffs": 0.0086
     },
     "last_result": {
      "opp": "micaelaconnors",
@@ -21525,7 +21614,7 @@
      "opp_user": "740044489435017216",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.4127
+     "win_prob": 0.4017
     },
     "points_for": 1012.3,
     "position": 10,
@@ -23911,7 +24000,7 @@
        "pid": "13285",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.08,
+       "war": -0.07,
        "week": 2
       },
       {
@@ -23919,7 +24008,7 @@
        "pid": "3163",
        "pos": "QB",
        "via": "free_agent",
-       "war": 0.4,
+       "war": 0.39,
        "week": 3
       },
       {
@@ -23949,7 +24038,7 @@
        "pos": "TE",
        "tied": true,
        "via": "waiver",
-       "war": 0.08,
+       "war": 0.11,
        "week": 7
       },
       {
@@ -24011,7 +24100,7 @@
        "pid": "13285",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.28,
+       "war": -0.22,
        "week": 3
       },
       {
@@ -24020,7 +24109,7 @@
        "pid": "13294",
        "pos": "WR",
        "via": "free_agent",
-       "war": 0.05,
+       "war": 0.08,
        "week": 6
       },
       {
@@ -24106,19 +24195,9 @@
      "week": 10
     },
     {
-     "at": "2026-11-20",
+     "at": "2026-11-21",
      "fields": {
       "player": "Cairo Santos",
-      "rank": 3
-     },
-     "link": "positions",
-     "type": "trending",
-     "week": 11
-    },
-    {
-     "at": "2026-11-20",
-     "fields": {
-      "player": "Xavier Hutchinson",
       "rank": 4
      },
      "link": "positions",
@@ -24564,9 +24643,9 @@
     "DEF": 5.27,
     "K": 9.4,
     "QB": 16.17,
-    "RB": 11.55,
-    "TE": 7.26,
-    "WR": 8.7
+    "RB": 9.93,
+    "TE": 6.59,
+    "WR": 8.26
    },
    "rival": {
     "name": "tg1212",
@@ -24641,9 +24720,9 @@
      "nfl_team": "NYG",
      "player_id": "8131",
      "position": "TE",
-     "ppg": 13.4,
+     "ppg": 13.41,
      "slot": "TE",
-     "status": "Questionable"
+     "status": null
     },
     {
      "bye": false,
@@ -24651,7 +24730,7 @@
      "nfl_team": "TEN",
      "player_id": "13279",
      "position": "WR",
-     "ppg": 9.05,
+     "ppg": 9.07,
      "slot": "FLEX",
      "status": "Questionable"
     },
@@ -24767,8 +24846,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": 0.0473,
-     "playoffs": 0.4532
+     "change": 0.0459,
+     "playoffs": 0.4518
     },
     "last_result": {
      "opp": "NickLove17",
@@ -24788,7 +24867,7 @@
      "opp_user": "739298321264496640",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.6774
+     "win_prob": 0.6738
     },
     "points_for": 1073.7,
     "position": 7,
@@ -27521,7 +27600,7 @@
        "pid": "10213",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.08,
+       "war": -0.07,
        "week": 2
       },
       {
@@ -27532,7 +27611,7 @@
        "pid": "11435",
        "pos": "RB",
        "via": "waiver",
-       "war": 0.09,
+       "war": 0.24,
        "week": 2
       },
       {
@@ -27540,7 +27619,7 @@
        "pid": "8154",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.09,
+       "war": -0.0,
        "week": 4
       },
       {
@@ -27552,7 +27631,7 @@
        "pos": "WR",
        "tied": true,
        "via": "waiver",
-       "war": -0.08,
+       "war": -0.06,
        "week": 4
       },
       {
@@ -27578,7 +27657,7 @@
        "pid": "13294",
        "pos": "WR",
        "via": "free_agent",
-       "war": 0.01,
+       "war": 0.02,
        "week": 8
       },
       {
@@ -27588,7 +27667,7 @@
        "pid": "12491",
        "pos": "RB",
        "via": "waiver",
-       "war": -0.15,
+       "war": -0.12,
        "week": 9
       },
       {
@@ -27615,7 +27694,7 @@
        "pid": "13293",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.26,
+       "war": -0.23,
        "week": 2
       },
       {
@@ -27623,7 +27702,7 @@
        "pid": "13413",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.24,
+       "war": -0.21,
        "week": 4
       },
       {
@@ -27632,7 +27711,7 @@
        "pid": "10213",
        "pos": "WR",
        "via": "waiver",
-       "war": 0.25,
+       "war": 0.29,
        "week": 4
       },
       {
@@ -28090,7 +28169,7 @@
      "name": "Tre Tucker",
      "player_id": "10213",
      "returned": false,
-     "war": 0.25
+     "war": 0.29
     },
     "most_seasons": {
      "name": "James Cook III",
@@ -28170,9 +28249,9 @@
     "DEF": 5.27,
     "K": 9.4,
     "QB": 16.17,
-    "RB": 11.55,
-    "TE": 7.26,
-    "WR": 8.7
+    "RB": 9.93,
+    "TE": 6.59,
+    "WR": 8.26
    },
    "rival": {
     "name": "corygraham12",
@@ -28197,7 +28276,7 @@
      "nfl_team": "CIN",
      "player_id": "6770",
      "position": "QB",
-     "ppg": 24.81,
+     "ppg": 24.82,
      "slot": "QB",
      "status": null
     },
@@ -28207,7 +28286,7 @@
      "nfl_team": "PIT",
      "player_id": "7021",
      "position": "RB",
-     "ppg": 7.12,
+     "ppg": 7.11,
      "slot": "RB",
      "status": null
     },
@@ -28297,7 +28376,7 @@
      "nfl_team": "NE",
      "player_id": "12491",
      "position": "RB",
-     "ppg": 4.7,
+     "ppg": 4.65,
      "slot": "BN",
      "status": null
     },
@@ -28378,8 +28457,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": 0.0138,
-     "playoffs": 0.1787
+     "change": 0.0165,
+     "playoffs": 0.1814
     },
     "last_result": {
      "opp": "khar432",
@@ -28399,7 +28478,7 @@
      "opp_user": "739294851916541952",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.6164
+     "win_prob": 0.6151
     },
     "points_for": 1085.24,
     "position": 8,
@@ -31754,7 +31833,7 @@
        "pid": "11157",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.08,
+       "war": -0.07,
        "week": 4
       },
       {
@@ -31770,7 +31849,7 @@
        "pid": "9480",
        "pos": "TE",
        "via": "free_agent",
-       "war": -0.08,
+       "war": -0.03,
        "week": 6
       },
       {
@@ -31778,7 +31857,7 @@
        "pid": "7528",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.19,
+       "war": -0.16,
        "week": 6
       },
       {
@@ -31830,7 +31909,7 @@
        "pid": "13305",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.2,
+       "war": -0.17,
        "week": 9
       },
       {
@@ -31838,7 +31917,7 @@
        "pid": "2505",
        "pos": "TE",
        "via": "free_agent",
-       "war": -0.07,
+       "war": -0.06,
        "week": 10
       },
       {
@@ -31846,7 +31925,7 @@
        "pid": "7562",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.09,
+       "war": -0.08,
        "week": 10
       },
       {
@@ -31862,7 +31941,7 @@
        "pid": "9754",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.13,
+       "war": -0.12,
        "week": 10
       },
       {
@@ -31890,7 +31969,7 @@
        "pid": "11157",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.12,
+       "war": -0.11,
        "week": 6
       },
       {
@@ -31899,7 +31978,7 @@
        "pid": "10219",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.3,
+       "war": -0.18,
        "week": 6
       },
       {
@@ -31907,7 +31986,7 @@
        "pid": "8110",
        "pos": "TE",
        "via": "free_agent",
-       "war": -0.05,
+       "war": -0.03,
        "week": 6
       },
       {
@@ -31916,7 +31995,7 @@
        "pid": "9500",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.11,
+       "war": -0.07,
        "week": 6
       },
       {
@@ -31951,7 +32030,7 @@
        "pid": "12718",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.08,
+       "war": -0.07,
        "week": 8
       },
       {
@@ -31969,7 +32048,7 @@
        "pid": "5846",
        "pos": "WR",
        "via": "free_agent",
-       "war": 0.1,
+       "war": 0.11,
        "week": 9
       },
       {
@@ -31986,7 +32065,7 @@
        "pid": "8135",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.09,
+       "war": -0.08,
        "week": 10
       },
       {
@@ -31994,10 +32073,11 @@
        "pid": "13305",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.14,
+       "war": -0.11,
        "week": 10
       },
       {
+       "by": "739284972489293824",
        "name": "Justice Hill",
        "pid": "5995",
        "pos": "RB",
@@ -32046,17 +32126,17 @@
      "week": 10
     },
     {
-     "at": "2026-11-20",
+     "at": "2026-11-21",
      "fields": {
       "player": "Pat Bryant",
-      "rank": 7
+      "rank": 6
      },
      "link": "positions",
      "type": "trending",
      "week": 11
     },
     {
-     "at": "2026-11-20",
+     "at": "2026-11-21",
      "fields": {
       "player": "Elic Ayomanor",
       "rank": 10
@@ -32074,26 +32154,6 @@
      },
      "link": "predictions",
      "type": "forecast",
-     "week": 10
-    },
-    {
-     "at": "2026-11-16",
-     "fields": {
-      "player": "James Cook III",
-      "war": 1
-     },
-     "link": "war",
-     "type": "milestone",
-     "week": 10
-    },
-    {
-     "at": "2026-11-16",
-     "fields": {
-      "player": "Minnesota Vikings",
-      "war": 1
-     },
-     "link": "war",
-     "type": "milestone",
      "week": 10
     },
     {
@@ -32124,16 +32184,6 @@
      "week": 9
     },
     {
-     "at": "2026-11-09",
-     "fields": {
-      "player": "Christian Watson",
-      "war": 1
-     },
-     "link": "war",
-     "type": "milestone",
-     "week": 9
-    },
-    {
      "at": "2026-11-02",
      "fields": {
       "opp": "tg1212",
@@ -32147,6 +32197,26 @@
      },
      "link": "games",
      "type": "result",
+     "week": 8
+    },
+    {
+     "at": "2026-11-02",
+     "fields": {
+      "player": "James Cook III",
+      "war": 1
+     },
+     "link": "war",
+     "type": "milestone",
+     "week": 8
+    },
+    {
+     "at": "2026-11-02",
+     "fields": {
+      "player": "Christian Watson",
+      "war": 1
+     },
+     "link": "war",
+     "type": "milestone",
      "week": 8
     },
     {
@@ -32399,10 +32469,10 @@
       "2026",
       9
      ],
-     "name": "Tampa Bay Buccaneers",
-     "player_id": "TB",
+     "name": "DK Metcalf",
+     "player_id": "5846",
      "returned": false,
-     "war": 0.1
+     "war": 0.11
     },
     "most_seasons": {
      "name": "Cleveland Browns",
@@ -32482,9 +32552,9 @@
     "DEF": 5.27,
     "K": 9.4,
     "QB": 16.17,
-    "RB": 11.55,
-    "TE": 7.26,
-    "WR": 8.7
+    "RB": 9.93,
+    "TE": 6.59,
+    "WR": 8.26
    },
    "rival": {
     "name": "shanhynes",
@@ -32509,7 +32579,7 @@
      "nfl_team": "JAX",
      "player_id": "7523",
      "position": "QB",
-     "ppg": 19.96,
+     "ppg": 20.0,
      "slot": "QB",
      "status": null
     },
@@ -32549,7 +32619,7 @@
      "nfl_team": "CAR",
      "player_id": "11646",
      "position": "WR",
-     "ppg": 9.52,
+     "ppg": 9.53,
      "slot": "WR",
      "status": null
     },
@@ -32569,7 +32639,7 @@
      "nfl_team": "JAX",
      "player_id": "9480",
      "position": "TE",
-     "ppg": 7.39,
+     "ppg": 7.41,
      "slot": "FLEX",
      "status": null
     },
@@ -32609,7 +32679,7 @@
      "nfl_team": "TEN",
      "player_id": "12499",
      "position": "WR",
-     "ppg": 5.82,
+     "ppg": 5.84,
      "slot": "BN",
      "status": null
     },
@@ -32660,8 +32730,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": 0.0074,
-     "playoffs": 0.9696
+     "change": 0.0043,
+     "playoffs": 0.9665
     },
     "last_result": {
      "opp": "kjern17",
@@ -32681,7 +32751,7 @@
      "opp_user": "739353143170727936",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.5352
+     "win_prob": 0.4789
     },
     "points_for": 1081.86,
     "position": 3,
@@ -35073,7 +35143,7 @@
        "pid": "9486",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.09,
+       "war": -0.07,
        "week": 4
       },
       {
@@ -35089,7 +35159,7 @@
        "pid": "3271",
        "pos": "TE",
        "via": "free_agent",
-       "war": -0.33,
+       "war": -0.27,
        "week": 6
       },
       {
@@ -35097,7 +35167,7 @@
        "pid": "10235",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.17,
+       "war": -0.14,
        "week": 7
       },
       {
@@ -35113,7 +35183,7 @@
        "pid": "13150",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.11,
+       "war": -0.1,
        "week": 7
       },
       {
@@ -35129,7 +35199,7 @@
        "pid": "11783",
        "pos": "WR",
        "via": "free_agent",
-       "war": 0.14,
+       "war": 0.17,
        "week": 8
       },
       {
@@ -35139,7 +35209,7 @@
        "pid": "11610",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.04,
+       "war": -0.02,
        "week": 9
       },
       {
@@ -35176,7 +35246,7 @@
        "pid": "9754",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.28,
+       "war": -0.23,
        "week": 3
       },
       {
@@ -35185,7 +35255,7 @@
        "pid": "7567",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.36,
+       "war": -0.18,
        "week": 4
       },
       {
@@ -35193,7 +35263,7 @@
        "pid": "9508",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.32,
+       "war": -0.26,
        "week": 6
       },
       {
@@ -35201,7 +35271,7 @@
        "pid": "9486",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.09,
+       "war": -0.08,
        "week": 6
       },
       {
@@ -35225,7 +35295,7 @@
        "pid": "10235",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.14,
+       "war": -0.11,
        "week": 8
       },
       {
@@ -35233,7 +35303,7 @@
        "pid": "13150",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.19,
+       "war": -0.17,
        "week": 8
       },
       {
@@ -35292,10 +35362,10 @@
      "week": 10
     },
     {
-     "at": "2026-11-20",
+     "at": "2026-11-21",
      "fields": {
       "player": "Detroit Lions",
-      "rank": 1
+      "rank": 2
      },
      "link": "positions",
      "type": "trending",
@@ -35363,16 +35433,6 @@
     {
      "at": "2026-11-09",
      "fields": {
-      "player": "Christian McCaffrey",
-      "war": 1
-     },
-     "link": "war",
-     "type": "milestone",
-     "week": 9
-    },
-    {
-     "at": "2026-11-09",
-     "fields": {
       "players": [
        "Matthew Golden",
        "Jordan Love"
@@ -35423,6 +35483,16 @@
      },
      "link": "games",
      "type": "result",
+     "week": 7
+    },
+    {
+     "at": "2026-10-26",
+     "fields": {
+      "player": "Christian McCaffrey",
+      "war": 1
+     },
+     "link": "war",
+     "type": "milestone",
      "week": 7
     },
     {
@@ -35728,9 +35798,9 @@
     "DEF": 5.27,
     "K": 9.4,
     "QB": 16.17,
-    "RB": 11.55,
-    "TE": 7.26,
-    "WR": 8.7
+    "RB": 9.93,
+    "TE": 6.59,
+    "WR": 8.26
    },
    "rival": {
     "name": "NickLove17",
@@ -35785,7 +35855,7 @@
      "nfl_team": "PHI",
      "player_id": "7525",
      "position": "WR",
-     "ppg": 12.76,
+     "ppg": 12.77,
      "slot": "WR",
      "status": null
     },
@@ -35805,7 +35875,7 @@
      "nfl_team": "IND",
      "player_id": "12518",
      "position": "TE",
-     "ppg": 8.36,
+     "ppg": 8.35,
      "slot": "TE",
      "status": null
     },
@@ -35936,8 +36006,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": -0.0091,
-     "playoffs": 0.8156
+     "change": -0.0069,
+     "playoffs": 0.8178
     },
     "last_result": {
      "opp": "tg1212",
@@ -35957,7 +36027,7 @@
      "opp_user": "739705195117895680",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.3226
+     "win_prob": 0.3262
     },
     "points_for": 1125.08,
     "position": 5,
@@ -38827,7 +38897,7 @@
        "pid": "7002",
        "pos": "TE",
        "via": "free_agent",
-       "war": 0.3,
+       "war": 0.36,
        "week": 1
       },
       {
@@ -38843,7 +38913,7 @@
        "pid": "12504",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.16,
+       "war": -0.13,
        "week": 3
       },
       {
@@ -38880,7 +38950,7 @@
        "pid": "11637",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.06,
+       "war": -0.04,
        "week": 4
       },
       {
@@ -38914,7 +38984,7 @@
        "pid": "13274",
        "pos": "WR",
        "via": "waiver",
-       "war": -0.06,
+       "war": -0.03,
        "week": 5
       },
       {
@@ -38925,7 +38995,7 @@
        "pid": "4035",
        "pos": "RB",
        "via": "waiver",
-       "war": 0.01,
+       "war": 0.07,
        "week": 5
       },
       {
@@ -39009,7 +39079,7 @@
        "pid": "11579",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.17,
+       "war": -0.14,
        "week": 10
       },
       {
@@ -39057,7 +39127,7 @@
        "pid": "11581",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.71,
+       "war": -0.5,
        "week": 3
       },
       {
@@ -39074,7 +39144,7 @@
        "pid": "12504",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.61,
+       "war": -0.46,
        "week": 3
       },
       {
@@ -39133,7 +39203,7 @@
        "pid": "8136",
        "pos": "RB",
        "via": "waiver",
-       "war": -0.14,
+       "war": -0.02,
        "week": 5
       },
       {
@@ -39174,7 +39244,7 @@
        "pid": "4035",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.03,
+       "war": 0.03,
        "week": 8
       },
       {
@@ -39190,7 +39260,7 @@
        "pid": "11637",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.21,
+       "war": -0.2,
        "week": 9
       },
       {
@@ -39248,13 +39318,13 @@
           "name": "Luther Burden III",
           "pid": "12519",
           "pos": "WR",
-          "war": 0.59
+          "war": 0.62
          },
          {
           "name": "Juwan Johnson",
           "pid": "7002",
           "pos": "TE",
-          "war": -0.11
+          "war": -0.07
          }
         ]
        },
@@ -39266,7 +39336,7 @@
           "name": "Jameson Williams",
           "pid": "8148",
           "pos": "WR",
-          "war": 0.27
+          "war": 0.3
          }
         ]
        },
@@ -39337,7 +39407,7 @@
     {
      "at": "2026-11-09",
      "fields": {
-      "player": "Bijan Robinson",
+      "player": "Javonte Williams",
       "war": 1
      },
      "link": "war",
@@ -39407,6 +39477,16 @@
      },
      "link": "games",
      "type": "result",
+     "week": 7
+    },
+    {
+     "at": "2026-10-26",
+     "fields": {
+      "player": "Bijan Robinson",
+      "war": 1
+     },
+     "link": "war",
+     "type": "milestone",
      "week": 7
     },
     {
@@ -39481,6 +39561,16 @@
      },
      "link": "managers",
      "type": "streak",
+     "week": 5
+    },
+    {
+     "at": "2026-10-12",
+     "fields": {
+      "player": "Bijan Robinson",
+      "war": 1
+     },
+     "link": "war",
+     "type": "milestone",
      "week": 5
     },
     {
@@ -39649,7 +39739,7 @@
      "name": "Bijan Robinson",
      "player_id": "9509",
      "seasons": 2,
-     "war": 3.5
+     "war": 3.79
     },
     "got_away": {
      "from": [
@@ -39659,7 +39749,7 @@
      "name": "Luther Burden III",
      "player_id": "12519",
      "returned": false,
-     "war": 0.59
+     "war": 0.62
     },
     "most_seasons": {
      "name": "Javonte Williams",
@@ -39739,9 +39829,9 @@
     "DEF": 5.27,
     "K": 9.4,
     "QB": 16.17,
-    "RB": 11.55,
-    "TE": 7.26,
-    "WR": 8.7
+    "RB": 9.93,
+    "TE": 6.59,
+    "WR": 8.26
    },
    "rival": {
     "name": "DeekBurg",
@@ -39826,7 +39916,7 @@
      "nfl_team": "JAX",
      "player_id": "9487",
      "position": "WR",
-     "ppg": 13.34,
+     "ppg": 13.37,
      "slot": "FLEX",
      "status": null
     },
@@ -39968,7 +40058,7 @@
      "opp_user": "740075424440332288",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.5873
+     "win_prob": 0.5983
     },
     "points_for": 1111.64,
     "position": 2,
@@ -42434,7 +42524,7 @@
        "pid": "13301",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.08,
+       "war": -0.07,
        "week": 2
       },
       {
@@ -42452,7 +42542,7 @@
        "pid": "12487",
        "pos": "TE",
        "via": "free_agent",
-       "war": -0.1,
+       "war": -0.09,
        "week": 3
       },
       {
@@ -42462,7 +42552,7 @@
        "pid": "5001",
        "pos": "TE",
        "via": "waiver",
-       "war": -0.18,
+       "war": -0.13,
        "week": 3
       },
       {
@@ -42470,7 +42560,7 @@
        "pid": "9757",
        "pos": "RB",
        "via": "free_agent",
-       "war": -0.06,
+       "war": -0.03,
        "week": 6
       },
       {
@@ -42480,7 +42570,7 @@
        "pid": "13276",
        "pos": "WR",
        "via": "waiver",
-       "war": 0.22,
+       "war": 0.24,
        "week": 6
       },
       {
@@ -42516,7 +42606,7 @@
        "pid": "3214",
        "pos": "TE",
        "via": "free_agent",
-       "war": -0.07,
+       "war": -0.06,
        "week": 10
       },
       {
@@ -42585,7 +42675,7 @@
        "pid": "13301",
        "pos": "WR",
        "via": "free_agent",
-       "war": -0.35,
+       "war": -0.3,
        "week": 3
       },
       {
@@ -42602,7 +42692,7 @@
        "pid": "8121",
        "pos": "WR",
        "via": "free_agent",
-       "war": 0.14,
+       "war": 0.16,
        "week": 4
       },
       {
@@ -42610,7 +42700,7 @@
        "pid": "9757",
        "pos": "RB",
        "via": "waiver",
-       "war": -0.13,
+       "war": -0.1,
        "week": 6
       },
       {
@@ -42627,7 +42717,7 @@
        "pid": "5001",
        "pos": "TE",
        "via": "waiver",
-       "war": -0.03,
+       "war": -0.01,
        "week": 7
       },
       {
@@ -42946,16 +43036,6 @@
     {
      "at": "2026-10-12",
      "fields": {
-      "player": "Jahmyr Gibbs",
-      "war": 1
-     },
-     "link": "war",
-     "type": "milestone",
-     "week": 5
-    },
-    {
-     "at": "2026-10-12",
-     "fields": {
       "players": [
        "Jahmyr Gibbs"
       ]
@@ -42989,6 +43069,16 @@
      },
      "link": "predictions",
      "type": "forecast",
+     "week": 4
+    },
+    {
+     "at": "2026-10-05",
+     "fields": {
+      "player": "Jahmyr Gibbs",
+      "war": 1
+     },
+     "link": "war",
+     "type": "milestone",
      "week": 4
     },
     {
@@ -43130,7 +43220,7 @@
      "name": "Jahmyr Gibbs",
      "player_id": "9221",
      "seasons": 2,
-     "war": 4.97
+     "war": 5.24
     },
     "got_away": {
      "from": [
@@ -43140,7 +43230,7 @@
      "name": "Romeo Doubs",
      "player_id": "8121",
      "returned": false,
-     "war": 0.14
+     "war": 0.16
     },
     "most_seasons": {
      "name": "Dak Prescott",
@@ -43220,9 +43310,9 @@
     "DEF": 5.27,
     "K": 9.4,
     "QB": 16.17,
-    "RB": 11.55,
-    "TE": 7.26,
-    "WR": 8.7
+    "RB": 9.93,
+    "TE": 6.59,
+    "WR": 8.26
    },
    "rival": {
     "name": "kjern17",
@@ -43257,9 +43347,9 @@
      "nfl_team": "JAX",
      "player_id": "12490",
      "position": "RB",
-     "ppg": 15.13,
+     "ppg": 15.14,
      "slot": "RB",
-     "status": "Questionable"
+     "status": null
     },
     {
      "bye": false,
@@ -43307,7 +43397,7 @@
      "nfl_team": "KC",
      "player_id": "9500",
      "position": "WR",
-     "ppg": 7.09,
+     "ppg": 7.19,
      "slot": "FLEX",
      "status": null
     },
@@ -43347,7 +43437,7 @@
      "nfl_team": "NYJ",
      "player_id": "13276",
      "position": "WR",
-     "ppg": 11.14,
+     "ppg": 11.15,
      "slot": "BN",
      "status": "Out"
     },
@@ -43367,7 +43457,7 @@
      "nfl_team": "SF",
      "player_id": "2216",
      "position": "WR",
-     "ppg": 12.57,
+     "ppg": 12.56,
      "slot": "BN",
      "status": "Questionable"
     },
@@ -43377,9 +43467,9 @@
      "nfl_team": "JAX",
      "player_id": "5947",
      "position": "WR",
-     "ppg": 7.62,
+     "ppg": 7.64,
      "slot": "BN",
-     "status": "Questionable"
+     "status": null
     },
     {
      "bye": false,
@@ -43387,7 +43477,7 @@
      "nfl_team": "WAS",
      "player_id": "12533",
      "position": "RB",
-     "ppg": 7.7,
+     "ppg": 7.69,
      "slot": "IR",
      "status": "IR"
     }
@@ -43413,8 +43503,8 @@
    ],
    "tiles": {
     "forecast": {
-     "change": 0.003,
-     "playoffs": 0.9542
+     "change": -0.0055,
+     "playoffs": 0.9457
     },
     "last_result": {
      "opp": "shanhynes",
@@ -43434,7 +43524,7 @@
      "opp_user": "740067972349095936",
      "rivalry": false,
      "week": 11,
-     "win_prob": 0.7005
+     "win_prob": 0.6261
     },
     "points_for": 1135.44,
     "position": 4,
