@@ -153,7 +153,10 @@ Their history from before this change stays in git; it is not rewritten.
 ### Running the Site Locally
 
 Since `site/data` is no longer in git, build it with `python -X utf8 -m ffapp build` before opening the
-site. It rebuilds the derived data offline from the committed records. `python -m ffapp refresh` also
+site. It rebuilds the derived data offline from the committed records. With no run on record, the
+site's "Updated" time is the last commit to `data/`, so the page still ignores a live bundle older
+than that. Future-week projections can't be fetched offline, so points per game and forecasts can
+differ slightly from the published site. `python -m ffapp refresh` also
 builds it, after fetching new data.
 
 ## Limits and Budgets

@@ -433,6 +433,10 @@ def cmd_refresh(ctx: Context) -> int:
 
 def cmd_build(ctx: Context) -> int:
     """Rebuild every derived file offline from the committed records (a fresh clone, a lost cache)."""
+    if not (ctx.store.root / "refresh" / "last_run.json").exists() and getattr(ctx.args, "refresh_started", None) is None:
+        # No run on record (the file is rebuilt, not committed): the data is as of its last commit,
+        # so the page can still tell an older live bundle from a newer one.
+        ctx.args.refresh_started = last_commit_time(ctx.store.root)
     for name, handler in BUILD_STEPS:
         print(f"== {name}")
         code = handler(ctx)
@@ -440,6 +444,19 @@ def cmd_build(ctx: Context) -> int:
             print(f"build stopped: {name} failed (exit {code})", file=sys.stderr)
             return code
     return 0
+
+
+def last_commit_time(path: Path):
+    """The UTC time of the last git commit that touched ``path``, or None outside a git checkout."""
+    import subprocess
+    from datetime import datetime, timezone
+
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%cI", "--", "."], cwd=path,
+                             capture_output=True, text=True, timeout=30, check=True).stdout.strip()
+        return datetime.fromisoformat(out).astimezone(timezone.utc) if out else None
+    except (OSError, subprocess.SubprocessError, ValueError):
+        return None
 
 
 def cmd_hot(ctx: Context) -> int:

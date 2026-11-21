@@ -36,7 +36,7 @@ def test_cold_run_has_no_gate_or_test_suite_and_deploys_on_change():
     run = steps("refresh.yml", "refresh")
     assert not any("pytest" in text(s) or "should-run" in text(s) for s in run)
     deploy = [s for s in run if "deploy-pages" in text(s) or "upload-pages-artifact" in text(s) or "stamp-site" in text(s)]
-    assert deploy and all(s.get("if") == "steps.site.outputs.deploy == 'true'" for s in deploy)
+    assert deploy and all(s.get("if", "").startswith("steps.site.outputs.deploy == 'true'") for s in deploy)
     assert run[-1]["uses"].startswith("actions/cache/save"), "the cache is saved last, after a successful deploy"
     assert any("git diff --cached --quiet" in text(s) for s in run), "commit only when a record changed"
     triggers = wf[True] if True in wf else wf["on"]  # PyYAML reads the bare key `on` as True

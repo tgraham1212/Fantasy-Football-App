@@ -13,7 +13,10 @@ const PAD_RIGHT = 14; // room for edge arrows and a dot sitting on the axis end
 function dotGeometry(width) {
   const r = width < NARROW ? 5.5 : 7;
   const step = width < NARROW ? 5.5 : 6;
-  return { r, minGap: 2 * r - 1, lanes: [0, -step, step, -2 * step, 2 * step, -3 * step, 3 * step, -4 * step, 4 * step] };
+  // Lanes alternate above and below the row line, as many as a crowded cluster needs to clear.
+  const lanes = [0];
+  for (let k = 1; k <= 20; k += 1) lanes.push(-k * step, k * step);
+  return { r, minGap: 2 * r - 1, lanes };
 }
 
 const state = {
