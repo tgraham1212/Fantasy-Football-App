@@ -43,6 +43,7 @@ Global options: `--config PATH` (default `config/leagues.yaml`), `--data PATH`
 | `build` | Rebuild every derived file (ratings, replacement levels, WAR, odds, game views and `site/data/`) offline from the committed records. Run it after cloning or pulling, before opening the site locally. |
 | `hot` | The hot run: this week's live scores, forecast and game cards as one bundle file (`--out PATH`, plus `PATH.meta` for the relay), built on a scratch copy so `data/` never changes (see Refresh modes). |
 | `site-hash` | Print a hash of `site/` that ignores refresh times; the cold run deploys only when it changes. |
+| `hold-tallies` | After `git add data`, unstage trending and ESPN percentage files already committed today (UTC), so git keeps one copy a day. |
 | `calibrate` | Replay every completed season through the simulation and score the forecasts against what happened (see Calibration). Not part of `refresh`. `--runs N`, `--seed N`, `--residual-scale X` evaluate a candidate scale without touching the config. |
 
 First-time setup of a fresh clone, in order:
@@ -595,7 +596,8 @@ changing a mode, trigger or step with `python -X utf8 tools/refresh_modes_diagra
   KV store as one bundle. It never commits or deploys.
 - **A cold run** (`python -m ffapp refresh`) syncs everything, rebuilds the derived data,
   commits `data/` only when a record changed and deploys `site/` only when what visitors see
-  changed (`ffapp site-hash`). It no longer runs the test suite: tests run on code pushes.
+  changed (`ffapp site-hash`). Trending and ESPN percentages are committed once a day
+  (`ffapp hold-tallies`). It no longer runs the test suite: tests run on code pushes.
   A failure at any step ends the run before the commit and deploy, so the published
   site keeps its last good state. The one exception is the ESPN `snapshot` step (and
   `schedule` and `trending`): if it fails the run continues with the data already stored

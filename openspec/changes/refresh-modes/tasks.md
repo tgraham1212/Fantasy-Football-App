@@ -43,7 +43,7 @@
   - `PUT /live` with `HOT_TOKEN`.
 
   Verify: a workflow test checks there is no commit, push or Pages step
-- [ ] 3.4 `site.yml`: restore the build cache or run `ffapp build` before tests and deploy. Verify: workflow test, then a code-push deploy on the live site
+- [x] 3.4 `site.yml`: restore the build cache or run `ffapp build` before tests and deploy. Verify: workflow test, then a code-push deploy on the live site
 
 ## 4. Relay
 
@@ -83,6 +83,12 @@
 - [ ] 6.3 Enable the Worker's cron trigger, and remove `refresh.yml`'s hourly cron. Verify: across a Quiet hour, about 4 hot and 4 cold runs, with commits and deploys only on change
 - [ ] 6.4 Live check during the next game window: hot runs back to back, the page updates within about 2 minutes, slate-final cold runs store slate forecasts, and the KV write count stays within budget. Verify: Actions history and the Worker's write counter
 - [x] 6.5 `Calculations.txt` section 10: the log covers the current week only, appended by cold runs every 15 minutes, plus slate forecasts. Verify: the section matches the code
+
+## 7. Commit Only Real Changes (found in the 6.3 check)
+
+- [x] 7.1 Projections and stats: replace a stored record only when a value other than `last_modified` changed. Verify: unit tests for a touched-but-same row and a real correction
+- [x] 7.2 `ffapp hold-tallies`: after `git add data`, unstage and restore changed trending and ESPN snapshot files whose committed copy was saved on the same UTC day; `refresh.yml` runs it before committing. Verify: unit tests in a temporary git repository, workflow test
+- [x] 7.3 `docs/refresh-modes.md`: the once-a-day rule for tallies under "Committed". Verify: doc tests
 
 ## Workflow follow-up
 

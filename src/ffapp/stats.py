@@ -16,6 +16,7 @@ from ffapp.projections import (
     ProjectionsError,
     RefreshReport,
     UpsertResult,
+    changed_beyond_time,
     is_projection,
     seasons_in_scope,
     to_record,
@@ -64,7 +65,7 @@ def upsert_week(store: Store, season: str, week: int, rows: list[dict]) -> Upser
         if existing is None:
             merged[player_id] = record
             result.added += 1
-        elif record["last_modified"] > int(existing.get("last_modified") or 0):
+        elif record["last_modified"] > int(existing.get("last_modified") or 0) and changed_beyond_time(existing, record):
             merged[player_id] = record
             result.updated += 1
         else:

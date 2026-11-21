@@ -139,3 +139,15 @@ def test_actual_points_match_players_points(tmp_path, league_key, league_id):
     assert compared >= 25
     assert within / compared >= 0.99, misses
     assert actual_points(None, scoring) == 0.0
+
+
+def test_upsert_ignores_a_touched_but_unchanged_record(tmp_path):
+    """Sleeper bumps last_modified without changing values: not a stat correction, nothing written."""
+    store = Store(tmp_path)
+    upsert_week(store, "2025", 1, ROWS)
+    before = digest(store.stats_path("2025", 1))
+    touched = copy.deepcopy(ROWS)
+    for row in touched:
+        row["last_modified"] = int(row.get("last_modified") or 0) + 1000
+    result = upsert_week(store, "2025", 1, touched)
+    assert result.updated == 0 and not result.written and digest(store.stats_path("2025", 1)) == before

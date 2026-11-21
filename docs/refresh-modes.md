@@ -117,6 +117,10 @@ The cold run never reads the live bundle. It takes the truth from Sleeper and ES
 - League data: rosters, users, matchups, brackets, transactions (`data/leagues/`).
 - Stats for played weeks (`data/stats/`), injury statuses (`data/injuries/`), player details
   (`data/players/`), trending (`data/trending/`), ESPN snapshots and the crosswalk (`data/espn/`).
+  Trending and the ESPN snapshots are running tallies: every cold run fetches them and the site shows
+  the latest, but git keeps one copy a day, from the first cold run after midnight UTC
+  (`ffapp hold-tallies`). A projection or stat that differs only in Sleeper's `last_modified` time is
+  not a change.
 - The NFL schedule (`data/nfl/`): each game's teams, kickoff and state, and its score once final. The
   fetch time and live clocks and scores are rebuilt data, so a game in progress is not a new record.
 - Projections for the current week and every earlier week (`data/projections/`).

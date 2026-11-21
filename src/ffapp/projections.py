@@ -67,6 +67,13 @@ def to_record(row: dict) -> dict:
     }
 
 
+def changed_beyond_time(old: dict, new: dict) -> bool:
+    """True when ``new`` differs from ``old`` in more than Sleeper's ``last_modified`` time, which
+    Sleeper bumps without changing values (a touched record is not a new record)."""
+    strip = lambda r: {k: v for k, v in r.items() if k != "last_modified"}
+    return strip(old) != strip(new)
+
+
 @dataclass
 class UpsertResult:
     season: str
@@ -86,7 +93,8 @@ def upsert_week(store: Store, season: str, week: int, rows: list[dict], *, futur
     """Merge one week's rows into the store, keeping only the newest version per player.
 
     - rows without a points projection are dropped
-    - a stored record is replaced only when the incoming ``last_modified`` is newer
+    - a stored record is replaced only when the incoming ``last_modified`` is newer and a value
+      other than ``last_modified`` changed
     - players already stored but absent from ``rows`` are kept
     - a response with no projections at all leaves the stored file untouched
     - ``future`` (a week after the current one) writes to the rebuilt, uncommitted folder; a week
@@ -109,7 +117,7 @@ def upsert_week(store: Store, season: str, week: int, rows: list[dict], *, futur
         if existing is None:
             merged[player_id] = record
             result.added += 1
-        elif record["last_modified"] > int(existing.get("last_modified") or 0):
+        elif record["last_modified"] > int(existing.get("last_modified") or 0) and changed_beyond_time(existing, record):
             merged[player_id] = record
             result.updated += 1
         else:

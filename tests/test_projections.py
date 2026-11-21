@@ -148,3 +148,15 @@ def test_upsert_empty_response_for_new_week_creates_nothing(tmp_path):
 def test_refresh_requires_synced_seasons(tmp_path):
     report = refresh_projections(make_client(), Store(tmp_path), ["dynasty"])
     assert not report.ok and "run `ffapp sync` first" in report.errors[0]
+
+
+def test_upsert_ignores_a_touched_but_unchanged_record(tmp_path):
+    """Sleeper bumps last_modified without changing values: not a new record, nothing written."""
+    store = Store(tmp_path)
+    upsert_week(store, "2025", 1, ROWS)
+    before = digest(store.projections_path("2025", 1))
+    touched = copy.deepcopy(ROWS)
+    for row in touched:
+        row["last_modified"] = int(row.get("last_modified") or 0) + 1000
+    result = upsert_week(store, "2025", 1, touched)
+    assert result.updated == 0 and not result.written and digest(store.projections_path("2025", 1)) == before

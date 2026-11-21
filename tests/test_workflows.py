@@ -65,3 +65,8 @@ def test_gitignore_matches_the_rebuilt_paths():
     for path in DERIVED_PATHS:
         assert f"data/{path}" in ignore or f"data/{path}/" in ignore, path
     assert "site/data/" in ignore
+
+
+def test_cold_run_holds_same_day_tallies_before_committing():
+    commit = next(s for s in steps("refresh.yml", "refresh") if s.get("id") == "commit")["run"]
+    assert commit.index("git add data") < commit.index("python -m ffapp hold-tallies") < commit.index("git diff --cached --quiet")

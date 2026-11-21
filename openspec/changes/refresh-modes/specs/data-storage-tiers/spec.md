@@ -20,6 +20,20 @@ A cold run SHALL commit only when one of these changed.
 - **WHEN** a Quiet cold run finds no new transaction, stat, status or projection
 - **THEN** it makes no commit
 
+### Requirement: Touched records are not changes
+A projection or stat that differs from the stored one only in Sleeper's `last_modified` time SHALL NOT replace the stored record or count as a change.
+
+#### Scenario: Sleeper touches a projection
+- **WHEN** Sleeper returns a projection with a newer `last_modified` and the same values
+- **THEN** the stored projection is kept and no commit is made for it
+
+### Requirement: Tallies committed once a day
+Trending and the ESPN snapshots are running tallies that change on every fetch. Each cold run SHALL fetch them and publish the latest on the site. Git SHALL keep at most one copy a day: a changed tally file SHALL be committed only when it is new or its committed copy was saved on an earlier UTC day.
+
+#### Scenario: Tallies move within the day
+- **WHEN** a cold run at 15:00 UTC finds new trending counts and ESPN percentages, and the committed copies were saved at 01:00 UTC the same day
+- **THEN** the site shows the new values and no commit is made for them
+
 ### Requirement: Derived data rebuilt
 Derived data SHALL NOT be tracked by git: `site/data`, ratings, replacement levels, WAR, the roster-drift model, future-week projections, the live forecast, the game files' forecast, views and baseline, the scoreboard's live copy, and the run files (last run, schedule summary, site hash).
 

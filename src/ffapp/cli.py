@@ -13,7 +13,7 @@ from ffapp.config import DEFAULT_CONFIG_PATH, Config, ConfigError, load_config
 from ffapp.sleeper import SleeperClient
 from ffapp.store import DEFAULT_DATA_ROOT, Store
 
-COMMANDS = ("sync", "projections", "stats", "schedule", "snapshot", "ratings", "replacement", "war", "simulate", "games", "verify-brackets", "export", "refresh", "build", "hot", "site-hash", "calibrate", "stamp-site", "site-copy")
+COMMANDS = ("sync", "projections", "stats", "schedule", "snapshot", "ratings", "replacement", "war", "simulate", "games", "verify-brackets", "export", "refresh", "build", "hot", "site-hash", "hold-tallies", "calibrate", "stamp-site", "site-copy")
 log = logging.getLogger("ffapp")
 # The cold run's modes, passed by the relay's clock (docs/refresh-modes.md).
 REFRESH_MODES = ("full", "quiet", "live", "slate", "offseason", "daily", "manual")
@@ -73,6 +73,7 @@ def build_parser() -> argparse.ArgumentParser:
     hot.add_argument("--runs", type=int, default=10_000, help="Simulation runs (default 10000)")
     site_hash = sub.add_parser("site-hash", help="Print a hash of the site folder that ignores refresh times (deploy only when it changes)")
     site_hash.add_argument("--site", type=Path, default=Path("site"), help="site directory (default site/)")
+    sub.add_parser("hold-tallies", help="After git add: unstage trending and ESPN tallies already committed today (UTC), so git keeps one a day")
     stamp = sub.add_parser("stamp-site", help="Before a deploy: stamp script and stylesheet URLs with the site code fingerprint and write version.json")
     stamp.add_argument("--site", type=Path, default=Path("site"), help="site directory (default site/)")
     copy = sub.add_parser("site-copy", help="Regenerate site-copy.txt from the site code; --check reports drift and pending edits; --apply writes confirmed edits into the code")
@@ -487,6 +488,15 @@ def cmd_site_hash(args) -> int:
     return 0
 
 
+def cmd_hold_tallies(args) -> int:
+    from ffapp.tallies import hold_tallies
+
+    held = hold_tallies(Path.cwd())
+    for path in held:
+        print(f"held     {path} (already committed today)")
+    return 0
+
+
 def warning_line(title: str, message: str) -> str:
     """A GitHub Actions warning annotation when running there, a plain warning line otherwise."""
     if os.environ.get("GITHUB_ACTIONS"):
@@ -556,6 +566,8 @@ def main(argv: Sequence[str] | None = None, client: SleeperClient | None = None)
         return 0
     if args.command == "site-hash":  # needs no league config
         return cmd_site_hash(args)
+    if args.command == "hold-tallies":  # needs no league config
+        return cmd_hold_tallies(args)
     if args.command == "site-copy":  # needs no league config
         return cmd_site_copy(args)
     try:

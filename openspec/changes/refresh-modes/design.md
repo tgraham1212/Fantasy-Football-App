@@ -104,6 +104,15 @@ The cold run runs `git add` on the tracked record paths. When `git diff --cached
 ### 11. Button behaviour comes from the relay
 `GET /status` adds `mode` and `reason` (`live`, `running`, `cooldown`), and the page picks the note from them. `POST /refresh` dispatches by mode: `hot.yml` and `refresh.yml` in Quiet, `refresh.yml` in the off-season, and 409 `{reason: "live"}` in Live. The notes "Live updates on" and "Started, back in ~1 min", and their tooltips, get copy IDs.
 
+### 12. Tallies are committed once a day
+The first Quiet hours on the new pipeline committed on 18 of 19 cold runs. Two causes:
+- Sleeper bumps `last_modified` on projections without changing values. The merge now replaces a record only when something besides that time changed.
+- Trending counts and ESPN rostered and started percentages change on every fetch.
+
+For the tallies, the run still writes the files, so the export and site carry the latest values. After `git add data`, `ffapp hold-tallies` unstages and restores each changed tally file whose committed copy was saved on the same UTC day (its `saved_at` or `captured_at`). A new file, such as the day's first trending file, is kept. So git gets one copy a day, from the first cold run after midnight UTC.
+
+- **Alternative: a derived live copy for tallies.** Every reader would have to look in two places.
+
 ## Risks / Trade-offs
 
 - **Two sources of truth on the page (bundle and static files)** → One swap rule (newest wins), one overlay in the loader, and a layout test that serves an older and a newer bundle.
