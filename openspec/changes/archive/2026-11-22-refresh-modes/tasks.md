@@ -79,9 +79,9 @@
 ## 6. Docs and Rollout
 
 - [x] 6.1 Finish `docs/refresh-modes.md` (remove the "planned" status line, and check the file names and commands match the code); regenerate the diagram with `python -X utf8 tools/refresh_modes_diagram.py`; link it from the README's refresh section, and add `ffapp build` to the README's local-run steps. Verify: the links resolve and the diagram matches the doc's wording
-- [ ] 6.2 Owner steps, then verify on the live site: create the KV namespace, set `HOT_TOKEN` in Cloudflare and GitHub, `wrangler deploy`, and run `hot.yml` once by hand. Verify: the page swaps in the bundle and the button shows the right note
-- [ ] 6.3 Enable the Worker's cron trigger, and remove `refresh.yml`'s hourly cron. Verify: across a Quiet hour, about 4 hot and 4 cold runs, with commits and deploys only on change
-- [ ] 6.4 Live check during the next game window: hot runs back to back, the page updates within about 2 minutes, slate-final cold runs store slate forecasts, and the KV write count stays within budget. Verify: Actions history and the Worker's write counter
+- [x] 6.2 Owner steps, then verify on the live site: create the KV namespace, set `HOT_TOKEN` in Cloudflare and GitHub, `wrangler deploy`, and run `hot.yml` once by hand. Verify: the page swaps in the bundle and the button shows the right note
+- [x] 6.3 Enable the Worker's cron trigger, and remove `refresh.yml`'s hourly cron. Verify: across a Quiet hour, about 4 hot and 4 cold runs, with commits and deploys only on change
+- [x] 6.4 Live check during the next game window: hot runs back to back, the page updates within about 2 minutes, slate-final cold runs store slate forecasts, and the KV write count stays within budget. Verify: Actions history and the Worker's write counter
 - [x] 6.5 `Calculations.txt` section 10: the log covers the current week only, appended by cold runs every 15 minutes, plus slate forecasts. Verify: the section matches the code
 
 ## 7. Commit Only Real Changes (found in the 6.3 check)

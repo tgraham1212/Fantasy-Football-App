@@ -7,48 +7,73 @@ Lets league members start a data refresh from the site through a small relay tha
 ## Requirements
 
 ### Requirement: Refresh relay
-A relay service SHALL accept refresh requests from the published site only, and SHALL start the repository's refresh workflow in manual mode using a credential limited to running that repository's workflows. The credential SHALL never appear in the repository or the site.
+A relay service SHALL accept refresh requests from the published site only. It SHALL start the repository's refresh workflows using a credential limited to running that repository's workflows. The credential SHALL never appear in the repository or the site.
+
+The relay SHALL also run the refresh clock and serve the live bundle (see `refresh-scheduling` and `live-refresh`). A refresh request SHALL start:
+- in Quiet, a hot run and a cold run;
+- in the off-season, a cold run.
 
 #### Scenario: Request from the site
-- **WHEN** a visitor on the published site requests a refresh and none is held
-- **THEN** the relay starts the refresh workflow and answers that a refresh started
+- **WHEN** a visitor on the published site requests a refresh in Quiet and none is held
+- **THEN** the relay starts a hot run and a cold run and answers that a refresh started
 
 #### Scenario: Request from elsewhere
 - **WHEN** a request comes from another origin
 - **THEN** the relay refuses it without starting anything
 
 ### Requirement: Refresh cooldown
-The relay SHALL refuse to start a refresh within 15 minutes of the start of the last refresh run, scheduled or manual, including a run still queued or in progress, and SHALL answer with the minutes until a refresh is available. Hourly checks that did not refresh SHALL NOT count.
+The relay SHALL refuse a refresh in Live, and otherwise:
+- while a hot run is queued or in progress;
+- within 5 minutes of the last refresh it started from the button.
+
+It SHALL answer with the reason and the minutes until a refresh is available. Scheduled runs SHALL NOT start the 5-minute hold.
 
 #### Scenario: Too soon
-- **WHEN** the last refresh started 6 minutes ago
-- **THEN** the relay refuses and answers that a refresh is available in 9 minutes
+- **WHEN** the last button refresh started 2 minutes ago in Quiet and its hot run has finished
+- **THEN** the relay refuses and answers that a refresh is available in 3 minutes
 
 #### Scenario: Two clicks at once
 - **WHEN** two visitors request a refresh a few seconds apart
 - **THEN** one refresh starts and the second request is refused with the time until available
 
 ### Requirement: Refresh button
-Each page SHALL show a "Refresh Data" button in the header when the relay's address is configured, and no button otherwise, aligned with the other header buttons. Its label SHALL never wrap. Under it (beside it on phones) the page SHALL show "Updated N min ago" while a refresh is available and "Available in N min" while it is held, updating every minute, and a short confirmation after a refresh starts. The note SHALL keep a fixed space so no message moves the button or any other element, SHALL stay within the screen, and SHALL show any longer explanation as a tooltip. After a refresh the visitor started, the note SHALL say "Updated just now" when the new data arrives, or that the refresh did not finish if no new data has arrived after 20 minutes.
+Each page SHALL show a "Refresh Data" button in the header when the relay's address is configured, and no button otherwise, aligned with the other header buttons. Its label SHALL never wrap.
+
+Under the button (beside it on phones) the page SHALL show, updating every minute:
+- "Updated N min ago" while a refresh is available;
+- "Available in N min" while it is held;
+- "Live updates on" in Live, with the button disabled;
+- a short confirmation after a refresh starts.
+
+The note SHALL:
+- keep a fixed space, so no message moves the button or any other element;
+- stay within the screen;
+- show any longer explanation as a tooltip.
+
+After a refresh the visitor started, the note SHALL say "Updated just now" when the new data arrives. It SHALL say the refresh did not finish if no new data has arrived after 10 minutes.
 
 #### Scenario: Not configured
 - **WHEN** the site is published without a relay address
 - **THEN** no refresh button appears and every page works as before
 
 #### Scenario: Held
-- **WHEN** the last refresh started 6 minutes ago
-- **THEN** the button is disabled with "Available in 9 min" under it
+- **WHEN** the last button refresh started 2 minutes ago
+- **THEN** the button is disabled with "Available in 3 min" under it
+
+#### Scenario: Live
+- **WHEN** a game is in progress
+- **THEN** the button is disabled with "Live updates on" under it and the full explanation as its tooltip
 
 #### Scenario: Started
-- **WHEN** a visitor clicks "Refresh Data" and the relay starts a run
-- **THEN** the note says "Started, back in ~5 min" with the full explanation as its tooltip, and nothing on the page moves
+- **WHEN** a visitor clicks "Refresh Data" in Quiet and the relay starts the runs
+- **THEN** the note says "Started, back in ~1 min" with the full explanation as its tooltip, and nothing on the page moves
 
 #### Scenario: Data arrives
-- **WHEN** the started run deploys new data four minutes later
+- **WHEN** the started hot run writes its bundle a minute later
 - **THEN** the page shows the new data in place and the note reads "Updated just now"
 
 #### Scenario: Run never lands
-- **WHEN** 20 minutes pass after a started refresh with no new data deployed
+- **WHEN** 10 minutes pass after a started refresh with no new data
 - **THEN** the note says the refresh did not finish
 
 #### Scenario: Aligned

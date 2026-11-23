@@ -36,15 +36,24 @@ Once Sleeper sets a playoff week's pairings, that week's games SHALL be the real
 - **THEN** week 15 shows those real games and no projected ones
 
 ### Requirement: Projection log
-Each refresh run SHALL append, for each game of the current week and every later week of the season, an entry holding the run time, each team's model lineup and win probability, and every rostered player's projected points with whether his NFL game has kicked off. An entry SHALL be appended only when a lineup, projection, kickoff state or win probability differs from the game's previous entry. A player's projection SHALL stop updating at his kickoff.
+Each cold run SHALL append an entry for each game of the current week. The entry SHALL hold:
+- the run time;
+- each team's model lineup and win probability;
+- every rostered player's projected points, with whether his NFL game has kicked off.
+
+An entry SHALL be appended only when a lineup, projection, kickoff state or win probability differs from the game's previous entry. A player's projection SHALL stop updating at his kickoff. Later weeks SHALL NOT be logged until they become the current week.
 
 #### Scenario: Weekend runs
-- **WHEN** the refresh runs Thursday, Saturday and Sunday morning during week 11 and projections change between each run
+- **WHEN** cold runs happen Thursday, Saturday and Sunday morning during week 11 and projections change between each run
 - **THEN** each week-11 game has three log entries, and players whose games had kicked off keep their last pre-kickoff projection in the later entries
 
 #### Scenario: Nothing changed
 - **WHEN** a run produces the same lineups, projections, kickoff states and win probabilities as the previous entry
 - **THEN** no entry is appended
+
+#### Scenario: Next week not logged
+- **WHEN** a cold run happens during week 11 while week 12's projections change
+- **THEN** week 12's games get no log entries
 
 ### Requirement: Prediction of record
 Once a week is final, each game's prediction of record SHALL be simulated from the lineup each manager actually started, each player at his last logged projection before kickoff, using the same model as the forecasts. A starter never logged before his kickoff SHALL use his stored projection for that week. The record SHALL include the same fields as a game forecast.
@@ -65,11 +74,15 @@ For a finished week with no log entries, the prediction of record SHALL be the g
 - **THEN** its games show the as-of-week-5 forecast, labelled as a pre-week forecast
 
 ### Requirement: Game files stored
-The system SHALL write, per league, season and week, the log entries, the latest forecast and, once the week is final, the prediction of record with each team's actual score and the winner. Re-running on unchanged data SHALL not add log entries or change the record.
+The system SHALL commit, per league, season and week:
+- the log entries;
+- once the week is final, the prediction of record, with each team's actual score and the winner.
+
+The latest forecast and the lineup views SHALL be rebuilt by each run and never committed. Re-running on unchanged data SHALL NOT add log entries or change the record.
 
 #### Scenario: Re-run without news
 - **WHEN** the games step runs twice with no new projections and no new runs of the simulation
-- **THEN** the second run leaves the week files unchanged
+- **THEN** the second run leaves the committed week files unchanged
 
 ### Requirement: Model and actual lineup views
 For every finished week and the live week, each game SHALL be stored in two views. Model: each team's best legal lineup from its roster that week, every player at his last projection before kickoff, with the week's replacement-level floor. Actual: the starters each manager used, at the same projections. Each view SHALL carry its own lineups, means, histogram, win probabilities and margin, simulated with the same model and no results.
@@ -106,3 +119,10 @@ For each team in a finished or live game, the system SHALL compute lineup choice
 #### Scenario: Benched the better player
 - **WHEN** the model lineup would have scored 12 more points
 - **THEN** the team's lineup choices are -12.0
+
+### Requirement: Slate forecasts
+When a slate goes final, the cold run SHALL store the league forecast as of that moment in the week's slate file, keyed by the slate's kickoff time. A slate's entry SHALL never be overwritten.
+
+#### Scenario: Sunday's slates
+- **WHEN** the 1:00 pm, 4:05 pm and Sunday night slates of week 11 go final
+- **THEN** week 11's slate file holds three forecasts, one per slate

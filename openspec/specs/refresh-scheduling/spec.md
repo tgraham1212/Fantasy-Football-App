@@ -6,38 +6,86 @@ Decides when the full refresh runs, so forecasts are refreshed just before games
 
 ## Requirements
 
-### Requirement: Hourly check
-The scheduled job SHALL wake every hour and decide from the stored NFL schedule, refreshed from the scoreboard, whether to run the full refresh. When it decides not to, it SHALL end without committing or deploying anything.
+### Requirement: Refresh modes
+The refresh SHALL always be in exactly one of three modes:
+- **Off-season:** both leagues' seasons are over and the NFL season's week 1 has not begun;
+- **Live:** an NFL game has kicked off and is not final;
+- **Quiet:** any other time in season.
 
-#### Scenario: Quiet Wednesday
-- **WHEN** the job wakes on a Wednesday afternoon with no kickoff in the next hour and no game finished since the last run
-- **THEN** it ends without running the refresh
+The refresh relay's Worker SHALL work out the mode once a minute and start the runs the mode makes due.
 
-### Requirement: Run triggers
-The check SHALL run the full refresh when a game kicks off within the next 60 minutes, when a game has gone final since the last full run, or when it is the daily run at 11:00 UTC. A manual start SHALL always run.
+#### Scenario: Sunday afternoon
+- **WHEN** the 1:00 pm games are in progress
+- **THEN** the mode is Live
 
-#### Scenario: Before the 1 pm games
-- **WHEN** the job wakes at 12:20 pm Eastern on a Sunday with games kicking off at 1:00 pm
-- **THEN** it runs the full refresh
+#### Scenario: Wednesday in season
+- **WHEN** no game is in progress on a Wednesday in week 11
+- **THEN** the mode is Quiet
 
-#### Scenario: After the night game
-- **WHEN** the Thursday night game went final after the last full run
-- **THEN** the next check runs the full refresh
+#### Scenario: March
+- **WHEN** both leagues' championship weeks were scored in January
+- **THEN** the mode is Off-season
 
-### Requirement: Run spacing
-Apart from the daily run and manual starts, the full refresh SHALL NOT start within three hours of the previous full run's start. The time of each full run SHALL be stored with the data.
+### Requirement: Cadence per mode
+Hot runs SHALL run as follows:
+- **Live:** whenever none is queued or running, checked every minute;
+- **Quiet:** every 15 minutes;
+- **Off-season:** never.
 
-#### Scenario: Back-to-back windows
-- **WHEN** a full run started at 12:20 pm and the 4:05 pm games are 40 minutes away at 3:25 pm
-- **THEN** the check runs the full refresh, since three hours have passed
+Cold runs SHALL run every 15 minutes in Live and Quiet, and daily at 11:00 UTC in the off-season. GitHub's own schedule SHALL also start the 11:00 UTC cold run in every mode, so the site is refreshed daily even if the Worker stops.
 
-#### Scenario: Too soon
-- **WHEN** a full run started at 12:20 pm and a 1:00 pm game goes final at 2:30 pm
-- **THEN** the 3:00 pm check does not run the full refresh
+#### Scenario: Back-to-back hot runs
+- **WHEN** a hot run finishes 70 seconds after it started during Live
+- **THEN** the next minute's clock starts another hot run
 
-### Requirement: Check failures
-If the scoreboard cannot be read during a check, the check SHALL skip that hour unless it is the daily run, which SHALL run the full refresh anyway.
+#### Scenario: Worker down
+- **WHEN** the Worker's clock has not run for a day
+- **THEN** the 11:00 UTC cold run still starts from GitHub's schedule
 
-#### Scenario: Scoreboard down at the daily run
-- **WHEN** the scoreboard fails at 11:00 UTC
-- **THEN** the full refresh runs and the schedule step reports the failure as a skipped step
+### Requirement: Mode transitions
+The mode SHALL change:
+- from Off-season to Quiet when Sleeper's NFL state reports the season's week 1;
+- from Quiet to Live when a game's kickoff time passes;
+- from Live to Quiet when every game that kicked off is final;
+- from Quiet to Off-season when both leagues' championship weeks are scored.
+
+The Worker SHALL decide from a schedule summary the cold run stores in KV and the game status in the latest live bundle. A game not yet seen final 6 hours after kickoff SHALL count as final.
+
+#### Scenario: Kickoff
+- **WHEN** the clock runs at 1:00 pm with 1:00 pm games scheduled
+- **THEN** the mode becomes Live and a hot run starts
+
+#### Scenario: Last game final
+- **WHEN** the latest bundle shows the Sunday night game final and no other game in progress
+- **THEN** the mode becomes Quiet
+
+#### Scenario: Stuck status
+- **WHEN** a game kicked off 6 hours ago and no bundle has shown it final
+- **THEN** it counts as final for the mode
+
+### Requirement: Slate-final run
+When every game of a slate (games sharing a kickoff time) is final, the Worker SHALL start a cold run, and that run SHALL save the live forecast as of that moment to the season's history.
+
+#### Scenario: Early games end
+- **WHEN** the last 1:00 pm game goes final while the 4:05 pm games are in progress
+- **THEN** a cold run starts and stores the forecast as of the end of the 1:00 pm slate
+
+### Requirement: Refresh mode documentation
+The repository SHALL hold `docs/refresh-modes.md`, linked from the README. It SHALL contain:
+- the diagram;
+- the modes, transitions and per-mode cadences;
+- the steps of a hot and a cold run;
+- the data tiers;
+- the limits and budgets;
+- what happens on failure.
+
+#### Scenario: Reading the README
+- **WHEN** a reader follows the README's refresh section
+- **THEN** it links to `docs/refresh-modes.md`, which shows the diagram and every mode, transition, run step and data tier
+
+### Requirement: Refresh mode diagram maintained
+The diagram SHALL live at `docs/images/refresh-modes/diagram.svg` and SHALL be generated by `tools/refresh_modes_diagram.py`. A change to a mode, trigger, cadence, run step or data tier SHALL update the document, the generator and these specs together.
+
+#### Scenario: Cadence changed
+- **WHEN** the Quiet cadence changes from 15 to 10 minutes
+- **THEN** the same change updates the spec, the document and the diagram, regenerated with the script
