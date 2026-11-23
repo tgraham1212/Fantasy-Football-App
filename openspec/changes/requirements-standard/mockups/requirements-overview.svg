@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1526 570" width="1526" height="570">
+<style>
+text { font-family: 'Segoe UI', system-ui, sans-serif; }
+.bg { fill: #ffffff; }
+.title { font-size: 20px; font-weight: 700; fill: #14161a; }
+.sub { font-size: 12.5px; fill: #4c5058; }
+.mock { font-size: 12px; font-weight: 700; fill: #b4530b; letter-spacing: 0.08em; }
+.col { font-size: 11.5px; font-weight: 700; fill: #6b6f78; letter-spacing: 0.08em; }
+.req { fill: #ffffff; stroke: #2b2f36; stroke-width: 1.4; }
+.need { fill: #fbf2e1; stroke: #c08a2c; stroke-width: 1.6; }
+.ext { fill: #f4f4f2; stroke: #9a9890; stroke-width: 1.2; stroke-dasharray: 4 3; }
+.hdr { fill: #eef1f6; } .needhdr { fill: #f5e2bd; } .exthdr { fill: #e9e8e4; }
+.ster { font-size: 10.5px; fill: #4c5058; font-style: italic; }
+.rid { font-size: 12.5px; font-weight: 800; fill: #14161a; font-family: ui-monospace, Consolas, monospace; }
+.rname { font-size: 12.5px; font-weight: 700; fill: #14161a; }
+.rtext { font-size: 11px; fill: #2b2f36; }
+.spec { font-size: 10.5px; fill: #4f7cc0; font-family: ui-monospace, Consolas, monospace; }
+.tc { fill: #e8f5ea; stroke: #4f9a5c; stroke-width: 1.3; }
+.insp { fill: #e8f0fb; stroke: #4f7cc0; stroke-width: 1.3; }
+.gap { fill: #fdecec; stroke: #c0392b; stroke-width: 1.3; stroke-dasharray: 5 3; }
+.tctext { font-size: 10.5px; fill: #14161a; font-family: ui-monospace, Consolas, monospace; }
+.tbr { fill: #b4530b; } .tbrt { font-size: 10px; font-weight: 800; fill: #ffffff; }
+.derive { fill: none; stroke: #2b2f36; stroke-width: 1.4; stroke-dasharray: 6 3; }
+.trace { fill: none; stroke: #9a9890; stroke-width: 1.4; stroke-dasharray: 2 3; }
+.verify { fill: none; stroke: #4f9a5c; stroke-width: 1.3; stroke-dasharray: 6 3; }
+.vgap { fill: none; stroke: #c0392b; stroke-width: 1.3; stroke-dasharray: 6 3; }
+.elab { font-size: 10px; fill: #4c5058; font-style: italic; }
+.lg { font-size: 11.5px; fill: #2b2f36; }
+.nnum { font-size: 22px; font-weight: 800; fill: #b4530b; font-family: ui-monospace, Consolas, monospace; }
+.nname { font-size: 14px; font-weight: 700; fill: #14161a; }
+.stat { font-size: 11.5px; fill: #2b2f36; } .statn { font-weight: 800; }
+.bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bg2 { fill: #c0392b; }
+</style>
+<rect class="bg" width="1526" height="570"/>
+<text class="mock" x="40" y="34">MOCK-UP · DUMMY DATA</text>
+<text class="title" x="40" y="60">Requirements Overview: The Ten Needs</text>
+<text class="sub" x="40" y="80">Each need with the requirements derived from it and how they are verified · click-through to need-N.svg in docs/requirements.md</text>
+<rect class="need" x="40" y="120" width="270" height="168" rx="4"/>
+<text class="ster" x="52" y="138">«need»</text>
+<text class="nnum" x="52" y="166">1</text><text class="nname" x="68" y="164">Season Forecasts</text>
+<text class="stat" x="52" y="190"><tspan class="statn">34</tspan> requirements · <tspan class="statn">4</tspan> levels deep</text>
+<rect class="bt" x="52.0" y="202" width="186.1" height="12" rx="2"/>
+<rect class="bi" x="240.1" y="202" width="19.7" height="12" rx="2"/>
+<rect class="ba" x="261.8" y="202" width="5.2" height="12" rx="2"/>
+<rect class="bg2" x="269.1" y="202" width="26.9" height="12" rx="2"/>
+<text class="stat" x="52" y="234">Test 26 · Inspection 3 · Analysis 1 · Demo 0</text>
+<text class="stat" x="52" y="254"><tspan class="statn" fill="#c0392b">4 gaps</tspan> · 1 TBR</text>
+<text class="spec" x="52" y="276">need-1.svg</text>
+<rect class="need" x="334" y="120" width="270" height="168" rx="4"/>
+<text class="ster" x="346" y="138">«need»</text>
+<text class="nnum" x="346" y="166">2</text><text class="nname" x="362" y="164">Game Forecasts</text>
+<text class="stat" x="346" y="190"><tspan class="statn">41</tspan> requirements · <tspan class="statn">4</tspan> levels deep</text>
+<rect class="bt" x="346.0" y="202" width="178.0" height="12" rx="2"/>
+<rect class="bi" x="526.0" y="202" width="10.0" height="12" rx="2"/>
+<rect class="ba" x="538.0" y="202" width="10.0" height="12" rx="2"/>
+<rect class="bd" x="550.0" y="202" width="4.0" height="12" rx="2"/>
+<rect class="bg2" x="556.0" y="202" width="34.0" height="12" rx="2"/>
+<text class="stat" x="346" y="234">Test 30 · Inspection 2 · Analysis 2 · Demo 1</text>
+<text class="stat" x="346" y="254"><tspan class="statn" fill="#c0392b">6 gaps</tspan> · 0 TBR</text>
+<text class="spec" x="346" y="276">need-2.svg</text>
+<rect class="need" x="628" y="120" width="270" height="168" rx="4"/>
+<text class="ster" x="640" y="138">«need»</text>
+<text class="nnum" x="640" y="166">3</text><text class="nname" x="656" y="164">Player Value</text>
+<text class="stat" x="640" y="190"><tspan class="statn">28</tspan> requirements · <tspan class="statn">3</tspan> levels deep</text>
+<rect class="bt" x="640.0" y="202" width="191.3" height="12" rx="2"/>
+<rect class="bi" x="833.3" y="202" width="6.8" height="12" rx="2"/>
+<rect class="ba" x="842.1" y="202" width="15.6" height="12" rx="2"/>
+<rect class="bg2" x="859.6" y="202" width="24.4" height="12" rx="2"/>
+<text class="stat" x="640" y="234">Test 22 · Inspection 1 · Analysis 2 · Demo 0</text>
+<text class="stat" x="640" y="254"><tspan class="statn" fill="#c0392b">3 gaps</tspan> · 1 TBR</text>
+<text class="spec" x="640" y="276">need-3.svg</text>
+<rect class="need" x="922" y="120" width="270" height="168" rx="4"/>
+<text class="ster" x="934" y="138">«need»</text>
+<text class="nnum" x="934" y="166">4</text><text class="nname" x="950" y="164">Manager History</text>
+<text class="stat" x="934" y="190"><tspan class="statn">25</tspan> requirements · <tspan class="statn">3</tspan> levels deep</text>
+<rect class="bt" x="934.0" y="202" width="175.1" height="12" rx="2"/>
+<rect class="bi" x="1111.1" y="202" width="27.5" height="12" rx="2"/>
+<rect class="bg2" x="1140.6" y="202" width="37.4" height="12" rx="2"/>
+<text class="stat" x="934" y="234">Test 18 · Inspection 3 · Analysis 0 · Demo 0</text>
+<text class="stat" x="934" y="254"><tspan class="statn" fill="#c0392b">4 gaps</tspan> · 0 TBR</text>
+<text class="spec" x="934" y="276">need-4.svg</text>
+<rect class="need" x="1216" y="120" width="270" height="168" rx="4"/>
+<text class="ster" x="1228" y="138">«need»</text>
+<text class="nnum" x="1228" y="166">5</text><text class="nname" x="1244" y="164">Current Data</text>
+<text class="stat" x="1228" y="190"><tspan class="statn">30</tspan> requirements · <tspan class="statn">4</tspan> levels deep</text>
+<rect class="bt" x="1228.0" y="202" width="170.2" height="12" rx="2"/>
+<rect class="bi" x="1400.2" y="202" width="14.4" height="12" rx="2"/>
+<rect class="bd" x="1416.6" y="202" width="14.4" height="12" rx="2"/>
+<rect class="bg2" x="1433.0" y="202" width="39.0" height="12" rx="2"/>
+<text class="stat" x="1228" y="234">Test 21 · Inspection 2 · Analysis 0 · Demo 2</text>
+<text class="stat" x="1228" y="254"><tspan class="statn" fill="#c0392b">5 gaps</tspan> · 2 TBR</text>
+<text class="spec" x="1228" y="276">need-5.svg</text>
+<rect class="need" x="40" y="312" width="270" height="168" rx="4"/>
+<text class="ster" x="52" y="330">«need»</text>
+<text class="nnum" x="52" y="358">6</text><text class="nname" x="68" y="356">Durable Record</text>
+<text class="stat" x="52" y="382"><tspan class="statn">22</tspan> requirements · <tspan class="statn">3</tspan> levels deep</text>
+<rect class="bt" x="52.0" y="394" width="210.5" height="12" rx="2"/>
+<rect class="bi" x="264.5" y="394" width="9.2" height="12" rx="2"/>
+<rect class="bg2" x="275.6" y="394" width="20.4" height="12" rx="2"/>
+<text class="stat" x="52" y="426">Test 19 · Inspection 1 · Analysis 0 · Demo 0</text>
+<text class="stat" x="52" y="446"><tspan class="statn" fill="#c0392b">2 gaps</tspan> · 0 TBR</text>
+<text class="spec" x="52" y="468">need-6.svg</text>
+<rect class="need" x="334" y="312" width="270" height="168" rx="4"/>
+<text class="ster" x="346" y="330">«need»</text>
+<text class="nnum" x="346" y="358">7</text><text class="nname" x="362" y="356">Checked Forecasts</text>
+<text class="stat" x="346" y="382"><tspan class="statn">9</tspan> requirements · <tspan class="statn">2</tspan> levels deep</text>
+<rect class="bt" x="346.0" y="394" width="162.0" height="12" rx="2"/>
+<rect class="ba" x="510.0" y="394" width="52.7" height="12" rx="2"/>
+<rect class="bg2" x="564.7" y="394" width="25.3" height="12" rx="2"/>
+<text class="stat" x="346" y="426">Test 6 · Inspection 0 · Analysis 2 · Demo 0</text>
+<text class="stat" x="346" y="446"><tspan class="statn" fill="#c0392b">1 gap</tspan> · 0 TBR</text>
+<text class="spec" x="346" y="468">need-7.svg</text>
+<rect class="need" x="628" y="312" width="270" height="168" rx="4"/>
+<text class="ster" x="640" y="330">«need»</text>
+<text class="nnum" x="640" y="358">8</text><text class="nname" x="656" y="356">Open Methods</text>
+<text class="stat" x="640" y="382"><tspan class="statn">14</tspan> requirements · <tspan class="statn">2</tspan> levels deep</text>
+<rect class="bt" x="640.0" y="394" width="68.3" height="12" rx="2"/>
+<rect class="bi" x="710.3" y="394" width="156.1" height="12" rx="2"/>
+<rect class="bg2" x="868.4" y="394" width="15.6" height="12" rx="2"/>
+<text class="stat" x="640" y="426">Test 4 · Inspection 9 · Analysis 0 · Demo 0</text>
+<text class="stat" x="640" y="446"><tspan class="statn" fill="#c0392b">1 gap</tspan> · 0 TBR</text>
+<text class="spec" x="640" y="468">need-8.svg</text>
+<rect class="need" x="922" y="312" width="270" height="168" rx="4"/>
+<text class="ster" x="934" y="330">«need»</text>
+<text class="nnum" x="934" y="358">9</text><text class="nname" x="950" y="356">Usable by Every Manager</text>
+<text class="stat" x="934" y="382"><tspan class="statn">26</tspan> requirements · <tspan class="statn">3</tspan> levels deep</text>
+<rect class="bt" x="934.0" y="394" width="187.2" height="12" rx="2"/>
+<rect class="bi" x="1123.2" y="394" width="35.8" height="12" rx="2"/>
+<rect class="bd" x="1161.1" y="394" width="7.5" height="12" rx="2"/>
+<rect class="bg2" x="1170.5" y="394" width="7.5" height="12" rx="2"/>
+<text class="stat" x="934" y="426">Test 20 · Inspection 4 · Analysis 0 · Demo 1</text>
+<text class="stat" x="934" y="446"><tspan class="statn" fill="#c0392b">1 gap</tspan> · 0 TBR</text>
+<text class="spec" x="934" y="468">need-9.svg</text>
+<rect class="need" x="1216" y="312" width="270" height="168" rx="4"/>
+<text class="ster" x="1228" y="330">«need»</text>
+<text class="nnum" x="1228" y="358">10</text><text class="nname" x="1260" y="356">Maintainable Project</text>
+<text class="stat" x="1228" y="382"><tspan class="statn">31</tspan> requirements · <tspan class="statn">4</tspan> levels deep</text>
+<rect class="bt" x="1228.0" y="394" width="188.5" height="12" rx="2"/>
+<rect class="bi" x="1418.5" y="394" width="45.6" height="12" rx="2"/>
+<rect class="bg2" x="1466.1" y="394" width="5.9" height="12" rx="2"/>
+<text class="stat" x="1228" y="426">Test 24 · Inspection 6 · Analysis 0 · Demo 0</text>
+<text class="stat" x="1228" y="446"><tspan class="statn" fill="#c0392b">1 gap</tspan> · 0 TBR</text>
+<text class="spec" x="1228" y="468">need-10.svg</text>
+<rect class="bt" x="40" y="510" width="22" height="12" rx="2"/><text class="lg" x="70" y="520">Test</text>
+<rect class="bi" x="210" y="510" width="22" height="12" rx="2"/><text class="lg" x="240" y="520">Inspection</text>
+<rect class="ba" x="380" y="510" width="22" height="12" rx="2"/><text class="lg" x="410" y="520">Analysis</text>
+<rect class="bd" x="550" y="510" width="22" height="12" rx="2"/><text class="lg" x="580" y="520">Demonstration</text>
+<rect class="bg2" x="720" y="510" width="22" height="12" rx="2"/><text class="lg" x="750" y="520">Gap</text>
+<text class="sub" x="40" y="550">Totals: 260 requirements · 190 by test · 31 by inspection · 28 gaps · 4 TBR (dummy)</text>
+</svg>

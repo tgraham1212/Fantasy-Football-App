@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1532" width="1600" height="1532">
+<style>
+text { font-family: 'Segoe UI', system-ui, sans-serif; }
+.bg { fill: #ffffff; }
+.title { font-size: 20px; font-weight: 700; fill: #14161a; }
+.sub { font-size: 12.5px; fill: #4c5058; }
+.mock { font-size: 12px; font-weight: 700; fill: #b4530b; letter-spacing: 0.08em; }
+.col { font-size: 11.5px; font-weight: 700; fill: #6b6f78; letter-spacing: 0.08em; }
+.req { fill: #ffffff; stroke: #2b2f36; stroke-width: 1.4; }
+.need { fill: #fbf2e1; stroke: #c08a2c; stroke-width: 1.6; }
+.ext { fill: #f4f4f2; stroke: #9a9890; stroke-width: 1.2; stroke-dasharray: 4 3; }
+.hdr { fill: #eef1f6; } .needhdr { fill: #f5e2bd; } .exthdr { fill: #e9e8e4; }
+.ster { font-size: 10.5px; fill: #4c5058; font-style: italic; }
+.rid { font-size: 12.5px; font-weight: 800; fill: #14161a; font-family: ui-monospace, Consolas, monospace; }
+.rname { font-size: 12.5px; font-weight: 700; fill: #14161a; }
+.rtext { font-size: 11px; fill: #2b2f36; }
+.spec { font-size: 10.5px; fill: #4f7cc0; font-family: ui-monospace, Consolas, monospace; }
+.tc { fill: #e8f5ea; stroke: #4f9a5c; stroke-width: 1.3; }
+.insp { fill: #e8f0fb; stroke: #4f7cc0; stroke-width: 1.3; }
+.gap { fill: #fdecec; stroke: #c0392b; stroke-width: 1.3; stroke-dasharray: 5 3; }
+.tctext { font-size: 10.5px; fill: #14161a; font-family: ui-monospace, Consolas, monospace; }
+.tbr { fill: #b4530b; } .tbrt { font-size: 10px; font-weight: 800; fill: #ffffff; }
+.derive { fill: none; stroke: #2b2f36; stroke-width: 1.4; stroke-dasharray: 6 3; }
+.trace { fill: none; stroke: #9a9890; stroke-width: 1.4; stroke-dasharray: 2 3; }
+.verify { fill: none; stroke: #4f9a5c; stroke-width: 1.3; stroke-dasharray: 6 3; }
+.vgap { fill: none; stroke: #c0392b; stroke-width: 1.3; stroke-dasharray: 6 3; }
+.elab { font-size: 10px; fill: #4c5058; font-style: italic; }
+.lg { font-size: 11.5px; fill: #2b2f36; }
+.nnum { font-size: 22px; font-weight: 800; fill: #b4530b; font-family: ui-monospace, Consolas, monospace; }
+.nname { font-size: 14px; font-weight: 700; fill: #14161a; }
+.stat { font-size: 11.5px; fill: #2b2f36; } .statn { font-weight: 800; }
+.bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bg2 { fill: #c0392b; }
+</style>
+<defs>
+<marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker>
+<marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#9a9890" stroke-width="1.4"/></marker>
+<marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker>
+<marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker>
+</defs>
+<rect class="bg" width="1600" height="1532"/>
+<text class="mock" x="40" y="34">MOCK-UP · DUMMY DATA</text>
+<text class="title" x="40" y="60">Requirements Diagram: Need 1, Season Forecasts</text>
+<text class="sub" x="40" y="80">Drawn from the specs by tools/requirements_diagram.py · one diagram per need · ID shows lineage (level = number of dots)</text>
+<text class="col" x="40" y="132">NEED · LEVEL 0</text>
+<text class="col" x="340" y="132">LEVEL 1</text>
+<text class="col" x="640" y="132">LEVEL 2</text>
+<text class="col" x="940" y="132">LEVEL 3</text>
+<text class="col" x="1260" y="132">VERIFIED BY</text>
+<path class="derive" d="M340,324.0 H315 V202.0 H290" marker-end="url(#open)"/>
+<text class="elab" x="316" y="318.0" text-anchor="end">«deriveReqt»</text>
+<path class="derive" d="M640,446.0 H615 V324.0 H590" marker-end="url(#open)"/>
+<text class="elab" x="616" y="440.0" text-anchor="end">«deriveReqt»</text>
+<path class="derive" d="M940,568.0 H915 V446.0 H890" marker-end="url(#open)"/>
+
+<path class="derive" d="M640,690.0 H615 V324.0 H590" marker-end="url(#open)"/>
+
+<path class="derive" d="M640,812.0 H615 V324.0 H590" marker-end="url(#open)"/>
+
+<path class="derive" d="M940,934.0 H915 V812.0 H890" marker-end="url(#open)"/>
+
+<path class="derive" d="M340,1056.0 H315 V202.0 H290" marker-end="url(#open)"/>
+
+<path class="derive" d="M640,1178.0 H615 V1056.0 H590" marker-end="url(#open)"/>
+
+<rect class="tc" x="1260" y="294" width="300" height="60" rx="3"/>
+<text class="ster" x="1268" y="309">«testCase»</text>
+<text class="tctext" x="1268" y="326">test_simulate.py::test_run_count</text>
+<path class="verify" d="M1260,324 H590" marker-end="url(#openv)"/>
+<text class="elab" x="1252" y="319" text-anchor="end">«verify»</text>
+<rect class="tc" x="1260" y="416" width="300" height="60" rx="3"/>
+<text class="ster" x="1268" y="431">«testCase»</text>
+<text class="tctext" x="1268" y="448">test_simulate.py::test_uses_real_pairings</text>
+<path class="verify" d="M1260,446 H890" marker-end="url(#openv)"/>
+<rect class="tc" x="1260" y="538" width="300" height="60" rx="3"/>
+<text class="ster" x="1268" y="553">«testCase»</text>
+<text class="tctext" x="1268" y="570">test_sync.py::test_matchups_saved</text>
+<path class="verify" d="M1260,568 H1190" marker-end="url(#openv)"/>
+<rect class="tc" x="1260" y="660" width="300" height="60" rx="3"/>
+<text class="ster" x="1268" y="675">«testCase»</text>
+<text class="tctext" x="1268" y="692">test_simulate.py::test_best_lineup</text>
+<path class="verify" d="M1260,690 H890" marker-end="url(#openv)"/>
+<rect class="tc" x="1260" y="782" width="300" height="60" rx="3"/>
+<text class="ster" x="1268" y="797">«testCase»</text>
+<text class="tctext" x="1268" y="814">test_bracket.py::test_six_team_bracket</text>
+<path class="verify" d="M1260,812 H890" marker-end="url(#openv)"/>
+<rect class="tc" x="1260" y="904" width="300" height="60" rx="3"/>
+<text class="ster" x="1268" y="919">«testCase»</text>
+<text class="tctext" x="1268" y="936">test_simulate.py::test_unsupported_playoff_s</text>
+<text class="tctext" x="1268" y="950">ize_fails_loudly</text>
+<path class="verify" d="M1260,934 H1190" marker-end="url(#openv)"/>
+<rect class="insp" x="1260" y="1026" width="300" height="60" rx="3"/>
+<text class="ster" x="1268" y="1041">«inspection»</text>
+<text class="tctext" x="1268" y="1058">inspection-checklist.md, row 1.2</text>
+<path class="verify" d="M1260,1056 H590" marker-end="url(#openv)"/>
+<rect class="gap" x="1260" y="1148" width="300" height="60" rx="3"/>
+<text class="ster" x="1268" y="1163">«gap»</text>
+<text class="tctext" x="1268" y="1180">Gap: a test that every week has a stored</text>
+<text class="tctext" x="1268" y="1194">Forecast</text>
+<path class="vgap" d="M1260,1178 H890" marker-end="url(#openr)"/>
+<rect class="need" x="40" y="150" width="250" height="104" rx="3"/>
+<rect class="needhdr" x="40.7" y="150.7" width="248.6" height="34" rx="2.5"/>
+<text class="ster" x="165.0" y="163" text-anchor="middle">«need»</text>
+<text x="165.0" y="178" text-anchor="middle"><tspan class="rid">1</tspan><tspan class="rname" dx="6">Season Forecasts</tspan></text>
+<text class="rtext" x="48" y="200">The site shall show each team&#x27;s Forecast for</text>
+<text class="rtext" x="48" y="214">the rest of its league&#x27;s season and how it</text>
+<text class="rtext" x="48" y="228">changed week by week.</text>
+<text class="spec" x="48" y="247">needs</text>
+<rect class="req" x="340" y="272" width="250" height="104" rx="3"/>
+<rect class="hdr" x="340.7" y="272.7" width="248.6" height="34" rx="2.5"/>
+<text class="ster" x="465.0" y="285" text-anchor="middle">«requirement»</text>
+<text x="465.0" y="300" text-anchor="middle"><tspan class="rid">1.1</tspan><tspan class="rname" dx="6">Season simulation</tspan></text>
+<text class="rtext" x="348" y="322">The simulation shall play the rest of each</text>
+<text class="rtext" x="348" y="336">league&#x27;s season at least 10,000 times per</text>
+<text class="rtext" x="348" y="350">Forecast.</text>
+<text class="spec" x="348" y="369">playoff-odds-simulation</text>
+<rect class="req" x="640" y="394" width="250" height="104" rx="3"/>
+<rect class="hdr" x="640.7" y="394.7" width="248.6" height="34" rx="2.5"/>
+<text class="ster" x="765.0" y="407" text-anchor="middle">«requirement»</text>
+<text x="765.0" y="422" text-anchor="middle"><tspan class="rid">1.1.1</tspan><tspan class="rname" dx="6">Real schedule</tspan></text>
+<text class="rtext" x="648" y="444">The simulation shall use each league&#x27;s</text>
+<text class="rtext" x="648" y="458">Sleeper matchup pairings for every remaining</text>
+<text class="rtext" x="648" y="472">week.</text>
+<text class="spec" x="648" y="491">playoff-odds-simulation</text>
+<rect class="req" x="940" y="516" width="250" height="104" rx="3"/>
+<rect class="hdr" x="940.7" y="516.7" width="248.6" height="34" rx="2.5"/>
+<text class="ster" x="1065.0" y="529" text-anchor="middle">«requirement»</text>
+<text x="1065.0" y="544" text-anchor="middle"><tspan class="rid">1.1.1.1</tspan><tspan class="rname" dx="6">Matchup pairings stored</tspan></text>
+<text class="rtext" x="948" y="566">The sync shall store every week&#x27;s matchup</text>
+<text class="rtext" x="948" y="580">pairings for each league and season.</text>
+<text class="spec" x="948" y="613">sleeper-league-sync</text>
+<rect class="req" x="640" y="638" width="250" height="104" rx="3"/>
+<rect class="hdr" x="640.7" y="638.7" width="248.6" height="34" rx="2.5"/>
+<text class="ster" x="765.0" y="651" text-anchor="middle">«requirement»</text>
+<text x="765.0" y="666" text-anchor="middle"><tspan class="rid">1.1.2</tspan><tspan class="rname" dx="6">Lineup selection</tspan></text>
+<text class="rtext" x="648" y="688">Each simulated week shall start the best</text>
+<text class="rtext" x="648" y="702">projected lineup for every team.</text>
+<text class="spec" x="648" y="735">playoff-odds-simulation</text>
+<rect class="req" x="640" y="760" width="250" height="104" rx="3"/>
+<rect class="hdr" x="640.7" y="760.7" width="248.6" height="34" rx="2.5"/>
+<text class="ster" x="765.0" y="773" text-anchor="middle">«requirement»</text>
+<text x="765.0" y="788" text-anchor="middle"><tspan class="rid">1.1.3</tspan><tspan class="rname" dx="6">Bracket simulation</tspan></text>
+<text class="rtext" x="648" y="810">The simulation shall play the playoff and</text>
+<text class="rtext" x="648" y="824">losers brackets to the league&#x27;s bracket</text>
+<text class="rtext" x="648" y="838">rules.</text>
+<text class="spec" x="648" y="857">playoff-odds-simulation</text>
+<rect class="req" x="940" y="882" width="250" height="104" rx="3"/>
+<rect class="hdr" x="940.7" y="882.7" width="248.6" height="34" rx="2.5"/>
+<text class="ster" x="1065.0" y="895" text-anchor="middle">«requirement»</text>
+<text x="1065.0" y="910" text-anchor="middle"><tspan class="rid">1.1.3.1</tspan><tspan class="rname" dx="6">Supported playoff size</tspan></text>
+<text class="rtext" x="948" y="932">The simulation shall stop with an error</text>
+<text class="rtext" x="948" y="946">naming the league whenever its playoff size</text>
+<text class="rtext" x="948" y="960">is not six.</text>
+<text class="spec" x="948" y="979">playoff-odds-simulation</text>
+<rect class="tbr" x="1152" y="967" width="32" height="14" rx="7"/><text class="tbrt" x="1168" y="977.5" text-anchor="middle">TBR</text>
+<rect class="req" x="340" y="1004" width="250" height="104" rx="3"/>
+<rect class="hdr" x="340.7" y="1004.7" width="248.6" height="34" rx="2.5"/>
+<text class="ster" x="465.0" y="1017" text-anchor="middle">«requirement»</text>
+<text x="465.0" y="1032" text-anchor="middle"><tspan class="rid">1.2</tspan><tspan class="rname" dx="6">Weekly history</tspan></text>
+<text class="rtext" x="348" y="1054">The Forecasts page shall show each team&#x27;s</text>
+<text class="rtext" x="348" y="1068">outcome probabilities after every completed</text>
+<text class="rtext" x="348" y="1082">week.</text>
+<text class="spec" x="348" y="1101">league-odds-site</text>
+<rect class="req" x="640" y="1126" width="250" height="104" rx="3"/>
+<rect class="hdr" x="640.7" y="1126.7" width="248.6" height="34" rx="2.5"/>
+<text class="ster" x="765.0" y="1139" text-anchor="middle">«requirement»</text>
+<text x="765.0" y="1154" text-anchor="middle"><tspan class="rid">1.2.1</tspan><tspan class="rname" dx="6">Forecast of record per week</tspan></text>
+<text class="rtext" x="648" y="1176">One Forecast per completed week shall be</text>
+<text class="rtext" x="648" y="1190">kept in the durable record.</text>
+<text class="spec" x="648" y="1223">data-storage-tiers</text>
+<text class="col" x="40" y="1274">OTHER BRANCHES · ASSOCIATIONS (extra parents, «trace»)</text>
+<rect class="ext" x="340" y="1288" width="250" height="104" rx="3"/>
+<rect class="exthdr" x="340.7" y="1288.7" width="248.6" height="34" rx="2.5"/>
+<text class="ster" x="465.0" y="1301" text-anchor="middle">«requirement»</text>
+<text x="465.0" y="1316" text-anchor="middle"><tspan class="rid">2.1.4</tspan><tspan class="rname" dx="6">Live adjustment</tspan></text>
+<text class="rtext" x="348" y="1338">Live Forecasts shall add points so far to</text>
+<text class="rtext" x="348" y="1352">the projection for the time left.</text>
+<text class="spec" x="348" y="1385">game-predictions</text>
+<path class="trace" d="M340,1340.0 H22 V390 H370 V376" marker-end="url(#openg)"/>
+<text class="elab" x="28" y="404">«trace» (2.1.4 lists 1.1 as a second parent)</text>
+<rect class="ext" x="650" y="1288" width="250" height="104" rx="3"/>
+<rect class="exthdr" x="650.7" y="1288.7" width="248.6" height="34" rx="2.5"/>
+<text class="ster" x="775.0" y="1301" text-anchor="middle">«requirement»</text>
+<text x="775.0" y="1316" text-anchor="middle"><tspan class="rid">6.1</tspan><tspan class="rname" dx="6">Weekly records kept</tspan></text>
+<text class="rtext" x="658" y="1338">Every completed week&#x27;s figures shall be kept</text>
+<text class="rtext" x="658" y="1352">in git.</text>
+<text class="spec" x="658" y="1385">data-storage-tiers</text>
+<path class="trace" d="M890,1210 H775.0 V1288" marker-end="url(#openg)"/>
+<text class="elab" x="781.0" y="1248">«trace» (1.2.1 lists 6.1 as a second parent)</text>
+<path class="derive" d="M40,1432 H86" marker-end="url(#open)"/><text class="lg" x="96" y="1436">«deriveReqt»: primary parent (sets the ID)</text>
+<path class="trace" d="M370,1432 H416" marker-end="url(#openg)"/><text class="lg" x="426" y="1436">«trace»: extra parent (association only)</text>
+<path class="verify" d="M700,1432 H746" marker-end="url(#openv)"/><text class="lg" x="756" y="1436">«verify»: test or inspection</text>
+<path class="vgap" d="M1030,1432 H1076" marker-end="url(#openr)"/><text class="lg" x="1086" y="1436">verification gap (baselined)</text>
+<rect class="tbr" x="40" y="1454" width="32" height="14" rx="7"/><text class="tbrt" x="56" y="1464.5" text-anchor="middle">TBR</text><text class="lg" x="82" y="1465">open item, listed in tests/baselines/requirements_open.json</text>
+</svg>
