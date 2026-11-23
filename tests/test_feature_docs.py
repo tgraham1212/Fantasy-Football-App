@@ -5,7 +5,8 @@ For each doc this test checks:
 - the structure: a title, a "## Diagram" section showing images/<feature>/diagram.svg, and a
   "## Keeping This Document Current" section;
 - the diagram is generated: tools/<feature>_diagram.py rebuilds exactly the committed SVG (so an edit
-  to the generator without a redraw, or a hand edit to the SVG, fails);
+  to the generator without a redraw, or a hand edit to the SVG, fails). A generator that draws several
+  SVGs also exposes build_all() (path to SVG), and every one is compared;
 - every registered code file exists and is named in the doc;
 - every repository path and every "Calc N" (Calculations.txt section) the doc or its generator cites exists.
 
@@ -34,6 +35,10 @@ FEATURE_DOCS = {
     "simulation.md": {
         "diagram": "tools/simulation_diagram.py",
         "code": ("src/ffapp/simulate.py", "src/ffapp/odds.py", "src/ffapp/forecast.py", "src/ffapp/games.py", "src/ffapp/live.py", "site/updates.js"),
+    },
+    "requirements.md": {
+        "diagram": "tools/requirements_diagram.py",
+        "code": ("openspec/specs/", "openspec/glossary.md", "openspec/inspection-checklist.md", "tools/requirements_model.py"),
     },
     "games-page-states.md": {
         "diagram": None,  # drawn by hand before the standard (baseline)
@@ -87,6 +92,10 @@ def test_diagrams_are_generated_and_current():
         committed = out.read_text(encoding="utf-8").replace("\r\n", "\n")
         assert module["build"]().replace("\r\n", "\n") == committed, (
             f"{out.relative_to(ROOT)} is out of date: run python -X utf8 {generator}")
+        for path, svg in module.get("build_all", dict)().items():
+            path = Path(path)
+            assert path.exists() and path.read_text(encoding="utf-8").replace("\r\n", "\n") == svg.replace("\r\n", "\n"), (
+                f"{path.relative_to(ROOT)} is out of date: run python -X utf8 {generator}")
         assert f"python -X utf8 {generator}" in doc_text(name), f"{name}: gives the redraw command for {generator}"
     assert not baselines.compare("feature_docs", gaps, "feature-doc gap")
 

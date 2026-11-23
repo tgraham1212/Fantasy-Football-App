@@ -1,0 +1,370 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1660 3218" width="1660" height="3218">
+<style>
+text { font-family: 'Segoe UI', system-ui, sans-serif; }
+.bg { fill: #ffffff; }
+.title { font-size: 20px; font-weight: 700; fill: #14161a; }
+.sub { font-size: 12.5px; fill: #4c5058; }
+.col { font-size: 11.5px; font-weight: 700; fill: #6b6f78; letter-spacing: 0.08em; }
+.req { fill: #ffffff; stroke: #2b2f36; stroke-width: 1.4; }
+.need { fill: #fbf2e1; stroke: #c08a2c; stroke-width: 1.6; }
+.ext { fill: #f4f4f2; stroke: #9a9890; stroke-width: 1.2; stroke-dasharray: 4 3; }
+.hdr { fill: #eef1f6; } .needhdr { fill: #f5e2bd; } .exthdr { fill: #e9e8e4; }
+.ster { font-size: 10.5px; fill: #4c5058; font-style: italic; }
+.rid { font-size: 12.5px; font-weight: 800; fill: #14161a; font-family: ui-monospace, Consolas, monospace; }
+.rname { font-size: 12.5px; font-weight: 700; fill: #14161a; }
+.rtext { font-size: 11px; fill: #2b2f36; }
+.spec { font-size: 10.5px; fill: #3c67a8; font-family: ui-monospace, Consolas, monospace; }
+.tc { fill: #e8f5ea; stroke: #4f9a5c; stroke-width: 1.3; }
+.insp { fill: #e8f0fb; stroke: #4f7cc0; stroke-width: 1.3; }
+.anal { fill: #f1ecfa; stroke: #8a6fc0; stroke-width: 1.3; }
+.gap { fill: #fdecec; stroke: #c0392b; stroke-width: 1.3; stroke-dasharray: 5 3; }
+.none { fill: #fdecec; stroke: #c0392b; stroke-width: 1.3; }
+.tctext { font-size: 10.5px; fill: #14161a; font-family: ui-monospace, Consolas, monospace; }
+.tbr { fill: #b4530b; } .tbrt { font-size: 10px; font-weight: 800; fill: #ffffff; }
+.derive { fill: none; stroke: #2b2f36; stroke-width: 1.4; stroke-dasharray: 6 3; }
+.trace { fill: none; stroke: #8a8880; stroke-width: 1.4; stroke-dasharray: 2 3; }
+.verify { fill: none; stroke: #4f9a5c; stroke-width: 1.3; stroke-dasharray: 6 3; }
+.vgap { fill: none; stroke: #c0392b; stroke-width: 1.3; stroke-dasharray: 6 3; }
+.elab { font-size: 10px; fill: #4c5058; font-style: italic; }
+.lg { font-size: 11.5px; fill: #2b2f36; }
+.nnum { font-size: 22px; font-weight: 800; fill: #b4530b; font-family: ui-monospace, Consolas, monospace; }
+.nname { font-size: 14px; font-weight: 700; fill: #14161a; }
+.stat { font-size: 11.5px; fill: #2b2f36; } .statn { font-weight: 800; } .gapn { font-weight: 800; fill: #c0392b; }
+.bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
+</style>
+<defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
+<rect class="bg" width="1660" height="3218"/>
+<text class="title" x="40" y="44">Requirements Diagram: Need 10, Maintainable Project</text>
+<text class="sub" x="40" y="66">21 requirements derived from need 10 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
+<text class="col" x="40" y="132">NEED · LEVEL 0</text>
+<text class="col" x="350" y="132">LEVEL 1</text>
+<text class="col" x="660" y="132">LEVEL 2</text>
+<text class="col" x="970" y="132">LEVEL 3</text>
+<text class="col" x="1300" y="132">VERIFIED BY</text>
+<path class="derive" d="M350,343.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M350,477.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M350,611.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M350,745.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,879.0 H635 V745.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M350,1013.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M350,1147.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,1281.0 H635 V1147.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,1415.0 H945 V1281.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,1549.0 H635 V1147.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,1683.0 H635 V1147.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,1817.0 H635 V1147.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M350,1951.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M350,2085.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,2219.0 H635 V2085.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M350,2353.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,2487.0 H635 V2353.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M350,2621.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M350,2755.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M350,2889.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M350,3023.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<text class="elab" x="322" y="337.0" text-anchor="end">«deriveReqt»</text>
+<rect class="insp" x="1300" y="312" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="327">«inspection»</text>
+<text class="tctext" x="1308" y="344">openspec/config.yaml (context and</text>
+<text class="tctext" x="1308" y="358">rules.tasks), CLAUDE.md</text>
+<path class="verify" d="M1300,342 H610" marker-end="url(#openv)"/>
+<text class="elab" x="1292" y="336" text-anchor="end">«verify»</text>
+<rect class="tc" x="1300" y="446" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="461">«testCase»</text>
+<text class="tctext" x="1308" y="478">test_requirements.py::test_one_shall_per_requi</text>
+<text class="tctext" x="1308" y="492">rement</text>
+<path class="verify" d="M1300,476 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="580" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="595">«testCase»</text>
+<text class="tctext" x="1308" y="612">test_requirements.py::test_no_banned_terms</text>
+<path class="verify" d="M1300,610 H610" marker-end="url(#openv)"/>
+<rect class="insp" x="1300" y="714" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="729">«inspection»</text>
+<text class="tctext" x="1308" y="746">openspec/inspection-checklist.md, the spec&#x27;s</text>
+<text class="tctext" x="1308" y="760">standard review</text>
+<path class="verify" d="M1300,744 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="848" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="863">«testCase»</text>
+<text class="tctext" x="1308" y="880">test_requirements.py::test_every_spec_has_a_da</text>
+<text class="tctext" x="1308" y="894">ted_review</text>
+<path class="verify" d="M1300,878 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1300" y="982" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="997">«inspection»</text>
+<text class="tctext" x="1308" y="1014">openspec/inspection-checklist.md, the spec&#x27;s</text>
+<text class="tctext" x="1308" y="1028">standard review</text>
+<path class="verify" d="M1300,1012 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="1116" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="1131">«testCase»</text>
+<text class="tctext" x="1308" y="1148">test_requirements.py::test_every_requirement_r</text>
+<text class="tctext" x="1308" y="1162">eaches_a_need</text>
+<path class="verify" d="M1300,1146 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="1250" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="1265">«testCase»</text>
+<text class="tctext" x="1308" y="1282">test_requirements.py::test_ids_follow_the_prim</text>
+<text class="tctext" x="1308" y="1296">ary_parent</text>
+<path class="verify" d="M1300,1280 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="1384" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="1399">«testCase»</text>
+<text class="tctext" x="1308" y="1416">test_requirements.py::test_retired_ids_are_not</text>
+<text class="tctext" x="1308" y="1430">_reused</text>
+<path class="verify" d="M1300,1414 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="1518" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="1533">«testCase»</text>
+<text class="tctext" x="1308" y="1550">test_requirements.py::test_parent_count_is_rev</text>
+<text class="tctext" x="1308" y="1564">iewed</text>
+<path class="verify" d="M1300,1548 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="1652" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="1667">«testCase»</text>
+<text class="tctext" x="1308" y="1684">test_requirements.py::test_impact_report_lists</text>
+<text class="tctext" x="1308" y="1698">_ancestors_and_descendants</text>
+<path class="verify" d="M1300,1682 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="1786" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="1801">«testCase»</text>
+<text class="tctext" x="1308" y="1818">test_feature_docs.py::test_diagrams_are_genera</text>
+<text class="tctext" x="1308" y="1832">ted_and_current</text>
+<path class="verify" d="M1300,1816 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="1920" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="1935">«testCase»</text>
+<text class="tctext" x="1308" y="1952">test_requirements.py::test_every_need_has_chil</text>
+<text class="tctext" x="1308" y="1966">dren</text>
+<path class="verify" d="M1300,1950 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="2054" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="2069">«testCase»</text>
+<text class="tctext" x="1308" y="2086">test_requirements.py::test_every_requirement_h</text>
+<text class="tctext" x="1308" y="2100">as_a_verification</text>
+<path class="verify" d="M1300,2084 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="2188" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="2203">«testCase»</text>
+<text class="tctext" x="1308" y="2220">test_requirements.py::test_inspection_checklis</text>
+<text class="tctext" x="1308" y="2234">t_covers_every_inspection</text>
+<path class="verify" d="M1300,2218 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="2322" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="2337">«testCase»</text>
+<text class="tctext" x="1308" y="2354">test_requirements.py::test_tbr_has_a_target_da</text>
+<text class="tctext" x="1308" y="2368">te</text>
+<path class="verify" d="M1300,2352 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="2456" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="2471">«testCase»</text>
+<text class="tctext" x="1308" y="2488">test_requirements.py::test_open_items_match_th</text>
+<text class="tctext" x="1308" y="2502">e_baseline</text>
+<path class="verify" d="M1300,2486 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1300" y="2590" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="2605">«inspection»</text>
+<text class="tctext" x="1308" y="2622">openspec/inspection-checklist.md; Test: test_r</text>
+<text class="tctext" x="1308" y="2636">equirements.py::test_glossary_entries_are_used</text>
+<path class="verify" d="M1300,2620 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="2724" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="2739">«testCase»</text>
+<text class="tctext" x="1308" y="2756">test_requirements.py::test_findings_match_the_</text>
+<text class="tctext" x="1308" y="2770">baseline</text>
+<path class="verify" d="M1300,2754 H610" marker-end="url(#openv)"/>
+<rect class="insp" x="1300" y="2858" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="2873">«inspection»</text>
+<text class="tctext" x="1308" y="2890">the folder and git tag --list specs-before-</text>
+<text class="tctext" x="1308" y="2904">requirements-standard</text>
+<path class="verify" d="M1300,2888 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="2992" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="3007">«testCase»</text>
+<text class="tctext" x="1308" y="3024">test_feature_docs.py::test_diagrams_are_genera</text>
+<text class="tctext" x="1308" y="3038">ted_and_current</text>
+<path class="verify" d="M1300,3022 H610" marker-end="url(#openv)"/>
+<rect class="need" x="40" y="150" width="260" height="118" rx="3"/>
+<rect class="needhdr" x="40.7" y="150.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="170.0" y="163" text-anchor="middle">«need»</text>
+<text x="170.0" y="178" text-anchor="middle"><tspan class="rid">10</tspan><tspan class="rname" dx="6">Maintainable Project</tspan></text>
+<text class="rtext" x="48" y="200">The project SHALL stay understandable and safe</text>
+<text class="rtext" x="48" y="214">to change: its standards, text, calculations,</text>
+<text class="rtext" x="48" y="228">features and requirements documented and</text>
+<text class="rtext" x="48" y="242">checked automatically.</text>
+<text class="spec" x="48" y="261">needs</text>
+<rect class="req" x="350" y="284" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="284.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="297" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="312" text-anchor="middle"><tspan class="rid">10.1</tspan><tspan class="rname" dx="6">Requirements standard recorded</tspan></text>
+<text class="rtext" x="358" y="334">The requirements standard SHALL be written in</text>
+<text class="rtext" x="358" y="348">the openspec/config.yaml project context and</text>
+<text class="rtext" x="358" y="362">summarised in CLAUDE.md, with a tasks rule</text>
+<text class="rtext" x="358" y="376">that makes every planned change write…</text>
+<text class="spec" x="358" y="395">project-standards · proposed</text>
+<rect class="req" x="350" y="418" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="418.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="431" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="446" text-anchor="middle"><tspan class="rid">10.2</tspan><tspan class="rname" dx="6">One statement per requirement</tspan></text>
+<text class="rtext" x="358" y="468">Each requirement SHALL state one thing,</text>
+<text class="rtext" x="358" y="482">positively, in a single sentence or a sentence</text>
+<text class="rtext" x="358" y="496">with a list, using SHALL once and never SHALL</text>
+<text class="rtext" x="358" y="510">NOT.</text>
+<text class="spec" x="358" y="529">project-standards · proposed</text>
+<rect class="req" x="350" y="552" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="552.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="565" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="580" text-anchor="middle"><tspan class="rid">10.3</tspan><tspan class="rname" dx="6">Verifiable wording</tspan></text>
+<text class="rtext" x="358" y="602">Requirement statements SHALL use only</text>
+<text class="rtext" x="358" y="616">verifiable terms, excluding the unverifiable</text>
+<text class="rtext" x="358" y="630">and ambiguous terms and the retired</text>
+<text class="rtext" x="358" y="644">nomenclature terms listed in the glossary…</text>
+<text class="spec" x="358" y="663">project-standards · proposed</text>
+<rect class="req" x="350" y="686" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="686.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="699" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="714" text-anchor="middle"><tspan class="rid">10.4</tspan><tspan class="rname" dx="6">Tolerances on values</tspan></text>
+<text class="rtext" x="358" y="736">A requirement that states a quantity SHALL</text>
+<text class="rtext" x="358" y="750">state its unit and its tolerance or bound (for</text>
+<text class="rtext" x="358" y="764">example &quot;within 2 minutes&quot;, &quot;at least 10,000</text>
+<text class="rtext" x="358" y="778">runs&quot;, &quot;±0.1 percentage point&quot;).</text>
+<text class="spec" x="358" y="797">project-standards · proposed</text>
+<rect class="req" x="660" y="820" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="820.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="833" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="848" text-anchor="middle"><tspan class="rid">10.4.1</tspan><tspan class="rname" dx="6">Spec standard review record</tspan></text>
+<text class="rtext" x="668" y="870">openspec/inspection-checklist.md SHALL record,</text>
+<text class="rtext" x="668" y="884">for every spec, the date its standard review</text>
+<text class="rtext" x="668" y="898">(tolerances, rationale, glossary terms) was</text>
+<text class="rtext" x="668" y="912">last done and the result.</text>
+<text class="spec" x="668" y="931">project-standards · proposed</text>
+<rect class="req" x="350" y="954" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="954.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="967" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="982" text-anchor="middle"><tspan class="rid">10.5</tspan><tspan class="rname" dx="6">Rationale where not obvious</tspan></text>
+<text class="rtext" x="358" y="1004">A requirement whose reason is not evident from</text>
+<text class="rtext" x="358" y="1018">its statement SHALL carry a one-line</text>
+<text class="rtext" x="358" y="1032">Rationale: giving the reason and any</text>
+<text class="rtext" x="358" y="1046">assumption, or a pointer to the…</text>
+<text class="spec" x="358" y="1065">project-standards · proposed</text>
+<rect class="req" x="350" y="1088" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="1088.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="1101" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="1116" text-anchor="middle"><tspan class="rid">10.6</tspan><tspan class="rname" dx="6">Requirement tree</tspan></text>
+<text class="rtext" x="358" y="1138">Every requirement other than a need SHALL</text>
+<text class="rtext" x="358" y="1152">carry a Traces to: line listing one or more</text>
+<text class="rtext" x="358" y="1166">parent IDs separated by semicolons, primary</text>
+<text class="rtext" x="358" y="1180">parent first, so that every parent chain…</text>
+<text class="spec" x="358" y="1199">project-standards · proposed</text>
+<rect class="req" x="660" y="1222" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="1222.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="1235" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="1250" text-anchor="middle"><tspan class="rid">10.6.1</tspan><tspan class="rname" dx="6">Requirement IDs</tspan></text>
+<text class="rtext" x="668" y="1272">Every requirement heading SHALL begin with a</text>
+<text class="rtext" x="668" y="1286">unique ID: a need&#x27;s ID is its sequence number,</text>
+<text class="rtext" x="668" y="1300">and a derived requirement&#x27;s ID is its primary</text>
+<text class="rtext" x="668" y="1314">parent&#x27;s ID followed by a dot and the next…</text>
+<text class="spec" x="668" y="1333">project-standards · proposed</text>
+<rect class="req" x="970" y="1356" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="1356.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="1369" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="1384" text-anchor="middle"><tspan class="rid">10.6.1.1</tspan><tspan class="rname" dx="6">Retired IDs</tspan></text>
+<text class="rtext" x="978" y="1406">An ID SHALL never be reused: when a</text>
+<text class="rtext" x="978" y="1420">requirement is cut or renumbered, its old ID</text>
+<text class="rtext" x="978" y="1434">is listed in openspec/retired-requirements.md</text>
+<text class="rtext" x="978" y="1448">with the requirement&#x27;s name, the date and t…</text>
+<text class="spec" x="978" y="1467">project-standards · proposed</text>
+<rect class="req" x="660" y="1490" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="1490.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="1503" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="1518" text-anchor="middle"><tspan class="rid">10.6.2</tspan><tspan class="rname" dx="6">Parent count review</tspan></text>
+<text class="rtext" x="668" y="1540">The requirements check SHALL report every</text>
+<text class="rtext" x="668" y="1554">requirement with more than three parents,</text>
+<text class="rtext" x="668" y="1568">unless the maintainer has accepted it with a</text>
+<text class="rtext" x="668" y="1582">reason in…</text>
+<text class="spec" x="668" y="1601">project-standards · proposed</text>
+<rect class="req" x="660" y="1624" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="1624.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="1637" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="1652" text-anchor="middle"><tspan class="rid">10.6.3</tspan><tspan class="rname" dx="6">Impact report</tspan></text>
+<text class="rtext" x="668" y="1674">python -X utf8 tools/requirements_impact.py</text>
+<text class="rtext" x="668" y="1688">&lt;ID&gt; SHALL list every requirement and need</text>
+<text class="rtext" x="668" y="1702">above and below the given requirement in the</text>
+<text class="rtext" x="668" y="1716">tree, with the verification reference of each.</text>
+<text class="spec" x="668" y="1735">project-standards · proposed</text>
+<rect class="req" x="660" y="1758" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="1758.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="1771" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="1786" text-anchor="middle"><tspan class="rid">10.6.4</tspan><tspan class="rname" dx="6">Requirements diagrams</tspan></text>
+<text class="rtext" x="668" y="1808">The requirements diagrams, an overview of the</text>
+<text class="rtext" x="668" y="1822">needs and one tree per need in SysML</text>
+<text class="rtext" x="668" y="1836">requirement-diagram notation, SHALL be drawn</text>
+<text class="rtext" x="668" y="1850">from the specs by…</text>
+<text class="spec" x="668" y="1869">project-standards · proposed</text>
+<rect class="req" x="350" y="1892" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="1892.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="1905" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="1920" text-anchor="middle"><tspan class="rid">10.7</tspan><tspan class="rname" dx="6">Every need delivered</tspan></text>
+<text class="rtext" x="358" y="1942">Every need SHALL have at least one requirement</text>
+<text class="rtext" x="358" y="1956">tracing to it.</text>
+<text class="spec" x="358" y="2003">project-standards · proposed</text>
+<rect class="req" x="350" y="2026" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="2026.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="2039" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="2054" text-anchor="middle"><tspan class="rid">10.8</tspan><tspan class="rname" dx="6">Verification reference</tspan></text>
+<text class="rtext" x="358" y="2076">Every requirement other than a need SHALL</text>
+<text class="rtext" x="358" y="2090">carry a Verified by: line giving its method</text>
+<text class="rtext" x="358" y="2104">and evidence: - Test:</text>
+<text class="rtext" x="358" y="2118">tests/&lt;file&gt;.py::&lt;function&gt;, which exists; …</text>
+<text class="spec" x="358" y="2137">project-standards · proposed</text>
+<rect class="req" x="660" y="2160" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="2160.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="2173" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="2188" text-anchor="middle"><tspan class="rid">10.8.1</tspan><tspan class="rname" dx="6">Inspection record</tspan></text>
+<text class="rtext" x="668" y="2210">openspec/inspection-checklist.md SHALL list</text>
+<text class="rtext" x="668" y="2224">every requirement verified by Inspection with</text>
+<text class="rtext" x="668" y="2238">its pass criteria, the date it was last</text>
+<text class="rtext" x="668" y="2252">inspected and the result.</text>
+<text class="spec" x="668" y="2271">project-standards · proposed</text>
+<rect class="req" x="350" y="2294" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="2294.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="2307" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="2322" text-anchor="middle"><tspan class="rid">10.9</tspan><tspan class="rname" dx="6">Open items marked</tspan></text>
+<text class="rtext" x="358" y="2344">A value or behavior that cannot be settled yet</text>
+<text class="rtext" x="358" y="2358">SHALL be marked TBR: with its rationale, what</text>
+<text class="rtext" x="358" y="2372">closes it and a target date (YYYY-MM or YYYY-</text>
+<text class="rtext" x="358" y="2386">MM-DD).</text>
+<text class="spec" x="358" y="2405">project-standards · proposed</text>
+<rect class="req" x="660" y="2428" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="2428.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="2441" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="2456" text-anchor="middle"><tspan class="rid">10.9.1</tspan><tspan class="rname" dx="6">Open items listed</tspan></text>
+<text class="rtext" x="668" y="2478">Every TBR and verification gap SHALL be listed</text>
+<text class="rtext" x="668" y="2492">in tests/baselines/requirements_open.json,</text>
+<text class="rtext" x="668" y="2506">which may only shrink.</text>
+<text class="spec" x="668" y="2539">project-standards · proposed</text>
+<rect class="req" x="350" y="2562" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="2562.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="2575" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="2590" text-anchor="middle"><tspan class="rid">10.10</tspan><tspan class="rname" dx="6">Glossary</tspan></text>
+<text class="rtext" x="358" y="2612">openspec/glossary.md SHALL define every</text>
+<text class="rtext" x="358" y="2626">project term that specs use with a specific</text>
+<text class="rtext" x="358" y="2640">meaning, the nomenclature rules and the</text>
+<text class="rtext" x="358" y="2654">banned-terms list.</text>
+<text class="spec" x="358" y="2673">project-standards · proposed</text>
+<rect class="req" x="350" y="2696" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="2696.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="2709" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="2724" text-anchor="middle"><tspan class="rid">10.11</tspan><tspan class="rname" dx="6">Requirements check</tspan></text>
+<text class="rtext" x="358" y="2746">tests/test_requirements.py SHALL check every</text>
+<text class="rtext" x="358" y="2760">main spec and every active change&#x27;s delta</text>
+<text class="rtext" x="358" y="2774">specs against the requirements standard,</text>
+<text class="rtext" x="358" y="2788">reporting each finding with its spec and…</text>
+<text class="spec" x="358" y="2807">project-standards · proposed</text>
+<rect class="req" x="350" y="2830" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="2830.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="2843" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="2858" text-anchor="middle"><tspan class="rid">10.12</tspan><tspan class="rname" dx="6">Specs archived before the sta…</tspan></text>
+<text class="rtext" x="358" y="2880">The specs as they stood before the</text>
+<text class="rtext" x="358" y="2894">requirements standard SHALL be kept unchanged</text>
+<text class="rtext" x="358" y="2908">at openspec/specs-archive/pre-requirements-</text>
+<text class="rtext" x="358" y="2922">standard/ and under the git tag specs-befor…</text>
+<text class="spec" x="358" y="2941">project-standards · proposed</text>
+<rect class="req" x="350" y="2964" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="2964.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="2977" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="2992" text-anchor="middle"><tspan class="rid">10.13</tspan><tspan class="rname" dx="6">Feature docs</tspan></text>
+<text class="rtext" x="358" y="3014">Each feature whose flow is worth explaining</text>
+<text class="rtext" x="358" y="3028">SHALL have a living docs/&lt;feature&gt;.md with a</text>
+<text class="rtext" x="358" y="3042">diagram drawn by tools/&lt;feature&gt;_diagram.py,</text>
+<text class="rtext" x="358" y="3056">registered in tests/test_feature_docs.py wi…</text>
+<text class="spec" x="358" y="3075">project-standards · proposed</text>
+<path class="derive" d="M40,3178 H86" marker-end="url(#open)"/><text class="lg" x="96" y="3182">«deriveReqt»: primary parent (sets the ID)</text>
+<path class="trace" d="M360,3178 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="3182">«trace»: extra parent</text>
+<path class="verify" d="M680,3178 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="3182">«verify»: test, inspection or analysis</text>
+<path class="vgap" d="M1000,3178 H1046" marker-end="url(#openr)"/><text class="lg" x="1056" y="3182">verification gap</text>
+</svg>

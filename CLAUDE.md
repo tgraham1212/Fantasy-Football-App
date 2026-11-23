@@ -32,7 +32,13 @@ outside a planned change.
   visible focus and pressed states, consistent type scale); do not adopt its visual system.
 - **Nomenclature** in anything people read (not code identifiers): Managers, Team Names,
   Players, Forecasts (simulation output), Projections (Sleeper's inputs only). Avoid
-  "owner", "odds", "chances" and "predictions" in text.
+  "owner", "odds", "chances" and "predictions" in text. Terms: `openspec/glossary.md`.
+- **Requirements** (NASA SEH Appendix C; `docs/requirements.md`): one SHALL, positive, no
+  banned terms, tolerances on values; heading ID under its primary parent (needs 1, 2, 3;
+  then 1.1, 1.1.2); `**Traces to:**` parent IDs and `**Verified by:**` Test/Analysis/
+  Inspection/Demonstration/Gap. Run `tools/requirements_impact.py <ID>` before changing one;
+  a spec edit redoes its dated review in `openspec/inspection-checklist.md` and redraws
+  `tools/requirements_diagram.py`. Checked by `tests/test_requirements.py`.
 - **Style:** APA; title case for titles and headings.
 - **Calculations:** documented in `Calculations.txt`; a change to a calculation updates its
   section in the same change.

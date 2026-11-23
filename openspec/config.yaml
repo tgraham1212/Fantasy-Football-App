@@ -37,10 +37,9 @@ context: |
     phones, visible focus and pressed states, a consistent type scale). DO NOT adopt its visual
     system (components, colour roles, shapes, elevation); the site keeps its own look.
   - Nomenclature, in everything people read (site text, docs, specs; not code or data
-    identifiers such as owner_id): Manager(s) for league members, Team Name(s) for managers'
-    yearly team names, Player(s) for NFL players, Forecast(s) for anything the simulation
-    produces, Projection(s) only for Sleeper's player projections (inputs). Retired in text:
-    owner, odds, chances, prediction(s).
+    identifiers): Managers, Team Names, Players, Forecasts (simulation output), Projections
+    (Sleeper's inputs only); "owner", "odds", "chances" and "predictions" are retired. The rules
+    and every project term are defined in openspec/glossary.md.
   - Style: APA. Title case for titles and headings; APA conventions in prose.
   - Calculations: every formula and calculation is documented in Calculations.txt (formula,
     data sources, dependencies, plain-English description, assumptions and decisions). A
@@ -58,6 +57,19 @@ context: |
     it; a change that touches one of those files updates the doc and redraws its diagram in
     the same change. The test fails on a stale diagram, an unregistered doc, or a cited path
     or Calc section that does not exist. Nomenclature and APA style apply.
+  - Requirements: every requirement follows the requirements standard (NASA Systems
+    Engineering Handbook, Appendix C; the project-standards spec, 10.x; docs/requirements.md).
+    One positive statement with one SHALL (never SHALL NOT), no banned terms (openspec/glossary.md),
+    a unit and tolerance on every value, a one-line **Rationale:** where the reason is not evident.
+    Each heading starts with a hierarchical ID: needs (openspec/specs/needs/spec.md) are 1, 2, 3;
+    a derived requirement is its primary parent's ID plus the next unused number (1.1, 1.1.2).
+    Each requirement carries **Traces to:** (parent IDs, primary first; more than three is
+    reported) and **Verified by:** (Test: `tests/<file>.py::<function>`, Analysis, Inspection
+    with a row in openspec/inspection-checklist.md, Demonstration, or Gap: what would verify it),
+    plus **TBR:** with a target date for anything not yet settled. IDs are never reused
+    (openspec/retired-requirements.md). tests/test_requirements.py enforces this; its baselines
+    may only shrink. Editing a spec means redoing its dated standard review in the inspection
+    checklist and redrawing the diagrams (python -X utf8 tools/requirements_diagram.py).
 
 # Project context (optional)
 # Add only constraints that should guide OpenSpec artifacts and workflows.
@@ -83,6 +95,11 @@ rules:
       (FEATURE_DOCS), include a task to update that docs/<feature>.md and redraw its diagram with
       tools/<feature>_diagram.py. When the change adds a feature whose flow is worth explaining,
       include a task to write its feature doc and diagram generator and register them.
+    - Write every new or changed requirement to the requirements standard (project context,
+      Requirements). Before changing an existing requirement, run
+      python -X utf8 tools/requirements_impact.py <ID> and include tasks for the requirements it
+      lists that the change affects. Include a task to redo the standard review of each spec the
+      change edits (openspec/inspection-checklist.md) and to redraw the requirements diagrams.
   design:
     - Name the feature docs (docs/<feature>.md) the change affects, or say that none are affected.
 

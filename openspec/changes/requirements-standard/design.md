@@ -133,7 +133,7 @@ So editing a spec without re-inspecting it fails once the edit is committed. The
 
 ### 12. Hierarchical IDs
 Every requirement heading starts with an ID that shows its place in the tree, the owner's NASA practice:
-- a need (level 0) is numbered in sequence: `1` to `10`;
+- a need (level 0) is numbered in sequence: `1` to `12`;
 - a requirement derived from it (level 1) is `1.1`, `1.2`;
 - the next level is `1.2.1`, and so on.
 
@@ -158,7 +158,7 @@ IDs are global across specs, so a spec holds requirements from several branches,
 
 ### 13. Requirements diagrams
 `tools/requirements_diagram.py` draws the requirement tree from the same parser as the check, in SysML requirement-diagram notation:
-- **Overview** (`docs/images/requirements/diagram.svg`): the ten needs, each with its requirement count, depth, verification mix (Test, Inspection, Analysis, Demonstration, Gap), TBRs and requirements not yet numbered.
+- **Overview** (`docs/images/requirements/diagram.svg`): the twelve needs, each with its requirement count, depth, verification mix (Test, Inspection, Analysis, Demonstration, Gap), TBRs and requirements not yet numbered.
 - **One tree per need** (`docs/images/requirements/need-N.svg`): the need at level 0, then each level in its own column, left to right. Each box is a «requirement» with its ID, name, statement and spec, and a TBR badge if it has one. A dashed «deriveReqt» arrow runs to its primary parent and a dotted «trace» arrow to each extra parent (a box from another need's branch is shown faded). A «verify» arrow comes from its test case, inspection row or gap.
 
 One diagram for about 260 requirements would be unreadable. One per need keeps each one to a scrollable page and matches how the owner reviews.

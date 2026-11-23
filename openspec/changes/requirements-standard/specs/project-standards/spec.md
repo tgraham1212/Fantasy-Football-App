@@ -12,7 +12,7 @@ The requirements standard SHALL be written in the `openspec/config.yaml` project
 - **THEN** its tasks instructions include the rule to write requirements to the standard
 
 ### Requirement: 10.2 One statement per requirement
-Each requirement SHALL state one thing, positively, in a single sentence or a sentence with a list, using SHALL exactly once.
+Each requirement SHALL state one thing, positively, in a single sentence or a sentence with a list, using `SHALL` once and never `SHALL NOT`.
 
 **Rationale:** NASA SEH Appendix C, Clarity and General Goodness: one subject and one predicate per requirement, stated positively, makes each one verifiable on its own.
 **Traces to:** 10
@@ -27,7 +27,7 @@ Each requirement SHALL state one thing, positively, in a single sentence or a se
 - **THEN** the requirements check reports it until it is restated positively
 
 ### Requirement: 10.3 Verifiable wording
-Requirement statements SHALL use only verifiable terms, excluding the unverifiable and ambiguous terms listed in the glossary (among them "adequate", "appropriate", "fast", "robust", "etc.", "and/or", "as needed") and the retired nomenclature terms.
+Requirement statements SHALL use only verifiable terms, excluding the unverifiable and ambiguous terms and the retired nomenclature terms listed in the glossary (among them `adequate`, `fast`, `robust`, `etc.`, `and/or`).
 
 **Rationale:** NASA SEH Appendix C, Verifiability: a term that cannot be measured cannot be tested.
 **Traces to:** 10
@@ -124,7 +124,7 @@ An ID SHALL never be reused: when a requirement is cut or renumbered, its old ID
 - **THEN** 4.2.3 is listed as retired, and the next requirement under 4.2 takes a new number
 
 ### Requirement: 10.6.2 Parent count review
-The requirements check SHALL report every requirement with more than three parents, unless the owner has accepted it with a reason in `tests/baselines/requirements_accepted.json`.
+The requirements check SHALL report every requirement with more than three parents, unless the maintainer has accepted it with a reason in `tests/baselines/requirements_accepted.json`.
 
 **Rationale:** Many parents signal a compound requirement or overlapping higher-level ones.
 **Traces to:** 10.6
@@ -205,11 +205,22 @@ Every requirement other than a need SHALL carry a `**Verified by:**` line giving
 - **WHEN** a change adds a requirement verified by Inspection without a checklist entry
 - **THEN** the requirements check names the requirement
 
-### Requirement: 10.9 Open items tracked
-A value or behavior that cannot be settled yet SHALL be marked `**TBR:**` with its rationale, what closes it and a target date, and every TBR and verification gap SHALL be listed in a committed baseline that may only shrink.
+### Requirement: 10.9 Open items marked
+A value or behavior that cannot be settled yet SHALL be marked `**TBR:**` with its rationale, what closes it and a target date (`YYYY-MM` or `YYYY-MM-DD`).
 
-**Rationale:** NASA SEH Appendix C, Completeness: open items are kept in one list rather than hidden in vague wording.
+**Rationale:** NASA SEH Appendix C, Completeness: open items are stated openly rather than hidden in vague wording.
 **Traces to:** 10
+**Verified by:** Test: `tests/test_requirements.py::test_tbr_has_a_target_date`
+
+#### Scenario: TBR without a date
+- **WHEN** a TBR line gives no target date
+- **THEN** the requirements check names the requirement
+
+### Requirement: 10.9.1 Open items listed
+Every TBR and verification gap SHALL be listed in `tests/baselines/requirements_open.json`, which may only shrink.
+
+**Rationale:** One list shows every open item and keeps new ones from slipping in unseen.
+**Traces to:** 10.9; 10.8
 **Verified by:** Test: `tests/test_requirements.py::test_open_items_match_the_baseline`
 
 #### Scenario: New TBR
@@ -232,7 +243,7 @@ A value or behavior that cannot be settled yet SHALL be marked `**TBR:**` with i
 - **THEN** the requirements check names the entry
 
 ### Requirement: 10.11 Requirements check
-`tests/test_requirements.py` SHALL check every main spec and every active change's delta specs against the requirements standard, and SHALL report each finding with its spec and requirement ID.
+`tests/test_requirements.py` SHALL check every main spec and every active change's delta specs against the requirements standard, reporting each finding with its spec and requirement ID.
 
 **Rationale:** What is checked automatically stays true across sessions.
 **Traces to:** 10

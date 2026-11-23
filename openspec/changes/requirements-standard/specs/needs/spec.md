@@ -45,14 +45,18 @@ The site SHALL show each Manager's history in a league: results, honours, skill 
 - **THEN** that Manager's finishes, head-to-head record, rating, moves and news are shown
 
 ### Requirement: 5 Current Data
-The site SHALL reflect Sleeper's league data within a stated delay: within 2 minutes for live scores while games are in progress, and within 20 minutes for other data in season.
+During the NFL season, the site SHALL show Sleeper's league data no more than 2 minutes old while games are in progress and no more than 20 minutes old otherwise, age measured from the last successful check of Sleeper.
 
-**Rationale:** A Forecast is only as useful as the data behind it; stale scores during games defeat the purpose.
+**Rationale:** Stale scores during games defeat the purpose. Out of season nothing changes quickly. An unchanged bundle is not stale data.
 **Verified by:** Children
 
 #### Scenario: A touchdown on Sunday
 - **WHEN** a Player scores while a Manager has the Games page open
 - **THEN** the page shows the new score and win probability within 2 minutes
+
+#### Scenario: Nothing changed
+- **WHEN** no score changes for 6 minutes during a game and every check of Sleeper succeeds
+- **THEN** the data is current, though the bundle was written 6 minutes ago
 
 ### Requirement: 6 Durable Record
 The project SHALL keep a complete, lasting copy of each league's history and of the Player data the Forecasts use, so every past figure can be reproduced without Sleeper or ESPN.
@@ -103,3 +107,26 @@ The project SHALL stay understandable and safe to change: its standards, text, c
 #### Scenario: A change in a new session
 - **WHEN** a later session changes a feature
 - **THEN** the checks fail until its docs, copy and requirements are updated with it
+
+### Requirement: 11 Free to Run
+The project SHALL run within the free tiers of the services it uses:
+- GitHub Free, public repository: Actions and Pages;
+- Cloudflare Free: Workers, Workers KV, Cron Triggers and DNS;
+- Sleeper's public API and ESPN's public endpoints, without keys.
+
+**Rationale:** The owner pays only for the domain registration; a paid tier would be a new cost.
+**Verified by:** Children
+
+#### Scenario: A busy Sunday
+- **WHEN** every game window of a week runs live
+- **THEN** each service's use stays within its free limits, such as 1,000 Workers KV writes a day
+
+### Requirement: 12 Secure Operation
+The project SHALL keep its accounts and services under the maintainer's control: no secret in the repository, the relay serving only the site, and only the maintainer's workflows writing to it.
+
+**Rationale:** A leaked token or an open relay would let others spend the free limits or change what Managers see.
+**Verified by:** Children
+
+#### Scenario: A request from another site
+- **WHEN** a page on another origin calls the relay
+- **THEN** the relay refuses it
