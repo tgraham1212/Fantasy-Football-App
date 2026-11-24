@@ -2,75 +2,82 @@
 
 ## Purpose
 
-Keeps a lasting record of weekly player projections (projected stat lines) for every season in scope, and turns them into projected fantasy points under a specific league's scoring rules for a specific week.
+Keeps a lasting record of weekly Player Projections (projected stat lines) for every season in scope, and turns them into projected fantasy points under a league's scoring for a week. It delivers need 6, Durable Record, and feeds the simulation (need 1); the scoring formula is in `Calculations.txt`, sections 1 and 2.
 
 ## Requirements
 
-### Requirement: Projection coverage
-The system SHALL pull projections for fantasy positions QB, RB, WR, TE, K and DEF for every regular-season week of every season in which a configured league has a league-season. This includes weeks already played and weeks still to come.
+### Requirement: 6.3 Projection coverage
+The system SHALL fetch Projections for QB, RB, WR, TE, K and DEF for every regular-season week of every season a configured league has, played weeks and weeks to come alike.
+
+**Traces to:** 6; 1.1.5
+**Verified by:** Test: `tests/test_sleeper.py::test_projections_url_lists_all_positions`; Inspection: `src/ffapp/projections.py`, each refresh requests every regular-season week of the current season
 
 #### Scenario: Current season refresh
 - **WHEN** a refresh runs during 2026 week 10
-- **THEN** projections for 2026 weeks 1 through 17 are requested
+- **THEN** Projections for 2026 weeks 1 to 17 are requested
 
 #### Scenario: Historical backfill
-- **WHEN** projections are backfilled
-- **THEN** projections are requested for every week of every season from 2021 onward, the earliest configured league-season
+- **WHEN** Projections are backfilled
+- **THEN** every week of every season from 2021, the earliest league-season, is requested
 
-### Requirement: Latest version per player-week
-The system SHALL store exactly one projection record per season, week and player: the most recent version the source returned. A newer version SHALL replace the stored one. Earlier versions SHALL NOT be kept.
+### Requirement: 6.3.1 Latest version per Player-week
+The system SHALL store exactly one Projection per season, week and Player, the most recent version the source returned replacing the stored one.
+
+**Traces to:** 6.3
+**Verified by:** Test: `tests/test_projections.py::test_upsert_replaces_only_newer_versions`; Test: `tests/test_projections.py::test_upsert_unchanged_when_same_version`
 
 #### Scenario: Projection revised
-- **WHEN** a player's week-11 projection is stored and a later refresh returns a revised week-11 projection for that player
-- **THEN** only the revised projection is stored for that player and week
+- **WHEN** a later refresh returns a revised week-11 Projection for a Player
+- **THEN** only the revised Projection is stored for that Player and week
 
-#### Scenario: Unchanged projection
-- **WHEN** a refresh returns the same projection that is already stored
-- **THEN** the stored record is left as it is
+### Requirement: 6.3.2 Played weeks kept
+A stored Projection SHALL stay stored after its week is played, changing only when the source returns a newer version.
 
-### Requirement: Played weeks are kept
-The system SHALL keep projection records for weeks that have been played. A record SHALL only change if the source returns a newer version, and SHALL never be deleted because the week is over.
-
-#### Scenario: Week completes
-- **WHEN** week 10 finishes and the next refresh runs
-- **THEN** the week-10 projection records are still stored, updated to the latest version the source returns
+**Traces to:** 6.3; 6.3.1
+**Verified by:** Test: `tests/test_projections.py::test_upsert_empty_response_leaves_file_untouched`
 
 #### Scenario: Source stops returning a past week
-- **WHEN** the source returns no data for a past week that already has stored projections
-- **THEN** the stored projections for that week stay unchanged
+- **WHEN** the source returns no data for a past week that has stored Projections
+- **THEN** the stored Projections for that week stay unchanged
 
-### Requirement: Raw stat lines and source details
-Each stored projection SHALL keep the full projected stat line as the source returned it, plus the player ID, NFL team, opponent, game date, source company and the source's last-modified time.
+### Requirement: 6.3.3 Full stat lines kept
+Each stored Projection SHALL keep the full projected stat line as returned, with the Player id, NFL team, opponent, game date, source company and the source's last-modified time.
+
+**Rationale:** Points are computed from the stat line under each league's own scoring.
+**Traces to:** 6.3
+**Verified by:** Test: `tests/test_projections.py::test_upsert_drops_adp_only_rows_and_stores_records`; Test: `tests/test_projections.py::test_record_without_a_date_still_loads`
 
 #### Scenario: Stored record contents
-- **WHEN** a projection is stored for a running back
-- **THEN** the record includes every projected stat field the source gave (e.g., rushing yards, receptions, first downs), not just precomputed point totals
+- **WHEN** a Projection is stored for a running back
+- **THEN** the record holds every projected stat field the source gave, not only point totals
 
-#### Scenario: Game date kept
-- **WHEN** the source gives a projection with the game date 2026-11-22
-- **THEN** the stored record carries that date
+### Requirement: 6.3.4 League-specific projected points
+A Player's projected points for a league and week SHALL be each projected stat times that league's scoring value for the stat in force that week, overrides included.
 
-### Requirement: League-specific projected points
-The system SHALL compute a player's projected fantasy points for a given league and week. It SHALL multiply each projected stat by that league's scoring value for the stat, using the settings in force for that week, including manual overrides.
+**Rationale:** Calculations.txt section 1.
+**Traces to:** 6.3; 1.1.5; 6.2.4.1
+**Verified by:** Test: `tests/test_scoring.py::test_kicker_field_goal_yards_and_extra_points`; Test: `tests/test_scoring_live_data.py::test_scored_projections_match_sleeper_half_ppr`
 
 #### Scenario: League scoring applied
-- **WHEN** projected points are computed for a kicker projected for 120 field goal yards and 3 extra points, under redraft settings with `fgm_yds` 0.1 and `xpm` 1
-- **THEN** the kicker's projected points include 12 from field goal yards and 3 from extra points
+- **WHEN** a kicker is projected for 120 field goal yards and 3 extra points, under redraft settings with `fgm_yds` 0.1 and `xpm` 1
+- **THEN** his projected points include 12 from field goal yards and 3 from extra points
 
-#### Scenario: Same player, two leagues
-- **WHEN** projected points for one player and week are computed for both the dynasty and redraft leagues
-- **THEN** each result uses its own league's scoring settings
+### Requirement: 6.3.4.1 Missing Projection
+A Player with no stored Projection for a week SHALL count as 0 projected points that week.
 
-### Requirement: Missing projections
-A player with no stored projection for a week SHALL count as 0 projected points for that week.
+**Traces to:** 6.3.4
+**Verified by:** Test: `tests/test_scoring.py::test_missing_projection_counts_as_zero`
 
 #### Scenario: Bye week
-- **WHEN** a player's NFL team has a bye in week 12 and the source returns no projection
-- **THEN** the player's projected points for week 12 are 0
+- **WHEN** a Player's team has a bye in week 12 and the source returns no Projection
+- **THEN** his projected points for week 12 are 0
 
-### Requirement: Source failures leave stored data intact
-If the projections source fails or returns data in an unexpected shape, the system SHALL keep the projections already stored and SHALL report the failure.
+### Requirement: 6.3.5 Projection source failures
+A failing source, or a response in an unexpected shape, SHALL leave every stored Projection unchanged, the run reporting the failure.
+
+**Traces to:** 6.3
+**Verified by:** Test: `tests/test_projections.py::test_source_errors_write_nothing`; Test: `tests/test_projections.py::test_validate_rejects_bad_shapes`
 
 #### Scenario: Endpoint changed
-- **WHEN** the projections endpoint returns an error or a response without the expected fields
-- **THEN** no stored projections are changed and the run reports the failure
+- **WHEN** the Projections endpoint returns an error or a response without the expected fields
+- **THEN** no stored Projection changes and the run reports the failure

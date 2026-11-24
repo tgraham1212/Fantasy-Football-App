@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1940 3406" width="1940" height="3406">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2250 3406" width="2250" height="3406">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,7 +33,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="1940" height="3406"/>
+<rect class="bg" width="2250" height="3406"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 10, Maintainable Project</text>
 <text class="sub" x="40" y="66">21 requirements derived from need 10 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
@@ -407,13 +407,23 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <rect class="ext" x="1590" y="3148" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="1590.7" y="3148.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1720.0" y="3161" text-anchor="middle">«requirement»</text>
-<text x="1720.0" y="3176" text-anchor="middle"><tspan class="rid">4.7.16</tspan><tspan class="rname" dx="6">Editable templates</tspan></text>
-<text class="rtext" x="1598" y="3198">Every headline and story sentence SHALL come</text>
-<text class="rtext" x="1598" y="3212">from a template with a copy ID in site-</text>
-<text class="rtext" x="1598" y="3226">copy.txt and named placeholders for the data,</text>
-<text class="rtext" x="1598" y="3240">so that the maintainer can reword any story…</text>
-<text class="spec" x="1598" y="3259">team-news</text>
+<text x="1720.0" y="3176" text-anchor="middle"><tspan class="rid">6.2.1</tspan><tspan class="rname" dx="6">Configuration checked</tspan></text>
+<text class="rtext" x="1598" y="3198">Loading the configuration SHALL fail with an</text>
+<text class="rtext" x="1598" y="3212">error naming the field on any missing, unknown</text>
+<text class="rtext" x="1598" y="3226">or invalid value, the simulation, rating and</text>
+<text class="rtext" x="1598" y="3240">rival settings included.</text>
+<text class="spec" x="1598" y="3259">sleeper-league-sync</text>
 <path class="trace" d="M1720.0,3148 V281 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="1900" y="3148" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1900.7" y="3148.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2030.0" y="3161" text-anchor="middle">«requirement»</text>
+<text x="2030.0" y="3176" text-anchor="middle"><tspan class="rid">4.7.16</tspan><tspan class="rname" dx="6">Editable templates</tspan></text>
+<text class="rtext" x="1908" y="3198">Every headline and story sentence SHALL come</text>
+<text class="rtext" x="1908" y="3212">from a template with a copy ID in site-</text>
+<text class="rtext" x="1908" y="3226">copy.txt and named placeholders for the data,</text>
+<text class="rtext" x="1908" y="3240">so that the maintainer can reword any story…</text>
+<text class="spec" x="1908" y="3259">team-news</text>
+<path class="trace" d="M2030.0,3148 V286 H150.0 V268" marker-end="url(#openg)"/>
 <path class="derive" d="M40,3366 H86" marker-end="url(#open)"/><text class="lg" x="96" y="3370">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,3366 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="3370">«trace»: extra parent</text>
 <path class="verify" d="M680,3366 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="3370">«verify»: test, inspection or analysis</text>

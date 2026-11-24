@@ -15,6 +15,8 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 
 | ID | Requirement | Spec | Pass criteria | Last inspected | Result |
 |---|---|---|---|---|---|
+| 6.7.4.2 | Unmatched report | `start-percentage-snapshots` | `src/ffapp/espn.py`, the unmatched report and its 2% threshold | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 6.3 | Projection coverage | `player-projections` | `src/ffapp/projections.py`, each refresh requests every regular-season week of the current season | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 5.4.1 | Relay credential | `manual-refresh` | `relay/README.md` and the relay's secrets, the token's scope and that no token is in the repository or `site/` | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 5.4.4.3 | Refresh that never lands | `manual-refresh` | `site/refresh.js`, the 10-minute give-up timer and its message | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 5.3.2 | Local copy | `site-updates` | `site/updates.js`, an unstamped page skips the version and bundle checks | 2026-11-23 | Pass (confirmed when the feature was built) |
@@ -124,6 +126,13 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 
 | Spec | Last reviewed | Result | Notes |
 |---|---|---|---|
+| `start-percentage-snapshots` | 2026-11-23 | Pass | 5 requirements became 9 under 6.7 |
+| `injury-history` | 2026-11-23 | Pass | 3 requirements became 7 under 6.6 |
+| `nfl-schedule` | 2026-11-23 | Pass | 3 requirements became 6 under 6.5; live clock kept in the rebuilt copy |
+| `player-stats` | 2026-11-23 | Pass | 4 requirements became 6 under 6.4 |
+| `player-projections` | 2026-11-23 | Pass | 7 requirements rewritten under 6.3 |
+| `sleeper-league-sync` | 2026-11-23 | Pass | 10 requirements became 16 under 6.2; simulation settings left to the specs that use them |
+| `data-storage-tiers` | 2026-11-23 | Pass | 7 requirements became 9 under 6.1 |
 | `manual-refresh` | 2026-11-23 | Pass | 3 requirements became 10 under 5.4 |
 | `site-updates` | 2026-11-23 | Pass | 7 requirements (1 moved from league-odds-site) became 17 under 5.3; update cadence tested |
 | `live-refresh` | 2026-11-23 | Pass | 5 requirements became 9 under 5.2 and 11.2; relay tests now run from pytest |

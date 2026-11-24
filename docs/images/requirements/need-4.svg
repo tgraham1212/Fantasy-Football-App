@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5350 18950" width="5350" height="18950">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6590 18950" width="6590" height="18950">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,7 +33,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="5350" height="18950"/>
+<rect class="bg" width="6590" height="18950"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 4, Manager History</text>
 <text class="sub" x="40" y="66">137 requirements derived from need 4 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
@@ -2150,12 +2150,51 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <rect class="ext" x="5000" y="18692" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="5000.7" y="18692.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="5130.0" y="18705" text-anchor="middle">«requirement»</text>
-<text x="5130.0" y="18720" text-anchor="middle"><tspan class="rid">3.1.5.1</tspan><tspan class="rname" dx="6">Shared Manager colours</tspan></text>
-<text class="rtext" x="5008" y="18742">Dot colours SHALL be each Manager&#x27;s colours</text>
-<text class="rtext" x="5008" y="18756">from the other sub-tabs, with former Managers</text>
-<text class="rtext" x="5008" y="18770">in the greys used elsewhere.</text>
-<text class="spec" x="5008" y="18803">positional-rankings-page</text>
-<path class="trace" d="M5130.0,18692 V1760 H1080.0 V1742" marker-end="url(#openg)"/>
+<text x="5130.0" y="18720" text-anchor="middle"><tspan class="rid">6.6.4</tspan><tspan class="rname" dx="6">Weekly Player details saved</tspan></text>
+<text class="rtext" x="5008" y="18742">Alongside each week&#x27;s statuses, each run SHALL</text>
+<text class="rtext" x="5008" y="18756">save, for every fantasy-position Player on a</text>
+<text class="rtext" x="5008" y="18770">league roster, Sleeper&#x27;s injury body part,</text>
+<text class="rtext" x="5008" y="18784">practice participation and depth-chart orde…</text>
+<text class="spec" x="5008" y="18803">injury-history</text>
+<path class="trace" d="M5130.0,18692 V16634 H770.0 V16616" marker-end="url(#openg)"/>
+<rect class="ext" x="5310" y="18692" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="5310.7" y="18692.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="5440.0" y="18705" text-anchor="middle">«requirement»</text>
+<text x="5440.0" y="18720" text-anchor="middle"><tspan class="rid">3.1.5.1</tspan><tspan class="rname" dx="6">Shared Manager colours</tspan></text>
+<text class="rtext" x="5318" y="18742">Dot colours SHALL be each Manager&#x27;s colours</text>
+<text class="rtext" x="5318" y="18756">from the other sub-tabs, with former Managers</text>
+<text class="rtext" x="5318" y="18770">in the greys used elsewhere.</text>
+<text class="spec" x="5318" y="18803">positional-rankings-page</text>
+<path class="trace" d="M5440.0,18692 V1750 H1080.0 V1742" marker-end="url(#openg)"/>
+<rect class="ext" x="5620" y="18692" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="5620.7" y="18692.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="5750.0" y="18705" text-anchor="middle">«requirement»</text>
+<text x="5750.0" y="18720" text-anchor="middle"><tspan class="rid">6.2.5</tspan><tspan class="rname" dx="6">Managers by user id</tspan></text>
+<text class="rtext" x="5628" y="18742">Each roster in each league-season SHALL be</text>
+<text class="rtext" x="5628" y="18756">linked to its Manager&#x27;s Sleeper user id,</text>
+<text class="rtext" x="5628" y="18770">display name and Team Name.</text>
+<text class="spec" x="5628" y="18803">sleeper-league-sync</text>
+<path class="trace" d="M5750.0,18692 V9527 H460.0 V9514" marker-end="url(#openg)"/>
+<rect class="ext" x="5930" y="18692" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="5930.7" y="18692.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="6060.0" y="18705" text-anchor="middle">«requirement»</text>
+<text x="6060.0" y="18720" text-anchor="middle"><tspan class="rid">6.2.5.1</tspan><tspan class="rname" dx="6">Vacant rosters inherit</tspan></text>
+<text class="rtext" x="5938" y="18742">Every reader of stored rosters SHALL see a</text>
+<text class="rtext" x="5938" y="18756">roster without a Manager as held by the most</text>
+<text class="rtext" x="5938" y="18770">recent earlier Manager of that slot, else the</text>
+<text class="rtext" x="5938" y="18784">first later one, with that Manager&#x27;s last…</text>
+<text class="spec" x="5938" y="18803">sleeper-league-sync</text>
+<path class="trace" d="M6060.0,18692 V9532 H460.0 V9514" marker-end="url(#openg)"/>
+<rect class="ext" x="6240" y="18692" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="6240.7" y="18692.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="6370.0" y="18705" text-anchor="middle">«requirement»</text>
+<text x="6370.0" y="18720" text-anchor="middle"><tspan class="rid">6.2.8</tspan><tspan class="rname" dx="6">Transactions stored</tspan></text>
+<text class="rtext" x="6248" y="18742">For each league-season, the sync SHALL store</text>
+<text class="rtext" x="6248" y="18756">Sleeper&#x27;s transactions, one file per week: won</text>
+<text class="rtext" x="6248" y="18770">and failed waiver claims with their bids,</text>
+<text class="rtext" x="6248" y="18784">free-agent moves, trades with Players, pick…</text>
+<text class="spec" x="6248" y="18803">sleeper-league-sync</text>
+<path class="trace" d="M6370.0,18692 V11934 H770.0 V11926" marker-end="url(#openg)"/>
 <path class="derive" d="M40,18910 H86" marker-end="url(#open)"/><text class="lg" x="96" y="18914">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,18910 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="18914">«trace»: extra parent</text>
 <path class="verify" d="M680,18910 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="18914">«verify»: test, inspection or analysis</text>

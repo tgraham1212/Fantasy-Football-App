@@ -57,13 +57,13 @@ Redraw the requirements diagrams (`python -X utf8 tools/requirements_diagram.py`
 
 ## 6. Data Specs
 
-- [ ] 6.1 `data-storage-tiers`
-- [ ] 6.2 `sleeper-league-sync`
-- [ ] 6.3 `nfl-schedule`
-- [ ] 6.4 `player-projections`
-- [ ] 6.5 `player-stats`
-- [ ] 6.6 `injury-history`
-- [ ] 6.7 `start-percentage-snapshots`
+- [x] 6.1 `data-storage-tiers`
+- [x] 6.2 `sleeper-league-sync`
+- [x] 6.3 `nfl-schedule`
+- [x] 6.4 `player-projections`
+- [x] 6.5 `player-stats`
+- [x] 6.6 `injury-history`
+- [x] 6.7 `start-percentage-snapshots`
 
 ## 7. Project Specs
 

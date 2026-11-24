@@ -2,54 +2,77 @@
 
 ## Purpose
 
-Keeps each fantasy player's injury status per NFL week, so game cards can say who was not expected to play, and infers it for weeks played before statuses were saved.
+Each fantasy Player's injury status and details per NFL week, so game cards can say who was not expected to play and Team News can report injuries and practice; statuses are inferred for weeks played before they were saved. It delivers need 6, Durable Record; the shared out statuses are in `Calculations.txt`, section 3.
 
 ## Requirements
 
-### Requirement: Weekly status saved
-Each run during the regular season or playoffs SHALL save, for the current NFL week, every fantasy-position player whose Sleeper injury status is set, with that status, replacing the week's earlier save so the last save before the week ends is kept. Earlier weeks SHALL never be overwritten.
+### Requirement: 6.6 Weekly status saved
+Each run during the regular season or playoffs SHALL save, for the current NFL week, every fantasy-position Player with a Sleeper injury status and that status, replacing the week's earlier save.
+
+**Rationale:** The last save before the week ends is the one kept.
+**Traces to:** 6
+**Verified by:** Test: `tests/test_injuries.py::test_save_overwrites_the_current_week_and_keeps_earlier_weeks`; Test: `tests/test_injuries.py::test_statuses_keep_fantasy_positions_with_a_status`
 
 #### Scenario: Status changes during the week
-- **WHEN** a player is Questionable on Thursday's run and Out on Saturday's
+- **WHEN** a Player is Questionable on Thursday's run and Out on Saturday's
 - **THEN** the week's saved status for him is Out
+
+### Requirement: 6.6.1 Earlier weeks kept
+A saved week's statuses SHALL stay as they were once a later week is current, with nothing saved in the offseason.
+
+**Traces to:** 6.6
+**Verified by:** Test: `tests/test_injuries.py::test_save_overwrites_the_current_week_and_keeps_earlier_weeks`; Test: `tests/test_injuries.py::test_save_does_nothing_in_the_offseason`
 
 #### Scenario: Week rolls over
 - **WHEN** the current week moves from 11 to 12
 - **THEN** week 11's saved statuses stay as they were and week 12 is saved
 
-### Requirement: Not-playing status for a week
-For a team in a given week, the system SHALL list each rostered player expected not to play: on bye when his NFL team has no game, otherwise his saved status when it is an out status. The out statuses SHALL be one list shared by the whole system: Out, Doubtful, IR, PUP, Sus, NA and DNR, labelled Out, Doubtful, IR, PUP, Suspended, Not active and Did not report. Doubtful counts as out because such players almost never play. For a week after the latest saved week, the latest saved statuses SHALL be used. For a week before statuses were first saved, a player SHALL be listed as inferred out when he was on the roster that week, had a projection of 0 or none, and his NFL team played.
+### Requirement: 6.6.2 Shared out statuses
+The out statuses SHALL be one list shared by the whole system: Out, Doubtful, IR, PUP, Sus, NA and DNR, labelled Out, Doubtful, IR, PUP, Suspended, Not active and Did not report.
 
-#### Scenario: Saved status
-- **WHEN** week 12 has a saved status of Doubtful for a rostered receiver whose team plays
-- **THEN** he is listed as Doubtful
-
-#### Scenario: Inferred for an early week
-- **WHEN** week 5 has no saved statuses and a rostered running back had no projection while his team played
-- **THEN** he is listed as inferred out
-
-#### Scenario: Upcoming week
-- **WHEN** week 11's statuses are the latest saved and a rostered player is Out in them
-- **THEN** he is listed as Out for week 15, and players without week-15 projections yet are not inferred out
-
-#### Scenario: Bye
-- **WHEN** a rostered player's team has no game in week 9
-- **THEN** he is listed as on bye regardless of any status
+**Rationale:** Doubtful counts as out because such Players almost never play (Calculations.txt section 3).
+**Traces to:** 6.6; 2.1.6.1
+**Verified by:** Test: `tests/test_injuries.py::test_shared_out_statuses_and_labels`
 
 #### Scenario: Not active
 - **WHEN** week 11 has a saved status of NA for a rostered quarterback whose team plays
 - **THEN** he is listed as Not active
 
-#### Scenario: Suspended
-- **WHEN** week 11 has a saved status of Sus for a rostered receiver
-- **THEN** he is listed as Suspended
+### Requirement: 6.6.3 Not playing in a week
+For a team in a week, the system SHALL list each rostered Player expected not to play: on bye when his NFL team has no game, otherwise when his saved status is an out status.
 
-### Requirement: Weekly player details saved
-Alongside each week's statuses, each run SHALL save, for every fantasy-position player on a league roster, Sleeper's injury body part, practice participation and depth-chart order when set, replacing the week's earlier save so the last save before the week ends is kept. Earlier weeks SHALL never be overwritten.
+**Traces to:** 6.6; 2.1.6
+**Verified by:** Test: `tests/test_injuries.py::test_saved_statuses_and_bye_take_precedence`; Test: `tests/test_injuries.py::test_defense_bye_by_team_key`
 
-#### Scenario: Practice report
-- **WHEN** a rostered receiver is listed as limited in practice on Thursday's run
-- **THEN** the week's saved details record his practice participation as limited
+#### Scenario: Bye
+- **WHEN** a rostered Player's team has no game in week 9
+- **THEN** he is listed as on bye regardless of any status
+
+### Requirement: 6.6.3.1 Future weeks
+For a week after the latest saved week, the latest saved statuses SHALL be used.
+
+**Traces to:** 6.6.3
+**Verified by:** Test: `tests/test_injuries.py::test_future_weeks_use_the_latest_saved_statuses`
+
+#### Scenario: Upcoming week
+- **WHEN** week 11's statuses are the latest saved and a rostered Player is Out in them
+- **THEN** he is listed as Out for week 15, and Players without week-15 Projections yet are not inferred out
+
+### Requirement: 6.6.3.2 Inferred out
+For a week before statuses were first saved, a Player SHALL be listed as inferred out when he was on the roster, had a Projection of 0 or none, and his NFL team played.
+
+**Traces to:** 6.6.3
+**Verified by:** Test: `tests/test_injuries.py::test_inferred_out_for_weeks_without_saved_statuses`
+
+#### Scenario: Inferred for an early week
+- **WHEN** week 5 has no saved statuses and a rostered running back had no Projection while his team played
+- **THEN** he is listed as inferred out
+
+### Requirement: 6.6.4 Weekly Player details saved
+Alongside each week's statuses, each run SHALL save, for every fantasy-position Player on a league roster, Sleeper's injury body part, practice participation and depth-chart order when set, replacing the week's earlier save and keeping earlier weeks.
+
+**Traces to:** 6.6; 4.7.6
+**Verified by:** Test: `tests/test_player_details.py::test_details_keep_rostered_fantasy_players_with_something_set`; Test: `tests/test_player_details.py::test_last_save_of_the_week_wins_and_earlier_weeks_stay`
 
 #### Scenario: Depth chart change
 - **WHEN** a running back's depth-chart order moves from 2 to 1 between weeks 10 and 11
