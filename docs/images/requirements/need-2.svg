@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 730 404" width="730" height="404">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2250 7828" width="2250" height="7828">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,11 +33,327 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="730" height="404"/>
+<rect class="bg" width="2250" height="7828"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 2, Game Forecasts</text>
-<text class="sub" x="40" y="66">0 requirements derived from need 2 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
+<text class="sub" x="40" y="66">54 requirements derived from need 2 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
-<text class="sub" x="350" y="210">No requirement traces to this need yet.</text>
+<text class="col" x="350" y="132">LEVEL 1</text>
+<text class="col" x="660" y="132">LEVEL 2</text>
+<text class="col" x="970" y="132">LEVEL 3</text>
+<text class="col" x="1280" y="132">LEVEL 4</text>
+<text class="col" x="1610" y="132">VERIFIED BY</text>
+<path class="derive" d="M350,343.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,477.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,611.0 H945 V477.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,745.0 H945 V477.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,879.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,1013.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,1147.0 H945 V1013.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,1281.0 H945 V1013.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,1415.0 H945 V1013.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,1549.0 H945 V1013.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,1683.0 H945 V1013.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,1817.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,1951.0 H945 V1817.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,2085.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,2219.0 H945 V2085.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M1280,2353.0 H1255 V2219.0 H1230" marker-end="url(#open)"/>
+<path class="derive" d="M660,2487.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,2621.0 H945 V2487.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,2755.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,2889.0 H945 V2755.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,3023.0 H945 V2755.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,3157.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,3291.0 H945 V3157.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,3425.0 H945 V3157.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,3559.0 H945 V3157.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,3693.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,3827.0 H945 V3693.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,3961.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,4095.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,4229.0 H945 V4095.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,4363.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,4497.0 H945 V4363.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,4631.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,4765.0 H945 V4631.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,4899.0 H945 V4631.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,5033.0 H945 V4631.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,5167.0 H945 V4631.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,5301.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,5435.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,5569.0 H945 V5435.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,5703.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,5837.0 H945 V5703.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,5971.0 H945 V5703.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,6105.0 H945 V5703.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M1280,6239.0 H1255 V6105.0 H1230" marker-end="url(#open)"/>
+<path class="derive" d="M660,6373.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,6507.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,6641.0 H945 V6507.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,6775.0 H945 V6507.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,6909.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,7043.0 H945 V6909.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M350,7177.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,7311.0 H635 V7177.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,7445.0 H635 V7177.0 H610" marker-end="url(#open)"/>
+<text class="elab" x="322" y="337.0" text-anchor="end">«deriveReqt»</text>
+<rect class="tc" x="1610" y="312" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="327">«testCase»</text>
+<text class="tctext" x="1618" y="344">test_games_export.py::test_export_writes_games</text>
+<text class="tctext" x="1618" y="358">_index_and_weeks</text>
+<path class="verify" d="M1610,342 H610" marker-end="url(#openv)"/>
+<text class="elab" x="1602" y="336" text-anchor="end">«verify»</text>
+<rect class="tc" x="1610" y="446" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="461">«testCase»</text>
+<text class="tctext" x="1618" y="478">layout/test_games_page.py::test_opens_on_the_c</text>
+<text class="tctext" x="1618" y="492">urrent_week</text>
+<path class="verify" d="M1610,476 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="580" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="595">«testCase»</text>
+<text class="tctext" x="1618" y="612">layout/test_games_page.py::test_week_list_cove</text>
+<text class="tctext" x="1618" y="626">rs_every_week_of_the_season</text>
+<path class="verify" d="M1610,610 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="714" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="729">«testCase»</text>
+<text class="tctext" x="1618" y="746">layout/test_games_page.py::test_arrows_step_on</text>
+<text class="tctext" x="1618" y="760">e_week_and_stop_at_the_ends</text>
+<path class="verify" d="M1610,744 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="848" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="863">«testCase»</text>
+<text class="tctext" x="1618" y="880">layout/test_layout.py::test_games_cards_stack_</text>
+<text class="tctext" x="1618" y="894">and_team_rows_do_not_overlap_on_large_phones;</text>
+<path class="verify" d="M1610,878 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="982" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="997">«inspection»</text>
+<text class="tctext" x="1618" y="1014">the live site, team rows of a week-11 card</text>
+<path class="verify" d="M1610,1012 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="1116" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="1131">«inspection»</text>
+<text class="tctext" x="1618" y="1148">the live site, score blocks of an upcoming</text>
+<text class="tctext" x="1618" y="1162">week</text>
+<path class="verify" d="M1610,1146 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="1250" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="1265">«testCase»</text>
+<text class="tctext" x="1618" y="1282">layout/test_layout.py::test_finished_cards_sho</text>
+<text class="tctext" x="1618" y="1296">w_the_actual_score_first</text>
+<path class="verify" d="M1610,1280 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="1384" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="1399">«inspection»</text>
+<text class="tctext" x="1618" y="1416">the live site, the chart of a week-11 card</text>
+<path class="verify" d="M1610,1414 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="1518" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="1533">«testCase»</text>
+<text class="tctext" x="1618" y="1550">layout/test_layout.py::test_games_cards_stack_</text>
+<text class="tctext" x="1618" y="1564">and_team_rows_do_not_overlap_on_large_phones</text>
+<path class="verify" d="M1610,1548 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="1652" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="1667">«inspection»</text>
+<text class="tctext" x="1618" y="1684">the live site at 360 and 1280 px, the win</text>
+<text class="tctext" x="1618" y="1698">probability box widths</text>
+<path class="verify" d="M1610,1682 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="1786" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="1801">«inspection»</text>
+<text class="tctext" x="1618" y="1818">the live site in both themes, boxes at 8%, 50%</text>
+<text class="tctext" x="1618" y="1832">and 92%</text>
+<path class="verify" d="M1610,1816 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="1920" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="1935">«testCase»</text>
+<text class="tctext" x="1618" y="1952">test_colour_contrast.py::test_colour_tokens_me</text>
+<text class="tctext" x="1618" y="1966">et_contrast</text>
+<path class="verify" d="M1610,1950 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="2054" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="2069">«testCase»</text>
+<text class="tctext" x="1618" y="2086">test_games_export.py::test_key_players_rule; l</text>
+<text class="tctext" x="1618" y="2100">ayout/test_game_states.py::test_every_state_lo</text>
+<path class="verify" d="M1610,2084 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="2188" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="2203">«testCase»</text>
+<text class="tctext" x="1618" y="2220">layout/test_game_states.py::test_every_state_l</text>
+<text class="tctext" x="1618" y="2234">ooks_as_decided; test_forecast.py::test_replac</text>
+<path class="verify" d="M1610,2218 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="2322" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="2337">«testCase»</text>
+<text class="tctext" x="1618" y="2354">layout/test_games_page.py::test_full_lineup_op</text>
+<text class="tctext" x="1618" y="2368">ens_both_teams_together</text>
+<path class="verify" d="M1610,2352 H1540" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="2456" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="2471">«testCase»</text>
+<text class="tctext" x="1618" y="2488">test_injuries.py::test_saved_statuses_and_bye_</text>
+<text class="tctext" x="1618" y="2502">take_precedence; test_injuries.py::test_inferr</text>
+<path class="verify" d="M1610,2486 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="2590" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="2605">«testCase»</text>
+<text class="tctext" x="1618" y="2622">test_injuries.py::test_shared_out_statuses_and</text>
+<text class="tctext" x="1618" y="2636">_labels</text>
+<path class="verify" d="M1610,2620 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="2724" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="2739">«testCase»</text>
+<text class="tctext" x="1618" y="2756">layout/test_game_states.py::test_every_state_l</text>
+<text class="tctext" x="1618" y="2770">ooks_as_decided</text>
+<path class="verify" d="M1610,2754 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="2858" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="2873">«inspection»</text>
+<text class="tctext" x="1618" y="2890">the live site, week 10&#x27;s charts</text>
+<path class="verify" d="M1610,2888 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="2992" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="3007">«testCase»</text>
+<text class="tctext" x="1618" y="3024">test_views.py::test_views_for_pre_log_and_logg</text>
+<text class="tctext" x="1618" y="3038">ed_weeks</text>
+<path class="verify" d="M1610,3022 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="3126" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="3141">«testCase»</text>
+<text class="tctext" x="1618" y="3158">test_forecast.py::test_projected_bracket_seeds</text>
+<text class="tctext" x="1618" y="3172">_by_expectation_and_favourite_advances; test_f</text>
+<path class="verify" d="M1610,3156 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="3260" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="3275">«testCase»</text>
+<text class="tctext" x="1618" y="3292">test_forecast.py::test_pairing_frequency</text>
+<path class="verify" d="M1610,3290 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="3394" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="3409">«inspection»</text>
+<text class="tctext" x="1618" y="3426">the live site, week 15 before pairings are set</text>
+<path class="verify" d="M1610,3424 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="3528" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="3543">«testCase»</text>
+<text class="tctext" x="1618" y="3560">test_forecast.py::test_toilet_bowl_is_projecte</text>
+<text class="tctext" x="1618" y="3574">d_and_advances_the_likelier_lower_scorer</text>
+<path class="verify" d="M1610,3558 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="3662" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="3677">«testCase»</text>
+<text class="tctext" x="1618" y="3694">layout/test_game_states.py::test_every_state_l</text>
+<text class="tctext" x="1618" y="3708">ooks_as_decided</text>
+<path class="verify" d="M1610,3692 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="3796" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="3811">«inspection»</text>
+<text class="tctext" x="1618" y="3828">the live site with reduced motion turned on</text>
+<path class="verify" d="M1610,3826 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="3930" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="3945">«inspection»</text>
+<text class="tctext" x="1618" y="3962">the live site on a Saturday of a live week</text>
+<path class="verify" d="M1610,3960 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="4064" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="4079">«testCase»</text>
+<text class="tctext" x="1618" y="4096">layout/test_layout.py::test_lineup_columns_nev</text>
+<text class="tctext" x="1618" y="4110">er_overlap; Inspection: the live site, a live</text>
+<path class="verify" d="M1610,4094 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="4198" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="4213">«inspection»</text>
+<text class="tctext" x="1618" y="4230">the live site, a live week and finished week 9</text>
+<path class="verify" d="M1610,4228 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="4332" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="4347">«testCase»</text>
+<text class="tctext" x="1618" y="4364">test_wpa.py::test_live_wpa_uses_the_pre_kickof</text>
+<text class="tctext" x="1618" y="4378">f_baseline_and_skips_players_not_started;</text>
+<path class="verify" d="M1610,4362 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="4466" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="4481">«inspection»</text>
+<text class="tctext" x="1618" y="4498">the live site, the note on the Games sub-tab</text>
+<path class="verify" d="M1610,4496 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="4600" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="4615">«testCase»</text>
+<text class="tctext" x="1618" y="4632">layout/test_game_states.py::test_every_state_l</text>
+<text class="tctext" x="1618" y="4646">ooks_as_decided; layout/test_game_states.py::t</text>
+<path class="verify" d="M1610,4630 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="4734" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="4749">«inspection»</text>
+<text class="tctext" x="1618" y="4766">the live site, the toggle on finished week 10</text>
+<path class="verify" d="M1610,4764 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="4868" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="4883">«inspection»</text>
+<text class="tctext" x="1618" y="4900">the live site, week 10 in both views</text>
+<path class="verify" d="M1610,4898 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="5002" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="5017">«testCase»</text>
+<text class="tctext" x="1618" y="5034">layout/test_game_states.py::test_every_state_l</text>
+<text class="tctext" x="1618" y="5048">ooks_as_decided</text>
+<path class="verify" d="M1610,5032 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="5136" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="5151">«testCase»</text>
+<text class="tctext" x="1618" y="5168">test_games_export.py::test_export_logged_week_</text>
+<text class="tctext" x="1618" y="5182">views</text>
+<path class="verify" d="M1610,5166 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="5270" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="5285">«testCase»</text>
+<text class="tctext" x="1618" y="5302">test_views.py::test_lineup_choices_examples_an</text>
+<text class="tctext" x="1618" y="5316">d_live_rule</text>
+<path class="verify" d="M1610,5300 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="5404" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="5419">«inspection»</text>
+<text class="tctext" x="1618" y="5436">the live site, the Model view of week 10</text>
+<path class="verify" d="M1610,5434 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="5538" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="5553">«inspection»</text>
+<text class="tctext" x="1618" y="5570">the live site, the Model view of week 10</text>
+<path class="verify" d="M1610,5568 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="5672" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="5687">«testCase»</text>
+<text class="tctext" x="1618" y="5704">layout/test_layout.py::test_lineup_columns_nev</text>
+<text class="tctext" x="1618" y="5718">er_overlap</text>
+<path class="verify" d="M1610,5702 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="5806" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="5821">«testCase»</text>
+<text class="tctext" x="1618" y="5838">layout/test_layout.py::test_lineup_columns_nev</text>
+<text class="tctext" x="1618" y="5852">er_overlap</text>
+<path class="verify" d="M1610,5836 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="5940" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="5955">«inspection»</text>
+<text class="tctext" x="1618" y="5972">the live site at 1280 px, the points column of</text>
+<text class="tctext" x="1618" y="5986">each list</text>
+<path class="verify" d="M1610,5970 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="6074" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="6089">«testCase»</text>
+<text class="tctext" x="1618" y="6106">layout/test_layout.py::test_phone_lineups_show</text>
+<text class="tctext" x="1618" y="6120">_full_names</text>
+<path class="verify" d="M1610,6104 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="6208" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="6223">«inspection»</text>
+<text class="tctext" x="1618" y="6240">the live site at 360 px, a lineup with a</text>
+<text class="tctext" x="1618" y="6254">replacement fill</text>
+<path class="verify" d="M1610,6238 H1540" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="6342" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="6357">«testCase»</text>
+<text class="tctext" x="1618" y="6374">layout/test_game_states.py::test_every_state_l</text>
+<text class="tctext" x="1618" y="6388">ooks_as_decided</text>
+<path class="verify" d="M1610,6372 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="6476" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="6491">«testCase»</text>
+<text class="tctext" x="1618" y="6508">layout/test_game_states.py::test_finished_stat</text>
+<text class="tctext" x="1618" y="6522">es_rank_key_players_by_impact</text>
+<path class="verify" d="M1610,6506 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="6610" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="6625">«testCase»</text>
+<text class="tctext" x="1618" y="6642">test_card_states.py::test_impact_ranking_and_t</text>
+<text class="tctext" x="1618" y="6656">ies</text>
+<path class="verify" d="M1610,6640 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="6744" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="6759">«testCase»</text>
+<text class="tctext" x="1618" y="6776">layout/test_game_states.py::test_finished_stat</text>
+<text class="tctext" x="1618" y="6790">es_show_the_full_lineup_in_the_model_view</text>
+<path class="verify" d="M1610,6774 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="6878" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="6893">«testCase»</text>
+<text class="tctext" x="1618" y="6910">layout/test_game_states.py::test_every_state_l</text>
+<text class="tctext" x="1618" y="6924">ooks_as_decided</text>
+<path class="verify" d="M1610,6908 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="7012" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="7027">«inspection»</text>
+<text class="tctext" x="1618" y="7044">the live site, the Unofficial chip&#x27;s tooltip</text>
+<path class="verify" d="M1610,7042 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="7146" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="7161">«testCase»</text>
+<text class="tctext" x="1618" y="7178">test_games_export.py::test_export_writes_games</text>
+<text class="tctext" x="1618" y="7192">_index_and_weeks;</text>
+<path class="verify" d="M1610,7176 H610" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="7280" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="7295">«inspection»</text>
+<text class="tctext" x="1618" y="7312">the browser&#x27;s network log on the live site,</text>
+<text class="tctext" x="1618" y="7326">one week file per week shown</text>
+<path class="verify" d="M1610,7310 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="7414" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="7429">«testCase»</text>
+<text class="tctext" x="1618" y="7446">test_games_export.py::test_export_without_game</text>
+<text class="tctext" x="1618" y="7460">_files_has_no_games_entry</text>
+<path class="verify" d="M1610,7444 H920" marker-end="url(#openv)"/>
 <rect class="need" x="40" y="150" width="260" height="118" rx="3"/>
 <rect class="needhdr" x="40.7" y="150.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="170.0" y="163" text-anchor="middle">«need»</text>
@@ -47,8 +363,508 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="48" y="228">it is played, and how the result compared with</text>
 <text class="rtext" x="48" y="242">the Forecast.</text>
 <text class="spec" x="48" y="261">needs</text>
-<path class="derive" d="M40,364 H86" marker-end="url(#open)"/><text class="lg" x="96" y="368">«deriveReqt»: primary parent (sets the ID)</text>
-<path class="trace" d="M360,364 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="368">«trace»: extra parent</text>
-<path class="verify" d="M680,364 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="368">«verify»: test, inspection or analysis</text>
-<path class="vgap" d="M1000,364 H1046" marker-end="url(#openr)"/><text class="lg" x="1056" y="368">verification gap</text>
+<rect class="req" x="350" y="284" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="284.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="297" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="312" text-anchor="middle"><tspan class="rid">2.1</tspan><tspan class="rname" dx="6">Games sub-tab</tspan></text>
+<text class="rtext" x="358" y="334">The Games sub-tab SHALL show the current</text>
+<text class="rtext" x="358" y="348">season&#x27;s matchups one week at a time, one card</text>
+<text class="rtext" x="358" y="362">per game.</text>
+<text class="spec" x="358" y="395">games-page</text>
+<rect class="req" x="660" y="418" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="418.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="431" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="446" text-anchor="middle"><tspan class="rid">2.1.1</tspan><tspan class="rname" dx="6">Opens on the current week</tspan></text>
+<text class="rtext" x="668" y="468">The Games sub-tab SHALL open on the current</text>
+<text class="rtext" x="668" y="482">NFL week.</text>
+<text class="spec" x="668" y="529">games-page</text>
+<rect class="req" x="970" y="552" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="552.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="565" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="580" text-anchor="middle"><tspan class="rid">2.1.1.1</tspan><tspan class="rname" dx="6">Week list</tspan></text>
+<text class="rtext" x="978" y="602">The week control SHALL list every regular-</text>
+<text class="rtext" x="978" y="616">season and playoff week of the current season,</text>
+<text class="rtext" x="978" y="630">in order.</text>
+<text class="spec" x="978" y="663">games-page</text>
+<rect class="req" x="970" y="686" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="686.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="699" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="714" text-anchor="middle"><tspan class="rid">2.1.1.2</tspan><tspan class="rname" dx="6">Week arrows</tspan></text>
+<text class="rtext" x="978" y="736">Previous and next arrows SHALL step one week,</text>
+<text class="rtext" x="978" y="750">each disabled at its end of the season.</text>
+<text class="spec" x="978" y="797">games-page</text>
+<rect class="req" x="660" y="820" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="820.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="833" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="848" text-anchor="middle"><tspan class="rid">2.1.2</tspan><tspan class="rname" dx="6">Card columns</tspan></text>
+<text class="rtext" x="668" y="870">Game cards SHALL sit in two columns from 900</text>
+<text class="rtext" x="668" y="884">px wide and in one column below it, with a</text>
+<text class="rtext" x="668" y="898">lone last card centred.</text>
+<text class="spec" x="668" y="931">games-page</text>
+<rect class="req" x="660" y="954" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="954.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="967" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="982" text-anchor="middle"><tspan class="rid">2.1.3</tspan><tspan class="rname" dx="6">Team rows</tspan></text>
+<text class="rtext" x="668" y="1004">Each card SHALL stack its two team rows, each</text>
+<text class="rtext" x="668" y="1018">showing the Manager&#x27;s colour dot, the</text>
+<text class="rtext" x="668" y="1032">Manager&#x27;s display name with the Team Name</text>
+<text class="rtext" x="668" y="1046">beneath, a score block and the win…</text>
+<text class="spec" x="668" y="1065">games-page</text>
+<rect class="req" x="970" y="1088" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="1088.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="1101" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="1116" text-anchor="middle"><tspan class="rid">2.1.3.1</tspan><tspan class="rname" dx="6">Forecast score</tspan></text>
+<text class="rtext" x="978" y="1138">Before a game starts, each score block SHALL</text>
+<text class="rtext" x="978" y="1152">show the team&#x27;s mean simulated points labelled</text>
+<text class="rtext" x="978" y="1166">&quot;forecast&quot;.</text>
+<text class="spec" x="978" y="1199">games-page</text>
+<rect class="req" x="970" y="1222" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="1222.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="1235" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="1250" text-anchor="middle"><tspan class="rid">2.1.3.2</tspan><tspan class="rname" dx="6">Played score</tspan></text>
+<text class="rtext" x="978" y="1272">Once a game is live or finished, each score</text>
+<text class="rtext" x="978" y="1286">block SHALL show the current or final score as</text>
+<text class="rtext" x="978" y="1300">the large number, with the Forecast beneath in</text>
+<text class="rtext" x="978" y="1314">smaller type labelled &quot;forecasted&quot;.</text>
+<text class="spec" x="978" y="1333">games-page</text>
+<rect class="req" x="970" y="1356" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="1356.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="1369" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="1384" text-anchor="middle"><tspan class="rid">2.1.3.3</tspan><tspan class="rname" dx="6">Score distributions</tspan></text>
+<text class="rtext" x="978" y="1406">Each card SHALL overlay both teams&#x27; simulated</text>
+<text class="rtext" x="978" y="1420">score distributions in one chart, each shaded</text>
+<text class="rtext" x="978" y="1434">in its Manager&#x27;s colour.</text>
+<text class="spec" x="978" y="1467">games-page</text>
+<rect class="req" x="970" y="1490" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="1490.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="1503" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="1518" text-anchor="middle"><tspan class="rid">2.1.3.4</tspan><tspan class="rname" dx="6">Cards on a phone</tspan></text>
+<text class="rtext" x="978" y="1540">Below 600 px wide, each card SHALL place its</text>
+<text class="rtext" x="978" y="1554">chart beneath the team rows, which take the</text>
+<text class="rtext" x="978" y="1568">card&#x27;s full width.</text>
+<text class="spec" x="978" y="1601">games-page</text>
+<rect class="req" x="970" y="1624" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="1624.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="1637" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="1652" text-anchor="middle"><tspan class="rid">2.1.3.5</tspan><tspan class="rname" dx="6">Win probability box on a phone</tspan></text>
+<text class="rtext" x="978" y="1674">Below 600 px wide, the win probability box</text>
+<text class="rtext" x="978" y="1688">SHALL be narrower than at 600 px and above.</text>
+<text class="spec" x="978" y="1735">games-page</text>
+<rect class="req" x="660" y="1758" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="1758.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="1771" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="1786" text-anchor="middle"><tspan class="rid">2.1.4</tspan><tspan class="rname" dx="6">Win probability fill</tspan></text>
+<text class="rtext" x="668" y="1808">Each win probability box SHALL be filled on a</text>
+<text class="rtext" x="668" y="1822">diverging scale: neutral grey at 50%, a</text>
+<text class="rtext" x="668" y="1836">stronger green toward 100% and a stronger red</text>
+<text class="rtext" x="668" y="1850">toward 0%.</text>
+<text class="spec" x="668" y="1869">games-page</text>
+<rect class="req" x="970" y="1892" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="1892.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="1905" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="1920" text-anchor="middle"><tspan class="rid">2.1.4.1</tspan><tspan class="rname" dx="6">Readable win probability</tspan></text>
+<text class="rtext" x="978" y="1942">Text on every step of the win probability</text>
+<text class="rtext" x="978" y="1956">scale SHALL have at least 4.5:1 contrast with</text>
+<text class="rtext" x="978" y="1970">its fill in both themes.</text>
+<text class="spec" x="978" y="2003">games-page</text>
+<rect class="req" x="660" y="2026" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="2026.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="2039" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="2054" text-anchor="middle"><tspan class="rid">2.1.5</tspan><tspan class="rname" dx="6">Key players</tspan></text>
+<text class="rtext" x="668" y="2076">In states F1, F2, C and P2, each team SHALL</text>
+<text class="rtext" x="668" y="2090">list four key players from the lineup shown:</text>
+<text class="rtext" x="668" y="2104">the quarterback, the highest-projected running</text>
+<text class="rtext" x="668" y="2118">back, the highest-projected wide receiver, …</text>
+<text class="spec" x="668" y="2137">games-page</text>
+<rect class="req" x="970" y="2160" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="2160.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="2173" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="2188" text-anchor="middle"><tspan class="rid">2.1.5.1</tspan><tspan class="rname" dx="6">Full Lineup control</tspan></text>
+<text class="rtext" x="978" y="2210">Where a card lists key players, a &quot;Full</text>
+<text class="rtext" x="978" y="2224">Lineup&quot; control SHALL show every lineup slot</text>
+<text class="rtext" x="978" y="2238">with its Player and projected points, a</text>
+<text class="rtext" x="978" y="2252">replacement fill reading as a free agent at…</text>
+<text class="spec" x="978" y="2271">games-page</text>
+<rect class="req" x="1280" y="2294" width="260" height="118" rx="3"/>
+<rect class="hdr" x="1280.7" y="2294.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1410.0" y="2307" text-anchor="middle">«requirement»</text>
+<text x="1410.0" y="2322" text-anchor="middle"><tspan class="rid">2.1.5.1.1</tspan><tspan class="rname" dx="6">Linked full lineups</tspan></text>
+<text class="rtext" x="1288" y="2344">Opening or closing one team&#x27;s Full Lineup</text>
+<text class="rtext" x="1288" y="2358">SHALL open or close both teams&#x27; full lineups</text>
+<text class="rtext" x="1288" y="2372">in that card.</text>
+<text class="spec" x="1288" y="2405">games-page</text>
+<rect class="req" x="660" y="2428" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="2428.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="2441" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="2456" text-anchor="middle"><tspan class="rid">2.1.6</tspan><tspan class="rname" dx="6">Not playing</tspan></text>
+<text class="rtext" x="668" y="2478">Below each card, each team SHALL list its</text>
+<text class="rtext" x="668" y="2492">rostered Players expected not to play that</text>
+<text class="rtext" x="668" y="2506">week: on a bye, with a status on the shared</text>
+<text class="rtext" x="668" y="2520">out-status list, or inferred out in a week…</text>
+<text class="spec" x="668" y="2539">games-page</text>
+<rect class="req" x="970" y="2562" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="2562.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="2575" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="2590" text-anchor="middle"><tspan class="rid">2.1.6.1</tspan><tspan class="rname" dx="6">Reason shown</tspan></text>
+<text class="rtext" x="978" y="2612">Each Player listed as not playing SHALL carry</text>
+<text class="rtext" x="978" y="2626">the reason, in the shared status labels, just</text>
+<text class="rtext" x="978" y="2640">after the name.</text>
+<text class="spec" x="978" y="2673">games-page</text>
+<rect class="req" x="660" y="2696" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="2696.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="2709" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="2724" text-anchor="middle"><tspan class="rid">2.1.7</tspan><tspan class="rname" dx="6">Winner check</tspan></text>
+<text class="rtext" x="668" y="2746">For a finished week (PW), and for a game whose</text>
+<text class="rtext" x="668" y="2760">starters have all finished (O1 to O3), each</text>
+<text class="rtext" x="668" y="2774">card SHALL show a check mark in the winner&#x27;s</text>
+<text class="rtext" x="668" y="2788">win probability box.</text>
+<text class="spec" x="668" y="2807">games-page</text>
+<rect class="req" x="970" y="2830" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="2830.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="2843" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="2858" text-anchor="middle"><tspan class="rid">2.1.7.1</tspan><tspan class="rname" dx="6">Actual score on the chart</tspan></text>
+<text class="rtext" x="978" y="2880">For a finished week or a game whose starters</text>
+<text class="rtext" x="978" y="2894">have all finished, each card SHALL draw each</text>
+<text class="rtext" x="978" y="2908">team&#x27;s actual score as a vertical line on its</text>
+<text class="rtext" x="978" y="2922">distribution, in the team&#x27;s colour.</text>
+<text class="spec" x="978" y="2941">games-page</text>
+<rect class="req" x="970" y="2964" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="2964.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="2977" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="2992" text-anchor="middle"><tspan class="rid">2.1.7.2</tspan><tspan class="rname" dx="6">Pre-week Forecast labelled</tspan></text>
+<text class="rtext" x="978" y="3014">A card showing a pre-week Forecast, for a week</text>
+<text class="rtext" x="978" y="3028">before the Forecast log existed, SHALL label</text>
+<text class="rtext" x="978" y="3042">it as pre-week.</text>
+<text class="spec" x="978" y="3075">games-page</text>
+<rect class="req" x="660" y="3098" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="3098.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="3111" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="3126" text-anchor="middle"><tspan class="rid">2.1.8</tspan><tspan class="rname" dx="6">Projected bracket</tspan></text>
+<text class="rtext" x="668" y="3148">Until Sleeper sets a playoff week&#x27;s real</text>
+<text class="rtext" x="668" y="3162">pairings, that week SHALL show the projected</text>
+<text class="rtext" x="668" y="3176">bracket, with the 1 seed&#x27;s side at the top and</text>
+<text class="rtext" x="668" y="3190">the 2 seed&#x27;s side at the bottom.</text>
+<text class="spec" x="668" y="3209">games-page</text>
+<rect class="req" x="970" y="3232" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="3232.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="3245" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="3260" text-anchor="middle"><tspan class="rid">2.1.8.1</tspan><tspan class="rname" dx="6">Pairing frequency</tspan></text>
+<text class="rtext" x="978" y="3282">Each projected playoff card SHALL show how</text>
+<text class="rtext" x="978" y="3296">often that pairing happened in the</text>
+<text class="rtext" x="978" y="3310">simulations.</text>
+<text class="spec" x="978" y="3343">games-page</text>
+<rect class="req" x="970" y="3366" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="3366.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="3379" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="3394" text-anchor="middle"><tspan class="rid">2.1.8.2</tspan><tspan class="rname" dx="6">Bye cards</tspan></text>
+<text class="rtext" x="978" y="3416">A projected first round SHALL show a bye card</text>
+<text class="rtext" x="978" y="3430">for each team with a first-round bye.</text>
+<text class="spec" x="978" y="3477">games-page</text>
+<rect class="req" x="970" y="3500" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="3500.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="3513" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="3528" text-anchor="middle"><tspan class="rid">2.1.8.3</tspan><tspan class="rname" dx="6">Toilet bowl</tspan></text>
+<text class="rtext" x="978" y="3550">In a league that plays a toilet bowl, the</text>
+<text class="rtext" x="978" y="3564">projected toilet bowl games SHALL show below</text>
+<text class="rtext" x="978" y="3578">the winners bracket.</text>
+<text class="spec" x="978" y="3611">games-page</text>
+<rect class="req" x="660" y="3634" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="3634.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="3647" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="3662" text-anchor="middle"><tspan class="rid">2.1.9</tspan><tspan class="rname" dx="6">LIVE badge</tspan></text>
+<text class="rtext" x="668" y="3684">During the live week, a card SHALL show the</text>
+<text class="rtext" x="668" y="3698">&quot;LIVE&quot; badge and border, a signal icon with</text>
+<text class="rtext" x="668" y="3712">green arcs and a moving gradient, only in</text>
+<text class="rtext" x="668" y="3726">state L1.</text>
+<text class="spec" x="668" y="3745">games-page</text>
+<rect class="req" x="970" y="3768" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="3768.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="3781" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="3796" text-anchor="middle"><tspan class="rid">2.1.9.1</tspan><tspan class="rname" dx="6">Still badge for reduced motion</tspan></text>
+<text class="rtext" x="978" y="3818">When the visitor&#x27;s system asks for reduced</text>
+<text class="rtext" x="978" y="3832">motion, the LIVE badge SHALL show without</text>
+<text class="rtext" x="978" y="3846">animation.</text>
+<text class="spec" x="978" y="3879">games-page</text>
+<rect class="req" x="660" y="3902" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="3902.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="3915" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="3930" text-anchor="middle"><tspan class="rid">2.1.10</tspan><tspan class="rname" dx="6">Points so far</tspan></text>
+<text class="rtext" x="668" y="3952">Once either team in a game has a starter whose</text>
+<text class="rtext" x="668" y="3966">game has kicked off, both teams SHALL show</text>
+<text class="rtext" x="668" y="3980">their points so far as the large number (0.0</text>
+<text class="rtext" x="668" y="3994">when none), the projected final beneath…</text>
+<text class="spec" x="668" y="4013">games-page</text>
+<rect class="req" x="660" y="4036" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="4036.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="4049" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="4064" text-anchor="middle"><tspan class="rid">2.1.11</tspan><tspan class="rname" dx="6">Player game status</tspan></text>
+<text class="rtext" x="668" y="4086">In every lineup on a live or finished week,</text>
+<text class="rtext" x="668" y="4100">each starter SHALL show his game status: in</text>
+<text class="rtext" x="668" y="4114">progress in green with a dot and the game</text>
+<text class="rtext" x="668" y="4128">clock, final in bold dark text, or not yet…</text>
+<text class="spec" x="668" y="4147">games-page</text>
+<rect class="req" x="970" y="4170" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4170.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4183" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="4198" text-anchor="middle"><tspan class="rid">2.1.11.1</tspan><tspan class="rname" dx="6">Final tag</tspan></text>
+<text class="rtext" x="978" y="4220">A starter whose game is final SHALL carry an</text>
+<text class="rtext" x="978" y="4234">&quot;F&quot; tag on the live week only.</text>
+<text class="spec" x="978" y="4281">games-page</text>
+<rect class="req" x="660" y="4304" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="4304.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="4317" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="4332" text-anchor="middle"><tspan class="rid">2.1.12</tspan><tspan class="rname" dx="6">Win probability added shown</tspan></text>
+<text class="rtext" x="668" y="4354">In the Actual view of a live or finished week,</text>
+<text class="rtext" x="668" y="4368">every starter with an actual score SHALL show</text>
+<text class="rtext" x="668" y="4382">his win probability added beside his points,</text>
+<text class="rtext" x="668" y="4396">green when positive and red when negative.</text>
+<text class="spec" x="668" y="4415">games-page</text>
+<rect class="req" x="970" y="4438" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4438.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4451" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="4466" text-anchor="middle"><tspan class="rid">2.1.12.1</tspan><tspan class="rname" dx="6">Win probability added note</tspan></text>
+<text class="rtext" x="978" y="4488">The Games sub-tab SHALL note that win</text>
+<text class="rtext" x="978" y="4502">probability added shows the size of each swing</text>
+<text class="rtext" x="978" y="4516">and does not add up to the team&#x27;s change.</text>
+<text class="spec" x="978" y="4549">games-page</text>
+<rect class="req" x="660" y="4572" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="4572.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="4585" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="4600" text-anchor="middle"><tspan class="rid">2.1.13</tspan><tspan class="rname" dx="6">Model and Actual views</tspan></text>
+<text class="rtext" x="668" y="4622">Cards in states P2, L1, L2, P1, O1, O2, O3 and</text>
+<text class="rtext" x="668" y="4636">PW SHALL offer a &quot;Model | Actual&quot; toggle that</text>
+<text class="rtext" x="668" y="4650">switches the card&#x27;s lineups, key players,</text>
+<text class="rtext" x="668" y="4664">means, win probabilities and chart between …</text>
+<text class="spec" x="668" y="4683">games-page</text>
+<rect class="req" x="970" y="4706" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4706.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4719" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="4734" text-anchor="middle"><tspan class="rid">2.1.13.1</tspan><tspan class="rname" dx="6">Opens on Actual</tspan></text>
+<text class="rtext" x="978" y="4756">A card with the toggle SHALL open on the</text>
+<text class="rtext" x="978" y="4770">Actual view.</text>
+<text class="spec" x="978" y="4817">games-page</text>
+<rect class="req" x="970" y="4840" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4840.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4853" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="4868" text-anchor="middle"><tspan class="rid">2.1.13.2</tspan><tspan class="rname" dx="6">Actual scores in both views</tspan></text>
+<text class="rtext" x="978" y="4890">Actual scores SHALL be drawn on the chart in</text>
+<text class="rtext" x="978" y="4904">both views.</text>
+<text class="spec" x="978" y="4951">games-page</text>
+<rect class="req" x="970" y="4974" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4974.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4987" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="5002" text-anchor="middle"><tspan class="rid">2.1.13.3</tspan><tspan class="rname" dx="6">Model view only before play</tspan></text>
+<text class="rtext" x="978" y="5024">Cards in states F1, F2 and C SHALL show the</text>
+<text class="rtext" x="978" y="5038">model view without a toggle.</text>
+<text class="spec" x="978" y="5085">games-page</text>
+<rect class="req" x="970" y="5108" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="5108.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="5121" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="5136" text-anchor="middle"><tspan class="rid">2.1.13.4</tspan><tspan class="rname" dx="6">Rebuilt view labelled</tspan></text>
+<text class="rtext" x="978" y="5158">An Actual view rebuilt for a week before the</text>
+<text class="rtext" x="978" y="5172">Forecast log existed SHALL be labelled as</text>
+<text class="rtext" x="978" y="5186">rebuilt.</text>
+<text class="spec" x="978" y="5219">games-page</text>
+<rect class="req" x="660" y="5242" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="5242.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="5255" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="5270" text-anchor="middle"><tspan class="rid">2.1.14</tspan><tspan class="rname" dx="6">Lineup choices shown</tspan></text>
+<text class="rtext" x="668" y="5292">On live and finished cards, in both views,</text>
+<text class="rtext" x="668" y="5306">each team SHALL show &quot;Lineup choices: +N&quot; or</text>
+<text class="rtext" x="668" y="5320">&quot;-N&quot; beneath the forecasted line of its score</text>
+<text class="rtext" x="668" y="5334">block: its points against the model lineup,…</text>
+<text class="spec" x="668" y="5353">games-page</text>
+<rect class="req" x="660" y="5376" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="5376.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="5389" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="5404" text-anchor="middle"><tspan class="rid">2.1.15</tspan><tspan class="rname" dx="6">Bench tag</tspan></text>
+<text class="rtext" x="668" y="5426">In the model view of a live or finished card,</text>
+<text class="rtext" x="668" y="5440">each model pick the Manager did not start</text>
+<text class="rtext" x="668" y="5454">SHALL carry a &quot;BN&quot; tag.</text>
+<text class="spec" x="668" y="5487">games-page</text>
+<rect class="req" x="970" y="5510" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="5510.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="5523" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="5538" text-anchor="middle"><tspan class="rid">2.1.15.1</tspan><tspan class="rname" dx="6">No win probability added in t…</tspan></text>
+<text class="rtext" x="978" y="5560">The model view SHALL show win probability</text>
+<text class="rtext" x="978" y="5574">added for no Player.</text>
+<text class="spec" x="978" y="5621">games-page</text>
+<rect class="req" x="660" y="5644" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="5644.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="5657" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="5672" text-anchor="middle"><tspan class="rid">2.1.16</tspan><tspan class="rname" dx="6">Player rows</tspan></text>
+<text class="rtext" x="668" y="5694">Each Player row SHALL show, in order, the slot</text>
+<text class="rtext" x="668" y="5708">or position, the name with any final tag, the</text>
+<text class="rtext" x="668" y="5722">points or projection, the win probability</text>
+<text class="rtext" x="668" y="5736">added for scored starters in the Actual vie…</text>
+<text class="spec" x="668" y="5755">games-page</text>
+<rect class="req" x="970" y="5778" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="5778.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="5791" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="5806" text-anchor="middle"><tspan class="rid">2.1.16.1</tspan><tspan class="rname" dx="6">Empty right-hand column</tspan></text>
+<text class="rtext" x="978" y="5828">The right-hand column SHALL take no width in a</text>
+<text class="rtext" x="978" y="5842">card with nothing to put in it.</text>
+<text class="spec" x="978" y="5889">games-page</text>
+<rect class="req" x="970" y="5912" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="5912.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="5925" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="5940" text-anchor="middle"><tspan class="rid">2.1.16.2</tspan><tspan class="rname" dx="6">Aligned points</tspan></text>
+<text class="rtext" x="978" y="5962">Within each team&#x27;s list, the points or</text>
+<text class="rtext" x="978" y="5976">projections SHALL form one aligned column just</text>
+<text class="rtext" x="978" y="5990">after the longest name.</text>
+<text class="spec" x="978" y="6023">games-page</text>
+<rect class="req" x="970" y="6046" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="6046.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="6059" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="6074" text-anchor="middle"><tspan class="rid">2.1.16.3</tspan><tspan class="rname" dx="6">Lists on a phone</tspan></text>
+<text class="rtext" x="978" y="6096">Below 560 px wide, the two teams&#x27; lists SHALL</text>
+<text class="rtext" x="978" y="6110">stack, each under its Team Name, with every</text>
+<text class="rtext" x="978" y="6124">name in full or as first initial and last</text>
+<text class="rtext" x="978" y="6138">name, never cut.</text>
+<text class="spec" x="978" y="6157">games-page</text>
+<rect class="req" x="1280" y="6180" width="260" height="118" rx="3"/>
+<rect class="hdr" x="1280.7" y="6180.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1410.0" y="6193" text-anchor="middle">«requirement»</text>
+<text x="1410.0" y="6208" text-anchor="middle"><tspan class="rid">2.1.16.3.1</tspan><tspan class="rname" dx="6">Free agent on a phone</tspan></text>
+<text class="rtext" x="1288" y="6230">Below 560 px wide, a replacement fill SHALL</text>
+<text class="rtext" x="1288" y="6244">read &quot;Free agent&quot; on one line.</text>
+<text class="spec" x="1288" y="6291">games-page</text>
+<rect class="req" x="660" y="6314" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="6314.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="6327" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="6342" text-anchor="middle"><tspan class="rid">2.1.17</tspan><tspan class="rname" dx="6">Full lineups while games are …</tspan></text>
+<text class="rtext" x="668" y="6364">In states L1, L2 and P1, in both views, each</text>
+<text class="rtext" x="668" y="6378">team SHALL show its full lineup in place of</text>
+<text class="rtext" x="668" y="6392">the key players, with no Full Lineup control.</text>
+<text class="spec" x="668" y="6425">games-page</text>
+<rect class="req" x="660" y="6448" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="6448.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="6461" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="6476" text-anchor="middle"><tspan class="rid">2.1.18</tspan><tspan class="rname" dx="6">Impact-ranked key players</tspan></text>
+<text class="rtext" x="668" y="6498">In the Actual view of states O1, O2, O3 and</text>
+<text class="rtext" x="668" y="6512">PW, each team&#x27;s key players SHALL be its four</text>
+<text class="rtext" x="668" y="6526">starters with the largest win probability</text>
+<text class="rtext" x="668" y="6540">added in either direction, largest first.</text>
+<text class="spec" x="668" y="6559">games-page</text>
+<rect class="req" x="970" y="6582" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="6582.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="6595" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="6610" text-anchor="middle"><tspan class="rid">2.1.18.1</tspan><tspan class="rname" dx="6">Ties broken by position</tspan></text>
+<text class="rtext" x="978" y="6632">Starters tied on the whole percentage shown</text>
+<text class="rtext" x="978" y="6646">SHALL be ranked by position: QB, RB, WR, TE,</text>
+<text class="rtext" x="978" y="6660">DEF, K.</text>
+<text class="spec" x="978" y="6693">games-page</text>
+<rect class="req" x="970" y="6716" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="6716.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="6729" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="6744" text-anchor="middle"><tspan class="rid">2.1.18.2</tspan><tspan class="rname" dx="6">Full lineup in the model view</tspan></text>
+<text class="rtext" x="978" y="6766">The Model view of states O1, O2, O3 and PW</text>
+<text class="rtext" x="978" y="6780">SHALL show each team&#x27;s full lineup.</text>
+<text class="spec" x="978" y="6827">games-page</text>
+<rect class="req" x="660" y="6850" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="6850.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="6863" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="6878" text-anchor="middle"><tspan class="rid">2.1.19</tspan><tspan class="rname" dx="6">Card chips</tspan></text>
+<text class="rtext" x="668" y="6900">Each card header SHALL show these chips by</text>
+<text class="rtext" x="668" y="6914">state, and none in PW: - a grey &quot;Bench</text>
+<text class="rtext" x="668" y="6928">playing&quot; chip with a dot in L2 and O2; - a</text>
+<text class="rtext" x="668" y="6942">&quot;Bench to play&quot; chip in O1; - an &quot;Unofficia…</text>
+<text class="spec" x="668" y="6961">games-page</text>
+<rect class="req" x="970" y="6984" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="6984.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="6997" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="7012" text-anchor="middle"><tspan class="rid">2.1.19.1</tspan><tspan class="rname" dx="6">Unofficial explained</tspan></text>
+<text class="rtext" x="978" y="7034">Hovering over the Unofficial chip SHALL</text>
+<text class="rtext" x="978" y="7048">explain that Sleeper has not yet scored the</text>
+<text class="rtext" x="978" y="7062">week.</text>
+<text class="spec" x="978" y="7095">games-page</text>
+<rect class="req" x="350" y="7118" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="7118.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="7131" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="7146" text-anchor="middle"><tspan class="rid">2.2</tspan><tspan class="rname" dx="6">Games data exported</tspan></text>
+<text class="rtext" x="358" y="7168">Each league&#x27;s site data SHALL include, for</text>
+<text class="rtext" x="358" y="7182">every week of the current season, each card&#x27;s</text>
+<text class="rtext" x="358" y="7196">data: teams, Managers, mean points, win</text>
+<text class="rtext" x="358" y="7210">probabilities, histograms, lineups, key…</text>
+<text class="spec" x="358" y="7229">games-page</text>
+<rect class="req" x="660" y="7252" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="7252.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="7265" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="7280" text-anchor="middle"><tspan class="rid">2.2.1</tspan><tspan class="rname" dx="6">One week at a time</tspan></text>
+<text class="rtext" x="668" y="7302">The Games sub-tab SHALL load only the week</text>
+<text class="rtext" x="668" y="7316">file it shows.</text>
+<text class="spec" x="668" y="7363">games-page</text>
+<rect class="req" x="660" y="7386" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="7386.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="7399" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="7414" text-anchor="middle"><tspan class="rid">2.2.2</tspan><tspan class="rname" dx="6">Export without games</tspan></text>
+<text class="rtext" x="668" y="7436">The export SHALL succeed without game data,</text>
+<text class="rtext" x="668" y="7450">leaving the Games sub-tab to say that games</text>
+<text class="rtext" x="668" y="7464">are not yet available.</text>
+<text class="spec" x="668" y="7497">games-page</text>
+<text class="col" x="40" y="7554">OTHER BRANCHES · «trace» (extra parents)</text>
+<rect class="ext" x="350" y="7570" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="350.7" y="7570.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="7583" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="7598" text-anchor="middle"><tspan class="rid">9.1.1</tspan><tspan class="rname" dx="6">Sub-tabs</tspan></text>
+<text class="rtext" x="358" y="7620">Each league page SHALL have five sub-tabs, in</text>
+<text class="rtext" x="358" y="7634">this order: Forecasts, Games, Positions,</text>
+<text class="rtext" x="358" y="7648">Managers and Player WAR.</text>
+<text class="spec" x="358" y="7681">league-odds-site</text>
+<path class="trace" d="M500.0,402 V410 H480.0 V7570" marker-end="url(#openg)"/>
+<rect class="ext" x="660" y="7570" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="660.7" y="7570.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="7583" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="7598" text-anchor="middle"><tspan class="rid">9.2</tspan><tspan class="rname" dx="6">Fits a phone</tspan></text>
+<text class="rtext" x="668" y="7620">Every league page SHALL fit each tested phone</text>
+<text class="rtext" x="668" y="7634">width, down to 360 px, without the page</text>
+<text class="rtext" x="668" y="7648">scrolling sideways.</text>
+<text class="spec" x="668" y="7681">league-odds-site</text>
+<path class="trace" d="M810.0,938 V951 H790.0 V7570" marker-end="url(#openg)"/>
+<rect class="ext" x="970" y="7570" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="970.7" y="7570.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="7583" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="7598" text-anchor="middle"><tspan class="rid">1.4.3</tspan><tspan class="rname" dx="6">Team colours</tspan></text>
+<text class="rtext" x="978" y="7620">Each team SHALL keep one distinct line colour</text>
+<text class="rtext" x="978" y="7634">across weeks, metrics, sorts and highlighting,</text>
+<text class="rtext" x="978" y="7648">shown as a swatch on its table row.</text>
+<text class="spec" x="978" y="7681">league-odds-site</text>
+<path class="trace" d="M810.0,1072 V1090 H1100.0 V7570" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,1608 V1616 H790.0 V7570" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,1742 V1755 H790.0 V7570" marker-end="url(#openg)"/>
+<rect class="ext" x="1280" y="7570" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1280.7" y="7570.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1410.0" y="7583" text-anchor="middle">«need»</text>
+<text x="1410.0" y="7598" text-anchor="middle"><tspan class="rid">9</tspan><tspan class="rname" dx="6">Usable by Every Manager</tspan></text>
+<text class="rtext" x="1288" y="7620">The site SHALL be usable by every Manager: on</text>
+<text class="rtext" x="1288" y="7634">the supported browsers and phone widths, and</text>
+<text class="rtext" x="1288" y="7648">to WCAG 2.2 AA.</text>
+<text class="spec" x="1288" y="7681">needs</text>
+<path class="trace" d="M1120.0,2010 V2028 H1410.0 V7570" marker-end="url(#openg)"/>
+<rect class="ext" x="1590" y="7570" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1590.7" y="7570.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1720.0" y="7583" text-anchor="middle">«requirement»</text>
+<text x="1720.0" y="7598" text-anchor="middle"><tspan class="rid">1.1.8</tspan><tspan class="rname" dx="6">Bracket simulation</tspan></text>
+<text class="rtext" x="1598" y="7620">The simulation SHALL play the winners bracket</text>
+<text class="rtext" x="1598" y="7634">for seeds 1 to 6 and the losers bracket for</text>
+<text class="rtext" x="1598" y="7648">seeds 7 to 12 by the league&#x27;s Sleeper bracket</text>
+<text class="rtext" x="1598" y="7662">rules: re-seeding after round 1 or not, and…</text>
+<text class="spec" x="1598" y="7681">playoff-odds-simulation</text>
+<path class="trace" d="M810.0,3216 V3224 H1720.0 V7570" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,3886 V3899 H1410.0 V7570" marker-end="url(#openg)"/>
+<rect class="ext" x="1900" y="7570" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1900.7" y="7570.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2030.0" y="7583" text-anchor="middle">«need»</text>
+<text x="2030.0" y="7598" text-anchor="middle"><tspan class="rid">8</tspan><tspan class="rname" dx="6">Open Methods</tspan></text>
+<text class="rtext" x="1908" y="7620">The project SHALL publish how every figure on</text>
+<text class="rtext" x="1908" y="7634">the site is calculated: its formula, inputs,</text>
+<text class="rtext" x="1908" y="7648">assumptions and decisions.</text>
+<text class="spec" x="1908" y="7681">needs</text>
+<path class="trace" d="M1120.0,4556 V4574 H2030.0 V7570" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,6164 V6172 H790.0 V7570" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,7370 V7383 H1410.0 V7570" marker-end="url(#openg)"/>
+<path class="derive" d="M40,7788 H86" marker-end="url(#open)"/><text class="lg" x="96" y="7792">«deriveReqt»: primary parent (sets the ID)</text>
+<path class="trace" d="M360,7788 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="7792">«trace»: extra parent</text>
+<path class="verify" d="M680,7788 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="7792">«verify»: test, inspection or analysis</text>
+<path class="vgap" d="M1000,7788 H1046" marker-end="url(#openr)"/><text class="lg" x="1056" y="7792">verification gap</text>
 </svg>

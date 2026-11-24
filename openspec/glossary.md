@@ -37,6 +37,7 @@ Style is APA, with title case for titles and headings.
 - **Record:** data committed to git under `data/`, kept for good; the durable copy of league history and Player data.
 - **Derived data:** files rebuilt from records by `python -m ffapp build` and not kept in git.
 - **Tally:** a count captured from Sleeper or ESPN that changes through the day, such as trending adds and start percentages, committed once a day.
+- **Card state:** which of eleven states a Games page card is in (F1, F2, C, P2, L1, L2, P1, O1, O2, O3, PW), set by whose games have started or finished; defined in the `game-card-states` spec and `docs/games-page-states.md`.
 - **Refresh mode:** how often data is refreshed: offseason, quiet (in season, no games in progress) or live (games in progress).
 - **Hot run:** the quick refresh of the current week (`hot.yml`), which writes the live bundle.
 - **Cold run:** the full refresh (`refresh.yml`), which commits changed records and deploys the site when it changes.
