@@ -155,7 +155,7 @@ def tree_svg(need: model.Req, reqs: list[model.Req], ids: dict) -> str:
                 if p in placed:
                     ext.append((r, p, "in"))
     ext_y = y0 + len(order) * ROWH + 50
-    width = max(tcx + TCW + 40, x0 + CW + max(len(ext), 1) * (W + 50) + 40)
+    width = max(tcx + TCW + 40, x0 + CW + max(len({o.rid for o, _, _ in ext}), 1) * (W + 50) + 40)
     height = ext_y + (H + 70 if ext else 0) + 70
     count = len(order) - 1
     s = svg_open(width, height)
@@ -190,9 +190,13 @@ def tree_svg(need: model.Req, reqs: list[model.Req], ids: dict) -> str:
     # «trace» to and from other branches
     if ext:
         s.append(f'<text class="col" x="{x0}" y="{ext_y - 16}">OTHER BRANCHES · «trace» (extra parents)</text>')
+    slot: dict[str, int] = {}  # one box per outside requirement, however many links it has
     for i, (o, inner, direction) in enumerate(ext):
-        ex = x0 + CW + i * (W + 50)
-        s.append(req_box(ex, ext_y, o, "ext"))
+        first = o.rid not in slot
+        slot.setdefault(o.rid, len(slot))
+        ex = x0 + CW + slot[o.rid] * (W + 50)
+        if first:
+            s.append(req_box(ex, ext_y, o, "ext"))
         ix, iy = pos[inner]
         lane = iy + H + 8 + (i % 3) * 5
         if direction == "out":   # the tree requirement lists the outside one as an extra parent

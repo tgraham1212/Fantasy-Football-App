@@ -70,7 +70,9 @@ Each simulating run does these steps in order.
    The fit says how much survives, and how much random change piles up, k weeks out.
 5. **Season simulation (Calc 7, 8).** The rest of the regular season is played 10,000 times. Each run
    builds the final standings and plays the playoff and losers brackets the way each league's Sleeper
-   settings play them.
+   settings play them. Only six-team brackets are supported: a league whose settings give another
+   playoff size stops the run with an error naming the league, season and size
+   (`src/ffapp/odds.py`, `build_inputs`), so no wrong Forecast is published.
 6. **Live adjustment (Calc 12).** During a week, a player whose game has started scores the points so far
    plus the Projection for the time left, with the spread shrinking as the game runs out.
 

@@ -23,8 +23,8 @@ Redraw the requirements diagrams (`python -X utf8 tools/requirements_diagram.py`
 
 ## 2. Worked Example
 
-- [ ] 2.1 Playoff-size check (design.md decision 7) and `tests/test_simulate.py::test_unsupported_playoff_size_fails_loudly`. Add the six-team constraint to `docs/simulation.md`, step 5. Verify: the test, and `tests/test_feature_docs.py`
-- [ ] 2.2 `playoff-odds-simulation`: fix the roster-drift statement (a random walk, per `Calculations.txt` section 6) and bring the spec to the standard, numbering it under need 1. Give "Supported playoff size" its ID under the bracket simulation requirement, in both the main spec and this change's delta (heading and Traces to), and close its TBR. Owner review, then commit
+- [x] 2.1 Playoff-size check (design.md decision 7) and `tests/test_odds.py::test_unsupported_playoff_size_fails_loudly`. Add the six-team constraint to `docs/simulation.md`, step 5. Verify: the test, and `tests/test_feature_docs.py`
+- [x] 2.2 `playoff-odds-simulation`: fix the roster-drift statement (a random walk, per `Calculations.txt` section 6) and bring the spec to the standard, numbering it under need 1. Give "Supported playoff size" its ID under the bracket simulation requirement, in both the main spec and this change's delta (heading and Traces to), and close its TBR. Owner review, then commit
 
 ## 3. Site Page Specs
 

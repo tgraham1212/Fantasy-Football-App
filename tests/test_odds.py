@@ -111,6 +111,24 @@ def seeded_store(tmp_path):
     return store
 
 
+def test_unsupported_playoff_size_fails_loudly(tmp_path):
+    """playoff-odds-simulation, Supported playoff size: a league whose Sleeper settings give a
+    playoff size other than six stops the run with an error naming the league, season and size,
+    and stores no Forecast (the cold run stops, so the published Forecasts stay as they were)."""
+    store = seeded_store(tmp_path)
+    data = store.read_season("dynasty", "2026")
+    data.league["settings"]["playoff_teams"] = 8
+    with pytest.raises(ValueError, match=r"dynasty 2026: unsupported bracket \(8 teams\)"):
+        build_inputs(store, CONFIG, "dynasty", data, 9, current=True)
+    with pytest.raises(ValueError, match=r"\(8 teams\)"):
+        run_as_of(store, CONFIG, "dynasty", data, 9, current=True, noise=GaussianNoise(7.0), runs=50)
+    assert not store.odds_path("dynasty", "2026", 9).exists()
+    assert not store.live_path("dynasty", "2026").exists()
+
+    data.league["settings"]["playoff_teams"] = 6
+    assert build_inputs(store, CONFIG, "dynasty", data, 9, current=True).playoff_weeks == [15, 16, 17]
+
+
 def test_build_inputs_covers_remaining_schedule_and_playoffs(tmp_path):
     store = seeded_store(tmp_path)
     data = store.read_season("dynasty", "2026")
@@ -191,6 +209,40 @@ def test_floor_fills_holes_and_weak_slots_but_leaves_strong_starters():
     plain = lineup_from_projections(projections, SCORING, SLOTS, list(projections))
     assert plain == lineup_from_projections(projections, SCORING, SLOTS, list(projections), floor=None)
     assert len(plain) == 7 and all(not st.player_id.startswith("FA:") for st in plain), "without a floor the empty TE slot stays empty"
+
+
+def test_replacement_fill_draws_error_like_a_player_at_that_level():
+    """playoff-odds-simulation 1.1.4.1.1: a slot filled at replacement level draws its error like a
+    Player with that projection at that position (same pool, same draws)."""
+    import numpy as np
+
+    from ffapp.lineup import Starter
+    from ffapp.noise import MIN_POOL, ResidualPools, band_of
+    from ffapp.simulate import starter_score
+
+    pools = ResidualPools.from_residuals({
+        ("TE", band_of(6.8)): [float(x) for x in range(MIN_POOL)],
+        ("WR", band_of(6.8)): [1000.0 + x for x in range(MIN_POOL)],
+    })
+    fill = apply_floor([], ["TE"], {"TE": 6.8})[0]
+    assert (fill.player_id, fill.position, fill.projected) == ("FA:TE", "TE", 6.8)
+    real = Starter("TE", "te1", "TE", 6.8)
+    filled = starter_score(fill, pools, np.random.default_rng(3), 500)
+    played = starter_score(real, pools, np.random.default_rng(3), 500)
+    assert np.array_equal(filled, played)
+    assert filled.min() >= 6.8 and filled.max() < 6.8 + MIN_POOL, "drawn from the tight end pool, not the receivers'"
+    assert len(set(filled)) > 50, "a spread of outcomes, not a fixed value"
+
+
+def test_backfill_stores_every_as_of_week_of_the_current_season(tmp_path):
+    """playoff-odds-simulation 1.2.4: a backfill makes and stores the as-of Forecast for every week
+    of the current season, from week 0 (preseason) to the current as-of week."""
+    from ffapp.odds import simulate_league
+
+    store = seeded_store(tmp_path)
+    as_of = completed_weeks(store.read_season("dynasty", "2026").league)
+    simulate_league(store, CONFIG, "dynasty", backfill_season=True, runs=50)
+    assert store.odds_weeks("dynasty", "2026") == list(range(0, as_of + 1))
 
 
 def test_apply_floor_with_zero_levels_is_identity_for_filled_lineups():

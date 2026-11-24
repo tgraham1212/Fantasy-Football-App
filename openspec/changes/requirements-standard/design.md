@@ -94,7 +94,7 @@ Tolerances, rationale and undefined terms are judgment calls a parser cannot mak
 For the forecasting model, the method *is* the product. The empirical noise pools and the least-squares drift fit are what make it this model and not another. So requirements may name the method at the level a Manager would care about, for example "errors drawn from past misses of Players at the same position and projection level". The formulas stay in `Calculations.txt`, which the rationale points to. Requirements stay free of code-level detail: module, function and file names.
 
 ### 7. Playoff-size check
-The check lives where the simulation starts for a league, in the code that builds the inputs for `simulate()`. It raises an error when `BracketRules.from_league(...).playoff_teams != 6`. The error fails the cold run's simulate step, so the run stops before committing or deploying, and the site keeps its last good Forecasts.
+The check lives where the simulation starts for a league, in the code that builds the inputs for `simulate()`. It raises an error when `BracketRules.from_league(...).playoff_teams != 6`. Apply found this check already in place (`build_inputs` in `src/ffapp/odds.py`, through `BracketRules.supported()`), untested and unspecified; the change adds the test and the requirement. The error fails the cold run's simulate step, so the run stops before committing or deploying, and the site keeps its last good Forecasts.
 
 It is placed at the simulation and not inside `BracketRules`, because the export and the game Forecasts also read `BracketRules`. Failing there would hide which step cared. A test runs the simulation on a fixture league whose settings say 8.
 

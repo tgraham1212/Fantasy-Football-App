@@ -13,8 +13,10 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 
 | ID | Requirement | Spec | Pass criteria | Last inspected | Result |
 |---|---|---|---|---|---|
+| 1.1 | Season simulation | `playoff-odds-simulation` | Every `--runs` default in `src/ffapp/cli.py` (simulate, calibrate, refresh, build, hot) is 10,000 | 2026-11-23 | Pass |
 
 ## Spec Standard Reviews
 
 | Spec | Last reviewed | Result | Notes |
 |---|---|---|---|
+| `playoff-odds-simulation` | 2026-11-23 | Pass | Worked example: 14 requirements became 31 under need 1; roster drift corrected to a random walk; two gaps closed with tests |

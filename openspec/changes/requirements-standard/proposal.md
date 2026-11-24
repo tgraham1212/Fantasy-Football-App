@@ -51,6 +51,6 @@ The other specs are rewritten to the standard without changing the behavior they
 
 - **Specs:** all of `openspec/specs/`, including the two capabilities `refresh-modes` adds when it archives. This change is applied after `refresh-modes` archives.
 - **New files:** `openspec/glossary.md`, `openspec/inspection-checklist.md`, `openspec/retired-requirements.md`, `tools/requirements_impact.py`, `tools/requirements_diagram.py`, `docs/requirements.md` and its diagrams, `openspec/specs/needs/`, `openspec/specs-archive/pre-requirements-standard/`, `tests/test_requirements.py`, and baselines in `tests/baselines/`.
-- **Code:** `src/ffapp/simulate.py` or `src/ffapp/bracket.py` (the playoff-size check), plus any small fixes the owner approves at a spec's review.
+- **Code:** none for the playoff-size check, which already exists in `src/ffapp/odds.py` (apply added its test in `tests/test_odds.py`), plus any small fixes the owner approves at a spec's review.
 - **Standards:** `openspec/config.yaml` (context and rules) and `CLAUDE.md`.
 - **Tests:** new tests where a requirement's verification needs one and the owner approves adding it. Otherwise the requirement is recorded as a verification gap.
