@@ -95,6 +95,7 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 
 | Spec | Last reviewed | Result | Notes |
 |---|---|---|---|
+| `live-scoring` | 2026-11-23 | Pass | 4 requirements became 9 under 1.1.12; the history requirement cut as a duplicate of 1.2.3; in-progress scoring corrected to include the mean miss |
 | `game-predictions` | 2026-11-23 | Pass | 12 requirements became 29 under needs 2 and 1 (1.2.5 slate Forecasts); every requirement verified by an existing test |
 | `manager-pages` | 2026-11-23 | Pass | 19 requirements became 51 under need 4; page logic covered by 6 layout tests; 20 inspections carried over from the feature work |
 | `war-leaderboard-page` | 2026-11-23 | Pass | 9 requirements became 28 under need 3; untested behaviours covered by 7 layout tests; 4 inspections carried over from the feature work |

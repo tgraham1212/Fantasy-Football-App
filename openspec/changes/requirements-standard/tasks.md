@@ -37,7 +37,7 @@ Redraw the requirements diagrams (`python -X utf8 tools/requirements_diagram.py`
 ## 4. Model and Calculation Specs
 
 - [x] 4.1 `game-predictions`
-- [ ] 4.2 `live-scoring`
+- [x] 4.2 `live-scoring`
 - [ ] 4.3 `win-probability-added`
 - [ ] 4.4 `game-card-states`
 - [ ] 4.5 `odds-calibration`
