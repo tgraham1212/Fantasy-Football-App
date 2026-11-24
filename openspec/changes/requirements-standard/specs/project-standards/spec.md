@@ -205,9 +205,13 @@ Every requirement other than a need SHALL carry a `**Verified by:**` line giving
 - **WHEN** a change adds a requirement verified by Inspection without a checklist entry
 - **THEN** the requirements check names the requirement
 
-#### Scenario: Tree changes after an inspection
-- **WHEN** a spec holding an inspected requirement, or any requirement beneath it, changes in a commit after the inspection date
+#### Scenario: Linked requirement changes after an inspection
+- **WHEN** an inspected requirement, or a requirement directly linked to it (a parent or a child, primary or association), is added or changed in a commit after the inspection was recorded
 - **THEN** the requirements check fails until the requirement is inspected again and its date updated
+
+#### Scenario: Distant change
+- **WHEN** a requirement two or more links away from an inspected requirement changes
+- **THEN** that inspection stands, since its direct links were re-inspected
 
 ### Requirement: 10.9 Open items marked
 A value or behavior that cannot be settled yet SHALL be marked `**TBR:**` with its rationale, what closes it and a target date (`YYYY-MM` or `YYYY-MM-DD`).

@@ -122,9 +122,12 @@ After `refresh-modes` archives, so its synced specs are included, `openspec/spec
 The check fails when:
 - a requirement verified by Inspection has no row;
 - a spec has no review row;
-- a spec's file changed in a commit later than its review date (from `git log`).
+- a spec's file changed in a commit later than the commit that last recorded its review row;
+- an inspected requirement, or one directly linked to it (a parent or a child, primary or association), was added or changed in a commit later than the commit that last recorded its inspection row.
 
 So editing a spec without re-inspecting it fails once the edit is committed. The owner's approval at each spec's gate is the inspection, and its date goes in the table.
+
+Staleness follows commit order, not dates: fetching and rebasing before each push re-dates commits but keeps their order. A requirement's change is read from its own block (heading, statement, reference lines, scenarios) in each commit to the specs, so an edit elsewhere in the same file does not count. Only direct links count: when a requirement is added or changed, the requirements next to it are re-inspected, and if those links hold, the rest of the tree still does (the maintainer's decision, 2026-11-24). Re-inspecting a whole subtree whenever anything was added under it made high-level inspections stale on every batch.
 
 - **Alternative: a date on each requirement's Verified by line.** It spends the 500-character budget and scatters the record.
 

@@ -88,14 +88,15 @@ The simulation SHALL use each league's Sleeper matchup pairings for every remain
   checklist row;
 - a TBR with no target date;
 - a need with no children, and a glossary term no spec uses;
-- a spec with no dated standard review, or one edited in a commit after its review date;
-- an inspection whose requirement, or any requirement beneath it, changed after the inspection
-  date.
+- a spec with no dated standard review, or one edited in a commit after its review was recorded;
+- an inspection whose requirement, or a requirement directly linked to it (a parent or a child,
+  primary or association), was added or changed in a commit after the inspection was recorded.
+  A change further down the tree does not count: its own neighbours are re-inspected instead.
 
 Judgment items a parser cannot see (tolerances, rationale, undefined terms) are checked by the
 maintainer in each spec's standard review, dated in `openspec/inspection-checklist.md`. Editing a spec
 makes its review out of date, and the check fails until it is reviewed again. CI checks out a single
-commit, so the date rule runs on full clones only.
+commit, so the re-inspection rules, which compare commit order, run on full clones only.
 
 Before editing a requirement, run `python -X utf8 tools/requirements_impact.py <ID>` to list every
 requirement above and below it, with how each is verified.

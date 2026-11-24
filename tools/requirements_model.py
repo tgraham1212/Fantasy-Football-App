@@ -195,19 +195,178 @@ def checklist(root: Path) -> tuple[dict[str, list[str]], dict[str, list[str]]]:
     return insp, reviews
 
 
-def git_last_change(root: Path, rel: str) -> str | None:
-    """Date (YYYY-MM-DD) of the last commit that touched a path, or None. None in a shallow clone
-    (CI checks out one commit, which would date every file today); the rule runs on full clones."""
-    try:
-        shallow = subprocess.run(["git", "rev-parse", "--is-shallow-repository"], cwd=root,
-                                 capture_output=True, text=True, check=True).stdout.strip()
-        if shallow == "true":
-            return None
-        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", rel], cwd=root,
-                             capture_output=True, text=True, check=True).stdout.strip()
-        return out or None
-    except (OSError, subprocess.CalledProcessError):
-        return None
+def _blocks(text: str) -> dict[str, str]:
+    """Requirement ID -> its whole block (heading, statement, reference lines, scenarios), blank lines
+    and surrounding spaces dropped, so only a real edit changes it."""
+    out, rid, buf = {}, None, []
+
+    def close():
+        if rid:
+            out[rid] = "\n".join(buf)
+
+    for line in text.splitlines():
+        h = HEADING_RE.match(line)
+        if h or re.match(r"^## ", line):
+            close()
+            m = ID_RE.match(h.group(1)) if h else None
+            rid, buf = (m.group(1) if m else None), []
+        if rid and line.strip():
+            buf.append(line.strip())
+    close()
+    return out
+
+
+SPEC_FILE_RE = re.compile(r"^openspec/(?:specs/[^/]+|changes/(?!archive/)[^/]+/specs/[^/]+)/spec\.md$")
+
+
+class GitHistory:
+    """Commit order, for the re-inspection rules. A spec's standard review is stale when a commit
+    touching the spec is newer than the commit that last recorded its checklist row. An inspection
+    is stale when its requirement, or a requirement directly linked to it (a parent or a child,
+    primary or association), was added or changed in a commit newer than the one that last recorded
+    its row.
+
+    Commit order, not dates: a rebase (fetch and rebase before every push) re-dates commits but keeps
+    their order. In a shallow clone (CI checks out one commit) the history is missing, so nothing is
+    stale; the rule runs on full clones. Uncommitted edits count once they are committed."""
+
+    CHECKLIST = "openspec/inspection-checklist.md"
+
+    def __init__(self, root: Path):
+        self.root = Path(root)
+        self._order: dict[str, int] | None = None
+        self._rows: dict[str, str] | None = None
+        self._paths: dict[str, str | None] = {}
+        self._reqs: dict[str, str] | None = None
+
+    def _git(self, *args: str) -> str:
+        return subprocess.run(["git", *args], cwd=self.root, capture_output=True, text=True,
+                              encoding="utf-8", check=True).stdout
+
+    def _ready(self) -> bool:
+        if self._order is None:
+            try:
+                if self._git("rev-parse", "--is-shallow-repository").strip() == "true":
+                    self._order = {}
+                else:  # newest first: a lower index is a newer commit
+                    self._order = {sha: i for i, sha in enumerate(self._git("rev-list", "HEAD").split())}
+            except (OSError, subprocess.CalledProcessError):
+                self._order = {}
+        return bool(self._order)
+
+    def _row_commits(self) -> dict[str, str]:
+        """Checklist row key (ID or spec name) -> the newest commit that added or changed that row."""
+        if self._rows is None:
+            self._rows, sha = {}, None
+            for line in self._git("log", "--format=COMMIT %H", "-p", "-U0", "--", self.CHECKLIST).splitlines():
+                if line.startswith("COMMIT "):
+                    sha = line.split()[1]
+                elif line.startswith("+|") and sha:
+                    key = line[1:].strip().strip("|").split("|")[0].strip().strip("`")
+                    self._rows.setdefault(key, sha)
+            # a row re-recorded but not yet committed is newer than every commit
+            def rows(text: str) -> dict[str, str]:
+                return {ln.strip().strip("|").split("|")[0].strip().strip("`"): ln.strip()
+                        for ln in text.splitlines() if ln.startswith("|") and not ln.startswith("|---")}
+            path = self.root / self.CHECKLIST
+            try:
+                committed = rows(self._git("show", f"HEAD:{self.CHECKLIST}"))
+            except subprocess.CalledProcessError:
+                committed = {}
+            if path.exists() and self._order is not None:
+                self._order["WORKTREE"] = -1
+                for key, line in rows(path.read_text(encoding="utf-8")).items():
+                    if committed.get(key) != line:
+                        self._rows[key] = "WORKTREE"
+        return self._rows
+
+    def _path_commit(self, rel: str) -> str | None:
+        if rel not in self._paths:
+            self._paths[rel] = self._git("log", "-1", "--format=%H", "--", rel).strip() or None
+        return self._paths[rel]
+
+    def _req_commits(self) -> dict[str, str]:
+        """Requirement ID -> the newest commit that added or changed its block. Walks every commit to
+        the main specs and active changes' delta specs, oldest first; an active change's ADDED or
+        MODIFIED version stands in for the main one, as in load()."""
+        if self._reqs is None:
+            self._reqs = {}
+            log = self._git("log", "--reverse", "--first-parent", "--no-renames", "--format=COMMIT %H",
+                            "--name-status", "--", "openspec/specs", "openspec/changes")
+            commits: list[tuple[str, list[tuple[str, str]]]] = []
+            for line in log.splitlines():
+                if line.startswith("COMMIT "):
+                    commits.append((line.split()[1], []))
+                elif "\t" in line and commits:
+                    status, path = line.split("\t", 1)
+                    if SPEC_FILE_RE.match(path):
+                        commits[-1][1].append((status[0], path))
+            wanted = [f"{sha}:{path}" for sha, files in commits for st, path in files if st != "D"]
+            blobs = self._cat(wanted)
+            parsed: dict[str, dict[str, str]] = {}
+            before: dict[str, str] = {}
+            for sha, files in commits:
+                for st, path in files:
+                    if st == "D":
+                        parsed.pop(path, None)
+                    else:
+                        text = blobs.get(f"{sha}:{path}", "")
+                        if path.startswith("openspec/specs/"):
+                            parsed[path] = _blocks(text)
+                        else:
+                            secs = _sections(text)
+                            parsed[path] = {**_blocks(secs.get("ADDED Requirements", "")),
+                                            **_blocks(secs.get("MODIFIED Requirements", ""))}
+                now: dict[str, str] = {}
+                for path in sorted(parsed, key=lambda p: not p.startswith("openspec/specs/")):
+                    now.update(parsed[path])  # main specs first, then active changes over them
+                for rid, block in now.items():
+                    if before.get(rid) != block:
+                        self._reqs[rid] = sha
+                before = now
+        return self._reqs
+
+    def _cat(self, objects: list[str]) -> dict[str, str]:
+        """'sha:path' -> file text, in one git cat-file call."""
+        if not objects:
+            return {}
+        raw = subprocess.run(["git", "cat-file", "--batch"], cwd=self.root, input="\n".join(objects).encode() + b"\n",
+                             capture_output=True, check=True).stdout
+        out, pos = {}, 0
+        for name in objects:
+            end = raw.index(b"\n", pos)
+            header = raw[pos:end].split()
+            pos = end + 1
+            if len(header) == 3 and header[1] == b"blob":
+                size = int(header[2])
+                out[name] = raw[pos:pos + size].decode("utf-8", "replace")
+                pos += size + 1
+        return out
+
+    def _newer(self, sha: str | None, key: str) -> bool:
+        row_sha = self._row_commits().get(key)
+        if not sha or not row_sha or sha not in self._order or row_sha not in self._order:
+            return False
+        return self._order[sha] < self._order[row_sha]
+
+    def changed_after(self, rel: str, key: str) -> bool:
+        """True when a commit touching `rel` is newer than the commit that last recorded row `key`."""
+        if not self._ready():
+            return False
+        try:
+            return self._newer(self._path_commit(rel), key)
+        except (OSError, subprocess.CalledProcessError):
+            return False
+
+    def req_changed_after(self, rid: str, key: str) -> bool:
+        """True when requirement `rid` was added or changed in a commit newer than the commit that last
+        recorded row `key`."""
+        if not self._ready():
+            return False
+        try:
+            return self._newer(self._req_commits().get(rid), key)
+        except (OSError, subprocess.CalledProcessError):
+            return False
 
 
 # ---------- the check ----------
@@ -224,11 +383,11 @@ def _test_exists(root: Path, file: str, name: str) -> bool:
     return re.search(rf"^\s*def {re.escape(func)}\(", path.read_text(encoding="utf-8"), re.M) is not None
 
 
-def check(root: Path, accepted: dict | None = None, last_change=None) -> set[str]:
+def check(root: Path, accepted: dict | None = None, history=None) -> set[str]:
     """Every finding against the standard, as 'spec | requirement | finding' strings."""
     root = Path(root)
     accepted = accepted or {}
-    last_change = last_change or (lambda rel: git_last_change(root, rel))
+    history = history or GitHistory(root)  # anything with changed_after(path, row key) -> bool
     reqs = load(root)
     ids = index(reqs)
     kids = children(reqs)
@@ -334,12 +493,8 @@ def check(root: Path, accepted: dict | None = None, last_change=None) -> set[str
         if not re.search(pattern, corpus):
             out.add(f"glossary | {term} | used in no spec")
 
-    # an inspection is redone when its requirement or any requirement beneath it changes
-    def spec_file(r: Req) -> str:
-        if r.source == "main":
-            return f"openspec/specs/{r.spec}/spec.md"
-        return f"openspec/changes/{r.source}/specs/{r.spec}/spec.md"
-
+    # an inspection is redone when its requirement, or one directly linked to it (a parent or a
+    # child, primary or association), is added or changed; if those links hold, the rest of the tree does
     for rid, row in insp.items():
         if rid not in ids:
             continue
@@ -347,11 +502,10 @@ def check(root: Path, accepted: dict | None = None, last_change=None) -> set[str
         if not date:
             out.add(f"{ids[rid].label} | inspection row has no date")
             continue
-        tree = [ids[rid]] + [d for _, d in descendants(rid, kids)]
-        for path in sorted({spec_file(r) for r in tree}):
-            changed = last_change(path)
-            if changed and changed > date:
-                out.add(f"{ids[rid].label} | re-inspect: {path} changed on {changed}, after its inspection on {date}")
+        near = [rid] + [p for p in ids[rid].parents if p in ids] + [k.rid for k in kids.get(rid, []) if k.rid]
+        changed = [x for x in dict.fromkeys(near) if history.req_changed_after(x, rid)]
+        if changed:
+            out.add(f"{ids[rid].label} | re-inspect: {', '.join(changed)} changed in a commit after its inspection on {date}")
 
     # dated standard review for every main spec, redone after the spec changes
     for spec in main_specs(root):
@@ -363,9 +517,8 @@ def check(root: Path, accepted: dict | None = None, last_change=None) -> set[str
         if not date:
             out.add(f"{spec} | (spec) | standard review has no date")
             continue
-        changed = last_change(f"openspec/specs/{spec}/spec.md")
-        if changed and changed > date:
-            out.add(f"{spec} | (spec) | changed on {changed}, after its standard review on {date}")
+        if history.changed_after(f"openspec/specs/{spec}/spec.md", spec):
+            out.add(f"{spec} | (spec) | changed in a commit after its standard review on {date}")
     return out
 
 

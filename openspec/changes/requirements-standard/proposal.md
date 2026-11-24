@@ -22,7 +22,7 @@ The same gaps run through every spec. Now that features have living docs, the re
 - **Top-level needs.** A new `needs` capability states what the app is for, as twelve numbered needs that every requirement ultimately traces to. The owner reviews the needs before any other spec is touched.
 - **Requirements diagrams.** SysML-style diagrams drawn from the specs by `tools/requirements_diagram.py`: an overview of the twelve needs with their verification coverage, and one requirement tree per need. A spec edited without a redraw fails the feature-docs check, so the diagrams stay current. They live in a new feature doc, `docs/requirements.md`.
 - **Glossary.** `openspec/glossary.md` defines the project's terms (Forecast, as-of week, slate, FLEX, replacement level and others) and takes over the nomenclature rules.
-- **Inspection checklist.** `openspec/inspection-checklist.md` records each Inspection-verified requirement's criteria, and each spec's standard review, with the date and result. Editing a spec after its review date fails the check until it is re-inspected.
+- **Inspection checklist.** `openspec/inspection-checklist.md` records each Inspection-verified requirement's criteria, and each spec's standard review, with the date and result. Editing a spec after its review, or changing a requirement next to an inspected one, fails the check until it is re-inspected.
 - **TBR tracking.** A value or behavior that cannot be settled yet is marked To Be Resolved, with its rationale, what closes it and a target.
 - **Enforcement.** A new `tests/test_requirements.py` parses every spec. It fails on:
   - a broken or circular trace, or an orphan;

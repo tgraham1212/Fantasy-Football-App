@@ -62,8 +62,22 @@ def make_root(tmp_path, specs, glossary="", checklist="", retired=""):
     return root
 
 
+class History:
+    """Stand-in for GitHistory: `stale` holds the (spec path, row key) pairs and `changed` the
+    (requirement ID, row key) pairs changed in a commit after the row was recorded."""
+
+    def __init__(self, stale=(), changed=()):
+        self.stale, self.changed = set(stale), set(changed)
+
+    def changed_after(self, rel, key):
+        return (rel, key) in self.stale
+
+    def req_changed_after(self, rid, key):
+        return (rid, key) in self.changed
+
+
 def findings(root, **kw):
-    kw.setdefault("last_change", lambda rel: None)
+    kw.setdefault("history", History())
     return model.check(root, **kw)
 
 
@@ -221,20 +235,27 @@ def test_inspection_checklist_covers_every_inspection(tmp_path):
     assert about(f, "a | 1.2 Unlisted") == {"inspection without a checklist row"}
 
 
-def test_inspection_is_redone_when_its_tree_changes(tmp_path):
+def test_inspection_is_redone_when_a_linked_requirement_changes(tmp_path):
+    """An inspection is redone when its requirement, a parent or a child (primary or association) is
+    added or changed; a change further away (a grandchild) leaves it standing."""
+    rows = "".join(f"| {i} | R | a | It holds | 2026-11-20 | Pass |\n" for i in ("1.1", "1.2", "1.3", "2.1"))
     checklist = ("# Inspection Checklist\n\n## Requirement Inspections\n\n"
                  "| ID | Requirement | Spec | Pass criteria | Last inspected | Result |\n|---|---|---|---|---|---|\n"
-                 "| 1.1 | Page | a | The page shows it | 2026-11-20 | Pass |\n"
-                 "| 2.1 | Other | a | It shows | 2026-11-20 | Pass |\n\n## Spec Standard Reviews\n\n"
-                 "| Spec | Last reviewed | Result | Notes |\n|---|---|---|---|\n")
+                 + rows + "\n## Spec Standard Reviews\n\n| Spec | Last reviewed | Result | Notes |\n|---|---|---|---|\n")
+    insp = "Inspection: the checklist"
     root = make_root(tmp_path, {
-        "a": [req("1.1 Page", traces="1", verified="Inspection: the page"), req("2.1 Other", traces="2", verified="Inspection: it")],
-        "b": [req("1.1.1 Child elsewhere", traces="1.1")],
+        "a": [req("1.1 Page", traces="1", verified=insp), req("1.2 Panel", traces="1", verified=insp),
+              req("1.3 Grandparent", traces="1", verified=insp), req("2.1 Other", traces="2", verified=insp)],
+        "b": [req("1.1.1 Child elsewhere", traces="1.1; 2.1"), req("1.3.1 Middle", traces="1.3"),
+              req("1.3.1.1 Grandchild", traces="1.3.1")],
     }, checklist=checklist)
-    dates = {"openspec/specs/a/spec.md": "2026-11-20", "openspec/specs/b/spec.md": "2026-11-22"}
-    f = findings(root, last_change=dates.get)
-    assert about(f, "a | 1.1 Page") == {"re-inspect: openspec/specs/b/spec.md changed on 2026-11-22, after its inspection on 2026-11-20"}
-    assert about(f, "a | 2.1 Other") == set(), "nothing beneath 2.1 changed"
+    changed = {(x, row) for x in ("1.1.1", "1.3.1.1", "1") for row in ("1.1", "1.2", "1.3", "2.1")}
+    f = findings(root, history=History(changed=changed))
+    assert about(f, "a | 1.1 Page") == {"re-inspect: 1, 1.1.1 changed in a commit after its inspection on 2026-11-20"}
+    assert about(f, "a | 2.1 Other") == {"re-inspect: 1.1.1 changed in a commit after its inspection on 2026-11-20"}, "1.1.1 is 2.1's association child"
+    assert about(f, "a | 1.2 Panel") == {"re-inspect: 1 changed in a commit after its inspection on 2026-11-20"}, "its parent changed"
+    assert about(f, "a | 1.3 Grandparent") == {"re-inspect: 1 changed in a commit after its inspection on 2026-11-20"}, "a grandchild is not directly linked"
+    assert about(findings(root, history=History(changed={("1.3.1.1", "1.3")})), "a | 1.3 Grandparent") == set()
 
 
 def test_every_spec_has_a_dated_review(tmp_path):
@@ -243,11 +264,84 @@ def test_every_spec_has_a_dated_review(tmp_path):
                  "## Spec Standard Reviews\n\n| Spec | Last reviewed | Result | Notes |\n|---|---|---|---|\n"
                  "| `needs` | 2026-11-23 | Pass | |\n| `a` | 2026-11-20 | Pass | |\n")
     root = make_root(tmp_path, {"a": [req("1.1 X", traces="1")], "b": [req("2.1 Y", traces="2")]}, checklist=checklist)
-    dates = {"openspec/specs/needs/spec.md": "2026-11-23", "openspec/specs/a/spec.md": "2026-11-22"}
-    f = findings(root, last_change=dates.get)
-    assert about(f, "needs | (spec)") == set()  # changed the day it was reviewed
-    assert about(f, "a | (spec)") == {"changed on 2026-11-22, after its standard review on 2026-11-20"}
+    f = findings(root, history=History({("openspec/specs/a/spec.md", "a")}))
+    assert about(f, "needs | (spec)") == set()
+    assert about(f, "a | (spec)") == {"changed in a commit after its standard review on 2026-11-20"}
     assert about(f, "b | (spec)") == {"no standard review"}
+
+
+def test_staleness_follows_commit_order_not_dates(tmp_path):
+    """GitHistory: a spec committed with its review row is current, whatever the dates (a rebase re-dates
+    commits); a later commit that touches only the spec makes it stale, even when that commit's date is
+    earlier."""
+    import os
+    import subprocess
+
+    repo = tmp_path / "repo"
+    (repo / "openspec" / "specs" / "a").mkdir(parents=True)
+    env = {**os.environ, "GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@example.com",
+           "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@example.com"}
+
+    def commit(message, date):
+        subprocess.run(["git", "add", "-A"], cwd=repo, check=True, env=env)
+        subprocess.run(["git", "commit", "-q", "-m", message], cwd=repo, check=True,
+                       env={**env, "GIT_AUTHOR_DATE": date, "GIT_COMMITTER_DATE": date})
+
+    subprocess.run(["git", "init", "-q"], cwd=repo, check=True, env=env)
+    spec = repo / "openspec" / "specs" / "a" / "spec.md"
+    checklist = repo / "openspec" / "inspection-checklist.md"
+    spec.write_text("v1\n", encoding="utf-8")
+    checklist.write_text("## Spec Standard Reviews\n\n| Spec | Last reviewed | Result | Notes |\n|---|---|---|---|\n"
+                         "| `a` | 2026-11-23 | Pass | |\n", encoding="utf-8")
+    commit("spec and its review together", "2026-11-25T12:00:00")
+    assert not model.GitHistory(repo).changed_after("openspec/specs/a/spec.md", "a"), "reviewed in the same commit"
+    spec.write_text("v2\n", encoding="utf-8")
+    commit("spec edited later, with an earlier date", "2026-11-20T12:00:00")
+    assert model.GitHistory(repo).changed_after("openspec/specs/a/spec.md", "a"), "edited after its review"
+
+
+def test_requirement_changes_are_tracked_by_block(tmp_path):
+    """GitHistory follows each requirement's own block: an edit to one requirement, or a new one, dates
+    only that requirement, wherever it sits; an edit elsewhere in the file leaves the others alone,
+    and an active change's version stands in for the main spec's."""
+    import os
+    import subprocess
+
+    repo = tmp_path / "repo"
+    env = {**os.environ, "GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@example.com",
+           "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@example.com"}
+
+    def commit(message):
+        subprocess.run(["git", "add", "-A"], cwd=repo, check=True, env=env)
+        subprocess.run(["git", "commit", "-q", "-m", message], cwd=repo, check=True, env=env)
+
+    def write(rel, text):
+        path = repo / rel
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text, encoding="utf-8")
+
+    spec, delta = "openspec/specs/a/spec.md", "openspec/changes/c/specs/a/spec.md"
+    head = "# a\n\n## Purpose\n\nP.\n\n## Requirements\n\n"
+    rows = "## Requirement Inspections\n\n| ID | R | S | C | Last inspected | Result |\n|---|---|---|---|---|---|\n"
+    repo.mkdir()
+    subprocess.run(["git", "init", "-q"], cwd=repo, check=True, env=env)
+    write(spec, head + req("1.1 One", traces="1") + "\n" + req("1.2 Two", traces="1"))
+    write("openspec/inspection-checklist.md", rows + "| 1.1 | R | a | C | 2026-11-23 | Pass |\n| 1.2 | R | a | C | 2026-11-23 | Pass |\n")
+    commit("specs and inspections")
+    assert not model.GitHistory(repo).req_changed_after("1.1", "1.1")
+    write(spec, head + req("1.1 One", traces="1") + "\n" + req("1.2 Two", "The site SHALL show both.", traces="1")
+          + "\n" + req("1.3 Three", traces="1"))
+    commit("1.2 edited, 1.3 added")
+    h = model.GitHistory(repo)
+    assert not h.req_changed_after("1.1", "1.1"), "an edit to another requirement in the file"
+    assert h.req_changed_after("1.2", "1.2") and h.req_changed_after("1.3", "1.1")
+    write(delta, "## MODIFIED Requirements\n\n" + req("1.1 One", "The site SHALL show it twice.", traces="1"))
+    commit("a change modifies 1.1")
+    assert model.GitHistory(repo).req_changed_after("1.1", "1.1"), "the active change's version counts"
+    write("openspec/inspection-checklist.md", rows + "| 1.1 | R | a | C | 2026-11-24 | Pass |\n| 1.2 | R | a | C | 2026-11-23 | Pass |\n")
+    h = model.GitHistory(repo)
+    assert not h.req_changed_after("1.1", "1.1"), "a row re-recorded in the working copy is current"
+    assert h.req_changed_after("1.2", "1.2"), "an untouched row is not"
 
 
 def test_tbr_has_a_target_date(tmp_path):
