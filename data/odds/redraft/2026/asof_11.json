@@ -24,7 +24,7 @@
         5,
         9,
         9,
-        11,
+        12,
         13,
         15,
         16,
@@ -37,16 +37,16 @@
         30,
         32,
         33,
-        36,
+        37,
+        37,
         38,
         38,
-        38,
-        40,
+        39,
         36,
         34,
         39,
         31,
-        31,
+        32,
         30,
         28,
         26,
@@ -54,12 +54,12 @@
         22,
         19,
         20,
-        18,
+        17,
         14,
         16,
         13,
         10,
-        11,
+        10,
         8,
         5,
         7,
@@ -70,7 +70,7 @@
         3,
         3,
         3,
-        1,
+        2,
         2,
         6
        ],
@@ -144,7 +144,7 @@
       "width": 2.0
      },
      "key": "1-9",
-     "margin_mean": 12.828,
+     "margin_mean": 12.818,
      "margin_sd": 30.497,
      "projected": false,
      "teams": [
@@ -205,9 +205,9 @@
          7.5
         ]
        ],
-       "mean": 120.09,
+       "mean": 120.08,
        "roster_id": 1,
-       "win_prob": 0.6624
+       "win_prob": 0.6622
       },
       {
        "lineup": [
@@ -268,7 +268,7 @@
        ],
        "mean": 107.26,
        "roster_id": 9,
-       "win_prob": 0.3376
+       "win_prob": 0.3378
       }
      ]
     },
@@ -623,7 +623,7 @@
         37,
         36,
         34,
-        34,
+        33,
         32,
         31,
         31,
@@ -638,7 +638,7 @@
         13,
         11,
         9,
-        10,
+        11,
         8,
         6,
         4,
@@ -660,7 +660,7 @@
       "width": 2.0
      },
      "key": "4-12",
-     "margin_mean": 8.569,
+     "margin_mean": 8.579,
      "margin_sd": 29.644,
      "projected": false,
      "teams": [
@@ -782,7 +782,7 @@
          7.4
         ]
        ],
-       "mean": 109.18,
+       "mean": 109.17,
        "roster_id": 12,
        "win_prob": 0.3877
       }
@@ -4753,7 +4753,7 @@
    "games": [
     {
      "bracket": "winners",
-     "frequency": 0.232,
+     "frequency": 0.2319,
      "hist": {
       "shares": [
        [
@@ -5028,7 +5028,7 @@
     },
     {
      "bracket": "winners",
-     "frequency": 0.0968,
+     "frequency": 0.0967,
      "hist": {
       "shares": [
        [
@@ -5295,7 +5295,7 @@
     },
     {
      "bracket": "losers",
-     "frequency": 0.2921,
+     "frequency": 0.2922,
      "hist": {
       "shares": [
        [
@@ -5566,7 +5566,7 @@
     },
     {
      "bracket": "losers",
-     "frequency": 0.1219,
+     "frequency": 0.122,
      "hist": {
       "shares": [
        [
@@ -7154,7 +7154,7 @@
     },
     {
      "bracket": "losers",
-     "frequency": 0.1145,
+     "frequency": 0.1146,
      "hist": {
       "shares": [
        [
@@ -8232,7 +8232,7 @@
     },
     {
      "bracket": "losers",
-     "frequency": 0.0345,
+     "frequency": 0.0344,
      "hist": {
       "shares": [
        [
@@ -8505,7 +8505,7 @@
    "kind": "playoff"
   }
  },
- "generated_at": "2026-11-24T14:37:57+00:00",
+ "generated_at": "2026-11-24T16:13:54+00:00",
  "league_key": "redraft",
  "model": {
   "drift": {
@@ -8573,7 +8573,7 @@
   {
    "bye": 0.9091,
    "display_name": "TateFM",
-   "final": 0.5327,
+   "final": 0.5326,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 2,
@@ -8602,7 +8602,7 @@
    "semifinal": 0.9562,
    "team_name": "TBD",
    "ties": 0,
-   "title": 0.3362,
+   "title": 0.3361,
    "user_id": "740044489435017216",
    "wins": 9
   },
@@ -8660,8 +8660,8 @@
    "seed_distribution": [
     0.0395,
     0.2085,
-    0.4444,
-    0.1848,
+    0.4443,
+    0.1849,
     0.0745,
     0.0286,
     0.0161,
@@ -8681,7 +8681,7 @@
   {
    "bye": 0.0507,
    "display_name": "NickLove17",
-   "final": 0.2208,
+   "final": 0.2209,
    "last": 0.0,
    "losers_bracket": 0.0799,
    "losses": 4,
@@ -8698,8 +8698,8 @@
     0.0476,
     0.192,
     0.3408,
-    0.2186,
-    0.118,
+    0.2185,
+    0.1181,
     0.0488,
     0.0261,
     0.005,
@@ -8710,7 +8710,7 @@
    "semifinal": 0.4722,
    "team_name": "Keeper Killer",
    "ties": 0,
-   "title": 0.0887,
+   "title": 0.0888,
    "user_id": "727642823544893440",
    "wins": 7
   },
@@ -8755,9 +8755,9 @@
    "display_name": "Jdeguire",
    "final": 0.1331,
    "last": 0.0,
-   "losers_bracket": 0.4216,
+   "losers_bracket": 0.4217,
    "losses": 5,
-   "playoffs": 0.5784,
+   "playoffs": 0.5783,
    "points_against": 1123.82,
    "points_for": 1210.7,
    "proj_losses": 6.67,
@@ -8768,18 +8768,18 @@
    "seed_distribution": [
     0.0,
     0.0041,
-    0.0444,
-    0.1183,
+    0.0445,
+    0.1182,
     0.1994,
-    0.2122,
-    0.2069,
+    0.2121,
+    0.207,
     0.1358,
     0.0754,
     0.0035,
     0.0,
     0.0
    ],
-   "semifinal": 0.2961,
+   "semifinal": 0.296,
    "team_name": "Redemption ",
    "ties": 0,
    "title": 0.0537,
@@ -8791,9 +8791,9 @@
    "display_name": "kjern17",
    "final": 0.0414,
    "last": 0.0,
-   "losers_bracket": 0.547,
+   "losers_bracket": 0.5469,
    "losses": 5,
-   "playoffs": 0.453,
+   "playoffs": 0.4531,
    "points_against": 1065.18,
    "points_for": 1153.26,
    "proj_losses": 6.58,
@@ -8806,16 +8806,16 @@
     0.002,
     0.0285,
     0.0655,
-    0.1441,
+    0.1442,
     0.2129,
     0.2151,
-    0.1825,
+    0.1824,
     0.1396,
     0.0098,
     0.0,
     0.0
    ],
-   "semifinal": 0.1312,
+   "semifinal": 0.1313,
    "team_name": "Likely to lose",
    "ties": 0,
    "title": 0.0123,
@@ -8880,8 +8880,8 @@
     0.0154,
     0.0433,
     0.1027,
-    0.193,
-    0.2888,
+    0.1929,
+    0.2889,
     0.2897,
     0.0614,
     0.0045,
