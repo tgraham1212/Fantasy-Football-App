@@ -15,6 +15,21 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 
 | ID | Requirement | Spec | Pass criteria | Last inspected | Result |
 |---|---|---|---|---|---|
+| 5.4.1 | Relay credential | `manual-refresh` | `relay/README.md` and the relay's secrets, the token's scope and that no token is in the repository or `site/` | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 5.4.4.3 | Refresh that never lands | `manual-refresh` | `site/refresh.js`, the 10-minute give-up timer and its message | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 5.3.2 | Local copy | `site-updates` | `site/updates.js`, an unstamped page skips the version and bundle checks | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 5.3.3.2 | Week gone from the new data | `site-updates` | `site/games.js`, a missing week falls back to the index's current week | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 5.3.4.2 | Updated time | `site-updates` | `site/updates.js`, the time given to the refresh note is the newer of the two | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 5.3.5 | New version note | `site-updates` | the live site, the note and its Refresh button after a code deploy | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 5.2.2 | Hot run inputs | `live-refresh` | `.github/workflows/hot.yml`, the cache restore and the offline build when it misses | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 5.2.3.1 | Failed hot run | `live-refresh` | `.github/workflows/hot.yml`, the bundle is sent only after every step succeeds | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 5.2.4.2 | Bundle expiry | `live-refresh` | `relay/worker.js`, the bundle is written with a 7-day expiry | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 5.1.1 | Worker clock | `refresh-scheduling` | `relay/wrangler.toml`, the cron trigger runs every minute | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 5.1.8 | Refresh modes document | `refresh-scheduling` | `docs/refresh-modes.md` holds each listed part | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 5.5.1 | Started by hand | `refresh-scheduling` | `.github/workflows/refresh.yml` has a `workflow_dispatch` trigger | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 5.6 | Deploy on code push | `refresh-scheduling` | `.github/workflows/site.yml`, the build, test and deploy steps | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 5.6.1 | Deploys never overlap a cold run | `refresh-scheduling` | `.github/workflows/site.yml` and `.github/workflows/refresh.yml` share the `refresh-odds` concurrency group | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 5.6.2 | Data pushes deploy nothing | `refresh-scheduling` | `.github/workflows/site.yml`, its path filter excludes the data folders | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 4.7 | Team News stories | `team-news` | `src/ffapp/news.py`, stories are built for the current season only | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 4.6.7.1 | Variants kept off the site | `manager-ratings` | `src/ffapp/export.py`, the exported rating history holds only the mean and career mean z | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 4.5 | Manager identity | `manager-history` | `src/ffapp/managers.py`, the name comes from the latest season's users | 2026-11-23 | Pass (confirmed when the feature was built) |
@@ -109,6 +124,10 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 
 | Spec | Last reviewed | Result | Notes |
 |---|---|---|---|
+| `manual-refresh` | 2026-11-23 | Pass | 3 requirements became 10 under 5.4 |
+| `site-updates` | 2026-11-23 | Pass | 7 requirements (1 moved from league-odds-site) became 17 under 5.3; update cadence tested |
+| `live-refresh` | 2026-11-23 | Pass | 5 requirements became 9 under 5.2 and 11.2; relay tests now run from pytest |
+| `refresh-scheduling` | 2026-11-23 | Pass | 8 requirements (2 moved from league-odds-site) became 20 under 5.1, 5.5 and 5.6 |
 | `team-news` | 2026-11-23 | Pass | 9 requirements became 22 under 4.7, one per story type |
 | `manager-ratings` | 2026-11-23 | Pass | 10 requirements became 20 under 4.6; settings defaults stated; unverifiable scale clause cut |
 | `manager-history` | 2026-11-23 | Pass | 13 requirements became 27 under 4.5; compound requirements split |

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5040 14260" width="5040" height="14260">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5350 14260" width="5350" height="14260">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,7 +33,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="5040" height="14260"/>
+<rect class="bg" width="5350" height="14260"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 2, Game Forecasts</text>
 <text class="sub" x="40" y="66">102 requirements derived from need 2 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
@@ -1620,22 +1620,32 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <rect class="ext" x="4380" y="14002" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="4380.7" y="14002.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="4510.0" y="14015" text-anchor="middle">«requirement»</text>
-<text x="4510.0" y="14030" text-anchor="middle"><tspan class="rid">1.1.12</tspan><tspan class="rname" dx="6">Live week</tspan></text>
-<text class="rtext" x="4388" y="14052">The live week SHALL be the first week after</text>
-<text class="rtext" x="4388" y="14066">the as-of week once any of its NFL games has</text>
-<text class="rtext" x="4388" y="14080">kicked off.</text>
-<text class="spec" x="4388" y="14113">live-scoring</text>
+<text x="4510.0" y="14030" text-anchor="middle"><tspan class="rid">5.2</tspan><tspan class="rname" dx="6">Hot run</tspan></text>
+<text class="rtext" x="4388" y="14052">A hot run SHALL fetch the current week&#x27;s</text>
+<text class="rtext" x="4388" y="14066">matchups and the NFL scoreboard, simulate the</text>
+<text class="rtext" x="4388" y="14080">live week with the cold run&#x27;s model and run</text>
+<text class="rtext" x="4388" y="14094">count, and build this week&#x27;s game cards for…</text>
+<text class="spec" x="4388" y="14113">live-refresh</text>
 <path class="trace" d="M4510.0,14002 V7646 H460.0 V7638" marker-end="url(#openg)"/>
 <rect class="ext" x="4690" y="14002" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="4690.7" y="14002.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="4820.0" y="14015" text-anchor="middle">«requirement»</text>
-<text x="4820.0" y="14030" text-anchor="middle"><tspan class="rid">7.3</tspan><tspan class="rname" dx="6">Game calibration</tspan></text>
-<text class="rtext" x="4698" y="14052">For every replayed as-of week, the report</text>
-<text class="rtext" x="4698" y="14066">SHALL group each team&#x27;s win probability for</text>
-<text class="rtext" x="4698" y="14080">its next game into 10-point bins, with the</text>
-<text class="rtext" x="4698" y="14094">observed win rate and count in each bin, an…</text>
-<text class="spec" x="4698" y="14113">odds-calibration</text>
+<text x="4820.0" y="14030" text-anchor="middle"><tspan class="rid">1.1.12</tspan><tspan class="rname" dx="6">Live week</tspan></text>
+<text class="rtext" x="4698" y="14052">The live week SHALL be the first week after</text>
+<text class="rtext" x="4698" y="14066">the as-of week once any of its NFL games has</text>
+<text class="rtext" x="4698" y="14080">kicked off.</text>
+<text class="spec" x="4698" y="14113">live-scoring</text>
 <path class="trace" d="M4820.0,14002 V7651 H460.0 V7638" marker-end="url(#openg)"/>
+<rect class="ext" x="5000" y="14002" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="5000.7" y="14002.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="5130.0" y="14015" text-anchor="middle">«requirement»</text>
+<text x="5130.0" y="14030" text-anchor="middle"><tspan class="rid">7.3</tspan><tspan class="rname" dx="6">Game calibration</tspan></text>
+<text class="rtext" x="5008" y="14052">For every replayed as-of week, the report</text>
+<text class="rtext" x="5008" y="14066">SHALL group each team&#x27;s win probability for</text>
+<text class="rtext" x="5008" y="14080">its next game into 10-point bins, with the</text>
+<text class="rtext" x="5008" y="14094">observed win rate and count in each bin, an…</text>
+<text class="spec" x="5008" y="14113">odds-calibration</text>
+<path class="trace" d="M5130.0,14002 V7656 H460.0 V7638" marker-end="url(#openg)"/>
 <path class="derive" d="M40,14220 H86" marker-end="url(#open)"/><text class="lg" x="96" y="14224">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,14220 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="14224">«trace»: extra parent</text>
 <path class="verify" d="M680,14220 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="14224">«verify»: test, inspection or analysis</text>

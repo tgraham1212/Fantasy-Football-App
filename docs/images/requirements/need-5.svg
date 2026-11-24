@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2250 592" width="2250" height="592">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6280 7962" width="6280" height="7962">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,11 +33,339 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="2250" height="592"/>
+<rect class="bg" width="6280" height="7962"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 5, Current Data</text>
-<text class="sub" x="40" y="66">0 requirements derived from need 5 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
+<text class="sub" x="40" y="66">55 requirements derived from need 5 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
-<text class="sub" x="350" y="210">No requirement traces to this need yet.</text>
+<text class="col" x="350" y="132">LEVEL 1</text>
+<text class="col" x="660" y="132">LEVEL 2</text>
+<text class="col" x="970" y="132">LEVEL 3</text>
+<text class="col" x="1300" y="132">VERIFIED BY</text>
+<path class="derive" d="M350,343.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,477.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,611.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,745.0 H945 V611.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,879.0 H945 V611.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,1013.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,1147.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,1281.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,1415.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,1549.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,1683.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,1817.0 H945 V1683.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M350,1951.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,2085.0 H635 V1951.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,2219.0 H635 V1951.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,2353.0 H635 V1951.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,2487.0 H945 V2353.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,2621.0 H635 V1951.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,2755.0 H945 V2621.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,2889.0 H945 V2621.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M350,3023.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,3157.0 H635 V3023.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,3291.0 H635 V3023.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,3425.0 H635 V3023.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,3559.0 H945 V3425.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,3693.0 H945 V3425.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,3827.0 H635 V3023.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,3961.0 H945 V3827.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,4095.0 H945 V3827.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,4229.0 H635 V3023.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,4363.0 H945 V4229.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,4497.0 H635 V3023.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,4631.0 H635 V3023.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,4765.0 H945 V4631.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,4899.0 H945 V4631.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,5033.0 H945 V4631.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,5167.0 H945 V4631.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M350,5301.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,5435.0 H635 V5301.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,5569.0 H635 V5301.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,5703.0 H635 V5301.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,5837.0 H945 V5703.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,5971.0 H945 V5703.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,6105.0 H635 V5301.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,6239.0 H945 V6105.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,6373.0 H945 V6105.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,6507.0 H945 V6105.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M350,6641.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,6775.0 H635 V6641.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,6909.0 H635 V6641.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,7043.0 H635 V6641.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,7177.0 H635 V6641.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M350,7311.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,7445.0 H635 V7311.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,7579.0 H635 V7311.0 H610" marker-end="url(#open)"/>
+<text class="elab" x="322" y="337.0" text-anchor="end">«deriveReqt»</text>
+<rect class="tc" x="1300" y="312" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="327">«testCase»</text>
+<text class="tctext" x="1308" y="344">test_relay.py::test_modes_follow_the_games</text>
+<path class="verify" d="M1300,342 H610" marker-end="url(#openv)"/>
+<text class="elab" x="1292" y="336" text-anchor="end">«verify»</text>
+<rect class="tc" x="1300" y="446" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="461">«testCase»</text>
+<text class="tctext" x="1308" y="478">test_relay.py::test_live_cadence; Inspection:</text>
+<text class="tctext" x="1308" y="492">relay/wrangler.toml, the cron trigger runs</text>
+<path class="verify" d="M1300,476 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="580" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="595">«testCase»</text>
+<text class="tctext" x="1308" y="612">test_relay.py::test_modes_follow_the_games</text>
+<path class="verify" d="M1300,610 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="714" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="729">«testCase»</text>
+<text class="tctext" x="1308" y="746">test_relay.py::test_schedule_summary_stored; t</text>
+<text class="tctext" x="1308" y="760">est_schedule_summary.py::test_summary_lists_th</text>
+<path class="verify" d="M1300,744 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="848" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="863">«testCase»</text>
+<text class="tctext" x="1308" y="880">test_relay.py::test_stuck_game_counts_as_final</text>
+<text class="tctext" x="1308" y="894">_after_six_hours</text>
+<path class="verify" d="M1300,878 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="982" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="997">«testCase»</text>
+<text class="tctext" x="1308" y="1014">test_relay.py::test_live_cadence</text>
+<path class="verify" d="M1300,1012 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="1116" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="1131">«testCase»</text>
+<text class="tctext" x="1308" y="1148">test_relay.py::test_quiet_cadence</text>
+<path class="verify" d="M1300,1146 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="1250" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="1265">«testCase»</text>
+<text class="tctext" x="1308" y="1282">test_relay.py::test_offseason_clock_starts_not</text>
+<text class="tctext" x="1308" y="1296">hing</text>
+<path class="verify" d="M1300,1280 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="1384" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="1399">«testCase»</text>
+<text class="tctext" x="1308" y="1416">test_workflows.py::test_cold_run_has_no_gate_o</text>
+<text class="tctext" x="1308" y="1430">r_test_suite_and_deploys_on_change</text>
+<path class="verify" d="M1300,1414 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="1518" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="1533">«testCase»</text>
+<text class="tctext" x="1308" y="1550">test_relay.py::test_final_slate_starts_one_col</text>
+<text class="tctext" x="1308" y="1564">d_run</text>
+<path class="verify" d="M1300,1548 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="1652" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="1667">«testCase»</text>
+<text class="tctext" x="1308" y="1684">test_feature_docs.py::test_doc_structure;</text>
+<text class="tctext" x="1308" y="1698">Inspection: docs/refresh-modes.md holds each</text>
+<path class="verify" d="M1300,1682 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="1786" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="1801">«testCase»</text>
+<text class="tctext" x="1308" y="1818">test_feature_docs.py::test_diagrams_are_genera</text>
+<text class="tctext" x="1308" y="1832">ted_and_current</text>
+<path class="verify" d="M1300,1816 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="1920" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="1935">«testCase»</text>
+<text class="tctext" x="1308" y="1952">test_hot.py::test_hot_run_builds_one_bundle_an</text>
+<text class="tctext" x="1308" y="1966">d_leaves_data_unchanged</text>
+<path class="verify" d="M1300,1950 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="2054" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="2069">«testCase»</text>
+<text class="tctext" x="1308" y="2086">test_workflows.py::test_hot_run_never_commits_</text>
+<text class="tctext" x="1308" y="2100">pushes_or_deploys</text>
+<path class="verify" d="M1300,2084 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="2188" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="2203">«testCase»</text>
+<text class="tctext" x="1308" y="2220">test_storage_tiers.py::test_build_from_committ</text>
+<text class="tctext" x="1308" y="2234">ed_records_alone; Inspection:</text>
+<path class="verify" d="M1300,2218 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="2322" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="2337">«testCase»</text>
+<text class="tctext" x="1308" y="2354">test_relay.py::test_one_bundle_per_hot_run; te</text>
+<text class="tctext" x="1308" y="2368">st_hot.py::test_hot_command_writes_the_bundle_</text>
+<path class="verify" d="M1300,2352 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1300" y="2456" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="2471">«inspection»</text>
+<text class="tctext" x="1308" y="2488">.github/workflows/hot.yml, the bundle is sent</text>
+<text class="tctext" x="1308" y="2502">only after every step succeeds</text>
+<path class="verify" d="M1300,2486 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="2590" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="2605">«testCase»</text>
+<text class="tctext" x="1308" y="2622">test_relay.py::test_page_gets_the_newer_bundle</text>
+<path class="verify" d="M1300,2620 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="2724" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="2739">«testCase»</text>
+<text class="tctext" x="1308" y="2756">test_relay.py::test_bundle_writes_need_the_sec</text>
+<text class="tctext" x="1308" y="2770">ret</text>
+<path class="verify" d="M1300,2754 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1300" y="2858" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="2873">«inspection»</text>
+<text class="tctext" x="1308" y="2890">relay/worker.js, the bundle is written with a</text>
+<text class="tctext" x="1308" y="2904">7-day expiry</text>
+<path class="verify" d="M1300,2888 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="2992" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="3007">«testCase»</text>
+<text class="tctext" x="1308" y="3024">layout/test_update_check.py::test_checks_once_</text>
+<text class="tctext" x="1308" y="3038">a_minute_while_quiet; layout/test_update_check</text>
+<path class="verify" d="M1300,3022 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="3126" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="3141">«testCase»</text>
+<text class="tctext" x="1308" y="3158">layout/test_update_check.py::test_no_checks_wh</text>
+<text class="tctext" x="1308" y="3172">ile_hidden_and_one_when_shown</text>
+<path class="verify" d="M1300,3156 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1300" y="3260" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="3275">«inspection»</text>
+<text class="tctext" x="1308" y="3292">site/updates.js, an unstamped page skips the</text>
+<text class="tctext" x="1308" y="3306">version and bundle checks</text>
+<path class="verify" d="M1300,3290 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="3394" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="3409">«testCase»</text>
+<text class="tctext" x="1308" y="3426">layout/test_layout.py::test_data_swap_keeps_th</text>
+<text class="tctext" x="1308" y="3440">e_visitors_place; layout/test_layout.py::test_</text>
+<path class="verify" d="M1300,3424 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="3528" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="3543">«testCase»</text>
+<text class="tctext" x="1308" y="3560">layout/test_layout.py::test_data_swap_keeps_th</text>
+<text class="tctext" x="1308" y="3574">e_visitors_place</text>
+<path class="verify" d="M1300,3558 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1300" y="3662" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="3677">«inspection»</text>
+<text class="tctext" x="1308" y="3694">site/games.js, a missing week falls back to</text>
+<text class="tctext" x="1308" y="3708">the index&#x27;s current week</text>
+<path class="verify" d="M1300,3692 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="3796" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="3811">«testCase»</text>
+<text class="tctext" x="1308" y="3828">layout/test_layout.py::test_live_bundle_swap_k</text>
+<text class="tctext" x="1308" y="3842">eeps_the_visitors_place</text>
+<path class="verify" d="M1300,3826 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="3930" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="3945">«testCase»</text>
+<text class="tctext" x="1308" y="3962">layout/test_layout.py::test_older_bundle_and_r</text>
+<text class="tctext" x="1308" y="3976">elay_down_are_ignored</text>
+<path class="verify" d="M1300,3960 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="4064" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="4079">«testCase»</text>
+<text class="tctext" x="1308" y="4096">test_build_last_refresh.py::test_last_commit_t</text>
+<text class="tctext" x="1308" y="4110">ime_is_the_commit_in_utc; Inspection:</text>
+<path class="verify" d="M1300,4094 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="4198" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="4213">«testCase»</text>
+<text class="tctext" x="1308" y="4230">layout/test_layout.py::test_control_keeps_the_</text>
+<text class="tctext" x="1308" y="4244">layout; Inspection: the live site, the note</text>
+<path class="verify" d="M1300,4228 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="4332" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="4347">«testCase»</text>
+<text class="tctext" x="1308" y="4364">layout/test_layout.py::test_control_keeps_the_</text>
+<text class="tctext" x="1308" y="4378">layout</text>
+<path class="verify" d="M1300,4362 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="4466" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="4481">«testCase»</text>
+<text class="tctext" x="1308" y="4498">layout/test_layout.py::test_data_swap_keeps_th</text>
+<text class="tctext" x="1308" y="4512">e_visitors_place</text>
+<path class="verify" d="M1300,4496 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="4600" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="4615">«testCase»</text>
+<text class="tctext" x="1308" y="4632">test_site_files.py::test_every_script_referenc</text>
+<text class="tctext" x="1308" y="4646">e_carries_the_build_placeholder; test_site_fil</text>
+<path class="verify" d="M1300,4630 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="4734" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="4749">«testCase»</text>
+<text class="tctext" x="1308" y="4766">test_site_files.py::test_fingerprint_ignores_d</text>
+<text class="tctext" x="1308" y="4780">ata_and_line_endings; test_site_files.py::test</text>
+<path class="verify" d="M1300,4764 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="4868" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="4883">«testCase»</text>
+<text class="tctext" x="1308" y="4900">test_site_files.py::test_every_deploy_stamps_t</text>
+<text class="tctext" x="1308" y="4914">hrough_the_shared_command</text>
+<path class="verify" d="M1300,4898 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="5002" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="5017">«testCase»</text>
+<text class="tctext" x="1308" y="5034">test_site_files.py::test_stamp_site_writes_the</text>
+<text class="tctext" x="1308" y="5048">_fingerprint_everywhere</text>
+<path class="verify" d="M1300,5032 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="5136" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="5151">«testCase»</text>
+<text class="tctext" x="1308" y="5168">test_site_files.py::test_every_script_referenc</text>
+<text class="tctext" x="1308" y="5182">e_carries_the_build_placeholder; test_site_fil</text>
+<path class="verify" d="M1300,5166 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="5270" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="5285">«testCase»</text>
+<text class="tctext" x="1308" y="5302">test_relay.py::test_other_origins_refused</text>
+<path class="verify" d="M1300,5300 H610" marker-end="url(#openv)"/>
+<rect class="insp" x="1300" y="5404" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="5419">«inspection»</text>
+<text class="tctext" x="1308" y="5436">relay/README.md and the relay&#x27;s secrets, the</text>
+<text class="tctext" x="1308" y="5450">token&#x27;s scope and that no token is in the</text>
+<path class="verify" d="M1300,5434 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="5538" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="5553">«testCase»</text>
+<text class="tctext" x="1308" y="5570">test_relay.py::test_button_refresh_and_hold</text>
+<path class="verify" d="M1300,5568 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="5672" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="5687">«testCase»</text>
+<text class="tctext" x="1308" y="5704">test_relay.py::test_button_refused_in_live; te</text>
+<text class="tctext" x="1308" y="5718">st_relay.py::test_button_held_while_a_hot_run_</text>
+<path class="verify" d="M1300,5702 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="5806" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="5821">«testCase»</text>
+<text class="tctext" x="1308" y="5838">test_relay.py::test_button_refresh_and_hold; t</text>
+<text class="tctext" x="1308" y="5852">est_relay.py::test_failed_dispatch_does_not_ho</text>
+<path class="verify" d="M1300,5836 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="5940" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="5955">«testCase»</text>
+<text class="tctext" x="1308" y="5972">test_relay.py::test_two_clicks_start_one_refre</text>
+<text class="tctext" x="1308" y="5986">sh</text>
+<path class="verify" d="M1300,5970 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="6074" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="6089">«testCase»</text>
+<text class="tctext" x="1308" y="6106">layout/test_layout.py::test_refresh_note_by_re</text>
+<text class="tctext" x="1308" y="6120">lay_status; test_export.py::test_index_carries</text>
+<path class="verify" d="M1300,6104 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="6208" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="6223">«testCase»</text>
+<text class="tctext" x="1308" y="6240">layout/test_layout.py::test_refresh_note_by_re</text>
+<text class="tctext" x="1308" y="6254">lay_status; layout/test_layout.py::test_starte</text>
+<path class="verify" d="M1300,6238 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="6342" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="6357">«testCase»</text>
+<text class="tctext" x="1308" y="6374">layout/test_layout.py::test_control_keeps_the_</text>
+<text class="tctext" x="1308" y="6388">layout</text>
+<path class="verify" d="M1300,6372 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1300" y="6476" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="6491">«inspection»</text>
+<text class="tctext" x="1308" y="6508">site/refresh.js, the 10-minute give-up timer</text>
+<text class="tctext" x="1308" y="6522">and its message</text>
+<path class="verify" d="M1300,6506 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="6610" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="6625">«testCase»</text>
+<text class="tctext" x="1308" y="6642">test_refresh.py::test_refresh_runs_every_step_</text>
+<text class="tctext" x="1308" y="6656">when_sources_work;</text>
+<path class="verify" d="M1300,6640 H610" marker-end="url(#openv)"/>
+<rect class="insp" x="1300" y="6744" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="6759">«inspection»</text>
+<text class="tctext" x="1308" y="6776">.github/workflows/refresh.yml has a</text>
+<text class="tctext" x="1308" y="6790">workflow_dispatch trigger</text>
+<path class="verify" d="M1300,6774 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="6878" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="6893">«testCase»</text>
+<text class="tctext" x="1308" y="6910">test_refresh.py::test_live_mode_skips_the_simu</text>
+<text class="tctext" x="1308" y="6924">lation</text>
+<path class="verify" d="M1300,6908 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="7012" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="7027">«testCase»</text>
+<text class="tctext" x="1308" y="7044">test_refresh.py::test_refresh_stops_at_project</text>
+<text class="tctext" x="1308" y="7058">ions_failure_and_leaves_data_unchanged; test_r</text>
+<path class="verify" d="M1300,7042 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="7146" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="7161">«testCase»</text>
+<text class="tctext" x="1308" y="7178">test_refresh.py::test_refresh_continues_past_a</text>
+<text class="tctext" x="1308" y="7192">_snapshot_failure_with_a_warning; test_refresh</text>
+<path class="verify" d="M1300,7176 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="7280" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="7295">«testCase»</text>
+<text class="tctext" x="1308" y="7312">test_site_files.py::test_every_deploy_stamps_t</text>
+<text class="tctext" x="1308" y="7326">hrough_the_shared_command; Inspection:</text>
+<path class="verify" d="M1300,7310 H610" marker-end="url(#openv)"/>
+<rect class="insp" x="1300" y="7414" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="7429">«inspection»</text>
+<text class="tctext" x="1308" y="7446">.github/workflows/site.yml and</text>
+<text class="tctext" x="1308" y="7460">.github/workflows/refresh.yml share the</text>
+<path class="verify" d="M1300,7444 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1300" y="7548" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="7563">«inspection»</text>
+<text class="tctext" x="1308" y="7580">.github/workflows/site.yml, its path filter</text>
+<text class="tctext" x="1308" y="7594">excludes the data folders</text>
+<path class="verify" d="M1300,7578 H920" marker-end="url(#openv)"/>
 <rect class="need" x="40" y="150" width="260" height="118" rx="3"/>
 <rect class="needhdr" x="40.7" y="150.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="170.0" y="163" text-anchor="middle">«need»</text>
@@ -47,60 +375,641 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="48" y="228">old while games are in progress and no more</text>
 <text class="rtext" x="48" y="242">than 20 minutes old otherwise, age measured…</text>
 <text class="spec" x="48" y="261">needs</text>
-<text class="col" x="40" y="318">OTHER BRANCHES · «trace» (extra parents)</text>
-<rect class="ext" x="350" y="334" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="350.7" y="334.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="480.0" y="347" text-anchor="middle">«requirement»</text>
-<text x="480.0" y="362" text-anchor="middle"><tspan class="rid">1.3.12</tspan><tspan class="rname" dx="6">Freshness shown</tspan></text>
-<text class="rtext" x="358" y="384">The Forecasts sub-tab SHALL show the as-of</text>
-<text class="rtext" x="358" y="398">week of the Forecast and when it was</text>
-<text class="rtext" x="358" y="412">generated.</text>
-<text class="spec" x="358" y="445">league-odds-site</text>
-<path class="trace" d="M480.0,334 V276 H150.0 V268" marker-end="url(#openg)"/>
-<rect class="ext" x="660" y="334" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="660.7" y="334.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="790.0" y="347" text-anchor="middle">«requirement»</text>
-<text x="790.0" y="362" text-anchor="middle"><tspan class="rid">7.8</tspan><tspan class="rname" dx="6">Calibration on demand</tspan></text>
-<text class="rtext" x="668" y="384">Calibration SHALL run as its own command,</text>
-<text class="rtext" x="668" y="398">outside the cold run.</text>
-<text class="spec" x="668" y="445">odds-calibration</text>
-<path class="trace" d="M790.0,334 V281 H150.0 V268" marker-end="url(#openg)"/>
-<rect class="ext" x="970" y="334" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="970.7" y="334.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="1100.0" y="347" text-anchor="middle">«requirement»</text>
-<text x="1100.0" y="362" text-anchor="middle"><tspan class="rid">1.1.11</tspan><tspan class="rname" dx="6">Simulation time</tspan></text>
-<text class="rtext" x="978" y="384">A full-season simulation of 10,000 runs SHALL</text>
-<text class="rtext" x="978" y="398">finish within 60 seconds.</text>
-<text class="spec" x="978" y="445">playoff-odds-simulation</text>
-<path class="trace" d="M1100.0,334 V286 H150.0 V268" marker-end="url(#openg)"/>
-<rect class="ext" x="1280" y="334" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="1280.7" y="334.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="1410.0" y="347" text-anchor="middle">«requirement»</text>
-<text x="1410.0" y="362" text-anchor="middle"><tspan class="rid">3.1.12</tspan><tspan class="rname" dx="6">Data swapped in place</tspan></text>
-<text class="rtext" x="1288" y="384">When newer site data arrives while the</text>
-<text class="rtext" x="1288" y="398">Positions sub-tab is open, the page SHALL</text>
-<text class="rtext" x="1288" y="412">redraw from it, keeping the selected season.</text>
-<text class="spec" x="1288" y="445">positional-rankings-page</text>
-<path class="trace" d="M1410.0,334 V276 H150.0 V268" marker-end="url(#openg)"/>
-<rect class="ext" x="1590" y="334" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="1590.7" y="334.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="1720.0" y="347" text-anchor="middle">«requirement»</text>
-<text x="1720.0" y="362" text-anchor="middle"><tspan class="rid">3.5.5.1</tspan><tspan class="rname" dx="6">Refreshed by the cold run</tspan></text>
-<text class="rtext" x="1598" y="384">Every cold run SHALL rewrite the current</text>
-<text class="rtext" x="1598" y="398">season&#x27;s replacement file.</text>
-<text class="spec" x="1598" y="445">replacement-level</text>
-<path class="trace" d="M1720.0,334 V281 H150.0 V268" marker-end="url(#openg)"/>
-<rect class="ext" x="1900" y="334" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="1900.7" y="334.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="2030.0" y="347" text-anchor="middle">«requirement»</text>
-<text x="2030.0" y="362" text-anchor="middle"><tspan class="rid">4.7.19.1</tspan><tspan class="rname" dx="6">Trending failure</tspan></text>
-<text class="rtext" x="1908" y="384">A failed trending fetch SHALL skip that step</text>
-<text class="rtext" x="1908" y="398">with a warning while the rest of the cold run</text>
-<text class="rtext" x="1908" y="412">completes.</text>
-<text class="spec" x="1908" y="445">team-news</text>
-<path class="trace" d="M2030.0,334 V286 H150.0 V268" marker-end="url(#openg)"/>
-<path class="derive" d="M40,552 H86" marker-end="url(#open)"/><text class="lg" x="96" y="556">«deriveReqt»: primary parent (sets the ID)</text>
-<path class="trace" d="M360,552 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="556">«trace»: extra parent</text>
-<path class="verify" d="M680,552 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="556">«verify»: test, inspection or analysis</text>
-<path class="vgap" d="M1000,552 H1046" marker-end="url(#openr)"/><text class="lg" x="1056" y="556">verification gap</text>
+<rect class="req" x="350" y="284" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="284.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="297" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="312" text-anchor="middle"><tspan class="rid">5.1</tspan><tspan class="rname" dx="6">Refresh modes</tspan></text>
+<text class="rtext" x="358" y="334">The refresh SHALL always be in exactly one of</text>
+<text class="rtext" x="358" y="348">three modes: Off-season, when both leagues&#x27;</text>
+<text class="rtext" x="358" y="362">seasons are over and the NFL&#x27;s week 1 has not</text>
+<text class="rtext" x="358" y="376">begun; Live, when an NFL game has kicked of…</text>
+<text class="spec" x="358" y="395">refresh-scheduling</text>
+<rect class="req" x="660" y="418" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="418.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="431" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="446" text-anchor="middle"><tspan class="rid">5.1.1</tspan><tspan class="rname" dx="6">Worker clock</tspan></text>
+<text class="rtext" x="668" y="468">The relay&#x27;s Worker SHALL work out the mode</text>
+<text class="rtext" x="668" y="482">once a minute and start the runs that mode</text>
+<text class="rtext" x="668" y="496">makes due.</text>
+<text class="spec" x="668" y="529">refresh-scheduling</text>
+<rect class="req" x="660" y="552" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="552.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="565" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="580" text-anchor="middle"><tspan class="rid">5.1.2</tspan><tspan class="rname" dx="6">Mode transitions</tspan></text>
+<text class="rtext" x="668" y="602">The mode SHALL change from Off-season to Quiet</text>
+<text class="rtext" x="668" y="616">when Sleeper reports the season&#x27;s week 1, from</text>
+<text class="rtext" x="668" y="630">Quiet to Live when a game&#x27;s kickoff passes,</text>
+<text class="rtext" x="668" y="644">from Live to Quiet when every game that kic…</text>
+<text class="spec" x="668" y="663">refresh-scheduling</text>
+<rect class="req" x="970" y="686" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="686.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="699" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="714" text-anchor="middle"><tspan class="rid">5.1.2.1</tspan><tspan class="rname" dx="6">Inputs to the mode</tspan></text>
+<text class="rtext" x="978" y="736">The Worker SHALL decide the mode from the</text>
+<text class="rtext" x="978" y="750">schedule summary the cold run stores in KV and</text>
+<text class="rtext" x="978" y="764">the game states in the latest live bundle.</text>
+<text class="spec" x="978" y="797">refresh-scheduling</text>
+<rect class="req" x="970" y="820" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="820.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="833" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="848" text-anchor="middle"><tspan class="rid">5.1.2.2</tspan><tspan class="rname" dx="6">Stuck game status</tspan></text>
+<text class="rtext" x="978" y="870">A game not seen final 6 hours after its</text>
+<text class="rtext" x="978" y="884">kickoff SHALL count as final.</text>
+<text class="spec" x="978" y="931">refresh-scheduling</text>
+<rect class="req" x="660" y="954" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="954.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="967" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="982" text-anchor="middle"><tspan class="rid">5.1.3</tspan><tspan class="rname" dx="6">Live cadence</tspan></text>
+<text class="rtext" x="668" y="1004">In Live, a hot run SHALL start each minute</text>
+<text class="rtext" x="668" y="1018">when none is queued or running, and a cold run</text>
+<text class="rtext" x="668" y="1032">every 15 minutes.</text>
+<text class="spec" x="668" y="1065">refresh-scheduling</text>
+<rect class="req" x="660" y="1088" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="1088.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="1101" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="1116" text-anchor="middle"><tspan class="rid">5.1.4</tspan><tspan class="rname" dx="6">Quiet cadence</tspan></text>
+<text class="rtext" x="668" y="1138">In Quiet, hot and cold runs SHALL each start</text>
+<text class="rtext" x="668" y="1152">every 15 minutes.</text>
+<text class="spec" x="668" y="1199">refresh-scheduling</text>
+<rect class="req" x="660" y="1222" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="1222.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="1235" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="1250" text-anchor="middle"><tspan class="rid">5.1.5</tspan><tspan class="rname" dx="6">Off-season cadence</tspan></text>
+<text class="rtext" x="668" y="1272">In the off-season, the Worker SHALL start no</text>
+<text class="rtext" x="668" y="1286">runs, leaving the daily scheduled cold run.</text>
+<text class="spec" x="668" y="1333">refresh-scheduling</text>
+<rect class="req" x="660" y="1356" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="1356.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="1369" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="1384" text-anchor="middle"><tspan class="rid">5.1.6</tspan><tspan class="rname" dx="6">Daily fallback</tspan></text>
+<text class="rtext" x="668" y="1406">GitHub&#x27;s schedule SHALL start a cold run daily</text>
+<text class="rtext" x="668" y="1420">at 11:00 UTC in every mode.</text>
+<text class="spec" x="668" y="1467">refresh-scheduling</text>
+<rect class="req" x="660" y="1490" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="1490.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="1503" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="1518" text-anchor="middle"><tspan class="rid">5.1.7</tspan><tspan class="rname" dx="6">Slate-final run</tspan></text>
+<text class="rtext" x="668" y="1540">When every game of a slate is final, the</text>
+<text class="rtext" x="668" y="1554">Worker SHALL start one cold run in slate mode,</text>
+<text class="rtext" x="668" y="1568">which stores the slate Forecast.</text>
+<text class="spec" x="668" y="1601">refresh-scheduling</text>
+<rect class="req" x="660" y="1624" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="1624.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="1637" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="1652" text-anchor="middle"><tspan class="rid">5.1.8</tspan><tspan class="rname" dx="6">Refresh modes document</tspan></text>
+<text class="rtext" x="668" y="1674">docs/refresh-modes.md, linked from the README,</text>
+<text class="rtext" x="668" y="1688">SHALL show the diagram, the modes, transitions</text>
+<text class="rtext" x="668" y="1702">and cadences, the steps of a hot and a cold</text>
+<text class="rtext" x="668" y="1716">run, the data tiers, the limits and budgets…</text>
+<text class="spec" x="668" y="1735">refresh-scheduling</text>
+<rect class="req" x="970" y="1758" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="1758.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="1771" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="1786" text-anchor="middle"><tspan class="rid">5.1.8.1</tspan><tspan class="rname" dx="6">Refresh modes diagram</tspan></text>
+<text class="rtext" x="978" y="1808">The diagram docs/images/refresh-</text>
+<text class="rtext" x="978" y="1822">modes/diagram.svg SHALL be drawn by</text>
+<text class="rtext" x="978" y="1836">tools/refresh_modes_diagram.py and match what</text>
+<text class="rtext" x="978" y="1850">it draws.</text>
+<text class="spec" x="978" y="1869">refresh-scheduling</text>
+<rect class="req" x="350" y="1892" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="1892.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="1905" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="1920" text-anchor="middle"><tspan class="rid">5.2</tspan><tspan class="rname" dx="6">Hot run</tspan></text>
+<text class="rtext" x="358" y="1942">A hot run SHALL fetch the current week&#x27;s</text>
+<text class="rtext" x="358" y="1956">matchups and the NFL scoreboard, simulate the</text>
+<text class="rtext" x="358" y="1970">live week with the cold run&#x27;s model and run</text>
+<text class="rtext" x="358" y="1984">count, and build this week&#x27;s game cards for…</text>
+<text class="spec" x="358" y="2003">live-refresh</text>
+<rect class="req" x="660" y="2026" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="2026.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="2039" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="2054" text-anchor="middle"><tspan class="rid">5.2.1</tspan><tspan class="rname" dx="6">Hot runs change nothing publi…</tspan></text>
+<text class="rtext" x="668" y="2076">A hot run SHALL leave git and the published</text>
+<text class="rtext" x="668" y="2090">site unchanged, running in its own concurrency</text>
+<text class="rtext" x="668" y="2104">group with read-only access.</text>
+<text class="spec" x="668" y="2137">live-refresh</text>
+<rect class="req" x="660" y="2160" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="2160.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="2173" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="2188" text-anchor="middle"><tspan class="rid">5.2.2</tspan><tspan class="rname" dx="6">Hot run inputs</tspan></text>
+<text class="rtext" x="668" y="2210">A hot run SHALL start from the committed</text>
+<text class="rtext" x="668" y="2224">records plus the latest cold run&#x27;s build</text>
+<text class="rtext" x="668" y="2238">cache, rebuilding the derived data offline</text>
+<text class="rtext" x="668" y="2252">when no cache exists.</text>
+<text class="spec" x="668" y="2271">live-refresh</text>
+<rect class="req" x="660" y="2294" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="2294.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="2307" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="2322" text-anchor="middle"><tspan class="rid">5.2.3</tspan><tspan class="rname" dx="6">One bundle per run</tspan></text>
+<text class="rtext" x="668" y="2344">Each hot run SHALL make at most one write to</text>
+<text class="rtext" x="668" y="2358">Cloudflare KV: a bundle holding each league&#x27;s</text>
+<text class="rtext" x="668" y="2372">Forecast file and this week&#x27;s game cards in</text>
+<text class="rtext" x="668" y="2386">the page&#x27;s format, each game&#x27;s state, the b…</text>
+<text class="spec" x="668" y="2405">live-refresh</text>
+<rect class="req" x="970" y="2428" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="2428.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="2441" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="2456" text-anchor="middle"><tspan class="rid">5.2.3.1</tspan><tspan class="rname" dx="6">Failed hot run</tspan></text>
+<text class="rtext" x="978" y="2478">A failed hot run SHALL leave the previous</text>
+<text class="rtext" x="978" y="2492">bundle in place.</text>
+<text class="spec" x="978" y="2539">live-refresh</text>
+<rect class="req" x="660" y="2562" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="2562.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="2575" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="2590" text-anchor="middle"><tspan class="rid">5.2.4</tspan><tspan class="rname" dx="6">Bundle served</tspan></text>
+<text class="rtext" x="668" y="2612">The relay SHALL answer the site&#x27;s GET /live</text>
+<text class="rtext" x="668" y="2626">with the latest bundle, or an empty answer</text>
+<text class="rtext" x="668" y="2640">when none is newer than the time the page</text>
+<text class="rtext" x="668" y="2654">gives.</text>
+<text class="spec" x="668" y="2673">live-refresh</text>
+<rect class="req" x="970" y="2696" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="2696.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="2709" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="2724" text-anchor="middle"><tspan class="rid">5.2.4.1</tspan><tspan class="rname" dx="6">Writes need the secret</tspan></text>
+<text class="rtext" x="978" y="2746">The relay SHALL accept a bundle only with the</text>
+<text class="rtext" x="978" y="2760">hot run&#x27;s secret, which the site never sees.</text>
+<text class="spec" x="978" y="2807">live-refresh</text>
+<rect class="req" x="970" y="2830" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="2830.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="2843" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="2858" text-anchor="middle"><tspan class="rid">5.2.4.2</tspan><tspan class="rname" dx="6">Bundle expiry</tspan></text>
+<text class="rtext" x="978" y="2880">A stored bundle SHALL expire 7 days after its</text>
+<text class="rtext" x="978" y="2894">last write.</text>
+<text class="spec" x="978" y="2941">live-refresh</text>
+<rect class="req" x="350" y="2964" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="2964.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="2977" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="2992" text-anchor="middle"><tspan class="rid">5.3</tspan><tspan class="rname" dx="6">Update check</tspan></text>
+<text class="rtext" x="358" y="3014">While a page is visible, it SHALL check</text>
+<text class="rtext" x="358" y="3028">whether the deployed data, the live bundle or</text>
+<text class="rtext" x="358" y="3042">the site code is newer than what it shows,</text>
+<text class="rtext" x="358" y="3056">every 30 seconds while a game is in progres…</text>
+<text class="spec" x="358" y="3075">site-updates</text>
+<rect class="req" x="660" y="3098" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="3098.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="3111" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="3126" text-anchor="middle"><tspan class="rid">5.3.1</tspan><tspan class="rname" dx="6">Hidden tab</tspan></text>
+<text class="rtext" x="668" y="3148">A page SHALL make no checks while its tab is</text>
+<text class="rtext" x="668" y="3162">hidden, and check once when the tab is shown</text>
+<text class="rtext" x="668" y="3176">again.</text>
+<text class="spec" x="668" y="3209">site-updates</text>
+<rect class="req" x="660" y="3232" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="3232.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="3245" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="3260" text-anchor="middle"><tspan class="rid">5.3.2</tspan><tspan class="rname" dx="6">Local copy</tspan></text>
+<text class="rtext" x="668" y="3282">A page served without a code fingerprint SHALL</text>
+<text class="rtext" x="668" y="3296">check the deployed data only, without reading</text>
+<text class="rtext" x="668" y="3310">the live bundle.</text>
+<text class="spec" x="668" y="3343">site-updates</text>
+<rect class="req" x="660" y="3366" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="3366.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="3379" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="3394" text-anchor="middle"><tspan class="rid">5.3.3</tspan><tspan class="rname" dx="6">In-place data swap</tspan></text>
+<text class="rtext" x="668" y="3416">When newer deployed data arrives under</text>
+<text class="rtext" x="668" y="3430">unchanged site code, the page SHALL redraw the</text>
+<text class="rtext" x="668" y="3444">open view in place, keeping the league, sub-</text>
+<text class="rtext" x="668" y="3458">tab, Games week, each card&#x27;s view, open ful…</text>
+<text class="spec" x="668" y="3477">site-updates</text>
+<rect class="req" x="970" y="3500" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="3500.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="3513" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="3528" text-anchor="middle"><tspan class="rid">5.3.3.1</tspan><tspan class="rname" dx="6">Updated note after a swap</tspan></text>
+<text class="rtext" x="978" y="3550">After any data swap, scheduled or started by</text>
+<text class="rtext" x="978" y="3564">the visitor, the refresh note SHALL read</text>
+<text class="rtext" x="978" y="3578">&quot;Updated just now&quot;.</text>
+<text class="spec" x="978" y="3611">site-updates</text>
+<rect class="req" x="970" y="3634" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="3634.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="3647" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="3662" text-anchor="middle"><tspan class="rid">5.3.3.2</tspan><tspan class="rname" dx="6">Week gone from the new data</tspan></text>
+<text class="rtext" x="978" y="3684">When the new data no longer has the selected</text>
+<text class="rtext" x="978" y="3698">week, the page SHALL show its default week, as</text>
+<text class="rtext" x="978" y="3712">on a fresh load.</text>
+<text class="spec" x="978" y="3745">site-updates</text>
+<rect class="req" x="660" y="3768" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="3768.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="3781" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="3796" text-anchor="middle"><tspan class="rid">5.3.4</tspan><tspan class="rname" dx="6">Live bundle swap</tspan></text>
+<text class="rtext" x="668" y="3818">When the live bundle is newer than the data</text>
+<text class="rtext" x="668" y="3832">the page shows, under unchanged site code, the</text>
+<text class="rtext" x="668" y="3846">page SHALL use the bundle&#x27;s Forecasts and this</text>
+<text class="rtext" x="668" y="3860">week&#x27;s game cards in place of the static…</text>
+<text class="spec" x="668" y="3879">site-updates</text>
+<rect class="req" x="970" y="3902" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="3902.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="3915" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="3930" text-anchor="middle"><tspan class="rid">5.3.4.1</tspan><tspan class="rname" dx="6">Older bundle or relay down</tspan></text>
+<text class="rtext" x="978" y="3952">The page SHALL ignore a bundle older than the</text>
+<text class="rtext" x="978" y="3966">deployed static files, and keep what it shows</text>
+<text class="rtext" x="978" y="3980">when the relay cannot be reached.</text>
+<text class="spec" x="978" y="4013">site-updates</text>
+<rect class="req" x="970" y="4036" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4036.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4049" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="4064" text-anchor="middle"><tspan class="rid">5.3.4.2</tspan><tspan class="rname" dx="6">Updated time</tspan></text>
+<text class="rtext" x="978" y="4086">The page&#x27;s &quot;Updated&quot; time SHALL be the newer</text>
+<text class="rtext" x="978" y="4100">of the bundle&#x27;s time and the static files&#x27;</text>
+<text class="rtext" x="978" y="4114">refresh time.</text>
+<text class="spec" x="978" y="4147">site-updates</text>
+<rect class="req" x="660" y="4170" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="4170.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="4183" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="4198" text-anchor="middle"><tspan class="rid">5.3.5</tspan><tspan class="rname" dx="6">New version note</tspan></text>
+<text class="rtext" x="668" y="4220">When the deployed site code differs from the</text>
+<text class="rtext" x="668" y="4234">page&#x27;s, the page SHALL pin a note to the</text>
+<text class="rtext" x="668" y="4248">bottom of the screen saying a new version is</text>
+<text class="rtext" x="668" y="4262">available, with a Refresh button that reloa…</text>
+<text class="spec" x="668" y="4281">site-updates</text>
+<rect class="req" x="970" y="4304" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4304.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4317" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="4332" text-anchor="middle"><tspan class="rid">5.3.5.1</tspan><tspan class="rname" dx="6">Note moves nothing</tspan></text>
+<text class="rtext" x="978" y="4354">The new version note SHALL leave every other</text>
+<text class="rtext" x="978" y="4368">element where it was.</text>
+<text class="spec" x="978" y="4415">site-updates</text>
+<rect class="req" x="660" y="4438" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="4438.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="4451" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="4466" text-anchor="middle"><tspan class="rid">5.3.6</tspan><tspan class="rname" dx="6">Place kept across reloads</tspan></text>
+<text class="rtext" x="668" y="4488">The page URL SHALL also carry the Games week,</text>
+<text class="rtext" x="668" y="4502">so that a reload or a shared link opens the</text>
+<text class="rtext" x="668" y="4516">same week.</text>
+<text class="spec" x="668" y="4549">site-updates</text>
+<rect class="req" x="660" y="4572" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="4572.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="4585" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="4600" text-anchor="middle"><tspan class="rid">5.3.7</tspan><tspan class="rname" dx="6">Stamped scripts</tspan></text>
+<text class="rtext" x="668" y="4622">Every script and stylesheet the pages load,</text>
+<text class="rtext" x="668" y="4636">and every import between scripts, SHALL carry</text>
+<text class="rtext" x="668" y="4650">in its URL a stamp that each deploy replaces</text>
+<text class="rtext" x="668" y="4664">with a fingerprint of the site&#x27;s code files.</text>
+<text class="spec" x="668" y="4683">site-updates</text>
+<rect class="req" x="970" y="4706" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4706.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4719" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="4734" text-anchor="middle"><tspan class="rid">5.3.7.1</tspan><tspan class="rname" dx="6">Fingerprint of code only</tspan></text>
+<text class="rtext" x="978" y="4756">The fingerprint SHALL depend only on the</text>
+<text class="rtext" x="978" y="4770">content of the pages, scripts, stylesheet and</text>
+<text class="rtext" x="978" y="4784">bundled libraries, never the data files.</text>
+<text class="spec" x="978" y="4817">site-updates</text>
+<rect class="req" x="970" y="4840" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4840.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4853" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="4868" text-anchor="middle"><tspan class="rid">5.3.7.2</tspan><tspan class="rname" dx="6">One stamping command</tspan></text>
+<text class="rtext" x="978" y="4890">Every deploying workflow SHALL produce the</text>
+<text class="rtext" x="978" y="4904">stamp and the version file with the shared</text>
+<text class="rtext" x="978" y="4918">python -m ffapp stamp-site command before the</text>
+<text class="rtext" x="978" y="4932">upload.</text>
+<text class="spec" x="978" y="4951">site-updates</text>
+<rect class="req" x="970" y="4974" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4974.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4987" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="5002" text-anchor="middle"><tspan class="rid">5.3.7.3</tspan><tspan class="rname" dx="6">Version file</tspan></text>
+<text class="rtext" x="978" y="5024">Every deploy SHALL publish the fingerprint in</text>
+<text class="rtext" x="978" y="5038">version.json beside the pages.</text>
+<text class="spec" x="978" y="5085">site-updates</text>
+<rect class="req" x="970" y="5108" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="5108.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="5121" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="5136" text-anchor="middle"><tspan class="rid">5.3.7.4</tspan><tspan class="rname" dx="6">Placeholder in the source</tspan></text>
+<text class="rtext" x="978" y="5158">The source files SHALL carry a placeholder in</text>
+<text class="rtext" x="978" y="5172">place of the stamp, so that the site runs</text>
+<text class="rtext" x="978" y="5186">unchanged from a local server.</text>
+<text class="spec" x="978" y="5219">site-updates</text>
+<rect class="req" x="350" y="5242" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="5242.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="5255" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="5270" text-anchor="middle"><tspan class="rid">5.4</tspan><tspan class="rname" dx="6">Refresh relay</tspan></text>
+<text class="rtext" x="358" y="5292">The refresh relay SHALL accept refresh</text>
+<text class="rtext" x="358" y="5306">requests from the published site only.</text>
+<text class="spec" x="358" y="5353">manual-refresh</text>
+<rect class="req" x="660" y="5376" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="5376.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="5389" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="5404" text-anchor="middle"><tspan class="rid">5.4.1</tspan><tspan class="rname" dx="6">Relay credential</tspan></text>
+<text class="rtext" x="668" y="5426">The relay SHALL start the refresh workflows</text>
+<text class="rtext" x="668" y="5440">with a credential limited to running this</text>
+<text class="rtext" x="668" y="5454">repository&#x27;s workflows, held as a relay secret</text>
+<text class="rtext" x="668" y="5468">outside the repository and the site.</text>
+<text class="spec" x="668" y="5487">manual-refresh</text>
+<rect class="req" x="660" y="5510" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="5510.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="5523" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="5538" text-anchor="middle"><tspan class="rid">5.4.2</tspan><tspan class="rname" dx="6">What a refresh starts</tspan></text>
+<text class="rtext" x="668" y="5560">A refresh request SHALL start a hot run and a</text>
+<text class="rtext" x="668" y="5574">cold run in Quiet, and a cold run in the off-</text>
+<text class="rtext" x="668" y="5588">season.</text>
+<text class="spec" x="668" y="5621">manual-refresh</text>
+<rect class="req" x="660" y="5644" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="5644.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="5657" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="5672" text-anchor="middle"><tspan class="rid">5.4.3</tspan><tspan class="rname" dx="6">Refresh held</tspan></text>
+<text class="rtext" x="668" y="5694">The relay SHALL refuse a refresh in Live,</text>
+<text class="rtext" x="668" y="5708">while a hot run is queued or running, and</text>
+<text class="rtext" x="668" y="5722">within 5 minutes of the last refresh it</text>
+<text class="rtext" x="668" y="5736">started from the button, answering with the…</text>
+<text class="spec" x="668" y="5755">manual-refresh</text>
+<rect class="req" x="970" y="5778" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="5778.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="5791" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="5806" text-anchor="middle"><tspan class="rid">5.4.3.1</tspan><tspan class="rname" dx="6">Button refreshes start the ho…</tspan></text>
+<text class="rtext" x="978" y="5828">Only a refresh the button successfully started</text>
+<text class="rtext" x="978" y="5842">SHALL start the 5-minute hold.</text>
+<text class="spec" x="978" y="5889">manual-refresh</text>
+<rect class="req" x="970" y="5912" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="5912.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="5925" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="5940" text-anchor="middle"><tspan class="rid">5.4.3.2</tspan><tspan class="rname" dx="6">Two clicks at once</tspan></text>
+<text class="rtext" x="978" y="5962">Requests arriving together SHALL start one</text>
+<text class="rtext" x="978" y="5976">refresh, the others refused with the time</text>
+<text class="rtext" x="978" y="5990">until one is available.</text>
+<text class="spec" x="978" y="6023">manual-refresh</text>
+<rect class="req" x="660" y="6046" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="6046.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="6059" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="6074" text-anchor="middle"><tspan class="rid">5.4.4</tspan><tspan class="rname" dx="6">Refresh button</tspan></text>
+<text class="rtext" x="668" y="6096">Each page SHALL show a &quot;Refresh Data&quot; button</text>
+<text class="rtext" x="668" y="6110">in the header, aligned with the other header</text>
+<text class="rtext" x="668" y="6124">buttons and on one line, when the relay&#x27;s</text>
+<text class="rtext" x="668" y="6138">address is configured.</text>
+<text class="spec" x="668" y="6157">manual-refresh</text>
+<rect class="req" x="970" y="6180" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="6180.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="6193" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="6208" text-anchor="middle"><tspan class="rid">5.4.4.1</tspan><tspan class="rname" dx="6">Refresh note</tspan></text>
+<text class="rtext" x="978" y="6230">Under the button, beside it on phones, the</text>
+<text class="rtext" x="978" y="6244">page SHALL show, updated every minute:</text>
+<text class="rtext" x="978" y="6258">&quot;Updated N min ago&quot; while a refresh is</text>
+<text class="rtext" x="978" y="6272">available, &quot;Available in N min&quot; while held,…</text>
+<text class="spec" x="978" y="6291">manual-refresh</text>
+<rect class="req" x="970" y="6314" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="6314.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="6327" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="6342" text-anchor="middle"><tspan class="rid">5.4.4.2</tspan><tspan class="rname" dx="6">Note keeps its space</tspan></text>
+<text class="rtext" x="978" y="6364">The refresh note SHALL keep a fixed space</text>
+<text class="rtext" x="978" y="6378">within the screen, so that no message moves</text>
+<text class="rtext" x="978" y="6392">the button or any other element, with any</text>
+<text class="rtext" x="978" y="6406">longer explanation as its tooltip.</text>
+<text class="spec" x="978" y="6425">manual-refresh</text>
+<rect class="req" x="970" y="6448" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="6448.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="6461" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="6476" text-anchor="middle"><tspan class="rid">5.4.4.3</tspan><tspan class="rname" dx="6">Refresh that never lands</tspan></text>
+<text class="rtext" x="978" y="6498">If no new data has arrived 10 minutes after a</text>
+<text class="rtext" x="978" y="6512">refresh the visitor started, the note SHALL</text>
+<text class="rtext" x="978" y="6526">say the refresh did not finish.</text>
+<text class="spec" x="978" y="6559">manual-refresh</text>
+<rect class="req" x="350" y="6582" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="6582.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="6595" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="6610" text-anchor="middle"><tspan class="rid">5.5</tspan><tspan class="rname" dx="6">Cold run</tspan></text>
+<text class="rtext" x="358" y="6632">Each cold run SHALL update the league data,</text>
+<text class="rtext" x="358" y="6646">Projections, stats, NFL schedule, injury</text>
+<text class="rtext" x="358" y="6660">statuses and start-percentage snapshot, then</text>
+<text class="rtext" x="358" y="6674">rebuild the ratings, replacement levels, WA…</text>
+<text class="spec" x="358" y="6693">refresh-scheduling</text>
+<rect class="req" x="660" y="6716" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="6716.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="6729" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="6744" text-anchor="middle"><tspan class="rid">5.5.1</tspan><tspan class="rname" dx="6">Started by hand</tspan></text>
+<text class="rtext" x="668" y="6766">The cold run SHALL be startable by hand from</text>
+<text class="rtext" x="668" y="6780">GitHub.</text>
+<text class="spec" x="668" y="6827">refresh-scheduling</text>
+<rect class="req" x="660" y="6850" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="6850.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="6863" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="6878" text-anchor="middle"><tspan class="rid">5.5.2</tspan><tspan class="rname" dx="6">Live cold runs</tspan></text>
+<text class="rtext" x="668" y="6900">A cold run in Live SHALL skip the simulation,</text>
+<text class="rtext" x="668" y="6914">which the hot runs own.</text>
+<text class="spec" x="668" y="6961">refresh-scheduling</text>
+<rect class="req" x="660" y="6984" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="6984.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="6997" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="7012" text-anchor="middle"><tspan class="rid">5.5.3</tspan><tspan class="rname" dx="6">Failed step</tspan></text>
+<text class="rtext" x="668" y="7034">A failed required step SHALL stop the cold run</text>
+<text class="rtext" x="668" y="7048">before it commits or deploys, leaving the</text>
+<text class="rtext" x="668" y="7062">stored data and the published site unchanged</text>
+<text class="rtext" x="668" y="7076">and the run marked failed.</text>
+<text class="spec" x="668" y="7095">refresh-scheduling</text>
+<rect class="req" x="660" y="7118" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="7118.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="7131" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="7146" text-anchor="middle"><tspan class="rid">5.5.4</tspan><tspan class="rname" dx="6">Optional steps</tspan></text>
+<text class="rtext" x="668" y="7168">A failed snapshot, schedule or trending step</text>
+<text class="rtext" x="668" y="7182">SHALL let the cold run carry on with the data</text>
+<text class="rtext" x="668" y="7196">already stored, ending with a warning naming</text>
+<text class="rtext" x="668" y="7210">the step, shown as an annotation on the run.</text>
+<text class="spec" x="668" y="7229">refresh-scheduling</text>
+<rect class="req" x="350" y="7252" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="7252.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="7265" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="7280" text-anchor="middle"><tspan class="rid">5.6</tspan><tspan class="rname" dx="6">Deploy on code push</tspan></text>
+<text class="rtext" x="358" y="7302">A push to main that changes site code SHALL</text>
+<text class="rtext" x="358" y="7316">build the site data from the latest build</text>
+<text class="rtext" x="358" y="7330">cache or offline, run the tests and the layout</text>
+<text class="rtext" x="358" y="7344">check, and deploy the site only when they…</text>
+<text class="spec" x="358" y="7363">refresh-scheduling</text>
+<rect class="req" x="660" y="7386" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="7386.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="7399" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="7414" text-anchor="middle"><tspan class="rid">5.6.1</tspan><tspan class="rname" dx="6">Deploys never overlap a cold …</tspan></text>
+<text class="rtext" x="668" y="7436">The code-push deploy SHALL share the cold</text>
+<text class="rtext" x="668" y="7450">run&#x27;s concurrency group, so the two never run</text>
+<text class="rtext" x="668" y="7464">at once.</text>
+<text class="spec" x="668" y="7497">refresh-scheduling</text>
+<rect class="req" x="660" y="7520" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="7520.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="7533" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="7548" text-anchor="middle"><tspan class="rid">5.6.2</tspan><tspan class="rname" dx="6">Data pushes deploy nothing</tspan></text>
+<text class="rtext" x="668" y="7570">A push that changes only data SHALL start no</text>
+<text class="rtext" x="668" y="7584">code-push deploy.</text>
+<text class="spec" x="668" y="7631">refresh-scheduling</text>
+<text class="col" x="40" y="7688">OTHER BRANCHES · «trace» (extra parents)</text>
+<rect class="ext" x="350" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="350.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="7717" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="7732" text-anchor="middle"><tspan class="rid">1.2.5</tspan><tspan class="rname" dx="6">Slate Forecasts</tspan></text>
+<text class="rtext" x="358" y="7754">When a slate goes final, the cold run SHALL</text>
+<text class="rtext" x="358" y="7768">store the league&#x27;s season Forecast at that</text>
+<text class="rtext" x="358" y="7782">moment in the week&#x27;s slate file, keyed by the</text>
+<text class="rtext" x="358" y="7796">slate&#x27;s kickoff time.</text>
+<text class="spec" x="358" y="7815">game-predictions</text>
+<path class="trace" d="M810.0,1608 V1616 H480.0 V7704" marker-end="url(#openg)"/>
+<rect class="ext" x="660" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="660.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="7717" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="7732" text-anchor="middle"><tspan class="rid">10.13</tspan><tspan class="rname" dx="6">Feature docs</tspan></text>
+<text class="rtext" x="668" y="7754">Each feature whose flow is worth explaining</text>
+<text class="rtext" x="668" y="7768">SHALL have a living docs/&lt;feature&gt;.md with a</text>
+<text class="rtext" x="668" y="7782">diagram drawn by tools/&lt;feature&gt;_diagram.py,</text>
+<text class="rtext" x="668" y="7796">registered in tests/test_feature_docs.py wi…</text>
+<text class="spec" x="668" y="7815">project-standards · proposed</text>
+<path class="trace" d="M810.0,1742 V1755 H790.0 V7704" marker-end="url(#openg)"/>
+<rect class="ext" x="970" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="970.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="7717" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="7732" text-anchor="middle"><tspan class="rid">1.1.12</tspan><tspan class="rname" dx="6">Live week</tspan></text>
+<text class="rtext" x="978" y="7754">The live week SHALL be the first week after</text>
+<text class="rtext" x="978" y="7768">the as-of week once any of its NFL games has</text>
+<text class="rtext" x="978" y="7782">kicked off.</text>
+<text class="spec" x="978" y="7815">live-scoring</text>
+<path class="trace" d="M500.0,2010 V2028 H1100.0 V7704" marker-end="url(#openg)"/>
+<rect class="ext" x="1280" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1280.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1410.0" y="7717" text-anchor="middle">«requirement»</text>
+<text x="1410.0" y="7732" text-anchor="middle"><tspan class="rid">2.3</tspan><tspan class="rname" dx="6">Game Forecasts</tspan></text>
+<text class="rtext" x="1288" y="7754">For every week the simulation plays, the</text>
+<text class="rtext" x="1288" y="7768">stored result SHALL include, for each game,</text>
+<text class="rtext" x="1288" y="7782">each team&#x27;s mean simulated score, a histogram</text>
+<text class="rtext" x="1288" y="7796">of its simulated scores in 2-point bins, an…</text>
+<text class="spec" x="1288" y="7815">game-predictions</text>
+<path class="trace" d="M500.0,2010 V2018 H1410.0 V7704" marker-end="url(#openg)"/>
+<rect class="ext" x="1590" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1590.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1720.0" y="7717" text-anchor="middle">«need»</text>
+<text x="1720.0" y="7732" text-anchor="middle"><tspan class="rid">6</tspan><tspan class="rname" dx="6">Durable Record</tspan></text>
+<text class="rtext" x="1598" y="7754">The project SHALL keep a complete, lasting</text>
+<text class="rtext" x="1598" y="7768">copy of each league&#x27;s history and of the</text>
+<text class="rtext" x="1598" y="7782">Player data the Forecasts use, so every past</text>
+<text class="rtext" x="1598" y="7796">figure can be reproduced without Sleeper or…</text>
+<text class="spec" x="1598" y="7815">needs</text>
+<path class="trace" d="M810.0,2278 V2291 H1720.0 V7704" marker-end="url(#openg)"/>
+<rect class="ext" x="1900" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1900.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2030.0" y="7717" text-anchor="middle">«need»</text>
+<text x="2030.0" y="7732" text-anchor="middle"><tspan class="rid">12</tspan><tspan class="rname" dx="6">Secure Operation</tspan></text>
+<text class="rtext" x="1908" y="7754">The project SHALL keep its accounts and</text>
+<text class="rtext" x="1908" y="7768">services under the maintainer&#x27;s control: no</text>
+<text class="rtext" x="1908" y="7782">secret in the repository, the relay serving</text>
+<text class="rtext" x="1908" y="7796">only the site, and only the maintainer&#x27;s…</text>
+<text class="spec" x="1908" y="7815">needs</text>
+<path class="trace" d="M1120.0,2814 V2832 H2030.0 V7704" marker-end="url(#openg)"/>
+<rect class="ext" x="2210" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="2210.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2340.0" y="7717" text-anchor="middle">«need»</text>
+<text x="2340.0" y="7732" text-anchor="middle"><tspan class="rid">11</tspan><tspan class="rname" dx="6">Free to Run</tspan></text>
+<text class="rtext" x="2218" y="7754">The project SHALL run within the free tiers of</text>
+<text class="rtext" x="2218" y="7768">the services it uses: - GitHub Free, public</text>
+<text class="rtext" x="2218" y="7782">repository: Actions and Pages; - Cloudflare</text>
+<text class="rtext" x="2218" y="7796">Free: Workers, Workers KV, Cron Triggers an…</text>
+<text class="spec" x="2218" y="7815">needs</text>
+<path class="trace" d="M810.0,3216 V3224 H2340.0 V7704" marker-end="url(#openg)"/>
+<rect class="ext" x="2520" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="2520.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2650.0" y="7717" text-anchor="middle">«need»</text>
+<text x="2650.0" y="7732" text-anchor="middle"><tspan class="rid">9</tspan><tspan class="rname" dx="6">Usable by Every Manager</tspan></text>
+<text class="rtext" x="2528" y="7754">The site SHALL be usable by every Manager: on</text>
+<text class="rtext" x="2528" y="7768">the supported browsers and phone widths, and</text>
+<text class="rtext" x="2528" y="7782">to WCAG 2.2 AA.</text>
+<text class="spec" x="2528" y="7815">needs</text>
+<path class="trace" d="M810.0,3484 V3497 H2650.0 V7704" marker-end="url(#openg)"/>
+<rect class="ext" x="2830" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="2830.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2960.0" y="7717" text-anchor="middle">«requirement»</text>
+<text x="2960.0" y="7732" text-anchor="middle"><tspan class="rid">11.1.1</tspan><tspan class="rname" dx="6">Works without the relay</tspan></text>
+<text class="rtext" x="2838" y="7754">Every page SHALL show its published data when</text>
+<text class="rtext" x="2838" y="7768">the refresh relay is not configured or does</text>
+<text class="rtext" x="2838" y="7782">not answer.</text>
+<text class="spec" x="2838" y="7815">league-odds-site</text>
+<path class="trace" d="M1120.0,4020 V4038 H2960.0 V7704" marker-end="url(#openg)"/>
+<rect class="ext" x="3140" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="3140.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="3270.0" y="7717" text-anchor="middle">«requirement»</text>
+<text x="3270.0" y="7732" text-anchor="middle"><tspan class="rid">1.3.12</tspan><tspan class="rname" dx="6">Freshness shown</tspan></text>
+<text class="rtext" x="3148" y="7754">The Forecasts sub-tab SHALL show the as-of</text>
+<text class="rtext" x="3148" y="7768">week of the Forecast and when it was</text>
+<text class="rtext" x="3148" y="7782">generated.</text>
+<text class="spec" x="3148" y="7815">league-odds-site</text>
+<path class="trace" d="M1120.0,4154 V4162 H3270.0 V7704" marker-end="url(#openg)"/>
+<rect class="ext" x="3450" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="3450.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="3580.0" y="7717" text-anchor="middle">«need»</text>
+<text x="3580.0" y="7732" text-anchor="middle"><tspan class="rid">10</tspan><tspan class="rname" dx="6">Maintainable Project</tspan></text>
+<text class="rtext" x="3458" y="7754">The project SHALL stay understandable and safe</text>
+<text class="rtext" x="3458" y="7768">to change: its standards, text, calculations,</text>
+<text class="rtext" x="3458" y="7782">features and requirements documented and</text>
+<text class="rtext" x="3458" y="7796">checked automatically.</text>
+<text class="spec" x="3458" y="7815">needs</text>
+<path class="trace" d="M810.0,4288 V4301 H3580.0 V7704" marker-end="url(#openg)"/>
+<rect class="ext" x="3760" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="3760.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="3890.0" y="7717" text-anchor="middle">«requirement»</text>
+<text x="3890.0" y="7732" text-anchor="middle"><tspan class="rid">9.1.1.1</tspan><tspan class="rname" dx="6">Sub-tab in the URL</tspan></text>
+<text class="rtext" x="3768" y="7754">The page URL SHALL name the league and the</text>
+<text class="rtext" x="3768" y="7768">selected sub-tab, so that opening a link shows</text>
+<text class="rtext" x="3768" y="7782">that league and sub-tab.</text>
+<text class="spec" x="3768" y="7815">league-odds-site</text>
+<path class="trace" d="M810.0,4556 V4574 H3890.0 V7704" marker-end="url(#openg)"/>
+<path class="trace" d="M500.0,5360 V5368 H2030.0 V7704" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,5494 V5507 H2030.0 V7704" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,5762 V5780 H2340.0 V7704" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,6164 V6172 H2650.0 V7704" marker-end="url(#openg)"/>
+<rect class="ext" x="4070" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="4070.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="4200.0" y="7717" text-anchor="middle">«requirement»</text>
+<text x="4200.0" y="7732" text-anchor="middle"><tspan class="rid">9.2</tspan><tspan class="rname" dx="6">Fits a phone</tspan></text>
+<text class="rtext" x="4078" y="7754">Every league page SHALL fit each tested phone</text>
+<text class="rtext" x="4078" y="7768">width, down to 360 px, without the page</text>
+<text class="rtext" x="4078" y="7782">scrolling sideways.</text>
+<text class="spec" x="4078" y="7815">league-odds-site</text>
+<path class="trace" d="M1120.0,6432 V6445 H4200.0 V7704" marker-end="url(#openg)"/>
+<path class="trace" d="M500.0,6700 V6718 H1720.0 V7704" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,7102 V7110 H1720.0 V7704" marker-end="url(#openg)"/>
+<path class="trace" d="M500.0,7370 V7383 H3580.0 V7704" marker-end="url(#openg)"/>
+<path class="trace" d="M3270.0,7704 V286 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="4380" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="4380.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="4510.0" y="7717" text-anchor="middle">«requirement»</text>
+<text x="4510.0" y="7732" text-anchor="middle"><tspan class="rid">11.2</tspan><tspan class="rname" dx="6">KV write budget</tspan></text>
+<text class="rtext" x="4388" y="7754">Hot runs SHALL stop at a daily cap below</text>
+<text class="rtext" x="4388" y="7768">Cloudflare&#x27;s free allowance of 1,000 KV</text>
+<text class="rtext" x="4388" y="7782">writes, while cold runs carry on.</text>
+<text class="spec" x="4388" y="7815">live-refresh</text>
+<path class="trace" d="M4510.0,7704 V2420 H770.0 V2412" marker-end="url(#openg)"/>
+<rect class="ext" x="4690" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="4690.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="4820.0" y="7717" text-anchor="middle">«requirement»</text>
+<text x="4820.0" y="7732" text-anchor="middle"><tspan class="rid">7.8</tspan><tspan class="rname" dx="6">Calibration on demand</tspan></text>
+<text class="rtext" x="4698" y="7754">Calibration SHALL run as its own command,</text>
+<text class="rtext" x="4698" y="7768">outside the cold run.</text>
+<text class="spec" x="4698" y="7815">odds-calibration</text>
+<path class="trace" d="M4820.0,7704 V281 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="5000" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="5000.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="5130.0" y="7717" text-anchor="middle">«requirement»</text>
+<text x="5130.0" y="7732" text-anchor="middle"><tspan class="rid">1.1.11</tspan><tspan class="rname" dx="6">Simulation time</tspan></text>
+<text class="rtext" x="5008" y="7754">A full-season simulation of 10,000 runs SHALL</text>
+<text class="rtext" x="5008" y="7768">finish within 60 seconds.</text>
+<text class="spec" x="5008" y="7815">playoff-odds-simulation</text>
+<path class="trace" d="M5130.0,7704 V286 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="5310" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="5310.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="5440.0" y="7717" text-anchor="middle">«requirement»</text>
+<text x="5440.0" y="7732" text-anchor="middle"><tspan class="rid">3.1.12</tspan><tspan class="rname" dx="6">Data swapped in place</tspan></text>
+<text class="rtext" x="5318" y="7754">When newer site data arrives while the</text>
+<text class="rtext" x="5318" y="7768">Positions sub-tab is open, the page SHALL</text>
+<text class="rtext" x="5318" y="7782">redraw from it, keeping the selected season.</text>
+<text class="spec" x="5318" y="7815">positional-rankings-page</text>
+<path class="trace" d="M5440.0,7704 V276 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="5620" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="5620.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="5750.0" y="7717" text-anchor="middle">«requirement»</text>
+<text x="5750.0" y="7732" text-anchor="middle"><tspan class="rid">3.5.5.1</tspan><tspan class="rname" dx="6">Refreshed by the cold run</tspan></text>
+<text class="rtext" x="5628" y="7754">Every cold run SHALL rewrite the current</text>
+<text class="rtext" x="5628" y="7768">season&#x27;s replacement file.</text>
+<text class="spec" x="5628" y="7815">replacement-level</text>
+<path class="trace" d="M5750.0,7704 V281 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="5930" y="7704" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="5930.7" y="7704.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="6060.0" y="7717" text-anchor="middle">«requirement»</text>
+<text x="6060.0" y="7732" text-anchor="middle"><tspan class="rid">4.7.19.1</tspan><tspan class="rname" dx="6">Trending failure</tspan></text>
+<text class="rtext" x="5938" y="7754">A failed trending fetch SHALL skip that step</text>
+<text class="rtext" x="5938" y="7768">with a warning while the rest of the cold run</text>
+<text class="rtext" x="5938" y="7782">completes.</text>
+<text class="spec" x="5938" y="7815">team-news</text>
+<path class="trace" d="M6060.0,7704 V286 H150.0 V268" marker-end="url(#openg)"/>
+<path class="derive" d="M40,7922 H86" marker-end="url(#open)"/><text class="lg" x="96" y="7926">«deriveReqt»: primary parent (sets the ID)</text>
+<path class="trace" d="M360,7922 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="7926">«trace»: extra parent</text>
+<path class="verify" d="M680,7922 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="7926">«verify»: test, inspection or analysis</text>
+<path class="vgap" d="M1000,7922 H1046" marker-end="url(#openr)"/><text class="lg" x="1056" y="7926">verification gap</text>
 </svg>

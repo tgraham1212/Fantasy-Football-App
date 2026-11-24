@@ -50,10 +50,10 @@ Redraw the requirements diagrams (`python -X utf8 tools/requirements_diagram.py`
 
 ## 5. Refresh Specs
 
-- [ ] 5.1 `site-updates`
-- [ ] 5.2 `refresh-scheduling`
-- [ ] 5.3 `live-refresh`
-- [ ] 5.4 `manual-refresh`
+- [x] 5.1 `site-updates`
+- [x] 5.2 `refresh-scheduling`
+- [x] 5.3 `live-refresh`
+- [x] 5.4 `manual-refresh`
 
 ## 6. Data Specs
 

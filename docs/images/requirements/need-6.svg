@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3180 592" width="3180" height="592">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4110 592" width="4110" height="592">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,7 +33,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="3180" height="592"/>
+<rect class="bg" width="4110" height="592"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 6, Durable Record</text>
 <text class="sub" x="40" y="66">0 requirements derived from need 6 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
@@ -79,61 +79,91 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <rect class="ext" x="1280" y="334" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="1280.7" y="334.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="347" text-anchor="middle">«requirement»</text>
-<text x="1410.0" y="362" text-anchor="middle"><tspan class="rid">4.6.9</tspan><tspan class="rname" dx="6">Ratings file</tspan></text>
-<text class="rtext" x="1288" y="384">The ratings command SHALL write one file per</text>
-<text class="rtext" x="1288" y="398">configured league holding, for every Manager,</text>
-<text class="rtext" x="1288" y="412">their identity, display name and current or</text>
-<text class="rtext" x="1288" y="426">former status, and a per-week history of…</text>
-<text class="spec" x="1288" y="445">manager-ratings</text>
+<text x="1410.0" y="362" text-anchor="middle"><tspan class="rid">5.2.2</tspan><tspan class="rname" dx="6">Hot run inputs</tspan></text>
+<text class="rtext" x="1288" y="384">A hot run SHALL start from the committed</text>
+<text class="rtext" x="1288" y="398">records plus the latest cold run&#x27;s build</text>
+<text class="rtext" x="1288" y="412">cache, rebuilding the derived data offline</text>
+<text class="rtext" x="1288" y="426">when no cache exists.</text>
+<text class="spec" x="1288" y="445">live-refresh</text>
 <path class="trace" d="M1410.0,334 V276 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="1590" y="334" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="1590.7" y="334.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1720.0" y="347" text-anchor="middle">«requirement»</text>
-<text x="1720.0" y="362" text-anchor="middle"><tspan class="rid">3.3.8</tspan><tspan class="rname" dx="6">WAR stored</tspan></text>
-<text class="rtext" x="1598" y="384">The system SHALL write, per league and season,</text>
-<text class="rtext" x="1598" y="398">a file holding the cut, the week it runs</text>
-<text class="rtext" x="1598" y="412">through, the season constants and replacement</text>
-<text class="rtext" x="1598" y="426">levels, and per qualifying Player his Sleep…</text>
-<text class="spec" x="1598" y="445">player-war</text>
+<text x="1720.0" y="362" text-anchor="middle"><tspan class="rid">4.6.9</tspan><tspan class="rname" dx="6">Ratings file</tspan></text>
+<text class="rtext" x="1598" y="384">The ratings command SHALL write one file per</text>
+<text class="rtext" x="1598" y="398">configured league holding, for every Manager,</text>
+<text class="rtext" x="1598" y="412">their identity, display name and current or</text>
+<text class="rtext" x="1598" y="426">former status, and a per-week history of…</text>
+<text class="spec" x="1598" y="445">manager-ratings</text>
 <path class="trace" d="M1720.0,334 V281 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="1900" y="334" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="1900.7" y="334.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="2030.0" y="347" text-anchor="middle">«requirement»</text>
-<text x="2030.0" y="362" text-anchor="middle"><tspan class="rid">1.1.10</tspan><tspan class="rname" dx="6">Repeatability</tspan></text>
-<text class="rtext" x="1908" y="384">Given the same stored data and random seed,</text>
-<text class="rtext" x="1908" y="398">the simulation SHALL produce identical</text>
-<text class="rtext" x="1908" y="412">results.</text>
-<text class="spec" x="1908" y="445">playoff-odds-simulation</text>
+<text x="2030.0" y="362" text-anchor="middle"><tspan class="rid">3.3.8</tspan><tspan class="rname" dx="6">WAR stored</tspan></text>
+<text class="rtext" x="1908" y="384">The system SHALL write, per league and season,</text>
+<text class="rtext" x="1908" y="398">a file holding the cut, the week it runs</text>
+<text class="rtext" x="1908" y="412">through, the season constants and replacement</text>
+<text class="rtext" x="1908" y="426">levels, and per qualifying Player his Sleep…</text>
+<text class="spec" x="1908" y="445">player-war</text>
 <path class="trace" d="M2030.0,334 V286 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="2210" y="334" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="2210.7" y="334.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="2340.0" y="347" text-anchor="middle">«requirement»</text>
-<text x="2340.0" y="362" text-anchor="middle"><tspan class="rid">1.2</tspan><tspan class="rname" dx="6">Forecast history</tspan></text>
-<text class="rtext" x="2218" y="384">Each as-of Forecast SHALL be stored by league,</text>
-<text class="rtext" x="2218" y="398">season and as-of week, for current and</text>
-<text class="rtext" x="2218" y="412">replayed seasons alike, keeping every other</text>
-<text class="rtext" x="2218" y="426">week&#x27;s and season&#x27;s Forecast.</text>
+<text x="2340.0" y="362" text-anchor="middle"><tspan class="rid">1.1.10</tspan><tspan class="rname" dx="6">Repeatability</tspan></text>
+<text class="rtext" x="2218" y="384">Given the same stored data and random seed,</text>
+<text class="rtext" x="2218" y="398">the simulation SHALL produce identical</text>
+<text class="rtext" x="2218" y="412">results.</text>
 <text class="spec" x="2218" y="445">playoff-odds-simulation</text>
 <path class="trace" d="M2340.0,334 V276 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="2520" y="334" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="2520.7" y="334.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="2650.0" y="347" text-anchor="middle">«requirement»</text>
-<text x="2650.0" y="362" text-anchor="middle"><tspan class="rid">3.5.5</tspan><tspan class="rname" dx="6">Replacement levels stored</tspan></text>
-<text class="rtext" x="2528" y="384">The system SHALL write, per league and season,</text>
-<text class="rtext" x="2528" y="398">data/replacement/&lt;league&gt;/&lt;season&gt;.json</text>
-<text class="rtext" x="2528" y="412">holding the weekly projected and realised</text>
-<text class="rtext" x="2528" y="426">levels by position, the season values, the …</text>
-<text class="spec" x="2528" y="445">replacement-level</text>
+<text x="2650.0" y="362" text-anchor="middle"><tspan class="rid">1.2</tspan><tspan class="rname" dx="6">Forecast history</tspan></text>
+<text class="rtext" x="2528" y="384">Each as-of Forecast SHALL be stored by league,</text>
+<text class="rtext" x="2528" y="398">season and as-of week, for current and</text>
+<text class="rtext" x="2528" y="412">replayed seasons alike, keeping every other</text>
+<text class="rtext" x="2528" y="426">week&#x27;s and season&#x27;s Forecast.</text>
+<text class="spec" x="2528" y="445">playoff-odds-simulation</text>
 <path class="trace" d="M2650.0,334 V281 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="2830" y="334" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="2830.7" y="334.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="2960.0" y="347" text-anchor="middle">«requirement»</text>
-<text x="2960.0" y="362" text-anchor="middle"><tspan class="rid">4.7.19</tspan><tspan class="rname" dx="6">Trending adds saved</tspan></text>
-<text class="rtext" x="2838" y="384">Each cold run SHALL save Sleeper&#x27;s trending</text>
-<text class="rtext" x="2838" y="398">adds, the most-added Players over the last 24</text>
-<text class="rtext" x="2838" y="412">hours, with the time saved.</text>
-<text class="spec" x="2838" y="445">team-news</text>
+<text x="2960.0" y="362" text-anchor="middle"><tspan class="rid">5.5</tspan><tspan class="rname" dx="6">Cold run</tspan></text>
+<text class="rtext" x="2838" y="384">Each cold run SHALL update the league data,</text>
+<text class="rtext" x="2838" y="398">Projections, stats, NFL schedule, injury</text>
+<text class="rtext" x="2838" y="412">statuses and start-percentage snapshot, then</text>
+<text class="rtext" x="2838" y="426">rebuild the ratings, replacement levels, WA…</text>
+<text class="spec" x="2838" y="445">refresh-scheduling</text>
 <path class="trace" d="M2960.0,334 V286 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="3140" y="334" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="3140.7" y="334.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="3270.0" y="347" text-anchor="middle">«requirement»</text>
+<text x="3270.0" y="362" text-anchor="middle"><tspan class="rid">5.5.3</tspan><tspan class="rname" dx="6">Failed step</tspan></text>
+<text class="rtext" x="3148" y="384">A failed required step SHALL stop the cold run</text>
+<text class="rtext" x="3148" y="398">before it commits or deploys, leaving the</text>
+<text class="rtext" x="3148" y="412">stored data and the published site unchanged</text>
+<text class="rtext" x="3148" y="426">and the run marked failed.</text>
+<text class="spec" x="3148" y="445">refresh-scheduling</text>
+<path class="trace" d="M3270.0,334 V276 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="3450" y="334" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="3450.7" y="334.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="3580.0" y="347" text-anchor="middle">«requirement»</text>
+<text x="3580.0" y="362" text-anchor="middle"><tspan class="rid">3.5.5</tspan><tspan class="rname" dx="6">Replacement levels stored</tspan></text>
+<text class="rtext" x="3458" y="384">The system SHALL write, per league and season,</text>
+<text class="rtext" x="3458" y="398">data/replacement/&lt;league&gt;/&lt;season&gt;.json</text>
+<text class="rtext" x="3458" y="412">holding the weekly projected and realised</text>
+<text class="rtext" x="3458" y="426">levels by position, the season values, the …</text>
+<text class="spec" x="3458" y="445">replacement-level</text>
+<path class="trace" d="M3580.0,334 V281 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="3760" y="334" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="3760.7" y="334.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="3890.0" y="347" text-anchor="middle">«requirement»</text>
+<text x="3890.0" y="362" text-anchor="middle"><tspan class="rid">4.7.19</tspan><tspan class="rname" dx="6">Trending adds saved</tspan></text>
+<text class="rtext" x="3768" y="384">Each cold run SHALL save Sleeper&#x27;s trending</text>
+<text class="rtext" x="3768" y="398">adds, the most-added Players over the last 24</text>
+<text class="rtext" x="3768" y="412">hours, with the time saved.</text>
+<text class="spec" x="3768" y="445">team-news</text>
+<path class="trace" d="M3890.0,334 V286 H150.0 V268" marker-end="url(#openg)"/>
 <path class="derive" d="M40,552 H86" marker-end="url(#open)"/><text class="lg" x="96" y="556">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,552 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="556">«trace»: extra parent</text>
 <path class="verify" d="M680,552 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="556">«verify»: test, inspection or analysis</text>
