@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1660 2870" width="1660" height="2870">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1940 2870" width="1940" height="2870">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,7 +33,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="1660" height="2870"/>
+<rect class="bg" width="1940" height="2870"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 4, Manager History</text>
 <text class="sub" x="40" y="66">17 requirements derived from need 4 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
@@ -331,6 +331,15 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="1288" y="2690">other line.</text>
 <text class="spec" x="1288" y="2723">league-odds-site</text>
 <path class="trace" d="M810.0,1876 V1884 H1410.0 V2612" marker-end="url(#openg)"/>
+<rect class="ext" x="1590" y="2612" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1590.7" y="2612.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1720.0" y="2625" text-anchor="middle">«requirement»</text>
+<text x="1720.0" y="2640" text-anchor="middle"><tspan class="rid">3.1.5.1</tspan><tspan class="rname" dx="6">Shared Manager colours</tspan></text>
+<text class="rtext" x="1598" y="2662">Dot colours SHALL be each Manager&#x27;s colours</text>
+<text class="rtext" x="1598" y="2676">from the other sub-tabs, with former Managers</text>
+<text class="rtext" x="1598" y="2690">in the greys used elsewhere.</text>
+<text class="spec" x="1598" y="2723">positional-rankings-page</text>
+<path class="trace" d="M1720.0,2612 V1755 H1080.0 V1742" marker-end="url(#openg)"/>
 <path class="derive" d="M40,2830 H86" marker-end="url(#open)"/><text class="lg" x="96" y="2834">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,2830 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="2834">«trace»: extra parent</text>
 <path class="verify" d="M680,2830 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="2834">«verify»: test, inspection or analysis</text>

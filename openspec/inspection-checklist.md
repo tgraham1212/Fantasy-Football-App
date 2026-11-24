@@ -15,6 +15,12 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 
 | ID | Requirement | Spec | Pass criteria | Last inspected | Result |
 |---|---|---|---|---|---|
+| 3.1.2.1 | Two columns | `positional-rankings-page` | the live site at 1280 px, both leagues' grids | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 3.1.2.3.1 | Long labels | `positional-rankings-page` | the live site at 360 px, the longest Team Name's label and tooltip | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 3.1.5 | Player dots | `positional-rankings-page` | the live site, dots on the dynasty charts | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 3.1.5.1 | Shared Manager colours | `positional-rankings-page` | the live site, a Manager's colour on the Forecasts and Positions sub-tabs, and a 2022 former Manager | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 3.1.9.1 | Stable offsets | `positional-rankings-page` | `site/positions.js`, the dot placement uses no random numbers | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 3.1.10 | Dot popup | `positional-rankings-page` | the live site, hover on desktop and tap on a phone | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 2.1.2 | Card columns | `games-page` | the live site at 1280 px, two columns and a centred lone card | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 2.1.3 | Team rows | `games-page` | the live site, team rows of a week-11 card | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 2.1.3.1 | Forecast score | `games-page` | the live site, score blocks of an upcoming week | 2026-11-23 | Pass (confirmed when the feature was built) |
@@ -65,6 +71,7 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 
 | Spec | Last reviewed | Result | Notes |
 |---|---|---|---|
+| `positional-rankings-page` | 2026-11-23 | Pass | 12 requirements became 26 under need 3; 7 gaps closed with layout tests; 6 inspections carried over from the feature work |
 | `games-page` | 2026-11-23 | Pass | 19 requirements became 54 under need 2; 4 gaps closed with layout tests; 22 inspections carried over from the feature work |
 | `league-odds-site` | 2026-11-23 | Pass | 30 requirements: 7 moved to their specs, 23 became 57 under needs 1, 4, 9 and 11; 11 gaps closed with layout tests; 22 inspections carried over from the feature work |
 | `playoff-odds-simulation` | 2026-11-23 | Pass | Worked example: 14 requirements became 31 under need 1; roster drift corrected to a random walk; two gaps closed with tests |
