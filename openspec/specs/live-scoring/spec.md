@@ -70,7 +70,7 @@ A locked Player whose game is final SHALL score his actual points under the leag
 A locked Player whose game is in progress SHALL score his points so far plus the share of his game left times his projection and his error pool's mean miss, with the scatter around that scaled by the square root of the share left.
 
 **Rationale:** Calculations.txt section 12.
-**Traces to:** 1.1.12; 1.1.12.2; 1.1.5
+**Traces to:** 1.1.12; 1.1.5
 **Verified by:** Test: `tests/test_live_scoring.py::test_half_time_matches_the_spec_example`; Test: `tests/test_live_scoring.py::test_bias_scales_with_time_left_and_scatter_with_its_square_root`
 
 #### Scenario: At half time

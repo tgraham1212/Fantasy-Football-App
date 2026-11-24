@@ -25,9 +25,10 @@ def standings_order(teams: list[dict]) -> list[int]:
 
 
 def one_decimal(v: float) -> str:
-    """Halves round up, as the page's toFixed(1) does for the stored values."""
+    """As the page's toFixed(1) does: round the float's exact binary value, halves up (4.25 is
+    exact and gives 4.3; 4.35 is stored as 4.3499... and gives 4.3)."""
     from decimal import ROUND_HALF_UP, Decimal
-    return str(Decimal(repr(v)).quantize(Decimal("0.1"), rounding=ROUND_HALF_UP))
+    return str(Decimal(v).quantize(Decimal("0.1"), rounding=ROUND_HALF_UP))
 
 
 def pct_text(v) -> str:

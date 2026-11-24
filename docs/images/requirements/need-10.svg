@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2250 3406" width="2250" height="3406">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2870 5148" width="2870" height="5148">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,9 +33,9 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="2250" height="3406"/>
+<rect class="bg" width="2870" height="5148"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 10, Maintainable Project</text>
-<text class="sub" x="40" y="66">21 requirements derived from need 10 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
+<text class="sub" x="40" y="66">34 requirements derived from need 10 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
 <text class="col" x="350" y="132">LEVEL 1</text>
 <text class="col" x="660" y="132">LEVEL 2</text>
@@ -59,9 +59,22 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <path class="derive" d="M350,2353.0 H325 V209.0 H300" marker-end="url(#open)"/>
 <path class="derive" d="M660,2487.0 H635 V2353.0 H610" marker-end="url(#open)"/>
 <path class="derive" d="M350,2621.0 H325 V209.0 H300" marker-end="url(#open)"/>
-<path class="derive" d="M350,2755.0 H325 V209.0 H300" marker-end="url(#open)"/>
-<path class="derive" d="M350,2889.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,2755.0 H635 V2621.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,2889.0 H945 V2755.0 H920" marker-end="url(#open)"/>
 <path class="derive" d="M350,3023.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M350,3157.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M350,3291.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M350,3425.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M350,3559.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M350,3693.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,3827.0 H635 V3693.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,3961.0 H635 V3693.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,4095.0 H635 V3693.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,4229.0 H945 V4095.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,4363.0 H635 V3693.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,4497.0 H945 V4363.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,4631.0 H635 V3693.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,4765.0 H945 V4631.0 H920" marker-end="url(#open)"/>
 <text class="elab" x="322" y="337.0" text-anchor="end">«deriveReqt»</text>
 <rect class="insp" x="1300" y="312" width="320" height="60" rx="3"/>
 <text class="ster" x="1308" y="327">«inspection»</text>
@@ -155,19 +168,83 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <path class="verify" d="M1300,2620 H610" marker-end="url(#openv)"/>
 <rect class="tc" x="1300" y="2724" width="320" height="60" rx="3"/>
 <text class="ster" x="1308" y="2739">«testCase»</text>
-<text class="tctext" x="1308" y="2756">test_requirements.py::test_findings_match_the_</text>
-<text class="tctext" x="1308" y="2770">baseline</text>
-<path class="verify" d="M1300,2754 H610" marker-end="url(#openv)"/>
-<rect class="insp" x="1300" y="2858" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="2873">«inspection»</text>
-<text class="tctext" x="1308" y="2890">the folder and git tag --list specs-before-</text>
-<text class="tctext" x="1308" y="2904">requirements-standard</text>
-<path class="verify" d="M1300,2888 H610" marker-end="url(#openv)"/>
+<text class="tctext" x="1308" y="2756">test_nomenclature.py::test_site_copy_uses_proj</text>
+<text class="tctext" x="1308" y="2770">ect_nomenclature;</text>
+<path class="verify" d="M1300,2754 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="2858" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="2873">«testCase»</text>
+<text class="tctext" x="1308" y="2890">test_nomenclature.py::test_site_copy_uses_proj</text>
+<text class="tctext" x="1308" y="2904">ect_nomenclature;</text>
+<path class="verify" d="M1300,2888 H1230" marker-end="url(#openv)"/>
 <rect class="tc" x="1300" y="2992" width="320" height="60" rx="3"/>
 <text class="ster" x="1308" y="3007">«testCase»</text>
-<text class="tctext" x="1308" y="3024">test_feature_docs.py::test_diagrams_are_genera</text>
-<text class="tctext" x="1308" y="3038">ted_and_current</text>
+<text class="tctext" x="1308" y="3024">test_requirements.py::test_findings_match_the_</text>
+<text class="tctext" x="1308" y="3038">baseline</text>
 <path class="verify" d="M1300,3022 H610" marker-end="url(#openv)"/>
+<rect class="insp" x="1300" y="3126" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="3141">«inspection»</text>
+<text class="tctext" x="1308" y="3158">the folder and git tag --list specs-before-</text>
+<text class="tctext" x="1308" y="3172">requirements-standard</text>
+<path class="verify" d="M1300,3156 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="3260" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="3275">«testCase»</text>
+<text class="tctext" x="1308" y="3292">test_feature_docs.py::test_diagrams_are_genera</text>
+<text class="tctext" x="1308" y="3306">ted_and_current</text>
+<path class="verify" d="M1300,3290 H610" marker-end="url(#openv)"/>
+<rect class="insp" x="1300" y="3394" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="3409">«inspection»</text>
+<text class="tctext" x="1308" y="3426">openspec/config.yaml (context) and CLAUDE.md,</text>
+<text class="tctext" x="1308" y="3440">each listed standard is present</text>
+<path class="verify" d="M1300,3424 H610" marker-end="url(#openv)"/>
+<rect class="insp" x="1300" y="3528" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="3543">«inspection»</text>
+<text class="tctext" x="1308" y="3560">openspec/inspection-checklist.md, each spec&#x27;s</text>
+<text class="tctext" x="1308" y="3574">standard review</text>
+<path class="verify" d="M1300,3558 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="3662" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="3677">«testCase»</text>
+<text class="tctext" x="1308" y="3694">test_site_copy.py::test_file_round_trip_keeps_</text>
+<text class="tctext" x="1308" y="3708">labels_and_notes; test_site_copy.py::test_real</text>
+<path class="verify" d="M1300,3692 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="3796" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="3811">«testCase»</text>
+<text class="tctext" x="1308" y="3828">test_site_copy.py::test_extracts_html_and_mark</text>
+<text class="tctext" x="1308" y="3842">ed_script_strings</text>
+<path class="verify" d="M1300,3826 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="3930" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="3945">«testCase»</text>
+<text class="tctext" x="1308" y="3962">test_site_copy.py::test_coverage_finds_unmarke</text>
+<text class="tctext" x="1308" y="3976">d_text; test_site_copy.py::test_real_site_text</text>
+<path class="verify" d="M1300,3960 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="4064" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="4079">«testCase»</text>
+<text class="tctext" x="1308" y="4096">test_site_copy.py::test_code_change_is_stale_a</text>
+<text class="tctext" x="1308" y="4110">nd_regeneration_fixes_it; test_site_copy.py::t</text>
+<path class="verify" d="M1300,4094 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="4198" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="4213">«testCase»</text>
+<text class="tctext" x="1308" y="4230">test_site_copy.py::test_new_and_removed_ids</text>
+<path class="verify" d="M1300,4228 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="4332" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="4347">«testCase»</text>
+<text class="tctext" x="1308" y="4364">test_site_copy.py::test_owner_edit_is_pending_</text>
+<text class="tctext" x="1308" y="4378">and_survives_regeneration; test_site_copy.py::</text>
+<path class="verify" d="M1300,4362 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="4466" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="4481">«testCase»</text>
+<text class="tctext" x="1308" y="4498">test_site_copy.py::test_both_sides_changed_is_</text>
+<text class="tctext" x="1308" y="4512">a_conflict</text>
+<path class="verify" d="M1300,4496 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="4600" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="4615">«testCase»</text>
+<text class="tctext" x="1308" y="4632">test_site_copy.py::test_apply_writes_edits_bac</text>
+<text class="tctext" x="1308" y="4646">k</text>
+<path class="verify" d="M1300,4630 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1300" y="4734" width="320" height="60" rx="3"/>
+<text class="ster" x="1308" y="4749">«testCase»</text>
+<text class="tctext" x="1308" y="4766">test_site_copy.py::test_apply_refuses_changed_</text>
+<text class="tctext" x="1308" y="4780">placeholders_and_reports_deletions</text>
+<path class="verify" d="M1300,4764 H1230" marker-end="url(#openv)"/>
 <rect class="need" x="40" y="150" width="260" height="118" rx="3"/>
 <rect class="needhdr" x="40.7" y="150.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="170.0" y="163" text-anchor="middle">«need»</text>
@@ -336,96 +413,227 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="358" y="2640">meaning, the nomenclature rules and the</text>
 <text class="rtext" x="358" y="2654">banned-terms list.</text>
 <text class="spec" x="358" y="2673">project-standards · proposed</text>
-<rect class="req" x="350" y="2696" width="260" height="118" rx="3"/>
-<rect class="hdr" x="350.7" y="2696.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="480.0" y="2709" text-anchor="middle">«requirement»</text>
-<text x="480.0" y="2724" text-anchor="middle"><tspan class="rid">10.11</tspan><tspan class="rname" dx="6">Requirements check</tspan></text>
-<text class="rtext" x="358" y="2746">tests/test_requirements.py SHALL check every</text>
-<text class="rtext" x="358" y="2760">main spec and every active change&#x27;s delta</text>
-<text class="rtext" x="358" y="2774">specs against the requirements standard,</text>
-<text class="rtext" x="358" y="2788">reporting each finding with its spec and…</text>
-<text class="spec" x="358" y="2807">project-standards · proposed</text>
-<rect class="req" x="350" y="2830" width="260" height="118" rx="3"/>
-<rect class="hdr" x="350.7" y="2830.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="480.0" y="2843" text-anchor="middle">«requirement»</text>
-<text x="480.0" y="2858" text-anchor="middle"><tspan class="rid">10.12</tspan><tspan class="rname" dx="6">Specs archived before the sta…</tspan></text>
-<text class="rtext" x="358" y="2880">The specs as they stood before the</text>
-<text class="rtext" x="358" y="2894">requirements standard SHALL be kept unchanged</text>
-<text class="rtext" x="358" y="2908">at openspec/specs-archive/pre-requirements-</text>
-<text class="rtext" x="358" y="2922">standard/ and under the git tag specs-befor…</text>
-<text class="spec" x="358" y="2941">project-standards · proposed</text>
+<rect class="req" x="660" y="2696" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="2696.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="2709" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="2724" text-anchor="middle"><tspan class="rid">10.10.1</tspan><tspan class="rname" dx="6">Nomenclature</tspan></text>
+<text class="rtext" x="668" y="2746">Everything people read, site text,</text>
+<text class="rtext" x="668" y="2760">documentation and specs, SHALL use the</text>
+<text class="rtext" x="668" y="2774">glossary&#x27;s terms: Managers, Team Names,</text>
+<text class="rtext" x="668" y="2788">Players, Forecasts for the simulation&#x27;s…</text>
+<text class="spec" x="668" y="2807">project-standards</text>
+<rect class="req" x="970" y="2830" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="2830.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="2843" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="2858" text-anchor="middle"><tspan class="rid">10.10.1.1</tspan><tspan class="rname" dx="6">Nomenclature check</tspan></text>
+<text class="rtext" x="978" y="2880">A test SHALL flag each site-copy.txt entry</text>
+<text class="rtext" x="978" y="2894">using a retired term (owner, odds, chances, or</text>
+<text class="rtext" x="978" y="2908">prediction for a Forecast) that is not in a</text>
+<text class="rtext" x="978" y="2922">committed baseline, code and data identifie…</text>
+<text class="spec" x="978" y="2941">project-standards</text>
 <rect class="req" x="350" y="2964" width="260" height="118" rx="3"/>
 <rect class="hdr" x="350.7" y="2964.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="480.0" y="2977" text-anchor="middle">«requirement»</text>
-<text x="480.0" y="2992" text-anchor="middle"><tspan class="rid">10.13</tspan><tspan class="rname" dx="6">Feature docs</tspan></text>
-<text class="rtext" x="358" y="3014">Each feature whose flow is worth explaining</text>
-<text class="rtext" x="358" y="3028">SHALL have a living docs/&lt;feature&gt;.md with a</text>
-<text class="rtext" x="358" y="3042">diagram drawn by tools/&lt;feature&gt;_diagram.py,</text>
-<text class="rtext" x="358" y="3056">registered in tests/test_feature_docs.py wi…</text>
+<text x="480.0" y="2992" text-anchor="middle"><tspan class="rid">10.11</tspan><tspan class="rname" dx="6">Requirements check</tspan></text>
+<text class="rtext" x="358" y="3014">tests/test_requirements.py SHALL check every</text>
+<text class="rtext" x="358" y="3028">main spec and every active change&#x27;s delta</text>
+<text class="rtext" x="358" y="3042">specs against the requirements standard,</text>
+<text class="rtext" x="358" y="3056">reporting each finding with its spec and…</text>
 <text class="spec" x="358" y="3075">project-standards · proposed</text>
-<text class="col" x="40" y="3132">OTHER BRANCHES · «trace» (extra parents)</text>
-<rect class="ext" x="350" y="3148" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="350.7" y="3148.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="480.0" y="3161" text-anchor="middle">«requirement»</text>
-<text x="480.0" y="3176" text-anchor="middle"><tspan class="rid">2.10.6</tspan><tspan class="rname" dx="6">State document</tspan></text>
-<text class="rtext" x="358" y="3198">docs/games-page-states.md, linked from the</text>
-<text class="rtext" x="358" y="3212">README&#x27;s Games section, SHALL hold the state</text>
-<text class="rtext" x="358" y="3226">diagram, the table of states, the table of the</text>
-<text class="rtext" x="358" y="3240">21 real transitions with their triggers, th…</text>
-<text class="spec" x="358" y="3259">game-card-states</text>
-<path class="trace" d="M480.0,3148 V3090 H460.0 V3082" marker-end="url(#openg)"/>
-<rect class="ext" x="660" y="3148" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="660.7" y="3148.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="790.0" y="3161" text-anchor="middle">«requirement»</text>
-<text x="790.0" y="3176" text-anchor="middle"><tspan class="rid">5.1.8</tspan><tspan class="rname" dx="6">Refresh modes document</tspan></text>
-<text class="rtext" x="668" y="3198">docs/refresh-modes.md, linked from the README,</text>
-<text class="rtext" x="668" y="3212">SHALL show the diagram, the modes, transitions</text>
-<text class="rtext" x="668" y="3226">and cadences, the steps of a hot and a cold</text>
-<text class="rtext" x="668" y="3240">run, the data tiers, the limits and budgets…</text>
-<text class="spec" x="668" y="3259">refresh-scheduling</text>
-<path class="trace" d="M790.0,3148 V3095 H460.0 V3082" marker-end="url(#openg)"/>
-<rect class="ext" x="970" y="3148" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="970.7" y="3148.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="1100.0" y="3161" text-anchor="middle">«requirement»</text>
-<text x="1100.0" y="3176" text-anchor="middle"><tspan class="rid">5.6</tspan><tspan class="rname" dx="6">Deploy on code push</tspan></text>
-<text class="rtext" x="978" y="3198">A push to main that changes site code SHALL</text>
-<text class="rtext" x="978" y="3212">build the site data from the latest build</text>
-<text class="rtext" x="978" y="3226">cache or offline, run the tests and the layout</text>
-<text class="rtext" x="978" y="3240">check, and deploy the site only when they…</text>
-<text class="spec" x="978" y="3259">refresh-scheduling</text>
-<path class="trace" d="M1100.0,3148 V286 H150.0 V268" marker-end="url(#openg)"/>
-<rect class="ext" x="1280" y="3148" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="1280.7" y="3148.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="1410.0" y="3161" text-anchor="middle">«requirement»</text>
-<text x="1410.0" y="3176" text-anchor="middle"><tspan class="rid">5.3.5</tspan><tspan class="rname" dx="6">New version note</tspan></text>
-<text class="rtext" x="1288" y="3198">When the deployed site code differs from the</text>
-<text class="rtext" x="1288" y="3212">page&#x27;s, the page SHALL pin a note to the</text>
-<text class="rtext" x="1288" y="3226">bottom of the screen saying a new version is</text>
-<text class="rtext" x="1288" y="3240">available, with a Refresh button that reloa…</text>
-<text class="spec" x="1288" y="3259">site-updates</text>
-<path class="trace" d="M1410.0,3148 V276 H150.0 V268" marker-end="url(#openg)"/>
-<rect class="ext" x="1590" y="3148" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="1590.7" y="3148.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="1720.0" y="3161" text-anchor="middle">«requirement»</text>
-<text x="1720.0" y="3176" text-anchor="middle"><tspan class="rid">6.2.1</tspan><tspan class="rname" dx="6">Configuration checked</tspan></text>
-<text class="rtext" x="1598" y="3198">Loading the configuration SHALL fail with an</text>
-<text class="rtext" x="1598" y="3212">error naming the field on any missing, unknown</text>
-<text class="rtext" x="1598" y="3226">or invalid value, the simulation, rating and</text>
-<text class="rtext" x="1598" y="3240">rival settings included.</text>
-<text class="spec" x="1598" y="3259">sleeper-league-sync</text>
-<path class="trace" d="M1720.0,3148 V281 H150.0 V268" marker-end="url(#openg)"/>
-<rect class="ext" x="1900" y="3148" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="1900.7" y="3148.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="2030.0" y="3161" text-anchor="middle">«requirement»</text>
-<text x="2030.0" y="3176" text-anchor="middle"><tspan class="rid">4.7.16</tspan><tspan class="rname" dx="6">Editable templates</tspan></text>
-<text class="rtext" x="1908" y="3198">Every headline and story sentence SHALL come</text>
-<text class="rtext" x="1908" y="3212">from a template with a copy ID in site-</text>
-<text class="rtext" x="1908" y="3226">copy.txt and named placeholders for the data,</text>
-<text class="rtext" x="1908" y="3240">so that the maintainer can reword any story…</text>
-<text class="spec" x="1908" y="3259">team-news</text>
-<path class="trace" d="M2030.0,3148 V286 H150.0 V268" marker-end="url(#openg)"/>
-<path class="derive" d="M40,3366 H86" marker-end="url(#open)"/><text class="lg" x="96" y="3370">«deriveReqt»: primary parent (sets the ID)</text>
-<path class="trace" d="M360,3366 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="3370">«trace»: extra parent</text>
-<path class="verify" d="M680,3366 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="3370">«verify»: test, inspection or analysis</text>
-<path class="vgap" d="M1000,3366 H1046" marker-end="url(#openr)"/><text class="lg" x="1056" y="3370">verification gap</text>
+<rect class="req" x="350" y="3098" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="3098.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="3111" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="3126" text-anchor="middle"><tspan class="rid">10.12</tspan><tspan class="rname" dx="6">Specs archived before the sta…</tspan></text>
+<text class="rtext" x="358" y="3148">The specs as they stood before the</text>
+<text class="rtext" x="358" y="3162">requirements standard SHALL be kept unchanged</text>
+<text class="rtext" x="358" y="3176">at openspec/specs-archive/pre-requirements-</text>
+<text class="rtext" x="358" y="3190">standard/ and under the git tag specs-befor…</text>
+<text class="spec" x="358" y="3209">project-standards · proposed</text>
+<rect class="req" x="350" y="3232" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="3232.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="3245" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="3260" text-anchor="middle"><tspan class="rid">10.13</tspan><tspan class="rname" dx="6">Feature docs</tspan></text>
+<text class="rtext" x="358" y="3282">Each feature whose flow is worth explaining</text>
+<text class="rtext" x="358" y="3296">SHALL have a living docs/&lt;feature&gt;.md with a</text>
+<text class="rtext" x="358" y="3310">diagram drawn by tools/&lt;feature&gt;_diagram.py,</text>
+<text class="rtext" x="358" y="3324">registered in tests/test_feature_docs.py wi…</text>
+<text class="spec" x="358" y="3343">project-standards · proposed</text>
+<rect class="req" x="350" y="3366" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="3366.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="3379" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="3394" text-anchor="middle"><tspan class="rid">10.14</tspan><tspan class="rname" dx="6">Standards recorded</tspan></text>
+<text class="rtext" x="358" y="3416">The project standards SHALL be written in the</text>
+<text class="rtext" x="358" y="3430">openspec/config.yaml context and summarised in</text>
+<text class="rtext" x="358" y="3444">CLAUDE.md, covering browsers, phone widths,</text>
+<text class="rtext" x="358" y="3458">accessibility, Material Design, colour, Pla…</text>
+<text class="spec" x="358" y="3477">project-standards</text>
+<rect class="req" x="350" y="3500" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="3500.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="3513" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="3528" text-anchor="middle"><tspan class="rid">10.15</tspan><tspan class="rname" dx="6">Writing style</tspan></text>
+<text class="rtext" x="358" y="3550">Writing SHALL follow APA style, with titles</text>
+<text class="rtext" x="358" y="3564">and headings in title case.</text>
+<text class="spec" x="358" y="3611">project-standards</text>
+<rect class="req" x="350" y="3634" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="3634.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="3647" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="3662" text-anchor="middle"><tspan class="rid">10.16</tspan><tspan class="rname" dx="6">Site copy file</tspan></text>
+<text class="rtext" x="358" y="3684">site-copy.txt SHALL hold every piece of</text>
+<text class="rtext" x="358" y="3698">descriptive text on the site, grouped by page</text>
+<text class="rtext" x="358" y="3712">or tab, each entry with a stable ID, a short</text>
+<text class="rtext" x="358" y="3726">label, its location and its text, with page…</text>
+<text class="spec" x="358" y="3745">site-copy</text>
+<rect class="req" x="660" y="3768" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="3768.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="3781" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="3796" text-anchor="middle"><tspan class="rid">10.16.1</tspan><tspan class="rname" dx="6">IDs in the code</tspan></text>
+<text class="rtext" x="668" y="3818">Every entry SHALL be identified in the code</text>
+<text class="rtext" x="668" y="3832">itself, an HTML element by a data-copy</text>
+<text class="rtext" x="668" y="3846">attribute and a script string by a /*copy:ID*/</text>
+<text class="rtext" x="668" y="3860">marker just before it, so that its ID moves…</text>
+<text class="spec" x="668" y="3879">site-copy</text>
+<rect class="req" x="660" y="3902" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="3902.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="3915" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="3930" text-anchor="middle"><tspan class="rid">10.16.2</tspan><tspan class="rname" dx="6">Every piece of text covered</tspan></text>
+<text class="rtext" x="668" y="3952">Every heading, paragraph, list item and page</text>
+<text class="rtext" x="668" y="3966">title in the HTML, and every script string of</text>
+<text class="rtext" x="668" y="3980">four words or more outside a short exempt</text>
+<text class="rtext" x="668" y="3994">list, SHALL carry a copy ID.</text>
+<text class="spec" x="668" y="4013">site-copy</text>
+<rect class="req" x="660" y="4036" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="4036.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="4049" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="4064" text-anchor="middle"><tspan class="rid">10.16.3</tspan><tspan class="rname" dx="6">Code and copy file in step</tspan></text>
+<text class="rtext" x="668" y="4086">python -m ffapp site-copy SHALL bring the file</text>
+<text class="rtext" x="668" y="4100">and its sync record, site-copy.lock.json, up</text>
+<text class="rtext" x="668" y="4114">to date with every entry whose code text</text>
+<text class="rtext" x="668" y="4128">changed while its file text did not.</text>
+<text class="spec" x="668" y="4147">site-copy</text>
+<rect class="req" x="970" y="4170" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4170.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4183" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="4198" text-anchor="middle"><tspan class="rid">10.16.3.1</tspan><tspan class="rname" dx="6">New and removed IDs</tspan></text>
+<text class="rtext" x="978" y="4220">Regenerating the file SHALL add every new ID</text>
+<text class="rtext" x="978" y="4234">in the code and drop every ID removed from it.</text>
+<text class="spec" x="978" y="4281">site-copy</text>
+<rect class="req" x="660" y="4304" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="4304.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="4317" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="4332" text-anchor="middle"><tspan class="rid">10.16.4</tspan><tspan class="rname" dx="6">Pending copy edits</tspan></text>
+<text class="rtext" x="668" y="4354">An entry whose file text differs from the sync</text>
+<text class="rtext" x="668" y="4368">record while its code text does not SHALL</text>
+<text class="rtext" x="668" y="4382">count as a pending edit, kept through test</text>
+<text class="rtext" x="668" y="4396">runs and regeneration and listed by a faili…</text>
+<text class="spec" x="668" y="4415">site-copy</text>
+<rect class="req" x="970" y="4438" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4438.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4451" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="4466" text-anchor="middle"><tspan class="rid">10.16.4.1</tspan><tspan class="rname" dx="6">Conflicting edits</tspan></text>
+<text class="rtext" x="978" y="4488">An entry changed in both the code and the file</text>
+<text class="rtext" x="978" y="4502">SHALL be reported as a conflict for the</text>
+<text class="rtext" x="978" y="4516">maintainer, with neither side overwritten.</text>
+<text class="spec" x="978" y="4549">site-copy</text>
+<rect class="req" x="660" y="4572" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="4572.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="4585" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="4600" text-anchor="middle"><tspan class="rid">10.16.5</tspan><tspan class="rname" dx="6">Applying copy edits</tspan></text>
+<text class="rtext" x="668" y="4622">python -m ffapp site-copy --apply SHALL write</text>
+<text class="rtext" x="668" y="4636">each pending edit into its marked HTML element</text>
+<text class="rtext" x="668" y="4650">or script string, with placeholders and markup</text>
+<text class="rtext" x="668" y="4664">as given, and update the sync record.</text>
+<text class="spec" x="668" y="4683">site-copy</text>
+<rect class="req" x="970" y="4706" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4706.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4719" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="4734" text-anchor="middle"><tspan class="rid">10.16.5.1</tspan><tspan class="rname" dx="6">Edits refused</tspan></text>
+<text class="rtext" x="978" y="4756">--apply SHALL refuse an edit that drops or</text>
+<text class="rtext" x="978" y="4770">changes a placeholder, and report an entry</text>
+<text class="rtext" x="978" y="4784">left empty with a note asking for deletion,</text>
+<text class="rtext" x="978" y="4798">applying the others.</text>
+<text class="spec" x="978" y="4817">site-copy</text>
+<text class="col" x="40" y="4874">OTHER BRANCHES · «trace» (extra parents)</text>
+<rect class="ext" x="350" y="4890" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="350.7" y="4890.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="4903" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="4918" text-anchor="middle"><tspan class="rid">8.2.2</tspan><tspan class="rname" dx="6">Kept current</tspan></text>
+<text class="rtext" x="358" y="4940">A change that alters a calculation&#x27;s formula,</text>
+<text class="rtext" x="358" y="4954">inputs, assumptions or settings SHALL update</text>
+<text class="rtext" x="358" y="4968">its section in Calculations.txt in the same</text>
+<text class="rtext" x="358" y="4982">change.</text>
+<text class="spec" x="358" y="5001">calculation-docs</text>
+<path class="trace" d="M480.0,4890 V276 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="660" y="4890" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="660.7" y="4890.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="4903" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="4918" text-anchor="middle"><tspan class="rid">2.10.6</tspan><tspan class="rname" dx="6">State document</tspan></text>
+<text class="rtext" x="668" y="4940">docs/games-page-states.md, linked from the</text>
+<text class="rtext" x="668" y="4954">README&#x27;s Games section, SHALL hold the state</text>
+<text class="rtext" x="668" y="4968">diagram, the table of states, the table of the</text>
+<text class="rtext" x="668" y="4982">21 real transitions with their triggers, th…</text>
+<text class="spec" x="668" y="5001">game-card-states</text>
+<path class="trace" d="M790.0,4890 V3363 H460.0 V3350" marker-end="url(#openg)"/>
+<rect class="ext" x="970" y="4890" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="970.7" y="4890.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4903" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="4918" text-anchor="middle"><tspan class="rid">9.4.4.1</tspan><tspan class="rname" dx="6">Baselines only shrink</tspan></text>
+<text class="rtext" x="978" y="4940">A baselined finding that no longer occurs</text>
+<text class="rtext" x="978" y="4954">SHALL fail its check until it is removed from</text>
+<text class="rtext" x="978" y="4968">the baseline.</text>
+<text class="spec" x="978" y="5001">layout-checks</text>
+<path class="trace" d="M1100.0,4890 V286 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="1280" y="4890" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1280.7" y="4890.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1410.0" y="4903" text-anchor="middle">«requirement»</text>
+<text x="1410.0" y="4918" text-anchor="middle"><tspan class="rid">5.1.8</tspan><tspan class="rname" dx="6">Refresh modes document</tspan></text>
+<text class="rtext" x="1288" y="4940">docs/refresh-modes.md, linked from the README,</text>
+<text class="rtext" x="1288" y="4954">SHALL show the diagram, the modes, transitions</text>
+<text class="rtext" x="1288" y="4968">and cadences, the steps of a hot and a cold</text>
+<text class="rtext" x="1288" y="4982">run, the data tiers, the limits and budgets…</text>
+<text class="spec" x="1288" y="5001">refresh-scheduling</text>
+<path class="trace" d="M1410.0,4890 V3358 H460.0 V3350" marker-end="url(#openg)"/>
+<rect class="ext" x="1590" y="4890" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1590.7" y="4890.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1720.0" y="4903" text-anchor="middle">«requirement»</text>
+<text x="1720.0" y="4918" text-anchor="middle"><tspan class="rid">5.6</tspan><tspan class="rname" dx="6">Deploy on code push</tspan></text>
+<text class="rtext" x="1598" y="4940">A push to main that changes site code SHALL</text>
+<text class="rtext" x="1598" y="4954">build the site data from the latest build</text>
+<text class="rtext" x="1598" y="4968">cache or offline, run the tests and the layout</text>
+<text class="rtext" x="1598" y="4982">check, and deploy the site only when they…</text>
+<text class="spec" x="1598" y="5001">refresh-scheduling</text>
+<path class="trace" d="M1720.0,4890 V281 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="1900" y="4890" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1900.7" y="4890.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2030.0" y="4903" text-anchor="middle">«requirement»</text>
+<text x="2030.0" y="4918" text-anchor="middle"><tspan class="rid">5.3.5</tspan><tspan class="rname" dx="6">New version note</tspan></text>
+<text class="rtext" x="1908" y="4940">When the deployed site code differs from the</text>
+<text class="rtext" x="1908" y="4954">page&#x27;s, the page SHALL pin a note to the</text>
+<text class="rtext" x="1908" y="4968">bottom of the screen saying a new version is</text>
+<text class="rtext" x="1908" y="4982">available, with a Refresh button that reloa…</text>
+<text class="spec" x="1908" y="5001">site-updates</text>
+<path class="trace" d="M2030.0,4890 V286 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="2210" y="4890" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="2210.7" y="4890.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2340.0" y="4903" text-anchor="middle">«requirement»</text>
+<text x="2340.0" y="4918" text-anchor="middle"><tspan class="rid">6.2.1</tspan><tspan class="rname" dx="6">Configuration checked</tspan></text>
+<text class="rtext" x="2218" y="4940">Loading the configuration SHALL fail with an</text>
+<text class="rtext" x="2218" y="4954">error naming the field on any missing, unknown</text>
+<text class="rtext" x="2218" y="4968">or invalid value, the simulation, rating and</text>
+<text class="rtext" x="2218" y="4982">rival settings included.</text>
+<text class="spec" x="2218" y="5001">sleeper-league-sync</text>
+<path class="trace" d="M2340.0,4890 V276 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="2520" y="4890" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="2520.7" y="4890.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2650.0" y="4903" text-anchor="middle">«requirement»</text>
+<text x="2650.0" y="4918" text-anchor="middle"><tspan class="rid">4.7.16</tspan><tspan class="rname" dx="6">Editable templates</tspan></text>
+<text class="rtext" x="2528" y="4940">Every headline and story sentence SHALL come</text>
+<text class="rtext" x="2528" y="4954">from a template with a copy ID in site-</text>
+<text class="rtext" x="2528" y="4968">copy.txt and named placeholders for the data,</text>
+<text class="rtext" x="2528" y="4982">so that the maintainer can reword any story…</text>
+<text class="spec" x="2528" y="5001">team-news</text>
+<path class="trace" d="M2650.0,4890 V281 H150.0 V268" marker-end="url(#openg)"/>
+<path class="derive" d="M40,5108 H86" marker-end="url(#open)"/><text class="lg" x="96" y="5112">«deriveReqt»: primary parent (sets the ID)</text>
+<path class="trace" d="M360,5108 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="5112">«trace»: extra parent</text>
+<path class="verify" d="M680,5108 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="5112">«verify»: test, inspection or analysis</text>
+<path class="vgap" d="M1000,5108 H1046" marker-end="url(#openr)"/><text class="lg" x="1056" y="5112">verification gap</text>
 </svg>

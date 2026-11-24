@@ -15,6 +15,20 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 
 | ID | Requirement | Spec | Pass criteria | Last inspected | Result |
 |---|---|---|---|---|---|
+| 9.5.1 | Phone widths from statistics | `project-standards` | `openspec/config.yaml`, the dated StatCounter figures, next due 2027-10 | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 9.6 | Material Design 3 usability | `project-standards` | the live site, focus and pressed states and the type scale | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 9.7 | Colour standard | `project-standards` | `site/styles.css`, adjusted tokens carry their OKLCH note | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 10.1 | Requirements standard recorded | `project-standards` | `openspec/config.yaml` (context and `rules.tasks`), `CLAUDE.md` | 2026-11-23 | Pass (inspected against the repository) |
+| 10.4 | Tolerances on values | `project-standards` | `openspec/inspection-checklist.md`, the spec's standard review | 2026-11-23 | Pass (the maintainer's review of every spec) |
+| 10.5 | Rationale where not obvious | `project-standards` | `openspec/inspection-checklist.md`, the spec's standard review | 2026-11-23 | Pass (the maintainer's review of every spec) |
+| 10.10 | Glossary | `project-standards` | `openspec/inspection-checklist.md` | 2026-11-23 | Pass (the maintainer's review of every spec) |
+| 10.12 | Specs archived before the standard | `project-standards` | the folder and `git tag --list specs-before-requirements-standard` | 2026-11-23 | Pass (inspected against the repository) |
+| 10.14 | Standards recorded | `project-standards` | `openspec/config.yaml` (context) and `CLAUDE.md`, each listed standard is present | 2026-11-23 | Pass (inspected against the repository) |
+| 10.15 | Writing style | `project-standards` | `openspec/inspection-checklist.md`, each spec's standard review | 2026-11-23 | Pass (the maintainer's review of every spec) |
+| 9.4.1.1 | Services simulated | `layout-checks` | `tests/layout/conftest.py`, the simulated relay and the stamped local copy of the site | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 9.4.3 | Runs on code pushes | `layout-checks` | `.github/workflows/site.yml`, the tests run with `LAYOUT_REQUIRED` before the deploy | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 9.4.3.1 | No browser locally | `layout-checks` | `tests/layout/conftest.py`, the skip and the `LAYOUT_REQUIRED` failure | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 8.2.2 | Kept current | `calculation-docs` | each change's review, the changed calculations' sections | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 6.7.4.2 | Unmatched report | `start-percentage-snapshots` | `src/ffapp/espn.py`, the unmatched report and its 2% threshold | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 6.3 | Projection coverage | `player-projections` | `src/ffapp/projections.py`, each refresh requests every regular-season week of the current season | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 5.4.1 | Relay credential | `manual-refresh` | `relay/README.md` and the relay's secrets, the token's scope and that no token is in the repository or `site/` | 2026-11-23 | Pass (confirmed when the feature was built) |
@@ -126,6 +140,11 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 
 | Spec | Last reviewed | Result | Notes |
 |---|---|---|---|
+| `needs` | 2026-11-23 | Pass | Twelve needs, each with children; no orphans found, so no need added |
+| `project-standards` | 2026-11-23 | Pass | 8 existing requirements became 11 under 9.5 to 9.8, 10.10.1, 10.14 and 10.15; this change's 21 (10.1 to 10.13) reviewed |
+| `layout-checks` | 2026-11-23 | Pass | 6 requirements became 9 under 9.4; WebKit and Firefox widths corrected to 440 and 1280 |
+| `site-copy` | 2026-11-23 | Pass | 6 requirements became 9 under 10.16 |
+| `calculation-docs` | 2026-11-23 | Pass | 3 requirements became 4 under 8.2 |
 | `start-percentage-snapshots` | 2026-11-23 | Pass | 5 requirements became 9 under 6.7 |
 | `injury-history` | 2026-11-23 | Pass | 3 requirements became 7 under 6.6 |
 | `nfl-schedule` | 2026-11-23 | Pass | 3 requirements became 6 under 6.5; live clock kept in the rebuilt copy |

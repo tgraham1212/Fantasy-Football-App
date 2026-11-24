@@ -67,18 +67,18 @@ Redraw the requirements diagrams (`python -X utf8 tools/requirements_diagram.py`
 
 ## 7. Project Specs
 
-- [ ] 7.1 `calculation-docs`
-- [ ] 7.2 `site-copy`
-- [ ] 7.3 `layout-checks`
-- [ ] 7.4 `project-standards`, including its new requirements from this change's delta
-- [ ] 7.5 `needs`: revise any need the orphans showed was missing, and confirm every need has children. Owner review
+- [x] 7.1 `calculation-docs`
+- [x] 7.2 `site-copy`
+- [x] 7.3 `layout-checks`
+- [x] 7.4 `project-standards`, including its new requirements from this change's delta
+- [x] 7.5 `needs`: revise any need the orphans showed was missing, and confirm every need has children. Owner review
 
 ## 8. Close-Out
 
-- [ ] 8.0 Numbering sweep: give an ID to every requirement left unnumbered because its primary parent was rewritten later. Verify: `tests/test_requirements.py::test_ids_follow_the_primary_parent` has no baseline entries
-- [ ] 8.1 `tests/baselines/requirements.json` is empty; `requirements_open.json` lists only the TBRs and verification gaps the owner accepted. Verify: the full test suite and `openspec validate --specs --strict`
-- [ ] 8.1a Final requirements diagrams: every requirement numbered and placed. Verify: the overview shows no unnumbered requirements, and `tests/test_feature_docs.py` passes
-- [ ] 8.2 Report the open-items list to the owner: each TBR and gap with its target. Verify: the owner has seen it
+- [x] 8.0 Numbering sweep: give an ID to every requirement left unnumbered because its primary parent was rewritten later. Verify: `tests/test_requirements.py::test_ids_follow_the_primary_parent` has no baseline entries
+- [x] 8.1 `tests/baselines/requirements.json` is empty; `requirements_open.json` lists only the TBRs and verification gaps the owner accepted. Verify: the full test suite and `openspec validate --specs --strict`
+- [x] 8.1a Final requirements diagrams: every requirement numbered and placed. Verify: the overview shows no unnumbered requirements, and `tests/test_feature_docs.py` passes
+- [x] 8.2 Report the open-items list to the owner: each TBR and gap with its target. Verify: the owner has seen it
 
 ## Workflow follow-up
 

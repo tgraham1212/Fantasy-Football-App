@@ -2,34 +2,46 @@
 
 ## Purpose
 
-Keeps every calculation the project performs documented in one plain-text file, `Calculations.txt`, so anyone can see how each number on the site is produced: the formula and its inputs, and in plain English what it does, what it assumes, and the decisions behind it.
+Keeps every calculation the project performs documented in one plain-text file, `Calculations.txt`, so anyone can see how each number on the site is produced: its formula and inputs, and in plain English what it does, what it assumes and the decisions behind it. It delivers need 8, Open Methods.
 
 ## Requirements
 
-### Requirement: Calculations file
-The project SHALL keep `Calculations.txt` at its root, with one section per calculation. Each section SHALL hold:
-- the calculation's name
-- the code that performs it
-- the formula or formulas, in plain-text notation
-- the data sources and inputs, with where they are stored
-- its dependencies on other calculations
-- a plain-English description of how it works
-- the assumptions and decisions made, with their reasons
+### Requirement: 8.2 Calculations file
+`Calculations.txt` at the project root SHALL hold one section per calculation, each with its name, the code that performs it, its formulas in plain-text notation, its data sources and where they are stored, its dependencies, a plain-English description, and its assumptions and decisions with their reasons.
+
+**Traces to:** 8
+**Verified by:** Test: `tests/test_calculations_doc.py::test_every_section_has_all_headings`
 
 #### Scenario: Reading a section
-- **WHEN** the owner opens the Player WAR section
-- **THEN** it shows the win-probability and WAR formulas, the ESPN start-percentage and stat inputs, its dependency on the replacement cut, a plain-English walk-through, and the decisions such as the merged cut and its reasoning
+- **WHEN** someone opens the Player WAR section
+- **THEN** it shows the win-probability and WAR formulas, the start-percentage and stat inputs, its dependencies, a plain-English walk-through, and the decisions behind the merged cut
 
-### Requirement: Every calculation covered
-A test SHALL fail when a module that performs a calculation has no section in `Calculations.txt` naming it. The test SHALL read the list of calculation modules from the test itself, so adding a calculation module means adding it to that list and documenting it.
+### Requirement: 8.2.1 Every calculation covered
+Every module that performs a calculation SHALL be named by a section of `Calculations.txt`, the list of calculation modules kept in the test.
+
+**Traces to:** 8.2
+**Verified by:** Test: `tests/test_calculations_doc.py::test_every_calculation_module_has_a_section`
 
 #### Scenario: New calculation module
 - **WHEN** a change adds `src/ffapp/trades.py` to the calculation modules without a section naming it
 - **THEN** the test fails naming `trades.py`
 
-### Requirement: Kept current
-A change that alters a calculation (its formula, inputs, assumptions or parameters) SHALL update its section in `Calculations.txt` in the same change. The README SHALL point to `Calculations.txt` instead of repeating the formulas.
+### Requirement: 8.2.2 Kept current
+A change that alters a calculation's formula, inputs, assumptions or settings SHALL update its section in `Calculations.txt` in the same change.
 
-#### Scenario: Changed parameter
+**Traces to:** 8.2; 10
+**Verified by:** Inspection: each change's review, the changed calculations' sections
+
+#### Scenario: Changed setting
 - **WHEN** a change alters the replacement-level shrinkage weight
-- **THEN** the same change updates the replacement-level section's formula and its decision note
+- **THEN** the same change updates that section's formula and decision note
+
+### Requirement: 8.2.3 README points to the file
+The README SHALL point to `Calculations.txt` in place of repeating the formulas.
+
+**Traces to:** 8.2
+**Verified by:** Test: `tests/test_calculations_doc.py::test_readme_points_to_the_calculations_file`
+
+#### Scenario: Reading the README
+- **WHEN** someone looks for how the Forecasts are calculated in the README
+- **THEN** it points them to `Calculations.txt`
