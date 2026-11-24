@@ -42,11 +42,11 @@ Redraw the requirements diagrams (`python -X utf8 tools/requirements_diagram.py`
 - [x] 4.4 `game-card-states`
 - [x] 4.5 `odds-calibration`
 - [x] 4.6 `player-war`
-- [ ] 4.7 `positional-rankings`
-- [ ] 4.8 `replacement-level`
-- [ ] 4.9 `manager-history`
-- [ ] 4.10 `manager-ratings`
-- [ ] 4.11 `team-news`
+- [x] 4.7 `positional-rankings`
+- [x] 4.8 `replacement-level`
+- [x] 4.9 `manager-history`
+- [x] 4.10 `manager-ratings`
+- [x] 4.11 `team-news`
 
 ## 5. Refresh Specs
 

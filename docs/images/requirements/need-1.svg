@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9690 9570" width="9690" height="9570">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10310 9570" width="10310" height="9570">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,7 +33,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="9690" height="9570"/>
+<rect class="bg" width="10310" height="9570"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 1, Season Forecasts</text>
 <text class="sub" x="40" y="66">67 requirements derived from need 1 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
@@ -1293,23 +1293,42 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <rect class="ext" x="9030" y="9312" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="9030.7" y="9312.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="9160.0" y="9325" text-anchor="middle">«requirement»</text>
-<text x="9160.0" y="9340" text-anchor="middle"><tspan class="rid">3.2.7</tspan><tspan class="rname" dx="6">Expanded list sorting</tspan></text>
-<text class="rtext" x="9038" y="9362">Every column of the expanded list SHALL sort</text>
-<text class="rtext" x="9038" y="9376">from its header as the Forecast table does:</text>
-<text class="rtext" x="9038" y="9390">descending on the first click (name and</text>
-<text class="rtext" x="9038" y="9404">Manager A to Z), ascending on the second, w…</text>
-<text class="spec" x="9038" y="9423">war-leaderboard-page</text>
-<path class="trace" d="M9160.0,9312 V7651 H770.0 V7638" marker-end="url(#openg)"/>
+<text x="9160.0" y="9340" text-anchor="middle"><tspan class="rid">3.5</tspan><tspan class="rname" dx="6">Weekly replacement level</tspan></text>
+<text class="rtext" x="9038" y="9362">For each league, season, week and position,</text>
+<text class="rtext" x="9038" y="9376">the projected replacement level SHALL be the</text>
+<text class="rtext" x="9038" y="9390">mean projection of the N free agents with the</text>
+<text class="rtext" x="9038" y="9404">highest projected points under the league&#x27;s…</text>
+<text class="spec" x="9038" y="9423">replacement-level</text>
+<path class="trace" d="M9160.0,9312 V1219 H1080.0 V1206" marker-end="url(#openg)"/>
 <rect class="ext" x="9340" y="9312" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="9340.7" y="9312.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="9470.0" y="9325" text-anchor="middle">«requirement»</text>
-<text x="9470.0" y="9340" text-anchor="middle"><tspan class="rid">2.9.3</tspan><tspan class="rname" dx="6">Player in progress</tspan></text>
-<text class="rtext" x="9348" y="9362">A Player whose game is in progress SHALL use</text>
-<text class="rtext" x="9348" y="9376">his projected final, his points so far plus</text>
-<text class="rtext" x="9348" y="9390">the share left times his projection, keeping</text>
-<text class="rtext" x="9348" y="9404">the remaining share of his spread.</text>
-<text class="spec" x="9348" y="9423">win-probability-added</text>
-<path class="trace" d="M9470.0,9312 V4574 H1080.0 V4556" marker-end="url(#openg)"/>
+<text x="9470.0" y="9340" text-anchor="middle"><tspan class="rid">4.7.3</tspan><tspan class="rname" dx="6">Forecast move stories</tspan></text>
+<text class="rtext" x="9348" y="9362">A story SHALL appear when a team&#x27;s playoff</text>
+<text class="rtext" x="9348" y="9376">Forecast changes by at least 10 points in a</text>
+<text class="rtext" x="9348" y="9390">week.</text>
+<text class="spec" x="9348" y="9423">team-news</text>
+<path class="trace" d="M9470.0,9312 V4842 H460.0 V4824" marker-end="url(#openg)"/>
+<rect class="ext" x="9650" y="9312" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="9650.7" y="9312.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="9780.0" y="9325" text-anchor="middle">«requirement»</text>
+<text x="9780.0" y="9340" text-anchor="middle"><tspan class="rid">3.2.7</tspan><tspan class="rname" dx="6">Expanded list sorting</tspan></text>
+<text class="rtext" x="9658" y="9362">Every column of the expanded list SHALL sort</text>
+<text class="rtext" x="9658" y="9376">from its header as the Forecast table does:</text>
+<text class="rtext" x="9658" y="9390">descending on the first click (name and</text>
+<text class="rtext" x="9658" y="9404">Manager A to Z), ascending on the second, w…</text>
+<text class="spec" x="9658" y="9423">war-leaderboard-page</text>
+<path class="trace" d="M9780.0,9312 V7646 H770.0 V7638" marker-end="url(#openg)"/>
+<rect class="ext" x="9960" y="9312" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="9960.7" y="9312.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="10090.0" y="9325" text-anchor="middle">«requirement»</text>
+<text x="10090.0" y="9340" text-anchor="middle"><tspan class="rid">2.9.3</tspan><tspan class="rname" dx="6">Player in progress</tspan></text>
+<text class="rtext" x="9968" y="9362">A Player whose game is in progress SHALL use</text>
+<text class="rtext" x="9968" y="9376">his projected final, his points so far plus</text>
+<text class="rtext" x="9968" y="9390">the share left times his projection, keeping</text>
+<text class="rtext" x="9968" y="9404">the remaining share of his spread.</text>
+<text class="spec" x="9968" y="9423">win-probability-added</text>
+<path class="trace" d="M10090.0,9312 V4569 H1080.0 V4556" marker-end="url(#openg)"/>
 <path class="derive" d="M40,9530 H86" marker-end="url(#open)"/><text class="lg" x="96" y="9534">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,9530 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="9534">«trace»: extra parent</text>
 <path class="verify" d="M680,9530 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="9534">«verify»: test, inspection or analysis</text>

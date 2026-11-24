@@ -374,6 +374,16 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="358" y="3240">21 real transitions with their triggers, th…</text>
 <text class="spec" x="358" y="3259">game-card-states</text>
 <path class="trace" d="M480.0,3148 V3090 H460.0 V3082" marker-end="url(#openg)"/>
+<rect class="ext" x="660" y="3148" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="660.7" y="3148.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="3161" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="3176" text-anchor="middle"><tspan class="rid">4.7.16</tspan><tspan class="rname" dx="6">Editable templates</tspan></text>
+<text class="rtext" x="668" y="3198">Every headline and story sentence SHALL come</text>
+<text class="rtext" x="668" y="3212">from a template with a copy ID in site-</text>
+<text class="rtext" x="668" y="3226">copy.txt and named placeholders for the data,</text>
+<text class="rtext" x="668" y="3240">so that the maintainer can reword any story…</text>
+<text class="spec" x="668" y="3259">team-news</text>
+<path class="trace" d="M790.0,3148 V281 H150.0 V268" marker-end="url(#openg)"/>
 <path class="derive" d="M40,3366 H86" marker-end="url(#open)"/><text class="lg" x="96" y="3370">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,3366 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="3370">«trace»: extra parent</text>
 <path class="verify" d="M680,3366 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="3370">«verify»: test, inspection or analysis</text>

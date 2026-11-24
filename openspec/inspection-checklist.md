@@ -15,6 +15,16 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 
 | ID | Requirement | Spec | Pass criteria | Last inspected | Result |
 |---|---|---|---|---|---|
+| 4.7 | Team News stories | `team-news` | `src/ffapp/news.py`, stories are built for the current season only | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.6.7.1 | Variants kept off the site | `manager-ratings` | `src/ffapp/export.py`, the exported rating history holds only the mean and career mean z | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.5 | Manager identity | `manager-history` | `src/ffapp/managers.py`, the name comes from the latest season's users | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.5.3 | Honours | `manager-history` | each dynasty Manager's Honours against Sleeper's league history | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.5.6 | Luck figures | `manager-history` | `src/ffapp/managers.py`, points against per game beside the league average | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.5.9 | Best players | `manager-history` | `src/ffapp/managers.py`, the best-player and most-seasons picks in the Players block | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.5.9.2 | Most seasons on the team | `manager-history` | `src/ffapp/managers.py`, the most-seasons pick counts seasons with a week on the roster | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.5.10.1 | Drafted Players | `manager-history` | `src/ffapp/moves.py`, moves are built only from stored transactions | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.5.10.3.1 | Offseason moves | `manager-history` | `src/ffapp/moves.py`, an offseason move's week maps to week 1 of the next season | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 3.4.5 | Points for any team | `positional-rankings` | `src/ffapp/positions.py`, points per game reads each Player's own stat lines, not matchup points | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 7.8 | Calibration on demand | `odds-calibration` | `src/ffapp/cli.py`, the cold run's steps include no calibration | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 7.9.1 | Calibration page contents | `odds-calibration` | the live calibration page, each listed figure is present | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 8.1 | Forecasts explained | `odds-calibration` | the live calibration page, the "how it works" card covers the four parts | 2026-11-23 | Pass (confirmed when the feature was built) |
@@ -99,6 +109,11 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 
 | Spec | Last reviewed | Result | Notes |
 |---|---|---|---|
+| `team-news` | 2026-11-23 | Pass | 9 requirements became 22 under 4.7, one per story type |
+| `manager-ratings` | 2026-11-23 | Pass | 10 requirements became 20 under 4.6; settings defaults stated; unverifiable scale clause cut |
+| `manager-history` | 2026-11-23 | Pass | 13 requirements became 27 under 4.5; compound requirements split |
+| `replacement-level` | 2026-11-23 | Pass | 6 requirements became 10 under 3.5; free agents need a positive projection |
+| `positional-rankings` | 2026-11-23 | Pass | 9 requirements became 16 under 3.4 |
 | `player-war` | 2026-11-23 | Pass | 8 requirements became 22 under 3.3; merged-cut rationale moved to Calculations.txt section 16 |
 | `odds-calibration` | 2026-11-23 | Pass | 14 requirements (4 moved from league-odds-site) became 29 under needs 7 and 8; duplicates and an unverifiable clause cut; 5 tests added |
 | `game-card-states` | 2026-11-23 | Pass | 8 requirements became 12 under 2.10; verification-only requirement cut; games-page requirements naming states now trace to 2.10 |
