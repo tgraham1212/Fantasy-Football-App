@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1940 2870" width="1940" height="2870">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3800 9704" width="3800" height="9704">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,14 +33,15 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="1940" height="2870"/>
+<rect class="bg" width="3800" height="9704"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 4, Manager History</text>
-<text class="sub" x="40" y="66">17 requirements derived from need 4 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
+<text class="sub" x="40" y="66">68 requirements derived from need 4 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
 <text class="col" x="350" y="132">LEVEL 1</text>
 <text class="col" x="660" y="132">LEVEL 2</text>
 <text class="col" x="970" y="132">LEVEL 3</text>
-<text class="col" x="1300" y="132">VERIFIED BY</text>
+<text class="col" x="1280" y="132">LEVEL 4</text>
+<text class="col" x="1610" y="132">VERIFIED BY</text>
 <path class="derive" d="M350,343.0 H325 V209.0 H300" marker-end="url(#open)"/>
 <path class="derive" d="M660,477.0 H635 V343.0 H610" marker-end="url(#open)"/>
 <path class="derive" d="M660,611.0 H635 V343.0 H610" marker-end="url(#open)"/>
@@ -58,91 +59,387 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <path class="derive" d="M660,2219.0 H635 V1013.0 H610" marker-end="url(#open)"/>
 <path class="derive" d="M350,2353.0 H325 V209.0 H300" marker-end="url(#open)"/>
 <path class="derive" d="M660,2487.0 H635 V2353.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M350,2621.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,2755.0 H635 V2621.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,2889.0 H945 V2755.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,3023.0 H945 V2755.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,3157.0 H635 V2621.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,3291.0 H635 V2621.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,3425.0 H945 V3291.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,3559.0 H945 V3291.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,3693.0 H945 V3291.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,3827.0 H945 V3291.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M1280,3961.0 H1255 V3827.0 H1230" marker-end="url(#open)"/>
+<path class="derive" d="M1280,4095.0 H1255 V3827.0 H1230" marker-end="url(#open)"/>
+<path class="derive" d="M660,4229.0 H635 V2621.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,4363.0 H945 V4229.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,4497.0 H945 V4229.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,4631.0 H945 V4229.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,4765.0 H945 V4229.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,4899.0 H945 V4229.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,5033.0 H945 V4229.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,5167.0 H945 V4229.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,5301.0 H945 V4229.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,5435.0 H635 V2621.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,5569.0 H635 V2621.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,5703.0 H945 V5569.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,5837.0 H945 V5569.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,5971.0 H945 V5569.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,6105.0 H945 V5569.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,6239.0 H635 V2621.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,6373.0 H945 V6239.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,6507.0 H945 V6239.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,6641.0 H945 V6239.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M1280,6775.0 H1255 V6641.0 H1230" marker-end="url(#open)"/>
+<path class="derive" d="M970,6909.0 H945 V6239.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M1280,7043.0 H1255 V6909.0 H1230" marker-end="url(#open)"/>
+<path class="derive" d="M660,7177.0 H635 V2621.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,7311.0 H945 V7177.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,7445.0 H945 V7177.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,7579.0 H635 V2621.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,7713.0 H945 V7579.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,7847.0 H945 V7579.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,7981.0 H945 V7579.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,8115.0 H945 V7579.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,8249.0 H635 V2621.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,8383.0 H945 V8249.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,8517.0 H945 V8249.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,8651.0 H945 V8249.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,8785.0 H945 V8249.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,8919.0 H945 V8249.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,9053.0 H635 V2621.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,9187.0 H945 V9053.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,9321.0 H635 V2621.0 H610" marker-end="url(#open)"/>
 <text class="elab" x="322" y="337.0" text-anchor="end">«deriveReqt»</text>
-<rect class="tc" x="1300" y="312" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="327">«testCase»</text>
-<text class="tctext" x="1308" y="344">test_export.py::test_export_carries_ratings_wh</text>
-<text class="tctext" x="1308" y="358">en_present</text>
-<path class="verify" d="M1300,342 H610" marker-end="url(#openv)"/>
-<text class="elab" x="1292" y="336" text-anchor="end">«verify»</text>
-<rect class="tc" x="1300" y="446" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="461">«testCase»</text>
-<text class="tctext" x="1308" y="478">test_export.py::test_preseason_rating_shows_wi</text>
-<text class="tctext" x="1308" y="492">th_no_change_until_week_one</text>
-<path class="verify" d="M1300,476 H920" marker-end="url(#openv)"/>
-<rect class="tc" x="1300" y="580" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="595">«testCase»</text>
-<text class="tctext" x="1308" y="612">test_export.py::test_newcomer_with_one_rated_w</text>
-<text class="tctext" x="1308" y="626">eek_has_no_elo_change</text>
-<path class="verify" d="M1300,610 H920" marker-end="url(#openv)"/>
-<rect class="insp" x="1300" y="714" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="729">«inspection»</text>
-<text class="tctext" x="1308" y="746">the live site, change cells of +20 and -33 in</text>
-<text class="tctext" x="1308" y="760">both themes</text>
-<path class="verify" d="M1300,744 H920" marker-end="url(#openv)"/>
-<rect class="tc" x="1300" y="848" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="863">«testCase»</text>
-<text class="tctext" x="1308" y="880">test_export.py::test_exported_schema</text>
-<path class="verify" d="M1300,878 H920" marker-end="url(#openv)"/>
-<rect class="insp" x="1300" y="982" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="997">«inspection»</text>
-<text class="tctext" x="1308" y="1014">the live site, the dynasty rating chart from</text>
-<text class="tctext" x="1308" y="1028">2022 to the latest week</text>
-<path class="verify" d="M1300,1012 H610" marker-end="url(#openv)"/>
-<rect class="insp" x="1300" y="1116" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="1131">«inspection»</text>
-<text class="tctext" x="1308" y="1148">the live site, both metrics on the dynasty</text>
-<text class="tctext" x="1308" y="1162">rating chart</text>
-<path class="verify" d="M1300,1146 H920" marker-end="url(#openv)"/>
-<rect class="insp" x="1300" y="1250" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="1265">«inspection»</text>
-<text class="tctext" x="1308" y="1282">the live site, each range on the dynasty</text>
-<text class="tctext" x="1308" y="1296">rating chart</text>
-<path class="verify" d="M1300,1280 H920" marker-end="url(#openv)"/>
-<rect class="tc" x="1300" y="1384" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="1399">«testCase»</text>
-<text class="tctext" x="1308" y="1416">layout/test_forecasts_page.py::test_last_three</text>
-<text class="tctext" x="1308" y="1430">_seasons_equals_all_time_with_a_short_history</text>
-<path class="verify" d="M1300,1414 H1230" marker-end="url(#openv)"/>
-<rect class="insp" x="1300" y="1518" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="1533">«inspection»</text>
-<text class="tctext" x="1308" y="1550">the live site, each current Manager&#x27;s colour</text>
-<text class="tctext" x="1308" y="1564">in both charts</text>
-<path class="verify" d="M1300,1548 H920" marker-end="url(#openv)"/>
-<rect class="insp" x="1300" y="1652" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="1667">«inspection»</text>
-<text class="tctext" x="1308" y="1684">the live site in both themes, the five former</text>
-<text class="tctext" x="1308" y="1698">dynasty Managers&#x27; lines</text>
-<path class="verify" d="M1300,1682 H1230" marker-end="url(#openv)"/>
-<rect class="tc" x="1300" y="1786" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="1801">«testCase»</text>
-<text class="tctext" x="1308" y="1818">layout/test_forecasts_page.py::test_picking_a_</text>
-<text class="tctext" x="1308" y="1832">team_highlights_its_manager_in_both_charts</text>
-<path class="verify" d="M1300,1816 H920" marker-end="url(#openv)"/>
-<rect class="tc" x="1300" y="1920" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="1935">«testCase»</text>
-<text class="tctext" x="1308" y="1952">test_vacant_owner.py::test_never_owned_stays_v</text>
-<text class="tctext" x="1308" y="1966">acant</text>
-<path class="verify" d="M1300,1950 H920" marker-end="url(#openv)"/>
-<rect class="tc" x="1300" y="2054" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="2069">«testCase»</text>
-<text class="tctext" x="1308" y="2086">test_vacant_owner.py::test_owner_quit_before_t</text>
-<text class="tctext" x="1308" y="2100">he_year_ended; test_vacant_owner.py::test_vaca</text>
-<path class="verify" d="M1300,2084 H920" marker-end="url(#openv)"/>
-<rect class="insp" x="1300" y="2188" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="2203">«inspection»</text>
-<text class="tctext" x="1308" y="2220">the live site, every line on the dynasty</text>
-<text class="tctext" x="1308" y="2234">rating chart has an end label</text>
-<path class="verify" d="M1300,2218 H920" marker-end="url(#openv)"/>
-<rect class="tc" x="1300" y="2322" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="2337">«testCase»</text>
-<text class="tctext" x="1308" y="2354">test_export.py::test_export_carries_ratings_wh</text>
-<text class="tctext" x="1308" y="2368">en_present</text>
-<path class="verify" d="M1300,2352 H610" marker-end="url(#openv)"/>
-<rect class="tc" x="1300" y="2456" width="320" height="60" rx="3"/>
-<text class="ster" x="1308" y="2471">«testCase»</text>
-<text class="tctext" x="1308" y="2488">test_export.py::test_exported_schema</text>
-<path class="verify" d="M1300,2486 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="312" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="327">«testCase»</text>
+<text class="tctext" x="1618" y="344">test_export.py::test_export_carries_ratings_wh</text>
+<text class="tctext" x="1618" y="358">en_present</text>
+<path class="verify" d="M1610,342 H610" marker-end="url(#openv)"/>
+<text class="elab" x="1602" y="336" text-anchor="end">«verify»</text>
+<rect class="tc" x="1610" y="446" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="461">«testCase»</text>
+<text class="tctext" x="1618" y="478">test_export.py::test_preseason_rating_shows_wi</text>
+<text class="tctext" x="1618" y="492">th_no_change_until_week_one</text>
+<path class="verify" d="M1610,476 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="580" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="595">«testCase»</text>
+<text class="tctext" x="1618" y="612">test_export.py::test_newcomer_with_one_rated_w</text>
+<text class="tctext" x="1618" y="626">eek_has_no_elo_change</text>
+<path class="verify" d="M1610,610 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="714" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="729">«inspection»</text>
+<text class="tctext" x="1618" y="746">the live site, change cells of +20 and -33 in</text>
+<text class="tctext" x="1618" y="760">both themes</text>
+<path class="verify" d="M1610,744 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="848" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="863">«testCase»</text>
+<text class="tctext" x="1618" y="880">test_export.py::test_exported_schema</text>
+<path class="verify" d="M1610,878 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="982" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="997">«inspection»</text>
+<text class="tctext" x="1618" y="1014">the live site, the dynasty rating chart from</text>
+<text class="tctext" x="1618" y="1028">2022 to the latest week</text>
+<path class="verify" d="M1610,1012 H610" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="1116" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="1131">«inspection»</text>
+<text class="tctext" x="1618" y="1148">the live site, both metrics on the dynasty</text>
+<text class="tctext" x="1618" y="1162">rating chart</text>
+<path class="verify" d="M1610,1146 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="1250" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="1265">«inspection»</text>
+<text class="tctext" x="1618" y="1282">the live site, each range on the dynasty</text>
+<text class="tctext" x="1618" y="1296">rating chart</text>
+<path class="verify" d="M1610,1280 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="1384" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="1399">«testCase»</text>
+<text class="tctext" x="1618" y="1416">layout/test_forecasts_page.py::test_last_three</text>
+<text class="tctext" x="1618" y="1430">_seasons_equals_all_time_with_a_short_history</text>
+<path class="verify" d="M1610,1414 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="1518" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="1533">«inspection»</text>
+<text class="tctext" x="1618" y="1550">the live site, each current Manager&#x27;s colour</text>
+<text class="tctext" x="1618" y="1564">in both charts</text>
+<path class="verify" d="M1610,1548 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="1652" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="1667">«inspection»</text>
+<text class="tctext" x="1618" y="1684">the live site in both themes, the five former</text>
+<text class="tctext" x="1618" y="1698">dynasty Managers&#x27; lines</text>
+<path class="verify" d="M1610,1682 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="1786" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="1801">«testCase»</text>
+<text class="tctext" x="1618" y="1818">layout/test_forecasts_page.py::test_picking_a_</text>
+<text class="tctext" x="1618" y="1832">team_highlights_its_manager_in_both_charts</text>
+<path class="verify" d="M1610,1816 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="1920" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="1935">«testCase»</text>
+<text class="tctext" x="1618" y="1952">test_vacant_owner.py::test_never_owned_stays_v</text>
+<text class="tctext" x="1618" y="1966">acant</text>
+<path class="verify" d="M1610,1950 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="2054" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="2069">«testCase»</text>
+<text class="tctext" x="1618" y="2086">test_vacant_owner.py::test_owner_quit_before_t</text>
+<text class="tctext" x="1618" y="2100">he_year_ended; test_vacant_owner.py::test_vaca</text>
+<path class="verify" d="M1610,2084 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="2188" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="2203">«inspection»</text>
+<text class="tctext" x="1618" y="2220">the live site, every line on the dynasty</text>
+<text class="tctext" x="1618" y="2234">rating chart has an end label</text>
+<path class="verify" d="M1610,2218 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="2322" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="2337">«testCase»</text>
+<text class="tctext" x="1618" y="2354">test_export.py::test_export_carries_ratings_wh</text>
+<text class="tctext" x="1618" y="2368">en_present</text>
+<path class="verify" d="M1610,2352 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="2456" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="2471">«testCase»</text>
+<text class="tctext" x="1618" y="2488">test_export.py::test_exported_schema</text>
+<path class="verify" d="M1610,2486 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="2590" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="2605">«testCase»</text>
+<text class="tctext" x="1618" y="2622">test_export.py::test_export_writes_the_manager</text>
+<text class="tctext" x="1618" y="2636">s_file_with_every_manager</text>
+<path class="verify" d="M1610,2620 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="2724" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="2739">«testCase»</text>
+<text class="tctext" x="1618" y="2756">layout/test_managers_behaviour.py::test_picker</text>
+<text class="tctext" x="1618" y="2770">_lists_current_managers_then_retired</text>
+<path class="verify" d="M1610,2754 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="2858" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="2873">«testCase»</text>
+<text class="tctext" x="1618" y="2890">layout/test_managers_page.py::test_link_names_</text>
+<text class="tctext" x="1618" y="2904">the_manager_and_arrows_update_the_url</text>
+<path class="verify" d="M1610,2888 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="2992" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="3007">«testCase»</text>
+<text class="tctext" x="1618" y="3024">layout/test_managers_behaviour.py::test_switch</text>
+<text class="tctext" x="1618" y="3038">ing_league_keeps_a_shared_manager_or_shows_the</text>
+<path class="verify" d="M1610,3022 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="3126" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="3141">«testCase»</text>
+<text class="tctext" x="1618" y="3158">layout/test_managers_page.py::test_manager_nam</text>
+<text class="tctext" x="1618" y="3172">es_open_their_page</text>
+<path class="verify" d="M1610,3156 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="3260" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="3275">«inspection»</text>
+<text class="tctext" x="1618" y="3292">the live site, the team info bar of a current</text>
+<text class="tctext" x="1618" y="3306">dynasty Manager</text>
+<path class="verify" d="M1610,3290 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="3394" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="3409">«inspection»</text>
+<text class="tctext" x="1618" y="3426">the live site, a Manager with a logo, one with</text>
+<text class="tctext" x="1618" y="3440">an avatar only and one with neither</text>
+<path class="verify" d="M1610,3424 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="3528" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="3543">«testCase»</text>
+<text class="tctext" x="1618" y="3560">layout/test_managers_page.py::test_banners_sta</text>
+<text class="tctext" x="1618" y="3574">ck_only_when_out_of_room</text>
+<path class="verify" d="M1610,3558 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="3662" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="3677">«inspection»</text>
+<text class="tctext" x="1618" y="3694">the live site, TateFM&#x27;s dynasty page</text>
+<path class="verify" d="M1610,3692 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="3796" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="3811">«testCase»</text>
+<text class="tctext" x="1618" y="3828">test_managers.py::test_form_is_the_last_five_o</text>
+<text class="tctext" x="1618" y="3842">f_the_season_oldest_first; Inspection: the</text>
+<path class="verify" d="M1610,3826 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="3930" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="3945">«inspection»</text>
+<text class="tctext" x="1618" y="3962">the live site after a draft and before week 1</text>
+<path class="verify" d="M1610,3960 H1540" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="4064" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="4079">«inspection»</text>
+<text class="tctext" x="1618" y="4096">the Form bars&#x27; accessible name in the</text>
+<text class="tctext" x="1618" y="4110">browser&#x27;s accessibility tree</text>
+<path class="verify" d="M1610,4094 H1540" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="4198" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="4213">«testCase»</text>
+<text class="tctext" x="1618" y="4230">layout/test_managers_page.py::test_tiles_fit_t</text>
+<text class="tctext" x="1618" y="4244">he_worst_case</text>
+<path class="verify" d="M1610,4228 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="4332" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="4347">«inspection»</text>
+<text class="tctext" x="1618" y="4364">the live site in rivalry week</text>
+<path class="verify" d="M1610,4362 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="4466" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="4481">«inspection»</text>
+<text class="tctext" x="1618" y="4498">the live site after a draft and before week 1</text>
+<path class="verify" d="M1610,4496 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="4600" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="4615">«inspection»</text>
+<text class="tctext" x="1618" y="4632">the live site, TateFM&#x27;s dynasty tiles</text>
+<path class="verify" d="M1610,4630 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="4734" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="4749">«inspection»</text>
+<text class="tctext" x="1618" y="4766">the live site at 1280 px, the first lines of</text>
+<text class="tctext" x="1618" y="4780">the seven tiles</text>
+<path class="verify" d="M1610,4764 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="4868" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="4883">«testCase»</text>
+<text class="tctext" x="1618" y="4900">layout/test_managers_page.py::test_tiles_fit_t</text>
+<text class="tctext" x="1618" y="4914">he_worst_case</text>
+<path class="verify" d="M1610,4898 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="5002" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="5017">«testCase»</text>
+<text class="tctext" x="1618" y="5034">layout/test_managers_page.py::test_tiles_fit_t</text>
+<text class="tctext" x="1618" y="5048">he_worst_case</text>
+<path class="verify" d="M1610,5032 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="5136" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="5151">«inspection»</text>
+<text class="tctext" x="1618" y="5168">the live site, each tile&#x27;s link target</text>
+<path class="verify" d="M1610,5166 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="5270" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="5285">«inspection»</text>
+<text class="tctext" x="1618" y="5302">the live site at 360 px, the tile grid</text>
+<path class="verify" d="M1610,5300 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="5404" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="5419">«testCase»</text>
+<text class="tctext" x="1618" y="5436">layout/test_managers_page.py::test_cards_cut_n</text>
+<text class="tctext" x="1618" y="5450">othing_and_never_scroll_sideways; layout/test_</text>
+<path class="verify" d="M1610,5434 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="5538" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="5553">«inspection»</text>
+<text class="tctext" x="1618" y="5570">the live site, a dynasty Manager&#x27;s Roster card</text>
+<path class="verify" d="M1610,5568 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="5672" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="5687">«testCase»</text>
+<text class="tctext" x="1618" y="5704">layout/test_managers_behaviour.py::test_ppg_ch</text>
+<text class="tctext" x="1618" y="5718">ips_follow_the_replacement_tiers</text>
+<path class="verify" d="M1610,5702 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="5806" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="5821">«inspection»</text>
+<text class="tctext" x="1618" y="5838">the live site, each kind of slot pill in both</text>
+<text class="tctext" x="1618" y="5852">themes</text>
+<path class="verify" d="M1610,5836 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="5940" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="5955">«inspection»</text>
+<text class="tctext" x="1618" y="5972">the live site, an Out, a Doubtful and a</text>
+<text class="tctext" x="1618" y="5986">Questionable Player</text>
+<path class="verify" d="M1610,5970 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="6074" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="6089">«testCase»</text>
+<text class="tctext" x="1618" y="6106">test_managers.py::test_bench_points_example</text>
+<path class="verify" d="M1610,6104 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="6208" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="6223">«testCase»</text>
+<text class="tctext" x="1618" y="6240">layout/test_managers_page.py::test_cards_cut_n</text>
+<text class="tctext" x="1618" y="6254">othing_and_never_scroll_sideways</text>
+<path class="verify" d="M1610,6238 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="6342" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="6357">«testCase»</text>
+<text class="tctext" x="1618" y="6374">test_managers.py::test_all_play_and_luck;</text>
+<text class="tctext" x="1618" y="6388">Inspection: the live site, a champion&#x27;s</text>
+<path class="verify" d="M1610,6372 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="6476" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="6491">«testCase»</text>
+<text class="tctext" x="1618" y="6508">layout/test_managers_behaviour.py::test_head_t</text>
+<text class="tctext" x="1618" y="6522">o_head_lists_the_rival_first_then_by_games; te</text>
+<path class="verify" d="M1610,6506 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="6610" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="6625">«testCase»</text>
+<text class="tctext" x="1618" y="6642">test_managers.py::test_records_rank_against_ev</text>
+<text class="tctext" x="1618" y="6656">ery_game_in_league_history; Inspection: the</text>
+<path class="verify" d="M1610,6640 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="6744" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="6759">«testCase»</text>
+<text class="tctext" x="1618" y="6776">test_managers.py::test_records_rank_against_ev</text>
+<text class="tctext" x="1618" y="6790">ery_game_in_league_history</text>
+<path class="verify" d="M1610,6774 H1540" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="6878" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="6893">«testCase»</text>
+<text class="tctext" x="1618" y="6910">test_managers.py::test_dynasty_champions_and_r</text>
+<text class="tctext" x="1618" y="6924">unners_up_match_league_history; Inspection:</text>
+<path class="verify" d="M1610,6908 H1230" marker-end="url(#openv)"/>
+<rect class="insp" x="1610" y="7012" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="7027">«inspection»</text>
+<text class="tctext" x="1618" y="7044">the live site, a current Manager&#x27;s chart in</text>
+<text class="tctext" x="1618" y="7058">week 11</text>
+<path class="verify" d="M1610,7042 H1540" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="7146" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="7161">«testCase»</text>
+<text class="tctext" x="1618" y="7178">test_news.py::test_record_beats_result_for_the</text>
+<text class="tctext" x="1618" y="7192">_feature_and_player_stories_are_capped</text>
+<path class="verify" d="M1610,7176 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="7280" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="7295">«testCase»</text>
+<text class="tctext" x="1618" y="7312">layout/test_managers_page.py::test_cards_cut_n</text>
+<text class="tctext" x="1618" y="7326">othing_and_never_scroll_sideways</text>
+<path class="verify" d="M1610,7310 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="7414" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="7429">«testCase»</text>
+<text class="tctext" x="1618" y="7446">layout/test_managers_behaviour.py::test_phone_</text>
+<text class="tctext" x="1618" y="7460">news_shows_seven_stories_then_show_more</text>
+<path class="verify" d="M1610,7444 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="7548" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="7563">«testCase»</text>
+<text class="tctext" x="1618" y="7580">layout/test_managers_page.py::test_moves_card_</text>
+<text class="tctext" x="1618" y="7594">cuts_nothing; Inspection: the live site, a</text>
+<path class="verify" d="M1610,7578 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="7682" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="7697">«testCase»</text>
+<text class="tctext" x="1618" y="7714">layout/test_managers_behaviour.py::test_moves_</text>
+<text class="tctext" x="1618" y="7728">filter_season_picker_and_headers</text>
+<path class="verify" d="M1610,7712 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="7816" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="7831">«testCase»</text>
+<text class="tctext" x="1618" y="7848">layout/test_managers_behaviour.py::test_moves_</text>
+<text class="tctext" x="1618" y="7862">filter_season_picker_and_headers</text>
+<path class="verify" d="M1610,7846 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="7950" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="7965">«testCase»</text>
+<text class="tctext" x="1618" y="7982">test_moves.py::test_faab_biggest_bid_and_overp</text>
+<text class="tctext" x="1618" y="7996">aid_total</text>
+<path class="verify" d="M1610,7980 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="8084" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="8099">«testCase»</text>
+<text class="tctext" x="1618" y="8116">test_managers.py::test_redraft_got_away_counts</text>
+<text class="tctext" x="1618" y="8130">_only_the_latest_season</text>
+<path class="verify" d="M1610,8114 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="8218" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="8233">«testCase»</text>
+<text class="tctext" x="1618" y="8250">test_moves.py::test_add_and_drop_in_one_move_a</text>
+<text class="tctext" x="1618" y="8264">nd_claimed_by</text>
+<path class="verify" d="M1610,8248 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="8352" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="8367">«testCase»</text>
+<text class="tctext" x="1618" y="8384">layout/test_managers_behaviour.py::test_moves_</text>
+<text class="tctext" x="1618" y="8398">filter_season_picker_and_headers</text>
+<path class="verify" d="M1610,8382 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="8486" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="8501">«testCase»</text>
+<text class="tctext" x="1618" y="8518">test_moves.py::test_overpay_contested_uncontes</text>
+<text class="tctext" x="1618" y="8532">ted_tie_and_other_runs</text>
+<path class="verify" d="M1610,8516 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="8620" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="8635">«testCase»</text>
+<text class="tctext" x="1618" y="8652">test_moves.py::test_no_games_and_pending</text>
+<path class="verify" d="M1610,8650 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="8754" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="8769">«testCase»</text>
+<text class="tctext" x="1618" y="8786">test_moves.py::test_trade_with_pick_and_faab_n</text>
+<text class="tctext" x="1618" y="8800">ever_repeats_as_rows</text>
+<path class="verify" d="M1610,8784 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="8888" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="8903">«testCase»</text>
+<text class="tctext" x="1618" y="8920">layout/test_managers_page.py::test_moves_card_</text>
+<text class="tctext" x="1618" y="8934">cuts_nothing</text>
+<path class="verify" d="M1610,8918 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="9022" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="9037">«testCase»</text>
+<text class="tctext" x="1618" y="9054">layout/test_managers_page.py::test_desktop_car</text>
+<text class="tctext" x="1618" y="9068">ds_share_one_height; layout/test_managers_page</text>
+<path class="verify" d="M1610,9052 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="9156" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="9171">«testCase»</text>
+<text class="tctext" x="1618" y="9188">layout/test_managers_page.py::test_phone_cards</text>
+<text class="tctext" x="1618" y="9202">_never_scroll_inside_and_share_a_height</text>
+<path class="verify" d="M1610,9186 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1610" y="9290" width="320" height="60" rx="3"/>
+<text class="ster" x="1618" y="9305">«testCase»</text>
+<text class="tctext" x="1618" y="9322">layout/test_accessibility.py::test_accessibili</text>
+<text class="tctext" x="1618" y="9336">ty_wcag_22_aa; layout/test_accessibility.py::t</text>
+<path class="verify" d="M1610,9320 H920" marker-end="url(#openv)"/>
 <rect class="need" x="40" y="150" width="260" height="118" rx="3"/>
 <rect class="needhdr" x="40.7" y="150.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="170.0" y="163" text-anchor="middle">«need»</text>
@@ -293,55 +590,542 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="2492">file, leaving the rating chart to say that</text>
 <text class="rtext" x="668" y="2506">ratings are not yet available.</text>
 <text class="spec" x="668" y="2539">league-odds-site</text>
-<text class="col" x="40" y="2596">OTHER BRANCHES · «trace» (extra parents)</text>
-<rect class="ext" x="350" y="2612" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="350.7" y="2612.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="480.0" y="2625" text-anchor="middle">«requirement»</text>
-<text x="480.0" y="2640" text-anchor="middle"><tspan class="rid">1.3</tspan><tspan class="rname" dx="6">Forecast table</tspan></text>
-<text class="rtext" x="358" y="2662">The Forecasts sub-tab SHALL show a table with</text>
-<text class="rtext" x="358" y="2676">one row per team and these columns, in order:</text>
-<text class="rtext" x="358" y="2690">ELO, 1-week ELO change, Manager, projected</text>
-<text class="rtext" x="358" y="2704">final record, the league&#x27;s bottom column, M…</text>
-<text class="spec" x="358" y="2723">league-odds-site</text>
-<path class="trace" d="M500.0,402 V410 H480.0 V2612" marker-end="url(#openg)"/>
-<rect class="ext" x="660" y="2612" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="660.7" y="2612.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="790.0" y="2625" text-anchor="middle">«requirement»</text>
-<text x="790.0" y="2640" text-anchor="middle"><tspan class="rid">1.4.3</tspan><tspan class="rname" dx="6">Team colours</tspan></text>
-<text class="rtext" x="668" y="2662">Each team SHALL keep one distinct line colour</text>
-<text class="rtext" x="668" y="2676">across weeks, metrics, sorts and highlighting,</text>
-<text class="rtext" x="668" y="2690">shown as a swatch on its table row.</text>
-<text class="spec" x="668" y="2723">league-odds-site</text>
-<path class="trace" d="M810.0,1608 V1621 H790.0 V2612" marker-end="url(#openg)"/>
-<rect class="ext" x="970" y="2612" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="970.7" y="2612.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="1100.0" y="2625" text-anchor="middle">«need»</text>
-<text x="1100.0" y="2640" text-anchor="middle"><tspan class="rid">9</tspan><tspan class="rname" dx="6">Usable by Every Manager</tspan></text>
-<text class="rtext" x="978" y="2662">The site SHALL be usable by every Manager: on</text>
-<text class="rtext" x="978" y="2676">the supported browsers and phone widths, and</text>
-<text class="rtext" x="978" y="2690">to WCAG 2.2 AA.</text>
-<text class="spec" x="978" y="2723">needs</text>
-<path class="trace" d="M1120.0,1742 V1760 H1100.0 V2612" marker-end="url(#openg)"/>
-<rect class="ext" x="1280" y="2612" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="1280.7" y="2612.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="1410.0" y="2625" text-anchor="middle">«requirement»</text>
-<text x="1410.0" y="2640" text-anchor="middle"><tspan class="rid">1.4.4</tspan><tspan class="rname" dx="6">Highlight a team</tspan></text>
-<text class="rtext" x="1288" y="2662">Picking a team in the chart or the table SHALL</text>
-<text class="rtext" x="1288" y="2676">keep its line at full strength and dim every</text>
-<text class="rtext" x="1288" y="2690">other line.</text>
-<text class="spec" x="1288" y="2723">league-odds-site</text>
-<path class="trace" d="M810.0,1876 V1884 H1410.0 V2612" marker-end="url(#openg)"/>
-<rect class="ext" x="1590" y="2612" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="1590.7" y="2612.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="1720.0" y="2625" text-anchor="middle">«requirement»</text>
-<text x="1720.0" y="2640" text-anchor="middle"><tspan class="rid">3.1.5.1</tspan><tspan class="rname" dx="6">Shared Manager colours</tspan></text>
-<text class="rtext" x="1598" y="2662">Dot colours SHALL be each Manager&#x27;s colours</text>
-<text class="rtext" x="1598" y="2676">from the other sub-tabs, with former Managers</text>
-<text class="rtext" x="1598" y="2690">in the greys used elsewhere.</text>
-<text class="spec" x="1598" y="2723">positional-rankings-page</text>
-<path class="trace" d="M1720.0,2612 V1755 H1080.0 V1742" marker-end="url(#openg)"/>
-<path class="derive" d="M40,2830 H86" marker-end="url(#open)"/><text class="lg" x="96" y="2834">«deriveReqt»: primary parent (sets the ID)</text>
-<path class="trace" d="M360,2830 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="2834">«trace»: extra parent</text>
-<path class="verify" d="M680,2830 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="2834">«verify»: test, inspection or analysis</text>
-<path class="vgap" d="M1000,2830 H1046" marker-end="url(#openr)"/><text class="lg" x="1056" y="2834">verification gap</text>
+<rect class="req" x="350" y="2562" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="2562.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="2575" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="2590" text-anchor="middle"><tspan class="rid">4.4</tspan><tspan class="rname" dx="6">Managers sub-tab</tspan></text>
+<text class="rtext" x="358" y="2612">The Managers sub-tab SHALL show one page per</text>
+<text class="rtext" x="358" y="2626">Manager of the league, with a team info bar, a</text>
+<text class="rtext" x="358" y="2640">season info bar and four cards: Roster, Team</text>
+<text class="rtext" x="358" y="2654">History, Moves and Team News.</text>
+<text class="spec" x="358" y="2673">manager-pages</text>
+<rect class="req" x="660" y="2696" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="2696.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="2709" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="2724" text-anchor="middle"><tspan class="rid">4.4.1</tspan><tspan class="rname" dx="6">Manager picker</tspan></text>
+<text class="rtext" x="668" y="2746">The page SHALL show one Manager at a time,</text>
+<text class="rtext" x="668" y="2760">chosen from a list flanked by previous and</text>
+<text class="rtext" x="668" y="2774">next arrows, with current Managers first and</text>
+<text class="rtext" x="668" y="2788">then a &quot;Retired&quot; group, each in name order.</text>
+<text class="spec" x="668" y="2807">manager-pages</text>
+<rect class="req" x="970" y="2830" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="2830.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="2843" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="2858" text-anchor="middle"><tspan class="rid">4.4.1.1</tspan><tspan class="rname" dx="6">Manager in the URL</tspan></text>
+<text class="rtext" x="978" y="2880">The page URL SHALL name the chosen Manager, so</text>
+<text class="rtext" x="978" y="2894">that opening a link shows that Manager&#x27;s page.</text>
+<text class="spec" x="978" y="2941">manager-pages</text>
+<rect class="req" x="970" y="2964" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="2964.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="2977" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="2992" text-anchor="middle"><tspan class="rid">4.4.1.2</tspan><tspan class="rname" dx="6">Manager kept across leagues</tspan></text>
+<text class="rtext" x="978" y="3014">Switching league SHALL keep the chosen Manager</text>
+<text class="rtext" x="978" y="3028">when they are in the other league, and</text>
+<text class="rtext" x="978" y="3042">otherwise show that league&#x27;s first Manager.</text>
+<text class="spec" x="978" y="3075">manager-pages</text>
+<rect class="req" x="660" y="3098" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="3098.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="3111" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="3126" text-anchor="middle"><tspan class="rid">4.4.2</tspan><tspan class="rname" dx="6">Manager names link to their p…</tspan></text>
+<text class="rtext" x="668" y="3148">Every Manager name in the site&#x27;s tables and</text>
+<text class="rtext" x="668" y="3162">lists (Forecasts, Games, Positions, Player WAR</text>
+<text class="rtext" x="668" y="3176">and Managers) SHALL link to that Manager&#x27;s</text>
+<text class="rtext" x="668" y="3190">page in the same league.</text>
+<text class="spec" x="668" y="3209">manager-pages</text>
+<rect class="req" x="660" y="3232" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="3232.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="3245" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="3260" text-anchor="middle"><tspan class="rid">4.4.3</tspan><tspan class="rname" dx="6">Team info bar</tspan></text>
+<text class="rtext" x="668" y="3282">The page SHALL open with a team info bar</text>
+<text class="rtext" x="668" y="3296">showing the crest, the current Team Name, the</text>
+<text class="rtext" x="668" y="3310">banners, and Form, Founded, All-Time, Rating</text>
+<text class="rtext" x="668" y="3324">and Rival separated by light dividers.</text>
+<text class="spec" x="668" y="3343">manager-pages</text>
+<rect class="req" x="970" y="3366" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="3366.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="3379" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="3394" text-anchor="middle"><tspan class="rid">4.4.3.1</tspan><tspan class="rname" dx="6">Crest</tspan></text>
+<text class="rtext" x="978" y="3416">The crest SHALL be the team logo, else the</text>
+<text class="rtext" x="978" y="3430">Sleeper avatar, else the initials in the team</text>
+<text class="rtext" x="978" y="3444">colour with a light fill, darker letters and</text>
+<text class="rtext" x="978" y="3458">outline, and at least 4.5:1 contrast for th…</text>
+<text class="spec" x="978" y="3477">manager-pages</text>
+<rect class="req" x="970" y="3500" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="3500.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="3513" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="3528" text-anchor="middle"><tspan class="rid">4.4.3.2</tspan><tspan class="rname" dx="6">Banners</tspan></text>
+<text class="rtext" x="978" y="3550">The bar SHALL hang champion banners and then,</text>
+<text class="rtext" x="978" y="3564">after a wider gap, toilet bowl banners,</text>
+<text class="rtext" x="978" y="3578">stacking them only when one row does not fit.</text>
+<text class="spec" x="978" y="3611">manager-pages</text>
+<rect class="req" x="970" y="3634" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="3634.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="3647" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="3662" text-anchor="middle"><tspan class="rid">4.4.3.3</tspan><tspan class="rname" dx="6">Retired Manager&#x27;s bar</tspan></text>
+<text class="rtext" x="978" y="3684">A retired Manager&#x27;s bar SHALL hide Form and</text>
+<text class="rtext" x="978" y="3698">read &quot;Seasons &lt;first&gt;–&lt;last&gt;&quot; in place of</text>
+<text class="rtext" x="978" y="3712">Founded.</text>
+<text class="spec" x="978" y="3745">manager-pages</text>
+<rect class="req" x="970" y="3768" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="3768.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="3781" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="3796" text-anchor="middle"><tspan class="rid">4.4.3.4</tspan><tspan class="rname" dx="6">Form bars</tspan></text>
+<text class="rtext" x="978" y="3818">Form SHALL show the current season&#x27;s five most</text>
+<text class="rtext" x="978" y="3832">recent results as bars from a centre line,</text>
+<text class="rtext" x="978" y="3846">oldest on the left: a win rising in green, a</text>
+<text class="rtext" x="978" y="3860">loss dropping in red, and a draw or a week…</text>
+<text class="spec" x="978" y="3879">manager-pages</text>
+<rect class="req" x="1280" y="3902" width="260" height="118" rx="3"/>
+<rect class="hdr" x="1280.7" y="3902.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1410.0" y="3915" text-anchor="middle">«requirement»</text>
+<text x="1410.0" y="3930" text-anchor="middle"><tspan class="rid">4.4.3.4.1</tspan><tspan class="rname" dx="6">Form before week one</tspan></text>
+<text class="rtext" x="1288" y="3952">Before week 1, Form SHALL show five grey</text>
+<text class="rtext" x="1288" y="3966">dashes.</text>
+<text class="spec" x="1288" y="4013">manager-pages</text>
+<rect class="req" x="1280" y="4036" width="260" height="118" rx="3"/>
+<rect class="hdr" x="1280.7" y="4036.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1410.0" y="4049" text-anchor="middle">«requirement»</text>
+<text x="1410.0" y="4064" text-anchor="middle"><tspan class="rid">4.4.3.4.2</tspan><tspan class="rname" dx="6">Form for screen readers</tspan></text>
+<text class="rtext" x="1288" y="4086">The Form bars SHALL carry their sequence of</text>
+<text class="rtext" x="1288" y="4100">results as text for screen readers.</text>
+<text class="spec" x="1288" y="4147">manager-pages</text>
+<rect class="req" x="660" y="4170" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="4170.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="4183" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="4198" text-anchor="middle"><tspan class="rid">4.4.4</tspan><tspan class="rname" dx="6">Season info bar</tspan></text>
+<text class="rtext" x="668" y="4220">Below the team info bar, the page SHALL show</text>
+<text class="rtext" x="668" y="4234">seven tiles: Current League Position with the</text>
+<text class="rtext" x="668" y="4248">record and points for, Last Result with both</text>
+<text class="rtext" x="668" y="4262">crests and the score, Next Matchup with the…</text>
+<text class="spec" x="668" y="4281">manager-pages</text>
+<rect class="req" x="970" y="4304" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4304.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4317" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="4332" text-anchor="middle"><tspan class="rid">4.4.4.1</tspan><tspan class="rname" dx="6">Rivalry Week badge</tspan></text>
+<text class="rtext" x="978" y="4354">In rivalry week, the Next Matchup tile SHALL</text>
+<text class="rtext" x="978" y="4368">carry a Rivalry Week badge when the next game</text>
+<text class="rtext" x="978" y="4382">is against the Manager&#x27;s rival.</text>
+<text class="spec" x="978" y="4415">manager-pages</text>
+<rect class="req" x="970" y="4438" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4438.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4451" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="4466" text-anchor="middle"><tspan class="rid">4.4.4.2</tspan><tspan class="rname" dx="6">Projected top scorer</tspan></text>
+<text class="rtext" x="978" y="4488">Before week 1, the Top Scorer tile SHALL show</text>
+<text class="rtext" x="978" y="4502">the roster&#x27;s highest projected scorer,</text>
+<text class="rtext" x="978" y="4516">labelled &quot;Top Scorer (Projected)&quot;.</text>
+<text class="spec" x="978" y="4549">manager-pages</text>
+<rect class="req" x="970" y="4572" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4572.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4585" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="4600" text-anchor="middle"><tspan class="rid">4.4.4.3</tspan><tspan class="rname" dx="6">Retired Manager&#x27;s tiles</tspan></text>
+<text class="rtext" x="978" y="4622">A retired Manager&#x27;s tiles SHALL show their</text>
+<text class="rtext" x="978" y="4636">last season, labelled with its year, with Next</text>
+<text class="rtext" x="978" y="4650">Matchup and Playoff Forecast reading</text>
+<text class="rtext" x="978" y="4664">&quot;Retired&quot;.</text>
+<text class="spec" x="978" y="4683">manager-pages</text>
+<rect class="req" x="970" y="4706" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4706.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4719" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="4734" text-anchor="middle"><tspan class="rid">4.4.4.4</tspan><tspan class="rname" dx="6">Tile layout</tspan></text>
+<text class="rtext" x="978" y="4756">Every tile SHALL share one layout: a fixed</text>
+<text class="rtext" x="978" y="4770">first line holding a 32 px image or a large</text>
+<text class="rtext" x="978" y="4784">number, then a detail line, so that images and</text>
+<text class="rtext" x="978" y="4798">numbers line up across the bar.</text>
+<text class="spec" x="978" y="4817">manager-pages</text>
+<rect class="req" x="970" y="4840" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4840.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4853" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="4868" text-anchor="middle"><tspan class="rid">4.4.4.5</tspan><tspan class="rname" dx="6">Tile text fits</tspan></text>
+<text class="rtext" x="978" y="4890">Tile text SHALL scale with the tile&#x27;s width,</text>
+<text class="rtext" x="978" y="4904">label icons hiding first on the narrowest</text>
+<text class="rtext" x="978" y="4918">tiles, with no text cut at every tested width</text>
+<text class="rtext" x="978" y="4932">or with wide system fonts.</text>
+<text class="spec" x="978" y="4951">manager-pages</text>
+<rect class="req" x="970" y="4974" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="4974.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="4987" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="5002" text-anchor="middle"><tspan class="rid">4.4.4.6</tspan><tspan class="rname" dx="6">Last Result tile</tspan></text>
+<text class="rtext" x="978" y="5024">The Last Result score SHALL stay on one line</text>
+<text class="rtext" x="978" y="5038">with both crests inside the tile, the score</text>
+<text class="rtext" x="978" y="5052">shrinking first.</text>
+<text class="spec" x="978" y="5085">manager-pages</text>
+<rect class="req" x="970" y="5108" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="5108.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="5121" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="5136" text-anchor="middle"><tspan class="rid">4.4.4.7</tspan><tspan class="rname" dx="6">Tiles link to their source</tspan></text>
+<text class="rtext" x="978" y="5158">Each tile SHALL link to the page its number</text>
+<text class="rtext" x="978" y="5172">comes from.</text>
+<text class="spec" x="978" y="5219">manager-pages</text>
+<rect class="req" x="970" y="5242" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="5242.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="5255" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="5270" text-anchor="middle"><tspan class="rid">4.4.4.8</tspan><tspan class="rname" dx="6">Tiles on a phone</tspan></text>
+<text class="rtext" x="978" y="5292">Below 600 px wide, the tiles SHALL form two</text>
+<text class="rtext" x="978" y="5306">columns, with the seventh spanning both.</text>
+<text class="spec" x="978" y="5353">manager-pages</text>
+<rect class="req" x="660" y="5376" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="5376.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="5389" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="5404" text-anchor="middle"><tspan class="rid">4.4.5</tspan><tspan class="rname" dx="6">Player names on tiles and car…</tspan></text>
+<text class="rtext" x="668" y="5426">Player names on the tiles and cards SHALL show</text>
+<text class="rtext" x="668" y="5440">in full when they fit and otherwise as first</text>
+<text class="rtext" x="668" y="5454">initial and last name, with the full name as a</text>
+<text class="rtext" x="668" y="5468">tooltip, never cut at any tested width.</text>
+<text class="spec" x="668" y="5487">manager-pages</text>
+<rect class="req" x="660" y="5510" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="5510.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="5523" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="5538" text-anchor="middle"><tspan class="rid">4.4.6</tspan><tspan class="rname" dx="6">Roster card</tspan></text>
+<text class="rtext" x="668" y="5560">The Roster card SHALL list the current roster,</text>
+<text class="rtext" x="668" y="5574">or a retired Manager&#x27;s final roster, in lineup</text>
+<text class="rtext" x="668" y="5588">order and then bench, IR and taxi, with slot,</text>
+<text class="rtext" x="668" y="5602">status, Player, position and PPG columns.</text>
+<text class="spec" x="668" y="5621">manager-pages</text>
+<rect class="req" x="970" y="5644" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="5644.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="5657" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="5672" text-anchor="middle"><tspan class="rid">4.4.6.1</tspan><tspan class="rname" dx="6">PPG chip colours</tspan></text>
+<text class="rtext" x="978" y="5694">The PPG chip SHALL be coloured against the</text>
+<text class="rtext" x="978" y="5708">position&#x27;s replacement level R: dark green</text>
+<text class="rtext" x="978" y="5722">from 1.5R, light green from 1.2R, grey from</text>
+<text class="rtext" x="978" y="5736">0.9R, light red from 0.7R and red below 0.7R.</text>
+<text class="spec" x="978" y="5755">manager-pages</text>
+<rect class="req" x="970" y="5778" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="5778.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="5791" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="5806" text-anchor="middle"><tspan class="rid">4.4.6.2</tspan><tspan class="rname" dx="6">Slot pills</tspan></text>
+<text class="rtext" x="978" y="5828">Each slot SHALL show as a pill in the position</text>
+<text class="rtext" x="978" y="5842">colour, with FLEX split into RB, WR and TE</text>
+<text class="rtext" x="978" y="5856">thirds, BN outlined, IR red and Taxi gold.</text>
+<text class="spec" x="978" y="5889">manager-pages</text>
+<rect class="req" x="970" y="5912" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="5912.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="5925" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="5940" text-anchor="middle"><tspan class="rid">4.4.6.3</tspan><tspan class="rname" dx="6">Status badges</tspan></text>
+<text class="rtext" x="978" y="5962">Each status SHALL show as a badge, red for the</text>
+<text class="rtext" x="978" y="5976">site&#x27;s out statuses and grey for Questionable.</text>
+<text class="spec" x="978" y="6023">manager-pages</text>
+<rect class="req" x="970" y="6046" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="6046.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="6059" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="6074" text-anchor="middle"><tspan class="rid">4.4.6.4</tspan><tspan class="rname" dx="6">Roster points footer</tspan></text>
+<text class="rtext" x="978" y="6096">The Roster card&#x27;s footer SHALL show this</text>
+<text class="rtext" x="978" y="6110">week&#x27;s starter and bench points.</text>
+<text class="spec" x="978" y="6157">manager-pages</text>
+<rect class="req" x="660" y="6180" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="6180.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="6193" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="6208" text-anchor="middle"><tspan class="rid">4.4.7</tspan><tspan class="rname" dx="6">Team History card</tspan></text>
+<text class="rtext" x="668" y="6230">The Team History card SHALL have three tabs:</text>
+<text class="rtext" x="668" y="6244">History, Head to Head and Records.</text>
+<text class="spec" x="668" y="6291">manager-pages</text>
+<rect class="req" x="970" y="6314" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="6314.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="6327" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="6342" text-anchor="middle"><tspan class="rid">4.4.7.1</tspan><tspan class="rname" dx="6">History tab</tspan></text>
+<text class="rtext" x="978" y="6364">The History tab SHALL show an About sentence,</text>
+<text class="rtext" x="978" y="6378">the League History chart, Honours as years</text>
+<text class="rtext" x="978" y="6392">without counts, and Luck with its numbers</text>
+<text class="rtext" x="978" y="6406">right-aligned.</text>
+<text class="spec" x="978" y="6425">manager-pages</text>
+<rect class="req" x="970" y="6448" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="6448.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="6461" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="6476" text-anchor="middle"><tspan class="rid">4.4.7.2</tspan><tspan class="rname" dx="6">Head to Head tab</tspan></text>
+<text class="rtext" x="978" y="6498">The Head to Head tab SHALL list one row per</text>
+<text class="rtext" x="978" y="6512">opponent, the rival first and the rest by</text>
+<text class="rtext" x="978" y="6526">games played, each with the record, points and</text>
+<text class="rtext" x="978" y="6540">a last result that stays on one line.</text>
+<text class="spec" x="978" y="6559">manager-pages</text>
+<rect class="req" x="970" y="6582" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="6582.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="6595" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="6610" text-anchor="middle"><tspan class="rid">4.4.7.3</tspan><tspan class="rname" dx="6">Records tab</tspan></text>
+<text class="rtext" x="978" y="6632">The Records tab SHALL show the Manager&#x27;s</text>
+<text class="rtext" x="978" y="6646">records with their values centred on their</text>
+<text class="rtext" x="978" y="6660">rows, then the history of their Team Names.</text>
+<text class="spec" x="978" y="6693">manager-pages</text>
+<rect class="req" x="1280" y="6716" width="260" height="118" rx="3"/>
+<rect class="hdr" x="1280.7" y="6716.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1410.0" y="6729" text-anchor="middle">«requirement»</text>
+<text x="1410.0" y="6744" text-anchor="middle"><tspan class="rid">4.4.7.3.1</tspan><tspan class="rname" dx="6">All-time rank tag</tspan></text>
+<text class="rtext" x="1288" y="6766">A record that is the league&#x27;s best ever SHALL</text>
+<text class="rtext" x="1288" y="6780">carry a gold &quot;#1 All Time&quot; tag.</text>
+<text class="spec" x="1288" y="6827">manager-pages</text>
+<rect class="req" x="970" y="6850" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="6850.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="6863" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="6878" text-anchor="middle"><tspan class="rid">4.4.7.4</tspan><tspan class="rname" dx="6">League History chart</tspan></text>
+<text class="rtext" x="978" y="6900">The League History chart SHALL plot each</text>
+<text class="rtext" x="978" y="6914">season&#x27;s final finish, 1st at the top, with</text>
+<text class="rtext" x="978" y="6928">the playoff places shaded, a gold trophy for a</text>
+<text class="rtext" x="978" y="6942">title, 💩 for a toilet bowl, a green dot for…</text>
+<text class="spec" x="978" y="6961">manager-pages</text>
+<rect class="req" x="1280" y="6984" width="260" height="118" rx="3"/>
+<rect class="hdr" x="1280.7" y="6984.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1410.0" y="6997" text-anchor="middle">«requirement»</text>
+<text x="1410.0" y="7012" text-anchor="middle"><tspan class="rid">4.4.7.4.1</tspan><tspan class="rname" dx="6">Current season on the chart</tspan></text>
+<text class="rtext" x="1288" y="7034">The current season SHALL show as a hollow dot</text>
+<text class="rtext" x="1288" y="7048">at the forecast finish, joined to the last</text>
+<text class="rtext" x="1288" y="7062">final season by a dashed line.</text>
+<text class="spec" x="1288" y="7095">manager-pages</text>
+<rect class="req" x="660" y="7118" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="7118.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="7131" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="7146" text-anchor="middle"><tspan class="rid">4.4.8</tspan><tspan class="rname" dx="6">Team News card</tspan></text>
+<text class="rtext" x="668" y="7168">The Team News card SHALL show the most</text>
+<text class="rtext" x="668" y="7182">important story of the latest week as a</text>
+<text class="rtext" x="668" y="7196">feature story, with a picture drawn from the</text>
+<text class="rtext" x="668" y="7210">data, and below it &quot;More Stories&quot; listing t…</text>
+<text class="spec" x="668" y="7229">manager-pages</text>
+<rect class="req" x="970" y="7252" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="7252.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="7265" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="7280" text-anchor="middle"><tspan class="rid">4.4.8.1</tspan><tspan class="rname" dx="6">Feature result picture</tspan></text>
+<text class="rtext" x="978" y="7302">A feature story about a result SHALL show both</text>
+<text class="rtext" x="978" y="7316">crests and the score, inside the card at every</text>
+<text class="rtext" x="978" y="7330">width.</text>
+<text class="spec" x="978" y="7363">manager-pages</text>
+<rect class="req" x="970" y="7386" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="7386.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="7399" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="7414" text-anchor="middle"><tspan class="rid">4.4.8.2</tspan><tspan class="rname" dx="6">Show more on a phone</tspan></text>
+<text class="rtext" x="978" y="7436">Below 600 px wide, the card SHALL show the</text>
+<text class="rtext" x="978" y="7450">first seven stories under the feature, with a</text>
+<text class="rtext" x="978" y="7464">&quot;Show more&quot; button for the rest.</text>
+<text class="spec" x="978" y="7497">manager-pages</text>
+<rect class="req" x="660" y="7520" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="7520.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="7533" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="7548" text-anchor="middle"><tspan class="rid">4.4.9</tspan><tspan class="rname" dx="6">Moves card</tspan></text>
+<text class="rtext" x="668" y="7570">The Moves card SHALL show, for the chosen</text>
+<text class="rtext" x="668" y="7584">season or all seasons, a FAAB meter, then the</text>
+<text class="rtext" x="668" y="7598">Added, Dropped and Trades lists, then a</text>
+<text class="rtext" x="668" y="7612">Players block.</text>
+<text class="spec" x="668" y="7631">manager-pages</text>
+<rect class="req" x="970" y="7654" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="7654.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="7667" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="7682" text-anchor="middle"><tspan class="rid">4.4.9.1</tspan><tspan class="rname" dx="6">Moves season picker</tspan></text>
+<text class="rtext" x="978" y="7704">A season picker with arrows SHALL offer each</text>
+<text class="rtext" x="978" y="7718">season with moves, newest first, and &quot;All</text>
+<text class="rtext" x="978" y="7732">seasons&quot;.</text>
+<text class="spec" x="978" y="7765">manager-pages</text>
+<rect class="req" x="970" y="7788" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="7788.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="7801" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="7816" text-anchor="middle"><tspan class="rid">4.4.9.2</tspan><tspan class="rname" dx="6">Moves filter</tspan></text>
+<text class="rtext" x="978" y="7838">A filter SHALL offer All moves, Waivers, Free</text>
+<text class="rtext" x="978" y="7852">agents and Trades, showing only the chosen</text>
+<text class="rtext" x="978" y="7866">kind.</text>
+<text class="spec" x="978" y="7899">manager-pages</text>
+<rect class="req" x="970" y="7922" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="7922.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="7935" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="7950" text-anchor="middle"><tspan class="rid">4.4.9.3</tspan><tspan class="rname" dx="6">FAAB meter</tspan></text>
+<text class="rtext" x="978" y="7972">The FAAB meter SHALL show the FAAB spent of</text>
+<text class="rtext" x="978" y="7986">the budget, the biggest bid and the overpaid</text>
+<text class="rtext" x="978" y="8000">total.</text>
+<text class="spec" x="978" y="8033">manager-pages</text>
+<rect class="req" x="970" y="8056" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="8056.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="8069" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="8084" text-anchor="middle"><tspan class="rid">4.4.9.4</tspan><tspan class="rname" dx="6">Players block</tspan></text>
+<text class="rtext" x="978" y="8106">The Players block SHALL name the Player with</text>
+<text class="rtext" x="978" y="8120">the most seasons on the team and the one that</text>
+<text class="rtext" x="978" y="8134">got away.</text>
+<text class="spec" x="978" y="8167">manager-pages</text>
+<rect class="req" x="660" y="8190" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="8190.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="8203" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="8218" text-anchor="middle"><tspan class="rid">4.4.10</tspan><tspan class="rname" dx="6">Move rows</tspan></text>
+<text class="rtext" x="668" y="8240">Each added or dropped row SHALL show the</text>
+<text class="rtext" x="668" y="8254">Player&#x27;s name, how the move happened and its</text>
+<text class="rtext" x="668" y="8268">week on a second line, and a WAR chip in the</text>
+<text class="rtext" x="668" y="8282">Roster card&#x27;s colours.</text>
+<text class="spec" x="668" y="8301">manager-pages</text>
+<rect class="req" x="970" y="8324" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="8324.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="8337" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="8352" text-anchor="middle"><tspan class="rid">4.4.10.1</tspan><tspan class="rname" dx="6">Moves list headers</tspan></text>
+<text class="rtext" x="978" y="8374">Each Moves list header SHALL give its count,</text>
+<text class="rtext" x="978" y="8388">with Added also giving its FAAB spent and</text>
+<text class="rtext" x="978" y="8402">total WAR, and Dropped its WAR elsewhere.</text>
+<text class="spec" x="978" y="8435">manager-pages</text>
+<rect class="req" x="970" y="8458" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="8458.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="8471" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="8486" text-anchor="middle"><tspan class="rid">4.4.10.2</tspan><tspan class="rname" dx="6">Overpay tag</tspan></text>
+<text class="rtext" x="978" y="8508">A won waiver row SHALL show its bid and its</text>
+<text class="rtext" x="978" y="8522">overpay as a red tag such as &quot;+$29&quot;, explained</text>
+<text class="rtext" x="978" y="8536">on hover as against the next bid or no other</text>
+<text class="rtext" x="978" y="8550">bids, with a tie reading &quot;tied&quot;.</text>
+<text class="spec" x="978" y="8569">manager-pages</text>
+<rect class="req" x="970" y="8592" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="8592.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="8605" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="8620" text-anchor="middle"><tspan class="rid">4.4.10.3</tspan><tspan class="rname" dx="6">No games</tspan></text>
+<text class="rtext" x="978" y="8642">A Player with no game after the move SHALL</text>
+<text class="rtext" x="978" y="8656">show &quot;no games&quot; in place of a WAR chip, or &quot;no</text>
+<text class="rtext" x="978" y="8670">games yet&quot; while nothing after the move is</text>
+<text class="rtext" x="978" y="8684">scored.</text>
+<text class="spec" x="978" y="8703">manager-pages</text>
+<rect class="req" x="970" y="8726" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="8726.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="8739" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="8754" text-anchor="middle"><tspan class="rid">4.4.10.4</tspan><tspan class="rname" dx="6">Trade blocks</tspan></text>
+<text class="rtext" x="978" y="8776">Each trade SHALL be one block naming the other</text>
+<text class="rtext" x="978" y="8790">Manager, linked to their page, and the week,</text>
+<text class="rtext" x="978" y="8804">with Got and Gave sides showing Players with</text>
+<text class="rtext" x="978" y="8818">their WAR chips, picks as season and round…</text>
+<text class="spec" x="978" y="8837">manager-pages</text>
+<rect class="req" x="970" y="8860" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="8860.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="8873" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="8888" text-anchor="middle"><tspan class="rid">4.4.10.5</tspan><tspan class="rname" dx="6">Moves text never cut</tspan></text>
+<text class="rtext" x="978" y="8910">On the Moves card, a row&#x27;s second line and any</text>
+<text class="rtext" x="978" y="8924">name too wide even when shortened SHALL wrap</text>
+<text class="rtext" x="978" y="8938">onto another line, never cut, at every tested</text>
+<text class="rtext" x="978" y="8952">width and with wide system fonts.</text>
+<text class="spec" x="978" y="8971">manager-pages</text>
+<rect class="req" x="660" y="8994" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="8994.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="9007" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="9022" text-anchor="middle"><tspan class="rid">4.4.11</tspan><tspan class="rname" dx="6">Cards on desktop</tspan></text>
+<text class="rtext" x="668" y="9044">From 600 px wide, the four cards SHALL sit</text>
+<text class="rtext" x="668" y="9058">side by side with the Roster card widest, all</text>
+<text class="rtext" x="668" y="9072">the same height, each scrolling vertically</text>
+<text class="rtext" x="668" y="9086">inside itself and never sideways.</text>
+<text class="spec" x="668" y="9105">manager-pages</text>
+<rect class="req" x="970" y="9128" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="9128.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="9141" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="9156" text-anchor="middle"><tspan class="rid">4.4.11.1</tspan><tspan class="rname" dx="6">Cards on a phone</tspan></text>
+<text class="rtext" x="978" y="9178">Below 600 px wide, a tab row (Roster, History,</text>
+<text class="rtext" x="978" y="9192">Moves, News) SHALL show one card at a time,</text>
+<text class="rtext" x="978" y="9206">each card sharing one minimum height, growing</text>
+<text class="rtext" x="978" y="9220">with longer content and never scrolling ins…</text>
+<text class="spec" x="978" y="9239">manager-pages</text>
+<rect class="req" x="660" y="9262" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="9262.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="9275" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="9290" text-anchor="middle"><tspan class="rid">4.4.12</tspan><tspan class="rname" dx="6">Managers sub-tab accessible</tspan></text>
+<text class="rtext" x="668" y="9312">The Managers sub-tab SHALL meet WCAG 2.2 AA,</text>
+<text class="rtext" x="668" y="9326">with 48 by 48 px touch targets on phones, at</text>
+<text class="rtext" x="668" y="9340">every tested width and in both themes.</text>
+<text class="spec" x="668" y="9373">manager-pages</text>
+<text class="col" x="40" y="9430">OTHER BRANCHES · «trace» (extra parents)</text>
+<rect class="ext" x="350" y="9446" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="350.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="9459" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="9474" text-anchor="middle"><tspan class="rid">1.3</tspan><tspan class="rname" dx="6">Forecast table</tspan></text>
+<text class="rtext" x="358" y="9496">The Forecasts sub-tab SHALL show a table with</text>
+<text class="rtext" x="358" y="9510">one row per team and these columns, in order:</text>
+<text class="rtext" x="358" y="9524">ELO, 1-week ELO change, Manager, projected</text>
+<text class="rtext" x="358" y="9538">final record, the league&#x27;s bottom column, M…</text>
+<text class="spec" x="358" y="9557">league-odds-site</text>
+<path class="trace" d="M500.0,402 V410 H480.0 V9446" marker-end="url(#openg)"/>
+<rect class="ext" x="660" y="9446" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="660.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="9459" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="9474" text-anchor="middle"><tspan class="rid">1.4.3</tspan><tspan class="rname" dx="6">Team colours</tspan></text>
+<text class="rtext" x="668" y="9496">Each team SHALL keep one distinct line colour</text>
+<text class="rtext" x="668" y="9510">across weeks, metrics, sorts and highlighting,</text>
+<text class="rtext" x="668" y="9524">shown as a swatch on its table row.</text>
+<text class="spec" x="668" y="9557">league-odds-site</text>
+<path class="trace" d="M810.0,1608 V1621 H790.0 V9446" marker-end="url(#openg)"/>
+<rect class="ext" x="970" y="9446" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="970.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="9459" text-anchor="middle">«need»</text>
+<text x="1100.0" y="9474" text-anchor="middle"><tspan class="rid">9</tspan><tspan class="rname" dx="6">Usable by Every Manager</tspan></text>
+<text class="rtext" x="978" y="9496">The site SHALL be usable by every Manager: on</text>
+<text class="rtext" x="978" y="9510">the supported browsers and phone widths, and</text>
+<text class="rtext" x="978" y="9524">to WCAG 2.2 AA.</text>
+<text class="spec" x="978" y="9557">needs</text>
+<path class="trace" d="M1120.0,1742 V1760 H1100.0 V9446" marker-end="url(#openg)"/>
+<rect class="ext" x="1280" y="9446" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1280.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1410.0" y="9459" text-anchor="middle">«requirement»</text>
+<text x="1410.0" y="9474" text-anchor="middle"><tspan class="rid">1.4.4</tspan><tspan class="rname" dx="6">Highlight a team</tspan></text>
+<text class="rtext" x="1288" y="9496">Picking a team in the chart or the table SHALL</text>
+<text class="rtext" x="1288" y="9510">keep its line at full strength and dim every</text>
+<text class="rtext" x="1288" y="9524">other line.</text>
+<text class="spec" x="1288" y="9557">league-odds-site</text>
+<path class="trace" d="M810.0,1876 V1884 H1410.0 V9446" marker-end="url(#openg)"/>
+<rect class="ext" x="1590" y="9446" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1590.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1720.0" y="9459" text-anchor="middle">«requirement»</text>
+<text x="1720.0" y="9474" text-anchor="middle"><tspan class="rid">9.1.1</tspan><tspan class="rname" dx="6">Sub-tabs</tspan></text>
+<text class="rtext" x="1598" y="9496">Each league page SHALL have five sub-tabs, in</text>
+<text class="rtext" x="1598" y="9510">this order: Forecasts, Games, Positions,</text>
+<text class="rtext" x="1598" y="9524">Managers and Player WAR.</text>
+<text class="spec" x="1598" y="9557">league-odds-site</text>
+<path class="trace" d="M500.0,2680 V2693 H1720.0 V9446" marker-end="url(#openg)"/>
+<rect class="ext" x="1900" y="9446" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1900.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2030.0" y="9459" text-anchor="middle">«requirement»</text>
+<text x="2030.0" y="9474" text-anchor="middle"><tspan class="rid">9.1.1.1</tspan><tspan class="rname" dx="6">Sub-tab in the URL</tspan></text>
+<text class="rtext" x="1908" y="9496">The page URL SHALL name the league and the</text>
+<text class="rtext" x="1908" y="9510">selected sub-tab, so that opening a link shows</text>
+<text class="rtext" x="1908" y="9524">that league and sub-tab.</text>
+<text class="spec" x="1908" y="9557">league-odds-site</text>
+<path class="trace" d="M1120.0,2948 V2966 H2030.0 V9446" marker-end="url(#openg)"/>
+<rect class="ext" x="2210" y="9446" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="2210.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2340.0" y="9459" text-anchor="middle">«requirement»</text>
+<text x="2340.0" y="9474" text-anchor="middle"><tspan class="rid">9.1.1.2</tspan><tspan class="rname" dx="6">Sub-tab kept across leagues</tspan></text>
+<text class="rtext" x="2218" y="9496">Switching league SHALL keep the selected sub-</text>
+<text class="rtext" x="2218" y="9510">tab.</text>
+<text class="spec" x="2218" y="9557">league-odds-site</text>
+<path class="trace" d="M1120.0,3082 V3090 H2340.0 V9446" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,3216 V3229 H1100.0 V9446" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,3484 V3502 H1100.0 V9446" marker-end="url(#openg)"/>
+<path class="trace" d="M1430.0,4154 V4162 H1100.0 V9446" marker-end="url(#openg)"/>
+<rect class="ext" x="2520" y="9446" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="2520.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2650.0" y="9459" text-anchor="middle">«requirement»</text>
+<text x="2650.0" y="9474" text-anchor="middle"><tspan class="rid">9.2</tspan><tspan class="rname" dx="6">Fits a phone</tspan></text>
+<text class="rtext" x="2528" y="9496">Every league page SHALL fit each tested phone</text>
+<text class="rtext" x="2528" y="9510">width, down to 360 px, without the page</text>
+<text class="rtext" x="2528" y="9524">scrolling sideways.</text>
+<text class="spec" x="2528" y="9557">league-odds-site</text>
+<path class="trace" d="M1120.0,4958 V4971 H2650.0 V9446" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,5360 V5378 H2650.0 V9446" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,5494 V5502 H2650.0 V9446" marker-end="url(#openg)"/>
+<rect class="ext" x="2830" y="9446" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="2830.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2960.0" y="9459" text-anchor="middle">«need»</text>
+<text x="2960.0" y="9474" text-anchor="middle"><tspan class="rid">3</tspan><tspan class="rname" dx="6">Player Value</tspan></text>
+<text class="rtext" x="2838" y="9496">The site SHALL show how much each Player is</text>
+<text class="rtext" x="2838" y="9510">worth to a league, by position and season,</text>
+<text class="rtext" x="2838" y="9524">measured against what a free agent would</text>
+<text class="rtext" x="2838" y="9538">provide.</text>
+<text class="spec" x="2838" y="9557">needs</text>
+<path class="trace" d="M1120.0,5762 V5775 H2960.0 V9446" marker-end="url(#openg)"/>
+<rect class="ext" x="3140" y="9446" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="3140.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="3270.0" y="9459" text-anchor="middle">«need»</text>
+<text x="3270.0" y="9474" text-anchor="middle"><tspan class="rid">1</tspan><tspan class="rname" dx="6">Season Forecasts</tspan></text>
+<text class="rtext" x="3148" y="9496">The site SHALL show each team&#x27;s Forecast for</text>
+<text class="rtext" x="3148" y="9510">the rest of its league&#x27;s season and how that</text>
+<text class="rtext" x="3148" y="9524">Forecast changed week by week.</text>
+<text class="spec" x="3148" y="9557">needs</text>
+<path class="trace" d="M1430.0,7102 V7120 H3270.0 V9446" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,7504 V7512 H2650.0 V9446" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,8978 V8991 H2650.0 V9446" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,9246 V9264 H2650.0 V9446" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,9380 V9388 H1100.0 V9446" marker-end="url(#openg)"/>
+<rect class="ext" x="3450" y="9446" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="3450.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="3580.0" y="9459" text-anchor="middle">«requirement»</text>
+<text x="3580.0" y="9474" text-anchor="middle"><tspan class="rid">3.1.5.1</tspan><tspan class="rname" dx="6">Shared Manager colours</tspan></text>
+<text class="rtext" x="3458" y="9496">Dot colours SHALL be each Manager&#x27;s colours</text>
+<text class="rtext" x="3458" y="9510">from the other sub-tabs, with former Managers</text>
+<text class="rtext" x="3458" y="9524">in the greys used elsewhere.</text>
+<text class="spec" x="3458" y="9557">positional-rankings-page</text>
+<path class="trace" d="M3580.0,9446 V1755 H1080.0 V1742" marker-end="url(#openg)"/>
+<path class="derive" d="M40,9664 H86" marker-end="url(#open)"/><text class="lg" x="96" y="9668">«deriveReqt»: primary parent (sets the ID)</text>
+<path class="trace" d="M360,9664 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="9668">«trace»: extra parent</text>
+<path class="verify" d="M680,9664 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="9668">«verify»: test, inspection or analysis</text>
+<path class="vgap" d="M1000,9664 H1046" marker-end="url(#openr)"/><text class="lg" x="1056" y="9668">verification gap</text>
 </svg>

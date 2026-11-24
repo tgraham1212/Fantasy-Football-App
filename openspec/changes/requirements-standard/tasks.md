@@ -32,7 +32,7 @@ Redraw the requirements diagrams (`python -X utf8 tools/requirements_diagram.py`
 - [x] 3.2 `games-page`
 - [x] 3.3 `positional-rankings-page`
 - [x] 3.4 `war-leaderboard-page`
-- [ ] 3.5 `manager-pages`
+- [x] 3.5 `manager-pages`
 
 ## 4. Model and Calculation Specs
 

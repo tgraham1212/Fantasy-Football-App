@@ -15,6 +15,26 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 
 | ID | Requirement | Spec | Pass criteria | Last inspected | Result |
 |---|---|---|---|---|---|
+| 4.4.3 | Team info bar | `manager-pages` | the live site, the team info bar of a current dynasty Manager | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.3.1 | Crest | `manager-pages` | the live site, a Manager with a logo, one with an avatar only and one with neither | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.3.3 | Retired Manager's bar | `manager-pages` | the live site, TateFM's dynasty page | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.3.4 | Form bars | `manager-pages` | the live site, Form bars of a Manager with wins and losses | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.3.4.1 | Form before week one | `manager-pages` | the live site after a draft and before week 1 | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.3.4.2 | Form for screen readers | `manager-pages` | the Form bars' accessible name in the browser's accessibility tree | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.4.1 | Rivalry Week badge | `manager-pages` | the live site in rivalry week | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.4.2 | Projected top scorer | `manager-pages` | the live site after a draft and before week 1 | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.4.3 | Retired Manager's tiles | `manager-pages` | the live site, TateFM's dynasty tiles | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.4.4 | Tile layout | `manager-pages` | the live site at 1280 px, the first lines of the seven tiles | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.4.7 | Tiles link to their source | `manager-pages` | the live site, each tile's link target | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.4.8 | Tiles on a phone | `manager-pages` | the live site at 360 px, the tile grid | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.6 | Roster card | `manager-pages` | the live site, a dynasty Manager's Roster card | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.6.2 | Slot pills | `manager-pages` | the live site, each kind of slot pill in both themes | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.6.3 | Status badges | `manager-pages` | the live site, an Out, a Doubtful and a Questionable Player | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.7.1 | History tab | `manager-pages` | the live site, a champion's History tab | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.7.3 | Records tab | `manager-pages` | the live site, a Records tab | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.7.4 | League History chart | `manager-pages` | the live site, a champion's chart | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.7.4.1 | Current season on the chart | `manager-pages` | the live site, a current Manager's chart in week 11 | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 4.4.9 | Moves card | `manager-pages` | the live site, a 2026 Moves card | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 3.2.2.2 | Two columns | `war-leaderboard-page` | the live site at 1280 px, both leagues' grids | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 3.2.4.3 | Career Manager | `war-leaderboard-page` | `site/war.js`, the career rows take Manager, team and name from the latest season | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 3.2.8 | Calculation explained | `war-leaderboard-page` | the live site, the flow chart below the leaderboards | 2026-11-23 | Pass (confirmed when the feature was built) |
@@ -75,6 +95,7 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 
 | Spec | Last reviewed | Result | Notes |
 |---|---|---|---|
+| `manager-pages` | 2026-11-23 | Pass | 19 requirements became 51 under need 4; page logic covered by 6 layout tests; 20 inspections carried over from the feature work |
 | `war-leaderboard-page` | 2026-11-23 | Pass | 9 requirements became 28 under need 3; untested behaviours covered by 7 layout tests; 4 inspections carried over from the feature work |
 | `positional-rankings-page` | 2026-11-23 | Pass | 12 requirements became 26 under need 3; 7 gaps closed with layout tests; 6 inspections carried over from the feature work |
 | `games-page` | 2026-11-23 | Pass | 19 requirements became 54 under need 2; 4 gaps closed with layout tests; 22 inspections carried over from the feature work |
