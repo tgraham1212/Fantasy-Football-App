@@ -882,7 +882,7 @@
    "QB"
   ],
   "first_name": "Jayden",
-  "last_modified": 1795493963865,
+  "last_modified": 1795529343918,
   "last_name": "Daniels",
   "opponent": "CIN",
   "player_id": "11566",
@@ -895,6 +895,7 @@
    "gs": 1.0,
    "h1_pass_yd": 85.0,
    "h1_rush_yd": 7.0,
+   "off_snp": 68.0,
    "pass_air_yd": 141.0,
    "pass_att": 35.0,
    "pass_cmp": 23.0,
@@ -910,9 +911,9 @@
    "pass_yd": 289.0,
    "pass_ypa": 8.26,
    "pass_ypc": 12.57,
-   "pos_rank_half_ppr": 18.0,
-   "pos_rank_ppr": 18.0,
-   "pos_rank_std": 18.0,
+   "pos_rank_half_ppr": 12.0,
+   "pos_rank_ppr": 12.0,
+   "pos_rank_std": 12.0,
    "pts_half_ppr": 17.06,
    "pts_ppr": 17.06,
    "pts_std": 17.06,
@@ -927,7 +928,10 @@
    "rush_tkl_loss": 1.0,
    "rush_tkl_loss_yd": -6.0,
    "rush_yd": 55.0,
-   "rush_ypa": 9.17
+   "rush_ypa": 9.17,
+   "tm_def_snp": 58.0,
+   "tm_off_snp": 68.0,
+   "tm_st_snp": 28.0
   },
   "team": "WAS"
  },
@@ -3656,7 +3660,7 @@
    "RB"
   ],
   "first_name": "Jacory",
-  "last_modified": 1795493949446,
+  "last_modified": 1795529343879,
   "last_name": "Croskey-Merritt",
   "opponent": "CIN",
   "player_id": "12533",
@@ -3668,6 +3672,7 @@
    "gms_active": 1.0,
    "gp": 1.0,
    "h1_rush_yd": 22.0,
+   "off_snp": 28.0,
    "pass_rush_yd": 54.0,
    "pos_rank_half_ppr": 12.0,
    "pos_rank_ppr": 12.0,
@@ -3694,7 +3699,10 @@
    "rush_td": 1.0,
    "rush_td_lng": 1.0,
    "rush_yd": 54.0,
-   "rush_ypa": 4.15
+   "rush_ypa": 4.15,
+   "tm_def_snp": 58.0,
+   "tm_off_snp": 68.0,
+   "tm_st_snp": 28.0
   },
   "team": "WAS"
  },
@@ -4308,7 +4316,7 @@
    "WR"
   ],
   "first_name": "Dohnte",
-  "last_modified": 1795496918509,
+  "last_modified": 1795529344075,
   "last_name": "Meyers",
   "opponent": "WAS",
   "player_id": "13264",
@@ -4322,6 +4330,7 @@
    "kr_lng": 31.0,
    "kr_yd": 150.0,
    "kr_ypa": 25.0,
+   "off_snp": 21.0,
    "pos_rank_half_ppr": 94.0,
    "pos_rank_ppr": 94.0,
    "pos_rank_std": 94.0,
@@ -4341,7 +4350,11 @@
    "rec_yd": 2.0,
    "rec_ypr": 2.0,
    "rec_ypt": 1.0,
-   "rush_rec_yd": 2.0
+   "rush_rec_yd": 2.0,
+   "st_snp": 10.0,
+   "tm_def_snp": 68.0,
+   "tm_off_snp": 58.0,
+   "tm_st_snp": 29.0
   },
   "team": "CIN"
  },
@@ -4659,7 +4672,7 @@
    "TE"
   ],
   "first_name": "Jack",
-  "last_modified": 1795492174556,
+  "last_modified": 1795529344022,
   "last_name": "Endries",
   "opponent": "WAS",
   "player_id": "13282",
@@ -4670,9 +4683,10 @@
    "gms_active": 1.0,
    "gp": 1.0,
    "h1_rec_yd": 21.0,
-   "pos_rank_half_ppr": 24.0,
-   "pos_rank_ppr": 21.0,
-   "pos_rank_std": 28.0,
+   "off_snp": 15.0,
+   "pos_rank_half_ppr": 17.0,
+   "pos_rank_ppr": 15.0,
+   "pos_rank_std": 21.0,
    "pts_half_ppr": 5.3,
    "pts_ppr": 7.3,
    "pts_std": 3.3,
@@ -4687,7 +4701,11 @@
    "rec_yd": 33.0,
    "rec_ypr": 8.25,
    "rec_ypt": 6.6,
-   "rush_rec_yd": 33.0
+   "rush_rec_yd": 33.0,
+   "st_snp": 17.0,
+   "tm_def_snp": 68.0,
+   "tm_off_snp": 58.0,
+   "tm_st_snp": 29.0
   },
   "team": "CIN"
  },
@@ -4830,7 +4848,7 @@
    "WR"
   ],
   "first_name": "Antonio",
-  "last_modified": 1795496918343,
+  "last_modified": 1795529343921,
   "last_name": "Williams",
   "opponent": "CIN",
   "player_id": "13301",
@@ -4844,6 +4862,7 @@
    "gp": 1.0,
    "gs": 1.0,
    "h1_rec_yd": 23.0,
+   "off_snp": 57.0,
    "pos_rank_half_ppr": 9.0,
    "pos_rank_ppr": 7.0,
    "pos_rank_std": 13.0,
@@ -4866,7 +4885,10 @@
    "rec_yd": 122.0,
    "rec_ypr": 13.56,
    "rec_ypt": 11.09,
-   "rush_rec_yd": 122.0
+   "rush_rec_yd": 122.0,
+   "tm_def_snp": 58.0,
+   "tm_off_snp": 68.0,
+   "tm_st_snp": 28.0
   },
   "team": "WAS"
  },
@@ -5649,7 +5671,7 @@
    "WR"
   ],
   "first_name": "Colbie",
-  "last_modified": 1795490168363,
+  "last_modified": 1795529344007,
   "last_name": "Young",
   "opponent": "WAS",
   "player_id": "13477",
@@ -5659,9 +5681,10 @@
    "bonus_rec_wr": 1.0,
    "gms_active": 1.0,
    "gp": 1.0,
-   "pos_rank_half_ppr": 999.0,
-   "pos_rank_ppr": 999.0,
-   "pos_rank_std": 999.0,
+   "off_snp": 22.0,
+   "pos_rank_half_ppr": 42.0,
+   "pos_rank_ppr": 49.0,
+   "pos_rank_std": 35.0,
    "pts_half_ppr": 6.9,
    "pts_ppr": 7.4,
    "pts_std": 6.4,
@@ -5676,7 +5699,11 @@
    "rec_yd": 4.0,
    "rec_ypr": 4.0,
    "rec_ypt": 2.0,
-   "rush_rec_yd": 4.0
+   "rush_rec_yd": 4.0,
+   "st_snp": 6.0,
+   "tm_def_snp": 68.0,
+   "tm_off_snp": 58.0,
+   "tm_st_snp": 29.0
   },
   "team": "CIN"
  },
@@ -5871,7 +5898,7 @@
    "K"
   ],
   "first_name": "Drew",
-  "last_modified": 1795493944776,
+  "last_modified": 1795529343932,
   "last_name": "Stevens",
   "opponent": "CIN",
   "player_id": "13968",
@@ -5895,6 +5922,10 @@
    "pts_half_ppr": 18.0,
    "pts_ppr": 18.0,
    "pts_std": 18.0,
+   "st_snp": 12.0,
+   "tm_def_snp": 58.0,
+   "tm_off_snp": 68.0,
+   "tm_st_snp": 28.0,
    "xpa": 1.0,
    "xpm": 1.0
   },
@@ -6225,7 +6256,7 @@
    "WR"
   ],
   "first_name": "Stefon",
-  "last_modified": 1795496918304,
+  "last_modified": 1795529343862,
   "last_name": "Diggs",
   "opponent": "CIN",
   "player_id": "2449",
@@ -6237,6 +6268,7 @@
    "gp": 1.0,
    "gs": 1.0,
    "h1_rec_yd": 10.0,
+   "off_snp": 45.0,
    "pos_rank_half_ppr": 46.0,
    "pos_rank_ppr": 44.0,
    "pos_rank_std": 47.0,
@@ -6256,7 +6288,10 @@
    "rec_yd": 45.0,
    "rec_ypr": 11.25,
    "rec_ypt": 7.5,
-   "rush_rec_yd": 45.0
+   "rush_rec_yd": 45.0,
+   "tm_def_snp": 58.0,
+   "tm_off_snp": 68.0,
+   "tm_st_snp": 28.0
   },
   "team": "WAS"
  },
@@ -7207,7 +7242,7 @@
    "RB"
   ],
   "first_name": "Samaje",
-  "last_modified": 1795493369102,
+  "last_modified": 1795529344047,
   "last_name": "Perine",
   "opponent": "WAS",
   "player_id": "4147",
@@ -7220,9 +7255,10 @@
    "gp": 1.0,
    "h1_rec_yd": 65.0,
    "h1_rush_yd": 18.0,
+   "off_snp": 29.0,
    "pass_rush_yd": 26.0,
    "pos_rank_half_ppr": 16.0,
-   "pos_rank_ppr": 16.0,
+   "pos_rank_ppr": 15.0,
    "pos_rank_std": 19.0,
    "pts_half_ppr": 11.7,
    "pts_ppr": 13.7,
@@ -7247,7 +7283,11 @@
    "rush_lng": 11.0,
    "rush_rec_yd": 97.0,
    "rush_yd": 26.0,
-   "rush_ypa": 4.33
+   "rush_ypa": 4.33,
+   "st_snp": 9.0,
+   "tm_def_snp": 68.0,
+   "tm_off_snp": 58.0,
+   "tm_st_snp": 29.0
   },
   "team": "CIN"
  },
@@ -7487,7 +7527,7 @@
    "RB"
   ],
   "first_name": "Austin",
-  "last_modified": 1795496918329,
+  "last_modified": 1795529343873,
   "last_name": "Ekeler",
   "opponent": "CIN",
   "player_id": "4663",
@@ -7500,6 +7540,7 @@
    "gs": 1.0,
    "h1_rec_yd": 3.0,
    "h1_rush_yd": 4.0,
+   "off_snp": 24.0,
    "pass_rush_yd": 41.0,
    "pos_rank_half_ppr": 31.0,
    "pos_rank_ppr": 32.0,
@@ -7523,7 +7564,10 @@
    "rush_rec_yd": 44.0,
    "rush_rz_att": 1.0,
    "rush_yd": 41.0,
-   "rush_ypa": 5.86
+   "rush_ypa": 5.86,
+   "tm_def_snp": 58.0,
+   "tm_off_snp": 68.0,
+   "tm_st_snp": 28.0
   },
   "team": "WAS"
  },
@@ -7794,7 +7838,7 @@
    "TE"
   ],
   "first_name": "Mike",
-  "last_modified": 1795493358996,
+  "last_modified": 1795529344078,
   "last_name": "Gesicki",
   "opponent": "WAS",
   "player_id": "4993",
@@ -7805,6 +7849,7 @@
    "gms_active": 1.0,
    "gp": 1.0,
    "h1_rec_yd": 17.0,
+   "off_snp": 27.0,
    "pos_rank_half_ppr": 8.0,
    "pos_rank_ppr": 6.0,
    "pos_rank_std": 7.0,
@@ -7824,7 +7869,10 @@
    "rec_yd": 77.0,
    "rec_ypr": 15.4,
    "rec_ypt": 12.83,
-   "rush_rec_yd": 77.0
+   "rush_rec_yd": 77.0,
+   "tm_def_snp": 68.0,
+   "tm_off_snp": 58.0,
+   "tm_st_snp": 29.0
   },
   "team": "CIN"
  },
@@ -8747,7 +8795,7 @@
    "TE"
   ],
   "first_name": "Drew",
-  "last_modified": 1795496918504,
+  "last_modified": 1795529344068,
   "last_name": "Sample",
   "opponent": "WAS",
   "player_id": "6001",
@@ -8759,6 +8807,7 @@
    "gp": 1.0,
    "gs": 1.0,
    "h1_rec_yd": 9.0,
+   "off_snp": 28.0,
    "pos_rank_half_ppr": 43.0,
    "pos_rank_ppr": 43.0,
    "pos_rank_std": 43.0,
@@ -8774,7 +8823,11 @@
    "rec_yd": 9.0,
    "rec_ypr": 9.0,
    "rec_ypt": 9.0,
-   "rush_rec_yd": 9.0
+   "rush_rec_yd": 9.0,
+   "st_snp": 10.0,
+   "tm_def_snp": 68.0,
+   "tm_off_snp": 58.0,
+   "tm_st_snp": 29.0
   },
   "team": "CIN"
  },
@@ -9039,7 +9092,7 @@
    "QB"
   ],
   "first_name": "Joe",
-  "last_modified": 1795493657932,
+  "last_modified": 1795529344068,
   "last_name": "Burrow",
   "opponent": "WAS",
   "player_id": "6770",
@@ -9054,6 +9107,7 @@
    "gs": 1.0,
    "h1_pass_yd": 179.0,
    "h1_rush_yd": -1.0,
+   "off_snp": 58.0,
    "pass_air_yd": 140.0,
    "pass_att": 40.0,
    "pass_cmp": 28.0,
@@ -9083,7 +9137,10 @@
    "rush_att": 2.0,
    "rush_rec_yd": -1.0,
    "rush_yd": -1.0,
-   "rush_ypa": -0.5
+   "rush_ypa": -0.5,
+   "tm_def_snp": 68.0,
+   "tm_off_snp": 58.0,
+   "tm_st_snp": 29.0
   },
   "team": "CIN"
  },
@@ -9332,7 +9389,7 @@
    "WR"
   ],
   "first_name": "Tee",
-  "last_modified": 1795496918445,
+  "last_modified": 1795529344012,
   "last_name": "Higgins",
   "opponent": "WAS",
   "player_id": "6801",
@@ -9346,6 +9403,7 @@
    "gp": 1.0,
    "gs": 1.0,
    "h1_rec_yd": 31.0,
+   "off_snp": 56.0,
    "pos_rank_half_ppr": 23.0,
    "pos_rank_ppr": 27.0,
    "pos_rank_std": 20.0,
@@ -9365,7 +9423,10 @@
    "rec_yd": 43.0,
    "rec_ypr": 21.5,
    "rec_ypt": 14.33,
-   "rush_rec_yd": 43.0
+   "rush_rec_yd": 43.0,
+   "tm_def_snp": 68.0,
+   "tm_off_snp": 58.0,
+   "tm_st_snp": 29.0
   },
   "team": "CIN"
  },
@@ -10080,7 +10141,7 @@
    "WR"
   ],
   "first_name": "Ja'Marr",
-  "last_modified": 1795496918480,
+  "last_modified": 1795529344040,
   "last_name": "Chase",
   "opponent": "WAS",
   "player_id": "7564",
@@ -10091,6 +10152,7 @@
    "gp": 1.0,
    "gs": 1.0,
    "h1_rec_yd": 20.0,
+   "off_snp": 56.0,
    "pos_rank_half_ppr": 53.0,
    "pos_rank_ppr": 45.0,
    "pos_rank_std": 58.0,
@@ -10109,7 +10171,10 @@
    "rec_yd": 31.0,
    "rec_ypr": 6.2,
    "rec_ypt": 3.44,
-   "rush_rec_yd": 31.0
+   "rush_rec_yd": 31.0,
+   "tm_def_snp": 68.0,
+   "tm_off_snp": 58.0,
+   "tm_st_snp": 29.0
   },
   "team": "CIN"
  },
@@ -10683,7 +10748,7 @@
    "K"
   ],
   "first_name": "Evan",
-  "last_modified": 1795493678441,
+  "last_modified": 1795529344026,
   "last_name": "McPherson",
   "opponent": "WAS",
   "player_id": "7839",
@@ -10707,6 +10772,10 @@
    "pts_half_ppr": 10.0,
    "pts_ppr": 10.0,
    "pts_std": 10.0,
+   "st_snp": 9.0,
+   "tm_def_snp": 68.0,
+   "tm_off_snp": 58.0,
+   "tm_st_snp": 29.0,
    "xpa": 2.0,
    "xpm": 2.0
   },
@@ -11254,7 +11323,7 @@
    "WR"
   ],
   "first_name": "Treylon",
-  "last_modified": 1795496918356,
+  "last_modified": 1795529343927,
   "last_name": "Burks",
   "opponent": "CIN",
   "player_id": "8135",
@@ -11266,6 +11335,7 @@
    "gp": 1.0,
    "gs": 1.0,
    "h1_rec_yd": 17.0,
+   "off_snp": 49.0,
    "pos_rank_half_ppr": 64.0,
    "pos_rank_ppr": 65.0,
    "pos_rank_std": 62.0,
@@ -11282,7 +11352,10 @@
    "rec_yd": 30.0,
    "rec_ypr": 15.0,
    "rec_ypt": 10.0,
-   "rush_rec_yd": 30.0
+   "rush_rec_yd": 30.0,
+   "tm_def_snp": 58.0,
+   "tm_off_snp": 68.0,
+   "tm_st_snp": 28.0
   },
   "team": "WAS"
  },
@@ -11895,7 +11968,7 @@
    "TE"
   ],
   "first_name": "Chig",
-  "last_modified": 1795496918304,
+  "last_modified": 1795529343861,
   "last_name": "Okonkwo",
   "opponent": "CIN",
   "player_id": "8210",
@@ -11907,6 +11980,7 @@
    "gp": 1.0,
    "gs": 1.0,
    "h1_rec_yd": 32.0,
+   "off_snp": 49.0,
    "pos_rank_half_ppr": 9.0,
    "pos_rank_ppr": 10.0,
    "pos_rank_std": 9.0,
@@ -11925,7 +11999,10 @@
    "rec_yd": 66.0,
    "rec_ypr": 16.5,
    "rec_ypt": 13.2,
-   "rush_rec_yd": 66.0
+   "rush_rec_yd": 66.0,
+   "tm_def_snp": 58.0,
+   "tm_off_snp": 68.0,
+   "tm_st_snp": 28.0
   },
   "team": "WAS"
  },
@@ -12237,7 +12314,7 @@
    "RB"
   ],
   "first_name": "Chase",
-  "last_modified": 1795496918475,
+  "last_modified": 1795529344035,
   "last_name": "Brown",
   "opponent": "WAS",
   "player_id": "9224",
@@ -12250,6 +12327,7 @@
    "gs": 1.0,
    "h1_rec_yd": 16.0,
    "h1_rush_yd": 4.0,
+   "off_snp": 34.0,
    "pass_rush_yd": 6.0,
    "pos_rank_half_ppr": 29.0,
    "pos_rank_ppr": 25.0,
@@ -12276,7 +12354,10 @@
    "rush_tkl_loss": 1.0,
    "rush_tkl_loss_yd": -1.0,
    "rush_yd": 6.0,
-   "rush_ypa": 1.0
+   "rush_ypa": 1.0,
+   "tm_def_snp": 68.0,
+   "tm_off_snp": 58.0,
+   "tm_st_snp": 29.0
   },
   "team": "CIN"
  },
