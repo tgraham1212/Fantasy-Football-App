@@ -282,6 +282,14 @@ def test_report_json_and_markdown_agree_and_rerun_replaces(tmp_path):
     assert "residual scale 0.9" in md_path.read_text(encoding="utf-8")
 
 
+def test_same_data_runs_and_seed_give_an_identical_report(store_2025):
+    """odds-calibration 7.8.1"""
+    first = run_calibration(store_2025, CONFIG, runs=40, seed=7)
+    second = run_calibration(store_2025, CONFIG, runs=40, seed=7)
+    strip = lambda r: {k: v for k, v in r.items() if k != "generated_at"}
+    assert strip(first) == strip(second)
+
+
 def test_run_calibration_end_to_end_on_fixture(store_2025):
     seen = []
     report = run_calibration(store_2025, CONFIG, runs=150, seed=1, progress=lambda league, season, rows: seen.append((league, season)))

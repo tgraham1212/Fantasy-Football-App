@@ -466,6 +466,18 @@ Assumptions and decisions:
     replacement level came out at 5.0 against 8 to 11 in every completed season. The first
     fix (ownership for everyone not seen active) let backups flood the cut (WR 6.5); the
     chosen rule gives redraft QB 15.6, RB 9.6, WR 8.8, inside the historical range.
+  - Why the highest trusted figure: byes and injuries only ever lower a start percentage, so
+    the highest trusted figure is closest to a player's role while active. A scored week is
+    trusted only if he played it; the unscored current week is always trusted, since a low
+    bye or injury figure there cannot win the maximum, and it gives the real figure to a
+    player whose team had a bye in the only scored captured week.
+  - Why ownership only for injured players: a player hurt for the season before weekly
+    capture began (Josh Jacobs in week 11: owned 91.5%, started 8.6%) shows near 0% started
+    in every snapshot, while percent owned barely moves during an injured-reserve stint. For
+    a healthy backup, ownership far exceeds start rate (owned 50%, started 15%), so it is
+    used only with an out status.
+  - Past seasons were captured after they ended, so their season snapshot is the genuine
+    season-long figure and they keep the yearly cut.
   - From 2027 every week has its own snapshot and the weekly cut applies.
 
 

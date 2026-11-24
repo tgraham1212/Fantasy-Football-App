@@ -148,7 +148,7 @@ Text on every step of the win probability scale SHALL have at least 4.5:1 contra
 ### Requirement: 2.1.5 Key players
 In states F1, F2, C and P2, each team SHALL list four key players from the lineup shown: the quarterback, the highest-projected running back, the highest-projected wide receiver, and the highest-projected remaining running back, wide receiver or tight end.
 
-**Traces to:** 2.1
+**Traces to:** 2.1; 2.10
 **Verified by:** Test: `tests/test_games_export.py::test_key_players_rule`; Test: `tests/layout/test_game_states.py::test_every_state_looks_as_decided`
 
 #### Scenario: Key four
@@ -198,7 +198,7 @@ Each Player listed as not playing SHALL carry the reason, in the shared status l
 ### Requirement: 2.1.7 Winner check
 For a finished week (PW), and for a game whose starters have all finished (O1 to O3), each card SHALL show a check mark in the winner's win probability box.
 
-**Traces to:** 2.1
+**Traces to:** 2.1; 2.10
 **Verified by:** Test: `tests/layout/test_game_states.py::test_every_state_looks_as_decided`
 
 #### Scenario: Unofficial winner
@@ -268,7 +268,7 @@ In a league that plays a toilet bowl, the projected toilet bowl games SHALL show
 ### Requirement: 2.1.9 LIVE badge
 During the live week, a card SHALL show the "LIVE" badge and border, a signal icon with green arcs and a moving gradient, only in state L1.
 
-**Traces to:** 2.1
+**Traces to:** 2.1; 2.10
 **Verified by:** Test: `tests/layout/test_game_states.py::test_every_state_looks_as_decided`
 
 #### Scenario: Starter in progress
@@ -347,7 +347,7 @@ The Games sub-tab SHALL note that win probability added shows the size of each s
 ### Requirement: 2.1.13 Model and Actual views
 Cards in states P2, L1, L2, P1, O1, O2, O3 and PW SHALL offer a "Model | Actual" toggle that switches the card's lineups, key players, means, win probabilities and chart between the two stored views.
 
-**Traces to:** 2.1
+**Traces to:** 2.1; 2.10
 **Verified by:** Test: `tests/layout/test_game_states.py::test_every_state_looks_as_decided`; Test: `tests/layout/test_game_states.py::test_finished_states_show_the_full_lineup_in_the_model_view`
 
 #### Scenario: Switch to Model
@@ -377,7 +377,7 @@ Actual scores SHALL be drawn on the chart in both views.
 ### Requirement: 2.1.13.3 Model view only before play
 Cards in states F1, F2 and C SHALL show the model view without a toggle.
 
-**Traces to:** 2.1.13
+**Traces to:** 2.1.13; 2.10
 **Verified by:** Test: `tests/layout/test_game_states.py::test_every_state_looks_as_decided`
 
 #### Scenario: Upcoming week
@@ -484,7 +484,7 @@ Below 560 px wide, a replacement fill SHALL read "Free agent" on one line.
 In states L1, L2 and P1, in both views, each team SHALL show its full lineup in place of the key players, with no Full Lineup control.
 
 **Rationale:** Every starter's clock, final tag and points stay visible.
-**Traces to:** 2.1; 2.1.5
+**Traces to:** 2.1; 2.1.5; 2.10
 **Verified by:** Test: `tests/layout/test_game_states.py::test_every_state_looks_as_decided`
 
 #### Scenario: Playing starter at FLEX
@@ -515,7 +515,7 @@ Starters tied on the whole percentage shown SHALL be ranked by position: QB, RB,
 The Model view of states O1, O2, O3 and PW SHALL show each team's full lineup.
 
 **Rationale:** Win probability added exists only for the Managers' real starters.
-**Traces to:** 2.1.18
+**Traces to:** 2.1.18; 2.10
 **Verified by:** Test: `tests/layout/test_game_states.py::test_finished_states_show_the_full_lineup_in_the_model_view`
 
 #### Scenario: Model view of a final game
@@ -528,7 +528,7 @@ Each card header SHALL show these chips by state, and none in PW:
 - a "Bench to play" chip in O1;
 - an "Unofficial" chip in O1, O2 and O3.
 
-**Traces to:** 2.1
+**Traces to:** 2.1; 2.10
 **Verified by:** Test: `tests/layout/test_game_states.py::test_every_state_looks_as_decided`
 
 #### Scenario: Starters done, bench playing

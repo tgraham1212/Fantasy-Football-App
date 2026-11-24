@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10310 2066" width="10310" height="2066">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10620 2066" width="10620" height="2066">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,7 +33,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="10310" height="2066"/>
+<rect class="bg" width="10620" height="2066"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 9, Usable by Every Manager</text>
 <text class="sub" x="40" y="66">11 requirements derived from need 9 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
@@ -451,60 +451,69 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <rect class="ext" x="8410" y="1808" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="8410.7" y="1808.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="8540.0" y="1821" text-anchor="middle">«requirement»</text>
-<text x="8540.0" y="1836" text-anchor="middle"><tspan class="rid">3.1</tspan><tspan class="rname" dx="6">Positions sub-tab</tspan></text>
-<text class="rtext" x="8418" y="1858">The Positions sub-tab SHALL show one dot chart</text>
-<text class="rtext" x="8418" y="1872">per position, comparing every Manager&#x27;s</text>
-<text class="rtext" x="8418" y="1886">rostered Players by points per game against</text>
-<text class="rtext" x="8418" y="1900">the replacement level.</text>
-<text class="spec" x="8418" y="1919">positional-rankings-page</text>
-<path class="trace" d="M8540.0,1808 V554 H770.0 V536" marker-end="url(#openg)"/>
+<text x="8540.0" y="1836" text-anchor="middle"><tspan class="rid">7.9</tspan><tspan class="rname" dx="6">Calibration page</tspan></text>
+<text class="rtext" x="8418" y="1858">The site SHALL have a calibration page titled</text>
+<text class="rtext" x="8418" y="1872">&quot;How Good Are These Forecasts?&quot;, linked from</text>
+<text class="rtext" x="8418" y="1886">every league page.</text>
+<text class="spec" x="8418" y="1919">odds-calibration</text>
+<path class="trace" d="M8540.0,1808 V286 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="8720" y="1808" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="8720.7" y="1808.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="8850.0" y="1821" text-anchor="middle">«requirement»</text>
-<text x="8850.0" y="1836" text-anchor="middle"><tspan class="rid">3.1.10</tspan><tspan class="rname" dx="6">Dot popup</tspan></text>
-<text class="rtext" x="8728" y="1858">Hovering over a dot, focusing it with the</text>
-<text class="rtext" x="8728" y="1872">keyboard or tapping it SHALL show a popup with</text>
-<text class="rtext" x="8728" y="1886">the Player&#x27;s name and his points per game to</text>
-<text class="rtext" x="8728" y="1900">one decimal.</text>
+<text x="8850.0" y="1836" text-anchor="middle"><tspan class="rid">3.1</tspan><tspan class="rname" dx="6">Positions sub-tab</tspan></text>
+<text class="rtext" x="8728" y="1858">The Positions sub-tab SHALL show one dot chart</text>
+<text class="rtext" x="8728" y="1872">per position, comparing every Manager&#x27;s</text>
+<text class="rtext" x="8728" y="1886">rostered Players by points per game against</text>
+<text class="rtext" x="8728" y="1900">the replacement level.</text>
 <text class="spec" x="8728" y="1919">positional-rankings-page</text>
-<path class="trace" d="M8850.0,1808 V276 H150.0 V268" marker-end="url(#openg)"/>
+<path class="trace" d="M8850.0,1808 V544 H770.0 V536" marker-end="url(#openg)"/>
 <rect class="ext" x="9030" y="1808" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="9030.7" y="1808.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="9160.0" y="1821" text-anchor="middle">«requirement»</text>
-<text x="9160.0" y="1836" text-anchor="middle"><tspan class="rid">3.1.11</tspan><tspan class="rname" dx="6">Positions on a phone</tspan></text>
-<text class="rtext" x="9038" y="1858">At every tested phone width, the charts SHALL</text>
-<text class="rtext" x="9038" y="1872">stack in one column, with every row and the</text>
-<text class="rtext" x="9038" y="1886">top Player&#x27;s name inside its chart and no</text>
-<text class="rtext" x="9038" y="1900">sideways page scrolling.</text>
+<text x="9160.0" y="1836" text-anchor="middle"><tspan class="rid">3.1.10</tspan><tspan class="rname" dx="6">Dot popup</tspan></text>
+<text class="rtext" x="9038" y="1858">Hovering over a dot, focusing it with the</text>
+<text class="rtext" x="9038" y="1872">keyboard or tapping it SHALL show a popup with</text>
+<text class="rtext" x="9038" y="1886">the Player&#x27;s name and his points per game to</text>
+<text class="rtext" x="9038" y="1900">one decimal.</text>
 <text class="spec" x="9038" y="1919">positional-rankings-page</text>
-<path class="trace" d="M9160.0,1808 V951 H460.0 V938" marker-end="url(#openg)"/>
+<path class="trace" d="M9160.0,1808 V281 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="9340" y="1808" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="9340.7" y="1808.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="9470.0" y="1821" text-anchor="middle">«requirement»</text>
-<text x="9470.0" y="1836" text-anchor="middle"><tspan class="rid">3.2</tspan><tspan class="rname" dx="6">Player WAR sub-tab</tspan></text>
-<text class="rtext" x="9348" y="1858">The Player WAR sub-tab SHALL show per-position</text>
-<text class="rtext" x="9348" y="1872">leaderboards of Player WAR for a chosen season</text>
-<text class="rtext" x="9348" y="1886">or all time.</text>
-<text class="spec" x="9348" y="1919">war-leaderboard-page</text>
-<path class="trace" d="M9470.0,1808 V554 H770.0 V536" marker-end="url(#openg)"/>
+<text x="9470.0" y="1836" text-anchor="middle"><tspan class="rid">3.1.11</tspan><tspan class="rname" dx="6">Positions on a phone</tspan></text>
+<text class="rtext" x="9348" y="1858">At every tested phone width, the charts SHALL</text>
+<text class="rtext" x="9348" y="1872">stack in one column, with every row and the</text>
+<text class="rtext" x="9348" y="1886">top Player&#x27;s name inside its chart and no</text>
+<text class="rtext" x="9348" y="1900">sideways page scrolling.</text>
+<text class="spec" x="9348" y="1919">positional-rankings-page</text>
+<path class="trace" d="M9470.0,1808 V956 H460.0 V938" marker-end="url(#openg)"/>
 <rect class="ext" x="9650" y="1808" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="9650.7" y="1808.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="9780.0" y="1821" text-anchor="middle">«requirement»</text>
-<text x="9780.0" y="1836" text-anchor="middle"><tspan class="rid">3.2.2.3</tspan><tspan class="rname" dx="6">Leaderboards on a phone</tspan></text>
-<text class="rtext" x="9658" y="1858">At every tested phone width, the leaderboards</text>
-<text class="rtext" x="9658" y="1872">SHALL stack in one column with no sideways</text>
-<text class="rtext" x="9658" y="1886">page scrolling.</text>
+<text x="9780.0" y="1836" text-anchor="middle"><tspan class="rid">3.2</tspan><tspan class="rname" dx="6">Player WAR sub-tab</tspan></text>
+<text class="rtext" x="9658" y="1858">The Player WAR sub-tab SHALL show per-position</text>
+<text class="rtext" x="9658" y="1872">leaderboards of Player WAR for a chosen season</text>
+<text class="rtext" x="9658" y="1886">or all time.</text>
 <text class="spec" x="9658" y="1919">war-leaderboard-page</text>
-<path class="trace" d="M9780.0,1808 V946 H460.0 V938" marker-end="url(#openg)"/>
+<path class="trace" d="M9780.0,1808 V544 H770.0 V536" marker-end="url(#openg)"/>
 <rect class="ext" x="9960" y="1808" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="9960.7" y="1808.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="10090.0" y="1821" text-anchor="middle">«requirement»</text>
-<text x="10090.0" y="1836" text-anchor="middle"><tspan class="rid">3.2.5.2</tspan><tspan class="rname" dx="6">Pinned names on a phone</tspan></text>
-<text class="rtext" x="9968" y="1858">Below 600 px wide, the overlay&#x27;s name column</text>
-<text class="rtext" x="9968" y="1872">SHALL stay pinned at the table&#x27;s left edge</text>
-<text class="rtext" x="9968" y="1886">while the table scrolls sideways.</text>
+<text x="10090.0" y="1836" text-anchor="middle"><tspan class="rid">3.2.2.3</tspan><tspan class="rname" dx="6">Leaderboards on a phone</tspan></text>
+<text class="rtext" x="9968" y="1858">At every tested phone width, the leaderboards</text>
+<text class="rtext" x="9968" y="1872">SHALL stack in one column with no sideways</text>
+<text class="rtext" x="9968" y="1886">page scrolling.</text>
 <text class="spec" x="9968" y="1919">war-leaderboard-page</text>
 <path class="trace" d="M10090.0,1808 V951 H460.0 V938" marker-end="url(#openg)"/>
+<rect class="ext" x="10270" y="1808" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="10270.7" y="1808.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="10400.0" y="1821" text-anchor="middle">«requirement»</text>
+<text x="10400.0" y="1836" text-anchor="middle"><tspan class="rid">3.2.5.2</tspan><tspan class="rname" dx="6">Pinned names on a phone</tspan></text>
+<text class="rtext" x="10278" y="1858">Below 600 px wide, the overlay&#x27;s name column</text>
+<text class="rtext" x="10278" y="1872">SHALL stay pinned at the table&#x27;s left edge</text>
+<text class="rtext" x="10278" y="1886">while the table scrolls sideways.</text>
+<text class="spec" x="10278" y="1919">war-leaderboard-page</text>
+<path class="trace" d="M10400.0,1808 V956 H460.0 V938" marker-end="url(#openg)"/>
 <path class="derive" d="M40,2026 H86" marker-end="url(#open)"/><text class="lg" x="96" y="2030">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,2026 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="2030">«trace»: extra parent</text>
 <path class="verify" d="M680,2026 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="2030">«verify»: test, inspection or analysis</text>

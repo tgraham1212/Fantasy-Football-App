@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1010 592" width="1010" height="592">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5040 3808" width="5040" height="3808">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,11 +33,158 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="1010" height="592"/>
+<rect class="bg" width="5040" height="3808"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 7, Checked Forecasts</text>
-<text class="sub" x="40" y="66">0 requirements derived from need 7 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
+<text class="sub" x="40" y="66">24 requirements derived from need 7 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
-<text class="sub" x="350" y="210">No requirement traces to this need yet.</text>
+<text class="col" x="350" y="132">LEVEL 1</text>
+<text class="col" x="660" y="132">LEVEL 2</text>
+<text class="col" x="990" y="132">VERIFIED BY</text>
+<path class="derive" d="M350,343.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,477.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,611.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,745.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,879.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M350,1013.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M350,1147.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M350,1281.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,1415.0 H635 V1281.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M350,1549.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,1683.0 H635 V1549.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,1817.0 H635 V1549.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M350,1951.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M350,2085.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,2219.0 H635 V2085.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,2353.0 H635 V2085.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M350,2487.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,2621.0 H635 V2487.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,2755.0 H635 V2487.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M350,2889.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,3023.0 H635 V2889.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,3157.0 H635 V2889.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M350,3291.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,3425.0 H635 V3291.0 H610" marker-end="url(#open)"/>
+<text class="elab" x="322" y="337.0" text-anchor="end">«deriveReqt»</text>
+<rect class="tc" x="990" y="312" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="327">«testCase»</text>
+<text class="tctext" x="998" y="344">test_calibrate.py::test_replay_season_stores_e</text>
+<text class="tctext" x="998" y="358">very_as_of_week_and_leaves_other_seasons_alone</text>
+<path class="verify" d="M990,342 H610" marker-end="url(#openv)"/>
+<text class="elab" x="982" y="336" text-anchor="end">«verify»</text>
+<rect class="tc" x="990" y="446" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="461">«testCase»</text>
+<text class="tctext" x="998" y="478">test_calibrate.py::test_replay_season_stores_e</text>
+<text class="tctext" x="998" y="492">very_as_of_week_and_leaves_other_seasons_alone</text>
+<path class="verify" d="M990,476 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="580" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="595">«testCase»</text>
+<text class="tctext" x="998" y="612">test_calibrate.py::test_completed_seasons_excl</text>
+<text class="tctext" x="998" y="626">udes_the_season_in_progress</text>
+<path class="verify" d="M990,610 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="714" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="729">«testCase»</text>
+<text class="tctext" x="998" y="746">test_noise.py::test_residuals_from_stored_data</text>
+<text class="tctext" x="998" y="760">; test_calibrate_model.py::test_replay_leaves_</text>
+<path class="verify" d="M990,744 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="848" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="863">«testCase»</text>
+<text class="tctext" x="998" y="880">test_replacement.py::test_rostered_sets_from_s</text>
+<text class="tctext" x="998" y="894">eason_data; test_replacement.py::test_write_re</text>
+<path class="verify" d="M990,878 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="982" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="997">«testCase»</text>
+<text class="tctext" x="998" y="1014">test_calibrate.py::test_pit_and_coverage_on_ca</text>
+<text class="tctext" x="998" y="1028">librated_noise;</text>
+<path class="verify" d="M990,1012 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="1116" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="1131">«testCase»</text>
+<text class="tctext" x="998" y="1148">test_calibrate.py::test_reliability_bins_and_b</text>
+<text class="tctext" x="998" y="1162">rier; test_calibrate.py::test_win_probability_</text>
+<path class="verify" d="M990,1146 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="1250" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="1265">«testCase»</text>
+<text class="tctext" x="998" y="1282">test_calibrate.py::test_season_outcomes_from_s</text>
+<text class="tctext" x="998" y="1296">tandings_and_bracket; test_calibrate.py::test_</text>
+<path class="verify" d="M990,1280 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="1384" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="1399">«testCase»</text>
+<text class="tctext" x="998" y="1416">test_calibrate.py::test_included_as_of_weeks_s</text>
+<text class="tctext" x="998" y="1430">top_before_the_deciding_week</text>
+<path class="verify" d="M990,1414 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="1518" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="1533">«testCase»</text>
+<text class="tctext" x="998" y="1550">test_calibrate.py::test_baseline_is_base_rate_</text>
+<text class="tctext" x="998" y="1564">before_the_season</text>
+<path class="verify" d="M990,1548 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="1652" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="1667">«testCase»</text>
+<text class="tctext" x="998" y="1684">test_calibrate.py::test_baseline_is_base_rate_</text>
+<text class="tctext" x="998" y="1698">before_the_season</text>
+<path class="verify" d="M990,1682 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="1786" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="1801">«testCase»</text>
+<text class="tctext" x="998" y="1818">test_calibrate.py::test_baseline_mid_season_li</text>
+<text class="tctext" x="998" y="1832">es_between_base_rate_and_indicator; test_calib</text>
+<path class="verify" d="M990,1816 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="1920" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="1935">«testCase»</text>
+<text class="tctext" x="998" y="1952">test_calibrate.py::test_lineup_gap_is_zero_whe</text>
+<text class="tctext" x="998" y="1966">n_starters_are_optimal_and_positive_when_not</text>
+<path class="verify" d="M990,1950 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="2054" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="2069">«testCase»</text>
+<text class="tctext" x="998" y="2086">test_calibrate.py::test_report_json_and_markdo</text>
+<text class="tctext" x="998" y="2100">wn_agree_and_rerun_replaces</text>
+<path class="verify" d="M990,2084 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="2188" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="2203">«testCase»</text>
+<text class="tctext" x="998" y="2220">test_calibrate.py::test_report_json_and_markdo</text>
+<text class="tctext" x="998" y="2234">wn_agree_and_rerun_replaces</text>
+<path class="verify" d="M990,2218 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="2322" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="2337">«testCase»</text>
+<text class="tctext" x="998" y="2354">test_calibrate_model.py::test_report_records_s</text>
+<text class="tctext" x="998" y="2368">witches_models_and_diagnostic</text>
+<path class="verify" d="M990,2352 H920" marker-end="url(#openv)"/>
+<rect class="insp" x="990" y="2456" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="2471">«inspection»</text>
+<text class="tctext" x="998" y="2488">src/ffapp/cli.py, the cold run&#x27;s steps include</text>
+<text class="tctext" x="998" y="2502">no calibration</text>
+<path class="verify" d="M990,2486 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="2590" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="2605">«testCase»</text>
+<text class="tctext" x="998" y="2622">test_calibrate.py::test_same_data_runs_and_see</text>
+<text class="tctext" x="998" y="2636">d_give_an_identical_report</text>
+<path class="verify" d="M990,2620 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="2724" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="2739">«testCase»</text>
+<text class="tctext" x="998" y="2756">test_calibrate_model.py::test_switches_reach_t</text>
+<text class="tctext" x="998" y="2770">he_replay; test_noise.py::test_build_pools_tak</text>
+<path class="verify" d="M990,2754 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="2858" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="2873">«testCase»</text>
+<text class="tctext" x="998" y="2890">layout/test_calibration_page.py::test_page_is_</text>
+<text class="tctext" x="998" y="2904">titled_and_linked_from_the_league_pages</text>
+<path class="verify" d="M990,2888 H610" marker-end="url(#openv)"/>
+<rect class="insp" x="990" y="2992" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="3007">«inspection»</text>
+<text class="tctext" x="998" y="3024">the live calibration page, each listed figure</text>
+<text class="tctext" x="998" y="3038">is present</text>
+<path class="verify" d="M990,3022 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="3126" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="3141">«testCase»</text>
+<text class="tctext" x="998" y="3158">layout/test_calibration_page.py::test_not_run_</text>
+<text class="tctext" x="998" y="3172">message_without_a_report</text>
+<path class="verify" d="M990,3156 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="3260" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="3275">«testCase»</text>
+<text class="tctext" x="998" y="3292">test_export.py::test_export_includes_calibrati</text>
+<text class="tctext" x="998" y="3306">on_report_when_present</text>
+<path class="verify" d="M990,3290 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="990" y="3394" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="3409">«testCase»</text>
+<text class="tctext" x="998" y="3426">test_export.py::test_exported_schema</text>
+<path class="verify" d="M990,3424 H920" marker-end="url(#openv)"/>
 <rect class="need" x="40" y="150" width="260" height="118" rx="3"/>
 <rect class="needhdr" x="40.7" y="150.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="170.0" y="163" text-anchor="middle">«need»</text>
@@ -46,29 +193,354 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="48" y="214">Forecasts matched what happened, across every</text>
 <text class="rtext" x="48" y="228">completed season of both leagues.</text>
 <text class="spec" x="48" y="261">needs</text>
-<text class="col" x="40" y="318">OTHER BRANCHES · «trace» (extra parents)</text>
-<rect class="ext" x="350" y="334" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="350.7" y="334.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="480.0" y="347" text-anchor="middle">«requirement»</text>
-<text x="480.0" y="362" text-anchor="middle"><tspan class="rid">2.5</tspan><tspan class="rname" dx="6">Forecast of record</tspan></text>
-<text class="rtext" x="358" y="384">Once a week is final, each game&#x27;s Forecast of</text>
-<text class="rtext" x="358" y="398">record SHALL be simulated with the same model</text>
-<text class="rtext" x="358" y="412">as the Forecasts, from the lineup each Manager</text>
-<text class="rtext" x="358" y="426">started, each Player at his last logged…</text>
-<text class="spec" x="358" y="445">game-predictions</text>
-<path class="trace" d="M480.0,334 V276 H150.0 V268" marker-end="url(#openg)"/>
-<rect class="ext" x="660" y="334" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="660.7" y="334.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="790.0" y="347" text-anchor="middle">«requirement»</text>
-<text x="790.0" y="362" text-anchor="middle"><tspan class="rid">1.1.8.3</tspan><tspan class="rname" dx="6">Bracket logic matches history</tspan></text>
-<text class="rtext" x="668" y="384">For every completed league-season, the bracket</text>
-<text class="rtext" x="668" y="398">logic, seeded with the real final standings</text>
-<text class="rtext" x="668" y="412">and given the real results, SHALL reproduce</text>
-<text class="rtext" x="668" y="426">every winners and losers bracket pairing…</text>
-<text class="spec" x="668" y="445">playoff-odds-simulation</text>
-<path class="trace" d="M790.0,334 V281 H150.0 V268" marker-end="url(#openg)"/>
-<path class="derive" d="M40,552 H86" marker-end="url(#open)"/><text class="lg" x="96" y="556">«deriveReqt»: primary parent (sets the ID)</text>
-<path class="trace" d="M360,552 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="556">«trace»: extra parent</text>
-<path class="verify" d="M680,552 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="556">«verify»: test, inspection or analysis</text>
-<path class="vgap" d="M1000,552 H1046" marker-end="url(#openr)"/><text class="lg" x="1056" y="556">verification gap</text>
+<rect class="req" x="350" y="284" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="284.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="297" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="312" text-anchor="middle"><tspan class="rid">7.1</tspan><tspan class="rname" dx="6">Season replay</tspan></text>
+<text class="rtext" x="358" y="334">The system SHALL replay every stored completed</text>
+<text class="rtext" x="358" y="348">league-season through the season simulation,</text>
+<text class="rtext" x="358" y="362">as of every week from 0 (preseason) through</text>
+<text class="rtext" x="358" y="376">the week before the final playoff round, us…</text>
+<text class="spec" x="358" y="395">odds-calibration</text>
+<rect class="req" x="660" y="418" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="418.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="431" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="446" text-anchor="middle"><tspan class="rid">7.1.1</tspan><tspan class="rname" dx="6">Replays stored as history</tspan></text>
+<text class="rtext" x="668" y="468">Each replay SHALL be stored in the Forecast</text>
+<text class="rtext" x="668" y="482">history under its league, season and as-of</text>
+<text class="rtext" x="668" y="496">week.</text>
+<text class="spec" x="668" y="529">odds-calibration</text>
+<rect class="req" x="660" y="552" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="552.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="565" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="580" text-anchor="middle"><tspan class="rid">7.1.2</tspan><tspan class="rname" dx="6">Completed seasons only</tspan></text>
+<text class="rtext" x="668" y="602">Calibration SHALL replay only completed</text>
+<text class="rtext" x="668" y="616">seasons, leaving the season in progress</text>
+<text class="rtext" x="668" y="630">unchanged.</text>
+<text class="spec" x="668" y="663">odds-calibration</text>
+<rect class="req" x="660" y="686" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="686.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="699" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="714" text-anchor="middle"><tspan class="rid">7.1.3</tspan><tspan class="rname" dx="6">Leave-season-out model</tspan></text>
+<text class="rtext" x="668" y="736">A replay&#x27;s error pools and drift fit SHALL</text>
+<text class="rtext" x="668" y="750">come only from seasons other than the one</text>
+<text class="rtext" x="668" y="764">replayed.</text>
+<text class="spec" x="668" y="797">odds-calibration</text>
+<rect class="req" x="660" y="820" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="820.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="833" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="848" text-anchor="middle"><tspan class="rid">7.1.4</tspan><tspan class="rname" dx="6">Replacement levels as they st…</tspan></text>
+<text class="rtext" x="668" y="870">A replayed week&#x27;s replacement levels SHALL</text>
+<text class="rtext" x="668" y="884">come from that week&#x27;s free agents as they</text>
+<text class="rtext" x="668" y="898">stood then.</text>
+<text class="spec" x="668" y="931">odds-calibration</text>
+<rect class="req" x="350" y="954" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="954.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="967" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="982" text-anchor="middle"><tspan class="rid">7.2</tspan><tspan class="rname" dx="6">Score calibration</tspan></text>
+<text class="rtext" x="358" y="1004">For every replayed as-of week, the report</text>
+<text class="rtext" x="358" y="1018">SHALL give, per league and overall, where each</text>
+<text class="rtext" x="358" y="1032">team&#x27;s actual next-week score fell in its</text>
+<text class="rtext" x="358" y="1046">simulated distribution, the share of actual…</text>
+<text class="spec" x="358" y="1065">odds-calibration</text>
+<rect class="req" x="350" y="1088" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="1088.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="1101" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="1116" text-anchor="middle"><tspan class="rid">7.3</tspan><tspan class="rname" dx="6">Game calibration</tspan></text>
+<text class="rtext" x="358" y="1138">For every replayed as-of week, the report</text>
+<text class="rtext" x="358" y="1152">SHALL group each team&#x27;s win probability for</text>
+<text class="rtext" x="358" y="1166">its next game into 10-point bins, with the</text>
+<text class="rtext" x="358" y="1180">observed win rate and count in each bin, an…</text>
+<text class="spec" x="358" y="1199">odds-calibration</text>
+<rect class="req" x="350" y="1222" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="1222.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="1235" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="1250" text-anchor="middle"><tspan class="rid">7.4</tspan><tspan class="rname" dx="6">Season outcome calibration</tspan></text>
+<text class="rtext" x="358" y="1272">For each season outcome (playoffs, bye, final,</text>
+<text class="rtext" x="358" y="1286">title, losers bracket, last place, avoiding</text>
+<text class="rtext" x="358" y="1300">the bottom two), the report SHALL give</text>
+<text class="rtext" x="358" y="1314">10-point reliability bins with observed rat…</text>
+<text class="spec" x="358" y="1333">odds-calibration</text>
+<rect class="req" x="660" y="1356" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="1356.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="1369" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="1384" text-anchor="middle"><tspan class="rid">7.4.1</tspan><tspan class="rname" dx="6">Decided outcomes left out</tspan></text>
+<text class="rtext" x="668" y="1406">An outcome already decided as of a week SHALL</text>
+<text class="rtext" x="668" y="1420">be left out of that week&#x27;s comparison.</text>
+<text class="spec" x="668" y="1467">odds-calibration</text>
+<rect class="req" x="350" y="1490" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="1490.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="1503" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="1518" text-anchor="middle"><tspan class="rid">7.5</tspan><tspan class="rname" dx="6">Naive baseline</tspan></text>
+<text class="rtext" x="358" y="1540">For each season outcome, the report SHALL give</text>
+<text class="rtext" x="358" y="1554">the Brier score of a naive baseline and the</text>
+<text class="rtext" x="358" y="1568">simulation&#x27;s skill against it.</text>
+<text class="spec" x="358" y="1601">odds-calibration</text>
+<rect class="req" x="660" y="1624" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="1624.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="1637" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="1652" text-anchor="middle"><tspan class="rid">7.5.1</tspan><tspan class="rname" dx="6">Baseline before the season</tspan></text>
+<text class="rtext" x="668" y="1674">Before any week is played, the baseline SHALL</text>
+<text class="rtext" x="668" y="1688">give every team the outcome&#x27;s league-wide base</text>
+<text class="rtext" x="668" y="1702">rate.</text>
+<text class="spec" x="668" y="1735">odds-calibration</text>
+<rect class="req" x="660" y="1758" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="1758.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="1771" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="1786" text-anchor="middle"><tspan class="rid">7.5.2</tspan><tspan class="rname" dx="6">Baseline during the season</tspan></text>
+<text class="rtext" x="668" y="1808">Once weeks are played, the baseline SHALL</text>
+<text class="rtext" x="668" y="1822">extrapolate each team&#x27;s record over the</text>
+<text class="rtext" x="668" y="1836">remaining weeks and rank teams on it, moving</text>
+<text class="rtext" x="668" y="1850">from the base rate toward that ranking as t…</text>
+<text class="spec" x="668" y="1869">odds-calibration</text>
+<rect class="req" x="350" y="1892" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="1892.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="1905" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="1920" text-anchor="middle"><tspan class="rid">7.6</tspan><tspan class="rname" dx="6">Lineup gap</tspan></text>
+<text class="rtext" x="358" y="1942">For every stored team-week with projections,</text>
+<text class="rtext" x="358" y="1956">the report SHALL give, per league, the mean</text>
+<text class="rtext" x="358" y="1970">projected-points and actual-points gap between</text>
+<text class="rtext" x="358" y="1984">the best projected lineup and the lineup th…</text>
+<text class="spec" x="358" y="2003">odds-calibration</text>
+<rect class="req" x="350" y="2026" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="2026.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="2039" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="2054" text-anchor="middle"><tspan class="rid">7.7</tspan><tspan class="rname" dx="6">Calibration report</tspan></text>
+<text class="rtext" x="358" y="2076">The system SHALL write the results as</text>
+<text class="rtext" x="358" y="2090">data/calibration/report.json and a Markdown</text>
+<text class="rtext" x="358" y="2104">summary, data/calibration/report.md, each</text>
+<text class="rtext" x="358" y="2118">recording when it was produced, the runs pe…</text>
+<text class="spec" x="358" y="2137">odds-calibration</text>
+<rect class="req" x="660" y="2160" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="2160.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="2173" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="2188" text-anchor="middle"><tspan class="rid">7.7.1</tspan><tspan class="rname" dx="6">Re-run replaces the report</tspan></text>
+<text class="rtext" x="668" y="2210">A new calibration run SHALL replace both</text>
+<text class="rtext" x="668" y="2224">report files.</text>
+<text class="spec" x="668" y="2271">odds-calibration</text>
+<rect class="req" x="660" y="2294" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="2294.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="2307" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="2322" text-anchor="middle"><tspan class="rid">7.7.2</tspan><tspan class="rname" dx="6">Roster drift diagnostic</tspan></text>
+<text class="rtext" x="668" y="2344">The report SHALL give, per league at horizons</text>
+<text class="rtext" x="668" y="2358">including 2, 5 and 12 weeks, the reversion</text>
+<text class="rtext" x="668" y="2372">slope and drift spread under both the frozen</text>
+<text class="rtext" x="668" y="2386">and the replacement-floored roster, with th…</text>
+<text class="spec" x="668" y="2405">odds-calibration</text>
+<rect class="req" x="350" y="2428" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="2428.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="2441" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="2456" text-anchor="middle"><tspan class="rid">7.8</tspan><tspan class="rname" dx="6">Calibration on demand</tspan></text>
+<text class="rtext" x="358" y="2478">Calibration SHALL run as its own command,</text>
+<text class="rtext" x="358" y="2492">outside the cold run.</text>
+<text class="spec" x="358" y="2539">odds-calibration</text>
+<rect class="req" x="660" y="2562" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="2562.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="2575" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="2590" text-anchor="middle"><tspan class="rid">7.8.1</tspan><tspan class="rname" dx="6">Repeatable report</tspan></text>
+<text class="rtext" x="668" y="2612">Given the same stored data, runs and seed,</text>
+<text class="rtext" x="668" y="2626">calibration SHALL produce an identical report</text>
+<text class="rtext" x="668" y="2640">apart from its production time.</text>
+<text class="spec" x="668" y="2673">odds-calibration</text>
+<rect class="req" x="660" y="2696" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="2696.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="2709" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="2724" text-anchor="middle"><tspan class="rid">7.8.2</tspan><tspan class="rname" dx="6">Command-line settings</tspan></text>
+<text class="rtext" x="668" y="2746">The calibrate command SHALL take the run</text>
+<text class="rtext" x="668" y="2760">count, a residual scale and switches that turn</text>
+<text class="rtext" x="668" y="2774">off the replacement floor or the roster drift,</text>
+<text class="rtext" x="668" y="2788">leaving the configuration file unchanged.</text>
+<text class="spec" x="668" y="2807">odds-calibration</text>
+<rect class="req" x="350" y="2830" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="2830.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="2843" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="2858" text-anchor="middle"><tspan class="rid">7.9</tspan><tspan class="rname" dx="6">Calibration page</tspan></text>
+<text class="rtext" x="358" y="2880">The site SHALL have a calibration page titled</text>
+<text class="rtext" x="358" y="2894">&quot;How Good Are These Forecasts?&quot;, linked from</text>
+<text class="rtext" x="358" y="2908">every league page.</text>
+<text class="spec" x="358" y="2941">odds-calibration</text>
+<rect class="req" x="660" y="2964" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="2964.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="2977" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="2992" text-anchor="middle"><tspan class="rid">7.9.1</tspan><tspan class="rname" dx="6">Calibration page contents</tspan></text>
+<text class="rtext" x="668" y="3014">The calibration page SHALL show each season</text>
+<text class="rtext" x="668" y="3028">outcome&#x27;s Forecast against its observed rate</text>
+<text class="rtext" x="668" y="3042">with the count behind each point, the score</text>
+<text class="rtext" x="668" y="3056">coverage against nominal, the Brier skill…</text>
+<text class="spec" x="668" y="3075">odds-calibration</text>
+<rect class="req" x="660" y="3098" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="3098.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="3111" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="3126" text-anchor="middle"><tspan class="rid">7.9.2</tspan><tspan class="rname" dx="6">Calibration not yet run</tspan></text>
+<text class="rtext" x="668" y="3148">Without a published report, the calibration</text>
+<text class="rtext" x="668" y="3162">page SHALL say that calibration has not been</text>
+<text class="rtext" x="668" y="3176">run.</text>
+<text class="spec" x="668" y="3209">odds-calibration</text>
+<rect class="req" x="350" y="3232" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="3232.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="3245" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="3260" text-anchor="middle"><tspan class="rid">7.10</tspan><tspan class="rname" dx="6">Calibration report exported</tspan></text>
+<text class="rtext" x="358" y="3282">The export SHALL include the stored</text>
+<text class="rtext" x="358" y="3296">calibration report in the site data when one</text>
+<text class="rtext" x="358" y="3310">exists.</text>
+<text class="spec" x="358" y="3343">odds-calibration</text>
+<rect class="req" x="660" y="3366" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="3366.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="3379" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="3394" text-anchor="middle"><tspan class="rid">7.10.1</tspan><tspan class="rname" dx="6">Export without a report</tspan></text>
+<text class="rtext" x="668" y="3416">The export SHALL succeed on a store that has</text>
+<text class="rtext" x="668" y="3430">never been calibrated.</text>
+<text class="spec" x="668" y="3477">odds-calibration</text>
+<text class="col" x="40" y="3534">OTHER BRANCHES · «trace» (extra parents)</text>
+<rect class="ext" x="350" y="3550" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="350.7" y="3550.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="3563" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="3578" text-anchor="middle"><tspan class="rid">1.1</tspan><tspan class="rname" dx="6">Season simulation</tspan></text>
+<text class="rtext" x="358" y="3600">Each season Forecast SHALL come from</text>
+<text class="rtext" x="358" y="3614">simulating the rest of the league&#x27;s season,</text>
+<text class="rtext" x="358" y="3628">from the as-of week through the final playoff</text>
+<text class="rtext" x="358" y="3642">round, at least 10,000 times.</text>
+<text class="spec" x="358" y="3661">playoff-odds-simulation</text>
+<path class="trace" d="M500.0,402 V410 H480.0 V3550" marker-end="url(#openg)"/>
+<rect class="ext" x="660" y="3550" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="660.7" y="3550.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="3563" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="3578" text-anchor="middle"><tspan class="rid">1.2</tspan><tspan class="rname" dx="6">Forecast history</tspan></text>
+<text class="rtext" x="668" y="3600">Each as-of Forecast SHALL be stored by league,</text>
+<text class="rtext" x="668" y="3614">season and as-of week, for current and</text>
+<text class="rtext" x="668" y="3628">replayed seasons alike, keeping every other</text>
+<text class="rtext" x="668" y="3642">week&#x27;s and season&#x27;s Forecast.</text>
+<text class="spec" x="668" y="3661">playoff-odds-simulation</text>
+<path class="trace" d="M810.0,536 V549 H790.0 V3550" marker-end="url(#openg)"/>
+<rect class="ext" x="970" y="3550" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="970.7" y="3550.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="3563" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="3578" text-anchor="middle"><tspan class="rid">1.1.5</tspan><tspan class="rname" dx="6">Score error</tspan></text>
+<text class="rtext" x="978" y="3600">Each Player&#x27;s simulated score in every</text>
+<text class="rtext" x="978" y="3614">regular-season and playoff week SHALL be their</text>
+<text class="rtext" x="978" y="3628">Projection plus an error drawn at random from</text>
+<text class="rtext" x="978" y="3642">the residuals of Players at the same positi…</text>
+<text class="spec" x="978" y="3661">playoff-odds-simulation</text>
+<path class="trace" d="M810.0,804 V822 H1100.0 V3550" marker-end="url(#openg)"/>
+<rect class="ext" x="1280" y="3550" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1280.7" y="3550.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1410.0" y="3563" text-anchor="middle">«requirement»</text>
+<text x="1410.0" y="3578" text-anchor="middle"><tspan class="rid">1.1.6.1</tspan><tspan class="rname" dx="6">Drift fit</tspan></text>
+<text class="rtext" x="1288" y="3600">The reversion slope and drift spread for each</text>
+<text class="rtext" x="1288" y="3614">horizon SHALL be fitted per league by least</text>
+<text class="rtext" x="1288" y="3628">squares from its stored completed seasons.</text>
+<text class="spec" x="1288" y="3661">playoff-odds-simulation</text>
+<path class="trace" d="M810.0,804 V812 H1410.0 V3550" marker-end="url(#openg)"/>
+<rect class="ext" x="1590" y="3550" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1590.7" y="3550.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1720.0" y="3563" text-anchor="middle">«requirement»</text>
+<text x="1720.0" y="3578" text-anchor="middle"><tspan class="rid">1.1.4.1</tspan><tspan class="rname" dx="6">Replacement floor</tspan></text>
+<text class="rtext" x="1598" y="3600">Every lineup slot SHALL be worth at least that</text>
+<text class="rtext" x="1598" y="3614">week&#x27;s projected replacement level for its</text>
+<text class="rtext" x="1598" y="3628">position, and a FLEX slot at least the best of</text>
+<text class="rtext" x="1598" y="3642">the running back, wide receiver and tight e…</text>
+<text class="spec" x="1598" y="3661">playoff-odds-simulation</text>
+<path class="trace" d="M810.0,938 V951 H1720.0 V3550" marker-end="url(#openg)"/>
+<rect class="ext" x="1900" y="3550" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1900.7" y="3550.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2030.0" y="3563" text-anchor="middle">«requirement»</text>
+<text x="2030.0" y="3578" text-anchor="middle"><tspan class="rid">2.3</tspan><tspan class="rname" dx="6">Game Forecasts</tspan></text>
+<text class="rtext" x="1908" y="3600">For every week the simulation plays, the</text>
+<text class="rtext" x="1908" y="3614">stored result SHALL include, for each game,</text>
+<text class="rtext" x="1908" y="3628">each team&#x27;s mean simulated score, a histogram</text>
+<text class="rtext" x="1908" y="3642">of its simulated scores in 2-point bins, an…</text>
+<text class="spec" x="1908" y="3661">game-predictions</text>
+<path class="trace" d="M500.0,1206 V1224 H2030.0 V3550" marker-end="url(#openg)"/>
+<rect class="ext" x="2210" y="3550" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="2210.7" y="3550.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2340.0" y="3563" text-anchor="middle">«requirement»</text>
+<text x="2340.0" y="3578" text-anchor="middle"><tspan class="rid">1.1.9</tspan><tspan class="rname" dx="6">Per-team results</tspan></text>
+<text class="rtext" x="2218" y="3600">For each team, a Forecast SHALL report the</text>
+<text class="rtext" x="2218" y="3614">mean simulated wins, losses, ties and points,</text>
+<text class="rtext" x="2218" y="3628">the seed distribution, and the share of runs</text>
+<text class="rtext" x="2218" y="3642">reaching the playoffs, a bye, the semifinal…</text>
+<text class="spec" x="2218" y="3661">playoff-odds-simulation</text>
+<path class="trace" d="M500.0,1340 V1348 H2340.0 V3550" marker-end="url(#openg)"/>
+<rect class="ext" x="2520" y="3550" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="2520.7" y="3550.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2650.0" y="3563" text-anchor="middle">«requirement»</text>
+<text x="2650.0" y="3578" text-anchor="middle"><tspan class="rid">1.1.4</tspan><tspan class="rname" dx="6">Lineup selection</tspan></text>
+<text class="rtext" x="2528" y="3600">Each team SHALL start, in every simulated</text>
+<text class="rtext" x="2528" y="3614">week, the legal lineup with the highest total</text>
+<text class="rtext" x="2528" y="3628">projected points under its league&#x27;s roster</text>
+<text class="rtext" x="2528" y="3642">slots, with FLEX taking a running back, wid…</text>
+<text class="spec" x="2528" y="3661">playoff-odds-simulation</text>
+<path class="trace" d="M500.0,2010 V2023 H2650.0 V3550" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,2412 V2430 H1410.0 V3550" marker-end="url(#openg)"/>
+<rect class="ext" x="2830" y="3550" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="2830.7" y="3550.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2960.0" y="3563" text-anchor="middle">«need»</text>
+<text x="2960.0" y="3578" text-anchor="middle"><tspan class="rid">5</tspan><tspan class="rname" dx="6">Current Data</tspan></text>
+<text class="rtext" x="2838" y="3600">During the NFL season, the site SHALL show</text>
+<text class="rtext" x="2838" y="3614">Sleeper&#x27;s league data no more than 2 minutes</text>
+<text class="rtext" x="2838" y="3628">old while games are in progress and no more</text>
+<text class="rtext" x="2838" y="3642">than 20 minutes old otherwise, age measured…</text>
+<text class="spec" x="2838" y="3661">needs</text>
+<path class="trace" d="M500.0,2546 V2554 H2960.0 V3550" marker-end="url(#openg)"/>
+<rect class="ext" x="3140" y="3550" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="3140.7" y="3550.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="3270.0" y="3563" text-anchor="middle">«requirement»</text>
+<text x="3270.0" y="3578" text-anchor="middle"><tspan class="rid">1.1.10</tspan><tspan class="rname" dx="6">Repeatability</tspan></text>
+<text class="rtext" x="3148" y="3600">Given the same stored data and random seed,</text>
+<text class="rtext" x="3148" y="3614">the simulation SHALL produce identical</text>
+<text class="rtext" x="3148" y="3628">results.</text>
+<text class="spec" x="3148" y="3661">playoff-odds-simulation</text>
+<path class="trace" d="M810.0,2680 V2693 H3270.0 V3550" marker-end="url(#openg)"/>
+<rect class="ext" x="3450" y="3550" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="3450.7" y="3550.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="3580.0" y="3563" text-anchor="middle">«need»</text>
+<text x="3580.0" y="3578" text-anchor="middle"><tspan class="rid">9</tspan><tspan class="rname" dx="6">Usable by Every Manager</tspan></text>
+<text class="rtext" x="3458" y="3600">The site SHALL be usable by every Manager: on</text>
+<text class="rtext" x="3458" y="3614">the supported browsers and phone widths, and</text>
+<text class="rtext" x="3458" y="3628">to WCAG 2.2 AA.</text>
+<text class="spec" x="3458" y="3661">needs</text>
+<path class="trace" d="M500.0,2948 V2966 H3580.0 V3550" marker-end="url(#openg)"/>
+<rect class="ext" x="3760" y="3550" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="3760.7" y="3550.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="3890.0" y="3563" text-anchor="middle">«requirement»</text>
+<text x="3890.0" y="3578" text-anchor="middle"><tspan class="rid">2.5</tspan><tspan class="rname" dx="6">Forecast of record</tspan></text>
+<text class="rtext" x="3768" y="3600">Once a week is final, each game&#x27;s Forecast of</text>
+<text class="rtext" x="3768" y="3614">record SHALL be simulated with the same model</text>
+<text class="rtext" x="3768" y="3628">as the Forecasts, from the lineup each Manager</text>
+<text class="rtext" x="3768" y="3642">started, each Player at his last logged…</text>
+<text class="spec" x="3768" y="3661">game-predictions</text>
+<path class="trace" d="M3890.0,3550 V276 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="4070" y="3550" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="4070.7" y="3550.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="4200.0" y="3563" text-anchor="middle">«requirement»</text>
+<text x="4200.0" y="3578" text-anchor="middle"><tspan class="rid">8.1</tspan><tspan class="rname" dx="6">Forecasts explained</tspan></text>
+<text class="rtext" x="4078" y="3600">The calibration page SHALL explain in plain</text>
+<text class="rtext" x="4078" y="3614">language how the Forecasts are made:</text>
+<text class="rtext" x="4078" y="3628">Projections, score error from past seasons,</text>
+<text class="rtext" x="4078" y="3642">best lineups with the replacement-level flo…</text>
+<text class="spec" x="4078" y="3661">odds-calibration</text>
+<path class="trace" d="M4200.0,3550 V2961 H460.0 V2948" marker-end="url(#openg)"/>
+<rect class="ext" x="4380" y="3550" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="4380.7" y="3550.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="4510.0" y="3563" text-anchor="middle">«requirement»</text>
+<text x="4510.0" y="3578" text-anchor="middle"><tspan class="rid">8.1.2</tspan><tspan class="rname" dx="6">Model switches stated</tspan></text>
+<text class="rtext" x="4388" y="3600">The calibration page SHALL state whether the</text>
+<text class="rtext" x="4388" y="3614">replacement floor and roster drift were on for</text>
+<text class="rtext" x="4388" y="3628">the shown report, and the N used.</text>
+<text class="spec" x="4388" y="3661">odds-calibration</text>
+<path class="trace" d="M4510.0,3550 V2162 H460.0 V2144" marker-end="url(#openg)"/>
+<rect class="ext" x="4690" y="3550" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="4690.7" y="3550.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="4820.0" y="3563" text-anchor="middle">«requirement»</text>
+<text x="4820.0" y="3578" text-anchor="middle"><tspan class="rid">1.1.8.3</tspan><tspan class="rname" dx="6">Bracket logic matches history</tspan></text>
+<text class="rtext" x="4698" y="3600">For every completed league-season, the bracket</text>
+<text class="rtext" x="4698" y="3614">logic, seeded with the real final standings</text>
+<text class="rtext" x="4698" y="3628">and given the real results, SHALL reproduce</text>
+<text class="rtext" x="4698" y="3642">every winners and losers bracket pairing…</text>
+<text class="spec" x="4698" y="3661">playoff-odds-simulation</text>
+<path class="trace" d="M4820.0,3550 V276 H150.0 V268" marker-end="url(#openg)"/>
+<path class="derive" d="M40,3768 H86" marker-end="url(#open)"/><text class="lg" x="96" y="3772">«deriveReqt»: primary parent (sets the ID)</text>
+<path class="trace" d="M360,3768 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="3772">«trace»: extra parent</text>
+<path class="verify" d="M680,3768 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="3772">«verify»: test, inspection or analysis</text>
+<path class="vgap" d="M1000,3768 H1046" marker-end="url(#openr)"/><text class="lg" x="1056" y="3772">verification gap</text>
 </svg>

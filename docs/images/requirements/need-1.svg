@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6900 9570" width="6900" height="9570">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9690 9570" width="9690" height="9570">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,7 +33,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="6900" height="9570"/>
+<rect class="bg" width="9690" height="9570"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 1, Season Forecasts</text>
 <text class="sub" x="40" y="66">67 requirements derived from need 1 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
@@ -1197,32 +1197,119 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <rect class="ext" x="5930" y="9312" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="5930.7" y="9312.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="6060.0" y="9325" text-anchor="middle">«requirement»</text>
-<text x="6060.0" y="9340" text-anchor="middle"><tspan class="rid">3.1.5.1</tspan><tspan class="rname" dx="6">Shared Manager colours</tspan></text>
-<text class="rtext" x="5938" y="9362">Dot colours SHALL be each Manager&#x27;s colours</text>
-<text class="rtext" x="5938" y="9376">from the other sub-tabs, with former Managers</text>
-<text class="rtext" x="5938" y="9390">in the greys used elsewhere.</text>
-<text class="spec" x="5938" y="9423">positional-rankings-page</text>
-<path class="trace" d="M6060.0,9312 V8862 H770.0 V8844" marker-end="url(#openg)"/>
+<text x="6060.0" y="9340" text-anchor="middle"><tspan class="rid">7.1</tspan><tspan class="rname" dx="6">Season replay</tspan></text>
+<text class="rtext" x="5938" y="9362">The system SHALL replay every stored completed</text>
+<text class="rtext" x="5938" y="9376">league-season through the season simulation,</text>
+<text class="rtext" x="5938" y="9390">as of every week from 0 (preseason) through</text>
+<text class="rtext" x="5938" y="9404">the week before the final playoff round, us…</text>
+<text class="spec" x="5938" y="9423">odds-calibration</text>
+<path class="trace" d="M6060.0,9312 V420 H460.0 V402" marker-end="url(#openg)"/>
 <rect class="ext" x="6240" y="9312" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="6240.7" y="9312.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="6370.0" y="9325" text-anchor="middle">«requirement»</text>
-<text x="6370.0" y="9340" text-anchor="middle"><tspan class="rid">3.2.7</tspan><tspan class="rname" dx="6">Expanded list sorting</tspan></text>
-<text class="rtext" x="6248" y="9362">Every column of the expanded list SHALL sort</text>
-<text class="rtext" x="6248" y="9376">from its header as the Forecast table does:</text>
-<text class="rtext" x="6248" y="9390">descending on the first click (name and</text>
-<text class="rtext" x="6248" y="9404">Manager A to Z), ascending on the second, w…</text>
-<text class="spec" x="6248" y="9423">war-leaderboard-page</text>
-<path class="trace" d="M6370.0,9312 V7646 H770.0 V7638" marker-end="url(#openg)"/>
+<text x="6370.0" y="9340" text-anchor="middle"><tspan class="rid">7.1.1</tspan><tspan class="rname" dx="6">Replays stored as history</tspan></text>
+<text class="rtext" x="6248" y="9362">Each replay SHALL be stored in the Forecast</text>
+<text class="rtext" x="6248" y="9376">history under its league, season and as-of</text>
+<text class="rtext" x="6248" y="9390">week.</text>
+<text class="spec" x="6248" y="9423">odds-calibration</text>
+<path class="trace" d="M6370.0,9312 V4832 H460.0 V4824" marker-end="url(#openg)"/>
 <rect class="ext" x="6550" y="9312" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="6550.7" y="9312.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="6680.0" y="9325" text-anchor="middle">«requirement»</text>
-<text x="6680.0" y="9340" text-anchor="middle"><tspan class="rid">2.9.3</tspan><tspan class="rname" dx="6">Player in progress</tspan></text>
-<text class="rtext" x="6558" y="9362">A Player whose game is in progress SHALL use</text>
-<text class="rtext" x="6558" y="9376">his projected final, his points so far plus</text>
-<text class="rtext" x="6558" y="9390">the share left times his projection, keeping</text>
-<text class="rtext" x="6558" y="9404">the remaining share of his spread.</text>
-<text class="spec" x="6558" y="9423">win-probability-added</text>
-<path class="trace" d="M6680.0,9312 V4569 H1080.0 V4556" marker-end="url(#openg)"/>
+<text x="6680.0" y="9340" text-anchor="middle"><tspan class="rid">7.1.3</tspan><tspan class="rname" dx="6">Leave-season-out model</tspan></text>
+<text class="rtext" x="6558" y="9362">A replay&#x27;s error pools and drift fit SHALL</text>
+<text class="rtext" x="6558" y="9376">come only from seasons other than the one</text>
+<text class="rtext" x="6558" y="9390">replayed.</text>
+<text class="spec" x="6558" y="9423">odds-calibration</text>
+<path class="trace" d="M6680.0,9312 V1487 H770.0 V1474" marker-end="url(#openg)"/>
+<path class="trace" d="M6680.0,9312 V2028 H1080.0 V2010" marker-end="url(#openg)"/>
+<rect class="ext" x="6860" y="9312" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="6860.7" y="9312.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="6990.0" y="9325" text-anchor="middle">«requirement»</text>
+<text x="6990.0" y="9340" text-anchor="middle"><tspan class="rid">7.1.4</tspan><tspan class="rname" dx="6">Replacement levels as they st…</tspan></text>
+<text class="rtext" x="6868" y="9362">A replayed week&#x27;s replacement levels SHALL</text>
+<text class="rtext" x="6868" y="9376">come from that week&#x27;s free agents as they</text>
+<text class="rtext" x="6868" y="9390">stood then.</text>
+<text class="spec" x="6868" y="9423">odds-calibration</text>
+<path class="trace" d="M6990.0,9312 V1214 H1080.0 V1206" marker-end="url(#openg)"/>
+<rect class="ext" x="7170" y="9312" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="7170.7" y="9312.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="7300.0" y="9325" text-anchor="middle">«requirement»</text>
+<text x="7300.0" y="9340" text-anchor="middle"><tspan class="rid">7.4</tspan><tspan class="rname" dx="6">Season outcome calibration</tspan></text>
+<text class="rtext" x="7178" y="9362">For each season outcome (playoffs, bye, final,</text>
+<text class="rtext" x="7178" y="9376">title, losers bracket, last place, avoiding</text>
+<text class="rtext" x="7178" y="9390">the bottom two), the report SHALL give</text>
+<text class="rtext" x="7178" y="9404">10-point reliability bins with observed rat…</text>
+<text class="spec" x="7178" y="9423">odds-calibration</text>
+<path class="trace" d="M7300.0,9312 V3095 H770.0 V3082" marker-end="url(#openg)"/>
+<rect class="ext" x="7480" y="9312" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="7480.7" y="9312.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="7610.0" y="9325" text-anchor="middle">«requirement»</text>
+<text x="7610.0" y="9340" text-anchor="middle"><tspan class="rid">7.6</tspan><tspan class="rname" dx="6">Lineup gap</tspan></text>
+<text class="rtext" x="7488" y="9362">For every stored team-week with projections,</text>
+<text class="rtext" x="7488" y="9376">the report SHALL give, per league, the mean</text>
+<text class="rtext" x="7488" y="9390">projected-points and actual-points gap between</text>
+<text class="rtext" x="7488" y="9404">the best projected lineup and the lineup th…</text>
+<text class="spec" x="7488" y="9423">odds-calibration</text>
+<path class="trace" d="M7610.0,9312 V1090 H770.0 V1072" marker-end="url(#openg)"/>
+<rect class="ext" x="7790" y="9312" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="7790.7" y="9312.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="7920.0" y="9325" text-anchor="middle">«requirement»</text>
+<text x="7920.0" y="9340" text-anchor="middle"><tspan class="rid">7.7.2</tspan><tspan class="rname" dx="6">Roster drift diagnostic</tspan></text>
+<text class="rtext" x="7798" y="9362">The report SHALL give, per league at horizons</text>
+<text class="rtext" x="7798" y="9376">including 2, 5 and 12 weeks, the reversion</text>
+<text class="rtext" x="7798" y="9390">slope and drift spread under both the frozen</text>
+<text class="rtext" x="7798" y="9404">and the replacement-floored roster, with th…</text>
+<text class="spec" x="7798" y="9423">odds-calibration</text>
+<path class="trace" d="M7920.0,9312 V2018 H1080.0 V2010" marker-end="url(#openg)"/>
+<rect class="ext" x="8100" y="9312" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="8100.7" y="9312.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="8230.0" y="9325" text-anchor="middle">«requirement»</text>
+<text x="8230.0" y="9340" text-anchor="middle"><tspan class="rid">7.8.1</tspan><tspan class="rname" dx="6">Repeatable report</tspan></text>
+<text class="rtext" x="8108" y="9362">Given the same stored data, runs and seed,</text>
+<text class="rtext" x="8108" y="9376">calibration SHALL produce an identical report</text>
+<text class="rtext" x="8108" y="9390">apart from its production time.</text>
+<text class="spec" x="8108" y="9423">odds-calibration</text>
+<path class="trace" d="M8230.0,9312 V3497 H770.0 V3484" marker-end="url(#openg)"/>
+<rect class="ext" x="8410" y="9312" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="8410.7" y="9312.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="8540.0" y="9325" text-anchor="middle">«requirement»</text>
+<text x="8540.0" y="9340" text-anchor="middle"><tspan class="rid">8.1.1</tspan><tspan class="rname" dx="6">Live model numbers</tspan></text>
+<text class="rtext" x="8418" y="9362">The explanation SHALL show each league&#x27;s</text>
+<text class="rtext" x="8418" y="9376">current replacement level per position and how</text>
+<text class="rtext" x="8418" y="9390">much of a 20-point edge the model expects a</text>
+<text class="rtext" x="8418" y="9404">team to keep 2 and 12 weeks ahead, from the…</text>
+<text class="spec" x="8418" y="9423">odds-calibration</text>
+<path class="trace" d="M8540.0,9312 V1894 H770.0 V1876" marker-end="url(#openg)"/>
+<rect class="ext" x="8720" y="9312" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="8720.7" y="9312.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="8850.0" y="9325" text-anchor="middle">«requirement»</text>
+<text x="8850.0" y="9340" text-anchor="middle"><tspan class="rid">3.1.5.1</tspan><tspan class="rname" dx="6">Shared Manager colours</tspan></text>
+<text class="rtext" x="8728" y="9362">Dot colours SHALL be each Manager&#x27;s colours</text>
+<text class="rtext" x="8728" y="9376">from the other sub-tabs, with former Managers</text>
+<text class="rtext" x="8728" y="9390">in the greys used elsewhere.</text>
+<text class="spec" x="8728" y="9423">positional-rankings-page</text>
+<path class="trace" d="M8850.0,9312 V8852 H770.0 V8844" marker-end="url(#openg)"/>
+<rect class="ext" x="9030" y="9312" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="9030.7" y="9312.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="9160.0" y="9325" text-anchor="middle">«requirement»</text>
+<text x="9160.0" y="9340" text-anchor="middle"><tspan class="rid">3.2.7</tspan><tspan class="rname" dx="6">Expanded list sorting</tspan></text>
+<text class="rtext" x="9038" y="9362">Every column of the expanded list SHALL sort</text>
+<text class="rtext" x="9038" y="9376">from its header as the Forecast table does:</text>
+<text class="rtext" x="9038" y="9390">descending on the first click (name and</text>
+<text class="rtext" x="9038" y="9404">Manager A to Z), ascending on the second, w…</text>
+<text class="spec" x="9038" y="9423">war-leaderboard-page</text>
+<path class="trace" d="M9160.0,9312 V7651 H770.0 V7638" marker-end="url(#openg)"/>
+<rect class="ext" x="9340" y="9312" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="9340.7" y="9312.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="9470.0" y="9325" text-anchor="middle">«requirement»</text>
+<text x="9470.0" y="9340" text-anchor="middle"><tspan class="rid">2.9.3</tspan><tspan class="rname" dx="6">Player in progress</tspan></text>
+<text class="rtext" x="9348" y="9362">A Player whose game is in progress SHALL use</text>
+<text class="rtext" x="9348" y="9376">his projected final, his points so far plus</text>
+<text class="rtext" x="9348" y="9390">the share left times his projection, keeping</text>
+<text class="rtext" x="9348" y="9404">the remaining share of his spread.</text>
+<text class="spec" x="9348" y="9423">win-probability-added</text>
+<path class="trace" d="M9470.0,9312 V4574 H1080.0 V4556" marker-end="url(#openg)"/>
 <path class="derive" d="M40,9530 H86" marker-end="url(#open)"/><text class="lg" x="96" y="9534">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,9530 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="9534">«trace»: extra parent</text>
 <path class="verify" d="M680,9530 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="9534">«verify»: test, inspection or analysis</text>

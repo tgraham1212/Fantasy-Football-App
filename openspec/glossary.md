@@ -31,7 +31,7 @@ Style is APA, with title case for titles and headings.
 - **WAR:** wins above replacement, how many wins a Player added over a replacement-level Player.
 - **Win probability added (WPA):** how far a Player's scoring moved their team's win probability in a game.
 - **Residual:** a Player's actual points minus their projected points in one week.
-- **Noise pool:** the residuals of Players at the same position and projection level, from which the simulation draws each simulated miss (`Calculations.txt`, section 4).
+- **Error pool:** the residuals of Players at the same position and projection level, from which the simulation draws each simulated miss; `Calculations.txt`, section 4, calls it a noise pool.
 - **Roster drift:** the shrinking of a team's projected edge, and the added spread, the further ahead a week is, modelled as a random walk (`Calculations.txt`, section 6).
 - **Calibration:** the comparison of Forecast probabilities with what happened, across every completed season.
 - **Record:** data committed to git under `data/`, kept for good; the durable copy of league history and Player data.

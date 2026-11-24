@@ -15,6 +15,10 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 
 | ID | Requirement | Spec | Pass criteria | Last inspected | Result |
 |---|---|---|---|---|---|
+| 7.8 | Calibration on demand | `odds-calibration` | `src/ffapp/cli.py`, the cold run's steps include no calibration | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 7.9.1 | Calibration page contents | `odds-calibration` | the live calibration page, each listed figure is present | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 8.1 | Forecasts explained | `odds-calibration` | the live calibration page, the "how it works" card covers the four parts | 2026-11-23 | Pass (confirmed when the feature was built) |
+| 2.10.6.1 | Generated gallery | `game-card-states` | `tools/games_states_gallery.py` writes every state's image to `docs/images/games-states/` from fixture weeks | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 4.4.3 | Team info bar | `manager-pages` | the live site, the team info bar of a current dynasty Manager | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 4.4.3.1 | Crest | `manager-pages` | the live site, a Manager with a logo, one with an avatar only and one with neither | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 4.4.3.3 | Retired Manager's bar | `manager-pages` | the live site, TateFM's dynasty page | 2026-11-23 | Pass (confirmed when the feature was built) |
@@ -95,6 +99,9 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 
 | Spec | Last reviewed | Result | Notes |
 |---|---|---|---|
+| `player-war` | 2026-11-23 | Pass | 8 requirements became 22 under 3.3; merged-cut rationale moved to Calculations.txt section 16 |
+| `odds-calibration` | 2026-11-23 | Pass | 14 requirements (4 moved from league-odds-site) became 29 under needs 7 and 8; duplicates and an unverifiable clause cut; 5 tests added |
+| `game-card-states` | 2026-11-23 | Pass | 8 requirements became 12 under 2.10; verification-only requirement cut; games-page requirements naming states now trace to 2.10 |
 | `win-probability-added` | 2026-11-23 | Pass | 3 requirements became 9 under 2.9; baseline corrected to include the live week's provisional Forecast; two tested behaviours stated |
 | `live-scoring` | 2026-11-23 | Pass | 4 requirements became 9 under 1.1.12; the history requirement cut as a duplicate of 1.2.3; in-progress scoring corrected to include the mean miss |
 | `game-predictions` | 2026-11-23 | Pass | 12 requirements became 29 under needs 2 and 1 (1.2.5 slate Forecasts); every requirement verified by an existing test |

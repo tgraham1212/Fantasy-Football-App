@@ -39,9 +39,9 @@ Redraw the requirements diagrams (`python -X utf8 tools/requirements_diagram.py`
 - [x] 4.1 `game-predictions`
 - [x] 4.2 `live-scoring`
 - [x] 4.3 `win-probability-added`
-- [ ] 4.4 `game-card-states`
-- [ ] 4.5 `odds-calibration`
-- [ ] 4.6 `player-war`
+- [x] 4.4 `game-card-states`
+- [x] 4.5 `odds-calibration`
+- [x] 4.6 `player-war`
 - [ ] 4.7 `positional-rankings`
 - [ ] 4.8 `replacement-level`
 - [ ] 4.9 `manager-history`

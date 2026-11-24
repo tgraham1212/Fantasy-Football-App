@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1940 592" width="1940" height="592">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2250 592" width="2250" height="592">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,7 +33,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="1940" height="592"/>
+<rect class="bg" width="2250" height="592"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 6, Durable Record</text>
 <text class="sub" x="40" y="66">0 requirements derived from need 6 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
@@ -79,22 +79,32 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <rect class="ext" x="1280" y="334" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="1280.7" y="334.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="347" text-anchor="middle">«requirement»</text>
-<text x="1410.0" y="362" text-anchor="middle"><tspan class="rid">1.1.10</tspan><tspan class="rname" dx="6">Repeatability</tspan></text>
-<text class="rtext" x="1288" y="384">Given the same stored data and random seed,</text>
-<text class="rtext" x="1288" y="398">the simulation SHALL produce identical</text>
-<text class="rtext" x="1288" y="412">results.</text>
-<text class="spec" x="1288" y="445">playoff-odds-simulation</text>
+<text x="1410.0" y="362" text-anchor="middle"><tspan class="rid">3.3.8</tspan><tspan class="rname" dx="6">WAR stored</tspan></text>
+<text class="rtext" x="1288" y="384">The system SHALL write, per league and season,</text>
+<text class="rtext" x="1288" y="398">a file holding the cut, the week it runs</text>
+<text class="rtext" x="1288" y="412">through, the season constants and replacement</text>
+<text class="rtext" x="1288" y="426">levels, and per qualifying Player his Sleep…</text>
+<text class="spec" x="1288" y="445">player-war</text>
 <path class="trace" d="M1410.0,334 V276 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="1590" y="334" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="1590.7" y="334.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1720.0" y="347" text-anchor="middle">«requirement»</text>
-<text x="1720.0" y="362" text-anchor="middle"><tspan class="rid">1.2</tspan><tspan class="rname" dx="6">Forecast history</tspan></text>
-<text class="rtext" x="1598" y="384">Each as-of Forecast SHALL be stored by league,</text>
-<text class="rtext" x="1598" y="398">season and as-of week, for current and</text>
-<text class="rtext" x="1598" y="412">replayed seasons alike, keeping every other</text>
-<text class="rtext" x="1598" y="426">week&#x27;s and season&#x27;s Forecast.</text>
+<text x="1720.0" y="362" text-anchor="middle"><tspan class="rid">1.1.10</tspan><tspan class="rname" dx="6">Repeatability</tspan></text>
+<text class="rtext" x="1598" y="384">Given the same stored data and random seed,</text>
+<text class="rtext" x="1598" y="398">the simulation SHALL produce identical</text>
+<text class="rtext" x="1598" y="412">results.</text>
 <text class="spec" x="1598" y="445">playoff-odds-simulation</text>
 <path class="trace" d="M1720.0,334 V281 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="1900" y="334" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1900.7" y="334.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2030.0" y="347" text-anchor="middle">«requirement»</text>
+<text x="2030.0" y="362" text-anchor="middle"><tspan class="rid">1.2</tspan><tspan class="rname" dx="6">Forecast history</tspan></text>
+<text class="rtext" x="1908" y="384">Each as-of Forecast SHALL be stored by league,</text>
+<text class="rtext" x="1908" y="398">season and as-of week, for current and</text>
+<text class="rtext" x="1908" y="412">replayed seasons alike, keeping every other</text>
+<text class="rtext" x="1908" y="426">week&#x27;s and season&#x27;s Forecast.</text>
+<text class="spec" x="1908" y="445">playoff-odds-simulation</text>
+<path class="trace" d="M2030.0,334 V286 H150.0 V268" marker-end="url(#openg)"/>
 <path class="derive" d="M40,552 H86" marker-end="url(#open)"/><text class="lg" x="96" y="556">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,552 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="556">«trace»: extra parent</text>
 <path class="verify" d="M680,552 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="556">«verify»: test, inspection or analysis</text>
