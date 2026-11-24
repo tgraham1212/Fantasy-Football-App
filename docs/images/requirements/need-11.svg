@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 730 404" width="730" height="404">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1350 860" width="1350" height="860">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,11 +33,27 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="730" height="404"/>
+<rect class="bg" width="1350" height="860"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 11, Free to Run</text>
-<text class="sub" x="40" y="66">0 requirements derived from need 11 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
+<text class="sub" x="40" y="66">2 requirements derived from need 11 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
-<text class="sub" x="350" y="210">No requirement traces to this need yet.</text>
+<text class="col" x="350" y="132">LEVEL 1</text>
+<text class="col" x="660" y="132">LEVEL 2</text>
+<text class="col" x="990" y="132">VERIFIED BY</text>
+<path class="derive" d="M350,343.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,477.0 H635 V343.0 H610" marker-end="url(#open)"/>
+<text class="elab" x="322" y="337.0" text-anchor="end">«deriveReqt»</text>
+<rect class="insp" x="990" y="312" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="327">«inspection»</text>
+<text class="tctext" x="998" y="344">site/ holds only HTML, CSS, JavaScript and</text>
+<text class="tctext" x="998" y="358">data files, and its scripts fetch only</text>
+<path class="verify" d="M990,342 H610" marker-end="url(#openv)"/>
+<text class="elab" x="982" y="336" text-anchor="end">«verify»</text>
+<rect class="tc" x="990" y="446" width="320" height="60" rx="3"/>
+<text class="ster" x="998" y="461">«testCase»</text>
+<text class="tctext" x="998" y="478">layout/test_layout.py::test_older_bundle_and_r</text>
+<text class="tctext" x="998" y="492">elay_down_are_ignored</text>
+<path class="verify" d="M990,476 H920" marker-end="url(#openv)"/>
 <rect class="need" x="40" y="150" width="260" height="118" rx="3"/>
 <rect class="needhdr" x="40.7" y="150.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="170.0" y="163" text-anchor="middle">«need»</text>
@@ -47,8 +63,35 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="48" y="228">repository: Actions and Pages; - Cloudflare</text>
 <text class="rtext" x="48" y="242">Free: Workers, Workers KV, Cron Triggers an…</text>
 <text class="spec" x="48" y="261">needs</text>
-<path class="derive" d="M40,364 H86" marker-end="url(#open)"/><text class="lg" x="96" y="368">«deriveReqt»: primary parent (sets the ID)</text>
-<path class="trace" d="M360,364 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="368">«trace»: extra parent</text>
-<path class="verify" d="M680,364 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="368">«verify»: test, inspection or analysis</text>
-<path class="vgap" d="M1000,364 H1046" marker-end="url(#openr)"/><text class="lg" x="1056" y="368">verification gap</text>
+<rect class="req" x="350" y="284" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="284.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="297" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="312" text-anchor="middle"><tspan class="rid">11.1</tspan><tspan class="rname" dx="6">Static site</tspan></text>
+<text class="rtext" x="358" y="334">The site SHALL be static files, with no server</text>
+<text class="rtext" x="358" y="348">code, no sign-in and no calls to Sleeper from</text>
+<text class="rtext" x="358" y="362">the visitor&#x27;s browser.</text>
+<text class="spec" x="358" y="395">league-odds-site</text>
+<rect class="req" x="660" y="418" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="418.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="431" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="446" text-anchor="middle"><tspan class="rid">11.1.1</tspan><tspan class="rname" dx="6">Works without the relay</tspan></text>
+<text class="rtext" x="668" y="468">Every page SHALL show its published data when</text>
+<text class="rtext" x="668" y="482">the refresh relay is not configured or does</text>
+<text class="rtext" x="668" y="496">not answer.</text>
+<text class="spec" x="668" y="529">league-odds-site</text>
+<text class="col" x="40" y="586">OTHER BRANCHES · «trace» (extra parents)</text>
+<rect class="ext" x="350" y="602" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="350.7" y="602.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="615" text-anchor="middle">«need»</text>
+<text x="480.0" y="630" text-anchor="middle"><tspan class="rid">12</tspan><tspan class="rname" dx="6">Secure Operation</tspan></text>
+<text class="rtext" x="358" y="652">The project SHALL keep its accounts and</text>
+<text class="rtext" x="358" y="666">services under the maintainer&#x27;s control: no</text>
+<text class="rtext" x="358" y="680">secret in the repository, the relay serving</text>
+<text class="rtext" x="358" y="694">only the site, and only the maintainer&#x27;s…</text>
+<text class="spec" x="358" y="713">needs</text>
+<path class="trace" d="M500.0,402 V410 H480.0 V602" marker-end="url(#openg)"/>
+<path class="derive" d="M40,820 H86" marker-end="url(#open)"/><text class="lg" x="96" y="824">«deriveReqt»: primary parent (sets the ID)</text>
+<path class="trace" d="M360,820 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="824">«trace»: extra parent</text>
+<path class="verify" d="M680,820 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="824">«verify»: test, inspection or analysis</text>
+<path class="vgap" d="M1000,820 H1046" marker-end="url(#openr)"/><text class="lg" x="1056" y="824">verification gap</text>
 </svg>

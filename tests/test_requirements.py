@@ -221,6 +221,22 @@ def test_inspection_checklist_covers_every_inspection(tmp_path):
     assert about(f, "a | 1.2 Unlisted") == {"inspection without a checklist row"}
 
 
+def test_inspection_is_redone_when_its_tree_changes(tmp_path):
+    checklist = ("# Inspection Checklist\n\n## Requirement Inspections\n\n"
+                 "| ID | Requirement | Spec | Pass criteria | Last inspected | Result |\n|---|---|---|---|---|---|\n"
+                 "| 1.1 | Page | a | The page shows it | 2026-11-20 | Pass |\n"
+                 "| 2.1 | Other | a | It shows | 2026-11-20 | Pass |\n\n## Spec Standard Reviews\n\n"
+                 "| Spec | Last reviewed | Result | Notes |\n|---|---|---|---|\n")
+    root = make_root(tmp_path, {
+        "a": [req("1.1 Page", traces="1", verified="Inspection: the page"), req("2.1 Other", traces="2", verified="Inspection: it")],
+        "b": [req("1.1.1 Child elsewhere", traces="1.1")],
+    }, checklist=checklist)
+    dates = {"openspec/specs/a/spec.md": "2026-11-20", "openspec/specs/b/spec.md": "2026-11-22"}
+    f = findings(root, last_change=dates.get)
+    assert about(f, "a | 1.1 Page") == {"re-inspect: openspec/specs/b/spec.md changed on 2026-11-22, after its inspection on 2026-11-20"}
+    assert about(f, "a | 2.1 Other") == set(), "nothing beneath 2.1 changed"
+
+
 def test_every_spec_has_a_dated_review(tmp_path):
     checklist = ("# Inspection Checklist\n\n## Requirement Inspections\n\n"
                  "| ID | Requirement | Spec | Pass criteria | Last inspected | Result |\n|---|---|---|---|---|---|\n\n"
@@ -262,7 +278,7 @@ def accepted() -> dict:
 
 def test_findings_match_the_baseline():
     found = model.check(ROOT, accepted=accepted())
-    stale = sorted(f for f in found if "after its standard review" in f)
+    stale = sorted(f for f in found if "after its standard review" in f or "after its inspection" in f)
     assert not stale, "re-inspect these specs and update their review dates in openspec/inspection-checklist.md:\n" + "\n".join(stale)
     problems = baselines.compare("requirements", found, "requirements finding")
     assert not problems, "\n".join(problems)

@@ -111,3 +111,51 @@ The calibration report SHALL include, per league and for several horizons, how w
 #### Scenario: Diagnostic present
 - **WHEN** calibration finishes
 - **THEN** the report shows, for each league, slopes and drift noise at horizons including 2, 5 and 12 weeks for both roster treatments
+
+### Requirement: Calibration page
+The site SHALL have a calibration page, reachable from every league page, titled "How Good Are These Forecasts?", that shows how well past forecasts matched real outcomes: for each season outcome, forecast percentage against observed rate with the number of cases behind each point; observed against nominal coverage of the score intervals; the Brier skill against the baseline; the lineup gap per league; when the calibration was produced, how many seasons it covers and the residual scale used; and the known caveats.
+
+#### Scenario: Visitor checks the odds
+- **WHEN** a visitor opens the calibration page after a calibration report has been published
+- **THEN** they can see, for the playoff forecast, how often teams shown at each forecast level actually made the playoffs
+
+#### Scenario: Calibration not yet run
+- **WHEN** the site is published without a calibration report
+- **THEN** the calibration page says calibration has not been run and the league pages work as before
+
+#### Scenario: Data from published files
+- **WHEN** the calibration page loads
+- **THEN** all figures come from a file published with the site, with no server code
+
+### Requirement: Calibration report exported
+The export SHALL include the stored calibration report in the site data when one exists, and SHALL succeed without one.
+
+#### Scenario: Report present
+- **WHEN** the export runs after calibration has been run
+- **THEN** the site data contains the calibration report that was stored
+
+#### Scenario: Report absent
+- **WHEN** the export runs on a store that has never been calibrated
+- **THEN** the league files are written as usual and the export succeeds
+
+### Requirement: Replacement levels exported
+Each league's site data SHALL include the current season's replacement levels: the next unplayed week's projected level per position, the season values, the N used, and the drift model in force, so the calibration page can explain the model with live numbers. The export SHALL succeed when the replacement or model files are missing, leaving those fields absent.
+
+#### Scenario: Levels present
+- **WHEN** the export runs after the replacement and simulate commands
+- **THEN** the dynasty and redraft site files carry the replacement levels for the next unplayed week and the drift factors
+
+#### Scenario: Levels absent
+- **WHEN** the export runs on a store without replacement files
+- **THEN** the league files are written without the replacement fields and the page explains the model without the live numbers
+
+### Requirement: Odds model explained
+The calibration page SHALL explain, in plain language for league members, how the odds are made: projections, score noise from past seasons, best lineups with the replacement-level floor, and roster drift, with each league's current replacement levels and how much of a team's edge the model expects to survive weeks ahead. It SHALL state whether the replacement floor and roster drift were on for the shown report and the N used.
+
+#### Scenario: Member reads the explanation
+- **WHEN** a league member opens the calibration page
+- **THEN** they can read what a replacement-level player is, see this week's replacement level per position for each league, and see how much of a 20-point edge the model expects a team to keep two and twelve weeks out, computed from the published drift model
+
+#### Scenario: Switches stated
+- **WHEN** the calibration page shows a report
+- **THEN** it states whether the replacement floor and roster drift were on for that report and the N used

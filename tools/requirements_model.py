@@ -334,6 +334,25 @@ def check(root: Path, accepted: dict | None = None, last_change=None) -> set[str
         if not re.search(pattern, corpus):
             out.add(f"glossary | {term} | used in no spec")
 
+    # an inspection is redone when its requirement or any requirement beneath it changes
+    def spec_file(r: Req) -> str:
+        if r.source == "main":
+            return f"openspec/specs/{r.spec}/spec.md"
+        return f"openspec/changes/{r.source}/specs/{r.spec}/spec.md"
+
+    for rid, row in insp.items():
+        if rid not in ids:
+            continue
+        date = next((d for c in row[1:] for d in DATE_RE.findall(c)), None)
+        if not date:
+            out.add(f"{ids[rid].label} | inspection row has no date")
+            continue
+        tree = [ids[rid]] + [d for _, d in descendants(rid, kids)]
+        for path in sorted({spec_file(r) for r in tree}):
+            changed = last_change(path)
+            if changed and changed > date:
+                out.add(f"{ids[rid].label} | re-inspect: {path} changed on {changed}, after its inspection on {date}")
+
     # dated standard review for every main spec, redone after the spec changes
     for spec in main_specs(root):
         row = reviews.get(spec)

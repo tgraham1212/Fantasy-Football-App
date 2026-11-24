@@ -88,7 +88,9 @@ The simulation SHALL use each league's Sleeper matchup pairings for every remain
   checklist row;
 - a TBR with no target date;
 - a need with no children, and a glossary term no spec uses;
-- a spec with no dated standard review, or one edited in a commit after its review date.
+- a spec with no dated standard review, or one edited in a commit after its review date;
+- an inspection whose requirement, or any requirement beneath it, changed after the inspection
+  date.
 
 Judgment items a parser cannot see (tolerances, rationale, undefined terms) are checked by the
 maintainer in each spec's standard review, dated in `openspec/inspection-checklist.md`. Editing a spec

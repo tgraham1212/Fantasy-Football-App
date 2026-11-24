@@ -2,467 +2,603 @@
 
 ## Purpose
 
-Gives league members a public website where they can see their team's current playoff odds and how those odds have changed over the season. A scheduled job keeps it current.
+The public website's league pages and their Forecasts sub-tab: each team's current season Forecast, how it changed week by week, and the Managers' ratings. It delivers needs 1 (Season Forecasts) and 4 (Manager History) on the page, and its layout serves need 9 (Usable by Every Manager). The cold run, deploys and the calibration page are specified in `refresh-scheduling`, `site-updates` and `odds-calibration`.
 
 ## Requirements
 
-### Requirement: League pages
-The site SHALL have a page for each configured league that shows that league's current season. Visitors SHALL be able to switch between leagues. Each league page SHALL have five sub-tabs in this order: "Forecasts" (the forecast table and charts), "Games", "Positions", "Managers" and "Player WAR". The selected sub-tab SHALL be kept in the page URL, so a link opens on that sub-tab, and SHALL be kept when switching league.
+### Requirement: 9.1 League pages
+The site SHALL give each configured league its own page, with a control to switch between the leagues.
+
+**Traces to:** 9
+**Verified by:** Inspection: the live site, each league in `config/leagues.yaml` has a page and the league control switches between them
 
 #### Scenario: Switch league
 - **WHEN** a visitor on the dynasty page picks the redraft league
-- **THEN** the redraft league's forecasts are shown
+- **THEN** the redraft league's page is shown on the same sub-tab
 
-#### Scenario: Open the WAR sub-tab
-- **WHEN** a visitor on the redraft Forecasts sub-tab picks "Player WAR"
-- **THEN** the redraft Player WAR page is shown and the URL identifies both the league and the sub-tab
+### Requirement: 9.1.1 Sub-tabs
+Each league page SHALL have five sub-tabs, in this order: Forecasts, Games, Positions, Managers and Player WAR.
+
+**Traces to:** 9.1
+**Verified by:** Inspection: the live site, the sub-tab strip of each league page
+
+#### Scenario: Open the Games sub-tab
+- **WHEN** a visitor picks "Games", between "Forecasts" and "Positions"
+- **THEN** the league's Games page is shown
+
+### Requirement: 9.1.1.1 Sub-tab in the URL
+The page URL SHALL name the league and the selected sub-tab, so that opening a link shows that league and sub-tab.
+
+**Rationale:** Managers share links to a page in the league chat.
+**Traces to:** 9.1.1
+**Verified by:** Test: `tests/layout/test_forecasts_page.py::test_url_opens_the_named_league_and_subtab`
 
 #### Scenario: Link to a sub-tab
 - **WHEN** a visitor opens a link whose URL names the dynasty league and the Player WAR sub-tab
 - **THEN** the page opens on the dynasty Player WAR page
 
-#### Scenario: Open the Games sub-tab
-- **WHEN** a visitor picks "Games", which sits between "Forecasts" and "Positions"
-- **THEN** the league's Games page is shown and the URL identifies the league and the Games sub-tab
+### Requirement: 9.1.1.2 Sub-tab kept across leagues
+Switching league SHALL keep the selected sub-tab.
 
-#### Scenario: Open the Positions sub-tab
-- **WHEN** a visitor picks "Positions", which sits between "Games" and "Managers"
-- **THEN** the league's Positional Rankings page is shown and the URL identifies the league and the Positions sub-tab
+**Traces to:** 9.1.1
+**Verified by:** Test: `tests/layout/test_forecasts_page.py::test_switching_league_keeps_the_subtab`
 
-#### Scenario: Open the Managers sub-tab
-- **WHEN** a visitor picks "Managers", which sits between "Positions" and "Player WAR"
-- **THEN** the league's Managers page is shown and the URL identifies the league, the Managers sub-tab and the manager
+#### Scenario: Positions in both leagues
+- **WHEN** a visitor on the dynasty Positions sub-tab switches to the redraft league
+- **THEN** the redraft Positions sub-tab is shown
 
-### Requirement: Current odds table
-Each league page SHALL show a table with one row per team and these columns in order: ELO, 1-week ELO change, Manager (the manager's display name in bold with the team name beneath it and the current record beside the name), projected final record, and four chance columns: the league's bottom column (see "League-dependent bottom column"), make playoffs, first-round bye, win championship. Until a visitor sorts the table, rows SHALL be in league standings order: wins (a tie counts half), then points scored. Columns left of Manager SHALL be left-aligned, the Manager column centred, and columns right of it right-aligned, headers and cells alike. The table SHALL be compact: the ELO and 1-week change columns no wider than their content needs, tight row padding, and text a step larger than body text.
+### Requirement: 9.2 Fits a phone
+Every league page SHALL fit each tested phone width, down to 360 px, without the page scrolling sideways.
+
+**Rationale:** The tested widths are in the project standards (StatCounter, October 2026).
+**Traces to:** 9
+**Verified by:** Test: `tests/layout/test_layout.py::test_control_keeps_the_layout`; Test: `tests/layout/test_layout.py::test_wide_fonts_do_not_scroll_sideways`
+
+#### Scenario: Phone visit
+- **WHEN** a visitor opens a league page on a 360 px wide screen
+- **THEN** the page does not scroll sideways and the charts fit the screen width
+
+### Requirement: 9.2.1 Pinned Manager column
+On screens narrower than 600 px, the Forecast table SHALL scroll sideways inside its own container with the Manager column pinned at its left edge.
+
+**Traces to:** 9.2; 1.3
+**Verified by:** Test: `tests/layout/test_layout.py::test_forecast_table_pins_the_manager_column_on_phones`; Test: `tests/layout/test_layout.py::test_pinned_columns_cover_nothing_before_scrolling`
+
+#### Scenario: Scroll the Forecast table on a phone
+- **WHEN** a visitor on a 440 px wide phone scrolls the Forecast table to the right
+- **THEN** the ELO and 1-week change columns scroll away while the Manager column stays at the left edge
+
+### Requirement: 9.2.1.1 Manager names on one line
+Manager names in the pinned column SHALL stay on one line.
+
+**Traces to:** 9.2.1
+**Verified by:** Inspection: the live site at 360 px, no Manager name in the Forecast table wraps
+
+#### Scenario: Long display name
+- **WHEN** a Manager's display name is the longest in the league
+- **THEN** it shows on one line in the pinned column
+
+### Requirement: 9.2.2 Sub-tab strip on a phone
+When the sub-tabs are wider than the screen, the sub-tab strip SHALL scroll sideways on its own: snapping to tab edges, fading the edge with more tabs beyond it, showing no scroll bar, and opening with the selected sub-tab in view.
+
+**Traces to:** 9.2; 9.1.1
+**Verified by:** Test: `tests/layout/test_layout.py::test_subtab_strip_swipes_on_a_phone`; Test: `tests/layout/test_layout.py::test_subtab_strip_does_not_scroll_on_desktop`
+
+#### Scenario: Swipe the sub-tabs
+- **WHEN** a visitor on a 360 px wide screen swipes the sub-tab strip left
+- **THEN** the strip reveals "Player WAR", settles on a tab edge, and the page below stays where it was
+
+#### Scenario: Wide screen
+- **WHEN** the sub-tabs fit the screen width
+- **THEN** the strip does not scroll and shows no fade
+
+### Requirement: 9.2.3 Metric buttons on a phone
+When a chart's metric buttons do not fit on one line, they SHALL form one row that scrolls sideways, without wrapping and without moving the page.
+
+**Traces to:** 9.2; 1.4.2
+**Verified by:** Test: `tests/layout/test_layout.py::test_metric_buttons_form_one_swipe_strip_on_phones`
+
+#### Scenario: Buttons on a phone
+- **WHEN** the redraft page is shown at 360 px
+- **THEN** the four metric buttons sit on one line that can be swiped sideways
+
+### Requirement: 9.2.4 Charts on a phone
+On screens narrower than 600 px, each chart SHALL span its card's full width, giving up room at the right edge only for a highlighted team's end label.
+
+**Traces to:** 9.2
+**Verified by:** Test: `tests/layout/test_layout.py::test_charts_reach_the_card_edge_on_phones`
+
+#### Scenario: Highlighted team on a phone
+- **WHEN** a visitor on a phone highlights a team
+- **THEN** that team's end label shows at the chart's right edge, which gives up only that label's width
+
+### Requirement: 9.3 Public pages
+Anyone with the link SHALL be able to view every page without signing in.
+
+**Traces to:** 9
+**Verified by:** Inspection: the live site opened in a private browser window shows every page
+
+#### Scenario: Shared link
+- **WHEN** a Manager sends the site link to someone without any account
+- **THEN** that person sees every page
+
+### Requirement: 11.1 Static site
+The site SHALL be static files, with no server code, no sign-in and no calls to Sleeper from the visitor's browser.
+
+**Rationale:** Static files host free on GitHub Pages and keep Sleeper's servers out of each visit.
+**Traces to:** 11; 12
+**Verified by:** Inspection: `site/` holds only HTML, CSS, JavaScript and data files, and its scripts fetch only `site/data/` and the relay
+
+#### Scenario: Visitor loads a page
+- **WHEN** a visitor opens a league page
+- **THEN** all its data comes from files published with the site
+
+### Requirement: 11.1.1 Works without the relay
+Every page SHALL show its published data when the refresh relay is not configured or does not answer.
+
+**Traces to:** 11.1
+**Verified by:** Test: `tests/layout/test_layout.py::test_older_bundle_and_relay_down_are_ignored`
+
+#### Scenario: Relay down
+- **WHEN** the refresh relay does not answer
+- **THEN** the pages show their data as usual and the Refresh Data button says a refresh could not be started
+
+### Requirement: 1.3 Forecast table
+The Forecasts sub-tab SHALL show a table with one row per team and these columns, in order: ELO, 1-week ELO change, Manager, projected final record, the league's bottom column, Make Playoffs, Bye and Win Championship.
+
+**Traces to:** 1
+**Verified by:** Test: `tests/test_export.py::test_exported_schema`; Inspection: the live site, column order of each league's table
 
 #### Scenario: Table contents
-- **WHEN** a visitor opens the dynasty page with the as-of-week-10 results stored
-- **THEN** the table shows all 12 teams with the as-of-week-10 values in standings order
+- **WHEN** a visitor opens the dynasty page with the as-of-week-10 Forecast stored
+- **THEN** the table shows all 12 teams with the as-of-week-10 values
 
-#### Scenario: Owner cell
-- **WHEN** a team is managed by `tg1212`, named "Diaper Dandies" and has 7 wins, 2 losses and no ties
-- **THEN** its Manager cell shows "tg1212" in bold with "7-2" beside it and "Diaper Dandies" beneath, centred in the column under the header "Manager"
+### Requirement: 1.3.1 Standings order
+Until a visitor sorts it, the table SHALL list teams in standings order: wins, a tie counting as half a win, then points scored.
+
+**Traces to:** 1.3; 1.1.7
+**Verified by:** Test: `tests/layout/test_forecasts_page.py::test_unsorted_table_follows_the_standings`
+
+#### Scenario: Unsorted table
+- **WHEN** two teams are both 7-2 and one has scored more points
+- **THEN** that team's row is above the other's
+
+### Requirement: 1.3.2 Manager cell
+Each Manager cell SHALL show the Manager's display name in bold, the team's current record beside it and the Team Name beneath.
+
+**Traces to:** 1.3
+**Verified by:** Inspection: the live site, Manager cells of each league's table
+
+#### Scenario: Manager cell
+- **WHEN** a team is managed by `tg1212`, named "Diaper Dandies" and is 7-2 with no ties
+- **THEN** its cell shows "tg1212" in bold with "7-2" beside it and "Diaper Dandies" beneath
+
+### Requirement: 1.3.3 Column alignment
+Columns left of Manager SHALL be left-aligned, the Manager column centred and the columns right of it right-aligned, headers and cells alike.
+
+**Traces to:** 1.3
+**Verified by:** Inspection: the live site at 360 and 1280 px, header and cell alignment
 
 #### Scenario: Alignment
-- **WHEN** the table is shown at any width
-- **THEN** the ELO and 1-week change headers and cells are left-aligned, the Manager header and cells centred, and the projected record and chance headers and cells right-aligned
+- **WHEN** the table is shown at any tested width
+- **THEN** ELO and 1-week change are left-aligned, Manager centred, and the record and probability columns right-aligned
+
+### Requirement: 1.3.4 Narrow rating columns
+The ELO and 1-week ELO change columns SHALL be no wider than their header or widest value needs.
+
+**Traces to:** 1.3
+**Verified by:** Inspection: the live site at 1280 px, no padding beyond the widest ELO value or header
+
+#### Scenario: Desktop table
+- **WHEN** the table is shown at 1280 px
+- **THEN** the ELO columns take only the width of their content
+
+### Requirement: 1.3.5 Projected record format
+The projected record SHALL show the mean simulated wins and losses to one decimal place, as "10.6 - 3.4".
+
+**Traces to:** 1.3; 1.1.9
+**Verified by:** Test: `tests/layout/test_forecasts_page.py::test_projected_record_and_probabilities_are_formatted`
 
 #### Scenario: Projected record format
 - **WHEN** a team's projected record is 10.59 wins and 3.41 losses
-- **THEN** the projected record cell shows "10.6 - 3.4"
+- **THEN** the cell shows "10.6 - 3.4"
+
+### Requirement: 1.3.6 Weekly change on hover
+Hovering over a probability cell SHALL show its change since the previous as-of week, when one is stored.
+
+**Traces to:** 1.3; 1.2
+**Verified by:** Test: `tests/test_export.py::test_single_week_has_null_changes`
 
 #### Scenario: Weekly change
-- **WHEN** results exist for both the current as-of week and the one before it
-- **THEN** hovering over any of a team's chance cells shows that chance's change since the previous as-of week, and no separate change column is shown
+- **WHEN** Forecasts exist for the current as-of week and the one before it
+- **THEN** hovering over a team's probability cell shows that probability's change since the previous week
 
-#### Scenario: First week of results
-- **WHEN** results exist only for the current as-of week
-- **THEN** chance cells show no change information
+#### Scenario: First week of Forecasts
+- **WHEN** only the current as-of week is stored
+- **THEN** probability cells show no change
 
-### Requirement: Odds-over-time chart
-Each league page SHALL show a line chart with one line per team, plotting a chosen chance for each stored as-of week of the season.
+### Requirement: 1.3.7 Bottom column
+The bottom column SHALL show "#1 Pick", the probability of finishing last, for a dynasty league with a consolation bracket, and "Avoid Loser's Bye", the probability of finishing outside the bottom two, for every other league.
+
+**Traces to:** 1.3; 1.1.9
+**Verified by:** Test: `tests/test_export.py::test_bottom_column_follows_league_settings`; Test: `tests/test_export.py::test_avoid_losers_bye_is_one_minus_bottom_two`
+
+#### Scenario: Toilet-bowl league
+- **WHEN** a redraft (toilet bowl) team finishes 11th in 3% of runs and 12th in 1%
+- **THEN** the column is titled "Avoid Loser's Bye" and shows 96% for that team
+
+#### Scenario: Dynasty consolation league
+- **WHEN** a dynasty team finishes last in 40% of runs
+- **THEN** the column is titled "#1 Pick" and shows 40% for that team
+
+### Requirement: 1.3.7.1 Bottom column named in the data
+The exported data SHALL name each league's bottom column, so that the site applies no league-specific rules.
+
+**Traces to:** 1.3.7
+**Verified by:** Test: `tests/test_export.py::test_bottom_column_follows_league_settings`
+
+#### Scenario: Page reads the column name
+- **WHEN** the page builds the table
+- **THEN** it takes the bottom column's title from the league's data file
+
+### Requirement: 1.3.8 Probability format
+Probability cells SHALL print "100%" from 99.95%, ">99%" from 99.5%, "<1%" above 0 and below 0.5%, and otherwise the whole-number percentage.
+
+**Traces to:** 1.3
+**Verified by:** Test: `tests/layout/test_forecasts_page.py::test_projected_record_and_probabilities_are_formatted`
+
+#### Scenario: Low, mid and high probabilities
+- **WHEN** three teams have 0.3%, 50% and 99.6% playoff probabilities
+- **THEN** their cells read "<1%", "50%" and ">99%"
+
+### Requirement: 1.3.8.1 Probability fill
+Each probability cell SHALL be filled from a single-hue blue ramp that darkens as the probability rises, with no fill below 1% and the darkest step above 99%.
+
+**Traces to:** 1.3.8
+**Verified by:** Inspection: the live site in both themes, fills at 0.3%, 50% and 99.6%
+
+#### Scenario: Mid probability
+- **WHEN** a team's playoff probability is 50%
+- **THEN** its cell has a mid blue fill
+
+### Requirement: 1.3.8.1.1 Readable fills
+Text on every step of the probability ramp SHALL have at least 4.5:1 contrast with its fill in both themes, using light text on the dark steps.
+
+**Rationale:** Each theme has its own ramp, designed for its background.
+**Traces to:** 1.3.8.1; 9
+**Verified by:** Test: `tests/test_colour_contrast.py::test_colour_tokens_meet_contrast`
+
+#### Scenario: Dark theme
+- **WHEN** a visitor views the table in the dark theme
+- **THEN** every value stays readable against its fill
+
+### Requirement: 1.3.9 Grouped probability headers
+The four probability columns SHALL sit under one "Playoff Forecast" group header, with every column header in small uppercase letters wrapping to two lines where needed.
+
+**Traces to:** 1.3
+**Verified by:** Inspection: the live site at 1280 px, the group header spans exactly the four probability columns
+
+#### Scenario: Header layout
+- **WHEN** a visitor views the table at 1280 px
+- **THEN** "Playoff Forecast" spans the four probability columns above their headers
+
+### Requirement: 1.3.10 Sorting
+Every column SHALL sort from its header, descending on the first click (Manager: A to Z) and ascending on the second.
+
+**Traces to:** 1.3
+**Verified by:** Test: `tests/layout/test_forecasts_page.py::test_header_clicks_sort_descending_then_ascending`; Test: `tests/layout/test_forecasts_page.py::test_manager_column_sorts_a_to_z`
+
+#### Scenario: Sort by a probability column
+- **WHEN** a visitor clicks the "Win Championship" header once
+- **THEN** rows are ordered by title probability, highest first
+
+#### Scenario: Second click flips direction
+- **WHEN** the visitor clicks the same header again
+- **THEN** rows are ordered lowest first
+
+### Requirement: 1.3.10.1 Sort state shown
+The sorted column's header SHALL show a dark fill and an arrow for the direction, which no header shows before the table is sorted.
+
+**Traces to:** 1.3.10
+**Verified by:** Inspection: the live site, headers before and after a sort
+
+#### Scenario: Untouched table
+- **WHEN** a visitor has not clicked any header
+- **THEN** no header has a fill or an arrow
+
+### Requirement: 1.3.10.2 Sort keys
+Projected record SHALL sort by projected wins, ELO by rating, 1-week change by its signed value, and each probability column by its probability, with unrated teams last.
+
+**Traces to:** 1.3.10
+**Verified by:** Test: `tests/layout/test_forecasts_page.py::test_each_column_sorts_by_its_key`
+
+#### Scenario: Sort by ELO
+- **WHEN** a visitor clicks the ELO header once
+- **THEN** rows are ordered by rating, highest first, with unrated teams last
+
+### Requirement: 1.3.11 Live Forecast in the table
+While a week is live, the table SHALL show the live Forecast, labelled with how many of the week's NFL games are final.
+
+**Traces to:** 1.3; 1.2.3
+**Verified by:** Test: `tests/test_export.py::test_live_result_drives_the_table_and_history_stays_on_as_of_files`
+
+#### Scenario: Saturday of week 11
+- **WHEN** a visitor opens the Forecasts sub-tab on Saturday of week 11
+- **THEN** the table shows the live Forecast labelled "Live: 1 of 14 games final"
+
+### Requirement: 1.3.11.1 Live changes
+During a live week, the change shown on hover SHALL compare with the as-of Forecast the live run started from.
+
+**Traces to:** 1.3.11; 1.3.6
+**Verified by:** Test: `tests/test_export.py::test_live_result_drives_the_table_and_history_stays_on_as_of_files`
+
+#### Scenario: Live change
+- **WHEN** a team's live playoff probability is 70% and its as-of-week-10 probability was 60%
+- **THEN** hovering shows +10 points
+
+### Requirement: 1.3.12 Freshness shown
+The Forecasts sub-tab SHALL show the as-of week of the Forecast and when it was generated.
+
+**Traces to:** 1.3; 5
+**Verified by:** Test: `tests/test_export.py::test_refresh_export_shows_this_runs_start_not_the_previous_one`
+
+#### Scenario: Freshness label
+- **WHEN** the Forecast was made on 2026-11-17 as of week 10
+- **THEN** the page says it is as of week 10 and updated on 2026-11-17
+
+### Requirement: 1.4 Forecast chart
+The Forecasts sub-tab SHALL show a line chart with one line per team, plotting the chosen probability at every stored as-of week of the season.
+
+**Traces to:** 1; 1.2
+**Verified by:** Inspection: the live site, one line per team and one point per stored as-of week
 
 #### Scenario: Default chart
-- **WHEN** a visitor opens a league page with results for as-of weeks 0 through 10
-- **THEN** the chart shows each team's playoff chance at weeks 0 through 10
+- **WHEN** a visitor opens a league page with Forecasts as of weeks 0 to 10
+- **THEN** the chart shows each team's playoff probability at weeks 0 to 10
+
+### Requirement: 1.4.1 Chart uses as-of Forecasts
+The Forecast chart SHALL plot only stored as-of Forecasts, never the live one.
+
+**Rationale:** The history never shows a partly played week.
+**Traces to:** 1.4; 1.2.3
+**Verified by:** Test: `tests/test_export.py::test_live_result_drives_the_table_and_history_stays_on_as_of_files`
+
+#### Scenario: Live week
+- **WHEN** week 11 is live
+- **THEN** the chart's last point is still as of week 10
+
+### Requirement: 1.4.2 Chart metric buttons
+Metric buttons heading the chart's card SHALL offer the table's four probability columns in the table's order, with Make Playoffs chosen by default.
+
+**Traces to:** 1.4
+**Verified by:** Inspection: the live site, button order on each league page
 
 #### Scenario: Metric order
 - **WHEN** a visitor views the redraft chart's metric buttons
 - **THEN** they read, in order: Avoid Loser's Bye, Make Playoffs, Bye, Win Championship
 
-#### Scenario: Bottom-column metric
-- **WHEN** a visitor on the redraft page switches the chart to the bottom column
-- **THEN** the chart plots each team's chance of avoiding the loser's bye for every stored as-of week
+#### Scenario: Switch metric
+- **WHEN** a visitor clicks "Bye"
+- **THEN** the chart plots each team's bye probability at every stored as-of week
 
-#### Scenario: Distinct team colors
-- **WHEN** a visitor views a 12-team league's chart in either theme
-- **THEN** the 12 lines use 12 different colors, each readable against the chart background, and each team's table row shows a swatch of its line color
+### Requirement: 1.4.3 Team colours
+Each team SHALL keep one distinct line colour across weeks, metrics, sorts and highlighting, shown as a swatch on its table row.
+
+**Traces to:** 1.4
+**Verified by:** Inspection: the live site, colours before and after a sort and a metric change
+
+#### Scenario: Colour survives a sort
+- **WHEN** a visitor sorts the table by title probability
+- **THEN** every team keeps its line colour and row swatch
+
+### Requirement: 1.4.3.1 Readable lines
+Every team line colour SHALL have at least 3:1 contrast with the chart background in both themes.
+
+**Traces to:** 1.4.3; 9
+**Verified by:** Test: `tests/test_colour_contrast.py::test_colour_tokens_meet_contrast`
+
+#### Scenario: Twelve teams in the dark theme
+- **WHEN** a 12-team league's chart is shown in the dark theme
+- **THEN** all 12 line colours meet 3:1 against the chart background
+
+### Requirement: 1.4.4 Highlight a team
+Picking a team in the chart or the table SHALL keep its line at full strength and dim every other line.
+
+**Traces to:** 1.4
+**Verified by:** Test: `tests/layout/test_forecasts_page.py::test_picking_a_team_dims_the_other_lines`
 
 #### Scenario: Highlight a team
-- **WHEN** a visitor picks one team in the chart or table
-- **THEN** that team's line keeps its color at full strength and the others are dimmed
+- **WHEN** a visitor picks one team in the table
+- **THEN** that team's line keeps its colour at full strength and the others are dimmed
+
+### Requirement: 1.4.5 Chart axis
+The Forecast chart's axis SHALL run from 0 to the next multiple of 10 at least 5 points above the highest plotted value, no lower than 10% and no higher than 100%.
+
+**Traces to:** 1.4
+**Verified by:** Test: `tests/layout/test_forecasts_page.py::test_chart_axis_follows_the_highest_value`
 
 #### Scenario: Axis fits the data
-- **WHEN** the visitor switches to the title metric and the highest plotted value is 34%
+- **WHEN** the highest plotted value is 34%
 - **THEN** the axis runs from 0% to 40%
 
 #### Scenario: Axis cap
 - **WHEN** the highest plotted value is 100%
 - **THEN** the axis top is 100%
 
-### Requirement: Freshness shown
-Each league page SHALL show the as-of week of the results and when they were generated.
+### Requirement: 4.1 ELO columns
+The ELO and 1-week ELO change columns SHALL show each team's current rating mean, rounded to a whole number, and its signed change over the last rated week.
 
-#### Scenario: Freshness label
-- **WHEN** the results were produced on 2026-11-17 as of week 10
-- **THEN** the page states the results are as of week 10 and were updated on 2026-11-17
+**Traces to:** 4; 1.3
+**Verified by:** Test: `tests/test_export.py::test_export_carries_ratings_when_present`
 
-### Requirement: Static and public
-The site SHALL be static files that need no server code, login or calls to Sleeper from the visitor's browser. Anyone with the link SHALL be able to view it. The optional refresh button MAY call the refresh relay; every page SHALL work fully when the relay is not configured or not reachable.
+#### Scenario: Rated team
+- **WHEN** a team's rating is 1676 and it rose 20 last week
+- **THEN** the ELO cell shows "1676" and the change cell "+20"
 
-#### Scenario: Visitor loads page
-- **WHEN** a visitor opens a league page
-- **THEN** all data comes from files published with the site
+### Requirement: 4.1.1 ELO before week one
+After a season's draft and before its first scored week, the ELO cell SHALL show the preseason (reverted) rating, the base the week-1 change is measured from.
 
-#### Scenario: Relay down
-- **WHEN** the refresh relay does not answer
-- **THEN** the pages show their data as usual and the button reports that a refresh could not be started
+**Traces to:** 4.1
+**Verified by:** Test: `tests/test_export.py::test_preseason_rating_shows_with_no_change_until_week_one`
 
-### Requirement: Usable on phones
-League pages SHALL be readable on a 375px-wide screen without horizontal page scrolling. The odds table MAY scroll horizontally inside its own container. Below 600 px the Manager column SHALL stay pinned to the container's left edge while the table scrolls, with ELO and 1-week change scrolling away beneath it; manager names SHALL not wrap. When the sub-tabs do not fit the screen width, the sub-tab menu SHALL scroll sideways inside its own strip with a swipe:
-
-- The tabs SHALL snap into place.
-- The edge with more tabs beyond it SHALL fade.
-- The selected sub-tab SHALL be scrolled into view on load.
-- No scroll bar SHALL show.
-- Swiping the menu SHALL not move the rest of the page.
-
-#### Scenario: Phone visit
-- **WHEN** a visitor opens a league page on a 375px-wide screen
-- **THEN** the page itself doesn't scroll sideways and the chart fits the screen width
-
-#### Scenario: Swipe the sub-tabs
-- **WHEN** a visitor on a 375px-wide screen swipes the sub-tab menu left
-- **THEN** the menu scrolls to reveal "Player WAR", the tabs settle on a tab edge, and the page below stays where it was
-
-#### Scenario: Linked to the last sub-tab
-- **WHEN** a visitor on a phone opens a link to the Player WAR sub-tab
-- **THEN** the menu opens scrolled so "Player WAR" is visible and marked selected
-
-#### Scenario: Wide screen
-- **WHEN** the sub-tabs fit the screen width
-- **THEN** the menu does not scroll and shows no fade
-
-#### Scenario: Scroll the forecast table on a phone
-- **WHEN** a visitor on a 440 px-wide phone scrolls the forecast table to the right
-- **THEN** the ELO and 1-week change columns scroll out of view while the Manager column stays at the left edge beside the chance columns
-
-### Requirement: Scheduled refresh
-The cold run SHALL run on the cadence of its refresh mode (see `refresh-scheduling`), at least daily, and SHALL be startable by hand. It SHALL:
-- update league data, projections, stats, the NFL schedule, injury statuses and the start-percentage snapshot;
-- recompute ratings, replacement levels, WAR, the odds for the current as-of week, and the game logs and records;
-- commit only the changed records (see `data-storage-tiers`);
-- republish the site only on change.
-
-In Live it SHALL skip the simulation, which the hot runs own.
-
-#### Scenario: Day after Monday night
-- **WHEN** the scheduled run happens the day after Monday night's game ends and week 10 is final in Sleeper
-- **THEN** the published site shows results as of week 10
-
-#### Scenario: Failed refresh
-- **WHEN** any step of the scheduled job fails
-- **THEN** the previously published site stays online unchanged, no partial data is committed, and the job run is marked failed
-
-#### Scenario: Stats and replacement levels refreshed
-- **WHEN** the scheduled run completes
-- **THEN** the current season's stats for played weeks are committed when they changed, and the current season's replacement levels are rebuilt and published alongside the odds
-
-#### Scenario: Ratings refreshed
-- **WHEN** the scheduled run completes after week 10 is final
-- **THEN** every league's rebuilt ratings include week 10 and the published table shows the updated ELO values
-
-#### Scenario: Snapshot and WAR refreshed
-- **WHEN** the scheduled run completes during week 11
-- **THEN** the week-11 start-percentage snapshot is stored and every league's current-season WAR and leaderboard reflect the weeks scored so far
-
-#### Scenario: ESPN unavailable
-- **WHEN** the snapshot capture fails during a scheduled run
-- **THEN** the failure is logged, the remaining steps still run using the snapshots already stored, the odds are still refreshed and published, and the run ends with a warning naming the skipped step and the reason, shown as an annotation on the job run
-
-#### Scenario: Games refreshed before kickoff
-- **WHEN** a Quiet cold run happens 40 minutes before Sunday's 1 pm games
-- **THEN** the NFL schedule, injury statuses and every current-week game log are updated and the Games page shows the new forecasts
-
-### Requirement: League-dependent bottom column
-The first chance column SHALL depend on the league's Sleeper settings. A toilet-bowl league SHALL show "Avoid Loser's Bye": the chance of finishing outside the bottom two of the regular-season standings. A dynasty league with a consolation bracket SHALL show "#1 Pick": the chance of finishing last. Any other league SHALL show "Avoid Loser's Bye". The exported data SHALL name the column so the site needs no league-specific rules.
-
-#### Scenario: Toilet-bowl league
-- **WHEN** a visitor opens the redraft page (toilet bowl) for a team that finishes 11th in 3% of runs and 12th in 1%
-- **THEN** the first chance column is titled "Avoid Loser's Bye" and shows 96% for that team
-
-#### Scenario: Dynasty consolation league
-- **WHEN** a visitor opens the dynasty page (consolation bracket, dynasty league) for a team that finishes last in 40% of runs
-- **THEN** the first chance column is titled "#1 Pick" and shows 40% for that team
-
-### Requirement: Chance cell fill
-Every chance cell SHALL be filled with a single-hue blue that gets darker as the chance rises: no fill at or below 1%, the darkest blue at or above 99%, and text that stays readable at every step, switching to light text on dark fills. Values SHALL print as "<1%", ">99%" or a whole-number percentage. Each theme SHALL use a ramp designed for its own background rather than a flipped copy of the other theme's.
-
-#### Scenario: Low, mid and high chances
-- **WHEN** three teams have 0.3%, 50% and 99.6% playoff chances
-- **THEN** their cells read "<1%", "50%" and ">99%", with no fill, a mid blue, and the darkest blue with light text respectively
-
-#### Scenario: Dark theme
-- **WHEN** a visitor views the table in the dark theme
-- **THEN** chance cells use the dark-theme ramp and every value stays readable against its fill
-
-### Requirement: Odds table sorting
-Every table column SHALL be sortable from its header. The first click on a header SHALL sort descending (owner: A to Z), the second ascending, and the sorted header SHALL show a dark fill and a small arrow for the direction. An unsorted table SHALL show no fill and no arrow on any header. Record sorts by wins then points scored; projected record by projected wins; ELO by rating; 1-week ELO change by the signed change.
-
-#### Scenario: Sort by a chance column
-- **WHEN** a visitor clicks the "Win Championship" header once
-- **THEN** rows are ordered by championship chance, highest first, and that header shows a dark fill and a down arrow
-
-#### Scenario: Second click flips direction
-- **WHEN** the visitor clicks the same header again
-- **THEN** rows are ordered lowest first and the arrow points up
-
-#### Scenario: Untouched table
-- **WHEN** a visitor opens a league page and has not clicked any header
-- **THEN** no header has a fill or an arrow
-
-#### Scenario: ELO headers not yet sortable
-- **WHEN** a visitor clicks the ELO or 1-week change header while the exported data carries no ratings
-- **THEN** the header takes the sorted state and the row order does not change, since every value is empty
-
-#### Scenario: Sort by ELO
-- **WHEN** a visitor clicks the ELO header once
-- **THEN** rows are ordered by rating, highest first, and teams without a rating sort last
-
-### Requirement: ELO placeholder columns
-The ELO and 1-week ELO change columns SHALL show each team's current manager rating mean, rounded to a whole number, and its signed change over the last rated week. While no rating data is exported, both columns SHALL render as empty cells.
-
-#### Scenario: Before ELO exists
-- **WHEN** the exported data carries no ELO values
-- **THEN** every ELO and 1-week change cell is empty and the two headers are still shown
-
-#### Scenario: Future ELO change rendering
-- **WHEN** the exported data gives a team an ELO of 1676 and a 1-week change of +20
-- **THEN** the ELO cell shows "1676" and the change cell shows "+20" as black text on a green fill
-
-#### Scenario: First rated week of a newcomer
-- **WHEN** a team's manager has only one rated week
-- **THEN** the ELO cell shows their rating and the change cell is empty
-
-#### Scenario: After the draft, before week 1
-- **WHEN** a manager ended last season at 1300 and this season's draft is done but no week is scored
+#### Scenario: Preseason rating shown
+- **WHEN** a Manager ended last season at 1300 and this season's draft is done but no week is scored
 - **THEN** the ELO cell shows 1200 and the change cell is empty
 
-#### Scenario: Week 1 change
-- **WHEN** the same manager's week-1 rating is 1240
+#### Scenario: Change from the preseason rating
+- **WHEN** the same Manager's week-1 rating is 1240
 - **THEN** the change cell shows +40
 
-### Requirement: Grouped chance headers
-The four chance columns SHALL sit under a single "Playoff Forecast" group header, and every column header SHALL use small uppercase labels that wrap to two lines where needed.
+### Requirement: 4.1.2 Empty change cell
+The change cell SHALL be empty when a Manager has only one rated week, before week 1, and when the change is zero.
 
-#### Scenario: Header layout
-- **WHEN** a visitor views the table on a desktop-width screen
-- **THEN** a "Playoff Forecast" label spans exactly the four chance columns, above their individual headers
+**Traces to:** 4.1
+**Verified by:** Test: `tests/test_export.py::test_newcomer_with_one_rated_week_has_no_elo_change`
 
-### Requirement: Calibration page
-The site SHALL have a calibration page, reachable from every league page, titled "How Good Are These Forecasts?", that shows how well past forecasts matched real outcomes: for each season outcome, forecast percentage against observed rate with the number of cases behind each point; observed against nominal coverage of the score intervals; the Brier skill against the baseline; the lineup gap per league; when the calibration was produced, how many seasons it covers and the residual scale used; and the known caveats.
+#### Scenario: Newcomer's first week
+- **WHEN** a team's Manager has only one rated week
+- **THEN** the ELO cell shows their rating and the change cell is empty
 
-#### Scenario: Visitor checks the odds
-- **WHEN** a visitor opens the calibration page after a calibration report has been published
-- **THEN** they can see, for the playoff forecast, how often teams shown at each forecast level actually made the playoffs
+### Requirement: 4.1.3 ELO change fill
+A positive 1-week change SHALL show as black text on a green fill, and a negative one as black text on a red fill.
 
-#### Scenario: Calibration not yet run
-- **WHEN** the site is published without a calibration report
-- **THEN** the calibration page says calibration has not been run and the league pages work as before
+**Traces to:** 4.1
+**Verified by:** Inspection: the live site, change cells of +20 and -33 in both themes
 
-#### Scenario: Data from published files
-- **WHEN** the calibration page loads
-- **THEN** all figures come from a file published with the site, with no server code
+#### Scenario: Negative change
+- **WHEN** a team's 1-week change is -33
+- **THEN** the cell shows "-33" as black text on a red fill
 
-#### Scenario: Member reads how it works
-- **WHEN** a league member opens the calibration page
-- **THEN** they can read what a replacement-level player is, see this week's replacement level per position for each league, and see how many of a 20-point edge the model expects a team to keep two and twelve weeks out, computed from the published drift model
+### Requirement: 4.1.4 No ratings yet
+While no rating data is exported, the ELO and change columns SHALL show empty cells under their headers.
 
-#### Scenario: Model switches shown
-- **WHEN** the calibration page shows a report
-- **THEN** it states whether the replacement floor and roster drift were on for that report and the N used
+**Traces to:** 4.1
+**Verified by:** Test: `tests/test_export.py::test_exported_schema`
 
-### Requirement: Calibration report exported
-The export SHALL include the stored calibration report in the site data when one exists, and SHALL succeed without one.
+#### Scenario: Before ratings exist
+- **WHEN** the exported data carries no ratings
+- **THEN** every ELO and change cell is empty and both headers still show
 
-#### Scenario: Report present
-- **WHEN** the export runs after calibration has been run
-- **THEN** the site data contains the calibration report that was stored
+### Requirement: 4.2 Rating chart
+Below the Forecast chart, the Forecasts sub-tab SHALL show a line chart with one line per Manager who has played in the league, plotting the chosen rating series at every stored week, with season starts and each season's preseason point marked.
 
-#### Scenario: Report absent
-- **WHEN** the export runs on a store that has never been calibrated
-- **THEN** the league files are written as usual and the export succeeds
-
-### Requirement: Replacement levels exported
-Each league's site data SHALL include the current season's replacement levels: the next unplayed week's projected level per position, the season values, the N used, and the drift model in force, so the calibration page can explain the model with live numbers. The export SHALL succeed when the replacement or model files are missing, leaving those fields absent.
-
-#### Scenario: Levels present
-- **WHEN** the export runs after the replacement and simulate commands
-- **THEN** the dynasty and redraft site files carry the replacement levels for the next unplayed week and the drift factors
-
-#### Scenario: Levels absent
-- **WHEN** the export runs on a store without replacement files
-- **THEN** the league files are written without the replacement fields and the page explains the model without the live numbers
-
-### Requirement: Chart metric buttons
-Metric buttons at the top left of the odds-over-time chart's card, where they serve as the chart's heading, SHALL offer the table's four chance columns in the table's order, and the chart SHALL plot the chosen chance (playoffs by default). When the buttons do not fit on one line they SHALL form one row that scrolls sideways under a finger, without wrapping and without moving the page. On narrow screens the chart SHALL use the card's full width, reserving room at its right edge for an end label only while a team is highlighted, and then only that label's width.
-
-#### Scenario: Switch metric
-- **WHEN** a visitor clicks the "Bye" metric button
-- **THEN** the chart plots each team's first-round-bye chance for every stored as-of week
-
-#### Scenario: Buttons on a phone
-- **WHEN** the redraft page is shown at 375 px
-- **THEN** the four metric buttons sit on one line that can be swiped sideways, and the chart spans the card's width
-
-#### Scenario: Highlighted team on a phone
-- **WHEN** a visitor on a phone highlights a team
-- **THEN** that team's end label shows at the right of the chart, which gives up only that label's width
-
-### Requirement: Team chart colours
-Each team's line on the odds-over-time chart SHALL have its own distinct colour, unchanged across weeks, metrics, sorts and highlighting, and the same colour SHALL mark that team's row in the table.
-
-#### Scenario: Colour survives a sort
-- **WHEN** a visitor sorts the table by championship chance
-- **THEN** every team keeps the line colour and row swatch it had before the sort
-
-### Requirement: Odds chart axis range
-The odds-over-time chart's axis floor SHALL be 0 and its top the next multiple of 10 at least 5 points above the highest plotted value, capped at 100.
-
-#### Scenario: Mid-range values
-- **WHEN** the highest plotted value is 62%
-- **THEN** the axis runs from 0% to 70%
-
-### Requirement: Rating chart
-Each league page SHALL show a second line chart, below the odds-over-time chart, with one line per manager who has ever played in the league, plotting the chosen rating series for every stored week since the league's first stored season, including each season's preseason point where one exists. Metric buttons SHALL offer "Rating" (the Openskill rating mean, default) and "Z-score" (the career mean z-score). The x-axis SHALL label season boundaries.
+**Traces to:** 4
+**Verified by:** Inspection: the live site, the dynasty rating chart from 2022 to the latest week
 
 #### Scenario: Default rating chart
-- **WHEN** a visitor opens the dynasty page with ratings stored for 2022 through 2026
-- **THEN** the chart shows every manager's rating mean at every rated week from 2022 week 1 to the latest rated week, with each season start marked on the axis
-
-#### Scenario: Z-score metric
-- **WHEN** a visitor clicks "Z-score"
-- **THEN** the chart plots each manager's career mean z-score over the same weeks, with a reference line at zero
-
-#### Scenario: Highlight a manager
-- **WHEN** a visitor picks one team in the table or one line in the rating chart
-- **THEN** that manager's line keeps full strength in both charts and the others are dimmed
+- **WHEN** a visitor opens the dynasty page with ratings stored for 2022 to 2026
+- **THEN** the chart shows every Manager's rating at every rated week, with each season start marked
 
 #### Scenario: Preseason point
 - **WHEN** a season's draft is done
-- **THEN** the chart shows a "Pre" point at that season's start holding each manager's reverted rating, so the step toward 1000 is visible
+- **THEN** the chart shows a "Pre" point at that season's start holding each Manager's reverted rating
 
-### Requirement: Rating chart time range
-Range buttons below the rating chart, smaller than the Rating and Z-score buttons above it, SHALL offer "This season", "Last 3 seasons" and "All time" (default "All time"), and SHALL limit the plotted weeks without changing any manager's colour or the chosen metric. A league with fewer than three stored seasons SHALL show "Last 3 seasons" as the same range as "All time".
+### Requirement: 4.2.1 Rating metrics
+Metric buttons leading the rating chart's card SHALL offer "Rating", the Openskill rating mean and the default, and "Z-score", the career mean z-score plotted with a reference line at zero.
 
-#### Scenario: This season
-- **WHEN** a visitor on the redraft page picks "This season" during 2026
-- **THEN** only 2026's rated weeks are plotted and each line keeps its colour
+**Traces to:** 4.2
+**Verified by:** Inspection: the live site, both metrics on the dynasty rating chart
+
+#### Scenario: Z-score metric
+- **WHEN** a visitor clicks "Z-score"
+- **THEN** the chart plots each Manager's career mean z-score with a reference line at zero
+
+### Requirement: 4.2.2 Rating chart range
+Range buttons below the rating chart, smaller than its metric buttons, SHALL offer "This season", "Last 3 seasons" and "All time" (the default), limiting the plotted weeks without changing colours or the chosen metric.
+
+**Traces to:** 4.2
+**Verified by:** Inspection: the live site, each range on the dynasty rating chart
 
 #### Scenario: Last three seasons
-- **WHEN** a visitor picks "Last 3 seasons" on a league with seasons 2021 through 2026
-- **THEN** weeks from 2024, 2025 and 2026 are plotted
+- **WHEN** a visitor picks "Last 3 seasons" in a league with seasons 2021 to 2026
+- **THEN** weeks from 2024, 2025 and 2026 are plotted and each line keeps its colour
 
-#### Scenario: Placement
-- **WHEN** the rating chart is shown
-- **THEN** the Rating and Z-score buttons lead the card above the chart and the range buttons sit below the chart in a smaller size
+### Requirement: 4.2.2.1 Short history
+In a league with fewer than three stored seasons, "Last 3 seasons" SHALL plot the same weeks as "All time".
 
-### Requirement: Manager colours on the rating chart
-A current member's line SHALL use the same colour as their team's line on the odds chart and row in the table. Former members SHALL use greys distinct from one another and readable against the chart background in both themes. Vacant rosters (rosters with no owner in any stored season) SHALL NOT be drawn. A roster that inherits an earlier or later owner SHALL be drawn as part of that owner's line. Every drawn line SHALL be labelled with the manager's display name at its end.
+**Traces to:** 4.2.2
+**Verified by:** Test: `tests/layout/test_forecasts_page.py::test_last_three_seasons_equals_all_time_with_a_short_history`
+
+#### Scenario: Two seasons stored
+- **WHEN** a league has seasons 2025 and 2026
+- **THEN** "Last 3 seasons" plots the same weeks as "All time"
+
+### Requirement: 4.2.3 Manager colours
+A current Manager's rating line SHALL use their team's colour from the Forecast chart.
+
+**Traces to:** 4.2; 1.4.3
+**Verified by:** Inspection: the live site, each current Manager's colour in both charts
+
+#### Scenario: Same colour in both charts
+- **WHEN** a team's Forecast line is teal
+- **THEN** its Manager's rating line is the same teal
+
+### Requirement: 4.2.3.1 Former Managers
+Former Managers' rating lines SHALL use greys distinct from one another and from every current Manager's colour, each with at least 3:1 contrast with the chart background in both themes.
+
+**Traces to:** 4.2.3; 9
+**Verified by:** Inspection: the live site in both themes, the five former dynasty Managers' lines
 
 #### Scenario: Former members
-- **WHEN** the dynasty rating chart shows five former members
-- **THEN** their five lines are five different greys, none of which matches a current member's colour
+- **WHEN** the dynasty rating chart shows five former Managers
+- **THEN** their lines are five different greys, none matching a current Manager's colour
+
+### Requirement: 4.2.5 Vacant rosters hidden
+Only rosters held by a Manager in at least one stored season SHALL be drawn on the rating chart.
+
+**Traces to:** 4.2
+**Verified by:** Test: `tests/test_vacant_owner.py::test_never_owned_stays_vacant`
 
 #### Scenario: Vacant roster hidden
-- **WHEN** a season has a roster with no owner in any stored season
-- **THEN** no line is drawn for it, though the other managers' ratings reflect its scores
+- **WHEN** a roster had no Manager in any stored season
+- **THEN** no line is drawn for it, though the other Managers' ratings reflect its scores
 
-#### Scenario: Inherited owner drawn
-- **WHEN** dynasty roster 11 has no owner in 2023 and was DeekBurg's in 2022
-- **THEN** DeekBurg's grey line continues through 2023
+### Requirement: 4.2.6 Inherited rosters
+A roster without a Manager in a season SHALL be drawn as part of the line of the Manager who held it before or after.
 
-### Requirement: Rating history exported
-Each league's site data SHALL include every manager's rating history (rating mean and career mean z per rated week, with season and week), display name and current or former status, and each current team's latest rating mean and its change over the last rated week. The export SHALL succeed when no rating file exists, leaving the table's ELO cells empty and the rating chart stating that ratings are not yet available.
+**Traces to:** 4.2
+**Verified by:** Test: `tests/test_vacant_owner.py::test_owner_quit_before_the_year_ended`; Test: `tests/test_vacant_owner.py::test_vacant_in_the_first_stored_season_takes_the_later_owner`
+
+#### Scenario: Inherited roster drawn
+- **WHEN** dynasty roster 11 had no Manager in 2023 and was DeekBurg's in 2022
+- **THEN** DeekBurg's line continues through 2023
+
+### Requirement: 4.2.7 End labels
+Every rating line SHALL be labelled with its Manager's display name at its end.
+
+**Traces to:** 4.2
+**Verified by:** Inspection: the live site, every line on the dynasty rating chart has an end label
+
+#### Scenario: End label
+- **WHEN** the rating chart is drawn
+- **THEN** each line ends with its Manager's display name
+
+### Requirement: 4.2.4 Highlight across charts
+Picking a team in the table or a line in the rating chart SHALL keep that Manager's line at full strength in both charts and dim the others.
+
+**Traces to:** 4.2; 1.4.4
+**Verified by:** Test: `tests/layout/test_forecasts_page.py::test_picking_a_team_highlights_its_manager_in_both_charts`
+
+#### Scenario: Highlight a Manager
+- **WHEN** a visitor picks one line in the rating chart
+- **THEN** that Manager's lines keep full strength in both charts and the others are dimmed
+
+### Requirement: 4.3 Rating history exported
+Each league's site data SHALL include every Manager's rating history (rating mean and career mean z-score for each rated week, with season and week), display name, and current or former status.
+
+**Traces to:** 4; 4.1; 4.2
+**Verified by:** Test: `tests/test_export.py::test_export_carries_ratings_when_present`
 
 #### Scenario: Ratings present
 - **WHEN** the export runs after the ratings command
-- **THEN** each team row carries its ELO and 1-week change and the league file carries the full rating history for current and former managers
+- **THEN** each team row carries its ELO and change, and the league file carries the rating history of current and former Managers
+
+### Requirement: 4.3.1 Export without ratings
+The export SHALL succeed without a rating file, leaving the rating chart to say that ratings are not yet available.
+
+**Traces to:** 4.3
+**Verified by:** Test: `tests/test_export.py::test_exported_schema`
 
 #### Scenario: Ratings absent
 - **WHEN** the export runs on a store without rating files
 - **THEN** the league files are written with empty ELO cells and no rating history, and the page says ratings are not yet available
-
-### Requirement: Fresh scripts after deploy
-Every script and stylesheet the site's pages load, and every import between scripts, SHALL carry a stamp in its URL that every deploy replaces with a fingerprint of the site's code files (pages, scripts, stylesheet and bundled libraries, never the data files). The fingerprint SHALL depend only on the content of those files, so a deploy that changes only data keeps the same stamp. Every deploy SHALL publish the same fingerprint in a version file beside the pages and SHALL produce the stamp and version file with one shared stamping command. The source files SHALL carry a placeholder in its place so the site runs unchanged from a local server.
-
-#### Scenario: New deploy
-- **WHEN** a visitor whose browser cached the previous deploy's scripts opens the site after a deploy that changed site code
-- **THEN** the page references script and stylesheet URLs with the new stamp and the browser fetches the new files
-
-#### Scenario: Data-only deploy
-- **WHEN** an hourly refresh deploys new data and no site code changed
-- **THEN** the stamp and the published fingerprint are the same as the previous deploy's and browsers reuse their cached scripts
-
-#### Scenario: Local server
-- **WHEN** the site is served from the repository checkout
-- **THEN** the pages load with the placeholder in the script and stylesheet URLs and work as before
-
-#### Scenario: Reference without a stamp
-- **WHEN** a script or stylesheet reference or module import in the site files lacks the placeholder
-- **THEN** the test suite fails naming the file
-
-#### Scenario: Deploy without the stamping command
-- **WHEN** a workflow that deploys the site does not run the shared stamping command before the upload
-- **THEN** the test suite fails naming the workflow
-
-### Requirement: ELO columns before week one
-After a season's draft and before its first scored week, the ELO cell SHALL show the preseason (reverted) rating and the change cell SHALL be empty; from week 1 the change SHALL be measured from that preseason rating. A manager with only one rated week SHALL show their rating and an empty change cell.
-
-#### Scenario: Preseason rating shown
-- **WHEN** a manager ended last season at 1300 and this season's draft is done but no week is scored
-- **THEN** the ELO cell shows 1200 and the change cell is empty
-
-#### Scenario: Change from the preseason rating
-- **WHEN** the same manager's week-1 rating is 1240
-- **THEN** the change cell shows +40
-
-#### Scenario: Newcomer's first week
-- **WHEN** a team's manager has only one rated week
-- **THEN** the ELO cell shows their rating and the change cell is empty
-
-### Requirement: ELO change fill
-A positive 1-week ELO change SHALL render as black text on a green fill, a negative change as black text on a red fill, and no change as an empty cell.
-
-#### Scenario: Positive change
-- **WHEN** a team's 1-week change is +20
-- **THEN** the change cell shows "+20" as black text on a green fill
-
-#### Scenario: Negative change
-- **WHEN** a team's 1-week change is -33
-- **THEN** the change cell shows "-33" as black text on a red fill
-
-### Requirement: Odds model explained
-The calibration page SHALL explain, in plain language for league members, how the odds are made: projections, score noise from past seasons, best lineups with the replacement-level floor, and roster drift, with each league's current replacement levels and how much of a team's edge the model expects to survive weeks ahead. It SHALL state whether the replacement floor and roster drift were on for the shown report and the N used.
-
-#### Scenario: Member reads the explanation
-- **WHEN** a league member opens the calibration page
-- **THEN** they can read what a replacement-level player is, see this week's replacement level per position for each league, and see how much of a 20-point edge the model expects a team to keep two and twelve weeks out, computed from the published drift model
-
-#### Scenario: Switches stated
-- **WHEN** the calibration page shows a report
-- **THEN** it states whether the replacement floor and roster drift were on for that report and the N used
-
-### Requirement: Live odds on the Predictions page
-While a week is live, the Forecasts table SHALL show the live result's forecasts, labelled with how many of the week's NFL games are final, and its change tooltips SHALL compare with the as-of result the live run started from. The forecast-over-time chart SHALL keep plotting only stored as-of results.
-
-#### Scenario: Saturday of week 11
-- **WHEN** a visitor opens the Forecasts page on Saturday of week 11
-- **THEN** the table shows the live forecasts labelled "Live: 1 of 14 games final" and the chart's last point is still as of week 10
-
-### Requirement: Deploy on code push
-A push to the main branch that changes site code (anything under the site folder other than its data files) SHALL:
-1. build the site data, by restoring the latest build cache or by the offline build;
-2. run the tests and the layout check;
-3. when they pass, deploy the site with that data.
-
-It SHALL never run at the same time as a cold run. It may run alongside hot runs.
-
-#### Scenario: Code pushed
-- **WHEN** a commit changing the Games page script is pushed
-- **THEN** the site deploys with it within a few minutes, without waiting for the next data refresh
-
-#### Scenario: Data-only push
-- **WHEN** the cold run pushes its data commit
-- **THEN** no code-push deploy runs
