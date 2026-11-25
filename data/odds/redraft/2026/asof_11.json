@@ -853,7 +853,6 @@
         1,
         1,
         1,
-        0,
         4
        ],
        [
@@ -865,7 +864,7 @@
         5,
         5,
         6,
-        6,
+        7,
         8,
         9,
         13,
@@ -874,31 +873,31 @@
         16,
         21,
         22,
-        27,
-        27,
+        28,
+        26,
         28,
         31,
-        33,
+        34,
         30,
         32,
         34,
-        32,
-        37,
-        32,
-        35,
-        35,
-        32,
         33,
+        36,
+        33,
+        34,
+        35,
+        32,
+        32,
         30,
         30,
         27,
         26,
         23,
-        25,
-        24,
+        26,
+        23,
         19,
         19,
-        19,
+        20,
         16,
         15,
         14,
@@ -910,21 +909,20 @@
         6,
         6,
         5,
-        3,
+        4,
         4,
         2,
         2,
         3,
         2,
-        2,
-        5
+        7
        ]
       ],
       "start": 62.0,
       "width": 2.0
      },
      "key": "5-10",
-     "margin_mean": -6.645,
+     "margin_mean": -6.575,
      "margin_sd": 31.889,
      "projected": false,
      "teams": [
@@ -987,7 +985,7 @@
        ],
        "mean": 113.05,
        "roster_id": 5,
-       "win_prob": 0.4196
+       "win_prob": 0.421
       },
       {
        "lineup": [
@@ -1043,12 +1041,12 @@
          "DEF",
          "HOU",
          "DEF",
-         7.7
+         7.6
         ]
        ],
-       "mean": 119.69,
+       "mean": 119.62,
        "roster_id": 10,
-       "win_prob": 0.5804
+       "win_prob": 0.579
       }
      ]
     },
@@ -5839,7 +5837,7 @@
    "games": [
     {
      "bracket": "winners",
-     "frequency": 0.1616,
+     "frequency": 0.1615,
      "hist": {
       "shares": [
        [
@@ -6110,7 +6108,7 @@
     },
     {
      "bracket": "winners",
-     "frequency": 0.2312,
+     "frequency": 0.2311,
      "hist": {
       "shares": [
        [
@@ -7429,7 +7427,7 @@
    "games": [
     {
      "bracket": "winners",
-     "frequency": 0.141,
+     "frequency": 0.1411,
      "hist": {
       "shares": [
        [
@@ -8507,7 +8505,7 @@
    "kind": "playoff"
   }
  },
- "generated_at": "2026-11-25T12:56:54+00:00",
+ "generated_at": "2026-11-25T13:28:52+00:00",
  "league_key": "redraft",
  "model": {
   "drift": {
@@ -8573,9 +8571,9 @@
  ],
  "teams": [
   {
-   "bye": 0.8757,
+   "bye": 0.8755,
    "display_name": "TateFM",
-   "final": 0.5326,
+   "final": 0.5327,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 2,
@@ -8583,14 +8581,14 @@
    "points_against": 1052.82,
    "points_for": 1235.8,
    "proj_losses": 3.22,
-   "proj_points": 1574.1,
+   "proj_points": 1574.0,
    "proj_ties": 0.0,
    "proj_wins": 10.78,
    "roster_id": 10,
    "seed_distribution": [
-    0.5579,
-    0.3178,
-    0.1004,
+    0.5573,
+    0.3182,
+    0.1006,
     0.0213,
     0.0026,
     0.0,
@@ -8601,7 +8599,7 @@
     0.0,
     0.0
    ],
-   "semifinal": 0.9444,
+   "semifinal": 0.9442,
    "team_name": "TBD",
    "ties": 0,
    "title": 0.3362,
@@ -8624,8 +8622,8 @@
    "proj_wins": 10.06,
    "roster_id": 4,
    "seed_distribution": [
-    0.3893,
-    0.4197,
+    0.3899,
+    0.4191,
     0.1536,
     0.0321,
     0.0051,
@@ -8645,9 +8643,9 @@
    "wins": 8
   },
   {
-   "bye": 0.258,
+   "bye": 0.2582,
    "display_name": "tg1212",
-   "final": 0.396,
+   "final": 0.3961,
    "last": 0.0,
    "losers_bracket": 0.0174,
    "losses": 4,
@@ -8661,8 +8659,8 @@
    "roster_id": 1,
    "seed_distribution": [
     0.0483,
-    0.2097,
-    0.4517,
+    0.2099,
+    0.4515,
     0.1791,
     0.0695,
     0.0243,
@@ -8673,7 +8671,7 @@
     0.0,
     0.0
    ],
-   "semifinal": 0.7074,
+   "semifinal": 0.7076,
    "team_name": "Diaper Dandies",
    "ties": 0,
    "title": 0.2326,
@@ -8683,7 +8681,7 @@
   {
    "bye": 0.0477,
    "display_name": "NickLove17",
-   "final": 0.2023,
+   "final": 0.2022,
    "last": 0.0,
    "losers_bracket": 0.0859,
    "losses": 4,
@@ -8827,7 +8825,7 @@
   {
    "bye": 0.0001,
    "display_name": "jrizzo15",
-   "final": 0.027,
+   "final": 0.0269,
    "last": 0.0,
    "losers_bracket": 0.7837,
    "losses": 6,

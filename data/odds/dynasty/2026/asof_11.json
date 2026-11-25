@@ -1107,7 +1107,7 @@
         2,
         2,
         2,
-        2,
+        3,
         4,
         5,
         8,
@@ -1121,22 +1121,22 @@
         26,
         27,
         30,
-        31,
+        30,
+        34,
+        36,
         34,
         36,
         35,
+        38,
         36,
-        35,
-        37,
-        37,
         37,
         37,
         34,
         32,
         34,
         33,
-        30,
-        29,
+        31,
+        28,
         26,
         26,
         22,
@@ -1145,13 +1145,13 @@
         17,
         17,
         13,
-        12,
+        13,
         11,
-        9,
+        8,
         8,
         6,
         7,
-        6,
+        5,
         5,
         3,
         3,
@@ -1168,7 +1168,7 @@
       "width": 2.0
      },
      "key": "6-11",
-     "margin_mean": -15.069,
+     "margin_mean": -15.099,
      "margin_sd": 29.259,
      "projected": false,
      "teams": [
@@ -1225,7 +1225,7 @@
        ],
        "mean": 92.51,
        "roster_id": 6,
-       "win_prob": 0.3016
+       "win_prob": 0.3007
       },
       {
        "lineup": [
@@ -1278,9 +1278,9 @@
          9.0
         ]
        ],
-       "mean": 107.58,
+       "mean": 107.61,
        "roster_id": 11,
-       "win_prob": 0.6984
+       "win_prob": 0.6993
       }
      ]
     },
@@ -1298,39 +1298,39 @@
         4,
         5,
         7,
-        8,
+        9,
         7,
         10,
-        12,
+        13,
         15,
         17,
         20,
         22,
         26,
-        26,
+        27,
         32,
-        35,
+        36,
         36,
         32,
         37,
         37,
-        38,
+        37,
         37,
         36,
         36,
         32,
-        36,
-        33,
-        35,
+        37,
+        32,
+        34,
         30,
         28,
-        30,
+        29,
         25,
         24,
         23,
         20,
-        21,
-        14,
+        20,
+        15,
         14,
         14,
         12,
@@ -1414,7 +1414,7 @@
       "width": 2.0
      },
      "key": "8-12",
-     "margin_mean": 8.805,
+     "margin_mean": 8.735,
      "margin_sd": 29.255,
      "projected": false,
      "teams": [
@@ -1466,12 +1466,12 @@
          "DEF",
          "HOU",
          "DEF",
-         9.2
+         9.1
         ]
        ],
-       "mean": 96.97,
+       "mean": 96.9,
        "roster_id": 8,
-       "win_prob": 0.6154
+       "win_prob": 0.6145
       },
       {
        "lineup": [
@@ -1526,7 +1526,7 @@
        ],
        "mean": 88.16,
        "roster_id": 12,
-       "win_prob": 0.3846
+       "win_prob": 0.3855
       }
      ]
     }
@@ -4617,7 +4617,7 @@
    "games": [
     {
      "bracket": "winners",
-     "frequency": 0.3292,
+     "frequency": 0.3295,
      "hist": {
       "shares": [
        [
@@ -4874,7 +4874,7 @@
     },
     {
      "bracket": "winners",
-     "frequency": 0.124,
+     "frequency": 0.1241,
      "hist": {
       "shares": [
        [
@@ -5145,7 +5145,7 @@
    "games": [
     {
      "bracket": "winners",
-     "frequency": 0.2498,
+     "frequency": 0.2495,
      "hist": {
       "shares": [
        [
@@ -5667,7 +5667,7 @@
     },
     {
      "bracket": "winners",
-     "frequency": 0.105,
+     "frequency": 0.1051,
      "hist": {
       "shares": [
        [
@@ -5928,7 +5928,7 @@
    "games": [
     {
      "bracket": "winners",
-     "frequency": 0.2355,
+     "frequency": 0.2357,
      "hist": {
       "shares": [
        [
@@ -6454,7 +6454,7 @@
    "kind": "playoff"
   }
  },
- "generated_at": "2026-11-25T12:56:52+00:00",
+ "generated_at": "2026-11-25T13:28:51+00:00",
  "league_key": "dynasty",
  "model": {
   "drift": {
@@ -6521,7 +6521,7 @@
   {
    "bye": 0.9878,
    "display_name": "Gixxersean1",
-   "final": 0.7221,
+   "final": 0.7226,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 2,
@@ -6547,17 +6547,17 @@
     0.0,
     0.0
    ],
-   "semifinal": 0.9958,
+   "semifinal": 0.9959,
    "team_name": "#ManCrushMondays",
    "ties": 0,
-   "title": 0.4807,
+   "title": 0.4811,
    "user_id": "780972667925991424",
    "wins": 9
   },
   {
    "bye": 0.7517,
    "display_name": "zagaplooza",
-   "final": 0.4777,
+   "final": 0.4778,
    "last": 0.0,
    "losers_bracket": 0.0001,
    "losses": 3,
@@ -6586,18 +6586,18 @@
    "semifinal": 0.9036,
    "team_name": "Jerry Jones",
    "ties": 0,
-   "title": 0.1958,
+   "title": 0.1957,
    "user_id": "996990298775420928",
    "wins": 8
   },
   {
    "bye": 0.2542,
    "display_name": "khar432",
-   "final": 0.3814,
+   "final": 0.3813,
    "last": 0.0,
-   "losers_bracket": 0.012,
+   "losers_bracket": 0.0121,
    "losses": 4,
-   "playoffs": 0.988,
+   "playoffs": 0.9879,
    "points_against": 1215.98,
    "points_for": 1305.84,
    "proj_losses": 5.31,
@@ -6608,11 +6608,11 @@
    "seed_distribution": [
     0.0352,
     0.219,
-    0.4457,
-    0.1973,
-    0.0553,
-    0.0355,
-    0.0115,
+    0.4456,
+    0.1976,
+    0.0551,
+    0.0354,
+    0.0116,
     0.0005,
     0.0,
     0.0,
@@ -6622,14 +6622,14 @@
    "semifinal": 0.7333,
    "team_name": "Christian Mingle",
    "ties": 0,
-   "title": 0.174,
+   "title": 0.1739,
    "user_id": "740075424440332288",
    "wins": 7
   },
   {
    "bye": 0.0056,
    "display_name": "corygraham12",
-   "final": 0.209,
+   "final": 0.2087,
    "last": 0.0,
    "losers_bracket": 0.1021,
    "losses": 5,
@@ -6644,10 +6644,10 @@
    "seed_distribution": [
     0.0,
     0.0056,
-    0.1701,
-    0.4135,
-    0.2061,
-    0.1026,
+    0.1702,
+    0.4133,
+    0.2063,
+    0.1025,
     0.0684,
     0.0299,
     0.0035,
@@ -6655,21 +6655,21 @@
     0.0,
     0.0
    ],
-   "semifinal": 0.5396,
+   "semifinal": 0.5393,
    "team_name": "The Kuppets",
    "ties": 0,
-   "title": 0.0811,
+   "title": 0.081,
    "user_id": "739284972489293824",
    "wins": 6
   },
   {
    "bye": 0.0005,
    "display_name": "Z28kid86",
-   "final": 0.1073,
+   "final": 0.1074,
    "last": 0.0,
-   "losers_bracket": 0.1615,
+   "losers_bracket": 0.1609,
    "losses": 5,
-   "playoffs": 0.8385,
+   "playoffs": 0.8391,
    "points_against": 994.3,
    "points_for": 1026.44,
    "proj_losses": 5.98,
@@ -6680,18 +6680,18 @@
    "seed_distribution": [
     0.0,
     0.0005,
-    0.1121,
-    0.218,
-    0.3261,
-    0.1818,
-    0.1139,
-    0.0335,
+    0.1122,
+    0.2183,
+    0.3265,
+    0.1816,
+    0.1135,
+    0.0333,
     0.0118,
     0.0023,
     0.0,
     0.0
    ],
-   "semifinal": 0.3598,
+   "semifinal": 0.36,
    "team_name": "SLOPPY SECONDS ",
    "ties": 0,
    "title": 0.0354,
@@ -6701,11 +6701,11 @@
   {
    "bye": 0.0002,
    "display_name": "tg1212",
-   "final": 0.0466,
+   "final": 0.0464,
    "last": 0.0,
-   "losers_bracket": 0.4994,
+   "losers_bracket": 0.5,
    "losses": 5,
-   "playoffs": 0.5006,
+   "playoffs": 0.5,
    "points_against": 1008.84,
    "points_for": 990.0,
    "proj_losses": 6.47,
@@ -6716,18 +6716,18 @@
    "seed_distribution": [
     0.0,
     0.0002,
-    0.034,
-    0.0723,
-    0.1508,
-    0.2433,
-    0.2431,
-    0.1446,
-    0.0801,
-    0.0316,
+    0.0339,
+    0.072,
+    0.1504,
+    0.2435,
+    0.2436,
+    0.1444,
+    0.0803,
+    0.0317,
     0.0,
     0.0
    ],
-   "semifinal": 0.2045,
+   "semifinal": 0.2041,
    "team_name": "Pocket Dogs",
    "ties": 0,
    "title": 0.0126,
@@ -6754,16 +6754,16 @@
     0.0,
     0.0029,
     0.044,
-    0.1569,
-    0.2496,
-    0.2422,
-    0.2098,
-    0.0694,
+    0.1567,
+    0.2498,
+    0.2421,
+    0.2102,
+    0.0691,
     0.0252,
     0.0,
     0.0
    ],
-   "semifinal": 0.1775,
+   "semifinal": 0.1777,
    "team_name": "Trust the Process DSO",
    "ties": 0,
    "title": 0.0174,
@@ -6773,11 +6773,11 @@
   {
    "bye": 0.0,
    "display_name": "Jdeguire",
-   "final": 0.0072,
+   "final": 0.0071,
    "last": 0.0,
-   "losers_bracket": 0.7685,
+   "losers_bracket": 0.7683,
    "losses": 5,
-   "playoffs": 0.2315,
+   "playoffs": 0.2317,
    "points_against": 948.88,
    "points_for": 995.96,
    "proj_losses": 7.09,
@@ -6789,20 +6789,20 @@
     0.0,
     0.0,
     0.0074,
-    0.024,
-    0.0787,
-    0.1214,
-    0.1839,
-    0.2759,
-    0.199,
-    0.1097,
+    0.0239,
+    0.0789,
+    0.1215,
+    0.1837,
+    0.276,
+    0.1991,
+    0.1095,
     0.0,
     0.0
    ],
-   "semifinal": 0.0603,
+   "semifinal": 0.0605,
    "team_name": "Jesus at Red Rock",
    "ties": 0,
-   "title": 0.0019,
+   "title": 0.0018,
    "user_id": "739353143170727936",
    "wins": 6
   },
@@ -6811,9 +6811,9 @@
    "display_name": "gonzas",
    "final": 0.0014,
    "last": 0.0,
-   "losers_bracket": 0.9546,
+   "losers_bracket": 0.9547,
    "losses": 6,
-   "playoffs": 0.0454,
+   "playoffs": 0.0453,
    "points_against": 1203.98,
    "points_for": 989.86,
    "proj_losses": 8.11,
@@ -6827,11 +6827,11 @@
     0.0,
     0.0022,
     0.016,
-    0.0272,
-    0.0766,
-    0.1193,
-    0.3175,
-    0.4402,
+    0.0271,
+    0.0767,
+    0.119,
+    0.3174,
+    0.4406,
     0.001,
     0.0
    ],
@@ -6865,9 +6865,9 @@
     0.0066,
     0.0382,
     0.0603,
-    0.1865,
-    0.3182,
-    0.3835,
+    0.1867,
+    0.3183,
+    0.3832,
     0.0067,
     0.0
    ],
@@ -6882,7 +6882,7 @@
    "bye": 0.0,
    "display_name": "MattCyg",
    "final": 0.0,
-   "last": 0.1554,
+   "last": 0.1558,
    "losers_bracket": 1.0,
    "losses": 8,
    "playoffs": 0.0,
@@ -6904,8 +6904,8 @@
     0.0,
     0.0005,
     0.0072,
-    0.8369,
-    0.1554
+    0.8365,
+    0.1558
    ],
    "semifinal": 0.0,
    "team_name": "Forever Unclean ",
@@ -6918,7 +6918,7 @@
    "bye": 0.0,
    "display_name": "CheefWiggum",
    "final": 0.0,
-   "last": 0.8446,
+   "last": 0.8442,
    "losers_bracket": 1.0,
    "losses": 10,
    "playoffs": 0.0,
@@ -6940,8 +6940,8 @@
     0.0,
     0.0,
     0.0,
-    0.1554,
-    0.8446
+    0.1558,
+    0.8442
    ],
    "semifinal": 0.0,
    "team_name": "Chief Wiggum",
