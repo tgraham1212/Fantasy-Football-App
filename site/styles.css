@@ -814,6 +814,7 @@ a.mgr-tile:hover { border-color: var(--axis); }
 .mgr-tile-k { font-size: clamp(0.6rem, 6.4cqi, 0.82rem); }
 .mgr-tile .main { font-size: clamp(0.72rem, 8.4cqi, 1.15rem); }
 .mgr-tile-body .l2 { font-size: clamp(0.62rem, 7cqi, 0.95rem); }
+.mgr-tile-body .l2.lg { font-size: clamp(0.62rem, 7.4cqi, 1rem); }   /* the record line scales too: a season-end "10-10-1 · 2,488.9 PF" fits */
 .mgr-score b { font-size: clamp(0.6rem, 8.2cqi, 1.1rem); }
 @container (max-width: 185px) {
   .mgr-tile-k .lbl svg { display: none; } .mgr-tile-body .l1 { gap: 6px; } .mgr-score { gap: 3px; } .mgr-score b { padding: 2px 4px; }

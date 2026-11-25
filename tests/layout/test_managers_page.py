@@ -28,10 +28,13 @@ OUTSIDE_JS = """([outer, inner]) => {
 
 
 def _worst_case(route):
-    """The selected dynasty page with the hardest values: long names, big scores, double-digit WAR."""
+    """The selected dynasty page with the hardest values: long names, big scores, double-digit WAR, and a
+    season-end record and points for."""
     body = json.loads(route.fetch().text())
     for m in body["managers"]:
         t = m["tiles"]
+        t["record"] = {**t.get("record", {}), "wins": 10, "losses": 10, "ties": 1}
+        t["points_for"] = 2488.88
         if t.get("last_result"):
             t["last_result"]["points"], t["last_result"]["opp_points"] = 188.62, 104.04
         if t.get("top_scorer"):
