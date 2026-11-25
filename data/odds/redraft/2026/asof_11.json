@@ -1068,57 +1068,57 @@
      "hist": {
       "shares": [
        [
-        3,
+        4,
         1,
         2,
         4,
-        5,
         4,
         6,
         7,
+        7,
         10,
-        11,
-        12,
+        10,
+        13,
         16,
-        16,
+        17,
         22,
-        20,
+        21,
         25,
         24,
-        30,
-        30,
-        31,
         34,
-        36,
-        39,
-        37,
-        40,
-        38,
-        39,
-        38,
-        34,
-        32,
-        31,
-        30,
-        31,
-        26,
-        26,
         28,
-        22,
+        34,
+        35,
+        37,
+        39,
+        36,
+        38,
+        38,
+        40,
+        36,
+        34,
+        33,
+        30,
+        31,
+        29,
+        27,
+        25,
+        27,
         20,
-        18,
-        16,
+        20,
+        17,
         15,
-        12,
+        14,
+        13,
         11,
-        10,
-        10,
+        8,
+        11,
         8,
         6,
-        6,
         5,
-        3,
+        5,
         4,
+        2,
         2,
         3,
         3,
@@ -1188,7 +1188,7 @@
       "width": 2.0
      },
      "key": "6-8",
-     "margin_mean": 2.831,
+     "margin_mean": 2.171,
      "margin_sd": 30.441,
      "projected": false,
      "teams": [
@@ -1210,7 +1210,7 @@
          "RB",
          "8150",
          "RB",
-         13.7
+         13.4
         ],
         [
          "WR",
@@ -1234,7 +1234,7 @@
          "FLEX",
          "5967",
          "RB",
-         12.8
+         12.3
         ],
         [
          "K",
@@ -1249,9 +1249,9 @@
          7.5
         ]
        ],
-       "mean": 108.92,
+       "mean": 108.26,
        "roster_id": 6,
-       "win_prob": 0.5392
+       "win_prob": 0.5309
       },
       {
        "lineup": [
@@ -1312,7 +1312,7 @@
        ],
        "mean": 106.09,
        "roster_id": 8,
-       "win_prob": 0.4608
+       "win_prob": 0.4691
       }
      ]
     },
@@ -4755,7 +4755,7 @@
    "games": [
     {
      "bracket": "winners",
-     "frequency": 0.2463,
+     "frequency": 0.2426,
      "hist": {
       "shares": [
        [
@@ -5034,7 +5034,7 @@
     },
     {
      "bracket": "winners",
-     "frequency": 0.0947,
+     "frequency": 0.0945,
      "hist": {
       "shares": [
        [
@@ -5574,7 +5574,7 @@
     },
     {
      "bracket": "losers",
-     "frequency": 0.1214,
+     "frequency": 0.1211,
      "hist": {
       "shares": [
        [
@@ -5847,7 +5847,7 @@
    "games": [
     {
      "bracket": "winners",
-     "frequency": 0.1553,
+     "frequency": 0.1538,
      "hist": {
       "shares": [
        [
@@ -6118,7 +6118,7 @@
     },
     {
      "bracket": "winners",
-     "frequency": 0.2242,
+     "frequency": 0.2241,
      "hist": {
       "shares": [
        [
@@ -6381,7 +6381,7 @@
     },
     {
      "bracket": "winners",
-     "frequency": 0.0777,
+     "frequency": 0.0773,
      "hist": {
       "shares": [
        [
@@ -6644,7 +6644,7 @@
     },
     {
      "bracket": "losers",
-     "frequency": 0.3116,
+     "frequency": 0.3114,
      "hist": {
       "shares": [
        [
@@ -6907,7 +6907,7 @@
     },
     {
      "bracket": "losers",
-     "frequency": 0.0825,
+     "frequency": 0.0819,
      "hist": {
       "shares": [
        [
@@ -7166,7 +7166,7 @@
     },
     {
      "bracket": "losers",
-     "frequency": 0.1059,
+     "frequency": 0.1058,
      "hist": {
       "shares": [
        [
@@ -7437,7 +7437,7 @@
    "games": [
     {
      "bracket": "winners",
-     "frequency": 0.1332,
+     "frequency": 0.1331,
      "hist": {
       "shares": [
        [
@@ -7704,7 +7704,7 @@
     },
     {
      "bracket": "winners",
-     "frequency": 0.0571,
+     "frequency": 0.0568,
      "hist": {
       "shares": [
        [
@@ -7973,7 +7973,7 @@
     },
     {
      "bracket": "losers",
-     "frequency": 0.0899,
+     "frequency": 0.09,
      "hist": {
       "shares": [
        [
@@ -8242,7 +8242,7 @@
     },
     {
      "bracket": "losers",
-     "frequency": 0.0327,
+     "frequency": 0.0325,
      "hist": {
       "shares": [
        [
@@ -8515,7 +8515,7 @@
    "kind": "playoff"
   }
  },
- "generated_at": "2026-11-25T18:00:49+00:00",
+ "generated_at": "2026-11-25T18:16:59+00:00",
  "league_key": "redraft",
  "model": {
   "drift": {
@@ -8583,7 +8583,7 @@
   {
    "bye": 0.87,
    "display_name": "TateFM",
-   "final": 0.5295,
+   "final": 0.5293,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 2,
@@ -8598,8 +8598,8 @@
    "seed_distribution": [
     0.5288,
     0.3412,
-    0.1059,
-    0.0216,
+    0.106,
+    0.0215,
     0.0025,
     0.0,
     0.0,
@@ -8609,17 +8609,17 @@
     0.0,
     0.0
    ],
-   "semifinal": 0.9427,
+   "semifinal": 0.9424,
    "team_name": "TBD",
    "ties": 0,
-   "title": 0.3328,
+   "title": 0.3332,
    "user_id": "740044489435017216",
    "wins": 9
   },
   {
    "bye": 0.8417,
    "display_name": "corygraham12",
-   "final": 0.449,
+   "final": 0.4491,
    "last": 0.0,
    "losers_bracket": 0.0,
    "losses": 3,
@@ -8634,9 +8634,9 @@
    "seed_distribution": [
     0.425,
     0.4167,
-    0.1303,
+    0.1304,
     0.0245,
-    0.0032,
+    0.0031,
     0.0003,
     0.0,
     0.0,
@@ -8655,7 +8655,7 @@
   {
    "bye": 0.2358,
    "display_name": "tg1212",
-   "final": 0.392,
+   "final": 0.3916,
    "last": 0.0,
    "losers_bracket": 0.0171,
    "losses": 4,
@@ -8670,10 +8670,10 @@
    "seed_distribution": [
     0.0418,
     0.194,
-    0.4721,
-    0.1819,
-    0.0691,
-    0.024,
+    0.472,
+    0.1818,
+    0.0694,
+    0.0239,
     0.0138,
     0.0032,
     0.0001,
@@ -8681,21 +8681,21 @@
     0.0,
     0.0
    ],
-   "semifinal": 0.6991,
+   "semifinal": 0.6987,
    "team_name": "Diaper Dandies",
    "ties": 0,
-   "title": 0.231,
+   "title": 0.2304,
    "user_id": "75490097898078208",
    "wins": 7
   },
   {
    "bye": 0.0446,
    "display_name": "NickLove17",
-   "final": 0.2031,
+   "final": 0.2038,
    "last": 0.0,
-   "losers_bracket": 0.086,
+   "losers_bracket": 0.0862,
    "losses": 4,
-   "playoffs": 0.914,
+   "playoffs": 0.9138,
    "points_against": 1106.04,
    "points_for": 1158.3,
    "proj_losses": 5.32,
@@ -8706,90 +8706,90 @@
    "seed_distribution": [
     0.0044,
     0.0402,
-    0.1746,
-    0.3399,
-    0.2297,
-    0.1252,
-    0.0502,
-    0.0294,
-    0.0064,
+    0.1744,
+    0.3413,
+    0.2286,
+    0.1249,
+    0.0504,
+    0.0293,
+    0.0065,
     0.0,
     0.0,
     0.0
    ],
-   "semifinal": 0.4484,
+   "semifinal": 0.4489,
    "team_name": "Keeper Killer",
    "ties": 0,
-   "title": 0.0734,
+   "title": 0.0736,
    "user_id": "727642823544893440",
    "wins": 7
   },
   {
    "bye": 0.0033,
    "display_name": "shanhynes",
-   "final": 0.2111,
+   "final": 0.2089,
    "last": 0.0,
-   "losers_bracket": 0.2885,
+   "losers_bracket": 0.2927,
    "losses": 5,
-   "playoffs": 0.7115,
+   "playoffs": 0.7073,
    "points_against": 1175.16,
    "points_for": 1192.68,
-   "proj_losses": 6.3,
-   "proj_points": 1528.4,
+   "proj_losses": 6.31,
+   "proj_points": 1527.7,
    "proj_ties": 0.0,
-   "proj_wins": 7.7,
+   "proj_wins": 7.69,
    "roster_id": 6,
    "seed_distribution": [
     0.0,
     0.0033,
-    0.0474,
-    0.2075,
-    0.2589,
-    0.1944,
-    0.1524,
-    0.0852,
-    0.0467,
-    0.0042,
+    0.0468,
+    0.2046,
+    0.2568,
+    0.1958,
+    0.1545,
+    0.0857,
+    0.0482,
+    0.0043,
     0.0,
     0.0
    ],
-   "semifinal": 0.4231,
+   "semifinal": 0.42,
    "team_name": "Olivia Culpo’s Husband",
    "ties": 0,
-   "title": 0.0848,
+   "title": 0.0843,
    "user_id": "739298321264496640",
    "wins": 6
   },
   {
    "bye": 0.0029,
    "display_name": "Jdeguire",
-   "final": 0.1096,
+   "final": 0.1103,
    "last": 0.0,
-   "losers_bracket": 0.4705,
+   "losers_bracket": 0.467,
    "losses": 5,
-   "playoffs": 0.5295,
+   "playoffs": 0.533,
    "points_against": 1123.82,
    "points_for": 1210.7,
-   "proj_losses": 6.77,
+   "proj_losses": 6.76,
    "proj_points": 1522.8,
    "proj_ties": 0.0,
-   "proj_wins": 7.23,
+   "proj_wins": 7.24,
    "roster_id": 8,
    "seed_distribution": [
     0.0,
     0.0029,
-    0.0361,
-    0.1056,
-    0.1824,
-    0.2025,
-    0.2132,
-    0.1604,
-    0.0926,
-    0.0043,
+    0.0368,
+    0.107,
+    0.1847,
+    0.2016,
+    0.2118,
+    0.1595,
+    0.0915,
+    0.0042,
     0.0,
     0.0
    ],
-   "semifinal": 0.2635,
+   "semifinal": 0.2656,
    "team_name": "Redemption ",
    "ties": 0,
    "title": 0.0437,
@@ -8799,7 +8799,7 @@
   {
    "bye": 0.0017,
    "display_name": "kjern17",
-   "final": 0.0433,
+   "final": 0.0438,
    "last": 0.0,
    "losers_bracket": 0.5393,
    "losses": 5,
@@ -8815,31 +8815,31 @@
     0.0,
     0.0017,
     0.0307,
-    0.0693,
-    0.1441,
-    0.2149,
-    0.2134,
-    0.1739,
+    0.0696,
+    0.1443,
+    0.2144,
+    0.2132,
+    0.1741,
     0.1455,
     0.0065,
     0.0,
     0.0
    ],
-   "semifinal": 0.134,
+   "semifinal": 0.1341,
    "team_name": "Likely to lose",
    "ties": 0,
-   "title": 0.0139,
+   "title": 0.0141,
    "user_id": "739705195117895680",
    "wins": 6
   },
   {
    "bye": 0.0,
    "display_name": "jrizzo15",
-   "final": 0.025,
+   "final": 0.0252,
    "last": 0.0,
-   "losers_bracket": 0.7844,
+   "losers_bracket": 0.7842,
    "losses": 6,
-   "playoffs": 0.2156,
+   "playoffs": 0.2158,
    "points_against": 1243.96,
    "points_for": 1211.24,
    "proj_losses": 7.79,
@@ -8852,16 +8852,16 @@
     0.0,
     0.0017,
     0.0331,
-    0.0602,
-    0.1206,
-    0.1568,
-    0.2428,
-    0.3372,
-    0.0458,
+    0.0606,
+    0.1204,
+    0.1567,
+    0.2429,
+    0.3369,
+    0.0459,
     0.0018,
     0.0
    ],
-   "semifinal": 0.0726,
+   "semifinal": 0.073,
    "team_name": "RIP",
    "ties": 0,
    "title": 0.0102,
@@ -8871,11 +8871,11 @@
   {
    "bye": 0.0,
    "display_name": "micaelaconnors",
-   "final": 0.0374,
+   "final": 0.038,
    "last": 0.0,
-   "losers_bracket": 0.8142,
+   "losers_bracket": 0.8135,
    "losses": 6,
-   "playoffs": 0.1858,
+   "playoffs": 0.1865,
    "points_against": 1212.18,
    "points_for": 1180.74,
    "proj_losses": 7.64,
@@ -8888,19 +8888,19 @@
     0.0,
     0.0012,
     0.0166,
-    0.0499,
-    0.1181,
-    0.1969,
-    0.2824,
-    0.2813,
+    0.05,
+    0.1187,
+    0.1962,
+    0.2827,
+    0.281,
     0.0485,
     0.0051,
     0.0
    ],
-   "semifinal": 0.0854,
+   "semifinal": 0.0861,
    "team_name": "Reigning champ",
    "ties": 0,
-   "title": 0.0181,
+   "title": 0.0184,
    "user_id": "739328545955999744",
    "wins": 5
   },
@@ -8926,10 +8926,10 @@
     0.0,
     0.0,
     0.0,
-    0.0033,
-    0.0187,
-    0.0649,
-    0.6043,
+    0.0034,
+    0.0186,
+    0.065,
+    0.6042,
     0.3016,
     0.0072
    ],
