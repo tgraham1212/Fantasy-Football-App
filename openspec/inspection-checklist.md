@@ -141,7 +141,7 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 | Spec | Last reviewed | Result | Notes |
 |---|---|---|---|
 | `needs` | 2026-11-23 | Pass | Twelve needs, each with children; no orphans found, so no need added |
-| `project-standards` | 2026-11-23 | Pass | 8 existing requirements became 11 under 9.5 to 9.8, 10.10.1, 10.14 and 10.15; this change's 21 (10.1 to 10.13) reviewed |
+| `project-standards` | 2026-11-24 | Pass | Re-reviewed after the archive synced 10.1 to 10.13 (approved in group 7) into the main spec, with 10.8.1's re-inspection scenarios set to the maintainer's linked-requirement rule; earlier: 8 existing requirements became 11 under 9.5 to 9.8, 10.10.1, 10.14 and 10.15 |
 | `layout-checks` | 2026-11-23 | Pass | 6 requirements became 9 under 9.4; WebKit and Firefox widths corrected to 440 and 1280 |
 | `site-copy` | 2026-11-23 | Pass | 6 requirements became 9 under 10.16 |
 | `calculation-docs` | 2026-11-23 | Pass | 3 requirements became 4 under 8.2 |
