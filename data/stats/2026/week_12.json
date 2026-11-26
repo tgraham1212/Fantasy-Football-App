@@ -1069,6 +1069,41 @@
   },
   "team": "LAR"
  },
+ "3294": {
+  "company": "sportradar",
+  "date": "2026-11-26",
+  "fantasy_positions": [
+   "QB"
+  ],
+  "first_name": "Dak",
+  "last_modified": 1795729828083,
+  "last_name": "Prescott",
+  "opponent": "PHI",
+  "player_id": "3294",
+  "position": "QB",
+  "stats": {
+   "bonus_fd_qb": 1.0,
+   "cmp_pct": 100.0,
+   "gms_active": 1.0,
+   "gp": 1.0,
+   "gs": 1.0,
+   "h1_pass_yd": 5.0,
+   "pass_att": 1.0,
+   "pass_cmp": 1.0,
+   "pass_fd": 1.0,
+   "pass_lng": 5.0,
+   "pass_rtg": 87.5,
+   "pass_rush_yd": 5.0,
+   "pass_yd": 5.0,
+   "pass_ypa": 5.0,
+   "pass_ypc": 5.0,
+   "pts_half_ppr": 0.2,
+   "pts_ppr": 0.2,
+   "pts_std": 0.2,
+   "q1_pass_yd": 5.0
+  },
+  "team": "DAL"
+ },
  "3634": {
   "company": "sportradar",
   "date": "2026-11-26",
@@ -1487,6 +1522,48 @@
   },
   "team": "DET"
  },
+ "7588": {
+  "company": "sportradar",
+  "date": "2026-11-26",
+  "fantasy_positions": [
+   "RB"
+  ],
+  "first_name": "Javonte",
+  "last_modified": 1795729828096,
+  "last_name": "Williams",
+  "opponent": "PHI",
+  "player_id": "7588",
+  "position": "RB",
+  "stats": {
+   "bonus_fd_rb": 1.0,
+   "bonus_rec_rb": 1.0,
+   "gms_active": 1.0,
+   "gp": 1.0,
+   "h1_rec_yd": 5.0,
+   "h1_rush_yd": 7.0,
+   "pass_rush_yd": 7.0,
+   "pts_half_ppr": 1.7,
+   "pts_ppr": 2.2,
+   "pts_std": 1.2,
+   "q1_rec_yd": 5.0,
+   "q1_rush_yd": 7.0,
+   "rec": 1.0,
+   "rec_5_9": 1.0,
+   "rec_fd": 1.0,
+   "rec_lng": 5.0,
+   "rec_tgt": 1.0,
+   "rec_yar": 5.0,
+   "rec_yd": 5.0,
+   "rec_ypr": 5.0,
+   "rec_ypt": 5.0,
+   "rush_att": 2.0,
+   "rush_lng": 4.0,
+   "rush_rec_yd": 12.0,
+   "rush_yd": 7.0,
+   "rush_ypa": 3.5
+  },
+  "team": "DAL"
+ },
  "8148": {
   "company": "sportradar",
   "date": "2026-11-26",
@@ -1872,6 +1949,33 @@
   },
   "team": "CHI"
  },
+ "DAL": {
+  "company": "sportradar",
+  "date": "2026-11-26",
+  "fantasy_positions": [
+   "DEF"
+  ],
+  "first_name": "Dallas",
+  "last_modified": 1795729698310,
+  "last_name": "Cowboys",
+  "opponent": "PHI",
+  "player_id": "DAL",
+  "position": "DEF",
+  "stats": {
+   "def_kr": 1.0,
+   "def_kr_lng": 16.0,
+   "def_kr_yd": 16.0,
+   "def_kr_ypa": 16.0,
+   "fan_pts_allow_def": 10.0,
+   "gp": 1.0,
+   "pts_allow_0": 1.0,
+   "pts_half_ppr": 10.0,
+   "pts_ppr": 10.0,
+   "pts_std": 10.0,
+   "yds_allow_0_100": 1.0
+  },
+  "team": "DAL"
+ },
  "DET": {
   "company": "sportradar",
   "date": "2026-11-26",
@@ -2050,5 +2154,38 @@
    "yds_allow_200_299": 1.0
   },
   "team": "LAR"
+ },
+ "PHI": {
+  "company": "sportradar",
+  "date": "2026-11-26",
+  "fantasy_positions": [
+   "DEF"
+  ],
+  "first_name": "Philadelphia",
+  "last_modified": 1795729828271,
+  "last_name": "Eagles",
+  "opponent": "DAL",
+  "player_id": "PHI",
+  "position": "DEF",
+  "stats": {
+   "def_st_tkl_solo": 1.0,
+   "fan_pts_allow": 2.4,
+   "fan_pts_allow_def": 10.0,
+   "fan_pts_allow_qb": 0.2,
+   "fan_pts_allow_rb": 2.2,
+   "gp": 1.0,
+   "penalty": 1.0,
+   "penalty_yd": 17.0,
+   "pts_allow_0": 1.0,
+   "pts_half_ppr": 10.0,
+   "pts_ppr": 10.0,
+   "pts_std": 10.0,
+   "tkl": 5.0,
+   "tkl_ast": 4.0,
+   "tkl_solo": 1.0,
+   "yds_allow": 12.0,
+   "yds_allow_0_100": 1.0
+  },
+  "team": "PHI"
  }
 }
