@@ -295,22 +295,35 @@ Assumptions and decisions:
 11. LINEUP VIEWS AND LINEUP CHOICES
 ================================================================
 Code:          src/ffapp/views.py
-Data sources:  The game log, stored projections, the week's realised replacement level.
-Depends on:    5, 10, 14
+Data sources:  The game log, stored projections.
+Depends on:    5, 10
 Formula:
   Model view: each team's best legal lineup that week at pre-kickoff projections, with the
   replacement floor. Actual view: the starters the manager used at the same projections.
   Both simulated with the record's model and no results.
-  lineup choices = actual starters' points - model lineup players' points
-                   (a replacement fill counts the week's realised replacement level, or the
-                   projected level when none is stored)
+  default lineup = the best legal lineup from the week's rostered players at the same
+                   pre-kickoff projections, with no free-agent fills (section 5 without the
+                   replacement floor; a slot no rostered player can fill stays empty)
+  lineup choices = actual starters' points - default lineup players' points
+                   (an empty slot counts 0 on either side; a starter with no stored projection is
+                   placed in the default lineup first, so he counts the same on both sides)
+  Example: the default lineup starts QB A, the manager starts QB B from the same roster and
+  every other slot matches. A scores 10 and B scores 15: lineup choices = +5. A scores 15 and
+  B scores 10: -5.
 In plain English:
   The Model | Actual toggle shows what the best lineup would have been against what the
-  manager started. "Lineup choices" says how many points the manager's choices gained or
-  cost against the model's picks.
+  manager started. "Lineup choices" says how many points the manager gained or cost by
+  starting anyone other than the roster's highest Sleeper projections. Following the
+  projections scores 0.
 Assumptions and decisions:
-  - During the live week, only players whose games have kicked off count; fills count once
-    the week is final.
+  - Free agents are left out of the default lineup: picking one up is a roster move, not a
+    lineup choice. A free agent the manager added that week is on the roster, so he counts on
+    both sides. The Model view keeps the replacement floor; only lineup choices leave it out.
+  - During the live week, only players whose games have kicked off count, on both sides.
+  - A starter with no stored projection (a gap in the stored data, such as most of Tom Brady's
+    2021 weeks) has no default to judge him by, so he adds 0 rather than counting as a gain.
+  - Each week's stored views carry the rule their lineup choices follow ("lineup_basis");
+    views stored under an earlier rule have their lineup choices recomputed once.
   - 2026 weeks 1 to 10 predate the log, so their actual view is rebuilt from stored
     projections and labelled "rebuilt".
 
@@ -749,10 +762,10 @@ Code:          src/ffapp/league_records.py (past-season lineup choices in src/ff
 Data sources:  Every stored season's matchups (team points, starters, rostered players and
                league-scored player points), brackets, rosters (with reserve and taxi) and
                users; the Player WAR files (weekly league-scored points and WAR); the weekly
-               stats (each player's NFL team that week); stored weekly projections and
-               realised replacement levels for past-season lineup choices. Exported as
+               stats (each player's NFL team that week); stored weekly projections for
+               past-season lineup choices. Exported as
                site/data/<league>/records.json (derived data).
-Depends on:    7, 8, 11, 14, 16, 19
+Depends on:    7, 8, 11, 16, 19
 Formula:
   games that matter: regular-season games; winners-bracket games with no placement or
     placement 1 (Championship) or 3 (3rd Place); in a toilet-bowl league, losers-bracket games
@@ -784,9 +797,9 @@ Formula:
     played and points per game over the league's seasons; championships = title games in which
     he was on the champion's roster (matchup players plus reserve and taxi), ordered by count,
     then WAR in the title seasons.
-  past-season lineup choices (weeks before the 2026 game log): model lineup from that week's
-    stored projections with the projected replacement floor, actual starters from the
-    matchup, fills at the week's realised replacement level; the section 11 formula.
+  past-season lineup choices (weeks before the 2026 game log): the default lineup from that
+    week's rostered players at its stored projections against the starters from the matchup;
+    the section 11 formula.
 In plain English:
   The League sub-tab's Records page lists the league's bests and worsts: who won each title,
   the all-time table, the biggest weeks and seasons, and the players behind them. Only games

@@ -6,9 +6,10 @@ week's projected replacement-level floor. Actual view: the starters the manager 
 same projections. Both are simulated with the record's model and no results; during the live
 week the actual view is the live forecast instead.
 
-Lineup choices: the actual starters' points minus the model lineup's points, a replacement
-fill counting the week's realised replacement level (projected level when none is stored).
-During the live week only players whose games have kicked off count, fills once final.
+Lineup choices: the actual starters' points minus the default lineup's points. The default lineup
+is the best legal lineup from the week's rostered players at the same frozen projections, with no
+free-agent fills, so following the projections scores 0. An empty slot counts 0 on either side.
+During the live week only players whose games have kicked off count.
 """
 
 from __future__ import annotations
@@ -19,12 +20,12 @@ from datetime import datetime
 
 from ffapp.config import Config
 from ffapp.forecast import histogram, win_probability
-from ffapp.games import last_unlocked, record_lineup, record_wpa, simulate_fixed, week_games, game_key, player_team
+from ffapp.games import LINEUP_BASIS, last_unlocked, record_lineup, record_wpa, simulate_fixed, week_games, game_key, player_team
 from ffapp.league import resolve_settings, starter_slots
 from ffapp.lineup import Candidate, best_lineup
 from ffapp.noise import NoiseModel
 from ffapp.odds import apply_floor
-from ffapp.replacement import read_replacement, weekly_level
+from ffapp.replacement import weekly_level
 from ffapp.schedule import Schedule
 from ffapp.scoring import record_points
 from ffapp.store import SeasonData, Store
@@ -57,10 +58,12 @@ def model_lineup(
     scoring: dict[str, float],
     floor: dict[str, float] | None,
     crosswalk: dict[str, dict],
+    first: list[Candidate] | None = None,
 ) -> list[list]:
-    """``[slot, player_id, position, projected]`` rows of the best lineup at frozen projections (None id = fill)."""
+    """``[slot, player_id, position, projected]`` rows of the best lineup at frozen projections (None id = fill).
+    ``first`` are players placed before any projected one (projected ``inf``, listed as 0.0)."""
     rid = int(row["roster_id"])
-    candidates = []
+    candidates = list(first or [])
     for pid in (str(p) for p in row.get("players") or []):
         record = projections.get(pid)
         value = frozen_projection(entries, rid, pid, record, scoring)
@@ -80,8 +83,32 @@ def model_lineup(
         s = by_slot.get(slot, []).pop(0) if by_slot.get(slot) else None
         if s is None:
             continue
-        rows.append([slot, None if s.player_id.startswith("FA:") else s.player_id, s.position, round(float(s.projected), 1)])
+        projected = 0.0 if s.projected == float("inf") else round(float(s.projected), 1)
+        rows.append([slot, None if s.player_id.startswith("FA:") else s.player_id, s.position, projected])
     return rows
+
+
+def default_lineup(
+    row: dict,
+    slots: list[str],
+    entries: list[dict],
+    projections: dict[str, dict],
+    scoring: dict[str, float],
+    crosswalk: dict[str, dict],
+) -> list[list]:
+    """What lineup choices are measured against: the best legal lineup from the week's rostered players
+    at frozen projections, with no replacement floor (a slot nobody can fill is left out). A starter with
+    no projection at all has no default to judge him by, so he is placed in the default lineup first and
+    counts the same on both sides."""
+    rid = int(row["roster_id"])
+    unprojected = []
+    for pid in (str(p) for p in row.get("starters") or []):
+        if pid in ("0", "", "None") or frozen_projection(entries, rid, pid, projections.get(pid), scoring) is not None:
+            continue
+        position = (crosswalk.get(pid) or {}).get("position")
+        if position:
+            unprojected.append(Candidate(pid, position, (position,), float("inf")))
+    return model_lineup(row, slots, entries, projections, scoring, None, crosswalk, first=unprojected)
 
 
 def week_floor(store: Store, config: Config, data: SeasonData, week: int, projections: dict[str, dict], scoring: dict[str, float]) -> dict[str, float]:
@@ -111,32 +138,23 @@ def simulate_view(lineups: dict[int, list[list]], games: list[tuple[dict, dict, 
     return out
 
 
-def realised_levels(store: Store, league_key: str, season: str, week: int) -> dict[str, float]:
-    levels = ((read_replacement(store, league_key, season) or {}).get("weeks") or {}).get(str(week)) or {}
-    return {pos: float(v["realised"] if v.get("realised") is not None else v.get("projected") or 0.0) for pos, v in levels.items()}
-
-
-def lineup_choices(actual_rows: list[list], model_rows: list[list], points: dict[str, float], fills: dict[str, float], counted) -> float:
-    """Actual starters' points minus the model lineup's points; ``counted(pid)`` limits players (live week),
-    ``fills`` is {position: level} for replacement fills, empty to leave fills out."""
+def lineup_choices(actual_rows: list[list], default_rows: list[list], points: dict[str, float], counted) -> float:
+    """Actual starters' points minus the default lineup's points; an empty slot counts 0 on either side and
+    ``counted(pid)`` limits players (the live week: only games that have kicked off)."""
 
     def total(rows: list[list]) -> float:
-        out = 0.0
-        for row in rows:
-            pid, position = row[1], row[2]
-            if pid is None:
-                out += fills.get(position, 0.0) if fills else 0.0
-            elif counted(pid):
-                out += float(points.get(pid, 0.0))
-        return out
+        return sum(float(points.get(row[1], 0.0)) for row in rows if row[1] is not None and counted(row[1]))
 
-    return round(total(actual_rows) - total(model_rows), 1)
+    return round(total(actual_rows) - total(default_rows), 1)
 
 
 def stored_lineup_choices(derived: dict | None) -> dict[int, float]:
-    """roster_id -> lineup choices from a stored week of game views ({} when none are stored)."""
+    """roster_id -> lineup choices from a stored week of game views; {} when none are stored or they
+    follow an earlier rule (no current ``lineup_basis``)."""
+    if (derived or {}).get("lineup_basis") != LINEUP_BASIS:
+        return {}
     out: dict[int, float] = {}
-    for views in ((derived or {}).get("views") or {}).values():
+    for views in (derived.get("views") or {}).values():
         for team in (views.get("actual") or {}).get("teams") or []:
             if team.get("lineup_choices") is not None:
                 out[int(team["roster_id"])] = float(team["lineup_choices"])
@@ -146,10 +164,10 @@ def stored_lineup_choices(derived: dict | None) -> dict[int, float]:
 def season_lineup_choices(store: Store, config: Config, league_key: str, data: SeasonData) -> dict[tuple[int, int], float]:
     """(week, roster_id) -> lineup choices for every finished regular-season week of a season.
 
-    Weeks with stored game views (the game log, from 2026) keep their values. Earlier weeks are rebuilt
-    the same way from that week's stored projections: the model lineup with the projected replacement
-    floor, the actual starters from the matchup, and fills at the week's realised replacement level.
-    Those projections are the last stored each week, not always the exact pre-kickoff figures."""
+    Weeks whose stored game views follow the current rule keep their values. Other weeks are computed
+    the same way: the starters from the matchup against the default lineup, at the game log's frozen
+    projections where the week has a log (from 2026), else that week's stored projections, which are
+    the last stored each week and not always the exact pre-kickoff figures."""
     from ffapp.odds import completed_weeks, regular_season_range
     from ffapp.store import read_json
 
@@ -173,13 +191,12 @@ def season_lineup_choices(store: Store, config: Config, league_key: str, data: S
         if not projections:
             continue
         scoring = resolve_settings(config, league_key, data.league, week)
-        floor = week_floor(store, config, data, week, projections, scoring)
-        fills = realised_levels(store, league_key, season, week)
+        entries = entries_by_team((store.read_games(league_key, season, week) or {}).get("log") or {})
         for rid, row in rows.items():
-            model = model_lineup(row, slots, [], projections, scoring, floor, crosswalk)
-            actual = record_lineup(row, slots, [], projections, scoring, crosswalk)
+            default = default_lineup(row, slots, entries.get(rid, []), projections, scoring, crosswalk)
+            actual = record_lineup(row, slots, entries.get(rid, []), projections, scoring, crosswalk)
             points = {str(k): float(v or 0.0) for k, v in (row.get("players_points") or {}).items()}
-            out[(week, rid)] = lineup_choices(actual, model, points, fills, lambda pid: True)
+            out[(week, rid)] = lineup_choices(actual, default, points, lambda pid: True)
     return out
 
 
@@ -227,8 +244,32 @@ def build_views(
         actual = simulate_view(actual_lineups, games, noise, drift, zlib.crc32(f"actual:{league_key}:{season}:{week}".encode()), "rebuilt")
         record_wpa({"source": "log", "games": [{"key": k, **v} for k, v in actual.items()]}, data, week, projections, scoring, crosswalk, noise)
 
-    # lineup choices on both views
-    fills = {} if live else realised_levels(store, league_key, season, week)
+    views = {key: {"model": model[key], "actual": actual[key]} for key in actual if key in model}
+    set_lineup_choices(store, config, league_key, data, week, stored, views, live=live, now=now)
+    return views
+
+
+def set_lineup_choices(
+    store: Store,
+    config: Config,
+    league_key: str,
+    data: SeasonData,
+    week: int,
+    stored: dict,
+    views: dict[str, dict],
+    *,
+    live: bool = False,
+    now: datetime | None = None,
+) -> None:
+    """Write each team's lineup choices onto both of its views: the actual view's starters against the
+    default lineup (rostered players at frozen projections, no free-agent fills)."""
+    season = data.season
+    slots = starter_slots(data.league)
+    scoring = resolve_settings(config, league_key, data.league, week)
+    projections = store.read_projections(season, week)
+    crosswalk = store.read_crosswalk() or {}
+    rows = {int(r["roster_id"]): r for r in data.matchups.get(week, [])}
+    entries = entries_by_team(stored.get("log") or {})
     schedule = Schedule(store, season)
 
     def counted_for(pid: str) -> bool:
@@ -237,17 +278,14 @@ def build_views(
         team = player_team(pid, projections.get(pid), crosswalk)
         return bool(team) and schedule.kicked_off(week, team, now)
 
-    views = {}
-    for key in actual:
-        if key not in model:
-            continue
-        for side in (0, 1):
-            rid = actual[key]["teams"][side]["roster_id"]
-            row = rows.get(int(rid)) or {}
+    for view in views.values():
+        for team in view["actual"]["teams"]:
+            rid = int(team["roster_id"])
+            row = rows.get(rid) or {}
             points = {str(k): float(v or 0.0) for k, v in (row.get("players_points") or {}).items()}
-            model_team = next(t for t in model[key]["teams"] if t["roster_id"] == rid)
-            choice = lineup_choices(actual[key]["teams"][side]["lineup"], model_team["lineup"], points, fills, counted_for)
-            actual[key]["teams"][side]["lineup_choices"] = choice
-            model_team["lineup_choices"] = choice
-        views[key] = {"model": model[key], "actual": actual[key]}
-    return views
+            default = default_lineup(row, slots, entries.get(rid, []), projections, scoring, crosswalk) if row else []
+            choice = lineup_choices(team["lineup"], default, points, counted_for)
+            team["lineup_choices"] = choice
+            for other in view["model"]["teams"]:
+                if int(other["roster_id"]) == rid:
+                    other["lineup_choices"] = choice

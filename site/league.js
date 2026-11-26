@@ -24,8 +24,11 @@ const signed = (x, d = 1) => (x > 0 ? "+" : x < 0 ? "−" : "") + Math.abs(x).to
 const record = (r) => `${r.wins}-${r.losses}${r.ties ? `-${r.ties}` : ""}`;
 const pct3 = (x) => x.toFixed(3).replace(/^0/, "");
 
-/* The luck explanation lives once, in the pop-up note (LG-47); the luck rows show it on hover and focus. */
-const luckText = () => $("lg-dialog-note").textContent.trim();
+/* The luck and lineup-choices explanations live once, in their pop-up notes (LG-47, LG-48); their rows
+   show them on hover and focus. */
+const NOTES = { luck: "lg-dialog-note", lineup: "lg-dialog-lineup-note" };
+const noteText = (kind) => $(NOTES[kind]).textContent.trim();
+const showNote = (kind) => { for (const [k, id] of Object.entries(NOTES)) $(id).hidden = k !== kind; };
 
 const WEEKLY = [
   ["high_team", /*copy:LG-12*/"Highest Team Score"], ["low_team", /*copy:LG-13*/"Lowest Team Score"],
@@ -254,7 +257,7 @@ function renderWeekly() {
 
 function renderSeason() {
   const rows = SEASON.map(([key, label, kind]) => ({ key, label, kind, e: (state.data.season[key] || [])[0] })).filter((r) => r.e);
-  const label = (r) => r.kind === "luck" ? `<span class="lg-tip" tabindex="0" title="${escapeHtml(luckText())}">${r.label}</span>` : r.label;
+  const label = (r) => NOTES[r.kind] ? `<span class="lg-tip lg-tip-${r.kind}" tabindex="0" title="${escapeHtml(noteText(r.kind))}">${r.label}</span>` : r.label;
   const wide = `<div class="table-wrap"><table class="plain lg-table lg-records">
     <thead><tr><th scope="col">Record</th><th scope="col">Manager</th><th scope="col">Year</th><th scope="col" class="num">Value</th><th scope="col">Season Result</th><th scope="col"><span class="sr-only">Top 25</span></th></tr></thead>
     <tbody>${rows.map((r) => `<tr class="lg-click" data-record="season:${r.key}"><td class="strong">${label(r)}</td><td>${managerCell(r.e.user, "sm")}</td><td>${year(r.e)}</td>
@@ -324,7 +327,7 @@ function openDialog(id) {
       <tbody>${rows.map((e) => `<tr><td>${rankPill(e.rank)}</td><td class="num"><span class="lg-value">${seasonValue(kind, e)}</span></td><td>${managerCell(e.user)}</td><td>${year(e)}</td><td>${resultPill(e.result)}</td></tr>`).join("")}</tbody></table>`;
     narrow = `<ol class="lg-list">${rows.map((e) => `<li class="lg-item">${rankPill(e.rank)}<div class="lg-item-body"><div class="lg-line">${managerCell(e.user, "sm")}<span class="lg-value">${seasonValue(kind, e)}</span></div>
       <div class="lg-line lg-sub"><span>${year(e)}</span>${resultPill(e.result)}</div></div></li>`).join("")}</ol>`;
-    $("lg-dialog-note").hidden = kind !== "luck";
+    showNote(kind);
   } else {
     title = cardTitle(key);
     const pos = state.filters[key];
@@ -336,7 +339,7 @@ function openDialog(id) {
     narrow = `<ol class="lg-list">${rows.map((e) => `<li class="lg-item">${rankPill(e.rank)}<div class="lg-item-body"><div class="lg-line">${playerRow(e, cols)}<span class="lg-value">${cols.value(e)}</span></div>
       <div class="lg-line lg-sub"><span>${escapeHtml(cols.detail(e))}</span></div></div></li>`).join("")}</ol>`;
   }
-  if (group !== "season") $("lg-dialog-note").hidden = true;
+  if (group !== "season") showNote(null);
   const seasons = [...new Set(state.data.standings.flatMap((r) => [r.first, r.last_season]))].sort();
   $("lg-dialog-title").textContent = title;
   $("lg-dialog-sub").textContent = `Top 25 · ${state.leagueName}, ${seasons[0]}–${seasons[seasons.length - 1]}`;

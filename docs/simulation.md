@@ -87,7 +87,7 @@ The hot run does steps 1 to 6 for the current week only. Cold runs during games 
 | The current week's Forecast | `data/odds/<league>/<season>/live.json` | Rebuilt |
 | Slate Forecasts: the Forecast after each slate of games goes final | `data/odds/<league>/<season>/slates_NN.json` | Record |
 | Game Forecasts (Calc 10): win probability, projected scores and the score spread per game; a log frozen at kickoff; the Forecast of record per final week | `data/games/` (log and record) and `data/games-derived/` (the rest) | Record, and rebuilt |
-| Lineup views (Calc 11): the model's best lineup against the starters used, and lineup choices in points | `data/games-derived/` | Rebuilt |
+| Lineup views (Calc 11): the model's best lineup against the starters used, and lineup choices in points against the roster's highest Projections | `data/games-derived/` | Rebuilt |
 | Win probability added (Calc 13): how far each player's score moved the team's win probability | `data/games-derived/` | Rebuilt |
 | The live bundle: the hot run's current-week Forecast and game cards | Cloudflare KV, through the refresh relay | Rebuilt |
 | Calibration (Calc 18): every finished season replayed through the same simulation | `data/calibration/report.json` and `report.md` | Record, run on demand (`python -m ffapp calibrate`) |

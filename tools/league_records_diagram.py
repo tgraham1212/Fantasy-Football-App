@@ -41,7 +41,7 @@ STORED = [
 CALCS = [
     ("Games That Matter", "Calc 23", "", ["Regular season, the winners bracket's", "path, final and 3rd place game, the", "toilet bowl's path and final"], False),
     ("Manager History", "Calc 19", "", ["Identity, final places, all-play", "luck and Player windows, reused"], False),
-    ("Past Lineup Choices", "Calc 11, 23", "", ["Model lineup from stored Projections", "against the starters used, 2021-2025"], False),
+    ("Past Lineup Choices", "Calc 11, 23", "", ["Default lineup from stored Projections", "against the starters used, 2021-2025"], False),
     ("League Records", "Calc 23", "", ["Champions, all-time standings, weekly", "and season records, Player records;", "top 25, ties share a rank, oldest first"], False),
 ]
 

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6280 14394" width="6280" height="14394">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6590 14394" width="6590" height="14394">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,7 +33,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="6280" height="14394"/>
+<rect class="bg" width="6590" height="14394"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 2, Game Forecasts</text>
 <text class="sub" x="40" y="66">103 requirements derived from need 2 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
@@ -530,7 +530,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <rect class="tc" x="1610" y="10898" width="320" height="60" rx="3"/>
 <text class="ster" x="1618" y="10913">«testCase»</text>
 <text class="tctext" x="1618" y="10930">test_views.py::test_lineup_choices_examples_an</text>
-<text class="tctext" x="1618" y="10944">d_live_rule</text>
+<text class="tctext" x="1618" y="10944">d_live_rule; test_views.py::test_default_lineu</text>
 <path class="verify" d="M1610,10928 H610" marker-end="url(#openv)"/>
 <rect class="tc" x="1610" y="11032" width="320" height="60" rx="3"/>
 <text class="ster" x="1618" y="11047">«testCase»</text>
@@ -962,8 +962,8 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="5292">On live and finished cards, in both views,</text>
 <text class="rtext" x="668" y="5306">each team SHALL show &quot;Lineup choices: +N&quot; or</text>
 <text class="rtext" x="668" y="5320">&quot;-N&quot; beneath the forecasted line of its score</text>
-<text class="rtext" x="668" y="5334">block: its points against the model lineup,…</text>
-<text class="spec" x="668" y="5353">games-page</text>
+<text class="rtext" x="668" y="5334">block: its points against starting its high…</text>
+<text class="spec" x="668" y="5353">games-page · proposed</text>
 <rect class="req" x="660" y="5376" width="260" height="118" rx="3"/>
 <rect class="hdr" x="660.7" y="5376.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="5389" text-anchor="middle">«requirement»</text>
@@ -1300,28 +1300,27 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="ster" x="480.0" y="10883" text-anchor="middle">«requirement»</text>
 <text x="480.0" y="10898" text-anchor="middle"><tspan class="rid">2.8</tspan><tspan class="rname" dx="6">Lineup choices</tspan></text>
 <text class="rtext" x="358" y="10920">For each team in a finished or live game, the</text>
-<text class="rtext" x="358" y="10934">system SHALL compute lineup choices: the</text>
-<text class="rtext" x="358" y="10948">actual starters&#x27; points minus the model</text>
-<text class="rtext" x="358" y="10962">lineup&#x27;s points, a replacement fill countin…</text>
-<text class="spec" x="358" y="10981">game-predictions</text>
+<text class="rtext" x="358" y="10934">system SHALL compute lineup choices to 0.1</text>
+<text class="rtext" x="358" y="10948">point: its starters&#x27; points minus the default</text>
+<text class="rtext" x="358" y="10962">lineup&#x27;s points, the default lineup being t…</text>
+<text class="spec" x="358" y="10981">game-predictions · proposed</text>
 <rect class="req" x="660" y="11004" width="260" height="118" rx="3"/>
 <rect class="hdr" x="660.7" y="11004.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="11017" text-anchor="middle">«requirement»</text>
 <text x="790.0" y="11032" text-anchor="middle"><tspan class="rid">2.8.1</tspan><tspan class="rname" dx="6">Lineup choices while live</tspan></text>
 <text class="rtext" x="668" y="11054">During the live week, lineup choices SHALL</text>
-<text class="rtext" x="668" y="11068">count only Players whose games have kicked off</text>
-<text class="rtext" x="668" y="11082">on both sides, with replacement fills counted</text>
-<text class="rtext" x="668" y="11096">once the week is final.</text>
-<text class="spec" x="668" y="11115">game-predictions</text>
+<text class="rtext" x="668" y="11068">count only Players whose games have kicked</text>
+<text class="rtext" x="668" y="11082">off, on both sides.</text>
+<text class="spec" x="668" y="11115">game-predictions · proposed</text>
 <rect class="req" x="660" y="11138" width="260" height="118" rx="3"/>
 <rect class="hdr" x="660.7" y="11138.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="11151" text-anchor="middle">«requirement»</text>
 <text x="790.0" y="11166" text-anchor="middle"><tspan class="rid">2.8.2</tspan><tspan class="rname" dx="6">Lineup choices for past seaso…</tspan></text>
 <text class="rtext" x="668" y="11188">For every finished week of a past season, the</text>
 <text class="rtext" x="668" y="11202">system SHALL compute each team&#x27;s lineup</text>
-<text class="rtext" x="668" y="11216">choices from the stored weekly Projections,</text>
-<text class="rtext" x="668" y="11230">the stored matchup rosters and that week&#x27;s…</text>
-<text class="spec" x="668" y="11249">game-predictions</text>
+<text class="rtext" x="668" y="11216">choices from the stored weekly Projections and</text>
+<text class="rtext" x="668" y="11230">the stored matchup rosters and starters.</text>
+<text class="spec" x="668" y="11249">game-predictions · proposed</text>
 <rect class="req" x="350" y="11272" width="260" height="118" rx="3"/>
 <rect class="hdr" x="350.7" y="11272.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="480.0" y="11285" text-anchor="middle">«requirement»</text>
@@ -1690,6 +1689,16 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="5938" y="14228">observed win rate and count in each bin, an…</text>
 <text class="spec" x="5938" y="14247">odds-calibration</text>
 <path class="trace" d="M6060.0,14136 V7656 H460.0 V7638" marker-end="url(#openg)"/>
+<rect class="ext" x="6240" y="14136" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="6240.7" y="14136.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="6370.0" y="14149" text-anchor="middle">«requirement»</text>
+<text x="6370.0" y="14164" text-anchor="middle"><tspan class="rid">4.9.2.1.3.4</tspan><tspan class="rname" dx="6">Lineup choices explained</tspan></text>
+<text class="rtext" x="6248" y="14186">The lineup-choices records SHALL explain on</text>
+<text class="rtext" x="6248" y="14200">hover, on keyboard focus and atop their pop-</text>
+<text class="rtext" x="6248" y="14214">ups that the figure is the starters&#x27; points</text>
+<text class="rtext" x="6248" y="14228">minus those of the roster&#x27;s highest Sleeper…</text>
+<text class="spec" x="6248" y="14247">league-records-page · proposed</text>
+<path class="trace" d="M6370.0,14136 V10996 H460.0 V10988" marker-end="url(#openg)"/>
 <path class="derive" d="M40,14354 H86" marker-end="url(#open)"/><text class="lg" x="96" y="14358">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,14354 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="14358">«trace»: extra parent</text>
 <path class="verify" d="M680,14354 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="14358">«verify»: test, inspection or analysis</text>

@@ -33,7 +33,7 @@ TEXT:
 Monte Carlo Forecast & Statistics for Fantasy Football
 
 [HDR-04] paragraph
-WHERE: site/index.html line 242
+WHERE: site/index.html line 243
 TEXT:
 Data from the Sleeper API. Projections by Rotowire via Sleeper. Refreshed daily. <a href="calibration.html">How Good Are These Forecasts?</a>
 
@@ -165,7 +165,7 @@ Percentages beside scored players are win probability added: how much that score
 [GAME-09] lineup choices tooltip
 WHERE: site/games.js line 219 (generated)
 TEXT:
-<span class="choices ${cls}" title="Points vs the model lineup: what the manager's starters scored minus what the model's picks scored">Lineup choices: ${v > 0 ? "+" : ""}${v.toFixed(1)}</span>
+<span class="choices ${cls}" title="Points vs starting the highest Sleeper projections on the roster: what the manager's starters scored minus what those players scored">Lineup choices: ${v > 0 ? "+" : ""}${v.toFixed(1)}</span>
 
 [GAME-10] generated text
 WHERE: site/games.js line 211 (generated)
@@ -278,7 +278,7 @@ TEXT:
 <strong>Expected wins and WAR.</strong> Win probabilities sum over regular-season weeks 1 to 14. WAR subtracts what a replacement-level player would earn every week, so a replacement season is exactly 0.
 
 [WAR-09] paragraph
-WHERE: site/index.html line 234
+WHERE: site/index.html line 235
 TEXT:
 Click a header to sort; click again to flip. # is the WAR rank.
 
@@ -408,177 +408,177 @@ TEXT:
 Championships
 
 [LG-12] generated text
-WHERE: site/league.js line 31 (generated)
+WHERE: site/league.js line 34 (generated)
 TEXT:
 Highest Team Score
 
 [LG-13] generated text
-WHERE: site/league.js line 31 (generated)
+WHERE: site/league.js line 34 (generated)
 TEXT:
 Lowest Team Score
 
 [LG-14] generated text
-WHERE: site/league.js line 32 (generated)
+WHERE: site/league.js line 35 (generated)
 TEXT:
 Highest Matchup Score
 
 [LG-15] generated text
-WHERE: site/league.js line 32 (generated)
+WHERE: site/league.js line 35 (generated)
 TEXT:
 Lowest Matchup Score
 
 [LG-16] generated text
-WHERE: site/league.js line 33 (generated)
+WHERE: site/league.js line 36 (generated)
 TEXT:
 Biggest Blowout
 
 [LG-17] generated text
-WHERE: site/league.js line 33 (generated)
+WHERE: site/league.js line 36 (generated)
 TEXT:
 Closest Game
 
 [LG-18] generated text
-WHERE: site/league.js line 34 (generated)
+WHERE: site/league.js line 37 (generated)
 TEXT:
 Highest Score in a Loss
 
 [LG-19] generated text
-WHERE: site/league.js line 34 (generated)
+WHERE: site/league.js line 37 (generated)
 TEXT:
 Lowest Score in a Win
 
 [LG-20] generated text
-WHERE: site/league.js line 37 (generated)
+WHERE: site/league.js line 40 (generated)
 TEXT:
 Most Points
 
 [LG-21] generated text
-WHERE: site/league.js line 37 (generated)
+WHERE: site/league.js line 40 (generated)
 TEXT:
 Fewest Points
 
 [LG-22] generated text
-WHERE: site/league.js line 38 (generated)
+WHERE: site/league.js line 41 (generated)
 TEXT:
 Most Points Against
 
 [LG-23] generated text
-WHERE: site/league.js line 38 (generated)
+WHERE: site/league.js line 41 (generated)
 TEXT:
 Best Record
 
 [LG-24] generated text
-WHERE: site/league.js line 39 (generated)
+WHERE: site/league.js line 42 (generated)
 TEXT:
 Worst Record
 
 [LG-25] generated text
-WHERE: site/league.js line 39 (generated)
+WHERE: site/league.js line 42 (generated)
 TEXT:
 Best Team to Miss Playoffs
 
 [LG-26] generated text
-WHERE: site/league.js line 40 (generated)
+WHERE: site/league.js line 43 (generated)
 TEXT:
 Worst Team to Make Playoffs
 
 [LG-27] generated text
-WHERE: site/league.js line 40 (generated)
+WHERE: site/league.js line 43 (generated)
 TEXT:
 Luckiest Season
 
 [LG-28] generated text
-WHERE: site/league.js line 41 (generated)
+WHERE: site/league.js line 44 (generated)
 TEXT:
 Unluckiest Season
 
 [LG-29] generated text
-WHERE: site/league.js line 41 (generated)
+WHERE: site/league.js line 44 (generated)
 TEXT:
 Longest Winning Streak
 
 [LG-30] generated text
-WHERE: site/league.js line 42 (generated)
+WHERE: site/league.js line 45 (generated)
 TEXT:
 Longest Losing Streak
 
 [LG-31] generated text
-WHERE: site/league.js line 42 (generated)
+WHERE: site/league.js line 45 (generated)
 TEXT:
 Most Bench Points
 
 [LG-32] generated text
-WHERE: site/league.js line 43 (generated)
+WHERE: site/league.js line 46 (generated)
 TEXT:
 Most Points Gained by Lineup Choices
 
 [LG-33] generated text
-WHERE: site/league.js line 44 (generated)
+WHERE: site/league.js line 47 (generated)
 TEXT:
 Most Points Lost by Lineup Choices
 
 [LG-34] generated text
-WHERE: site/league.js line 148 (generated)
+WHERE: site/league.js line 151 (generated)
 TEXT:
 This season
 
 [LG-35] generated text
-WHERE: site/league.js line 174 (generated)
+WHERE: site/league.js line 177 (generated)
 TEXT:
 Top 25
 
 [LG-36] generated text
-WHERE: site/league.js line 198 (generated)
+WHERE: site/league.js line 201 (generated)
 TEXT:
 Toilet Bowl Champion
 
 [LG-37] generated text
-WHERE: site/league.js line 198 (generated)
+WHERE: site/league.js line 201 (generated)
 TEXT:
 Last Place
 
 [LG-38] generated text
-WHERE: site/league.js line 209 (generated)
+WHERE: site/league.js line 212 (generated)
 TEXT:
 No season has finished yet.
 
 [LG-39] generated text
-WHERE: site/league.js line 214 (generated)
+WHERE: site/league.js line 217 (generated)
 TEXT:
 Toilet
 
 [LG-40] generated text
-WHERE: site/league.js line 214 (generated)
+WHERE: site/league.js line 217 (generated)
 TEXT:
 Last
 
 [LG-41] generated text
-WHERE: site/league.js line 224 (generated)
+WHERE: site/league.js line 227 (generated)
 TEXT:
 Former Managers
 
 [LG-42] generated text
-WHERE: site/league.js line 235 (generated)
+WHERE: site/league.js line 238 (generated)
 TEXT:
 Playoffs
 
 [LG-43] generated text
-WHERE: site/league.js line 235 (generated)
+WHERE: site/league.js line 238 (generated)
 TEXT:
 No playoffs
 
 [LG-44] generated text
-WHERE: site/league.js line 236 (generated)
+WHERE: site/league.js line 239 (generated)
 TEXT:
 Former Managers
 
 [LG-45] generated text
-WHERE: site/league.js line 272 (generated)
+WHERE: site/league.js line 275 (generated)
 TEXT:
 Free agent
 
 [LG-46] generated text
-WHERE: site/league.js line 301 (generated)
+WHERE: site/league.js line 304 (generated)
 TEXT:
 No Players at this position yet.
 
@@ -586,6 +586,11 @@ No Players at this position yet.
 WHERE: site/index.html line 225
 TEXT:
 Each week your score plays all 11 other teams, so beating 8 of them counts as 8/11 of a win, and luck is actual wins minus those fractions.
+
+[LG-48] paragraph
+WHERE: site/index.html line 226
+TEXT:
+Your starters' points minus what starting your roster's highest Sleeper projections would have scored; following the projections scores 0.
 
 
 ##############################################################################
@@ -878,7 +883,7 @@ TEXT:
 A new version of the site is available.
 
 [MSG-08] paragraph
-WHERE: site/index.html line 239
+WHERE: site/index.html line 240
 TEXT:
 Loading&hellip;
 

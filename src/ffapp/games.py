@@ -37,6 +37,10 @@ from ffapp.scoring import record_points
 from ffapp.standings import pairings
 from ffapp.store import SeasonData, Store
 
+# stored with each week's views: the rule its lineup choices follow (views.py, Calculations.txt section 11);
+# update_games recomputes the lineup choices of weeks stored under another rule
+LINEUP_BASIS = "roster-default"
+
 log = logging.getLogger(__name__)
 
 RECORD_RUNS = 10_000
@@ -438,11 +442,19 @@ def update_games(store: Store, config: Config, league_key: str, *, now: datetime
 
             nz, dr = models()
             stored["views"] = build_views(store, config, league_key, data, week, stored, nz, dr)
+            stored["lineup_basis"] = LINEUP_BASIS
         elif week == live_week_no and data.matchups.get(week) and stored.get("forecast"):
             from ffapp.views import build_views
 
             nz, dr = models()
             stored["views"] = build_views(store, config, league_key, data, week, stored, nz, dr, live=True, now=now)
+            stored["lineup_basis"] = LINEUP_BASIS
+        elif stored.get("views") and stored.get("lineup_basis") != LINEUP_BASIS and data.matchups.get(week):
+            # views stored under an earlier lineup-choices rule: recompute only those figures (no simulation)
+            from ffapp.views import set_lineup_choices
+
+            set_lineup_choices(store, config, league_key, data, week, stored, stored["views"])
+            stored["lineup_basis"] = LINEUP_BASIS
         if stored != before:
             store.write_games(league_key, season, week, stored)
             written.append(week)

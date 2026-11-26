@@ -51,9 +51,10 @@ Redraw it after changing a source, a stored path, a calculation or what the Reco
    each season's final places from the brackets, all-play luck and each Player's weeks on a team are
    reused from the Managers page's calculations, so the two pages agree.
 3. **Past lineup choices (Calc 11, 23).** The game log behind lineup choices began in 2026. For 2021 to
-   2025, each team's model lineup is rebuilt from that week's stored Projections and set against the
-   starters used. Those Projections are the last ones stored each week, so the values are close to, not
-   exactly, what the game log would have frozen.
+   2025, each team's default lineup (its rostered Players with the highest Projections, no free agents)
+   is rebuilt from that week's stored Projections and set against the starters used; an empty slot counts
+   0. Those Projections are the last ones stored each week, so the values are close to, not exactly, what
+   the game log would have frozen. Stored 2026 values made under an earlier rule are recomputed.
 4. **League records (Calc 23).** Champions (with each champion's best Player by WAR on that roster), the
    all-time standings, eight weekly records, fourteen season records and four Player records. Each keeps
    its top 25; equal values share a rank and the oldest is listed first. Until it ends, the current season

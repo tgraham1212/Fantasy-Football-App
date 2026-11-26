@@ -130,13 +130,33 @@ def test_luck_explained(open_page):
     page = open_league(open_page)
     note = page.text_content("#lg-dialog-note").strip()
     assert note.startswith("Each week your score plays all 11 other teams")
-    tips = page.locator("#lg-season .lg-wide .lg-tip")
+    tips = page.locator("#lg-season .lg-wide .lg-tip-luck")
     assert tips.count() == 2 and tips.first.get_attribute("title") == note and tips.first.get_attribute("tabindex") == "0"
     page.click("#lg-season .lg-wide [data-record='season:luckiest'] .lg-more")
     assert page.is_visible("#lg-dialog-note")
     page.click("#lg-dialog-close")
     page.click("#lg-season .lg-wide [data-record='season:most_points'] .lg-more")
     assert not page.is_visible("#lg-dialog-note")
+
+
+def test_lineup_choices_explained(open_page):
+    """4.9.2.1.3.4: the lineup-choices records explain the figure on hover and focus, and at the top of their
+    pop-ups only."""
+    page = open_league(open_page)
+    note = page.text_content("#lg-dialog-lineup-note").strip()
+    assert note == ("Your starters' points minus what starting your roster's highest Sleeper projections would have "
+                    "scored; following the projections scores 0.")
+    tips = page.locator("#lg-season .lg-wide .lg-tip-lineup")
+    assert tips.count() == 2 and tips.first.get_attribute("title") == note and tips.first.get_attribute("tabindex") == "0"
+    assert tips.first.text_content() == "Most Points Gained by Lineup Choices"
+    page.click("#lg-season .lg-wide [data-record='season:lineup_gained'] .lg-more")
+    assert page.is_visible("#lg-dialog-lineup-note") and not page.is_visible("#lg-dialog-note")
+    page.click("#lg-dialog-close")
+    page.click("#lg-season .lg-wide [data-record='season:luckiest'] .lg-more")
+    assert page.is_visible("#lg-dialog-note") and not page.is_visible("#lg-dialog-lineup-note")
+    page.click("#lg-dialog-close")
+    page.click("#lg-weekly .lg-wide [data-record='weekly:blowout'] .lg-more")
+    assert not page.is_visible("#lg-dialog-lineup-note")
 
 
 @pytest.mark.parametrize("width", [1280, 360])
@@ -191,16 +211,20 @@ def test_player_tables_cut_nothing(open_page, width, spacing, league):
     for Linux fonts, which run wider than Windows ones."""
     page = open_league(open_page, league=league, width=width, view="/players")
     if spacing:
-        page.add_style_tag(content=f"body {{ letter-spacing: {spacing}px; }}")
+        # on every element: some (the tags) set their own spacing, which a body rule would not reach
+        page.add_style_tag(content=f"* {{ letter-spacing: {spacing}px !important; }}")
         page.evaluate("dispatchEvent(new Event('resize'))")
     page.wait_for_timeout(300)
     cut = page.evaluate("""() => [...document.querySelectorAll('#lg-players .lg-wide tbody td')]
       .filter(td => td.scrollWidth > td.clientWidth + 1).map(td => td.textContent.trim())""")
     assert cut == []
+    # a name wider than its box must really wrap (not just be marked to): nothing is cut off with an ellipsis
     names = page.evaluate("""() => [...document.querySelectorAll('#lg-players .lg-wide .fitname')].map(el => {
       const r = document.createRange(); r.selectNodeContents(el);
-      return r.getBoundingClientRect().width <= el.getBoundingClientRect().width + 0.5 || el.classList.contains('fit-wrap'); })""")
-    assert names and all(names)
+      const fits = r.getBoundingClientRect().width <= el.getBoundingClientRect().width + 0.5;
+      return [el.textContent, fits || (el.classList.contains('fit-wrap') && getComputedStyle(el).whiteSpace !== 'nowrap'
+        && el.scrollWidth <= el.clientWidth + 1)]; })""")
+    assert names and [n for n, ok in names if not ok] == []
 
 
 def test_pictures_with_names(open_page):

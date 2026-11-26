@@ -216,7 +216,7 @@ function choicesLine(t) {
   if (t.lineup_choices == null) return "";
   const v = Number(t.lineup_choices);
   const cls = v > 0 ? "up" : v < 0 ? "down" : "";
-  return /*copy:GAME-09*/`<span class="choices ${cls}" title="Points vs the model lineup: what the manager's starters scored minus what the model's picks scored">Lineup choices: ${v > 0 ? "+" : ""}${v.toFixed(1)}</span>`;
+  return /*copy:GAME-09*/`<span class="choices ${cls}" title="Points vs starting the highest Sleeper projections on the roster: what the manager's starters scored minus what those players scored">Lineup choices: ${v > 0 ? "+" : ""}${v.toFixed(1)}</span>`;
 }
 
 function teamRow(g, t) {
