@@ -64,6 +64,13 @@ jobs:
         if: steps.cache.outputs.cache-matched-key == ''
         run: python -m ffapp build
 
+      # The cache holds the last cold run's site/data, written by the code of that run. Export
+      # again so a push that changes the export (a new file, a new field) tests and deploys its
+      # own output. Offline: it reads the restored derived data and keeps its last refresh time.
+      - name: Export site data with this commit's code
+        if: steps.cache.outputs.cache-matched-key != ''
+        run: python -m ffapp export
+
 
       # Chromium tests use the Chrome preinstalled on the runner; WebKit (Safari's engine) and
       # Firefox come from Playwright's own builds.
@@ -116,6 +123,13 @@ jobs:
       - name: Build site data offline (no build cache)
         if: steps.cache.outputs.cache-matched-key == ''
         run: python -m ffapp build
+
+      # The cache holds the last cold run's site/data, written by the code of that run. Export
+      # again so a push that changes the export (a new file, a new field) tests and deploys its
+      # own output. Offline: it reads the restored derived data and keeps its last refresh time.
+      - name: Export site data with this commit's code
+        if: steps.cache.outputs.cache-matched-key != ''
+        run: python -m ffapp export
 
       # Every deploy stamps through this command (see the refresh workflow).
       - name: Stamp site

@@ -614,8 +614,8 @@ How the simulation works, from its sources to the pages that show its Forecasts,
   runs and the code deploy (`actions/cache`, key prefix `build-`).
 
 `.github/workflows/site.yml` deploys code: a push to `main` that changes site code,
-the Python package, the tests or `pyproject.toml` restores the latest build cache (or runs
-`ffapp build`), runs the full test suite with the browser layout check required, then stamps
+the Python package, the tests or `pyproject.toml` restores the latest build cache and runs
+`ffapp export` with the pushed code (or, with no cache, runs `ffapp build`), runs the full test suite with the browser layout check required, then stamps
 and deploys the site with that data. It shares the cold run's concurrency group, so the two never overlap. A
 failing layout check stops that deploy; the next cold run that deploys still deploys
 whatever is on `main`, so fix forward.

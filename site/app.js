@@ -307,10 +307,10 @@ function revealSelectedSubtab() {
   const menu = $("subtabs");
   const btn = menu.querySelector('button[aria-pressed="true"]');
   if (!btn || menu.scrollWidth <= menu.clientWidth) return;
-  const left = btn.offsetLeft - menu.offsetLeft;
-  const right = left + btn.offsetWidth;
-  if (left < menu.scrollLeft) menu.scrollLeft = left;
-  else if (right > menu.scrollLeft + menu.clientWidth) menu.scrollLeft = right - menu.clientWidth;
+  const m = menu.getBoundingClientRect(), b = btn.getBoundingClientRect();
+  // the strip snaps to tab starts, so bring the tab's own start to the left edge: a position
+  // between snap points would be snapped back and could leave the tab half out of view
+  if (b.left < m.left - 0.5 || b.right > m.right + 0.5) menu.scrollLeft += b.left - m.left;
   updateSubtabFade();
 }
 

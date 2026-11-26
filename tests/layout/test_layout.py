@@ -260,6 +260,16 @@ def test_subtab_strip_swipes_on_a_phone(open_page):
                  pressed: t.getAttribute('aria-pressed') }; }""")
     assert strip["scroll"] > strip["client"], f"the sub-tabs should overflow their strip on a phone: {strip}"
     assert strip["left"] - 0.5 <= strip["tabLeft"] and strip["tabRight"] <= strip["right"] + 0.5 and strip["pressed"] == "true", strip
+    # wider type (Linux fonts run wider than Windows ones): the strip snaps to tab starts, so the
+    # revealed tab must still sit wholly inside it once re-revealed
+    page.add_style_tag(content=".subtabs button { letter-spacing: 1.5px; }")
+    page.evaluate("document.getElementById('subtabs').scrollLeft = 0; dispatchEvent(new Event('resize'))")
+    page.wait_for_timeout(300)
+    wide = page.evaluate("""() => { const m = document.getElementById('subtabs').getBoundingClientRect(),
+        t = document.querySelector('#subtabs [data-page=war]').getBoundingClientRect(); return [t.left - m.left, m.right - t.right]; }""")
+    assert wide[0] >= -0.5 and wide[1] >= -0.5, f"Player WAR cut off with wider type: {wide}"
+    page.add_style_tag(content=".subtabs button { letter-spacing: normal; }")
+    page.evaluate("dispatchEvent(new Event('resize'))")
     y = page.evaluate("scrollY")
     page.evaluate("document.getElementById('subtabs').scrollLeft = 0")
     page.wait_for_timeout(200)
