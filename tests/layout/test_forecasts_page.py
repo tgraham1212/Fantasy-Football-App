@@ -41,7 +41,7 @@ def pct_text(v) -> str:
         return ">99%"
     if 0 < v < 0.005:
         return "<1%"
-    return f"{round(v * 100)}%"
+    return f"{math.floor(v * 100 + 0.5)}%"  # halves round up, like the page's Math.round (Python's round goes to even)
 
 
 def click_header(page, col: str):
