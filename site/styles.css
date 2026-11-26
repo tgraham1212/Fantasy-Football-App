@@ -1084,7 +1084,9 @@ td.num .lg-sub { justify-content: flex-end; }
 table.lg-ptable { table-layout: fixed; }
 table.lg-ptable th:first-child { width: 48px; }
 table.lg-ptable th:nth-child(3) { width: 30%; } table.lg-ptable th:nth-child(4) { width: 22%; } table.lg-ptable th:nth-child(5) { width: 72px; }
-table.lg-ptable td { overflow: hidden; }
+table.lg-ptable td { overflow: hidden; overflow-wrap: anywhere; }
+/* a tag goes on its own line in these narrow columns, so the year and the tag each fit */
+table.lg-ptable .lg-tag { display: table; margin: 4px 0 0; }
 
 /* phone lists */
 .lg-list { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; }

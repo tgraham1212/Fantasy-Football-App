@@ -182,11 +182,17 @@ def test_players_view(open_page):
     assert radius == "6px", "rectangular, like the roster position badges"
 
 
+@pytest.mark.parametrize("league", ("redraft", "dynasty"))
+@pytest.mark.parametrize("spacing", (0, 1.5))
 @pytest.mark.parametrize("width", (768, 1000, 1100, 1280))
-def test_player_tables_cut_nothing(open_page, width):
+def test_player_tables_cut_nothing(open_page, width, spacing, league):
     """4.9.2.2 and the name standard: every cell's content fits its column (a cut cell drew a stray dot), and a
-    name too wide for the full form shows the short form rather than being cut."""
-    page = open_league(open_page, width=width, view="/players")
+    name too wide for the full form shows the short form rather than being cut. The wider spacing stands in
+    for Linux fonts, which run wider than Windows ones."""
+    page = open_league(open_page, league=league, width=width, view="/players")
+    if spacing:
+        page.add_style_tag(content=f"body {{ letter-spacing: {spacing}px; }}")
+        page.evaluate("dispatchEvent(new Event('resize'))")
     page.wait_for_timeout(300)
     cut = page.evaluate("""() => [...document.querySelectorAll('#lg-players .lg-wide tbody td')]
       .filter(td => td.scrollWidth > td.clientWidth + 1).map(td => td.textContent.trim())""")
