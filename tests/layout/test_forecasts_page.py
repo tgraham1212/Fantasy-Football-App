@@ -9,7 +9,7 @@ import math
 
 import pytest
 
-PAGES = ("predictions", "games", "positions", "managers", "war")
+PAGES = ("predictions", "games", "positions", "managers", "war", "league")
 
 
 def league_data(page, key: str) -> dict:

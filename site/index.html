@@ -30,6 +30,7 @@
       <button type="button" data-page="positions" aria-pressed="false">Positions</button>
       <button type="button" data-page="managers" aria-pressed="false">Managers</button>
       <button type="button" data-page="war" aria-pressed="false">Player WAR</button>
+      <button type="button" data-page="league" aria-pressed="false">League</button>
     </nav>
 
     <div id="page-predictions">
@@ -190,6 +191,40 @@
         </section>
       </div>
     </div>
+
+    <div id="page-league" hidden>
+      <div class="lg-bar">
+        <div class="lg-tabs" id="lg-tabs" role="group" aria-label="League sections">
+          <button type="button" data-lg-tab="records" aria-pressed="true">Records</button>
+        </div>
+        <div class="lg-views" id="lg-views" role="group" aria-label="Records view">
+          <button type="button" data-lg-view="managers" aria-pressed="true">Managers</button>
+          <button type="button" data-lg-view="players" aria-pressed="false">Players</button>
+        </div>
+      </div>
+      <p data-copy="LG-01" class="explain card" id="lg-unavailable" hidden>League records are not yet available for this league: its records file has not been exported.</p>
+      <div id="lg-managers" class="lg-stack">
+        <section class="card lg-section" id="lg-champions"><h2 data-copy="LG-02">Champions</h2><div class="lg-body"></div></section>
+        <section class="card lg-section" id="lg-standings"><h2 data-copy="LG-03">All-Time Standings</h2><div class="lg-body"></div></section>
+        <section class="card lg-section" id="lg-weekly"><h2 data-copy="LG-04">Weekly Records</h2><div class="lg-body"></div></section>
+        <section class="card lg-section" id="lg-season"><h2 data-copy="LG-05">Season Records</h2><div class="lg-body"></div><p data-copy="LG-06" class="hint lg-star" hidden>* Current season, so far</p></section>
+      </div>
+      <div id="lg-players" class="lg-grid" hidden>
+        <section class="card lg-pcard" data-card="best_games" aria-labelledby="lg-p1"><h2 id="lg-p1" data-copy="LG-07">Best Games</h2><div class="lg-body"></div></section>
+        <section class="card lg-pcard" data-card="bench_games" aria-labelledby="lg-p2"><h2 id="lg-p2" data-copy="LG-08">Best Bench Games</h2><div class="lg-body"></div></section>
+        <section class="card lg-pcard" data-card="career" aria-labelledby="lg-p3"><h2 id="lg-p3" data-copy="LG-09">Career Scoring</h2><div class="lg-body"></div></section>
+        <section class="card lg-pcard" data-card="championships" aria-labelledby="lg-p4"><h2 id="lg-p4" data-copy="LG-10">Championships</h2><div class="lg-body"></div></section>
+      </div>
+    </div>
+
+    <dialog id="lg-dialog" aria-labelledby="lg-dialog-title">
+      <div class="dialog-head">
+        <div><h2 id="lg-dialog-title"></h2><p class="hint" id="lg-dialog-sub"></p></div>
+        <button type="button" class="close" id="lg-dialog-close" aria-label="Close">&#x2715;</button>
+      </div>
+      <p class="hint lg-dialog-note" id="lg-dialog-note" hidden data-copy="LG-47">Each week your score plays all 11 other teams, so beating 8 of them counts as 8/11 of a win, and luck is actual wins minus those fractions.</p>
+      <div class="dialog-table lg-dialog-body" id="lg-dialog-body" tabindex="0" role="region" aria-label="Top 25"></div>
+    </dialog>
 
     <dialog id="war-dialog" aria-labelledby="war-dialog-title">
       <div class="dialog-head">

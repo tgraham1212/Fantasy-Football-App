@@ -5,6 +5,7 @@ import { initWar, loadWar, reloadWar } from "./war.js?v=__BUILD__";
 import { initPositions, loadPositions, reloadPositions, showPositions } from "./positions.js?v=__BUILD__";
 import { currentWeek, initGames, loadGames, reloadGames, rerenderGames, showGames } from "./games.js?v=__BUILD__";
 import { initManagers, loadManagers, managerSlug, reloadManagers, selectManager, showManagers } from "./managers.js?v=__BUILD__";
+import { initLeague, leagueSlug, loadRecords, reloadRecords, showLeague } from "./league.js?v=__BUILD__";
 import { initRefresh } from "./refresh.js?v=__BUILD__";
 import { initUpdates } from "./updates.js?v=__BUILD__";
 import { fetchData } from "./data.js?v=__BUILD__";
@@ -240,13 +241,14 @@ function initTableHead() {
 // -- sub-tabs ------------------------------------------------------------------------
 
 function parseHash() {
-  const [league, page, extra] = location.hash.replace("#", "").split("/");
+  const [league, page, extra, more] = location.hash.replace("#", "").split("/");
   const n = Number(extra);
   return {
     league: league || "",
-    page: ["war", "games", "positions", "managers"].includes(page) ? page : "predictions",
+    page: ["war", "games", "positions", "managers", "league"].includes(page) ? page : "predictions",
     week: page === "games" && Number.isInteger(n) && n > 0 ? n : null,
     manager: page === "managers" && extra ? extra : null,
+    leagueView: page === "league" ? (more === "players" ? "players" : "managers") : null,
   };
 }
 
@@ -255,6 +257,7 @@ function writeHash() {
   let suffix = state.page === "predictions" ? "" : `/${state.page}`;
   if (state.page === "games" && currentWeek() != null) suffix += `/${currentWeek()}`;
   if (state.page === "managers" && managerSlug()) suffix += `/${managerSlug()}`;
+  if (state.page === "league") suffix += `/${leagueSlug()}`;
   try { history.replaceState(null, "", `#${key}${suffix}`); } catch (e) { /* ignore */ }
 }
 
@@ -265,6 +268,7 @@ function showPage(page) {
   $("page-games").hidden = page !== "games";
   $("page-positions").hidden = page !== "positions";
   $("page-managers").hidden = page !== "managers";
+  $("page-league").hidden = page !== "league";
   for (const btn of $("subtabs").querySelectorAll("button")) btn.setAttribute("aria-pressed", String(btn.dataset.page === page));
   revealSelectedSubtab();
   updateSubtabFade();
@@ -273,6 +277,7 @@ function showPage(page) {
   if (page === "games") showGames();
   if (page === "positions") showPositions();
   if (page === "managers") showManagers();
+  if (page === "league") showLeague();
 }
 
 function initSubtabs() {
@@ -819,7 +824,7 @@ const fetchJson = fetchData;
 
 /* `keep` (new data for the league already shown) keeps the sort, highlight and chart choices and
    asks the Games and Player WAR pages to reload in place; `week` is the Games week from the URL. */
-async function loadLeague(key, { keep = false, week = null, manager = null } = {}) {
+async function loadLeague(key, { keep = false, week = null, manager = null, leagueView = null } = {}) {
   const entry = state.index.leagues.find((l) => l.key === key) || state.index.leagues[0];
   const payload = await fetchJson(`data/${entry.file}`);
   if (keep) {
@@ -842,6 +847,7 @@ async function loadLeague(key, { keep = false, week = null, manager = null } = {
     await reloadPositions();
     await reloadManagers();
     await reloadWar();
+    await reloadRecords();
     return;
   }
   state.league = payload;
@@ -870,6 +876,7 @@ async function loadLeague(key, { keep = false, week = null, manager = null } = {
   await loadPositions(entry.key, entry.positions, ownerColor);
   await loadManagers(entry.key, payload.league_name, entry.managers, ownerColor, manager, () => writeHash(), (page) => showPage(page));
   await loadWar(entry.key, payload.league_name, entry.war);
+  await loadRecords(entry.key, payload.league_name, entry.records, leagueView, () => writeHash());
 }
 
 async function main() {
@@ -881,13 +888,14 @@ async function main() {
   initGames(() => writeHash());
   initManagers();
   initManagerLinks();
+  initLeague();
   try {
     state.index = await fetchJson("data/index.json");
     if (!state.index.leagues?.length) throw new Error("no leagues exported");
     initRefresh(state.index);
     const wanted = parseHash();
     state.page = wanted.page;
-    await loadLeague(wanted.league, { week: wanted.week, manager: wanted.manager });
+    await loadLeague(wanted.league, { week: wanted.week, manager: wanted.manager, leagueView: wanted.leagueView });
     // New data deployed while the page is open: swap it in, keeping the visitor's place.
     initUpdates(state.index, async (index) => {
       state.index = index;

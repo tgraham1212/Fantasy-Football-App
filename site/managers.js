@@ -2,6 +2,8 @@
    current season info bar, then four cards (Roster, Team History, Moves, Team News). Every figure
    comes from data/<league>/managers.json (src/ffapp/managers.py); this module only renders. */
 
+import { crest as crestHtml, escapeHtml, fitNames, headshot, nameAttrs, shortName, wireImages } from "./people.js?v=__BUILD__";
+
 const state = {
   leagueKey: null,
   leagueName: "",
@@ -19,7 +21,6 @@ const state = {
 };
 
 const $ = (id) => document.getElementById(id);
-const escapeHtml = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const visible = () => !$("page-managers").hidden;
 const fmt1 = (x) => (x == null ? "–" : Number(x).toFixed(1));
 const fmt2 = (x) => (x == null ? "–" : Number(x).toFixed(2));
@@ -139,83 +140,15 @@ export function showManagers() {
 
 // -- shared pieces ------------------------------------------------------------------------------------
 
-const AVATAR = (id) => `https://sleepercdn.com/avatars/thumbs/${encodeURIComponent(id)}`;
-const HEADSHOT = (pid) => (/^[A-Z]{2,3}$/.test(pid) ? `https://sleepercdn.com/images/team_logos/nfl/${pid.toLowerCase()}.png` : `https://sleepercdn.com/content/nfl/players/thumb/${encodeURIComponent(pid)}.jpg`);
-
-function initials(name) {
-  const parts = String(name).replace(/[^A-Za-z0-9 ]/g, " ").trim().split(/\s+/);
-  return (parts.length > 1 ? parts[0][0] + parts[1][0] : String(name).slice(0, 2)).toUpperCase();
-}
-
-/* Team logo, else Sleeper avatar, else initials in the team colour. A failed image falls back to the
-   initials in place, so the crest keeps its size. */
+/* Team logo, else Sleeper avatar, else initials in the team colour of a current member. */
 function crest(m, size) {
-  if (!m) return `<span class="mgr-crest ${size} initials"><span>?</span></span>`;
-  const token = m.current ? state.colorOf(m.user_id) : null;
-  const style = `--crest: var(${token || "--former-3"})`;
-  const text = `<span>${escapeHtml(initials(m.name))}</span>`;
-  const src = m.logo || (m.avatar ? AVATAR(m.avatar) : null);
-  if (!src) return `<span class="mgr-crest ${size} initials" style="${style}" aria-hidden="true">${text}</span>`;
-  return `<span class="mgr-crest ${size}" style="${style}" aria-hidden="true"><img src="${escapeHtml(src)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-fallback="crest">${text}</span>`;
-}
-
-function headshot(pid) {
-  return `<span class="mgr-head" aria-hidden="true">${pid ? `<img src="${escapeHtml(HEADSHOT(pid))}" alt="" loading="lazy" referrerpolicy="no-referrer" data-fallback="head">` : ""}</span>`;
-}
-
-/* The site's name standard: a player's full name, or "A. St. Brown" (a defense: its nickname) only
-   when the full name does not fit its space; the full name stays in the tooltip. */
-function shortPlayerName(name, position) {
-  const parts = String(name || "").trim().split(/\s+/);
-  if (position === "DEF") return parts[parts.length - 1];
-  return parts.length > 1 ? `${parts[0][0]}. ${parts.slice(1).join(" ")}` : name;
-}
-
-function nameAttrs(name, position) {
-  const short = shortPlayerName(name, position);
-  return short && short !== name ? ` title="${escapeHtml(name)}" data-full="${escapeHtml(name)}" data-short="${escapeHtml(short)}"` : "";
-}
-
-/* After rendering (and on resize): shorten only the names that overflow. Hidden elements measure 0
-   wide and are left full; they are fitted again when shown. */
-/* Text wider than its box, measured to the fraction of a pixel (scrollWidth rounds, and a name
-   over by under a pixel still gets an ellipsis). */
-function overflows(el) {
-  const box = el.getBoundingClientRect().width;
-  if (!box) return false;
-  const r = document.createRange();
-  r.selectNodeContents(el);
-  return r.getBoundingClientRect().width > box + 0.01;
-}
-
-function fitNames(root) {
-  const over = overflows;
-  for (const el of (root || document).querySelectorAll("[data-short], .fitname")) {
-    el.classList.remove("fit-wrap");
-    if (el.dataset.short) {
-      el.textContent = el.dataset.full;
-      if (over(el)) el.textContent = el.dataset.short;
-    }
-    if (over(el)) el.classList.add("fit-wrap");   // even the short form is too wide: wrap it, never cut it
-  }
-}
-
-/* A player's name in a tile or card, fitted after rendering (the name standard above). */
-function shortName(name, position) {
-  return `<span class="fitname"${nameAttrs(name, position)}>${escapeHtml(name)}</span>`;
+  return crestHtml(m, size, m && m.current ? state.colorOf(m.user_id) : null);
 }
 
 function managerLink(userId, label) {
   const m = state.byId[userId];
   if (!m) return escapeHtml(label || "–");
   return `<a class="manager-link" href="#${state.leagueKey}/managers/${encodeURIComponent(m.name)}" data-manager="${m.user_id}">${escapeHtml(label || m.name)}</a>`;
-}
-
-/* A broken Sleeper image leaves the initials or silhouette underneath. */
-function wireImages(root) {
-  for (const img of root.querySelectorAll("img[data-fallback]")) {
-    img.addEventListener("error", () => img.remove(), { once: true });
-  }
 }
 
 // -- render -------------------------------------------------------------------------------------------

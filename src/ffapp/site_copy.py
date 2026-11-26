@@ -32,6 +32,7 @@ SECTIONS = {  # ID prefix -> section heading, in file order
     "GAME": "Games tab",
     "POS": "Positions tab",
     "WAR": "Player WAR tab",
+    "LG": "League tab",
     "CAL": "Calibration page",
     "MSG": "Messages",
 }

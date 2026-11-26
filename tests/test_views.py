@@ -70,3 +70,35 @@ def test_views_for_pre_log_and_logged_weeks(seeded_store, dynasty_config):
     first = v["model"]
     update_games(seeded_store, dynasty_config, "dynasty", now=datetime(2026, 11, 24, 1, tzinfo=timezone.utc), force_records=True)
     assert next(iter(seeded_store.read_games("dynasty", "2026", WEEK)["views"].values()))["model"] == first  # deterministic
+
+
+def test_past_season_lineup_choices(seeded_store, dynasty_config):
+    """game-predictions 2.8.2: every team in every finished regular-season week gets lineup choices, rebuilt
+    from that week's stored projections; a team that started exactly the model lineup scores 0; a week
+    with stored game views keeps the stored value."""
+    from ffapp.league import resolve_settings, starter_slots
+    from ffapp.odds import completed_weeks
+    from ffapp.store import write_json
+    from ffapp.views import season_lineup_choices, week_floor
+
+    store, config = seeded_store, dynasty_config
+    data = store.read_season("dynasty", "2026")
+    done = min(completed_weeks(data.league), 13)
+    week = 1
+    rows = [r for r in data.matchups[week] if r.get("matchup_id") is not None]
+    row = rows[0]
+    rid = int(row["roster_id"])
+    slots = starter_slots(data.league)
+    projections = store.read_projections("2026", week)
+    scoring = resolve_settings(config, "dynasty", data.league, week)
+    model = model_lineup(row, slots, [], projections, scoring, week_floor(store, config, data, week, projections, scoring), store.read_crosswalk() or {})
+    row["starters"] = [r[1] or "0" for r in model]  # this team started the model lineup
+    path = store.matchup_path("dynasty", "2026", week)
+    write_json(path, data.matchups[week])
+
+    choices = season_lineup_choices(store, config, "dynasty", store.read_season("dynasty", "2026"))
+    assert {(w, int(r["roster_id"])) for w in range(1, done + 1) for r in data.matchups.get(w, []) if r.get("matchup_id") is not None} <= set(choices)
+    assert choices[(week, rid)] == 0.0, "starting the model lineup gives no lineup choices"
+
+    write_json(store.games_derived_path("dynasty", "2026", 2), {"views": {"k": {"actual": {"teams": [{"roster_id": rid, "lineup_choices": 7.4}]}}}})
+    assert season_lineup_choices(store, config, "dynasty", store.read_season("dynasty", "2026"))[(2, rid)] == 7.4, "stored game views win"

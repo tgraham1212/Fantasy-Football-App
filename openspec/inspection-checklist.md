@@ -130,8 +130,8 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 | 4.2.3 | Manager colours | `league-odds-site` | the live site, each current Manager's colour in both charts | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 4.2.3.1 | Former Managers | `league-odds-site` | the live site in both themes, the five former dynasty Managers' lines | 2026-11-24 | Pass (re-inspected after linked 3.1.5.1 changed in approved batches; requirement unchanged) |
 | 4.2.7 | End labels | `league-odds-site` | the live site, every line on the dynasty rating chart has an end label | 2026-11-23 | Pass (confirmed when the feature was built) |
-| 9.1 | League pages | `league-odds-site` | the live site, each league in `config/leagues.yaml` has a page and the league control switches between them | 2026-11-23 | Pass (confirmed when the feature was built) |
-| 9.1.1 | Sub-tabs | `league-odds-site` | the live site, the sub-tab strip of each league page | 2026-11-24 | Pass (re-inspected after linked 2.1, 4.4, 3.1, 3.2 changed in approved batches; requirement unchanged) |
+| 9.1 | League pages | `league-odds-site` | the live site, each league in `config/leagues.yaml` has a page and the league control switches between them | 2026-11-25 | Pass (re-inspected after linked 9.1.1 changed for league-records; requirement unchanged) |
+| 9.1.1 | Sub-tabs | `league-odds-site` | the live site, the sub-tab strip of each league page | 2026-11-25 | Pass (re-inspected for league-records: six sub-tabs, League last) |
 | 9.2.1.1 | Manager names on one line | `league-odds-site` | the live site at 360 px, no Manager name in the Forecast table wraps | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 9.3 | Public pages | `league-odds-site` | the live site opened in a private browser window shows every page | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 11.1 | Static site | `league-odds-site` | `site/` holds only HTML, CSS, JavaScript and data files, and its scripts fetch only `site/data/` and the relay | 2026-11-23 | Pass (confirmed when the feature was built) |

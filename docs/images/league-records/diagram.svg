@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1574 636.5" width="1574" height="636.5" role="img" aria-labelledby="lr-t" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+<style>
+.grp { stroke-width: 1.5; } .g1 { fill: #efeeeb; stroke: #8c8a84; } .g2 { fill: #eef1f6; stroke: #93a0b8; }
+.g3 { fill: #fbf2e1; stroke: #c08a2c; } .g4 { fill: #e8f0fb; stroke: #4f7cc0; } .g5 { fill: #e8f5ea; stroke: #4f9a5c; }
+.gl { font-weight: 700; font-size: 13px; letter-spacing: 0.06em; fill: #4c5058; }
+.gs { font-size: 11.5px; fill: #4c5058; }
+.st { fill: #ffffff; stroke: #2b2f36; stroke-width: 1.4; } .st.rebuilt { stroke-dasharray: 5 3; }
+.stt { font-weight: 700; font-size: 12.5px; fill: #14161a; } .sd { font-size: 11.5px; fill: #4c5058; }
+.ref { font-size: 10.5px; font-weight: 700; fill: #b4530b; font-family: ui-monospace, Consolas, monospace; }
+.path { font-size: 11px; fill: #2b2f36; font-family: ui-monospace, Consolas, monospace; }
+.e { fill: none; stroke: #2b2f36; stroke-width: 1.5; } .ah { fill: #2b2f36; }
+.lg { font-size: 12.5px; fill: #2b2f36; } .lgn { font-weight: 800; }
+</style>
+<rect width="1574" height="636.5" fill="#ffffff"/>
+<title id="lr-t">How league records are made: their sources, where the data is stored, the calculations in order, the records file and the page that shows it</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="ah"/></marker></defs>
+<text x="24" y="34" class="gl" text-anchor="start">HOW LEAGUE RECORDS ARE MADE</text>
+<rect x="24" y="64" width="250" height="444.5" rx="10" class="grp g1"/>
+<text x="38" y="88" class="gl" text-anchor="start">1. WHERE IT COMES FROM</text>
+<text x="38" y="106" class="gs" text-anchor="start">Fetched by each cold run</text>
+<rect x="36" y="122" width="226" height="76.5" rx="8" class="st"/>
+<text x="48" y="142" class="stt" text-anchor="start">Sleeper: League Data</text>
+<text x="48" y="159.5" class="sd" text-anchor="start">Matchups (points, starters, rosters),</text>
+<text x="48" y="175.0" class="sd" text-anchor="start">playoff brackets, rosters with IR</text>
+<text x="48" y="190.5" class="sd" text-anchor="start">and taxi, users and Team Names</text>
+<rect x="36" y="210.5" width="226" height="45.5" rx="8" class="st"/>
+<text x="48" y="230.5" class="stt" text-anchor="start">Sleeper: Stats</text>
+<text x="48" y="248.0" class="sd" text-anchor="start">Each Player&#x27;s NFL team that week</text>
+<rect x="36" y="268.0" width="226" height="61.0" rx="8" class="st"/>
+<text x="48" y="288.0" class="stt" text-anchor="start">Sleeper: Projections</text>
+<text x="48" y="305.5" class="sd" text-anchor="start">Each Player&#x27;s expected stat line,</text>
+<text x="48" y="321.0" class="sd" text-anchor="start">for past-season lineup choices</text>
+<rect x="308" y="64" width="270" height="444.5" rx="10" class="grp g2"/>
+<text x="322" y="88" class="gl" text-anchor="start">2. WHERE IT IS STORED</text>
+<text x="322" y="106" class="gs" text-anchor="start">Records in git; rebuilt files in the build cache</text>
+<rect x="320" y="122" width="246" height="61.0" rx="8" class="st"/>
+<text x="332" y="142" class="stt" text-anchor="start">League Data</text>
+<text x="332" y="159.5" class="path" text-anchor="start">data/leagues/</text>
+<text x="332" y="175.0" class="sd" text-anchor="start">One folder per league and season</text>
+<rect x="320" y="195.0" width="246" height="76.5" rx="8" class="st"/>
+<text x="332" y="215.0" class="stt" text-anchor="start">Player WAR</text>
+<text x="556" y="215.0" class="ref" text-anchor="end">Calc 16</text>
+<text x="332" y="232.5" class="path" text-anchor="start">data/war/</text>
+<text x="332" y="248.0" class="sd" text-anchor="start">Weekly league-scored points and</text>
+<text x="332" y="263.5" class="sd" text-anchor="start">WAR per Player and season</text>
+<rect x="320" y="283.5" width="246" height="61.0" rx="8" class="st"/>
+<text x="332" y="303.5" class="stt" text-anchor="start">Stats</text>
+<text x="332" y="321.0" class="path" text-anchor="start">data/stats/</text>
+<text x="332" y="336.5" class="sd" text-anchor="start">Played weeks, kept forever</text>
+<rect x="320" y="356.5" width="246" height="61.0" rx="8" class="st"/>
+<text x="332" y="376.5" class="stt" text-anchor="start">Projections</text>
+<text x="332" y="394.0" class="path" text-anchor="start">data/projections/</text>
+<text x="332" y="409.5" class="sd" text-anchor="start">Current and earlier weeks</text>
+<rect x="320" y="429.5" width="246" height="61.0" rx="8" class="st rebuilt"/>
+<text x="332" y="449.5" class="stt" text-anchor="start">Game Views</text>
+<text x="556" y="449.5" class="ref" text-anchor="end">Calc 11</text>
+<text x="332" y="467.0" class="path" text-anchor="start">data/games-derived/</text>
+<text x="332" y="482.5" class="sd" text-anchor="start">Lineup choices from 2026 on</text>
+<rect x="612" y="64" width="290" height="444.5" rx="10" class="grp g3"/>
+<text x="626" y="88" class="gl" text-anchor="start">3. HOW IT IS CALCULATED</text>
+<text x="626" y="106" class="gs" text-anchor="start">In this order, every build</text>
+<rect x="624" y="122" width="266" height="76.5" rx="8" class="st"/>
+<text x="636" y="142" class="stt" text-anchor="start">Games That Matter</text>
+<text x="880" y="142" class="ref" text-anchor="end">Calc 23</text>
+<text x="636" y="159.5" class="sd" text-anchor="start">Regular season, the winners bracket&#x27;s</text>
+<text x="636" y="175.0" class="sd" text-anchor="start">path, final and 3rd place game, the</text>
+<text x="636" y="190.5" class="sd" text-anchor="start">toilet bowl&#x27;s path and final</text>
+<rect x="624" y="216.5" width="266" height="61.0" rx="8" class="st"/>
+<text x="636" y="236.5" class="stt" text-anchor="start">Manager History</text>
+<text x="880" y="236.5" class="ref" text-anchor="end">Calc 19</text>
+<text x="636" y="254.0" class="sd" text-anchor="start">Identity, final places, all-play</text>
+<text x="636" y="269.5" class="sd" text-anchor="start">luck and Player windows, reused</text>
+<path d="M757.0 199.5 V213.5" class="e" marker-end="url(#a)"/>
+<rect x="624" y="295.5" width="266" height="61.0" rx="8" class="st"/>
+<text x="636" y="315.5" class="stt" text-anchor="start">Past Lineup Choices</text>
+<text x="880" y="315.5" class="ref" text-anchor="end">Calc 11, 23</text>
+<text x="636" y="333.0" class="sd" text-anchor="start">Model lineup from stored Projections</text>
+<text x="636" y="348.5" class="sd" text-anchor="start">against the starters used, 2021-2025</text>
+<path d="M757.0 278.5 V292.5" class="e" marker-end="url(#a)"/>
+<rect x="624" y="374.5" width="266" height="76.5" rx="8" class="st"/>
+<text x="636" y="394.5" class="stt" text-anchor="start">League Records</text>
+<text x="880" y="394.5" class="ref" text-anchor="end">Calc 23</text>
+<text x="636" y="412.0" class="sd" text-anchor="start">Champions, all-time standings, weekly</text>
+<text x="636" y="427.5" class="sd" text-anchor="start">and season records, Player records;</text>
+<text x="636" y="443.0" class="sd" text-anchor="start">top 25, ties share a rank, oldest first</text>
+<path d="M757.0 357.5 V371.5" class="e" marker-end="url(#a)"/>
+<rect x="936" y="64" width="300" height="444.5" rx="10" class="grp g4"/>
+<text x="950" y="88" class="gl" text-anchor="start">4. WHAT IT PRODUCES</text>
+<text x="950" y="106" class="gs" text-anchor="start">Derived data, deployed with the site</text>
+<rect x="948" y="122" width="276" height="76.5" rx="8" class="st rebuilt"/>
+<text x="960" y="142" class="stt" text-anchor="start">League Records File</text>
+<text x="1214" y="142" class="ref" text-anchor="end">Calc 23</text>
+<text x="960" y="159.5" class="path" text-anchor="start">site/data/&lt;league&gt;/records.json</text>
+<text x="960" y="175.0" class="sd" text-anchor="start">Everything the Records page draws,</text>
+<text x="960" y="190.5" class="sd" text-anchor="start">one file per league</text>
+<rect x="1270" y="64" width="280" height="444.5" rx="10" class="grp g5"/>
+<text x="1284" y="88" class="gl" text-anchor="start">5. WHERE IT SHOWS</text>
+<text x="1284" y="106" class="gs" text-anchor="start">fantasyfoosball.net</text>
+<rect x="1282" y="122" width="256" height="107.5" rx="8" class="st"/>
+<text x="1294" y="142" class="stt" text-anchor="start">League Page: Records</text>
+<text x="1294" y="159.5" class="sd" text-anchor="start">Managers view: Champions, All-Time</text>
+<text x="1294" y="175.0" class="sd" text-anchor="start">Standings, Weekly and Season Records</text>
+<text x="1294" y="190.5" class="sd" text-anchor="start">Players view: Best Games, Best Bench</text>
+<text x="1294" y="206.0" class="sd" text-anchor="start">Games, Career Scoring, Championships</text>
+<text x="1294" y="221.5" class="sd" text-anchor="start">Each record: a top-25 pop-up</text>
+<path d="M277 286.25 H304" class="e" marker-end="url(#a)"/>
+<path d="M581 286.25 H608" class="e" marker-end="url(#a)"/>
+<path d="M905 286.25 H932" class="e" marker-end="url(#a)"/>
+<path d="M1239 286.25 H1266" class="e" marker-end="url(#a)"/>
+<rect x="26" y="527.5" width="22" height="13" rx="3" class="st"/>
+<text x="56" y="538.5" class="lg" text-anchor="start">Record: committed to git, kept forever</text>
+<rect x="366" y="527.5" width="22" height="13" rx="3" class="st rebuilt"/>
+<text x="396" y="538.5" class="lg" text-anchor="start">Rebuilt by each run (build cache, deployed site or relay), never committed</text>
+<text x="1550" y="538.5" class="ref" text-anchor="end">Calc N = section N of Calculations.txt</text>
+<text x="24" y="564.5" class="lg"><tspan class="lgn">Build:</tspan> python -m ffapp build (and every cold run&#x27;s export) writes the records file from the stored data</text>
+<text x="24" y="588.5" class="lg"><tspan class="lgn">Records:</tspan> the stored league data, WAR files, stats and Projections are records; the records file is derived data</text>
+</svg>

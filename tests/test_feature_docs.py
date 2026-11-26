@@ -40,6 +40,10 @@ FEATURE_DOCS = {
         "diagram": "tools/requirements_diagram.py",
         "code": ("openspec/specs/", "openspec/glossary.md", "openspec/inspection-checklist.md", "tools/requirements_model.py"),
     },
+    "league-records.md": {
+        "diagram": "tools/league_records_diagram.py",
+        "code": ("src/ffapp/league_records.py", "site/league.js", "site/people.js"),
+    },
     "games-page-states.md": {
         "diagram": None,  # drawn by hand before the standard (baseline)
         "code": ("src/ffapp/card_states.py", "src/ffapp/games_export.py", "site/games.js"),

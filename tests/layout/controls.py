@@ -31,6 +31,7 @@ LANDMARKS = (
     ".war-table", "#war-controls", "#war-dialog", "#war-dialog .dialog-head", "#war-dialog-close",
     "#outcome-switcher", "footer", "#positions-controls", ".pos-card",
     "#mgr-picker", ".mgr-bar", ".mgr-season", ".mgr-cardtabs", ".mgr-card",
+    "#lg-tabs", "#lg-views", "#lg-dialog", "#lg-dialog .dialog-head", "#lg-dialog-close",
 )
 # Elements that must stay inside the screen horizontally.
 INSIDE = ("header.top > *", "#refresh-note", "#version-note", "#subtabs")
@@ -75,6 +76,11 @@ def _moves_card(page):
     page.wait_for_timeout(200)
 
 
+def _league_dialog(page):
+    page.locator("#lg-weekly [data-record='weekly:blowout']").first.evaluate("e => e.click()")
+    page.wait_for_timeout(400)
+
+
 def _positions_past(page):
     page.select_option("#positions-season", PAST_SEASON)
     page.wait_for_timeout(500)
@@ -95,6 +101,9 @@ VIEWS = {
     "managers-retired": View("managers-retired", f"index.html#{LEAGUE}/managers/{RETIRED}"),
     "managers-redraft": View("managers-redraft", "index.html#redraft/managers"),
     "managers-moves": View("managers-moves", f"index.html#{LEAGUE}/managers", _moves_card),
+    "league": View("league", f"index.html#{LEAGUE}/league/records"),
+    "league-players": View("league-players", f"index.html#{LEAGUE}/league/records/players"),
+    "league-dialog": View("league-dialog", f"index.html#{LEAGUE}/league/records", _league_dialog),
 }
 
 
@@ -258,8 +267,9 @@ CONTROLS: tuple[Control, ...] = (
     Control("sub-tabs", "predictions", "#subtabs button",
             (State("games", click("#subtabs [data-page='games']", 900)), State("positions", click("#subtabs [data-page='positions']", 900)),
              State("managers", click("#subtabs [data-page='managers']", 900)),
-             State("war", click("#subtabs [data-page='war']", 900)), State("predictions", click("#subtabs [data-page='predictions']", 900))),
-            regions=("#page-predictions", "#page-games", "#page-positions", "#page-managers", "#page-war", "#subtabs"), below="self", self_moves=True),
+             State("war", click("#subtabs [data-page='war']", 900)), State("league", click("#subtabs [data-page='league']", 900)),
+             State("predictions", click("#subtabs [data-page='predictions']", 900))),
+            regions=("#page-predictions", "#page-games", "#page-positions", "#page-managers", "#page-war", "#page-league", "#subtabs"), below="self", self_moves=True),
     Control("update check", "predictions", "body", UPDATE_STATES, regions=("#version-note",)),
     Control("update check (games)", "games-final", "body", UPDATE_STATES, regions=("#version-note",)),
     Control("update check (calibration)", "calibration", "body", UPDATE_STATES, regions=("#version-note",)),
@@ -324,6 +334,28 @@ CONTROLS: tuple[Control, ...] = (
             regions=("#war-full",)),
     Control("full list close", "war-dialog", "#war-dialog-close", (State("closed", click("#war-dialog-close")),),
             regions=("#war-dialog",), self_moves=True),
+
+    # League page (Records)
+    Control("league tabs", "league", "#lg-tabs button", (State("records", click("#lg-tabs [data-lg-tab='records']")),), regions=("#lg-managers", "#lg-players")),
+    Control("records view", "league", "#lg-views button",
+            (State("players", click("#lg-views [data-lg-view='players']", 500)), State("managers", click("#lg-views [data-lg-view='managers']", 500))),
+            regions=("#lg-managers", "#lg-players"), below="#lg-views"),
+    Control("record rows", "league", "#page-league tr.lg-click, #page-league .lg-rowbtn",
+            (State("open", click("#lg-weekly [data-record='weekly:blowout']")),), regions=("#lg-dialog",)),
+    Control("record top 25", "league", "#page-league .lg-more",
+            (State("open", click("#lg-season .lg-more")),), regions=("#lg-dialog",)),
+    Control("luck explanation", "league", ".lg-tip", (State("focused", focus_first(".lg-tip")), State("blurred", blur_active))),
+    Control("manager name links (league)", "league", "#page-league a.manager-link, #lg-dialog a.manager-link"),
+    Control("position filters", "league-players", ".lg-pos-btn",
+            (State("QB", click("#lg-players [data-card='best_games'] [data-lg-pos='QB']", 500)),
+             State("K", click("#lg-players [data-card='career'] [data-lg-pos='K']", 500))),
+            # a filter changes its card's height (a league without kickers lists none), moving what is below
+            regions=("#lg-players",), below="self"),
+    Control("player top 25", "league-players", "#lg-players .lg-more",
+            (State("open", click("#lg-players [data-card='career'] .lg-more")),), regions=("#lg-dialog",)),
+    Control("record pop-up list", "league-dialog", "#lg-dialog-body"),
+    Control("record pop-up close", "league-dialog", "#lg-dialog-close", (State("closed", click("#lg-dialog-close")),),
+            regions=("#lg-dialog",), self_moves=True),
 
     # Managers page
     Control("manager arrows", "managers", "#mgr-prev, #mgr-next",

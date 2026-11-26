@@ -133,6 +133,56 @@ def lineup_choices(actual_rows: list[list], model_rows: list[list], points: dict
     return round(total(actual_rows) - total(model_rows), 1)
 
 
+def stored_lineup_choices(derived: dict | None) -> dict[int, float]:
+    """roster_id -> lineup choices from a stored week of game views ({} when none are stored)."""
+    out: dict[int, float] = {}
+    for views in ((derived or {}).get("views") or {}).values():
+        for team in (views.get("actual") or {}).get("teams") or []:
+            if team.get("lineup_choices") is not None:
+                out[int(team["roster_id"])] = float(team["lineup_choices"])
+    return out
+
+
+def season_lineup_choices(store: Store, config: Config, league_key: str, data: SeasonData) -> dict[tuple[int, int], float]:
+    """(week, roster_id) -> lineup choices for every finished regular-season week of a season.
+
+    Weeks with stored game views (the game log, from 2026) keep their values. Earlier weeks are rebuilt
+    the same way from that week's stored projections: the model lineup with the projected replacement
+    floor, the actual starters from the matchup, and fills at the week's realised replacement level.
+    Those projections are the last stored each week, not always the exact pre-kickoff figures."""
+    from ffapp.odds import completed_weeks, regular_season_range
+    from ffapp.store import read_json
+
+    season = data.season
+    done = completed_weeks(data.league)
+    slots = starter_slots(data.league)
+    crosswalk = store.read_crosswalk() or {}
+    out: dict[tuple[int, int], float] = {}
+    for week in regular_season_range(data.league):
+        if week > done:
+            break
+        rows = {int(r["roster_id"]): r for r in data.matchups.get(week, []) if r.get("matchup_id") is not None}
+        if not rows:
+            continue
+        path = store.games_derived_path(league_key, season, week)
+        stored = stored_lineup_choices(read_json(path) if path.exists() else None)
+        if stored:
+            out.update({(week, rid): value for rid, value in stored.items() if rid in rows})
+            continue
+        projections = store.read_projections(season, week)
+        if not projections:
+            continue
+        scoring = resolve_settings(config, league_key, data.league, week)
+        floor = week_floor(store, config, data, week, projections, scoring)
+        fills = realised_levels(store, league_key, season, week)
+        for rid, row in rows.items():
+            model = model_lineup(row, slots, [], projections, scoring, floor, crosswalk)
+            actual = record_lineup(row, slots, [], projections, scoring, crosswalk)
+            points = {str(k): float(v or 0.0) for k, v in (row.get("players_points") or {}).items()}
+            out[(week, rid)] = lineup_choices(actual, model, points, fills, lambda pid: True)
+    return out
+
+
 def build_views(
     store: Store,
     config: Config,

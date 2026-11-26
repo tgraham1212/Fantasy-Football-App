@@ -41,6 +41,7 @@ Sections
  20. Team news
  21. Moves
  22. Game card states
+ 23. League records
 
 
 ================================================================
@@ -739,3 +740,69 @@ Assumptions and decisions:
   - The site refreshes on a schedule, so a card can skip states between refreshes (for
     example from not started straight to paused after Thursday night).
 
+
+
+================================================================
+23. LEAGUE RECORDS
+================================================================
+Code:          src/ffapp/league_records.py (past-season lineup choices in src/ffapp/views.py)
+Data sources:  Every stored season's matchups (team points, starters, rostered players and
+               league-scored player points), brackets, rosters (with reserve and taxi) and
+               users; the Player WAR files (weekly league-scored points and WAR); the weekly
+               stats (each player's NFL team that week); stored weekly projections and
+               realised replacement levels for past-season lineup choices. Exported as
+               site/data/<league>/records.json (derived data).
+Depends on:    7, 8, 11, 14, 16, 19
+Formula:
+  games that matter: regular-season games; winners-bracket games with no placement or
+    placement 1 (Championship) or 3 (3rd Place); in a toilet-bowl league, losers-bracket games
+    with no placement (Toilet Bowl) or placement 1 (Toilet Bowl Final). A bracket round r is
+    played in week playoff_week_start + r - 1. Every other game is left out.
+  ranking: entries sorted by value, then oldest first (season, week), then the record's
+    tie-break; equal values share a rank (1, 2, 2, 4); the top 25 are kept.
+  champions (finished seasons): places 1, 2 and last from the brackets (section 19); record
+    and points from the champion's regular-season roster settings; Best Player = argmax over
+    players of the sum of weekly WAR over the weeks he was on the champion's roster that season.
+  all-time standings, per Manager: regular-season W-L-T, win % = (W + T/2) / games, point
+    differential = points for - points against; playoff record over winners-bracket games
+    that matter; appearances = seasons placed inside the playoff teams; finishes 1st, 2nd,
+    3rd and last (toilet bowl champion where there is one). Order: current Managers, then
+    former; each by win %, then point differential.
+  weekly records over games that matter: team score (one side), matchup score (both sides
+    summed), blowout and closest game (|margin|, the winner holding it), highest score in a
+    loss, lowest score in a win.
+  season records, per Manager-season over regular-season games: points for and against,
+    record (by win %, then points for), luck = actual wins - sum over weeks of
+    (other teams beaten + ties / 2) / (teams - 1), bench points = potential - actual points,
+    lineup choices summed over the weeks (section 11). Streaks: longest run of wins (or losses)
+    over games that matter in week order within the season. Best team to miss the playoffs =
+    most points among seasons placed outside the playoff teams; worst team to make them =
+    fewest points among seasons inside them. Season result: 1st, 2nd, 3rd, Playoffs, Missed
+    Playoffs, Toilet Bowl Champ or Last, In progress.
+  player records: best games = every player-week's league-scored points (any roster status);
+    best bench games = weeks on a roster outside the starters; career scoring = points, games
+    played and points per game over the league's seasons; championships = title games in which
+    he was on the champion's roster (matchup players plus reserve and taxi), ordered by count,
+    then WAR in the title seasons.
+  past-season lineup choices (weeks before the 2026 game log): model lineup from that week's
+    stored projections with the projected replacement floor, actual starters from the
+    matchup, fills at the week's realised replacement level; the section 11 formula.
+In plain English:
+  The League sub-tab's Records page lists the league's bests and worsts: who won each title,
+  the all-time table, the biggest weeks and seasons, and the players behind them. Only games
+  that decide something count; ties go to whoever set the mark first.
+Assumptions and decisions:
+  - Consolation and placement games are left out: they decide nothing and lineups in them
+    are often weaker.
+  - Season figures use the regular season, so every team has the same number of games;
+    streaks run on through the playoff and toilet bowl games that matter.
+  - Luck is the same all-play measure as the Managers page (section 19): each week the score
+    plays every other team, so beating 8 of 11 counts as 8/11 of a win.
+  - Until it ends, the current season is left out of Fewest Points, Worst Record and the two
+    playoff-line records, which a part-season would win or cannot settle; elsewhere it counts,
+    marked as the current season.
+  - A vacant roster counts for the Manager who held it before (section 19).
+  - Past-season lineup choices use the last projections stored each week, not always the
+    exact pre-kickoff figures (the 2026 game log freezes those); they are close, not exact.
+  - IR and taxi players on the champion's roster come from the end-of-season roster file,
+    which is the title week's roster.

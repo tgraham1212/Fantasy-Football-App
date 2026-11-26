@@ -63,7 +63,7 @@ def test_exported_schema(seeded_store, dynasty_config, tmp_path):
     simulate_weeks(seeded_store, dynasty_config, [0, 1, 2, 3])
     out = tmp_path / "site-data"
     written = export_site(seeded_store, dynasty_config, out)
-    assert {p.name for p in written if "positions" not in p.parts} == {"dynasty.json", "index.json", "managers.json"}
+    assert {p.name for p in written if "positions" not in p.parts} == {"dynasty.json", "index.json", "managers.json", "records.json"}
 
     index = json.loads((out / "index.json").read_text(encoding="utf-8"))
     assert index["calibration"] is None, "no calibration report stored yet"
@@ -72,6 +72,7 @@ def test_exported_schema(seeded_store, dynasty_config, tmp_path):
         "generated_at": index["leagues"][0]["generated_at"], "file": "dynasty.json", "war": None, "games": None,
         "positions": {"file": "dynasty/positions/index.json", "current": "2026"},
         "managers": {"file": "dynasty/managers.json", "count": 16},
+        "records": {"file": "dynasty/records.json"},
     }
 
     payload = json.loads((out / "dynasty.json").read_text(encoding="utf-8"))
@@ -122,7 +123,7 @@ def test_export_includes_calibration_report_when_present(seeded_store, dynasty_c
     write_json(seeded_store.root / "calibration" / "report.json", report)
     out = tmp_path / "site-data"
     written = export_site(seeded_store, dynasty_config, out)
-    assert {p.name for p in written if "positions" not in p.parts} == {"dynasty.json", "index.json", "calibration.json", "managers.json"}
+    assert {p.name for p in written if "positions" not in p.parts} == {"dynasty.json", "index.json", "calibration.json", "managers.json", "records.json"}
     index = json.loads((out / "index.json").read_text(encoding="utf-8"))
     assert index["calibration"] == {"generated_at": "2026-11-14T10:00:00+00:00", "file": "calibration.json"}
     assert json.loads((out / "calibration.json").read_text(encoding="utf-8")) == report
@@ -245,7 +246,7 @@ def test_export_writes_war_leaderboards_index_and_walkthrough(seeded_store, dyna
     }, cut="weekly", through_week=2))
     out = tmp_path / "site-data"
     written = {p.relative_to(out).as_posix() for p in export_site(seeded_store, dynasty_config, out) if "positions" not in p.parts}
-    assert written == {"dynasty.json", "index.json", "dynasty/managers.json", "dynasty/war/2024.json", "dynasty/war/2026.json", "dynasty/war/index.json"}
+    assert written == {"dynasty.json", "index.json", "dynasty/managers.json", "dynasty/records.json", "dynasty/war/2024.json", "dynasty/war/2026.json", "dynasty/war/index.json"}
 
     index = json.loads((out / "index.json").read_text(encoding="utf-8"))
     assert index["leagues"][0]["war"] == {"file": "dynasty/war/index.json", "seasons": 2, "current": "2026"}

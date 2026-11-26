@@ -328,6 +328,15 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
             write_json(managers_path, managers)
             written.append(managers_path)
             managers_entry = {"file": f"{key}/managers.json", "count": len(managers["managers"])}
+        records_entry = None
+        if store.seasons(key):
+            from ffapp.league_records import records_export
+
+            records = records_export(store, config, key)
+            records_path = out_dir / key / "records.json"
+            write_json(records_path, records)
+            written.append(records_path)
+            records_entry = {"file": f"{key}/records.json"}
         index["leagues"].append(
             {
                 "key": key,
@@ -340,6 +349,7 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
                 "games": games_entry,
                 "positions": positions_entry,
                 "managers": managers_entry,
+                "records": records_entry,
             }
         )
     index["refresh_url"] = config.site.refresh_url

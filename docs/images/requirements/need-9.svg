@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12790 4210" width="12790" height="4210">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14030 4210" width="14030" height="4210">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,7 +33,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="12790" height="4210"/>
+<rect class="bg" width="14030" height="4210"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 9, Usable by Every Manager</text>
 <text class="sub" x="40" y="66">27 requirements derived from need 9 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
@@ -224,10 +224,10 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <rect class="hdr" x="660.7" y="418.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="431" text-anchor="middle">«requirement»</text>
 <text x="790.0" y="446" text-anchor="middle"><tspan class="rid">9.1.1</tspan><tspan class="rname" dx="6">Sub-tabs</tspan></text>
-<text class="rtext" x="668" y="468">Each league page SHALL have five sub-tabs, in</text>
+<text class="rtext" x="668" y="468">Each league page SHALL have six sub-tabs, in</text>
 <text class="rtext" x="668" y="482">this order: Forecasts, Games, Positions,</text>
-<text class="rtext" x="668" y="496">Managers and Player WAR.</text>
-<text class="spec" x="668" y="529">league-odds-site</text>
+<text class="rtext" x="668" y="496">Managers, Player WAR and League.</text>
+<text class="spec" x="668" y="529">league-odds-site · proposed</text>
 <rect class="req" x="970" y="552" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="552.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="565" text-anchor="middle">«requirement»</text>
@@ -816,6 +816,43 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="12448" y="4030">while the table scrolls sideways.</text>
 <text class="spec" x="12448" y="4063">war-leaderboard-page</text>
 <path class="trace" d="M12570.0,3952 V946 H460.0 V938" marker-end="url(#openg)"/>
+<rect class="ext" x="12750" y="3952" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="12750.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="12880.0" y="3965" text-anchor="middle">«requirement»</text>
+<text x="12880.0" y="3980" text-anchor="middle"><tspan class="rid">4.9</tspan><tspan class="rname" dx="6">League sub-tab</tspan></text>
+<text class="rtext" x="12758" y="4002">The League sub-tab SHALL show league-wide</text>
+<text class="rtext" x="12758" y="4016">information for the current and past seasons</text>
+<text class="rtext" x="12758" y="4030">in tabs of its own, the first being Records.</text>
+<text class="spec" x="12758" y="4063">league-records-page · proposed</text>
+<path class="trace" d="M12880.0,3952 V549 H770.0 V536" marker-end="url(#openg)"/>
+<rect class="ext" x="13060" y="3952" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="13060.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="13190.0" y="3965" text-anchor="middle">«requirement»</text>
+<text x="13190.0" y="3980" text-anchor="middle"><tspan class="rid">4.9.1</tspan><tspan class="rname" dx="6">Tab and view in the URL</tspan></text>
+<text class="rtext" x="13068" y="4002">The page URL SHALL name the League sub-tab&#x27;s</text>
+<text class="rtext" x="13068" y="4016">selected tab and Records view, so that opening</text>
+<text class="rtext" x="13068" y="4030">a link shows them.</text>
+<text class="spec" x="13068" y="4063">league-records-page · proposed</text>
+<path class="trace" d="M13190.0,3952 V688 H1080.0 V670" marker-end="url(#openg)"/>
+<rect class="ext" x="13370" y="3952" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="13370.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="13500.0" y="3965" text-anchor="middle">«requirement»</text>
+<text x="13500.0" y="3980" text-anchor="middle"><tspan class="rid">4.9.3.1</tspan><tspan class="rname" dx="6">Pop-up on phones</tspan></text>
+<text class="rtext" x="13378" y="4002">On phone widths the record pop-up SHALL open</text>
+<text class="rtext" x="13378" y="4016">as a sheet from the bottom of the screen with</text>
+<text class="rtext" x="13378" y="4030">a close button at least 48 by 48 px.</text>
+<text class="spec" x="13378" y="4063">league-records-page · proposed</text>
+<path class="trace" d="M13500.0,3952 V3358 H460.0 V3350" marker-end="url(#openg)"/>
+<rect class="ext" x="13680" y="3952" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="13680.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="13810.0" y="3965" text-anchor="middle">«requirement»</text>
+<text x="13810.0" y="3980" text-anchor="middle"><tspan class="rid">4.9.5</tspan><tspan class="rname" dx="6">Records on phones</tspan></text>
+<text class="rtext" x="13688" y="4002">On phone widths each Records table SHALL</text>
+<text class="rtext" x="13688" y="4016">become a list of rows that fits the screen</text>
+<text class="rtext" x="13688" y="4030">without scrolling sideways, without the game</text>
+<text class="rtext" x="13688" y="4044">score lines.</text>
+<text class="spec" x="13688" y="4063">league-records-page · proposed</text>
+<path class="trace" d="M13810.0,3952 V951 H460.0 V938" marker-end="url(#openg)"/>
 <path class="derive" d="M40,4170 H86" marker-end="url(#open)"/><text class="lg" x="96" y="4174">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,4170 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="4174">«trace»: extra parent</text>
 <path class="verify" d="M680,4170 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="4174">«verify»: test, inspection or analysis</text>
