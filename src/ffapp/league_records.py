@@ -2,8 +2,9 @@
 season league records, and Player league records, computed from stored league data and exported as
 one file per league (``site/data/<league>/records.json``); the page only renders.
 
-Only games that matter count: the regular season, winners-bracket games on the path to the final and
-the 3rd place game, and in a toilet-bowl league the toilet bowl games and its final. Equal values
+Only Meaningful Games count: the regular season, winners-bracket games on the path to the championship,
+the championship and the 3rd place game, and in a toilet-bowl league the toilet bowl games on its path
+and its final. Equal values
 share a rank and the oldest is listed first. See Calculations.txt section 23.
 """
 
@@ -29,7 +30,7 @@ WINNERS_KINDS = (PLAYOFFS, CHAMPIONSHIP, THIRD)
 POSITIONS = ("ALL", "QB", "RB", "WR", "TE", "DEF", "K")
 
 
-# ---- games that matter -------------------------------------------------------------------------
+# ---- meaningful games --------------------------------------------------------------------------
 
 def _team(value) -> int | None:
     return int(value) if isinstance(value, (int, float)) or (isinstance(value, str) and value.isdigit()) else None

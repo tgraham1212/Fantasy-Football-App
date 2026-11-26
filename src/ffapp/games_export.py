@@ -69,7 +69,9 @@ def named(
     out = []
     for r in rows:
         pid = r[1]
-        row = {"slot": r[0], "player_id": pid, "name": names.get(pid, pid) if pid else "Free agent (replacement level)",
+        # no player: a replacement fill (Model view) carries its level; an empty slot carries 0.0
+        filler = "Free agent (replacement level)" if r[3] else "Empty slot"
+        row = {"slot": r[0], "player_id": pid, "name": names.get(pid, pid) if pid else filler,
                "position": r[2], "projected": r[3], "replacement": pid is None,
                "status": None, "points": None, "clock": None, "kickoff": None, "wpa": None}
         if len(r) >= 8:

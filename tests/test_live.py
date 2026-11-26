@@ -172,8 +172,14 @@ def test_live_forecast_rows_and_log_keep_pre_kickoff_projections(seeded_store, d
                 if locked and pid in thursday_entry["players"][rid]:
                     assert proj == thursday_entry["players"][rid][pid][0]
     assert any(len(es) >= 2 for es in stored["log"].values()) and before["forecast"].get("live") is False
-    # lineup views during the live week: actual = the live forecast, model = frozen pre-kickoff projections
+    # lineup views during the live week: actual = the starters each Manager set (2.7.3), model = frozen
+    # pre-kickoff projections
     assert stored["views"] and all(v["actual"]["source"] == "live" and v["model"]["source"] == "model" for v in stored["views"].values())
+    starters_of = {int(r["roster_id"]): [None if str(p) in ("0", "") else str(p) for p in r.get("starters") or []]
+                   for r in seeded_store.read_season("dynasty", "2026").matchups[10]}
+    for v in stored["views"].values():
+        for t in v["actual"]["teams"]:
+            assert [row[1] for row in t["lineup"]] == starters_of[t["roster_id"]], "the set starters, no model picks or fills"
     # win probability added: a pre-kickoff baseline per real game, and a value for every locked starter
     assert set(stored["baseline"]) == {g["key"] for g in stored["forecast"]["games"]}
     assert all(b["margin_sd"] > 0 for b in stored["baseline"].values())

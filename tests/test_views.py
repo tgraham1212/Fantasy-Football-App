@@ -159,3 +159,35 @@ def test_old_rule_lineup_choices_recomputed_once(seeded_store, dynasty_config):
     assert all(t["lineup_choices"] != 99.9 for v in after["views"].values() for t in v["model"]["teams"])
     assert (record_path.read_bytes() if record_path.exists() else None) == record_before, "the committed record is untouched"
     assert AS_OF not in update_games(seeded_store, dynasty_config, "dynasty", now=datetime(2026, 11, 19, 14, tzinfo=timezone.utc)), "only once"
+
+
+def test_live_actual_view_uses_set_starters(tmp_path):
+    """game-predictions 2.7.3: during the live week the Actual view holds the starters each Manager set
+    (locked ones at their results, the others at their latest Projections), with no model picks and no
+    free-agent fills; an empty slot scores 0. The Model view still picks the benched 9.0 receiver."""
+    from ffapp.live import live_lineup, set_starters_lineup
+    from ffapp.noise import GaussianNoise
+    from ffapp.odds import lineup_from_projections
+    from ffapp.schedule import Schedule
+    from ffapp.views import simulate_live
+    from tests.test_live import PROJECTIONS, ROSTER, SATURDAY, SCORING as LIVE_SCORING, SLOTS, week_store
+
+    store = week_store(tmp_path)
+    schedule = Schedule(store, "2026")
+    # Sunday WR slot: the Manager started wrsun2 (5.0) and benched wrsun (9.0); Thursday's wrthu is locked at FLEX
+    row = {"roster_id": 1, "players": ROSTER, "starters": ["qb", "rbthu", "wrsun2", "wrthu"],
+           "players_points": {"rbthu": 21.5, "wrthu": 3.0}}
+    actual = set_starters_lineup(row, SLOTS, PROJECTIONS, LIVE_SCORING, schedule, 11, SATURDAY, {})
+    assert [s.player_id for s in actual] == ["qb", "rbthu", "wrsun2", "wrthu"]
+    assert [s.projected for s in actual][:3] == [10.0, 12.0, 5.0] and actual[0].status is None
+    assert (actual[1].status, actual[1].fixed, actual[3].fixed) == ("final", 21.5, 3.0), "locked starters keep their results"
+    # no floor: a 10.0 quarterback stays even where the quarterback replacement level would be 14.2
+    floored = live_lineup(row, SLOTS, ROSTER, PROJECTIONS, LIVE_SCORING, schedule, 11, SATURDAY, {},
+                          lambda o, a: lineup_from_projections(PROJECTIONS, LIVE_SCORING, o, a, {"QB": 14.2, "RB": 1.0, "WR": 1.0}))
+    assert floored[0].player_id == "FA:QB" and floored[2].player_id == "wrsun", "the model's picks, for the Forecast and Model view"
+
+    empty = set_starters_lineup({**row, "starters": ["0", "rbthu", "wrsun2", "wrthu"]}, SLOTS, PROJECTIONS, LIVE_SCORING, schedule, 11, SATURDAY, {})
+    assert (empty[0].player_id, empty[0].projected) == ("FA:", 0.0)
+    totals = simulate_live({1: actual, 2: empty}, GaussianNoise(0.001), None, seed=1, runs=200)
+    assert totals[1].mean() - totals[2].mean() == pytest.approx(10.0, abs=0.01), "the empty slot scores 0"
+    assert totals[2].mean() == pytest.approx(21.5 + 3.0 + 5.0, abs=0.01)

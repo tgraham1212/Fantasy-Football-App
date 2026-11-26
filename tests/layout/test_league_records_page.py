@@ -203,6 +203,27 @@ def test_players_view(open_page):
 
 
 @pytest.mark.parametrize("league", ("redraft", "dynasty"))
+@pytest.mark.parametrize("width", (1280, 360))
+def test_player_games_this_season(open_page, league, width):
+    """4.9.2.2 and 4.9.3: a Player game from the current season carries "This season", on the cards and in
+    their top 25, wide and on phones; no other game does."""
+    page = open_league(open_page, league, width, view="/players")
+    data = records(page, league)
+    layout = ".lg-wide tbody tr" if width > 600 else ".lg-narrow .lg-item"
+    count = "(els) => els.map((el) => el.textContent.includes('This season'))"
+    for card in ("best_games", "bench_games"):
+        rows = data["players"][card]["ALL"]
+        shown = page.eval_on_selector_all(f"#lg-players [data-card={card}] {layout}", count)
+        assert shown == [bool(e["current"]) for e in rows[:5]], card
+        more = f"#lg-players [data-card={card}] .lg-more"
+        page.click(more)
+        page.wait_for_timeout(150)
+        shown = page.eval_on_selector_all(f"#lg-dialog-body {layout}", count)
+        assert shown == [bool(e["current"]) for e in rows], f"{card} top 25"
+        page.click("#lg-dialog-close")
+
+
+@pytest.mark.parametrize("league", ("redraft", "dynasty"))
 @pytest.mark.parametrize("spacing", (0, 1.5))
 @pytest.mark.parametrize("width", (768, 1000, 1100, 1280))
 def test_player_tables_cut_nothing(open_page, width, spacing, league):

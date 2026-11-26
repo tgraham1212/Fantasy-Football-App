@@ -3,8 +3,9 @@
 Model view: each team's best legal lineup from its roster that week, every player at his last
 projection before kickoff (the log's frozen value, else his stored projection), with the
 week's projected replacement-level floor. Actual view: the starters the manager used at the
-same projections. Both are simulated with the record's model and no results; during the live
-week the actual view is the live forecast instead.
+same projections. Both are simulated with the record's model and no results. During the live
+week the actual view is simulated from the starters each manager set: locked starters at their
+results, the others at their latest projections, no free-agent fills (game-predictions 2.7.3).
 
 Lineup choices: the actual starters' points minus the default lineup's points. The default lineup
 is the best legal lineup from the week's rostered players at the same frozen projections, with no
@@ -16,18 +17,22 @@ from __future__ import annotations
 
 import copy
 import zlib
-from datetime import datetime
+from datetime import datetime, timezone
+
+import numpy as np
 
 from ffapp.config import Config
-from ffapp.forecast import histogram, win_probability
-from ffapp.games import LINEUP_BASIS, last_unlocked, record_lineup, record_wpa, simulate_fixed, week_games, game_key, player_team
+from ffapp.forecast import histogram, lineup_rows, win_probability
+from ffapp.games import LINEUP_BASIS, RECORD_RUNS, last_unlocked, record_lineup, record_wpa, simulate_fixed, week_games, game_key, player_team
 from ffapp.league import resolve_settings, starter_slots
-from ffapp.lineup import Candidate, best_lineup
+from ffapp.lineup import Candidate, Starter, best_lineup
+from ffapp.live import set_starters_lineup
 from ffapp.noise import NoiseModel
 from ffapp.odds import apply_floor
 from ffapp.replacement import weekly_level
 from ffapp.schedule import Schedule
 from ffapp.scoring import record_points
+from ffapp.simulate import starter_score
 from ffapp.store import SeasonData, Store
 
 
@@ -235,8 +240,8 @@ def build_views(
 
     # actual view
     if live:
-        forecast = stored.get("forecast") or {}
-        actual = {game_key(*(t["roster_id"] for t in g["teams"])): {**copy.deepcopy(g), "source": "live"} for g in forecast.get("games", [])}
+        actual = live_actual_view(store, data, week, stored, rows, slots, scoring, crosswalk, noise, drift, now,
+                                  zlib.crc32(f"actual:{league_key}:{season}:{week}".encode()))
     elif has_log:
         actual = {g["key"]: {**copy.deepcopy(g), "source": "log"} for g in record.get("games", [])}
     else:
@@ -247,6 +252,59 @@ def build_views(
     views = {key: {"model": model[key], "actual": actual[key]} for key in actual if key in model}
     set_lineup_choices(store, config, league_key, data, week, stored, views, live=live, now=now)
     return views
+
+
+def simulate_live(lineups: dict[int, list[Starter]], noise: NoiseModel, drift, seed: int, runs: int = RECORD_RUNS) -> dict[int, np.ndarray]:
+    """One live week of fixed lineups: each starter by the live scoring rule (Calculations section 12),
+    plus one week of roster drift as in ``simulate_fixed``."""
+    rng = np.random.default_rng(seed)
+    strength = {rid: sum(s.projected for s in lineup) for rid, lineup in lineups.items()}
+    mean = float(np.mean(list(strength.values()))) if strength else 0.0
+    totals = {}
+    for rid in sorted(lineups):
+        total = np.zeros(runs)
+        for s in lineups[rid]:
+            if s.player_id.startswith("FA:") and s.projected == 0.0:
+                continue  # an empty starting slot scores nothing
+            total += starter_score(s, noise, rng, runs)
+        if drift is not None and not drift.identity:
+            total += (drift.slope(1) - 1.0) * (strength[rid] - mean)
+            sd = drift.step_sd(1)
+            if sd > 0:
+                total += rng.normal(0.0, sd, size=runs)
+        totals[rid] = total
+    return totals
+
+
+def live_actual_view(store: Store, data: SeasonData, week: int, stored: dict, rows: dict[int, dict], slots: list[str],
+                     scoring: dict[str, float], crosswalk: dict[str, dict], noise: NoiseModel, drift, now: datetime | None,
+                     seed: int) -> dict[str, dict]:
+    """The live week's Actual view: the live Forecast's games re-simulated with the starters each manager set
+    (no model picks, no free-agent fills). WPA and points so far are the live Forecast's: its locked starters
+    are the same ones."""
+    now = now or datetime.now(timezone.utc)
+    projections = store.read_projections(data.season, week)
+    schedule = Schedule(store, data.season)
+    games = (stored.get("forecast") or {}).get("games", [])
+    lineups = {int(t["roster_id"]): set_starters_lineup(rows[int(t["roster_id"])], slots, projections, scoring, schedule, week, now, crosswalk)
+               for g in games for t in g["teams"] if int(t["roster_id"]) in rows}
+    totals = simulate_live(lineups, noise, drift, seed)
+    out = {}
+    for g in games:
+        game = {**copy.deepcopy(g), "source": "live"}
+        if not all(int(t["roster_id"]) in lineups for t in game["teams"]):
+            out[game_key(*(t["roster_id"] for t in g["teams"]))] = game
+            continue
+        sa, sb = (totals[int(t["roster_id"])] for t in game["teams"])
+        pa = win_probability(sa, sb)
+        for t, p in zip(game["teams"], (pa, 1.0 - pa)):
+            lineup = lineups[int(t["roster_id"])]
+            t.update(lineup=lineup_rows(lineup), mean=round(float(totals[int(t["roster_id"])].mean()), 2), win_prob=round(p, 4))
+            if "to_play" in t:
+                t["to_play"] = sum(1 for s in lineup if not s.status and not (s.player_id.startswith("FA:") and s.projected == 0.0))
+        game.update(hist=histogram(sa, sb), margin_mean=round(float((sa - sb).mean()), 3), margin_sd=round(float((sa - sb).std()), 3))
+        out[game_key(*(t["roster_id"] for t in g["teams"]))] = game
+    return out
 
 
 def set_lineup_choices(

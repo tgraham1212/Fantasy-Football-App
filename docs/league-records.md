@@ -44,11 +44,13 @@ Redraw it after changing a source, a stored path, a calculation or what the Reco
 
 ## 3. How It Is Calculated
 
-1. **Games that matter (Calc 23).** Only games that decide something count: the regular season, the
-   winners bracket's games on the path to the final, the final and the 3rd place game, and in a
-   toilet-bowl league the toilet bowl games and its final. Consolation and placement games are left out.
+1. **Meaningful Games (Calc 23).** Only games that decide something count: the regular season, the
+   winners bracket's games on the path to the championship, the championship and the 3rd place game,
+   and in a toilet-bowl league the toilet bowl games on its path and its final. Consolation and other
+   placement games are left out.
 2. **Manager history (Calc 19).** Who held each roster (a vacant roster counts for its previous Manager),
-   each season's final places from the brackets, all-play luck and each Player's weeks on a team are
+   each season's final places (the winners bracket for the playoff teams; the toilet bowl, or in a league
+   without one the regular-season standings, for the rest, so last place is last in the standings there), all-play luck and each Player's weeks on a team are
    reused from the Managers page's calculations, so the two pages agree.
 3. **Past lineup choices (Calc 11, 23).** The game log behind lineup choices began in 2026. For 2021 to
    2025, each team's default lineup (its rostered Players with the highest Projections, no free agents)

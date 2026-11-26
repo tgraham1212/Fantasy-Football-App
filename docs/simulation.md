@@ -74,7 +74,10 @@ Each simulating run does these steps in order.
    playoff size stops the run with an error naming the league, season and size
    (`src/ffapp/odds.py`, `build_inputs`), so no wrong Forecast is published.
 6. **Live adjustment (Calc 12).** During a week, a player whose game has started scores the points so far
-   plus the Projection for the time left, with the spread shrinking as the game runs out.
+   plus the Projection for the time left, with the spread shrinking as the game runs out. The Forecast
+   fills the slots still to play with the model's best pick. The game card's Actual view is simulated
+   separately from the starters each Manager set, with no model picks or free-agent fills (Calc 11,
+   `src/ffapp/views.py`).
 
 The hot run does steps 1 to 6 for the current week only. Cold runs during games skip the simulation
 (the hot runs own the live Forecast), then simulate afresh when a slate goes final.

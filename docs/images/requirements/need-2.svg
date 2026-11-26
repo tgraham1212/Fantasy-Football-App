@@ -525,7 +525,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <rect class="tc" x="1610" y="10764" width="320" height="60" rx="3"/>
 <text class="ster" x="1618" y="10779">«testCase»</text>
 <text class="tctext" x="1618" y="10796">test_live.py::test_live_forecast_rows_and_log_</text>
-<text class="tctext" x="1618" y="10810">keep_pre_kickoff_projections</text>
+<text class="tctext" x="1618" y="10810">keep_pre_kickoff_projections; test_views.py::t</text>
 <path class="verify" d="M1610,10794 H920" marker-end="url(#openv)"/>
 <rect class="tc" x="1610" y="10898" width="320" height="60" rx="3"/>
 <text class="ster" x="1618" y="10913">«testCase»</text>
@@ -1291,10 +1291,10 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="ster" x="790.0" y="10749" text-anchor="middle">«requirement»</text>
 <text x="790.0" y="10764" text-anchor="middle"><tspan class="rid">2.7.3</tspan><tspan class="rname" dx="6">Live week views</tspan></text>
 <text class="rtext" x="668" y="10786">During the live week, the Actual view SHALL be</text>
-<text class="rtext" x="668" y="10800">the live Forecast, with locked starters at</text>
-<text class="rtext" x="668" y="10814">their results and open slots as the model</text>
-<text class="rtext" x="668" y="10828">picks them, while the Model view stays the…</text>
-<text class="spec" x="668" y="10847">game-predictions</text>
+<text class="rtext" x="668" y="10800">simulated from the starters each Manager set,</text>
+<text class="rtext" x="668" y="10814">locked starters at their results and the</text>
+<text class="rtext" x="668" y="10828">others at their latest Projections with no…</text>
+<text class="spec" x="668" y="10847">game-predictions · proposed</text>
 <rect class="req" x="350" y="10870" width="260" height="118" rx="3"/>
 <rect class="hdr" x="350.7" y="10870.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="480.0" y="10883" text-anchor="middle">«requirement»</text>

@@ -1,5 +1,5 @@
 """League records for the League sub-tab's Records page (src/ffapp/league_records.py; league-records 4.8.x
-and 3.6.x): games that matter, ranking and ties, champions, all-time standings, weekly and season league
+and 3.6.x): Meaningful Games, ranking and ties, champions, all-time standings, weekly and season league
 records and Player league records, on small hand-built leagues and the recorded dynasty league."""
 
 from __future__ import annotations
@@ -39,7 +39,7 @@ def ctx_for(games, places=None, current=None, playoff_teams=2, toilet=True, form
     return c
 
 
-def test_only_games_that_matter_count():
+def test_only_meaningful_games_count():
     """4.8.1: winners-bracket path, the final and the 3rd place game count, the 5th place game does not;
     in a toilet-bowl league the toilet bowl path and final count, its other placement games do not."""
     winners = [{"r": 1, "m": 1, "t1": 3, "t2": 6, "w": 3, "l": 6}, {"r": 2, "m": 3, "t1": 1, "t2": 3, "w": 1, "l": 3},
@@ -94,7 +94,7 @@ def test_weekly_records_example():
 
 def test_all_time_standings_example():
     """4.8.4 and 4.8.4.1: regular-season record, win % and point differential; playoff record over
-    winners-bracket games that matter, the 3rd place game included; finishes."""
+    winners-bracket Meaningful Games, the 3rd place game included; finishes."""
     games = [P("2024", 1, 1, 2, 120.0, 100.0), P("2024", 2, 1, 3, 90.0, 95.0), P("2024", 3, 1, 4, 110.0, 80.0),
              P("2024", 15, 1, 4, 100.0, 90.0, LR.PLAYOFFS), P("2024", 16, 1, 2, 80.0, 99.0, LR.PLAYOFFS),
              P("2024", 16, 1, 3, 120.0, 100.0, LR.THIRD), P("2024", 16, 4, 3, 50.0, 60.0, LR.TOILET)]
@@ -122,7 +122,7 @@ def test_standings_order():
     assert rows[0]["rank"] == 1
 
 
-def test_streaks_count_games_that_matter():
+def test_streaks_count_meaningful_games():
     """4.8.6.2: losses run on through the toilet bowl games, within one season."""
     games = [P("2024", w, 1, 2, 80.0, 100.0) for w in range(1, 4)] + [
         P("2024", 15, 1, 3, 70.0, 90.0, LR.TOILET), P("2024", 16, 1, 4, 60.0, 90.0, LR.TOILET_FINAL),
@@ -187,6 +187,19 @@ def test_champions_list_finished_seasons(seeded_store, dynasty_config):
         "2022": "alwaysflexin", "2023": "Gixxersean1", "2024": "Gixxersean1", "2025": "corygraham12"}
     assert names[champs["2024"]["runner_up"]] == "Jdeguire" and champs["2024"]["record"] == {"wins": 12, "losses": 2, "ties": 0}
     assert all(c["last"] for c in out["champions"]) and out["toilet_bowl"] is False
+
+
+def test_consolation_last_place_is_last_in_standings(seeded_store, dynasty_config):
+    """4.8.3 and 4.8.6.5 (with manager-history 4.5.2.2): DeekBurg went 2-12 in the 2023 dynasty season and
+    won two consolation games; the consolation bracket is ignored, so he is that season's last place, his
+    result is Last and it counts among his last-place finishes."""
+    out = LR.records_export(seeded_store, dynasty_config, "dynasty", lineup={})
+    names = _names(seeded_store)
+    deek = next(u for u, n in names.items() if n == "DeekBurg")
+    assert {c["season"]: names[c["last"]] for c in out["champions"]}["2023"] == "DeekBurg"
+    worst = out["season"]["worst_record"][0]
+    assert (worst["user"], worst["season"], worst["record"]["wins"], worst["result"]) == (deek, "2023", 2, "last")
+    assert next(r for r in out["standings"] if r["user"] == deek)["last_place"] == 2, "2022 and 2023"
 
 
 def _war_file(store, season, players):

@@ -49,10 +49,19 @@ def test_toilet_bowl_winner_is_last_place():
     assert places[7] == 1 and places[9] == 2
 
 
-def test_consolation_winner_is_seventh():
+def test_consolation_bracket_is_ignored():
+    """4.5.2.2: in a consolation league the teams outside the playoffs finish in standings order (wins, then
+    points for), whatever their consolation games; places 1 to 6 still come from the winners bracket."""
     data = _season(1, WINNERS, [{"p": 1, "w": 3, "l": 12}, {"p": 3, "w": 2, "l": 1}, {"p": 5, "w": 8, "l": 5}])
+    record = {1: (8, 1500), 2: (7, 1450), 3: (2, 1200), 4: (9, 1600), 5: (5, 1380), 6: (9, 1550),
+              7: (10, 1700), 8: (5, 1410), 9: (11, 1650), 10: (10, 1620), 11: (9, 1500), 12: (6, 1300)}
+    for r in data.rosters:
+        w, pts = record[r["roster_id"]]
+        r["settings"] = {"wins": w, "losses": 14 - w, "fpts": pts}
     places = bracket_places(data)
-    assert places[3] == 7 and places[12] == 8 and places[2] == 9 and places[1] == 10 and places[8] == 11 and places[5] == 12
+    assert places[7] == 1 and places[9] == 2 and places[10] == 3 and places[4] == 4 and places[11] == 5 and places[6] == 6
+    # outside the playoffs: 1 (8-6), 2 (7-7), 12 (6-8), 8 (5-9, 1,410), 5 (5-9, 1,380), 3 (2-12, won the consolation final)
+    assert [rid for rid, _ in sorted(((r, p) for r, p in places.items() if p > 6), key=lambda x: x[1])] == [1, 2, 12, 8, 5, 3]
 
 
 def test_incomplete_brackets_give_no_places():

@@ -326,6 +326,10 @@ Assumptions and decisions:
     views stored under an earlier rule have their lineup choices recomputed once.
   - 2026 weeks 1 to 10 predate the log, so their actual view is rebuilt from stored
     projections and labelled "rebuilt".
+  - During the live week the actual view is simulated from the starters each manager set:
+    locked starters by the section 12 rule, the others at their latest projections, an empty
+    slot scoring 0, with no model picks and no free-agent fills, plus one week of roster drift.
+    It is labelled "live". Its WPA and points so far are the live forecast's (section 13).
 
 
 ================================================================
@@ -346,6 +350,8 @@ In plain English:
   the time left, with the uncertainty shrinking as his game runs out. Open slots keep the
   model's best pick from players who have not kicked off.
 Assumptions and decisions:
+  - The forecast assumes managers will start their best lineup in the slots still to play;
+    the game card's actual view uses the starters they set instead (section 11).
   - The projection and its bias scale with time left, the scatter with its square root
     (about 71% of a full game's spread at half time). Chosen over Sleeper's live projection
     by the owner.
@@ -374,6 +380,8 @@ In plain English:
 Assumptions and decisions:
   - The values show the size of each swing and do not add up to the team's total change.
   - Weeks before the log existed use the pre-week forecast's margin and stored projections.
+  - During the live week WPA is measured on the live forecast, whose locked starters are the
+    same as the actual view's; only the slots still to play differ, so the gap is small.
 
 
 ================================================================
@@ -576,8 +584,10 @@ Formula:
   final place: winners bracket placement game p gives place p to its winner and p + 1 to its
     loser; in a toilet bowl Sleeper's "winner" w is the lower scorer who advanced, so
     w gets 13 - p and the loser 12 - p (the p-1 winner is last: the toilet bowl champion);
-    in a consolation bracket w gets 6 + p and the loser 7 + p. Without finished brackets
-    the regular-season order (wins, then points for) is used
+    in a league without a toilet bowl the consolation bracket is ignored and the teams outside
+    the playoffs take places playoff teams + 1 onward in regular-season order (wins, then points
+    for), so last place is last in the standings. Without a finished winners bracket (and, in a
+    toilet-bowl league, toilet bowl) the regular-season order is used for every place
   honours: champion (place 1), runner-up (2), regular-season 1st, most points for,
     playoffs (place <= playoff teams), toilet bowl (last place, toilet-bowl leagues only)
   head to head: per opponent W-L-T, playoff W-L, points for and against, last result
@@ -612,6 +622,8 @@ In plain English:
 Assumptions and decisions:
   - The toilet bowl champion is the team that "wins" by losing the final: last place. The
     reading of Sleeper's losers bracket was checked against the stored playoff scores.
+  - Consolation games are ignored: Managers pay them little attention and often leave lineups
+    unset, so a 2-12 team that wins two of them (DeekBurg, dynasty 2023) still finishes last.
   - Records include winners-bracket playoff games; luck figures use the regular season only.
   - Rivals follow the roster, so a team keeps its rival when its manager changes; a renamed
     account (SpookyCast, later Jdeguire) is one manager under the latest name.
@@ -767,28 +779,29 @@ Data sources:  Every stored season's matchups (team points, starters, rostered p
                site/data/<league>/records.json (derived data).
 Depends on:    7, 8, 11, 16, 19
 Formula:
-  games that matter: regular-season games; winners-bracket games with no placement or
+  Meaningful Games: regular-season games; winners-bracket games with no placement or
     placement 1 (Championship) or 3 (3rd Place); in a toilet-bowl league, losers-bracket games
     with no placement (Toilet Bowl) or placement 1 (Toilet Bowl Final). A bracket round r is
     played in week playoff_week_start + r - 1. Every other game is left out.
   ranking: entries sorted by value, then oldest first (season, week), then the record's
     tie-break; equal values share a rank (1, 2, 2, 4); the top 25 are kept.
-  champions (finished seasons): places 1, 2 and last from the brackets (section 19); record
-    and points from the champion's regular-season roster settings; Best Player = argmax over
+  champions (finished seasons): places 1, 2 and last from section 19 (without a toilet bowl,
+    last = last in the standings); record and points from the champion's regular-season roster
+    settings; Best Player = argmax over
     players of the sum of weekly WAR over the weeks he was on the champion's roster that season.
   all-time standings, per Manager: regular-season W-L-T, win % = (W + T/2) / games, point
     differential = points for - points against; playoff record over winners-bracket games
     that matter; appearances = seasons placed inside the playoff teams; finishes 1st, 2nd,
     3rd and last (toilet bowl champion where there is one). Order: current Managers, then
     former; each by win %, then point differential.
-  weekly records over games that matter: team score (one side), matchup score (both sides
+  weekly records over Meaningful Games: team score (one side), matchup score (both sides
     summed), blowout and closest game (|margin|, the winner holding it), highest score in a
     loss, lowest score in a win.
   season records, per Manager-season over regular-season games: points for and against,
     record (by win %, then points for), luck = actual wins - sum over weeks of
     (other teams beaten + ties / 2) / (teams - 1), bench points = potential - actual points,
     lineup choices summed over the weeks (section 11). Streaks: longest run of wins (or losses)
-    over games that matter in week order within the season. Best team to miss the playoffs =
+    over Meaningful Games in week order within the season. Best team to miss the playoffs =
     most points among seasons placed outside the playoff teams; worst team to make them =
     fewest points among seasons inside them. Season result: 1st, 2nd, 3rd, Playoffs, Missed
     Playoffs, Toilet Bowl Champ or Last, In progress.
@@ -808,7 +821,7 @@ Assumptions and decisions:
   - Consolation and placement games are left out: they decide nothing and lineups in them
     are often weaker.
   - Season figures use the regular season, so every team has the same number of games;
-    streaks run on through the playoff and toilet bowl games that matter.
+    streaks run on through the playoff and toilet bowl Meaningful Games.
   - Luck is the same all-play measure as the Managers page (section 19): each week the score
     plays every other team, so beating 8 of 11 counts as 8/11 of a win.
   - Until it ends, the current season is left out of Fewest Points, Worst Record and the two

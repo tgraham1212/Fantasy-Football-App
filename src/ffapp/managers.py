@@ -75,12 +75,13 @@ def managers_for_league(store: Store, league_key: str) -> dict[str, Manager]:
 # ---- final places ---------------------------------------------------------------------------
 
 def bracket_places(data: SeasonData) -> dict[int, int]:
-    """roster_id -> final place from the stored placement games; {} when the brackets are not done.
+    """roster_id -> final place; {} when the brackets are not done.
 
     Winners bracket: the game marked ``p`` decides places p (winner) and p + 1 (loser).
     Toilet bowl (losers bracket where the lower scorer advances): Sleeper's ``w`` is the team that
     advanced, so the p-1 "winner" is the toilet bowl champion in last place: w gets 13 - p and l gets
-    12 - p. Consolation bracket (higher scorer advances): w gets 6 + p and l gets 7 + p.
+    12 - p. A consolation bracket (higher scorer advances) is ignored: Managers pay its games little
+    attention, so the teams outside the playoffs finish in regular-season standings order.
     """
     rules = BracketRules.from_league(data.league)
     places: dict[int, int] = {}
@@ -88,14 +89,16 @@ def bracket_places(data: SeasonData) -> dict[int, int]:
         p, w, loser = game.get("p"), game.get("w"), game.get("l")
         if p and w is not None and loser is not None:
             places[int(w)], places[int(loser)] = int(p), int(p) + 1
-    for game in data.losers_bracket:
-        p, w, loser = game.get("p"), game.get("w"), game.get("l")
-        if p and w is not None and loser is not None:
-            if rules.toilet_bowl:
-                places[int(w)], places[int(loser)] = 13 - int(p), 12 - int(p)
-            else:
-                places[int(w)], places[int(loser)] = 6 + int(p), 7 + int(p)
     teams = len(data.rosters)
+    if rules.toilet_bowl:
+        for game in data.losers_bracket:
+            p, w, loser = game.get("p"), game.get("w"), game.get("l")
+            if p and w is not None and loser is not None:
+                places[int(w)], places[int(loser)] = 13 - int(p), 12 - int(p)
+    elif sorted(places.values()) == list(range(1, rules.playoff_teams + 1)):
+        rest = [rid for rid in regular_season_order(data) if rid not in places]
+        for i, rid in enumerate(rest):
+            places[rid] = rules.playoff_teams + 1 + i
     return places if len(places) == teams and sorted(places.values()) == list(range(1, teams + 1)) else {}
 
 

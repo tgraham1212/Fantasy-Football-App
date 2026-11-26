@@ -337,7 +337,7 @@ function openDialog(id) {
     wide = `<table class="plain lg-table lg-dtable"><thead><tr><th scope="col">#</th><th scope="col">Player</th>${cols.heads.map((h, i) => `<th scope="col"${i === 2 ? ' class="num"' : ""}>${h}</th>`).join("")}</tr></thead>
       <tbody>${rows.map((e) => `<tr><td>${rankPill(e.rank)}</td><td>${playerRow(e, cols)}</td>${cols.cells(e).map((c, i) => `<td${i === 2 ? ' class="num strong"' : ' class="muted"'}>${c}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
     narrow = `<ol class="lg-list">${rows.map((e) => `<li class="lg-item">${rankPill(e.rank)}<div class="lg-item-body"><div class="lg-line">${playerRow(e, cols)}<span class="lg-value">${cols.value(e)}</span></div>
-      <div class="lg-line lg-sub"><span>${escapeHtml(cols.detail(e))}</span></div></div></li>`).join("")}</ol>`;
+      <div class="lg-line lg-sub"><span>${escapeHtml(cols.detail(e))}${e.current ? tags({ current: true }) : ""}</span></div></div></li>`).join("")}</ol>`;
   }
   if (group !== "season") showNote(null);
   const seasons = [...new Set(state.data.standings.flatMap((r) => [r.first, r.last_season]))].sort();
