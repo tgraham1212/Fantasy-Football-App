@@ -399,7 +399,7 @@ An Actual view rebuilt for a week before the Forecast log existed SHALL be label
 - **THEN** its Actual view is labelled rebuilt
 
 ### Requirement: 2.1.14 Lineup choices shown
-On live and finished cards, in both views, each team SHALL show "Lineup choices: +N" or "-N" beneath the forecasted line of its score block: its points against the model lineup, explained on hover, green when positive and red when negative.
+On live and finished cards, in both views, each team SHALL show "Lineup choices: +N" or "-N" beneath the forecasted line of its score block: its points against starting its highest Sleeper Projections, explained on hover, green when positive and red when negative.
 
 **Rationale:** Calculations.txt section 11.
 **Traces to:** 2.1; 2.1.3.2
@@ -407,7 +407,7 @@ On live and finished cards, in both views, each team SHALL show "Lineup choices:
 
 #### Scenario: Positive choices
 - **WHEN** a team's lineup choices are +7.4
-- **THEN** "Lineup choices: +7.4" shows in green beneath its forecasted line, never over the scores, and hovering explains that it is points against the model lineup
+- **THEN** "Lineup choices: +7.4" shows in green beneath its forecasted line, never over the scores, and hovering explains that it is the starters' points minus what the roster's highest Sleeper projections would have scored
 
 ### Requirement: 2.1.15 Bench tag
 In the model view of a live or finished card, each model pick the Manager did not start SHALL carry a "BN" tag.

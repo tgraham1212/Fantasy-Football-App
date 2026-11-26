@@ -30,6 +30,7 @@ Style is APA, with title case for titles and headings.
 - **Replacement level:** the points per week a Player freely available on waivers would score at a position (`Calculations.txt`, section 14).
 - **WAR:** wins above replacement, how many wins a Player added over a replacement-level Player.
 - **Win probability added (WPA):** how far a Player's scoring moved their team's win probability in a game.
+- **Default lineup:** the best legal lineup of a team's rostered Players at their pre-kickoff Sleeper Projections; lineup choices are measured against it (`Calculations.txt`, section 11).
 - **Residual:** a Player's actual points minus their projected points in one week.
 - **Error pool:** the residuals of Players at the same position and projection level, from which the simulation draws each simulated miss; `Calculations.txt`, section 4, calls it a noise pool.
 - **Roster drift:** the shrinking of a team's projected edge, and the added spread, the further ahead a week is, modelled as a random walk (`Calculations.txt`, section 6).

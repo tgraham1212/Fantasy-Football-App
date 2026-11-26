@@ -1,9 +1,9 @@
 ## MODIFIED Requirements
 
 ### Requirement: 2.8 Lineup choices
-For each team in a finished or live game, the system SHALL compute lineup choices to 0.1 point: its starters' points minus the default lineup's points, the default lineup being the best legal lineup from that week's rostered Players at their last Sleeper Projection before kickoff, an empty slot on either side counting 0 and a starter with no stored Projection counting on both sides.
+For each team in a finished or live game, the system SHALL compute lineup choices to 0.1 point: its starters' points minus those of the best legal lineup of its rostered Players at their pre-kickoff Sleeper Projections.
 
-**Rationale:** Following the default scores 0, so the figure measures only the Manager's own decisions; free agents are left out because picking one up is a roster move, not a lineup choice. Calculations.txt section 11.
+**Rationale:** Following the projections scores 0. Calculations.txt section 11.
 **Traces to:** 2; 2.1.14
 **Verified by:** Test: `tests/test_views.py::test_lineup_choices_examples_and_live_rule`; Test: `tests/test_views.py::test_default_lineup_is_roster_only`
 

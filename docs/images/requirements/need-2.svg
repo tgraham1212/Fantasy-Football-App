@@ -963,7 +963,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="5306">each team SHALL show &quot;Lineup choices: +N&quot; or</text>
 <text class="rtext" x="668" y="5320">&quot;-N&quot; beneath the forecasted line of its score</text>
 <text class="rtext" x="668" y="5334">block: its points against starting its high…</text>
-<text class="spec" x="668" y="5353">games-page · proposed</text>
+<text class="spec" x="668" y="5353">games-page</text>
 <rect class="req" x="660" y="5376" width="260" height="118" rx="3"/>
 <rect class="hdr" x="660.7" y="5376.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="5389" text-anchor="middle">«requirement»</text>
@@ -1301,9 +1301,9 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text x="480.0" y="10898" text-anchor="middle"><tspan class="rid">2.8</tspan><tspan class="rname" dx="6">Lineup choices</tspan></text>
 <text class="rtext" x="358" y="10920">For each team in a finished or live game, the</text>
 <text class="rtext" x="358" y="10934">system SHALL compute lineup choices to 0.1</text>
-<text class="rtext" x="358" y="10948">point: its starters&#x27; points minus the default</text>
-<text class="rtext" x="358" y="10962">lineup&#x27;s points, the default lineup being t…</text>
-<text class="spec" x="358" y="10981">game-predictions · proposed</text>
+<text class="rtext" x="358" y="10948">point: its starters&#x27; points minus those of the</text>
+<text class="rtext" x="358" y="10962">best legal lineup of its rostered Players a…</text>
+<text class="spec" x="358" y="10981">game-predictions</text>
 <rect class="req" x="660" y="11004" width="260" height="118" rx="3"/>
 <rect class="hdr" x="660.7" y="11004.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="11017" text-anchor="middle">«requirement»</text>
@@ -1311,7 +1311,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="11054">During the live week, lineup choices SHALL</text>
 <text class="rtext" x="668" y="11068">count only Players whose games have kicked</text>
 <text class="rtext" x="668" y="11082">off, on both sides.</text>
-<text class="spec" x="668" y="11115">game-predictions · proposed</text>
+<text class="spec" x="668" y="11115">game-predictions</text>
 <rect class="req" x="660" y="11138" width="260" height="118" rx="3"/>
 <rect class="hdr" x="660.7" y="11138.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="11151" text-anchor="middle">«requirement»</text>
@@ -1320,7 +1320,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="11202">system SHALL compute each team&#x27;s lineup</text>
 <text class="rtext" x="668" y="11216">choices from the stored weekly Projections and</text>
 <text class="rtext" x="668" y="11230">the stored matchup rosters and starters.</text>
-<text class="spec" x="668" y="11249">game-predictions · proposed</text>
+<text class="spec" x="668" y="11249">game-predictions</text>
 <rect class="req" x="350" y="11272" width="260" height="118" rx="3"/>
 <rect class="hdr" x="350.7" y="11272.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="480.0" y="11285" text-anchor="middle">«requirement»</text>
@@ -1663,42 +1663,42 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <rect class="ext" x="5310" y="14136" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="5310.7" y="14136.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="5440.0" y="14149" text-anchor="middle">«requirement»</text>
-<text x="5440.0" y="14164" text-anchor="middle"><tspan class="rid">5.2</tspan><tspan class="rname" dx="6">Hot run</tspan></text>
-<text class="rtext" x="5318" y="14186">A hot run SHALL fetch the current week&#x27;s</text>
-<text class="rtext" x="5318" y="14200">matchups and the NFL scoreboard, simulate the</text>
-<text class="rtext" x="5318" y="14214">live week with the cold run&#x27;s model and run</text>
-<text class="rtext" x="5318" y="14228">count, and build this week&#x27;s game cards for…</text>
-<text class="spec" x="5318" y="14247">live-refresh</text>
-<path class="trace" d="M5440.0,14136 V7646 H460.0 V7638" marker-end="url(#openg)"/>
+<text x="5440.0" y="14164" text-anchor="middle"><tspan class="rid">4.9.2.1.3.4</tspan><tspan class="rname" dx="6">Lineup choices explained</tspan></text>
+<text class="rtext" x="5318" y="14186">The lineup-choices records SHALL explain on</text>
+<text class="rtext" x="5318" y="14200">hover, on keyboard focus and atop their pop-</text>
+<text class="rtext" x="5318" y="14214">ups that the figure is the starters&#x27; points</text>
+<text class="rtext" x="5318" y="14228">minus those of the roster&#x27;s highest Sleeper…</text>
+<text class="spec" x="5318" y="14247">league-records-page</text>
+<path class="trace" d="M5440.0,14136 V10996 H460.0 V10988" marker-end="url(#openg)"/>
 <rect class="ext" x="5620" y="14136" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="5620.7" y="14136.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="5750.0" y="14149" text-anchor="middle">«requirement»</text>
-<text x="5750.0" y="14164" text-anchor="middle"><tspan class="rid">1.1.12</tspan><tspan class="rname" dx="6">Live week</tspan></text>
-<text class="rtext" x="5628" y="14186">The live week SHALL be the first week after</text>
-<text class="rtext" x="5628" y="14200">the as-of week once any of its NFL games has</text>
-<text class="rtext" x="5628" y="14214">kicked off.</text>
-<text class="spec" x="5628" y="14247">live-scoring</text>
+<text x="5750.0" y="14164" text-anchor="middle"><tspan class="rid">5.2</tspan><tspan class="rname" dx="6">Hot run</tspan></text>
+<text class="rtext" x="5628" y="14186">A hot run SHALL fetch the current week&#x27;s</text>
+<text class="rtext" x="5628" y="14200">matchups and the NFL scoreboard, simulate the</text>
+<text class="rtext" x="5628" y="14214">live week with the cold run&#x27;s model and run</text>
+<text class="rtext" x="5628" y="14228">count, and build this week&#x27;s game cards for…</text>
+<text class="spec" x="5628" y="14247">live-refresh</text>
 <path class="trace" d="M5750.0,14136 V7651 H460.0 V7638" marker-end="url(#openg)"/>
 <rect class="ext" x="5930" y="14136" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="5930.7" y="14136.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="6060.0" y="14149" text-anchor="middle">«requirement»</text>
-<text x="6060.0" y="14164" text-anchor="middle"><tspan class="rid">7.3</tspan><tspan class="rname" dx="6">Game calibration</tspan></text>
-<text class="rtext" x="5938" y="14186">For every replayed as-of week, the report</text>
-<text class="rtext" x="5938" y="14200">SHALL group each team&#x27;s win probability for</text>
-<text class="rtext" x="5938" y="14214">its next game into 10-point bins, with the</text>
-<text class="rtext" x="5938" y="14228">observed win rate and count in each bin, an…</text>
-<text class="spec" x="5938" y="14247">odds-calibration</text>
+<text x="6060.0" y="14164" text-anchor="middle"><tspan class="rid">1.1.12</tspan><tspan class="rname" dx="6">Live week</tspan></text>
+<text class="rtext" x="5938" y="14186">The live week SHALL be the first week after</text>
+<text class="rtext" x="5938" y="14200">the as-of week once any of its NFL games has</text>
+<text class="rtext" x="5938" y="14214">kicked off.</text>
+<text class="spec" x="5938" y="14247">live-scoring</text>
 <path class="trace" d="M6060.0,14136 V7656 H460.0 V7638" marker-end="url(#openg)"/>
 <rect class="ext" x="6240" y="14136" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="6240.7" y="14136.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="6370.0" y="14149" text-anchor="middle">«requirement»</text>
-<text x="6370.0" y="14164" text-anchor="middle"><tspan class="rid">4.9.2.1.3.4</tspan><tspan class="rname" dx="6">Lineup choices explained</tspan></text>
-<text class="rtext" x="6248" y="14186">The lineup-choices records SHALL explain on</text>
-<text class="rtext" x="6248" y="14200">hover, on keyboard focus and atop their pop-</text>
-<text class="rtext" x="6248" y="14214">ups that the figure is the starters&#x27; points</text>
-<text class="rtext" x="6248" y="14228">minus those of the roster&#x27;s highest Sleeper…</text>
-<text class="spec" x="6248" y="14247">league-records-page · proposed</text>
-<path class="trace" d="M6370.0,14136 V10996 H460.0 V10988" marker-end="url(#openg)"/>
+<text x="6370.0" y="14164" text-anchor="middle"><tspan class="rid">7.3</tspan><tspan class="rname" dx="6">Game calibration</tspan></text>
+<text class="rtext" x="6248" y="14186">For every replayed as-of week, the report</text>
+<text class="rtext" x="6248" y="14200">SHALL group each team&#x27;s win probability for</text>
+<text class="rtext" x="6248" y="14214">its next game into 10-point bins, with the</text>
+<text class="rtext" x="6248" y="14228">observed win rate and count in each bin, an…</text>
+<text class="spec" x="6248" y="14247">odds-calibration</text>
+<path class="trace" d="M6370.0,14136 V7646 H460.0 V7638" marker-end="url(#openg)"/>
 <path class="derive" d="M40,14354 H86" marker-end="url(#open)"/><text class="lg" x="96" y="14358">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,14354 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="14358">«trace»: extra parent</text>
 <path class="verify" d="M680,14354 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="14358">«verify»: test, inspection or analysis</text>

@@ -2449,7 +2449,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="1598" y="22458">hover, on keyboard focus and atop their pop-</text>
 <text class="rtext" x="1598" y="22472">ups that the figure is the starters&#x27; points</text>
 <text class="rtext" x="1598" y="22486">minus those of the roster&#x27;s highest Sleeper…</text>
-<text class="spec" x="1598" y="22505">league-records-page · proposed</text>
+<text class="spec" x="1598" y="22505">league-records-page</text>
 <rect class="req" x="970" y="22528" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="22528.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="22541" text-anchor="middle">«requirement»</text>
@@ -2664,9 +2664,9 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text x="5130.0" y="23410" text-anchor="middle"><tspan class="rid">2.8</tspan><tspan class="rname" dx="6">Lineup choices</tspan></text>
 <text class="rtext" x="5008" y="23432">For each team in a finished or live game, the</text>
 <text class="rtext" x="5008" y="23446">system SHALL compute lineup choices to 0.1</text>
-<text class="rtext" x="5008" y="23460">point: its starters&#x27; points minus the default</text>
-<text class="rtext" x="5008" y="23474">lineup&#x27;s points, the default lineup being t…</text>
-<text class="spec" x="5008" y="23493">game-predictions · proposed</text>
+<text class="rtext" x="5008" y="23460">point: its starters&#x27; points minus those of the</text>
+<text class="rtext" x="5008" y="23474">best legal lineup of its rostered Players a…</text>
+<text class="spec" x="5008" y="23493">game-predictions</text>
 <path class="trace" d="M1740.0,22512 V22525 H5130.0 V23382" marker-end="url(#openg)"/>
 <rect class="ext" x="5310" y="23382" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="5310.7" y="23382.7" width="258.6" height="34" rx="2.5"/>
@@ -2698,7 +2698,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="5938" y="23446">system SHALL compute each team&#x27;s lineup</text>
 <text class="rtext" x="5938" y="23460">choices from the stored weekly Projections and</text>
 <text class="rtext" x="5938" y="23474">the stored matchup rosters and starters.</text>
-<text class="spec" x="5938" y="23493">game-predictions · proposed</text>
+<text class="spec" x="5938" y="23493">game-predictions</text>
 <path class="trace" d="M6060.0,23382 V20242 H770.0 V20234" marker-end="url(#openg)"/>
 <rect class="ext" x="6240" y="23382" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="6240.7" y="23382.7" width="258.6" height="34" rx="2.5"/>

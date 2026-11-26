@@ -166,12 +166,12 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 | `game-card-states` | 2026-11-23 | Pass | 8 requirements became 12 under 2.10; verification-only requirement cut; games-page requirements naming states now trace to 2.10 |
 | `win-probability-added` | 2026-11-23 | Pass | 3 requirements became 9 under 2.9; baseline corrected to include the live week's provisional Forecast; two tested behaviours stated |
 | `live-scoring` | 2026-11-24 | Pass | Re-reviewed: 1.1.12.5's redundant 1.1.12.2 trace dropped to stay under 500 characters |
-| `game-predictions` | 2026-11-25 | Pass | Re-reviewed: 2.8.2 past-season lineup choices added by league-records; earlier: 12 requirements became 29 under needs 2 and 1 |
+| `game-predictions` | 2026-11-25 | Pass | Re-reviewed: 2.8, 2.8.1 and 2.8.2 measure lineup choices against the roster's default lineup, to 0.1 point (Default lineup added to the glossary); earlier: 2.8.2 past-season lineup choices added by league-records; 12 requirements became 29 under needs 2 and 1 |
 | `manager-pages` | 2026-11-23 | Pass | 19 requirements became 51 under need 4; page logic covered by 6 layout tests; 20 inspections carried over from the feature work |
 | `war-leaderboard-page` | 2026-11-23 | Pass | 9 requirements became 28 under need 3; untested behaviours covered by 7 layout tests; 4 inspections carried over from the feature work |
 | `positional-rankings-page` | 2026-11-23 | Pass | 12 requirements became 26 under need 3; 7 gaps closed with layout tests; 6 inspections carried over from the feature work |
-| `games-page` | 2026-11-24 | Pass | Re-reviewed: trace lines to 2.10 added in the approved group 4 batch; statements unchanged |
+| `games-page` | 2026-11-25 | Pass | Re-reviewed: 2.1.14 hover names the Sleeper Projections default; earlier: trace lines to 2.10 added in the approved group 4 batch |
 | `league-odds-site` | 2026-11-25 | Pass | Re-reviewed: 9.1.1 now six sub-tabs with League last (league-records); earlier: 30 requirements became 57 under needs 1, 4, 9 and 11 |
 | `playoff-odds-simulation` | 2026-11-23 | Pass | Worked example: 14 requirements became 31 under need 1; roster drift corrected to a random walk; two gaps closed with tests |
 | `league-records` | 2026-11-25 | Pass with notes | New: 23 requirements under 4.8 and 3.6; values are exact counts; 4.8.6.4 both excludes the current season and marks its entries (the marking repeated by page rule 4.9.2.1.3.2), kept as one requirement |
-| `league-records-page` | 2026-11-25 | Pass | New: 17 requirements under 4.9; values are exact counts, a 48 px minimum and a three-decimal format |
+| `league-records-page` | 2026-11-25 | Pass | Re-reviewed: 4.9.2.1.3.4 lineup choices explained added, exact text in its scenario; earlier: 17 requirements under 4.9; values are exact counts, a 48 px minimum and a three-decimal format |
