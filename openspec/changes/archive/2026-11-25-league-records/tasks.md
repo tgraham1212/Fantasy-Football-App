@@ -36,7 +36,7 @@
 - [x] 5.1 Write `docs/league-records.md` (Code, Runs, Tests; Diagram; sources, storage, calculations, where it shows; Keeping This Document Current) and `tools/league_records_diagram.py`, and register them in `tests/test_feature_docs.py` for `src/ffapp/league_records.py` and `site/league.js`. Verify: `tests/test_feature_docs.py` passes.
 - [x] 5.2 Update `docs/requirements.md` for the glossary and checklist changes, and redraw its diagrams with `python -X utf8 tools/requirements_diagram.py`. Verify: `tests/test_feature_docs.py` passes.
 - [x] 5.3 Re-inspect 9.1.1 and its directly linked requirements with inspection rows (per the impact report: 9.1 and the sub-tab pages), and add inspection-checklist rows for any new Inspection-verified requirement. Verify: `tests/test_requirements.py` reports no stale or missing inspection.
-- [ ] 5.4 Redo the standard reviews for `league-odds-site` and `game-predictions`, and add reviews for `league-records` and `league-records-page` once synced. Verify: `tests/test_requirements.py::test_findings_match_the_baseline` passes.
+- [x] 5.4 Redo the standard reviews for `league-odds-site` and `game-predictions`, and add reviews for `league-records` and `league-records-page` once synced. Verify: `tests/test_requirements.py::test_findings_match_the_baseline` passes.
 - [x] 5.5 Run the full suite with the layout check and both modes. Verify: `python -X utf8 -m pytest` passes.
 
 ## Workflow follow-up

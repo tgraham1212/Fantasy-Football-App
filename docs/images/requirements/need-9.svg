@@ -227,7 +227,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="468">Each league page SHALL have six sub-tabs, in</text>
 <text class="rtext" x="668" y="482">this order: Forecasts, Games, Positions,</text>
 <text class="rtext" x="668" y="496">Managers, Player WAR and League.</text>
-<text class="spec" x="668" y="529">league-odds-site · proposed</text>
+<text class="spec" x="668" y="529">league-odds-site</text>
 <rect class="req" x="970" y="552" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="552.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="565" text-anchor="middle">«requirement»</text>
@@ -593,265 +593,265 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <rect class="ext" x="5310" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="5310.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="5440.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="5440.0" y="3980" text-anchor="middle"><tspan class="rid">4.4</tspan><tspan class="rname" dx="6">Managers sub-tab</tspan></text>
-<text class="rtext" x="5318" y="4002">The Managers sub-tab SHALL show one page per</text>
-<text class="rtext" x="5318" y="4016">Manager of the league, with a team info bar, a</text>
-<text class="rtext" x="5318" y="4030">season info bar and four cards: Roster, Team</text>
-<text class="rtext" x="5318" y="4044">History, Moves and Team News.</text>
-<text class="spec" x="5318" y="4063">manager-pages</text>
+<text x="5440.0" y="3980" text-anchor="middle"><tspan class="rid">4.9</tspan><tspan class="rname" dx="6">League sub-tab</tspan></text>
+<text class="rtext" x="5318" y="4002">The League sub-tab SHALL show league-wide</text>
+<text class="rtext" x="5318" y="4016">information for the current and past seasons</text>
+<text class="rtext" x="5318" y="4030">in tabs of its own, the first being Records.</text>
+<text class="spec" x="5318" y="4063">league-records-page</text>
 <path class="trace" d="M5440.0,3952 V549 H770.0 V536" marker-end="url(#openg)"/>
 <rect class="ext" x="5620" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="5620.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="5750.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="5750.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.1.1</tspan><tspan class="rname" dx="6">Manager in the URL</tspan></text>
-<text class="rtext" x="5628" y="4002">The page URL SHALL name the chosen Manager, so</text>
-<text class="rtext" x="5628" y="4016">that opening a link shows that Manager&#x27;s page.</text>
-<text class="spec" x="5628" y="4063">manager-pages</text>
+<text x="5750.0" y="3980" text-anchor="middle"><tspan class="rid">4.9.1</tspan><tspan class="rname" dx="6">Tab and view in the URL</tspan></text>
+<text class="rtext" x="5628" y="4002">The page URL SHALL name the League sub-tab&#x27;s</text>
+<text class="rtext" x="5628" y="4016">selected tab and Records view, so that opening</text>
+<text class="rtext" x="5628" y="4030">a link shows them.</text>
+<text class="spec" x="5628" y="4063">league-records-page</text>
 <path class="trace" d="M5750.0,3952 V688 H1080.0 V670" marker-end="url(#openg)"/>
 <rect class="ext" x="5930" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="5930.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="6060.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="6060.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.1.2</tspan><tspan class="rname" dx="6">Manager kept across leagues</tspan></text>
-<text class="rtext" x="5938" y="4002">Switching league SHALL keep the chosen Manager</text>
-<text class="rtext" x="5938" y="4016">when they are in the other league, and</text>
-<text class="rtext" x="5938" y="4030">otherwise show that league&#x27;s first Manager.</text>
-<text class="spec" x="5938" y="4063">manager-pages</text>
-<path class="trace" d="M6060.0,3952 V812 H1080.0 V804" marker-end="url(#openg)"/>
+<text x="6060.0" y="3980" text-anchor="middle"><tspan class="rid">4.9.3.1</tspan><tspan class="rname" dx="6">Pop-up on phones</tspan></text>
+<text class="rtext" x="5938" y="4002">On phone widths the record pop-up SHALL open</text>
+<text class="rtext" x="5938" y="4016">as a sheet from the bottom of the screen with</text>
+<text class="rtext" x="5938" y="4030">a close button at least 48 by 48 px.</text>
+<text class="spec" x="5938" y="4063">league-records-page</text>
+<path class="trace" d="M6060.0,3952 V3358 H460.0 V3350" marker-end="url(#openg)"/>
 <rect class="ext" x="6240" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="6240.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="6370.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="6370.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.2</tspan><tspan class="rname" dx="6">Manager names link to their p…</tspan></text>
-<text class="rtext" x="6248" y="4002">Every Manager name in the site&#x27;s tables and</text>
-<text class="rtext" x="6248" y="4016">lists (Forecasts, Games, Positions, Player WAR</text>
-<text class="rtext" x="6248" y="4030">and Managers) SHALL link to that Manager&#x27;s</text>
-<text class="rtext" x="6248" y="4044">page in the same league.</text>
-<text class="spec" x="6248" y="4063">manager-pages</text>
-<path class="trace" d="M6370.0,3952 V281 H150.0 V268" marker-end="url(#openg)"/>
+<text x="6370.0" y="3980" text-anchor="middle"><tspan class="rid">4.9.5</tspan><tspan class="rname" dx="6">Records on phones</tspan></text>
+<text class="rtext" x="6248" y="4002">On phone widths each Records table SHALL</text>
+<text class="rtext" x="6248" y="4016">become a list of rows that fits the screen</text>
+<text class="rtext" x="6248" y="4030">without scrolling sideways, without the game</text>
+<text class="rtext" x="6248" y="4044">score lines.</text>
+<text class="spec" x="6248" y="4063">league-records-page</text>
+<path class="trace" d="M6370.0,3952 V951 H460.0 V938" marker-end="url(#openg)"/>
 <rect class="ext" x="6550" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="6550.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="6680.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="6680.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.3.1</tspan><tspan class="rname" dx="6">Crest</tspan></text>
-<text class="rtext" x="6558" y="4002">The crest SHALL be the team logo, else the</text>
-<text class="rtext" x="6558" y="4016">Sleeper avatar, else the initials in the team</text>
-<text class="rtext" x="6558" y="4030">colour with a light fill, darker letters and</text>
-<text class="rtext" x="6558" y="4044">outline, and at least 4.5:1 contrast for th…</text>
+<text x="6680.0" y="3980" text-anchor="middle"><tspan class="rid">4.4</tspan><tspan class="rname" dx="6">Managers sub-tab</tspan></text>
+<text class="rtext" x="6558" y="4002">The Managers sub-tab SHALL show one page per</text>
+<text class="rtext" x="6558" y="4016">Manager of the league, with a team info bar, a</text>
+<text class="rtext" x="6558" y="4030">season info bar and four cards: Roster, Team</text>
+<text class="rtext" x="6558" y="4044">History, Moves and Team News.</text>
 <text class="spec" x="6558" y="4063">manager-pages</text>
-<path class="trace" d="M6680.0,3952 V286 H150.0 V268" marker-end="url(#openg)"/>
+<path class="trace" d="M6680.0,3952 V554 H770.0 V536" marker-end="url(#openg)"/>
 <rect class="ext" x="6860" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="6860.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="6990.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="6990.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.3.4.2</tspan><tspan class="rname" dx="6">Form for screen readers</tspan></text>
-<text class="rtext" x="6868" y="4002">The Form bars SHALL carry their sequence of</text>
-<text class="rtext" x="6868" y="4016">results as text for screen readers.</text>
+<text x="6990.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.1.1</tspan><tspan class="rname" dx="6">Manager in the URL</tspan></text>
+<text class="rtext" x="6868" y="4002">The page URL SHALL name the chosen Manager, so</text>
+<text class="rtext" x="6868" y="4016">that opening a link shows that Manager&#x27;s page.</text>
 <text class="spec" x="6868" y="4063">manager-pages</text>
-<path class="trace" d="M6990.0,3952 V276 H150.0 V268" marker-end="url(#openg)"/>
+<path class="trace" d="M6990.0,3952 V678 H1080.0 V670" marker-end="url(#openg)"/>
 <rect class="ext" x="7170" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="7170.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="7300.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="7300.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.4.5</tspan><tspan class="rname" dx="6">Tile text fits</tspan></text>
-<text class="rtext" x="7178" y="4002">Tile text SHALL scale with the tile&#x27;s width,</text>
-<text class="rtext" x="7178" y="4016">label icons hiding first on the narrowest</text>
-<text class="rtext" x="7178" y="4030">tiles, with no text cut at every tested width</text>
-<text class="rtext" x="7178" y="4044">or with wide system fonts.</text>
+<text x="7300.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.1.2</tspan><tspan class="rname" dx="6">Manager kept across leagues</tspan></text>
+<text class="rtext" x="7178" y="4002">Switching league SHALL keep the chosen Manager</text>
+<text class="rtext" x="7178" y="4016">when they are in the other league, and</text>
+<text class="rtext" x="7178" y="4030">otherwise show that league&#x27;s first Manager.</text>
 <text class="spec" x="7178" y="4063">manager-pages</text>
-<path class="trace" d="M7300.0,3952 V951 H460.0 V938" marker-end="url(#openg)"/>
+<path class="trace" d="M7300.0,3952 V817 H1080.0 V804" marker-end="url(#openg)"/>
 <rect class="ext" x="7480" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="7480.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="7610.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="7610.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.4.8</tspan><tspan class="rname" dx="6">Tiles on a phone</tspan></text>
-<text class="rtext" x="7488" y="4002">Below 600 px wide, the tiles SHALL form two</text>
-<text class="rtext" x="7488" y="4016">columns, with the seventh spanning both.</text>
+<text x="7610.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.2</tspan><tspan class="rname" dx="6">Manager names link to their p…</tspan></text>
+<text class="rtext" x="7488" y="4002">Every Manager name in the site&#x27;s tables and</text>
+<text class="rtext" x="7488" y="4016">lists (Forecasts, Games, Positions, Player WAR</text>
+<text class="rtext" x="7488" y="4030">and Managers) SHALL link to that Manager&#x27;s</text>
+<text class="rtext" x="7488" y="4044">page in the same league.</text>
 <text class="spec" x="7488" y="4063">manager-pages</text>
-<path class="trace" d="M7610.0,3952 V956 H460.0 V938" marker-end="url(#openg)"/>
+<path class="trace" d="M7610.0,3952 V286 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="7790" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="7790.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="7920.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="7920.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.5</tspan><tspan class="rname" dx="6">Player names on tiles and car…</tspan></text>
-<text class="rtext" x="7798" y="4002">Player names on the tiles and cards SHALL show</text>
-<text class="rtext" x="7798" y="4016">in full when they fit and otherwise as first</text>
-<text class="rtext" x="7798" y="4030">initial and last name, with the full name as a</text>
-<text class="rtext" x="7798" y="4044">tooltip, never cut at any tested width.</text>
+<text x="7920.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.3.1</tspan><tspan class="rname" dx="6">Crest</tspan></text>
+<text class="rtext" x="7798" y="4002">The crest SHALL be the team logo, else the</text>
+<text class="rtext" x="7798" y="4016">Sleeper avatar, else the initials in the team</text>
+<text class="rtext" x="7798" y="4030">colour with a light fill, darker letters and</text>
+<text class="rtext" x="7798" y="4044">outline, and at least 4.5:1 contrast for th…</text>
 <text class="spec" x="7798" y="4063">manager-pages</text>
-<path class="trace" d="M7920.0,3952 V946 H460.0 V938" marker-end="url(#openg)"/>
+<path class="trace" d="M7920.0,3952 V276 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="8100" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="8100.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="8230.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="8230.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.8.2</tspan><tspan class="rname" dx="6">Show more on a phone</tspan></text>
-<text class="rtext" x="8108" y="4002">Below 600 px wide, the card SHALL show the</text>
-<text class="rtext" x="8108" y="4016">first seven stories under the feature, with a</text>
-<text class="rtext" x="8108" y="4030">&quot;Show more&quot; button for the rest.</text>
+<text x="8230.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.3.4.2</tspan><tspan class="rname" dx="6">Form for screen readers</tspan></text>
+<text class="rtext" x="8108" y="4002">The Form bars SHALL carry their sequence of</text>
+<text class="rtext" x="8108" y="4016">results as text for screen readers.</text>
 <text class="spec" x="8108" y="4063">manager-pages</text>
-<path class="trace" d="M8230.0,3952 V951 H460.0 V938" marker-end="url(#openg)"/>
+<path class="trace" d="M8230.0,3952 V281 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="8410" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="8410.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="8540.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="8540.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.10.5</tspan><tspan class="rname" dx="6">Moves text never cut</tspan></text>
-<text class="rtext" x="8418" y="4002">On the Moves card, a row&#x27;s second line and any</text>
-<text class="rtext" x="8418" y="4016">name too wide even when shortened SHALL wrap</text>
-<text class="rtext" x="8418" y="4030">onto another line, never cut, at every tested</text>
-<text class="rtext" x="8418" y="4044">width and with wide system fonts.</text>
+<text x="8540.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.4.5</tspan><tspan class="rname" dx="6">Tile text fits</tspan></text>
+<text class="rtext" x="8418" y="4002">Tile text SHALL scale with the tile&#x27;s width,</text>
+<text class="rtext" x="8418" y="4016">label icons hiding first on the narrowest</text>
+<text class="rtext" x="8418" y="4030">tiles, with no text cut at every tested width</text>
+<text class="rtext" x="8418" y="4044">or with wide system fonts.</text>
 <text class="spec" x="8418" y="4063">manager-pages</text>
 <path class="trace" d="M8540.0,3952 V956 H460.0 V938" marker-end="url(#openg)"/>
 <rect class="ext" x="8720" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="8720.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="8850.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="8850.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.11.1</tspan><tspan class="rname" dx="6">Cards on a phone</tspan></text>
-<text class="rtext" x="8728" y="4002">Below 600 px wide, a tab row (Roster, History,</text>
-<text class="rtext" x="8728" y="4016">Moves, News) SHALL show one card at a time,</text>
-<text class="rtext" x="8728" y="4030">each card sharing one minimum height, growing</text>
-<text class="rtext" x="8728" y="4044">with longer content and never scrolling ins…</text>
+<text x="8850.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.4.8</tspan><tspan class="rname" dx="6">Tiles on a phone</tspan></text>
+<text class="rtext" x="8728" y="4002">Below 600 px wide, the tiles SHALL form two</text>
+<text class="rtext" x="8728" y="4016">columns, with the seventh spanning both.</text>
 <text class="spec" x="8728" y="4063">manager-pages</text>
 <path class="trace" d="M8850.0,3952 V946 H460.0 V938" marker-end="url(#openg)"/>
 <rect class="ext" x="9030" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="9030.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="9160.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="9160.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.12</tspan><tspan class="rname" dx="6">Managers sub-tab accessible</tspan></text>
-<text class="rtext" x="9038" y="4002">The Managers sub-tab SHALL meet WCAG 2.2 AA,</text>
-<text class="rtext" x="9038" y="4016">with 48 by 48 px touch targets on phones, at</text>
-<text class="rtext" x="9038" y="4030">every tested width and in both themes.</text>
+<text x="9160.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.5</tspan><tspan class="rname" dx="6">Player names on tiles and car…</tspan></text>
+<text class="rtext" x="9038" y="4002">Player names on the tiles and cards SHALL show</text>
+<text class="rtext" x="9038" y="4016">in full when they fit and otherwise as first</text>
+<text class="rtext" x="9038" y="4030">initial and last name, with the full name as a</text>
+<text class="rtext" x="9038" y="4044">tooltip, never cut at any tested width.</text>
 <text class="spec" x="9038" y="4063">manager-pages</text>
-<path class="trace" d="M9160.0,3952 V281 H150.0 V268" marker-end="url(#openg)"/>
+<path class="trace" d="M9160.0,3952 V951 H460.0 V938" marker-end="url(#openg)"/>
 <rect class="ext" x="9340" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="9340.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="9470.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="9470.0" y="3980" text-anchor="middle"><tspan class="rid">5.4.4</tspan><tspan class="rname" dx="6">Refresh button</tspan></text>
-<text class="rtext" x="9348" y="4002">Each page SHALL show a &quot;Refresh Data&quot; button</text>
-<text class="rtext" x="9348" y="4016">in the header, aligned with the other header</text>
-<text class="rtext" x="9348" y="4030">buttons and on one line, when the relay&#x27;s</text>
-<text class="rtext" x="9348" y="4044">address is configured.</text>
-<text class="spec" x="9348" y="4063">manual-refresh</text>
-<path class="trace" d="M9470.0,3952 V286 H150.0 V268" marker-end="url(#openg)"/>
+<text x="9470.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.8.2</tspan><tspan class="rname" dx="6">Show more on a phone</tspan></text>
+<text class="rtext" x="9348" y="4002">Below 600 px wide, the card SHALL show the</text>
+<text class="rtext" x="9348" y="4016">first seven stories under the feature, with a</text>
+<text class="rtext" x="9348" y="4030">&quot;Show more&quot; button for the rest.</text>
+<text class="spec" x="9348" y="4063">manager-pages</text>
+<path class="trace" d="M9470.0,3952 V956 H460.0 V938" marker-end="url(#openg)"/>
 <rect class="ext" x="9650" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="9650.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="9780.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="9780.0" y="3980" text-anchor="middle"><tspan class="rid">5.4.4.2</tspan><tspan class="rname" dx="6">Note keeps its space</tspan></text>
-<text class="rtext" x="9658" y="4002">The refresh note SHALL keep a fixed space</text>
-<text class="rtext" x="9658" y="4016">within the screen, so that no message moves</text>
-<text class="rtext" x="9658" y="4030">the button or any other element, with any</text>
-<text class="rtext" x="9658" y="4044">longer explanation as its tooltip.</text>
-<text class="spec" x="9658" y="4063">manual-refresh</text>
+<text x="9780.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.10.5</tspan><tspan class="rname" dx="6">Moves text never cut</tspan></text>
+<text class="rtext" x="9658" y="4002">On the Moves card, a row&#x27;s second line and any</text>
+<text class="rtext" x="9658" y="4016">name too wide even when shortened SHALL wrap</text>
+<text class="rtext" x="9658" y="4030">onto another line, never cut, at every tested</text>
+<text class="rtext" x="9658" y="4044">width and with wide system fonts.</text>
+<text class="spec" x="9658" y="4063">manager-pages</text>
 <path class="trace" d="M9780.0,3952 V946 H460.0 V938" marker-end="url(#openg)"/>
 <rect class="ext" x="9960" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="9960.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="10090.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="10090.0" y="3980" text-anchor="middle"><tspan class="rid">7.9</tspan><tspan class="rname" dx="6">Calibration page</tspan></text>
-<text class="rtext" x="9968" y="4002">The site SHALL have a calibration page titled</text>
-<text class="rtext" x="9968" y="4016">&quot;How Good Are These Forecasts?&quot;, linked from</text>
-<text class="rtext" x="9968" y="4030">every league page.</text>
-<text class="spec" x="9968" y="4063">odds-calibration</text>
-<path class="trace" d="M10090.0,3952 V281 H150.0 V268" marker-end="url(#openg)"/>
+<text x="10090.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.11.1</tspan><tspan class="rname" dx="6">Cards on a phone</tspan></text>
+<text class="rtext" x="9968" y="4002">Below 600 px wide, a tab row (Roster, History,</text>
+<text class="rtext" x="9968" y="4016">Moves, News) SHALL show one card at a time,</text>
+<text class="rtext" x="9968" y="4030">each card sharing one minimum height, growing</text>
+<text class="rtext" x="9968" y="4044">with longer content and never scrolling ins…</text>
+<text class="spec" x="9968" y="4063">manager-pages</text>
+<path class="trace" d="M10090.0,3952 V951 H460.0 V938" marker-end="url(#openg)"/>
 <rect class="ext" x="10270" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="10270.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="10400.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="10400.0" y="3980" text-anchor="middle"><tspan class="rid">3.1</tspan><tspan class="rname" dx="6">Positions sub-tab</tspan></text>
-<text class="rtext" x="10278" y="4002">The Positions sub-tab SHALL show one dot chart</text>
-<text class="rtext" x="10278" y="4016">per position, comparing every Manager&#x27;s</text>
-<text class="rtext" x="10278" y="4030">rostered Players by points per game against</text>
-<text class="rtext" x="10278" y="4044">the replacement level.</text>
-<text class="spec" x="10278" y="4063">positional-rankings-page</text>
-<path class="trace" d="M10400.0,3952 V554 H770.0 V536" marker-end="url(#openg)"/>
+<text x="10400.0" y="3980" text-anchor="middle"><tspan class="rid">4.4.12</tspan><tspan class="rname" dx="6">Managers sub-tab accessible</tspan></text>
+<text class="rtext" x="10278" y="4002">The Managers sub-tab SHALL meet WCAG 2.2 AA,</text>
+<text class="rtext" x="10278" y="4016">with 48 by 48 px touch targets on phones, at</text>
+<text class="rtext" x="10278" y="4030">every tested width and in both themes.</text>
+<text class="spec" x="10278" y="4063">manager-pages</text>
+<path class="trace" d="M10400.0,3952 V286 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="10580" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="10580.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="10710.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="10710.0" y="3980" text-anchor="middle"><tspan class="rid">3.1.10</tspan><tspan class="rname" dx="6">Dot popup</tspan></text>
-<text class="rtext" x="10588" y="4002">Hovering over a dot, focusing it with the</text>
-<text class="rtext" x="10588" y="4016">keyboard or tapping it SHALL show a popup with</text>
-<text class="rtext" x="10588" y="4030">the Player&#x27;s name and his points per game to</text>
-<text class="rtext" x="10588" y="4044">one decimal.</text>
-<text class="spec" x="10588" y="4063">positional-rankings-page</text>
+<text x="10710.0" y="3980" text-anchor="middle"><tspan class="rid">5.4.4</tspan><tspan class="rname" dx="6">Refresh button</tspan></text>
+<text class="rtext" x="10588" y="4002">Each page SHALL show a &quot;Refresh Data&quot; button</text>
+<text class="rtext" x="10588" y="4016">in the header, aligned with the other header</text>
+<text class="rtext" x="10588" y="4030">buttons and on one line, when the relay&#x27;s</text>
+<text class="rtext" x="10588" y="4044">address is configured.</text>
+<text class="spec" x="10588" y="4063">manual-refresh</text>
 <path class="trace" d="M10710.0,3952 V276 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="10890" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="10890.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="11020.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="11020.0" y="3980" text-anchor="middle"><tspan class="rid">3.1.11</tspan><tspan class="rname" dx="6">Positions on a phone</tspan></text>
-<text class="rtext" x="10898" y="4002">At every tested phone width, the charts SHALL</text>
-<text class="rtext" x="10898" y="4016">stack in one column, with every row and the</text>
-<text class="rtext" x="10898" y="4030">top Player&#x27;s name inside its chart and no</text>
-<text class="rtext" x="10898" y="4044">sideways page scrolling.</text>
-<text class="spec" x="10898" y="4063">positional-rankings-page</text>
+<text x="11020.0" y="3980" text-anchor="middle"><tspan class="rid">5.4.4.2</tspan><tspan class="rname" dx="6">Note keeps its space</tspan></text>
+<text class="rtext" x="10898" y="4002">The refresh note SHALL keep a fixed space</text>
+<text class="rtext" x="10898" y="4016">within the screen, so that no message moves</text>
+<text class="rtext" x="10898" y="4030">the button or any other element, with any</text>
+<text class="rtext" x="10898" y="4044">longer explanation as its tooltip.</text>
+<text class="spec" x="10898" y="4063">manual-refresh</text>
 <path class="trace" d="M11020.0,3952 V951 H460.0 V938" marker-end="url(#openg)"/>
 <rect class="ext" x="11200" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="11200.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="11330.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="11330.0" y="3980" text-anchor="middle"><tspan class="rid">5.3.3</tspan><tspan class="rname" dx="6">In-place data swap</tspan></text>
-<text class="rtext" x="11208" y="4002">When newer deployed data arrives under</text>
-<text class="rtext" x="11208" y="4016">unchanged site code, the page SHALL redraw the</text>
-<text class="rtext" x="11208" y="4030">open view in place, keeping the league, sub-</text>
-<text class="rtext" x="11208" y="4044">tab, Games week, each card&#x27;s view, open ful…</text>
-<text class="spec" x="11208" y="4063">site-updates</text>
+<text x="11330.0" y="3980" text-anchor="middle"><tspan class="rid">7.9</tspan><tspan class="rname" dx="6">Calibration page</tspan></text>
+<text class="rtext" x="11208" y="4002">The site SHALL have a calibration page titled</text>
+<text class="rtext" x="11208" y="4016">&quot;How Good Are These Forecasts?&quot;, linked from</text>
+<text class="rtext" x="11208" y="4030">every league page.</text>
+<text class="spec" x="11208" y="4063">odds-calibration</text>
 <path class="trace" d="M11330.0,3952 V286 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="11510" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="11510.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="11640.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="11640.0" y="3980" text-anchor="middle"><tspan class="rid">5.3.6</tspan><tspan class="rname" dx="6">Place kept across reloads</tspan></text>
-<text class="rtext" x="11518" y="4002">The page URL SHALL also carry the Games week,</text>
-<text class="rtext" x="11518" y="4016">so that a reload or a shared link opens the</text>
-<text class="rtext" x="11518" y="4030">same week.</text>
-<text class="spec" x="11518" y="4063">site-updates</text>
-<path class="trace" d="M11640.0,3952 V678 H1080.0 V670" marker-end="url(#openg)"/>
+<text x="11640.0" y="3980" text-anchor="middle"><tspan class="rid">3.1</tspan><tspan class="rname" dx="6">Positions sub-tab</tspan></text>
+<text class="rtext" x="11518" y="4002">The Positions sub-tab SHALL show one dot chart</text>
+<text class="rtext" x="11518" y="4016">per position, comparing every Manager&#x27;s</text>
+<text class="rtext" x="11518" y="4030">rostered Players by points per game against</text>
+<text class="rtext" x="11518" y="4044">the replacement level.</text>
+<text class="spec" x="11518" y="4063">positional-rankings-page</text>
+<path class="trace" d="M11640.0,3952 V544 H770.0 V536" marker-end="url(#openg)"/>
 <rect class="ext" x="11820" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="11820.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="11950.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="11950.0" y="3980" text-anchor="middle"><tspan class="rid">3.2</tspan><tspan class="rname" dx="6">Player WAR sub-tab</tspan></text>
-<text class="rtext" x="11828" y="4002">The Player WAR sub-tab SHALL show per-position</text>
-<text class="rtext" x="11828" y="4016">leaderboards of Player WAR for a chosen season</text>
-<text class="rtext" x="11828" y="4030">or all time.</text>
-<text class="spec" x="11828" y="4063">war-leaderboard-page</text>
-<path class="trace" d="M11950.0,3952 V549 H770.0 V536" marker-end="url(#openg)"/>
+<text x="11950.0" y="3980" text-anchor="middle"><tspan class="rid">3.1.10</tspan><tspan class="rname" dx="6">Dot popup</tspan></text>
+<text class="rtext" x="11828" y="4002">Hovering over a dot, focusing it with the</text>
+<text class="rtext" x="11828" y="4016">keyboard or tapping it SHALL show a popup with</text>
+<text class="rtext" x="11828" y="4030">the Player&#x27;s name and his points per game to</text>
+<text class="rtext" x="11828" y="4044">one decimal.</text>
+<text class="spec" x="11828" y="4063">positional-rankings-page</text>
+<path class="trace" d="M11950.0,3952 V281 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="12130" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="12130.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="12260.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="12260.0" y="3980" text-anchor="middle"><tspan class="rid">3.2.2.3</tspan><tspan class="rname" dx="6">Leaderboards on a phone</tspan></text>
-<text class="rtext" x="12138" y="4002">At every tested phone width, the leaderboards</text>
-<text class="rtext" x="12138" y="4016">SHALL stack in one column with no sideways</text>
-<text class="rtext" x="12138" y="4030">page scrolling.</text>
-<text class="spec" x="12138" y="4063">war-leaderboard-page</text>
+<text x="12260.0" y="3980" text-anchor="middle"><tspan class="rid">3.1.11</tspan><tspan class="rname" dx="6">Positions on a phone</tspan></text>
+<text class="rtext" x="12138" y="4002">At every tested phone width, the charts SHALL</text>
+<text class="rtext" x="12138" y="4016">stack in one column, with every row and the</text>
+<text class="rtext" x="12138" y="4030">top Player&#x27;s name inside its chart and no</text>
+<text class="rtext" x="12138" y="4044">sideways page scrolling.</text>
+<text class="spec" x="12138" y="4063">positional-rankings-page</text>
 <path class="trace" d="M12260.0,3952 V956 H460.0 V938" marker-end="url(#openg)"/>
 <rect class="ext" x="12440" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="12440.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="12570.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="12570.0" y="3980" text-anchor="middle"><tspan class="rid">3.2.5.2</tspan><tspan class="rname" dx="6">Pinned names on a phone</tspan></text>
-<text class="rtext" x="12448" y="4002">Below 600 px wide, the overlay&#x27;s name column</text>
-<text class="rtext" x="12448" y="4016">SHALL stay pinned at the table&#x27;s left edge</text>
-<text class="rtext" x="12448" y="4030">while the table scrolls sideways.</text>
-<text class="spec" x="12448" y="4063">war-leaderboard-page</text>
-<path class="trace" d="M12570.0,3952 V946 H460.0 V938" marker-end="url(#openg)"/>
+<text x="12570.0" y="3980" text-anchor="middle"><tspan class="rid">5.3.3</tspan><tspan class="rname" dx="6">In-place data swap</tspan></text>
+<text class="rtext" x="12448" y="4002">When newer deployed data arrives under</text>
+<text class="rtext" x="12448" y="4016">unchanged site code, the page SHALL redraw the</text>
+<text class="rtext" x="12448" y="4030">open view in place, keeping the league, sub-</text>
+<text class="rtext" x="12448" y="4044">tab, Games week, each card&#x27;s view, open ful…</text>
+<text class="spec" x="12448" y="4063">site-updates</text>
+<path class="trace" d="M12570.0,3952 V276 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="12750" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="12750.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="12880.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="12880.0" y="3980" text-anchor="middle"><tspan class="rid">4.9</tspan><tspan class="rname" dx="6">League sub-tab</tspan></text>
-<text class="rtext" x="12758" y="4002">The League sub-tab SHALL show league-wide</text>
-<text class="rtext" x="12758" y="4016">information for the current and past seasons</text>
-<text class="rtext" x="12758" y="4030">in tabs of its own, the first being Records.</text>
-<text class="spec" x="12758" y="4063">league-records-page · proposed</text>
-<path class="trace" d="M12880.0,3952 V549 H770.0 V536" marker-end="url(#openg)"/>
+<text x="12880.0" y="3980" text-anchor="middle"><tspan class="rid">5.3.6</tspan><tspan class="rname" dx="6">Place kept across reloads</tspan></text>
+<text class="rtext" x="12758" y="4002">The page URL SHALL also carry the Games week,</text>
+<text class="rtext" x="12758" y="4016">so that a reload or a shared link opens the</text>
+<text class="rtext" x="12758" y="4030">same week.</text>
+<text class="spec" x="12758" y="4063">site-updates</text>
+<path class="trace" d="M12880.0,3952 V683 H1080.0 V670" marker-end="url(#openg)"/>
 <rect class="ext" x="13060" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="13060.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="13190.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="13190.0" y="3980" text-anchor="middle"><tspan class="rid">4.9.1</tspan><tspan class="rname" dx="6">Tab and view in the URL</tspan></text>
-<text class="rtext" x="13068" y="4002">The page URL SHALL name the League sub-tab&#x27;s</text>
-<text class="rtext" x="13068" y="4016">selected tab and Records view, so that opening</text>
-<text class="rtext" x="13068" y="4030">a link shows them.</text>
-<text class="spec" x="13068" y="4063">league-records-page · proposed</text>
-<path class="trace" d="M13190.0,3952 V688 H1080.0 V670" marker-end="url(#openg)"/>
+<text x="13190.0" y="3980" text-anchor="middle"><tspan class="rid">3.2</tspan><tspan class="rname" dx="6">Player WAR sub-tab</tspan></text>
+<text class="rtext" x="13068" y="4002">The Player WAR sub-tab SHALL show per-position</text>
+<text class="rtext" x="13068" y="4016">leaderboards of Player WAR for a chosen season</text>
+<text class="rtext" x="13068" y="4030">or all time.</text>
+<text class="spec" x="13068" y="4063">war-leaderboard-page</text>
+<path class="trace" d="M13190.0,3952 V554 H770.0 V536" marker-end="url(#openg)"/>
 <rect class="ext" x="13370" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="13370.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="13500.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="13500.0" y="3980" text-anchor="middle"><tspan class="rid">4.9.3.1</tspan><tspan class="rname" dx="6">Pop-up on phones</tspan></text>
-<text class="rtext" x="13378" y="4002">On phone widths the record pop-up SHALL open</text>
-<text class="rtext" x="13378" y="4016">as a sheet from the bottom of the screen with</text>
-<text class="rtext" x="13378" y="4030">a close button at least 48 by 48 px.</text>
-<text class="spec" x="13378" y="4063">league-records-page · proposed</text>
-<path class="trace" d="M13500.0,3952 V3358 H460.0 V3350" marker-end="url(#openg)"/>
+<text x="13500.0" y="3980" text-anchor="middle"><tspan class="rid">3.2.2.3</tspan><tspan class="rname" dx="6">Leaderboards on a phone</tspan></text>
+<text class="rtext" x="13378" y="4002">At every tested phone width, the leaderboards</text>
+<text class="rtext" x="13378" y="4016">SHALL stack in one column with no sideways</text>
+<text class="rtext" x="13378" y="4030">page scrolling.</text>
+<text class="spec" x="13378" y="4063">war-leaderboard-page</text>
+<path class="trace" d="M13500.0,3952 V946 H460.0 V938" marker-end="url(#openg)"/>
 <rect class="ext" x="13680" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="13680.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="13810.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="13810.0" y="3980" text-anchor="middle"><tspan class="rid">4.9.5</tspan><tspan class="rname" dx="6">Records on phones</tspan></text>
-<text class="rtext" x="13688" y="4002">On phone widths each Records table SHALL</text>
-<text class="rtext" x="13688" y="4016">become a list of rows that fits the screen</text>
-<text class="rtext" x="13688" y="4030">without scrolling sideways, without the game</text>
-<text class="rtext" x="13688" y="4044">score lines.</text>
-<text class="spec" x="13688" y="4063">league-records-page · proposed</text>
+<text x="13810.0" y="3980" text-anchor="middle"><tspan class="rid">3.2.5.2</tspan><tspan class="rname" dx="6">Pinned names on a phone</tspan></text>
+<text class="rtext" x="13688" y="4002">Below 600 px wide, the overlay&#x27;s name column</text>
+<text class="rtext" x="13688" y="4016">SHALL stay pinned at the table&#x27;s left edge</text>
+<text class="rtext" x="13688" y="4030">while the table scrolls sideways.</text>
+<text class="spec" x="13688" y="4063">war-leaderboard-page</text>
 <path class="trace" d="M13810.0,3952 V951 H460.0 V938" marker-end="url(#openg)"/>
 <path class="derive" d="M40,4170 H86" marker-end="url(#open)"/><text class="lg" x="96" y="4174">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,4170 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="4174">«trace»: extra parent</text>
