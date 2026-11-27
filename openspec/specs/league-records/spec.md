@@ -16,12 +16,12 @@ The export SHALL write one league records file per league, holding every league 
 - **WHEN** `python -m ffapp build` runs
 - **THEN** each configured league has a league records file in the site data
 
-### Requirement: 4.8.1 Games that matter
-League records built from games SHALL count only games that matter: regular-season games, winners-bracket games on the path to the final, the 3rd place game and, in a toilet-bowl league, losers-bracket games on the path to the toilet bowl final and that final.
+### Requirement: 4.8.1 Meaningful Games
+League records built from games SHALL count only Meaningful Games: regular-season games, winners-bracket games on the path to the championship, the championship, the 3rd place game and, in a toilet-bowl league, the toilet bowl games on the path to its final and that final.
 
-**Rationale:** Consolation and placement games decide nothing, and lineups in them are often weaker.
+**Rationale:** Consolation and other placement games decide nothing, and lineups in them are often weaker.
 **Traces to:** 4.8
-**Verified by:** Test: `tests/test_league_records.py::test_only_games_that_matter_count`
+**Verified by:** Test: `tests/test_league_records.py::test_only_meaningful_games_count`
 
 #### Scenario: Placement game
 - **WHEN** two teams play the 5th place game with a 190-point score
@@ -42,7 +42,7 @@ Each league record SHALL list its top 25 entries, equal values sharing a rank an
 - **THEN** both rank 4, the 2024 game first
 
 ### Requirement: 4.8.3 Champions
-For each finished season, the export SHALL give the champion, runner-up and toilet bowl champion (last place in a league without a toilet bowl), the champion's regular-season record and points, and the champion's best Player by WAR in his weeks on that roster.
+For each finished season, the export SHALL give the champion, runner-up and toilet bowl champion (in a league without a toilet bowl, the team last in the regular-season standings), the champion's regular-season record and points, and the champion's best Player by WAR in his weeks on that roster.
 
 **Traces to:** 4.8; 4.5.2
 **Verified by:** Test: `tests/test_league_records.py::test_champions_list_finished_seasons`
@@ -50,6 +50,10 @@ For each finished season, the export SHALL give the champion, runner-up and toil
 #### Scenario: Dynasty season
 - **WHEN** the dynasty league's 2024 season is final
 - **THEN** its entry gives the champion, runner-up and last place, the champion's 12-2 record and points, and its best Player by WAR
+
+#### Scenario: Last place won consolation games
+- **WHEN** a dynasty team went 2-12, last in the standings, and won two consolation games
+- **THEN** it is that season's last place
 
 ### Requirement: 4.8.3.1 Finished seasons only
 A season SHALL appear in Champions once its final has been played.
@@ -72,7 +76,7 @@ For each Manager, the export SHALL give regular-season wins, losses, ties, win %
 - **THEN** their entry gives 56-24, .700 and +861.7
 
 ### Requirement: 4.8.4.1 Playoff record
-A Manager's playoff record SHALL count their winners-bracket games that matter, the 3rd place game included.
+A Manager's playoff record SHALL count their winners-bracket Meaningful Games, the 3rd place game included.
 
 **Traces to:** 4.8.4; 4.8.1
 **Verified by:** Test: `tests/test_league_records.py::test_all_time_standings_example`
@@ -142,10 +146,10 @@ Season league records other than streaks SHALL use regular-season games only.
 - **THEN** their Most Points total is unchanged
 
 ### Requirement: 4.8.6.2 Streaks
-A streak SHALL count consecutive wins or consecutive losses in games that matter within one season.
+A streak SHALL count consecutive wins or consecutive losses in Meaningful Games within one season.
 
 **Traces to:** 4.8.6; 4.8.1
-**Verified by:** Test: `tests/test_league_records.py::test_streaks_count_games_that_matter`
+**Verified by:** Test: `tests/test_league_records.py::test_streaks_count_meaningful_games`
 
 #### Scenario: Toilet bowl losses
 - **WHEN** a team ends the regular season on 9 losses and loses its two toilet bowl games
@@ -182,6 +186,10 @@ Each season entry SHALL give the season's result: 1st, 2nd, 3rd, Playoffs, Misse
 #### Scenario: Missed the playoffs and won the toilet bowl
 - **WHEN** a redraft team missed the playoffs and lost the toilet bowl final
 - **THEN** its result is Toilet Bowl Champ
+
+#### Scenario: Worst record in a consolation league
+- **WHEN** a dynasty team went 2-12, last in the standings, and won two consolation games
+- **THEN** its result is Last
 
 ### Requirement: 3.6 Player league records
 The export SHALL give four Player league records per league (best games, best bench games, career scoring and championships), each available for every position and for all positions together.
