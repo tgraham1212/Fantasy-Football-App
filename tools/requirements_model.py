@@ -118,8 +118,12 @@ def parse_requirements(text: str, spec: str, source: str) -> list[Req]:
     return reqs
 
 
+RENAMED_FROM_RE = re.compile(r"^-\s*FROM:\s*`?###\s*Requirement:\s*(.+?)`?\s*$", re.M)
+
+
 def load(root: Path) -> list[Req]:
-    """Every requirement: main specs, overridden by active changes' ADDED and MODIFIED versions."""
+    """Every requirement: main specs, overridden by active changes' ADDED and MODIFIED versions; a
+    RENAMED requirement's old heading is dropped."""
     root = Path(root)
     by_key: dict[tuple[str, str], Req] = {}
     for path in sorted((root / "openspec" / "specs").glob("*/spec.md")):
@@ -131,6 +135,8 @@ def load(root: Path) -> list[Req]:
         if change == "archive":
             continue
         secs = _sections(path.read_text(encoding="utf-8"))
+        for old_heading in RENAMED_FROM_RE.findall(secs.get("RENAMED Requirements", "")):
+            by_key.pop((path.parent.name, old_heading.strip()), None)  # the new name replaces it
         for name in ("ADDED Requirements", "MODIFIED Requirements"):
             for r in parse_requirements(secs.get(name, ""), path.parent.name, change):
                 old = by_key.get((r.spec, r.heading))

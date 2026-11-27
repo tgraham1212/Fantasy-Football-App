@@ -300,6 +300,17 @@ def test_staleness_follows_commit_order_not_dates(tmp_path):
     assert model.GitHistory(repo).changed_after("openspec/specs/a/spec.md", "a"), "edited after its review"
 
 
+def test_renamed_requirement_replaces_its_old_heading(tmp_path):
+    root = make_root(tmp_path, {"a": [req("1.1 Old Name", traces="1")]})
+    delta = root / "openspec" / "changes" / "c" / "specs" / "a" / "spec.md"
+    delta.parent.mkdir(parents=True)
+    delta.write_text("## RENAMED Requirements\n\n- FROM: `### Requirement: 1.1 Old Name`\n"
+                     "- TO: `### Requirement: 1.1 New Name`\n\n## MODIFIED Requirements\n\n"
+                     + req("1.1 New Name", traces="1"), encoding="utf-8")
+    assert [r.heading for r in model.load(root) if r.spec == "a"] == ["1.1 New Name"]
+    assert not [f for f in findings(root) if "duplicate ID" in f]
+
+
 def test_requirement_changes_are_tracked_by_block(tmp_path):
     """GitHistory follows each requirement's own block: an edit to one requirement, or a new one, dates
     only that requirement, wherever it sits; an edit elsewhere in the file leaves the others alone,
