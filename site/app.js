@@ -241,14 +241,15 @@ function initTableHead() {
 // -- sub-tabs ------------------------------------------------------------------------
 
 function parseHash() {
-  const [league, page, extra, more] = location.hash.replace("#", "").split("/");
+  const parts = location.hash.replace("#", "").split("/");
+  const [league, page, extra] = parts;
   const n = Number(extra);
   return {
     league: league || "",
     page: ["war", "games", "positions", "managers", "league"].includes(page) ? page : "predictions",
     week: page === "games" && Number.isInteger(n) && n > 0 ? n : null,
     manager: page === "managers" && extra ? extra : null,
-    leagueView: page === "league" ? (more === "players" ? "players" : "managers") : null,
+    leagueView: page === "league" ? parts.slice(2) : null,  // the League tab and its views (league.js)
   };
 }
 
@@ -876,7 +877,7 @@ async function loadLeague(key, { keep = false, week = null, manager = null, leag
   await loadPositions(entry.key, entry.positions, ownerColor);
   await loadManagers(entry.key, payload.league_name, entry.managers, ownerColor, manager, () => writeHash(), (page) => showPage(page));
   await loadWar(entry.key, payload.league_name, entry.war);
-  await loadRecords(entry.key, payload.league_name, entry.records, leagueView, () => writeHash());
+  await loadRecords(entry.key, payload.league_name, entry.records, leagueView, () => writeHash(), entry.schedule);
 }
 
 async function main() {

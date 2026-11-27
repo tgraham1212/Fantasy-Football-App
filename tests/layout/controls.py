@@ -31,7 +31,7 @@ LANDMARKS = (
     ".war-table", "#war-controls", "#war-dialog", "#war-dialog .dialog-head", "#war-dialog-close",
     "#outcome-switcher", "footer", "#positions-controls", ".pos-card",
     "#mgr-picker", ".mgr-bar", ".mgr-season", ".mgr-cardtabs", ".mgr-card",
-    "#lg-tabs", "#lg-views", "#lg-dialog", "#lg-dialog .dialog-head", "#lg-dialog-close",
+    "#lg-tabs", "#lg-views", "#lg-dialog", "#lg-dialog .dialog-head", "#lg-dialog-close", "#sos-controls",
 )
 # Elements that must stay inside the screen horizontally.
 INSIDE = ("header.top > *", "#refresh-note", "#version-note", "#subtabs")
@@ -104,6 +104,8 @@ VIEWS = {
     "league": View("league", f"index.html#{LEAGUE}/league/records"),
     "league-players": View("league-players", f"index.html#{LEAGUE}/league/records/players"),
     "league-dialog": View("league-dialog", f"index.html#{LEAGUE}/league/records", _league_dialog),
+    "league-schedule": View("league-schedule", f"index.html#{LEAGUE}/league/schedule"),
+    "league-swap": View("league-swap", f"index.html#{LEAGUE}/league/schedule/swap"),
 }
 
 
@@ -336,7 +338,10 @@ CONTROLS: tuple[Control, ...] = (
             regions=("#war-dialog",), self_moves=True),
 
     # League page (Records)
-    Control("league tabs", "league", "#lg-tabs button", (State("records", click("#lg-tabs [data-lg-tab='records']")),), regions=("#lg-managers", "#lg-players")),
+    Control("league tabs", "league", "#lg-tabs button",
+            (State("schedule", click("#lg-tabs [data-lg-tab='schedule']", 600)), State("records", click("#lg-tabs [data-lg-tab='records']", 600))),
+            # the tab swaps the Records view switch for the Strength of Schedule controls and the page below
+            regions=("#lg-managers", "#lg-players", "#sos-page", "#lg-views", "#sos-controls", "#lg-unavailable"), below="#lg-tabs"),
     Control("records view", "league", "#lg-views button",
             (State("players", click("#lg-views [data-lg-view='players']", 500)), State("managers", click("#lg-views [data-lg-view='managers']", 500))),
             regions=("#lg-managers", "#lg-players"), below="#lg-views"),
@@ -356,6 +361,23 @@ CONTROLS: tuple[Control, ...] = (
     Control("player top 25", "league-players", "#lg-players .lg-more",
             (State("open", click("#lg-players [data-card='career'] .lg-more")),), regions=("#lg-dialog",)),
     Control("record pop-up list", "league-dialog", "#lg-dialog-body"),
+
+    # League page (Strength of Schedule)
+    Control("strength of schedule view", "league-schedule", "#sos-views button",
+            (State("swap", click("#sos-views [data-sos-view='swap']", 500)), State("ranks", click("#sos-views [data-sos-view='ranks']", 500))),
+            regions=("#sos-page",), below="#sos-controls"),
+    Control("strength of schedule season", "league-schedule", "#sos-season",
+            (State("2025", select_value("#sos-season", "2025")),), regions=("#sos-page",), below="#sos-controls"),
+    Control("weekly ranks sort", "league-schedule", "#sos-ranks thead button.sort",
+            (State("season", click("#sos-ranks thead [data-col='season'] button.sort")), State("flipped", click("#sos-ranks thead [data-col='season'] button.sort"))),
+            regions=("#sos-ranks .sos-wrap",)),
+    Control("schedule swap sort", "league-swap", "#sos-swap thead button.sort",
+            (State("index", click("#sos-swap thead [data-col='index'] button.sort")), State("own", click("#sos-swap thead [data-col='own'] button.sort"))),
+            regions=("#sos-swap .sos-wrap",)),
+    Control("strength of schedule tables", "league-schedule", "#sos-page .sos-wrap"),
+    Control("manager name links (schedule)", "league-schedule", "#sos-page a.manager-link"),
+    Control("schedule swap table", "league-swap", "#sos-swap .sos-wrap"),
+    Control("manager name links (swap)", "league-swap", "#sos-swap a.manager-link"),
     Control("record pop-up close", "league-dialog", "#lg-dialog-close", (State("closed", click("#lg-dialog-close")),),
             regions=("#lg-dialog",), self_moves=True),
 

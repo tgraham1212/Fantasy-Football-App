@@ -185,6 +185,28 @@ def simulate(inputs: SimInputs, noise: NoiseModel, *, runs: int = 10_000, seed: 
     )
 
 
+def upcoming_pairings(result: SimResult, weeks: list[int]) -> dict[str, dict]:
+    """For each upcoming regular-season week: every team's mean simulated score and, for every pair
+    of teams, the share of runs in which the first outscores the second (ties counted as half), so
+    strength of schedule can compare teams that do not meet. Keys are strings, as in the stored JSON.
+    """
+    out: dict[str, dict] = {}
+    ids = result.team_ids
+    for week in weeks:
+        scores = result.weekly_scores.get(week)
+        if scores is None:
+            continue
+        a = scores[:, :, None]
+        b = scores[:, None, :]
+        share = (a > b).mean(axis=0) + 0.5 * (a == b).mean(axis=0)
+        out[str(week)] = {
+            "mean": {str(rid): round(float(scores[:, i].mean()), 3) for i, rid in enumerate(ids)},
+            "win": {str(rid): {str(other): round(float(share[i, j]), 3) for j, other in enumerate(ids) if j != i}
+                    for i, rid in enumerate(ids)},
+        }
+    return out
+
+
 def summarize(result: SimResult) -> list[dict]:
     """Per-team outcome rates and projected record, as plain numbers."""
     runs = result.runs

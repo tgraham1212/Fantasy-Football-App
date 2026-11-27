@@ -17,7 +17,7 @@ from ffapp.lineup import Candidate, Starter, best_lineup, lineup_points
 from ffapp.noise import NoiseModel, build_pools
 from ffapp.replacement import rostered_for_week, rostered_now, weekly_level
 from ffapp.scoring import record_points
-from ffapp.simulate import SimInputs, SimResult, simulate, summarize
+from ffapp.simulate import SimInputs, SimResult, simulate, summarize, upcoming_pairings
 from ffapp.standings import pairings, regular_season_records
 from ffapp.store import SeasonData, Store, write_json
 
@@ -304,6 +304,7 @@ def simulate_as_of(
         "simulated_weeks": sorted(inputs.schedule) + [w for w in inputs.playoff_weeks if w not in inputs.real_points],
         "teams": teams,
         "games": game_forecasts(inputs, result, data),
+        "upcoming": upcoming_pairings(result, sorted(inputs.schedule)),
     }
     if live is not None:
         final, total = games_progress(store, data.season, live.week)

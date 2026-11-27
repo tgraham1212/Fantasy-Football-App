@@ -52,7 +52,7 @@ CALCS = [
 ]
 
 OUTPUTS = [
-    ("Forecast Outcomes", "Calc 9", "data/odds/<league>/<season>/", ["asof_NN.json: one per completed week", "live.json: the current week (rebuilt)", "slates_NN.json: after each slate"], False),
+    ("Forecast Outcomes", "Calc 9", "data/odds/<league>/<season>/", ["asof_NN.json: one per completed week", "live.json: the current week (rebuilt)", "slates_NN.json: after each slate;", "upcoming weeks: every pair's win share"], False),
     ("Game Forecasts", "Calc 10", "data/games/  +  data/games-derived/", ["Win probability and scores per game;", "a log frozen at kickoff and a", "Forecast of record per final week"], False),
     ("Lineup Views", "Calc 11", "data/games-derived/", ["Model lineup vs. the starters used;", "lineup choices in points"], True),
     ("Win Probability Added", "Calc 13", "data/games-derived/", ["How far each player's score moved", "the team's win probability"], True),
@@ -65,6 +65,7 @@ FEATURES = [
     ("Games Page", ["Win probability, projected scores", "and score spread per game; Model |", "Actual lineups, lineup choices and", "WPA tags; live swaps from the bundle"]),
     ("Managers Page", ["Team News: a story when a team's", "playoff probability moves sharply", "between weeks"]),
     ("Calibration Page", ["How often results landed inside", "the Forecast ranges, by season,", "game and score"]),
+    ("League Page", ["Strength of Schedule: upcoming", "weeks' projected scores and every", "pair's win share (Calc 24)"]),
 ]
 
 RUNS = [

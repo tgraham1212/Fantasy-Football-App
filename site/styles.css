@@ -61,6 +61,20 @@
   --rod: #8a8780; --form-w: #1f8a2e; --form-l: #d03b3b; --form-d: #8f8e88;
   --rank1-f: #f6dc8c; --rank1-i: #4a3400; --rank2-f: #e2e3e8; --rank2-i: #3c3d45; --rank3-f: #f0d0b4; --rank3-i: #5c2f0e;
   --rival-f: #fbe3f1; --rival-i: #8a1f63; --score-f: #ebeae6; --zone-f: #eef6ec; --meter-f: #ebeae6;
+  /* Strength of Schedule cells (OKLCH, lightness-only adjustments): Weekly Ranks by opponent-rank
+     quarter, played faded (-f fill, -i ink) and projected solid (-sf, -si); Schedule Swap buckets */
+  --sos-r1-f: #ffe2de; --sos-r1-i: #963633;  /* OKLCH .94 .04 25 / .47 .13 25 */
+  --sos-r2-f: #fef4ce; --sos-r2-i: #6c5005;  /* OKLCH .965 .05 95 / .45 .09 85 */
+  --sos-r3-f: #e2f7e2; --sos-r3-i: #2f6633;  /* OKLCH .955 .035 145 / .46 .10 145 */
+  --sos-r4-f: #c3eac9; --sos-r4-i: #115629;  /* OKLCH .90 .06 150 / .40 .10 150 */
+  --sos-r1-sf: #a83634; --sos-r1-si: #ffefed;  /* OKLCH .50 .15 25 / .97 .025 25 */
+  --sos-r2-sf: #836412; --sos-r2-si: #fff9db;  /* OKLCH .52 .10 85 / .98 .04 95 */
+  --sos-r3-sf: #387d3d; --sos-r3-si: #edfeec;  /* OKLCH .53 .12 145 / .98 .03 145 */
+  --sos-r4-sf: #115629; --sos-r4-si: #dcf7e1;  /* OKLCH .40 .10 150 / .95 .04 150 */
+  --sos-s1-f: #a24e10; --sos-s1-i: #fff1e6;  /* OKLCH .52 .13 50 / .97 .025 55 */
+  --sos-s2-f: #ffddc6; --sos-s2-i: #8a4517;  /* OKLCH .92 .05 55 / .47 .11 50 */
+  --sos-s3-f: #d4ebff; --sos-s3-i: #255691;  /* OKLCH .93 .04 250 / .45 .11 255 */
+  --sos-s4-f: #285e9f; --sos-s4-i: #ebf7ff;  /* OKLCH .48 .12 255 / .97 .02 250 */
   --th-res-f: #e6eefa; --th-res-i: #0d3b75; --th-up-f: #dff2df; --th-up-i: #1c5a22; --th-down-f: #fbe1df; --th-down-i: #8a1f17;
   --th-inj-f: #fde2e2; --th-inj-i: #a32121; --th-rec-f: #fbefd2; --th-rec-i: #6e4d00; --th-lg-f: #ece8f8; --th-lg-i: #4a3a8a;
   --th-move-f: #e5f4f1; --th-move-i: #0f5348; --feat-a: #1b5aa3; --feat-b: #0d2f5c; --feat-i: #ffffff;
@@ -121,6 +135,13 @@
     --rod: #6d6b66; --form-w: #2e8f3a; --form-l: #c0393a; --form-d: #696862;
     --rank1-f: #5a4508; --rank1-i: #ffe9a8; --rank2-f: #3a3b42; --rank2-i: #e4e5ec; --rank3-f: #4f2c12; --rank3-i: #f6d6bd;
     --rival-f: #4a1736; --rival-i: #f4a6d3; --score-f: #2a2a28; --zone-f: #1d2a1d; --meter-f: #2c2c2a;
+    /* Strength of Schedule: faded cells darken (same hues); solid cells keep their light values */
+    --sos-r1-f: #462623; --sos-r1-i: #f6c2bd;  /* OKLCH .31 .05 25 / .86 .06 25 */
+    --sos-r2-f: #3c3216; --sos-r2-i: #e6d8a3;  /* OKLCH .32 .045 90 / .88 .07 95 */
+    --sos-r3-f: #233624; --sos-r3-i: #bcdfbc;  /* OKLCH .31 .04 145 / .87 .06 145 */
+    --sos-r4-f: #102b17; --sos-r4-i: #abd8b3;  /* OKLCH .26 .05 150 / .84 .07 150 */
+    --sos-s2-f: #442916; --sos-s2-i: #f4cbaf;  /* OKLCH .31 .05 55 / .87 .06 55 */
+    --sos-s3-f: #1c3249; --sos-s3-i: #bcd8f5;  /* OKLCH .31 .05 250 / .87 .05 250 */
     --th-res-f: #16294a; --th-res-i: #cfe0fa; --th-up-f: #183a1b; --th-up-i: #cdeccf; --th-down-f: #4a1a17; --th-down-i: #fbd0cb;
     --th-inj-f: #4a1a1a; --th-inj-i: #ffb4b4; --th-rec-f: #3d2e08; --th-rec-i: #f3d68a; --th-lg-f: #2a2347; --th-lg-i: #d9d1fb;
     --th-move-f: #123a34; --th-move-i: #c4ece4; --feat-a: #1e4f8c; --feat-b: #0b1f3d; --feat-i: #ffffff;
@@ -181,6 +202,13 @@
   --rod: #6d6b66; --form-w: #2e8f3a; --form-l: #c0393a; --form-d: #696862;
   --rank1-f: #5a4508; --rank1-i: #ffe9a8; --rank2-f: #3a3b42; --rank2-i: #e4e5ec; --rank3-f: #4f2c12; --rank3-i: #f6d6bd;
   --rival-f: #4a1736; --rival-i: #f4a6d3; --score-f: #2a2a28; --zone-f: #1d2a1d; --meter-f: #2c2c2a;
+  /* Strength of Schedule: faded cells darken (same hues); solid cells keep their light values */
+  --sos-r1-f: #462623; --sos-r1-i: #f6c2bd;  /* OKLCH .31 .05 25 / .86 .06 25 */
+  --sos-r2-f: #3c3216; --sos-r2-i: #e6d8a3;  /* OKLCH .32 .045 90 / .88 .07 95 */
+  --sos-r3-f: #233624; --sos-r3-i: #bcdfbc;  /* OKLCH .31 .04 145 / .87 .06 145 */
+  --sos-r4-f: #102b17; --sos-r4-i: #abd8b3;  /* OKLCH .26 .05 150 / .84 .07 150 */
+  --sos-s2-f: #442916; --sos-s2-i: #f4cbaf;  /* OKLCH .31 .05 55 / .87 .06 55 */
+  --sos-s3-f: #1c3249; --sos-s3-i: #bcd8f5;  /* OKLCH .31 .05 250 / .87 .05 250 */
   --th-res-f: #16294a; --th-res-i: #cfe0fa; --th-up-f: #183a1b; --th-up-i: #cdeccf; --th-down-f: #4a1a17; --th-down-i: #fbd0cb;
   --th-inj-f: #4a1a1a; --th-inj-i: #ffb4b4; --th-rec-f: #3d2e08; --th-rec-i: #f3d68a; --th-lg-f: #2a2347; --th-lg-i: #d9d1fb;
   --th-move-f: #123a34; --th-move-i: #c4ece4; --feat-a: #1e4f8c; --feat-b: #0b1f3d; --feat-i: #ffffff;
@@ -1135,3 +1163,68 @@ dialog#lg-dialog::backdrop { background: rgba(0, 0, 0, 0.45); }
   #lg-dialog .close { width: 48px; height: 48px; }
 }
 @media (max-width: 1099.98px) { .lg-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* League page, Strength of Schedule tab (site/schedule.js): heat-grid tables that scroll inside their
+   card with the Manager column pinned at every width. Cell colours are the --sos-* tokens. */
+.sos-controls { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.sos-season { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 650; color: var(--ink-2); }
+.sos-season select { min-height: 40px; padding: 0 10px; border: 1px solid var(--axis); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit; }
+.sos-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
+.sos-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 0; font-size: 0.76rem; color: var(--ink-2); }
+.sos-key { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.sos-swatch { width: 14px; height: 14px; border-radius: 3px; box-sizing: border-box; }
+.sos-swatch.s1 { background: var(--sos-s1-f); } .sos-swatch.s2 { background: var(--sos-s2-f); }
+.sos-swatch.s3 { background: var(--sos-s3-f); } .sos-swatch.s4 { background: var(--sos-s4-f); }
+.sos-swatch.own { border: 2px solid var(--ink); }
+.sos-note { margin: 8px 0 0; }
+table.sos-table { width: auto; min-width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+table.sos-table th, table.sos-table td { white-space: nowrap; }
+table.sos-table tbody tr { cursor: default; }
+.sos-table .sos-group th { padding: 2px 6px; font-size: 0.66rem; letter-spacing: 0.06em; color: var(--ink-2); border-bottom: 1px solid var(--grid); text-align: left; }
+.sos-table .sos-group th:first-child { border-bottom: 0; }
+.sos-table .sos-mgr { position: sticky; left: -18px; z-index: 1; background: var(--surface); box-shadow: 1px 0 0 var(--grid); text-align: left; font-weight: 500; padding-right: 12px; }
+.sos-table thead .sos-mgr { z-index: 2; }
+.sos-table .sos-rank { text-align: center; line-height: 1.15; }
+.sos-table td.sos-rank b { display: block; font-size: 0.95rem; font-weight: 800; }
+.sos-table td.sos-rank span { display: block; font-size: 0.66rem; color: var(--muted); }
+.sos-table .sos-edge { border-left: 2px solid var(--ink); }
+.sos-table .sos-wk { min-width: 52px; text-align: center; }
+.sos-table .sos-range { padding-right: 12px; }
+.sos-table .sos-hard { color: var(--sos-s2-i); }
+.sos-table .sos-easy { color: var(--sos-s3-i); }
+.mgr-crest.xxs { width: 16px; height: 16px; font-size: 0.45rem; }
+/* Weekly Ranks cells: opponent's points, their weekly rank and their picture */
+.sos-table td.sos-c { min-width: 52px; height: 62px; padding: 0 2px; text-align: center; line-height: 1.05; border: 1px solid var(--surface); }
+.sos-table td.sos-c.sos-edge { border-left: 2px solid var(--ink); }
+.sos-c .sos-pts { display: block; font-size: 0.62rem; font-weight: 650; }
+.sos-c .sos-rk { display: block; font-size: 1.15rem; font-weight: 650; }
+.sos-c.sos-up .sos-rk { font-weight: 800; }
+.sos-c .mgr-crest { margin: 2px auto 0; box-shadow: none; }
+.sos-table td.sos-c.r1 { background: var(--sos-r1-f); color: var(--sos-r1-i); }
+.sos-table td.sos-c.r2 { background: var(--sos-r2-f); color: var(--sos-r2-i); }
+.sos-table td.sos-c.r3 { background: var(--sos-r3-f); color: var(--sos-r3-i); }
+.sos-table td.sos-c.r4 { background: var(--sos-r4-f); color: var(--sos-r4-i); }
+.sos-table td.sos-c.r1.sos-up { background: var(--sos-r1-sf); color: var(--sos-r1-si); }
+.sos-table td.sos-c.r2.sos-up { background: var(--sos-r2-sf); color: var(--sos-r2-si); }
+.sos-table td.sos-c.r3.sos-up { background: var(--sos-r3-sf); color: var(--sos-r3-si); }
+.sos-table td.sos-c.r4.sos-up { background: var(--sos-r4-sf); color: var(--sos-r4-si); }
+/* Schedule Swap cells: wins under each schedule, coloured against the Manager's own-schedule wins */
+.sos-table .sos-sched { min-width: 54px; text-align: center; }
+.sos-table .sos-sched .mgr-crest { margin: 0 auto; }
+.sos-table td.sos-w { min-width: 54px; height: 50px; padding: 0 4px; text-align: center; font-weight: 600; border: 1px solid var(--surface); }
+.sos-table td.sos-w.s0 { background: var(--score-f); color: var(--ink); }
+.sos-table td.sos-w.s1 { background: var(--sos-s1-f); color: var(--sos-s1-i); }
+.sos-table td.sos-w.s2 { background: var(--sos-s2-f); color: var(--sos-s2-i); }
+.sos-table td.sos-w.s3 { background: var(--sos-s3-f); color: var(--sos-s3-i); }
+.sos-table td.sos-w.s4 { background: var(--sos-s4-f); color: var(--sos-s4-i); }
+.sos-table td.sos-w.own { background: var(--surface); color: var(--ink); font-weight: 800; outline: 2px solid var(--ink); outline-offset: -3px; }
+@media (max-width: 600px) {
+  .sos-table .sos-mgr { left: -14px; }
+}
+@media (max-width: 599.98px) {
+  .sos-controls { width: 100%; }
+  .sos-controls .lg-views { width: 100%; }
+  .sos-controls .lg-views button { flex: 1; }
+  .sos-season { width: 100%; justify-content: space-between; }
+  .sos-season select { min-height: 48px; min-width: 120px; }
+}

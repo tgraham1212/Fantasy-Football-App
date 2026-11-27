@@ -1,15 +1,19 @@
-/* League page, Records tab: the league's bests and worsts in two views. Managers: Champions, All-Time
+/* League page: its tabs (Records here; Strength of Schedule in schedule.js) and the Records tab: the
+   league's bests and worsts in two views. Managers: Champions, All-Time
    Standings, Weekly Records and Season Records. Players: Best Games, Best Bench Games, Career Scoring
    and Championships. Selecting a record opens its top 25. Every figure comes from
    data/<league>/records.json (src/ffapp/league_records.py); this module only renders. Each table is
    drawn twice, a table for wide screens and a list for phones; CSS shows one. */
 
 import { crest, escapeHtml, fitNames, headshot, shortName, wireImages } from "./people.js?v=__BUILD__";
+import { initSchedule, loadSchedule, scheduleSlug } from "./schedule.js?v=__BUILD__";
 
 const state = {
   leagueKey: null,
   leagueName: "",
   entry: null,      // index.leagues[i].records
+  scheduleEntry: null, // index.leagues[i].schedule
+  tab: "records",   // "records" | "schedule"
   data: null,       // data/<league>/records.json
   view: "managers", // "managers" | "players"
   filters: { best_games: "ALL", bench_games: "ALL", career: "ALL", championships: "ALL" },
@@ -64,29 +68,52 @@ async function fetchJson(path) {
 
 // -- loading, view and URL -------------------------------------------------------------------------
 
-/* Called by app.js whenever a league loads. `view` is the Records view named in the URL. */
-export async function loadRecords(leagueKey, leagueName, entry, view, onChange) {
+/* Called by app.js whenever a league loads. `route` is the URL path after /league (null to keep the
+   current tab and views): "records" with an optional "players", or "schedule" with an optional "swap"
+   and season. `scheduleEntry` is the league's Strength of Schedule file. */
+export async function loadRecords(leagueKey, leagueName, entry, route, onChange, scheduleEntry = state.scheduleEntry) {
   state.leagueKey = leagueKey;
   state.leagueName = leagueName;
   state.entry = entry || null;
+  state.scheduleEntry = scheduleEntry || null;
   state.onChange = onChange || state.onChange;
-  if (view) state.view = view === "players" ? "players" : "managers";
-  $("lg-unavailable").hidden = !!state.entry;
-  if (!state.entry) {
-    $("lg-managers").hidden = $("lg-players").hidden = true;
-    return;
+  if (route) {
+    state.tab = route[0] === "schedule" ? "schedule" : "records";
+    if (state.tab === "records") state.view = route[1] === "players" ? "players" : "managers";
   }
-  state.data = await fetchJson(`data/${state.entry.file}`);
-  render();
+  await loadSchedule(leagueKey, state.scheduleEntry, route && state.tab === "schedule" ? route.slice(1) : [], () => state.onChange());
+  state.data = state.entry ? await fetchJson(`data/${state.entry.file}`) : null;
+  if (state.data) render();
+  renderTab();
+  if (route) state.onChange();  // the URL was written before the route was applied
 }
 
 export async function reloadRecords() {
-  if (state.entry) await loadRecords(state.leagueKey, state.leagueName, state.entry, null, state.onChange);
+  await loadRecords(state.leagueKey, state.leagueName, state.entry, null, state.onChange);
 }
 
-/* The URL part after /league: the tab and, for the Players view, the view. */
+/* The URL part after /league: the tab, then the Records view or the Strength of Schedule view and season. */
 export function leagueSlug() {
+  if (state.tab === "schedule") return `schedule${scheduleSlug()}`;
   return `records${state.view === "players" ? "/players" : ""}`;
+}
+
+function setTab(tab) {
+  state.tab = tab;
+  renderTab();
+  state.onChange();
+}
+
+/* Show the selected tab: Records (its view switch and cards) or Strength of Schedule. */
+function renderTab() {
+  const records = state.tab === "records";
+  for (const b of $("lg-tabs").querySelectorAll("button")) b.setAttribute("aria-pressed", String(b.dataset.lgTab === state.tab));
+  $("lg-views").hidden = !records;
+  $("sos-controls").hidden = records;
+  $("sos-page").hidden = records;
+  $("lg-unavailable").hidden = !records || !!state.data;
+  if (!state.data) $("lg-managers").hidden = $("lg-players").hidden = true;
+  else renderView();
 }
 
 export function showLeague() {
@@ -100,6 +127,11 @@ function setView(view) {
 }
 
 export function initLeague() {
+  $("lg-tabs").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-lg-tab]");
+    if (b) setTab(b.dataset.lgTab);
+  });
+  initSchedule();
   $("lg-views").addEventListener("click", (e) => {
     const b = e.target.closest("[data-lg-view]");
     if (b) setView(b.dataset.lgView);
@@ -191,8 +223,8 @@ function render() {
 
 function renderView() {
   for (const b of $("lg-views").querySelectorAll("button")) b.setAttribute("aria-pressed", String(b.dataset.lgView === state.view));
-  $("lg-managers").hidden = state.view !== "managers";
-  $("lg-players").hidden = state.view !== "players";
+  $("lg-managers").hidden = state.tab !== "records" || state.view !== "managers";
+  $("lg-players").hidden = state.tab !== "records" || state.view !== "players";
   fitNames($("page-league"));
 }
 

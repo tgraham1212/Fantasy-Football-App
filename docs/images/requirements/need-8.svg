@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2870 1798" width="2870" height="1798">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3180 1798" width="3180" height="1798">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,7 +33,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="2870" height="1798"/>
+<rect class="bg" width="3180" height="1798"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 8, Open Methods</text>
 <text class="sub" x="40" y="66">9 requirements derived from need 8 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
@@ -260,6 +260,15 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="2528" y="1632">cut, weekly win probability, season sum and…</text>
 <text class="spec" x="2528" y="1651">war-leaderboard-page</text>
 <path class="trace" d="M2650.0,1540 V281 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="2830" y="1540" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="2830.7" y="1540.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2960.0" y="1553" text-anchor="middle">«requirement»</text>
+<text x="2960.0" y="1568" text-anchor="middle"><tspan class="rid">4.9.6.8</tspan><tspan class="rname" dx="6">Measures explained</tspan></text>
+<text class="rtext" x="2838" y="1590">Each table SHALL carry a one-line note under</text>
+<text class="rtext" x="2838" y="1604">it saying what the cells hold and which end is</text>
+<text class="rtext" x="2838" y="1618">the hardest schedule.</text>
+<text class="spec" x="2838" y="1651">strength-of-schedule-page · proposed</text>
+<path class="trace" d="M2960.0,1540 V286 H150.0 V268" marker-end="url(#openg)"/>
 <path class="derive" d="M40,1758 H86" marker-end="url(#open)"/><text class="lg" x="96" y="1762">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,1758 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="1762">«trace»: extra parent</text>
 <path class="verify" d="M680,1758 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="1762">«verify»: test, inspection or analysis</text>

@@ -27,6 +27,8 @@ ROWS = {"hovered row": ("ink", 0.04), "selected row": ("accent", 0.12)}  # color
 TEXT_ON_ROWS = ("ink", "ink-2", "muted")  # the text used inside highlightable table rows (the worked
 # example's blue fill mark sits in table.walkthrough, which has no hover highlight)
 TEXT_ON_SURFACES = ("ink", "ink-2", "muted", "accent", "good", "bad", "gold")
+# Strength of Schedule cells (4.9.6.6): each cell's text is a tint of its fill
+SOS_PAIRS = tuple((f"sos-r{k}-i", f"sos-r{k}-f") for k in range(1, 5)) + tuple((f"sos-r{k}-si", f"sos-r{k}-sf") for k in range(1, 5))     + tuple((f"sos-s{k}-i", f"sos-s{k}-f") for k in range(1, 5)) + (("ink", "score-f"), ("sos-s2-i", "surface"), ("sos-s3-i", "surface"))  # neutral swap cell; Index text
 TEXT_ON_FILLS = (  # (text, fill): text drawn on a coloured background
     ("accent-ink", "accent-fill"),  # selected league button
     ("win-ink", "win-hi"), ("win-ink", "win-mid"), ("win-ink", "win-lo"),  # Games win-probability bar
@@ -43,7 +45,7 @@ TEXT_ON_FILLS = (  # (text, fill): text drawn on a coloured background
     ("th-res-i", "th-res-f"), ("th-up-i", "th-up-f"), ("th-down-i", "th-down-f"), ("th-inj-i", "th-inj-f"),
     ("th-rec-i", "th-rec-f"), ("th-lg-i", "th-lg-f"), ("th-move-i", "th-move-f"),
     ("feat-i", "feat-a"), ("feat-i", "feat-b"),  # the feature picture's gradient, both ends
-)
+) + SOS_PAIRS
 NON_TEXT = ("accent", "form-w", "form-l", "form-d", "rod")  # focus ring, form bars, banner rod; team lines added below
 EXEMPT = {
     "grid": "decorative gridlines; the data never depends on them",
@@ -133,3 +135,14 @@ def test_check_catches_dark_only_failure():
 def test_unclassified_token_fails():
     css = CSS.read_text(encoding="utf-8").replace("  --grid: #e1e0d9;", "  --grid: #e1e0d9;\n  --new-thing: #123456;", 1)
     assert any("--new-thing is neither checked nor exempt" in p for p in problems(css))
+
+
+def test_schedule_cells():
+    """4.9.6.6: every Strength of Schedule cell's text meets 4.5:1 on its fill, in light and dark modes."""
+    css = CSS.read_text(encoding="utf-8")
+    blocks = token_blocks(css)
+    for mode in ("light", "dark"):
+        for fg, bg in SOS_PAIRS:
+            assert fg in blocks[mode] and bg in blocks[mode], f"{mode}: --{fg} / --{bg} missing"
+            assert contrast(blocks[mode][fg], blocks[mode][bg]) >= TEXT_RATIO, f"{mode}: --{fg} on --{bg}"
+    assert not [p for p in problems(css) if "sos-" in p]

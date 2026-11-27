@@ -42,6 +42,7 @@ Sections
  21. Moves
  22. Game card states
  23. League records
+ 24. Strength of schedule
 
 
 ================================================================
@@ -245,6 +246,9 @@ Formula:
   outcomes: make the playoffs, first-round bye, reach the final, win the title, losers
   bracket, finish last, avoid the bottom two ("Avoid Loser's Bye")
   projected record = mean simulated wins and losses
+  upcoming pairings, for each upcoming regular-season week: mean score per team = mean of its
+    simulated scores; win share of A over B = runs with A > B / runs + (runs with A = B / runs) / 2,
+    for every pair of teams whether or not they meet (used by section 24)
 In plain English:
   The percentages on the Forecasts table are the share of the 10,000 simulated seasons in
   which each team got there.
@@ -832,3 +836,47 @@ Assumptions and decisions:
     exact pre-kickoff figures (the 2026 game log freezes those); they are close, not exact.
   - IR and taxi players on the champion's roster come from the end-of-season roster file,
     which is the title week's roster.
+
+
+================================================================
+24. STRENGTH OF SCHEDULE
+================================================================
+Code:          src/ffapp/schedule_strength.py
+Data sources:  Every stored season's matchups (team points and opponents by matchup id); for
+               upcoming weeks, the upcoming pairings of the latest season Forecast (section 9:
+               data/odds/<league>/<season>/live.json, else the newest asof_NN.json). Exported
+               as site/data/<league>/schedule.json (derived data).
+Depends on:    7, 9
+Formula:
+  weeks: regular-season weeks only. A week is played once Sleeper has scored it (section 7's
+    completed weeks); later weeks, including one in progress, are upcoming and take each
+    team's score s = its mean score from the upcoming pairings. A week with neither is left out.
+  weekly rank of team t in week w = 1 + number of teams with s > s_t that week (equal scores
+    share the better rank: 1, 2, 3, 3, 5).
+  Weekly Ranks, per team: Played, Upcoming and Season = mean of the opponent's weekly rank over
+    the played weeks, the upcoming weeks and all weeks; rank by Season, lowest first ("1st
+    Hardest"), equal means (to 0.01) sharing a rank.
+  Schedule Swap, for Managers A and B: wins(A, B) = sum over weeks w of g(A, X_w), where X_w is
+    B's opponent in week w, or B itself when that opponent is A; g = 1 if A scored more, 0.5 if
+    equal, 0 if fewer in a played week; g = win share of A over X_w in an upcoming week.
+  own wins = wins(A, A); average = mean over all N schedules B (A's own included) of wins(A, B);
+    Schedule Difficulty Index = average - own wins; range = min and max of wins(A, B) over B.
+    Rank by Index, highest first ("1st Hardest").
+In plain English:
+  Weekly Ranks asks how good your opponents were: each week every team is ranked by points, and
+  you are credited with your opponent's rank, so facing the week's top scorer counts as 1. The
+  lower your average, the tougher your schedule.
+  Schedule Swap asks what the schedule cost you: your own weekly scores are played against every
+  other Manager's schedule. If you would have won more games on the typical schedule than on
+  yours, your schedule was hard and your index is positive.
+Assumptions and decisions:
+  - Playoff opponents are earned, not scheduled, so only the regular season counts.
+  - Upcoming weeks use the season Forecast's simulated scores, so forecast wins are fractional
+    and match the Forecasts: a team's own-schedule wins equal its forecast wins there.
+  - When another Manager's schedule has them playing you, you play that Manager instead
+    (substitution), so every schedule has the same number of games.
+  - A tie in a played week is half a win, as in the standings (section 7).
+  - Weekly Ranks uses the mean forecast score for upcoming weeks, not an average rank across
+    runs, so every cell holds a whole rank.
+  - The two measures can disagree: Weekly Ranks ignores your own scores, while the swap depends
+    on them (a team that loses to most schedules gains little from an easy one).

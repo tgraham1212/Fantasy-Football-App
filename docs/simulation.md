@@ -86,7 +86,7 @@ The hot run does steps 1 to 6 for the current week only. Cold runs during games 
 
 | Output | Path | Tier |
 |---|---|---|
-| Forecast outcomes (Calc 9): the share of runs in which each team makes the playoffs, gets a bye, reaches the final, wins the title, lands in the losers bracket or finishes last; projected record | `data/odds/<league>/<season>/asof_NN.json`, one per completed week | Record |
+| Forecast outcomes (Calc 9): the share of runs in which each team makes the playoffs, gets a bye, reaches the final, wins the title, lands in the losers bracket or finishes last; projected record; for each upcoming regular-season week, every team's mean score and every pair's win share, met or not (the `upcoming` block, used by Strength of Schedule, Calc 24) | `data/odds/<league>/<season>/asof_NN.json`, one per completed week | Record |
 | The current week's Forecast | `data/odds/<league>/<season>/live.json` | Rebuilt |
 | Slate Forecasts: the Forecast after each slate of games goes final | `data/odds/<league>/<season>/slates_NN.json` | Record |
 | Game Forecasts (Calc 10): win probability, projected scores and the score spread per game; a log frozen at kickoff; the Forecast of record per final week | `data/games/` (log and record) and `data/games-derived/` (the rest) | Record, and rebuilt |
@@ -103,6 +103,7 @@ The hot run does steps 1 to 6 for the current week only. Cold runs during games 
 | Games | Each game's win probability, projected scores and score spread; Model and Actual lineups; lineup choices; WPA tags; live updates from the bundle | `site/data/<league>/games/` |
 | Managers | Team News stories when a team's playoff probability moves sharply between weeks | `site/data/<league>/managers.json` |
 | Calibration | How often results landed inside the Forecast ranges, by season, game and score | `site/data/calibration.json` |
+| League (Strength of Schedule) | Upcoming weeks' projected scores and every pair's win share, behind the Weekly Ranks and Schedule Swap tables | `site/data/<league>/schedule.json` |
 
 During a week, open pages read the live bundle from the relay every 30 to 60 seconds and swap in the
 newer copy of the Forecasts and Games files (`site/updates.js`).

@@ -6,7 +6,7 @@ import pytest
 from ffapp.bracket import BracketRules
 from ffapp.lineup import Starter
 from ffapp.noise import GaussianNoise
-from ffapp.simulate import SimInputs, simulate, summarize
+from ffapp.simulate import SimInputs, simulate, summarize, upcoming_pairings
 from ffapp.standings import TeamRecord
 
 RULES = BracketRules(playoff_teams=6, playoff_week_start=15, reseed=True, toilet_bowl=False)
@@ -65,6 +65,23 @@ def test_outcome_rates_sum_correctly():
     for row in rows:
         assert row["proj_wins"] + row["proj_losses"] + row["proj_ties"] == pytest.approx(14.0, abs=0.01)
         assert sum(row["seed_distribution"]) == pytest.approx(1.0, abs=0.01)
+
+
+def test_upcoming_pairings():
+    """1.1.9.3: every pair of teams, met or not, gets a win share for each upcoming week."""
+    inputs = make_inputs(completed=11, strengths={t: 2.0 * t for t in TEAMS})
+    result = simulate(inputs, GaussianNoise(6.0), runs=3000, seed=4)
+    upcoming = upcoming_pairings(result, sorted(inputs.schedule))
+    assert sorted(upcoming) == ["12", "13", "14"], "regular-season weeks only, no playoff weeks"
+    week = upcoming["12"]
+    met = {frozenset(p) for p in inputs.schedule[12]}
+    a, b = next((x, y) for x in TEAMS for y in TEAMS if x < y and frozenset((x, y)) not in met)
+    assert week["win"][str(a)][str(b)] + week["win"][str(b)][str(a)] == pytest.approx(1.0, abs=0.001)
+    assert week["win"]["12"]["1"] > 0.5, "the strongest team outscores the weakest more often than not"
+    scores = result.weekly_scores[12]
+    for i, rid in enumerate(TEAMS):
+        assert week["mean"][str(rid)] == pytest.approx(scores[:, i].mean(), abs=0.001)
+        assert len(week["win"][str(rid)]) == len(TEAMS) - 1
 
 
 def test_clinched_team_has_certain_playoff_spot():

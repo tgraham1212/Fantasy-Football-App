@@ -33,7 +33,7 @@ TEXT:
 Monte Carlo Forecast & Statistics for Fantasy Football
 
 [HDR-04] paragraph
-WHERE: site/index.html line 243
+WHERE: site/index.html line 273
 TEXT:
 Data from the Sleeper API. Projections by Rotowire via Sleeper. Refreshed daily. <a href="calibration.html">How Good Are These Forecasts?</a>
 
@@ -83,37 +83,37 @@ TEXT:
 ${asOf} · updated ${formatDate(L.generated_at)} · ${L.runs.toLocaleString()} simulations
 
 [PRED-17] odds chart note (a team highlighted)
-WHERE: site/app.js line 586 (generated)
+WHERE: site/app.js line 587 (generated)
 TEXT:
 ${sel.display_name || sel.team_name} is highlighted. Click the team again to clear.
 
 [PRED-18] odds chart note (nothing highlighted)
-WHERE: site/app.js line 587 (generated)
+WHERE: site/app.js line 588 (generated)
 TEXT:
 Hover for every team's forecast after a given week; Click a line or a table row to highlight one team.
 
 [PRED-19] rating chart: no ratings yet
-WHERE: site/app.js line 663 (generated)
+WHERE: site/app.js line 664 (generated)
 TEXT:
 Manager ratings are not yet available for this league.
 
 [PRED-20] rating chart note (a manager highlighted)
-WHERE: site/app.js line 794 (generated)
+WHERE: site/app.js line 795 (generated)
 TEXT:
 ${sel.label} is highlighted. Click the line again to clear.
 
 [PRED-21] rating chart note (follows the description above)
-WHERE: site/app.js line 795 (generated)
+WHERE: site/app.js line 796 (generated)
 TEXT:
 ${metric.note}. Regular-season only.
 
 [PRED-22] generated text
-WHERE: site/app.js line 756 (generated)
+WHERE: site/app.js line 757 (generated)
 TEXT:
 ${w.season}, preseason (after reversion)
 
 [PRED-23] generated text
-WHERE: site/app.js line 756 (generated)
+WHERE: site/app.js line 757 (generated)
 TEXT:
 ${w.season}, after week ${w.week}
 
@@ -278,7 +278,7 @@ TEXT:
 <strong>Expected wins and WAR.</strong> Win probabilities sum over regular-season weeks 1 to 14. WAR subtracts what a replacement-level player would earn every week, so a replacement season is exactly 0.
 
 [WAR-09] paragraph
-WHERE: site/index.html line 235
+WHERE: site/index.html line 265
 TEXT:
 Click a header to sort; click again to flip. # is the WAR rank.
 
@@ -358,239 +358,324 @@ Out
 ##############################################################################
 
 [LG-01] paragraph
-WHERE: site/index.html line 205
+WHERE: site/index.html line 213
 TEXT:
 League records are not yet available for this league: its records file has not been exported.
 
 [LG-02] heading
-WHERE: site/index.html line 207
+WHERE: site/index.html line 215
 TEXT:
 Champions
 
 [LG-03] heading
-WHERE: site/index.html line 208
+WHERE: site/index.html line 216
 TEXT:
 All-Time Standings
 
 [LG-04] heading
-WHERE: site/index.html line 209
+WHERE: site/index.html line 217
 TEXT:
 Weekly Records
 
 [LG-05] heading
-WHERE: site/index.html line 210
+WHERE: site/index.html line 218
 TEXT:
 Season Records
 
 [LG-06] paragraph
-WHERE: site/index.html line 210
+WHERE: site/index.html line 218
 TEXT:
 * Current season, so far
 
 [LG-07] heading
-WHERE: site/index.html line 213
+WHERE: site/index.html line 221
 TEXT:
 Best Games
 
 [LG-08] heading
-WHERE: site/index.html line 214
+WHERE: site/index.html line 222
 TEXT:
 Best Bench Games
 
 [LG-09] heading
-WHERE: site/index.html line 215
+WHERE: site/index.html line 223
 TEXT:
 Career Scoring
 
 [LG-10] heading
-WHERE: site/index.html line 216
+WHERE: site/index.html line 224
 TEXT:
 Championships
 
 [LG-12] generated text
-WHERE: site/league.js line 34 (generated)
+WHERE: site/league.js line 38 (generated)
 TEXT:
 Highest Team Score
 
 [LG-13] generated text
-WHERE: site/league.js line 34 (generated)
+WHERE: site/league.js line 38 (generated)
 TEXT:
 Lowest Team Score
 
 [LG-14] generated text
-WHERE: site/league.js line 35 (generated)
+WHERE: site/league.js line 39 (generated)
 TEXT:
 Highest Matchup Score
 
 [LG-15] generated text
-WHERE: site/league.js line 35 (generated)
+WHERE: site/league.js line 39 (generated)
 TEXT:
 Lowest Matchup Score
 
 [LG-16] generated text
-WHERE: site/league.js line 36 (generated)
+WHERE: site/league.js line 40 (generated)
 TEXT:
 Biggest Blowout
 
 [LG-17] generated text
-WHERE: site/league.js line 36 (generated)
+WHERE: site/league.js line 40 (generated)
 TEXT:
 Closest Game
 
 [LG-18] generated text
-WHERE: site/league.js line 37 (generated)
+WHERE: site/league.js line 41 (generated)
 TEXT:
 Highest Score in a Loss
 
 [LG-19] generated text
-WHERE: site/league.js line 37 (generated)
+WHERE: site/league.js line 41 (generated)
 TEXT:
 Lowest Score in a Win
 
 [LG-20] generated text
-WHERE: site/league.js line 40 (generated)
+WHERE: site/league.js line 44 (generated)
 TEXT:
 Most Points
 
 [LG-21] generated text
-WHERE: site/league.js line 40 (generated)
+WHERE: site/league.js line 44 (generated)
 TEXT:
 Fewest Points
 
 [LG-22] generated text
-WHERE: site/league.js line 41 (generated)
+WHERE: site/league.js line 45 (generated)
 TEXT:
 Most Points Against
 
 [LG-23] generated text
-WHERE: site/league.js line 41 (generated)
+WHERE: site/league.js line 45 (generated)
 TEXT:
 Best Record
 
 [LG-24] generated text
-WHERE: site/league.js line 42 (generated)
+WHERE: site/league.js line 46 (generated)
 TEXT:
 Worst Record
 
 [LG-25] generated text
-WHERE: site/league.js line 42 (generated)
+WHERE: site/league.js line 46 (generated)
 TEXT:
 Best Team to Miss Playoffs
 
 [LG-26] generated text
-WHERE: site/league.js line 43 (generated)
+WHERE: site/league.js line 47 (generated)
 TEXT:
 Worst Team to Make Playoffs
 
 [LG-27] generated text
-WHERE: site/league.js line 43 (generated)
+WHERE: site/league.js line 47 (generated)
 TEXT:
 Luckiest Season
 
 [LG-28] generated text
-WHERE: site/league.js line 44 (generated)
+WHERE: site/league.js line 48 (generated)
 TEXT:
 Unluckiest Season
 
 [LG-29] generated text
-WHERE: site/league.js line 44 (generated)
+WHERE: site/league.js line 48 (generated)
 TEXT:
 Longest Winning Streak
 
 [LG-30] generated text
-WHERE: site/league.js line 45 (generated)
+WHERE: site/league.js line 49 (generated)
 TEXT:
 Longest Losing Streak
 
 [LG-31] generated text
-WHERE: site/league.js line 45 (generated)
+WHERE: site/league.js line 49 (generated)
 TEXT:
 Most Bench Points
 
 [LG-32] generated text
-WHERE: site/league.js line 46 (generated)
+WHERE: site/league.js line 50 (generated)
 TEXT:
 Most Points Gained by Lineup Choices
 
 [LG-33] generated text
-WHERE: site/league.js line 47 (generated)
+WHERE: site/league.js line 51 (generated)
 TEXT:
 Most Points Lost by Lineup Choices
 
 [LG-34] generated text
-WHERE: site/league.js line 151 (generated)
+WHERE: site/league.js line 183 (generated)
 TEXT:
 This season
 
 [LG-35] generated text
-WHERE: site/league.js line 177 (generated)
+WHERE: site/league.js line 209 (generated)
 TEXT:
 Top 25
 
 [LG-36] generated text
-WHERE: site/league.js line 201 (generated)
+WHERE: site/league.js line 233 (generated)
 TEXT:
 Toilet Bowl Champion
 
 [LG-37] generated text
-WHERE: site/league.js line 201 (generated)
+WHERE: site/league.js line 233 (generated)
 TEXT:
 Last Place
 
 [LG-38] generated text
-WHERE: site/league.js line 212 (generated)
+WHERE: site/league.js line 244 (generated)
 TEXT:
 No season has finished yet.
 
 [LG-39] generated text
-WHERE: site/league.js line 217 (generated)
+WHERE: site/league.js line 249 (generated)
 TEXT:
 Toilet
 
 [LG-40] generated text
-WHERE: site/league.js line 217 (generated)
+WHERE: site/league.js line 249 (generated)
 TEXT:
 Last
 
 [LG-41] generated text
-WHERE: site/league.js line 227 (generated)
+WHERE: site/league.js line 259 (generated)
 TEXT:
 Former Managers
 
 [LG-42] generated text
-WHERE: site/league.js line 238 (generated)
+WHERE: site/league.js line 270 (generated)
 TEXT:
 Playoffs
 
 [LG-43] generated text
-WHERE: site/league.js line 238 (generated)
+WHERE: site/league.js line 270 (generated)
 TEXT:
 No playoffs
 
 [LG-44] generated text
-WHERE: site/league.js line 239 (generated)
+WHERE: site/league.js line 271 (generated)
 TEXT:
 Former Managers
 
 [LG-45] generated text
-WHERE: site/league.js line 275 (generated)
+WHERE: site/league.js line 307 (generated)
 TEXT:
 Free agent
 
 [LG-46] generated text
-WHERE: site/league.js line 304 (generated)
+WHERE: site/league.js line 336 (generated)
 TEXT:
 No Players at this position yet.
 
 [LG-47] paragraph
-WHERE: site/index.html line 225
+WHERE: site/index.html line 255
 TEXT:
 Each week your score plays all 11 other teams, so beating 8 of them counts as 8/11 of a win, and luck is actual wins minus those fractions.
 
 [LG-48] paragraph
-WHERE: site/index.html line 226
+WHERE: site/index.html line 256
 TEXT:
 Your starters' points minus what starting your roster's highest Sleeper projections would have scored; following the projections scores 0.
+
+[LG-49] span
+WHERE: site/index.html line 210
+TEXT:
+Season
+
+[LG-50] paragraph
+WHERE: site/index.html line 227
+TEXT:
+Strength of Schedule is not yet available for this league: its schedule file has not been exported.
+
+[LG-51] heading
+WHERE: site/index.html line 229
+TEXT:
+Weekly Ranks
+
+[LG-52] paragraph
+WHERE: site/index.html line 231
+TEXT:
+Each cell: the opponent's points (top), their rank among all teams that week (middle) and the opponent (bottom). Season, Played and Upcoming average those ranks; the lowest average is the hardest schedule.
+
+[LG-53] heading
+WHERE: site/index.html line 235
+TEXT:
+Schedule Swap
+
+[LG-54] span
+WHERE: site/index.html line 236
+TEXT:
+Wins against your own schedule:
+
+[LG-55] span
+WHERE: site/index.html line 237
+TEXT:
+2+ fewer
+
+[LG-56] span
+WHERE: site/index.html line 238
+TEXT:
+Up to 2 fewer
+
+[LG-57] span
+WHERE: site/index.html line 239
+TEXT:
+Up to 2 more
+
+[LG-58] span
+WHERE: site/index.html line 240
+TEXT:
+2+ more
+
+[LG-59] span
+WHERE: site/index.html line 241
+TEXT:
+Your own schedule
+
+[LG-60] paragraph
+WHERE: site/index.html line 245
+TEXT:
+Each row is one Manager's weekly scores played against every Manager's schedule; forecast weeks count each game's win probability. Index = average wins across all schedules minus wins on your own; the highest index is the hardest schedule.
+
+[LG-61] generated text
+WHERE: site/schedule.js line 93 (generated)
+TEXT:
+Hardest
+
+[LG-62] generated text
+WHERE: site/schedule.js line 163 (generated)
+TEXT:
+Played
+
+[LG-63] generated text
+WHERE: site/schedule.js line 163 (generated)
+TEXT:
+Forecast
+
+[LG-64] generated text
+WHERE: site/schedule.js line 202 (generated)
+TEXT:
+Wins with this Manager's schedule
+
+[LG-65] generated text
+WHERE: site/schedule.js line 203 (generated)
+TEXT:
+Difficulty
 
 
 ##############################################################################
@@ -883,7 +968,7 @@ TEXT:
 A new version of the site is available.
 
 [MSG-08] paragraph
-WHERE: site/index.html line 240
+WHERE: site/index.html line 270
 TEXT:
 Loading&hellip;
 

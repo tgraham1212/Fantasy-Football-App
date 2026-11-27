@@ -196,10 +196,18 @@
       <div class="lg-bar">
         <div class="lg-tabs" id="lg-tabs" role="group" aria-label="League sections">
           <button type="button" data-lg-tab="records" aria-pressed="true">Records</button>
+          <button type="button" data-lg-tab="schedule" aria-pressed="false">Strength of Schedule</button>
         </div>
         <div class="lg-views" id="lg-views" role="group" aria-label="Records view">
           <button type="button" data-lg-view="managers" aria-pressed="true">Managers</button>
           <button type="button" data-lg-view="players" aria-pressed="false">Players</button>
+        </div>
+        <div class="sos-controls" id="sos-controls" hidden>
+          <div class="lg-views" id="sos-views" role="group" aria-label="Strength of Schedule view">
+            <button type="button" data-sos-view="ranks" aria-pressed="true">Weekly Ranks</button>
+            <button type="button" data-sos-view="swap" aria-pressed="false">Schedule Swap</button>
+          </div>
+          <label class="sos-season"><span data-copy="LG-49">Season</span> <select id="sos-season"></select></label>
         </div>
       </div>
       <p data-copy="LG-01" class="explain card" id="lg-unavailable" hidden>League records are not yet available for this league: its records file has not been exported.</p>
@@ -214,6 +222,28 @@
         <section class="card lg-pcard" data-card="bench_games" aria-labelledby="lg-p2"><h2 id="lg-p2" data-copy="LG-08">Best Bench Games</h2><div class="lg-body"></div></section>
         <section class="card lg-pcard" data-card="career" aria-labelledby="lg-p3"><h2 id="lg-p3" data-copy="LG-09">Career Scoring</h2><div class="lg-body"></div></section>
         <section class="card lg-pcard" data-card="championships" aria-labelledby="lg-p4"><h2 id="lg-p4" data-copy="LG-10">Championships</h2><div class="lg-body"></div></section>
+      </div>
+      <div id="sos-page" class="lg-stack" hidden>
+        <p data-copy="LG-50" class="explain card" id="sos-unavailable" hidden>Strength of Schedule is not yet available for this league: its schedule file has not been exported.</p>
+        <section class="card lg-section sos-card" id="sos-ranks" aria-labelledby="sos-ranks-h">
+          <h2 id="sos-ranks-h" data-copy="LG-51">Weekly Ranks</h2>
+          <div class="table-wrap sos-wrap" tabindex="0" role="region" aria-labelledby="sos-ranks-h"></div>
+          <p class="hint sos-note" data-copy="LG-52">Each cell: the opponent's points (top), their rank among all teams that week (middle) and the opponent (bottom). Season, Played and Upcoming average those ranks; the lowest average is the hardest schedule.</p>
+        </section>
+        <section class="card lg-section sos-card" id="sos-swap" aria-labelledby="sos-swap-h" hidden>
+          <div class="sos-head">
+            <h2 id="sos-swap-h" data-copy="LG-53">Schedule Swap</h2>
+            <div class="sos-legend" id="sos-legend"><span data-copy="LG-54">Wins against your own schedule:</span>
+              <span class="sos-key"><span class="sos-swatch s1"></span><span data-copy="LG-55">2+ fewer</span></span>
+              <span class="sos-key"><span class="sos-swatch s2"></span><span data-copy="LG-56">Up to 2 fewer</span></span>
+              <span class="sos-key"><span class="sos-swatch s3"></span><span data-copy="LG-57">Up to 2 more</span></span>
+              <span class="sos-key"><span class="sos-swatch s4"></span><span data-copy="LG-58">2+ more</span></span>
+              <span class="sos-key"><span class="sos-swatch own"></span><span data-copy="LG-59">Your own schedule</span></span>
+            </div>
+          </div>
+          <div class="table-wrap sos-wrap" tabindex="0" role="region" aria-labelledby="sos-swap-h"></div>
+          <p class="hint sos-note" data-copy="LG-60">Each row is one Manager's weekly scores played against every Manager's schedule; forecast weeks count each game's win probability. Index = average wins across all schedules minus wins on your own; the highest index is the hardest schedule.</p>
+        </section>
       </div>
     </div>
 

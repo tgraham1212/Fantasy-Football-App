@@ -40,6 +40,11 @@ Style is APA, with title case for titles and headings.
 - **Tally:** a count captured from Sleeper or ESPN that changes through the day, such as trending adds and start percentages, committed once a day.
 - **League record:** a best or worst figure in a league's history, such as the highest team score or the longest losing streak, shown on the League sub-tab's Records page; not a stored **Record**.
 - **Meaningful Games:** the games most Managers care about, which league records count: regular-season games, winners-bracket games on the path to the championship, the championship, the 3rd place game (often still played for money) and, in a toilet-bowl league, the toilet bowl games on the path to its final and that final. Every other placement game (5th place and so on) and every consolation game is ignored; in a league without a toilet bowl, the teams outside the playoffs finish in standings order.
+- **Strength of Schedule:** how hard a Manager's regular-season schedule is, shown two ways on the League sub-tab: Weekly Ranks and Schedule Swap.
+- **Weekly rank:** a team's place among all teams by points scored in one week, 1 for the most; equal scores share the better rank.
+- **Weekly Ranks:** the Strength of Schedule view that averages the weekly ranks of each Manager's opponents; the lowest average is the hardest schedule.
+- **Schedule Swap:** the Strength of Schedule view giving each Manager's wins had they played every other Manager's schedule with their own weekly scores.
+- **Schedule Difficulty Index:** a Manager's average wins across every Manager's schedule, their own included, minus their wins on their own schedule; the highest is the hardest schedule.
 - **Card state:** which of eleven states a Games page card is in (F1, F2, C, P2, L1, L2, P1, O1, O2, O3, PW), set by whose games have started or finished; defined in the `game-card-states` spec and `docs/games-page-states.md`.
 - **Refresh mode:** how often data is refreshed: offseason, quiet (in season, no games in progress) or live (games in progress).
 - **Hot run:** the quick refresh of the current week (`hot.yml`), which writes the live bundle.

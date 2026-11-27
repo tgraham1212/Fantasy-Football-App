@@ -337,6 +337,16 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
             write_json(records_path, records)
             written.append(records_path)
             records_entry = {"file": f"{key}/records.json"}
+        schedule_entry = None
+        if store.seasons(key):
+            from ffapp.schedule_strength import schedule_export
+
+            schedule = schedule_export(store, config, key)
+            if schedule["seasons"]:
+                schedule_path = out_dir / key / "schedule.json"
+                write_json(schedule_path, schedule)
+                written.append(schedule_path)
+                schedule_entry = {"file": f"{key}/schedule.json"}
         index["leagues"].append(
             {
                 "key": key,
@@ -350,6 +360,7 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
                 "positions": positions_entry,
                 "managers": managers_entry,
                 "records": records_entry,
+                "schedule": schedule_entry,
             }
         )
     index["refresh_url"] = config.site.refresh_url
