@@ -829,50 +829,50 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <rect class="ext" x="13060" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="13060.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="13190.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="13190.0" y="3980" text-anchor="middle"><tspan class="rid">3.2</tspan><tspan class="rname" dx="6">Player WAR sub-tab</tspan></text>
-<text class="rtext" x="13068" y="4002">The Player WAR sub-tab SHALL show per-position</text>
-<text class="rtext" x="13068" y="4016">leaderboards of Player WAR for a chosen season</text>
-<text class="rtext" x="13068" y="4030">or all time.</text>
-<text class="spec" x="13068" y="4063">war-leaderboard-page</text>
-<path class="trace" d="M13190.0,3952 V554 H770.0 V536" marker-end="url(#openg)"/>
+<text x="13190.0" y="3980" text-anchor="middle"><tspan class="rid">4.9.6.6</tspan><tspan class="rname" dx="6">Cell text colour</tspan></text>
+<text class="rtext" x="13068" y="4002">Text in a coloured cell SHALL be a tint of the</text>
+<text class="rtext" x="13068" y="4016">cell&#x27;s colour with a contrast ratio of at</text>
+<text class="rtext" x="13068" y="4030">least 4.5:1 against it, in light and dark</text>
+<text class="rtext" x="13068" y="4044">modes.</text>
+<text class="spec" x="13068" y="4063">strength-of-schedule-page</text>
+<path class="trace" d="M13190.0,3952 V3502 H460.0 V3484" marker-end="url(#openg)"/>
 <rect class="ext" x="13370" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="13370.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="13500.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="13500.0" y="3980" text-anchor="middle"><tspan class="rid">3.2.2.3</tspan><tspan class="rname" dx="6">Leaderboards on a phone</tspan></text>
-<text class="rtext" x="13378" y="4002">At every tested phone width, the leaderboards</text>
-<text class="rtext" x="13378" y="4016">SHALL stack in one column with no sideways</text>
-<text class="rtext" x="13378" y="4030">page scrolling.</text>
-<text class="spec" x="13378" y="4063">war-leaderboard-page</text>
-<path class="trace" d="M13500.0,3952 V946 H460.0 V938" marker-end="url(#openg)"/>
+<text x="13500.0" y="3980" text-anchor="middle"><tspan class="rid">4.9.6.9</tspan><tspan class="rname" dx="6">Pinned Manager column on phon…</tspan></text>
+<text class="rtext" x="13378" y="4002">On screens narrower than 600 px, each Strength</text>
+<text class="rtext" x="13378" y="4016">of Schedule table SHALL scroll sideways inside</text>
+<text class="rtext" x="13378" y="4030">its card with the Manager column pinned at its</text>
+<text class="rtext" x="13378" y="4044">left edge and Manager names on one line.</text>
+<text class="spec" x="13378" y="4063">strength-of-schedule-page</text>
+<path class="trace" d="M13500.0,3952 V1080 H770.0 V1072" marker-end="url(#openg)"/>
 <rect class="ext" x="13680" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="13680.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="13810.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="13810.0" y="3980" text-anchor="middle"><tspan class="rid">3.2.5.2</tspan><tspan class="rname" dx="6">Pinned names on a phone</tspan></text>
-<text class="rtext" x="13688" y="4002">Below 600 px wide, the overlay&#x27;s name column</text>
-<text class="rtext" x="13688" y="4016">SHALL stay pinned at the table&#x27;s left edge</text>
-<text class="rtext" x="13688" y="4030">while the table scrolls sideways.</text>
+<text x="13810.0" y="3980" text-anchor="middle"><tspan class="rid">3.2</tspan><tspan class="rname" dx="6">Player WAR sub-tab</tspan></text>
+<text class="rtext" x="13688" y="4002">The Player WAR sub-tab SHALL show per-position</text>
+<text class="rtext" x="13688" y="4016">leaderboards of Player WAR for a chosen season</text>
+<text class="rtext" x="13688" y="4030">or all time.</text>
 <text class="spec" x="13688" y="4063">war-leaderboard-page</text>
-<path class="trace" d="M13810.0,3952 V951 H460.0 V938" marker-end="url(#openg)"/>
+<path class="trace" d="M13810.0,3952 V549 H770.0 V536" marker-end="url(#openg)"/>
 <rect class="ext" x="13990" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="13990.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="14120.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="14120.0" y="3980" text-anchor="middle"><tspan class="rid">4.9.6.6</tspan><tspan class="rname" dx="6">Cell text colour</tspan></text>
-<text class="rtext" x="13998" y="4002">Text in a coloured cell SHALL be a tint of the</text>
-<text class="rtext" x="13998" y="4016">cell&#x27;s colour with a contrast ratio of at</text>
-<text class="rtext" x="13998" y="4030">least 4.5:1 against it, in light and dark</text>
-<text class="rtext" x="13998" y="4044">modes.</text>
-<text class="spec" x="13998" y="4063">strength-of-schedule-page · proposed</text>
-<path class="trace" d="M14120.0,3952 V3502 H460.0 V3484" marker-end="url(#openg)"/>
+<text x="14120.0" y="3980" text-anchor="middle"><tspan class="rid">3.2.2.3</tspan><tspan class="rname" dx="6">Leaderboards on a phone</tspan></text>
+<text class="rtext" x="13998" y="4002">At every tested phone width, the leaderboards</text>
+<text class="rtext" x="13998" y="4016">SHALL stack in one column with no sideways</text>
+<text class="rtext" x="13998" y="4030">page scrolling.</text>
+<text class="spec" x="13998" y="4063">war-leaderboard-page</text>
+<path class="trace" d="M14120.0,3952 V956 H460.0 V938" marker-end="url(#openg)"/>
 <rect class="ext" x="14300" y="3952" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="14300.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="14430.0" y="3965" text-anchor="middle">«requirement»</text>
-<text x="14430.0" y="3980" text-anchor="middle"><tspan class="rid">4.9.6.9</tspan><tspan class="rname" dx="6">Pinned Manager column on phon…</tspan></text>
-<text class="rtext" x="14308" y="4002">On screens narrower than 600 px, each Strength</text>
-<text class="rtext" x="14308" y="4016">of Schedule table SHALL scroll sideways inside</text>
-<text class="rtext" x="14308" y="4030">its card with the Manager column pinned at its</text>
-<text class="rtext" x="14308" y="4044">left edge and Manager names on one line.</text>
-<text class="spec" x="14308" y="4063">strength-of-schedule-page · proposed</text>
-<path class="trace" d="M14430.0,3952 V1080 H770.0 V1072" marker-end="url(#openg)"/>
+<text x="14430.0" y="3980" text-anchor="middle"><tspan class="rid">3.2.5.2</tspan><tspan class="rname" dx="6">Pinned names on a phone</tspan></text>
+<text class="rtext" x="14308" y="4002">Below 600 px wide, the overlay&#x27;s name column</text>
+<text class="rtext" x="14308" y="4016">SHALL stay pinned at the table&#x27;s left edge</text>
+<text class="rtext" x="14308" y="4030">while the table scrolls sideways.</text>
+<text class="spec" x="14308" y="4063">war-leaderboard-page</text>
+<path class="trace" d="M14430.0,3952 V946 H460.0 V938" marker-end="url(#openg)"/>
 <path class="derive" d="M40,4170 H86" marker-end="url(#open)"/><text class="lg" x="96" y="4174">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,4170 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="4174">«trace»: extra parent</text>
 <path class="verify" d="M680,4170 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="4174">«verify»: test, inspection or analysis</text>

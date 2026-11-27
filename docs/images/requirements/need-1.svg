@@ -662,7 +662,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="3430">Forecast SHALL report every team&#x27;s mean</text>
 <text class="rtext" x="978" y="3444">simulated score and, for every pair of teams,</text>
 <text class="rtext" x="978" y="3458">the share of runs in which each outscores t…</text>
-<text class="spec" x="978" y="3477">playoff-odds-simulation · proposed</text>
+<text class="spec" x="978" y="3477">playoff-odds-simulation</text>
 <rect class="req" x="660" y="3500" width="260" height="118" rx="3"/>
 <rect class="hdr" x="660.7" y="3500.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="3513" text-anchor="middle">«requirement»</text>
@@ -1048,7 +1048,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="9496">For a regular-season week not yet final, a</text>
 <text class="rtext" x="668" y="9510">team&#x27;s weekly score SHALL be its mean forecast</text>
 <text class="rtext" x="668" y="9524">score from the latest season Forecast.</text>
-<text class="spec" x="668" y="9557">strength-of-schedule · proposed</text>
+<text class="spec" x="668" y="9557">strength-of-schedule</text>
 <path class="trace" d="M1120.0,3484 V3497 H790.0 V9446" marker-end="url(#openg)"/>
 <rect class="ext" x="970" y="9446" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="970.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
@@ -1381,45 +1381,45 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="11208" y="9524">refresh time.</text>
 <text class="spec" x="11208" y="9557">site-updates</text>
 <path class="trace" d="M11330.0,9446 V8460 H770.0 V8442" marker-end="url(#openg)"/>
+<path class="trace" d="M790.0,9446 V3492 H1080.0 V3484" marker-end="url(#openg)"/>
 <rect class="ext" x="11510" y="9446" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="11510.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="11640.0" y="9459" text-anchor="middle">«requirement»</text>
-<text x="11640.0" y="9474" text-anchor="middle"><tspan class="rid">4.7.3</tspan><tspan class="rname" dx="6">Forecast move stories</tspan></text>
-<text class="rtext" x="11518" y="9496">A story SHALL appear when a team&#x27;s playoff</text>
-<text class="rtext" x="11518" y="9510">Forecast changes by at least 10 points in a</text>
-<text class="rtext" x="11518" y="9524">week.</text>
-<text class="spec" x="11518" y="9557">team-news</text>
-<path class="trace" d="M11640.0,9446 V4966 H460.0 V4958" marker-end="url(#openg)"/>
+<text x="11640.0" y="9474" text-anchor="middle"><tspan class="rid">4.10.4.2</tspan><tspan class="rname" dx="6">Upcoming week wins</tspan></text>
+<text class="rtext" x="11518" y="9496">In a week not yet final, a swapped game SHALL</text>
+<text class="rtext" x="11518" y="9510">count the win probability of that pairing from</text>
+<text class="rtext" x="11518" y="9524">the latest season Forecast.</text>
+<text class="spec" x="11518" y="9557">strength-of-schedule</text>
+<path class="trace" d="M11640.0,9446 V3497 H1080.0 V3484" marker-end="url(#openg)"/>
 <rect class="ext" x="11820" y="9446" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="11820.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="11950.0" y="9459" text-anchor="middle">«requirement»</text>
-<text x="11950.0" y="9474" text-anchor="middle"><tspan class="rid">3.2.7</tspan><tspan class="rname" dx="6">Expanded list sorting</tspan></text>
-<text class="rtext" x="11828" y="9496">Every column of the expanded list SHALL sort</text>
-<text class="rtext" x="11828" y="9510">from its header as the Forecast table does:</text>
-<text class="rtext" x="11828" y="9524">descending on the first click (name and</text>
-<text class="rtext" x="11828" y="9538">Manager A to Z), ascending on the second, w…</text>
-<text class="spec" x="11828" y="9557">war-leaderboard-page</text>
-<path class="trace" d="M11950.0,9446 V7785 H770.0 V7772" marker-end="url(#openg)"/>
+<text x="11950.0" y="9474" text-anchor="middle"><tspan class="rid">4.7.3</tspan><tspan class="rname" dx="6">Forecast move stories</tspan></text>
+<text class="rtext" x="11828" y="9496">A story SHALL appear when a team&#x27;s playoff</text>
+<text class="rtext" x="11828" y="9510">Forecast changes by at least 10 points in a</text>
+<text class="rtext" x="11828" y="9524">week.</text>
+<text class="spec" x="11828" y="9557">team-news</text>
+<path class="trace" d="M11950.0,9446 V4976 H460.0 V4958" marker-end="url(#openg)"/>
 <rect class="ext" x="12130" y="9446" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="12130.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="12260.0" y="9459" text-anchor="middle">«requirement»</text>
-<text x="12260.0" y="9474" text-anchor="middle"><tspan class="rid">2.9.3</tspan><tspan class="rname" dx="6">Player in progress</tspan></text>
-<text class="rtext" x="12138" y="9496">A Player whose game is in progress SHALL use</text>
-<text class="rtext" x="12138" y="9510">his projected final, his points so far plus</text>
-<text class="rtext" x="12138" y="9524">the share left times his projection, keeping</text>
-<text class="rtext" x="12138" y="9538">the remaining share of his spread.</text>
-<text class="spec" x="12138" y="9557">win-probability-added</text>
-<path class="trace" d="M12260.0,9446 V4708 H1080.0 V4690" marker-end="url(#openg)"/>
-<path class="trace" d="M790.0,9446 V3492 H1080.0 V3484" marker-end="url(#openg)"/>
+<text x="12260.0" y="9474" text-anchor="middle"><tspan class="rid">3.2.7</tspan><tspan class="rname" dx="6">Expanded list sorting</tspan></text>
+<text class="rtext" x="12138" y="9496">Every column of the expanded list SHALL sort</text>
+<text class="rtext" x="12138" y="9510">from its header as the Forecast table does:</text>
+<text class="rtext" x="12138" y="9524">descending on the first click (name and</text>
+<text class="rtext" x="12138" y="9538">Manager A to Z), ascending on the second, w…</text>
+<text class="spec" x="12138" y="9557">war-leaderboard-page</text>
+<path class="trace" d="M12260.0,9446 V7780 H770.0 V7772" marker-end="url(#openg)"/>
 <rect class="ext" x="12440" y="9446" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="12440.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="12570.0" y="9459" text-anchor="middle">«requirement»</text>
-<text x="12570.0" y="9474" text-anchor="middle"><tspan class="rid">4.10.4.2</tspan><tspan class="rname" dx="6">Upcoming week wins</tspan></text>
-<text class="rtext" x="12448" y="9496">In a week not yet final, a swapped game SHALL</text>
-<text class="rtext" x="12448" y="9510">count the win probability of that pairing from</text>
-<text class="rtext" x="12448" y="9524">the latest season Forecast.</text>
-<text class="spec" x="12448" y="9557">strength-of-schedule · proposed</text>
-<path class="trace" d="M12570.0,9446 V3497 H1080.0 V3484" marker-end="url(#openg)"/>
+<text x="12570.0" y="9474" text-anchor="middle"><tspan class="rid">2.9.3</tspan><tspan class="rname" dx="6">Player in progress</tspan></text>
+<text class="rtext" x="12448" y="9496">A Player whose game is in progress SHALL use</text>
+<text class="rtext" x="12448" y="9510">his projected final, his points so far plus</text>
+<text class="rtext" x="12448" y="9524">the share left times his projection, keeping</text>
+<text class="rtext" x="12448" y="9538">the remaining share of his spread.</text>
+<text class="spec" x="12448" y="9557">win-probability-added</text>
+<path class="trace" d="M12570.0,9446 V4703 H1080.0 V4690" marker-end="url(#openg)"/>
 <path class="derive" d="M40,9664 H86" marker-end="url(#open)"/><text class="lg" x="96" y="9668">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,9664 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="9668">«trace»: extra parent</text>
 <path class="verify" d="M680,9664 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="9668">«verify»: test, inspection or analysis</text>

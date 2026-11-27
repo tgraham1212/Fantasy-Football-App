@@ -244,30 +244,30 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <rect class="ext" x="2210" y="1540" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="2210.7" y="1540.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="2340.0" y="1553" text-anchor="middle">«requirement»</text>
-<text x="2340.0" y="1568" text-anchor="middle"><tspan class="rid">3.2.1.3</tspan><tspan class="rname" dx="6">Cut note</tspan></text>
-<text class="rtext" x="2218" y="1590">The page SHALL say which replacement cut the</text>
-<text class="rtext" x="2218" y="1604">shown season uses, a yearly or a merged cut,</text>
-<text class="rtext" x="2218" y="1618">with no note for a weekly cut.</text>
-<text class="spec" x="2218" y="1651">war-leaderboard-page</text>
+<text x="2340.0" y="1568" text-anchor="middle"><tspan class="rid">4.9.6.8</tspan><tspan class="rname" dx="6">Measures explained</tspan></text>
+<text class="rtext" x="2218" y="1590">Each table SHALL carry a one-line note under</text>
+<text class="rtext" x="2218" y="1604">it saying what the cells hold and which end is</text>
+<text class="rtext" x="2218" y="1618">the hardest schedule.</text>
+<text class="spec" x="2218" y="1651">strength-of-schedule-page</text>
 <path class="trace" d="M2340.0,1540 V276 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="2520" y="1540" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="2520.7" y="1540.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="2650.0" y="1553" text-anchor="middle">«requirement»</text>
-<text x="2650.0" y="1568" text-anchor="middle"><tspan class="rid">3.2.8</tspan><tspan class="rname" dx="6">Calculation explained</tspan></text>
-<text class="rtext" x="2528" y="1590">The page SHALL end with a flow chart of the</text>
-<text class="rtext" x="2528" y="1604">calculation: start percentage, consensus</text>
-<text class="rtext" x="2528" y="1618">lineup, slot means and spread, replacement</text>
-<text class="rtext" x="2528" y="1632">cut, weekly win probability, season sum and…</text>
+<text x="2650.0" y="1568" text-anchor="middle"><tspan class="rid">3.2.1.3</tspan><tspan class="rname" dx="6">Cut note</tspan></text>
+<text class="rtext" x="2528" y="1590">The page SHALL say which replacement cut the</text>
+<text class="rtext" x="2528" y="1604">shown season uses, a yearly or a merged cut,</text>
+<text class="rtext" x="2528" y="1618">with no note for a weekly cut.</text>
 <text class="spec" x="2528" y="1651">war-leaderboard-page</text>
 <path class="trace" d="M2650.0,1540 V281 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="2830" y="1540" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="2830.7" y="1540.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="2960.0" y="1553" text-anchor="middle">«requirement»</text>
-<text x="2960.0" y="1568" text-anchor="middle"><tspan class="rid">4.9.6.8</tspan><tspan class="rname" dx="6">Measures explained</tspan></text>
-<text class="rtext" x="2838" y="1590">Each table SHALL carry a one-line note under</text>
-<text class="rtext" x="2838" y="1604">it saying what the cells hold and which end is</text>
-<text class="rtext" x="2838" y="1618">the hardest schedule.</text>
-<text class="spec" x="2838" y="1651">strength-of-schedule-page · proposed</text>
+<text x="2960.0" y="1568" text-anchor="middle"><tspan class="rid">3.2.8</tspan><tspan class="rname" dx="6">Calculation explained</tspan></text>
+<text class="rtext" x="2838" y="1590">The page SHALL end with a flow chart of the</text>
+<text class="rtext" x="2838" y="1604">calculation: start percentage, consensus</text>
+<text class="rtext" x="2838" y="1618">lineup, slot means and spread, replacement</text>
+<text class="rtext" x="2838" y="1632">cut, weekly win probability, season sum and…</text>
+<text class="spec" x="2838" y="1651">war-leaderboard-page</text>
 <path class="trace" d="M2960.0,1540 V286 H150.0 V268" marker-end="url(#openg)"/>
 <path class="derive" d="M40,1758 H86" marker-end="url(#open)"/><text class="lg" x="96" y="1762">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,1758 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="1762">«trace»: extra parent</text>
