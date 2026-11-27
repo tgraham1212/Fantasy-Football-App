@@ -1025,7 +1025,7 @@ a.mgr-tile:hover { border-color: var(--axis); }
 #page-league, .lg-stack { display: grid; gap: 16px; min-width: 0; }
 #page-league > * { min-width: 0; }
 .lg-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
-.lg-tabs { display: inline-flex; gap: 4px; }
+.lg-tabs { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; }   /* as tall as the view toggles, so the row keeps its height when they wrap */
 .lg-tabs button {
   appearance: none; border: 1px solid var(--border); background: transparent; color: var(--ink-2); font: inherit;
   font-size: 0.88rem; font-weight: 700; padding: 0 14px; min-height: 40px; border-radius: 999px; cursor: pointer;
