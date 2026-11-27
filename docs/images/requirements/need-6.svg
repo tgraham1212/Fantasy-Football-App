@@ -461,7 +461,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="358" y="348">drafts and transactions; stats for played</text>
 <text class="rtext" x="358" y="362">weeks, injury statuses, Player details,</text>
 <text class="rtext" x="358" y="376">trending, ADP and ESPN snapshots; nflverse…</text>
-<text class="spec" x="358" y="395">data-storage-tiers · proposed</text>
+<text class="spec" x="358" y="395">data-storage-tiers</text>
 <rect class="req" x="660" y="418" width="260" height="118" rx="3"/>
 <rect class="hdr" x="660.7" y="418.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="431" text-anchor="middle">«requirement»</text>
@@ -672,14 +672,14 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="3698">the draft named in that season&#x27;s league</text>
 <text class="rtext" x="668" y="3712">settings, with its settings, every pick and</text>
 <text class="rtext" x="668" y="3726">every traded pick.</text>
-<text class="spec" x="668" y="3745">sleeper-league-sync · proposed</text>
+<text class="spec" x="668" y="3745">sleeper-league-sync</text>
 <rect class="req" x="970" y="3768" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="3768.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="3781" text-anchor="middle">«requirement»</text>
 <text x="1100.0" y="3796" text-anchor="middle"><tspan class="rid">6.2.9.1</tspan><tspan class="rname" dx="6">Draft fetch schedule</tspan></text>
 <text class="rtext" x="978" y="3818">A complete draft SHALL be fetched once, and an</text>
 <text class="rtext" x="978" y="3832">incomplete draft on every sync.</text>
-<text class="spec" x="978" y="3879">sleeper-league-sync · proposed</text>
+<text class="spec" x="978" y="3879">sleeper-league-sync</text>
 <rect class="req" x="970" y="3902" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="3902.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="3915" text-anchor="middle">«requirement»</text>
@@ -688,7 +688,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="3966">stored last time, with a warning naming the</text>
 <text class="rtext" x="978" y="3980">league and season, while the sync and the cold</text>
 <text class="rtext" x="978" y="3994">run carry on.</text>
-<text class="spec" x="978" y="4013">sleeper-league-sync · proposed</text>
+<text class="spec" x="978" y="4013">sleeper-league-sync</text>
 <rect class="req" x="660" y="4036" width="260" height="118" rx="3"/>
 <rect class="hdr" x="660.7" y="4036.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="4049" text-anchor="middle">«requirement»</text>
@@ -697,7 +697,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="4100">complete, the sync SHALL store Sleeper&#x27;s</text>
 <text class="rtext" x="668" y="4114">preseason half-PPR and dynasty half-PPR ADP</text>
 <text class="rtext" x="668" y="4128">for every Player once.</text>
-<text class="spec" x="668" y="4147">sleeper-league-sync · proposed</text>
+<text class="spec" x="668" y="4147">sleeper-league-sync</text>
 <rect class="req" x="970" y="4170" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="4170.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="4183" text-anchor="middle">«requirement»</text>
@@ -706,7 +706,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="4234">ADP unstored, with a warning naming the</text>
 <text class="rtext" x="978" y="4248">season, while the sync and the cold run carry</text>
 <text class="rtext" x="978" y="4262">on.</text>
-<text class="spec" x="978" y="4281">sleeper-league-sync · proposed</text>
+<text class="spec" x="978" y="4281">sleeper-league-sync</text>
 <rect class="req" x="350" y="4304" width="260" height="118" rx="3"/>
 <rect class="hdr" x="350.7" y="4304.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="480.0" y="4317" text-anchor="middle">«requirement»</text>
@@ -934,7 +934,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="7852">hold each fantasy Player&#x27;s weekly IR, PUP and</text>
 <text class="rtext" x="668" y="7866">Out statuses from nflverse, keyed by Sleeper</text>
 <text class="rtext" x="668" y="7880">Player id.</text>
-<text class="spec" x="668" y="7899">injury-history · proposed</text>
+<text class="spec" x="668" y="7899">injury-history</text>
 <rect class="req" x="970" y="7922" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="7922.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="7935" text-anchor="middle">«requirement»</text>
@@ -942,7 +942,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="7972">A completed season&#x27;s injury reports SHALL be</text>
 <text class="rtext" x="978" y="7986">fetched once, and the current season&#x27;s at most</text>
 <text class="rtext" x="978" y="8000">once every 20 hours.</text>
-<text class="spec" x="978" y="8033">injury-history · proposed</text>
+<text class="spec" x="978" y="8033">injury-history</text>
 <rect class="req" x="970" y="8056" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="8056.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="8069" text-anchor="middle">«requirement»</text>
@@ -950,7 +950,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="8106">A failed injury report fetch SHALL keep the</text>
 <text class="rtext" x="978" y="8120">file stored last time, with a warning naming</text>
 <text class="rtext" x="978" y="8134">the season, while the cold run carries on.</text>
-<text class="spec" x="978" y="8167">injury-history · proposed</text>
+<text class="spec" x="978" y="8167">injury-history</text>
 <rect class="req" x="350" y="8190" width="260" height="118" rx="3"/>
 <rect class="hdr" x="350.7" y="8190.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="480.0" y="8203" text-anchor="middle">«requirement»</text>
@@ -1111,7 +1111,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="2528" y="9510">league, holding every stored draft of that</text>
 <text class="rtext" x="2528" y="9524">league with its graded picks and Managers</text>
 <text class="rtext" x="2528" y="9538">summaries.</text>
-<text class="spec" x="2528" y="9557">league-draft · proposed</text>
+<text class="spec" x="2528" y="9557">league-draft</text>
 <path class="trace" d="M810.0,3752 V3765 H2650.0 V9446" marker-end="url(#openg)"/>
 <path class="trace" d="M1120.0,4020 V4038 H2340.0 V9446" marker-end="url(#openg)"/>
 <rect class="ext" x="2830" y="9446" width="260" height="118" rx="3"/>
@@ -1122,7 +1122,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="2838" y="9510">difference to 0.1: in redraft, the pick number</text>
 <text class="rtext" x="2838" y="9524">minus the Player&#x27;s ADP; in a rookie draft, the</text>
 <text class="rtext" x="2838" y="9538">pick number minus the Player&#x27;s ADP rank amo…</text>
-<text class="spec" x="2838" y="9557">league-draft · proposed</text>
+<text class="spec" x="2838" y="9557">league-draft</text>
 <path class="trace" d="M810.0,4154 V4162 H2960.0 V9446" marker-end="url(#openg)"/>
 <path class="trace" d="M1120.0,4288 V4301 H2340.0 V9446" marker-end="url(#openg)"/>
 <rect class="ext" x="3140" y="9446" width="260" height="118" rx="3"/>
@@ -1212,7 +1212,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="5628" y="9510">more than half of his NFL team&#x27;s regular-</text>
 <text class="rtext" x="5628" y="9524">season games in the grading window so far</text>
 <text class="rtext" x="5628" y="9538">while listed Out, on injured reserve or on…</text>
-<text class="spec" x="5628" y="9557">league-draft · proposed</text>
+<text class="spec" x="5628" y="9557">league-draft</text>
 <path class="trace" d="M810.0,7906 V7914 H5750.0 V9446" marker-end="url(#openg)"/>
 <path class="trace" d="M1120.0,8174 V8187 H2340.0 V9446" marker-end="url(#openg)"/>
 <rect class="ext" x="5930" y="9446" width="260" height="118" rx="3"/>
@@ -1265,6 +1265,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="7178" y="9510">stored.</text>
 <text class="spec" x="7178" y="9557">game-predictions</text>
 <path class="trace" d="M7300.0,9446 V276 H150.0 V268" marker-end="url(#openg)"/>
+<path class="trace" d="M5750.0,9446 V7919 H770.0 V7906" marker-end="url(#openg)"/>
 <rect class="ext" x="7480" y="9446" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="7480.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="7610.0" y="9459" text-anchor="middle">«requirement»</text>
@@ -1273,8 +1274,8 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="7488" y="9510">NFL team the Player played for in that week or</text>
 <text class="rtext" x="7488" y="9524">season, from the stored weekly stats.</text>
 <text class="spec" x="7488" y="9557">league-records</text>
-<path class="trace" d="M7610.0,9446 V5373 H460.0 V5360" marker-end="url(#openg)"/>
-<path class="trace" d="M790.0,9446 V286 H150.0 V268" marker-end="url(#openg)"/>
+<path class="trace" d="M7610.0,9446 V5378 H460.0 V5360" marker-end="url(#openg)"/>
+<path class="trace" d="M790.0,9446 V276 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="7790" y="9446" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="7790.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="7920.0" y="9459" text-anchor="middle">«requirement»</text>
@@ -1284,7 +1285,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="7798" y="9524">their identity, display name and current or</text>
 <text class="rtext" x="7798" y="9538">former status, and a per-week history of…</text>
 <text class="spec" x="7798" y="9557">manager-ratings</text>
-<path class="trace" d="M7920.0,9446 V276 H150.0 V268" marker-end="url(#openg)"/>
+<path class="trace" d="M7920.0,9446 V281 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="8100" y="9446" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="8100.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="8230.0" y="9459" text-anchor="middle">«requirement»</text>
@@ -1294,7 +1295,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="8108" y="9524">through, the season constants and replacement</text>
 <text class="rtext" x="8108" y="9538">levels, and per qualifying Player his Sleep…</text>
 <text class="spec" x="8108" y="9557">player-war</text>
-<path class="trace" d="M8230.0,9446 V281 H150.0 V268" marker-end="url(#openg)"/>
+<path class="trace" d="M8230.0,9446 V286 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="8410" y="9446" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="8410.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="8540.0" y="9459" text-anchor="middle">«requirement»</text>
@@ -1303,7 +1304,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="8418" y="9510">the simulation SHALL produce identical</text>
 <text class="rtext" x="8418" y="9524">results.</text>
 <text class="spec" x="8418" y="9557">playoff-odds-simulation</text>
-<path class="trace" d="M8540.0,9446 V286 H150.0 V268" marker-end="url(#openg)"/>
+<path class="trace" d="M8540.0,9446 V276 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="8720" y="9446" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="8720.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="8850.0" y="9459" text-anchor="middle">«requirement»</text>
@@ -1313,7 +1314,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="8728" y="9524">replayed seasons alike, keeping every other</text>
 <text class="rtext" x="8728" y="9538">week&#x27;s and season&#x27;s Forecast.</text>
 <text class="spec" x="8728" y="9557">playoff-odds-simulation</text>
-<path class="trace" d="M8850.0,9446 V276 H150.0 V268" marker-end="url(#openg)"/>
+<path class="trace" d="M8850.0,9446 V281 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="9030" y="9446" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="9030.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="9160.0" y="9459" text-anchor="middle">«requirement»</text>
@@ -1323,8 +1324,8 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="9038" y="9524">statuses and start-percentage snapshot, then</text>
 <text class="rtext" x="9038" y="9538">rebuild the ratings, replacement levels, WA…</text>
 <text class="spec" x="9038" y="9557">refresh-scheduling</text>
-<path class="trace" d="M9160.0,9446 V281 H150.0 V268" marker-end="url(#openg)"/>
-<path class="trace" d="M3580.0,9446 V286 H150.0 V268" marker-end="url(#openg)"/>
+<path class="trace" d="M9160.0,9446 V286 H150.0 V268" marker-end="url(#openg)"/>
+<path class="trace" d="M3580.0,9446 V276 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="9340" y="9446" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="9340.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="9470.0" y="9459" text-anchor="middle">«requirement»</text>
@@ -1334,7 +1335,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="9348" y="9524">holding the weekly projected and realised</text>
 <text class="rtext" x="9348" y="9538">levels by position, the season values, the …</text>
 <text class="spec" x="9348" y="9557">replacement-level</text>
-<path class="trace" d="M9470.0,9446 V276 H150.0 V268" marker-end="url(#openg)"/>
+<path class="trace" d="M9470.0,9446 V281 H150.0 V268" marker-end="url(#openg)"/>
 <rect class="ext" x="9650" y="9446" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="9650.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="9780.0" y="9459" text-anchor="middle">«requirement»</text>
@@ -1343,8 +1344,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="9658" y="9510">adds, the most-added Players over the last 24</text>
 <text class="rtext" x="9658" y="9524">hours, with the time saved.</text>
 <text class="spec" x="9658" y="9557">team-news</text>
-<path class="trace" d="M9780.0,9446 V281 H150.0 V268" marker-end="url(#openg)"/>
-<path class="trace" d="M5750.0,9446 V7924 H770.0 V7906" marker-end="url(#openg)"/>
+<path class="trace" d="M9780.0,9446 V286 H150.0 V268" marker-end="url(#openg)"/>
 <path class="derive" d="M40,9664 H86" marker-end="url(#open)"/><text class="lg" x="96" y="9668">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,9664 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="9668">«trace»: extra parent</text>
 <path class="verify" d="M680,9664 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="9668">«verify»: test, inspection or analysis</text>

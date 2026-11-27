@@ -1813,7 +1813,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="6230">On the redraft Roster card, a keeper-eligible</text>
 <text class="rtext" x="978" y="6244">Player SHALL show a gold &quot;KE&quot; badge after his</text>
 <text class="rtext" x="978" y="6258">name.</text>
-<text class="spec" x="978" y="6291">manager-pages · proposed</text>
+<text class="spec" x="978" y="6291">manager-pages</text>
 <rect class="req" x="660" y="6314" width="260" height="118" rx="3"/>
 <rect class="hdr" x="660.7" y="6314.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="6327" text-anchor="middle">«requirement»</text>
@@ -3044,14 +3044,14 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="25794">The League sub-tab SHALL have a Draft tab,</text>
 <text class="rtext" x="668" y="25808">after Strength of Schedule, showing the</text>
 <text class="rtext" x="668" y="25822">league&#x27;s drafts.</text>
-<text class="spec" x="668" y="25855">league-draft-page · proposed</text>
+<text class="spec" x="668" y="25855">league-draft-page</text>
 <rect class="req" x="970" y="25878" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="25878.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="25891" text-anchor="middle">«requirement»</text>
 <text x="1100.0" y="25906" text-anchor="middle"><tspan class="rid">4.9.7.1</tspan><tspan class="rname" dx="6">Draft views</tspan></text>
 <text class="rtext" x="978" y="25928">The tab SHALL show a Board view and a Table</text>
 <text class="rtext" x="978" y="25942">view, switched by a two-button control.</text>
-<text class="spec" x="978" y="25989">league-draft-page · proposed</text>
+<text class="spec" x="978" y="25989">league-draft-page</text>
 <rect class="req" x="970" y="26012" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="26012.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="26025" text-anchor="middle">«requirement»</text>
@@ -3059,14 +3059,14 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="26062">The tab SHALL offer every season with a stored</text>
 <text class="rtext" x="978" y="26076">draft in a Season picker, the latest first and</text>
 <text class="rtext" x="978" y="26090">selected on opening.</text>
-<text class="spec" x="978" y="26123">league-draft-page · proposed</text>
+<text class="spec" x="978" y="26123">league-draft-page</text>
 <rect class="req" x="970" y="26146" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="26146.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="26159" text-anchor="middle">«requirement»</text>
 <text x="1100.0" y="26174" text-anchor="middle"><tspan class="rid">4.9.7.3</tspan><tspan class="rname" dx="6">Draft view and season in the …</tspan></text>
 <text class="rtext" x="978" y="26196">The page URL SHALL name the Draft view and</text>
 <text class="rtext" x="978" y="26210">season, so that opening a link shows them.</text>
-<text class="spec" x="978" y="26257">league-draft-page · proposed</text>
+<text class="spec" x="978" y="26257">league-draft-page</text>
 <rect class="req" x="970" y="26280" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="26280.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="26293" text-anchor="middle">«requirement»</text>
@@ -3075,7 +3075,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="26344">and one column per draft slot, headed by the</text>
 <text class="rtext" x="978" y="26358">Manager who held the slot, each cell giving</text>
 <text class="rtext" x="978" y="26372">the pick, Player, position and NFL team,…</text>
-<text class="spec" x="978" y="26391">league-draft-page · proposed</text>
+<text class="spec" x="978" y="26391">league-draft-page</text>
 <rect class="req" x="1280" y="26414" width="260" height="118" rx="3"/>
 <rect class="hdr" x="1280.7" y="26414.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="26427" text-anchor="middle">«requirement»</text>
@@ -3083,7 +3083,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="1288" y="26464">A board cell SHALL name the Manager who made a</text>
 <text class="rtext" x="1288" y="26478">traded pick and mark a keeper with the word</text>
 <text class="rtext" x="1288" y="26492">&quot;Keeper&quot;.</text>
-<text class="spec" x="1288" y="26525">league-draft-page · proposed</text>
+<text class="spec" x="1288" y="26525">league-draft-page</text>
 <rect class="req" x="1280" y="26548" width="260" height="118" rx="3"/>
 <rect class="hdr" x="1280.7" y="26548.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="26561" text-anchor="middle">«requirement»</text>
@@ -3092,7 +3092,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="1288" y="26612">switch that shows, in each graded cell, the</text>
 <text class="rtext" x="1288" y="26626">pick&#x27;s Steal or Reach badge or its Hit, Bust</text>
 <text class="rtext" x="1288" y="26640">or Unlucky badge.</text>
-<text class="spec" x="1288" y="26659">league-draft-page · proposed</text>
+<text class="spec" x="1288" y="26659">league-draft-page</text>
 <rect class="req" x="1280" y="26682" width="260" height="118" rx="3"/>
 <rect class="hdr" x="1280.7" y="26682.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="26695" text-anchor="middle">«requirement»</text>
@@ -3100,7 +3100,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="1288" y="26732">On screens narrower than 600 px, the board</text>
 <text class="rtext" x="1288" y="26746">SHALL scroll sideways inside its card with the</text>
 <text class="rtext" x="1288" y="26760">round column pinned at its left edge.</text>
-<text class="spec" x="1288" y="26793">league-draft-page · proposed</text>
+<text class="spec" x="1288" y="26793">league-draft-page</text>
 <rect class="req" x="970" y="26816" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="26816.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="26829" text-anchor="middle">«requirement»</text>
@@ -3109,14 +3109,14 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="26880">columns Pick, Manager, Player, ADP, ADP Rank,</text>
 <text class="rtext" x="978" y="26894">WAR, WAR Rank, Slot WAR, Hit/Bust and Games</text>
 <text class="rtext" x="978" y="26908">Played.</text>
-<text class="spec" x="978" y="26927">league-draft-page · proposed</text>
+<text class="spec" x="978" y="26927">league-draft-page</text>
 <rect class="req" x="1280" y="26950" width="260" height="118" rx="3"/>
 <rect class="hdr" x="1280.7" y="26950.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="26963" text-anchor="middle">«requirement»</text>
 <text x="1410.0" y="26978" text-anchor="middle"><tspan class="rid">4.9.7.5.1</tspan><tspan class="rname" dx="6">Steal or Reach in the Player …</tspan></text>
 <text class="rtext" x="1288" y="27000">The Player column SHALL end with the pick&#x27;s</text>
 <text class="rtext" x="1288" y="27014">Steal or Reach badge, when the pick has one.</text>
-<text class="spec" x="1288" y="27061">league-draft-page · proposed</text>
+<text class="spec" x="1288" y="27061">league-draft-page</text>
 <rect class="req" x="1280" y="27084" width="260" height="118" rx="3"/>
 <rect class="hdr" x="1280.7" y="27084.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="27097" text-anchor="middle">«requirement»</text>
@@ -3124,7 +3124,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="1288" y="27134">The ADP Rank and WAR Rank columns SHALL give</text>
 <text class="rtext" x="1288" y="27148">the position rank as a badge in the position&#x27;s</text>
 <text class="rtext" x="1288" y="27162">colours after the overall rank.</text>
-<text class="spec" x="1288" y="27195">league-draft-page · proposed</text>
+<text class="spec" x="1288" y="27195">league-draft-page</text>
 <rect class="req" x="1280" y="27218" width="260" height="118" rx="3"/>
 <rect class="hdr" x="1280.7" y="27218.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="27231" text-anchor="middle">«requirement»</text>
@@ -3132,7 +3132,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="1288" y="27268">The Manager column SHALL add &quot;via&quot; and the</text>
 <text class="rtext" x="1288" y="27282">slot&#x27;s original Manager under the Manager who</text>
 <text class="rtext" x="1288" y="27296">made a traded pick.</text>
-<text class="spec" x="1288" y="27329">league-draft-page · proposed</text>
+<text class="spec" x="1288" y="27329">league-draft-page</text>
 <rect class="req" x="1280" y="27352" width="260" height="118" rx="3"/>
 <rect class="hdr" x="1280.7" y="27352.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="27365" text-anchor="middle">«requirement»</text>
@@ -3140,7 +3140,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="1288" y="27402">Each column of the draft table SHALL sort the</text>
 <text class="rtext" x="1288" y="27416">table when its header is pressed, with Pick</text>
 <text class="rtext" x="1288" y="27430">ascending on opening.</text>
-<text class="spec" x="1288" y="27463">league-draft-page · proposed</text>
+<text class="spec" x="1288" y="27463">league-draft-page</text>
 <rect class="req" x="1280" y="27486" width="260" height="118" rx="3"/>
 <rect class="hdr" x="1280.7" y="27486.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="27499" text-anchor="middle">«requirement»</text>
@@ -3149,7 +3149,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="1288" y="27550">view SHALL show each pick as a list row giving</text>
 <text class="rtext" x="1288" y="27564">the pick, Player, the Manager who made it, any</text>
 <text class="rtext" x="1288" y="27578">Steal or Reach badge and any Hit, Bust or…</text>
-<text class="spec" x="1288" y="27597">league-draft-page · proposed</text>
+<text class="spec" x="1288" y="27597">league-draft-page</text>
 <rect class="req" x="970" y="27620" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="27620.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="27633" text-anchor="middle">«requirement»</text>
@@ -3158,7 +3158,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="27684">light orange, Hit badges dark blue with light</text>
 <text class="rtext" x="978" y="27698">blue text and Bust badges dark red with light</text>
 <text class="rtext" x="978" y="27712">red text, each with text contrast of at lea…</text>
-<text class="spec" x="978" y="27731">league-draft-page · proposed</text>
+<text class="spec" x="978" y="27731">league-draft-page</text>
 <rect class="req" x="1280" y="27754" width="260" height="118" rx="3"/>
 <rect class="hdr" x="1280.7" y="27754.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="27767" text-anchor="middle">«requirement»</text>
@@ -3167,7 +3167,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="1288" y="27818">when positive and red when negative, with text</text>
 <text class="rtext" x="1288" y="27832">contrast of at least 4.5:1 in light and dark</text>
 <text class="rtext" x="1288" y="27846">modes.</text>
-<text class="spec" x="1288" y="27865">league-draft-page · proposed</text>
+<text class="spec" x="1288" y="27865">league-draft-page</text>
 <rect class="req" x="970" y="27888" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="27888.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="27901" text-anchor="middle">«requirement»</text>
@@ -3176,7 +3176,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="27952">the draft, with a This Draft | All Drafts</text>
 <text class="rtext" x="978" y="27966">switch, Managers listed by mean WAR above slot</text>
 <text class="rtext" x="978" y="27980">WAR, highest first.</text>
-<text class="spec" x="978" y="27999">league-draft-page · proposed</text>
+<text class="spec" x="978" y="27999">league-draft-page</text>
 <rect class="req" x="970" y="28022" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="28022.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="28035" text-anchor="middle">«requirement»</text>
@@ -3184,7 +3184,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="28072">The tab SHALL explain Steal/Reach, Hit/Bust</text>
 <text class="rtext" x="978" y="28086">and Unlucky, with their thresholds for the</text>
 <text class="rtext" x="978" y="28100">league shown, in a note below the draft.</text>
-<text class="spec" x="978" y="28133">league-draft-page · proposed</text>
+<text class="spec" x="978" y="28133">league-draft-page</text>
 <rect class="req" x="970" y="28156" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="28156.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="28169" text-anchor="middle">«requirement»</text>
@@ -3193,7 +3193,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="28220">show a Keeper Eligible matrix with one row per</text>
 <text class="rtext" x="978" y="28234">Manager and one column per price round, each</text>
 <text class="rtext" x="978" y="28248">cell listing that Manager&#x27;s keeper-eligible…</text>
-<text class="spec" x="978" y="28267">league-draft-page · proposed</text>
+<text class="spec" x="978" y="28267">league-draft-page</text>
 <rect class="req" x="1280" y="28290" width="260" height="118" rx="3"/>
 <rect class="hdr" x="1280.7" y="28290.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="28303" text-anchor="middle">«requirement»</text>
@@ -3202,7 +3202,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="1288" y="28354">Eligible matrix SHALL show one list per</text>
 <text class="rtext" x="1288" y="28368">Manager of that Manager&#x27;s keeper-eligible</text>
 <text class="rtext" x="1288" y="28382">Players with their prices.</text>
-<text class="spec" x="1288" y="28401">league-draft-page · proposed</text>
+<text class="spec" x="1288" y="28401">league-draft-page</text>
 <rect class="req" x="350" y="28424" width="260" height="118" rx="3"/>
 <rect class="hdr" x="350.7" y="28424.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="480.0" y="28437" text-anchor="middle">«requirement»</text>
@@ -3303,7 +3303,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="358" y="29962">league, holding every stored draft of that</text>
 <text class="rtext" x="358" y="29976">league with its graded picks and Managers</text>
 <text class="rtext" x="358" y="29990">summaries.</text>
-<text class="spec" x="358" y="30009">league-draft · proposed</text>
+<text class="spec" x="358" y="30009">league-draft</text>
 <rect class="req" x="660" y="30032" width="260" height="118" rx="3"/>
 <rect class="hdr" x="660.7" y="30032.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="30045" text-anchor="middle">«requirement»</text>
@@ -3312,7 +3312,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="30096">difference to 0.1: in redraft, the pick number</text>
 <text class="rtext" x="668" y="30110">minus the Player&#x27;s ADP; in a rookie draft, the</text>
 <text class="rtext" x="668" y="30124">pick number minus the Player&#x27;s ADP rank amo…</text>
-<text class="spec" x="668" y="30143">league-draft · proposed</text>
+<text class="spec" x="668" y="30143">league-draft</text>
 <rect class="req" x="970" y="30166" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="30166.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="30179" text-anchor="middle">«requirement»</text>
@@ -3320,7 +3320,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="30216">A pick SHALL be a steal when its ADP</text>
 <text class="rtext" x="978" y="30230">difference is at least +12 in redraft or at</text>
 <text class="rtext" x="978" y="30244">least +6 in a rookie draft.</text>
-<text class="spec" x="978" y="30277">league-draft · proposed</text>
+<text class="spec" x="978" y="30277">league-draft</text>
 <rect class="req" x="970" y="30300" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="30300.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="30313" text-anchor="middle">«requirement»</text>
@@ -3329,14 +3329,14 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="30364">difference is -12 or less in redraft or -6 or</text>
 <text class="rtext" x="978" y="30378">less in a rookie draft, unless the Player is a</text>
 <text class="rtext" x="978" y="30392">running back or wide receiver with one of t…</text>
-<text class="spec" x="978" y="30411">league-draft · proposed</text>
+<text class="spec" x="978" y="30411">league-draft</text>
 <rect class="req" x="970" y="30434" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="30434.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="30447" text-anchor="middle">«requirement»</text>
 <text x="1100.0" y="30462" text-anchor="middle"><tspan class="rid">4.11.1.3</tspan><tspan class="rname" dx="6">Ungraded picks</tspan></text>
 <text class="rtext" x="978" y="30484">The export SHALL mark keepers and Players</text>
 <text class="rtext" x="978" y="30498">without an ADP as having no Steal/Reach grade.</text>
-<text class="spec" x="978" y="30545">league-draft · proposed</text>
+<text class="spec" x="978" y="30545">league-draft</text>
 <rect class="req" x="660" y="30568" width="260" height="118" rx="3"/>
 <rect class="hdr" x="660.7" y="30568.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="30581" text-anchor="middle">«requirement»</text>
@@ -3345,7 +3345,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="30632">slot WAR by at least 0.75 in redraft or 1.0 in</text>
 <text class="rtext" x="668" y="30646">a rookie draft, and a bust when its WAR falls</text>
 <text class="rtext" x="668" y="30660">short of its slot WAR by at least as much.</text>
-<text class="spec" x="668" y="30679">league-draft · proposed</text>
+<text class="spec" x="668" y="30679">league-draft</text>
 <rect class="req" x="970" y="30702" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="30702.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="30715" text-anchor="middle">«requirement»</text>
@@ -3354,7 +3354,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="30766">every roster over the draft season in redraft,</text>
 <text class="rtext" x="978" y="30780">and over the draft season and the following</text>
 <text class="rtext" x="978" y="30794">season in a rookie draft.</text>
-<text class="spec" x="978" y="30813">league-draft · proposed</text>
+<text class="spec" x="978" y="30813">league-draft</text>
 <rect class="req" x="970" y="30836" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="30836.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="30849" text-anchor="middle">«requirement»</text>
@@ -3363,7 +3363,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="30900">WAR to 0.01: the mean WAR of picks within 6</text>
 <text class="rtext" x="978" y="30914">slots of it in redraft, or 3 slots in a rookie</text>
 <text class="rtext" x="978" y="30928">draft, across the league&#x27;s drafts whose…</text>
-<text class="spec" x="978" y="30947">league-draft · proposed</text>
+<text class="spec" x="978" y="30947">league-draft</text>
 <rect class="req" x="1280" y="30970" width="260" height="118" rx="3"/>
 <rect class="hdr" x="1280.7" y="30970.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="30983" text-anchor="middle">«requirement»</text>
@@ -3372,7 +3372,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="1288" y="31034">its slot WAR SHALL be scaled by the share of</text>
 <text class="rtext" x="1288" y="31048">the window&#x27;s regular-season weeks already</text>
 <text class="rtext" x="1288" y="31062">played.</text>
-<text class="spec" x="1288" y="31081">league-draft · proposed</text>
+<text class="spec" x="1288" y="31081">league-draft</text>
 <rect class="req" x="970" y="31104" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="31104.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="31117" text-anchor="middle">«requirement»</text>
@@ -3381,14 +3381,14 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="31168">more than half of his NFL team&#x27;s regular-</text>
 <text class="rtext" x="978" y="31182">season games in the grading window so far</text>
 <text class="rtext" x="978" y="31196">while listed Out, on injured reserve or on…</text>
-<text class="spec" x="978" y="31215">league-draft · proposed</text>
+<text class="spec" x="978" y="31215">league-draft</text>
 <rect class="req" x="1280" y="31238" width="260" height="118" rx="3"/>
 <rect class="hdr" x="1280.7" y="31238.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="31251" text-anchor="middle">«requirement»</text>
 <text x="1410.0" y="31266" text-anchor="middle"><tspan class="rid">4.11.2.3.1</tspan><tspan class="rname" dx="6">Unlucky in place of bust</tspan></text>
 <text class="rtext" x="1288" y="31288">The export SHALL give an unlucky pick that is</text>
 <text class="rtext" x="1288" y="31302">not a hit the grade Unlucky, in place of Bust.</text>
-<text class="spec" x="1288" y="31349">league-draft · proposed</text>
+<text class="spec" x="1288" y="31349">league-draft</text>
 <rect class="req" x="660" y="31372" width="260" height="118" rx="3"/>
 <rect class="hdr" x="660.7" y="31372.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="31385" text-anchor="middle">«requirement»</text>
@@ -3396,7 +3396,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="31422">For each pick, the export SHALL give the</text>
 <text class="rtext" x="668" y="31436">Player&#x27;s rank and position rank among that</text>
 <text class="rtext" x="668" y="31450">draft&#x27;s Players, by ADP and by WAR.</text>
-<text class="spec" x="668" y="31483">league-draft · proposed</text>
+<text class="spec" x="668" y="31483">league-draft</text>
 <rect class="req" x="660" y="31506" width="260" height="118" rx="3"/>
 <rect class="hdr" x="660.7" y="31506.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="31519" text-anchor="middle">«requirement»</text>
@@ -3405,14 +3405,14 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="31570">drafts, the export SHALL give each Manager&#x27;s</text>
 <text class="rtext" x="668" y="31584">picks, mean ADP difference to 0.1, mean WAR</text>
 <text class="rtext" x="668" y="31598">above slot WAR to 0.01, total WAR, best pic…</text>
-<text class="spec" x="668" y="31617">league-draft · proposed</text>
+<text class="spec" x="668" y="31617">league-draft</text>
 <rect class="req" x="970" y="31640" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="31640.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="31653" text-anchor="middle">«requirement»</text>
 <text x="1100.0" y="31668" text-anchor="middle"><tspan class="rid">4.11.4.1</tspan><tspan class="rname" dx="6">Picks by the Manager who made…</tspan></text>
 <text class="rtext" x="978" y="31690">Each pick SHALL count for the Manager whose</text>
 <text class="rtext" x="978" y="31704">roster made it, traded picks included.</text>
-<text class="spec" x="978" y="31751">league-draft · proposed</text>
+<text class="spec" x="978" y="31751">league-draft</text>
 <rect class="req" x="660" y="31774" width="260" height="118" rx="3"/>
 <rect class="hdr" x="660.7" y="31774.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="31787" text-anchor="middle">«requirement»</text>
@@ -3421,7 +3421,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="31838">SHALL be read from the league configuration by</text>
 <text class="rtext" x="668" y="31852">season and marked as keepers, with no</text>
 <text class="rtext" x="668" y="31866">Steal/Reach or Hit/Bust grade.</text>
-<text class="spec" x="668" y="31885">league-draft · proposed</text>
+<text class="spec" x="668" y="31885">league-draft</text>
 <rect class="req" x="660" y="31908" width="260" height="118" rx="3"/>
 <rect class="hdr" x="660.7" y="31908.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="31921" text-anchor="middle">«requirement»</text>
@@ -3430,7 +3430,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="31972">list as keeper eligible each Player drafted by</text>
 <text class="rtext" x="668" y="31986">a Manager who stayed on that Manager&#x27;s roster</text>
 <text class="rtext" x="668" y="32000">through the championship week.</text>
-<text class="spec" x="668" y="32019">league-draft · proposed</text>
+<text class="spec" x="668" y="32019">league-draft</text>
 <rect class="req" x="970" y="32042" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="32042.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="32055" text-anchor="middle">«requirement»</text>
@@ -3438,7 +3438,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="32092">A keeper-eligible Player&#x27;s price SHALL be the</text>
 <text class="rtext" x="978" y="32106">round one higher than the round he was drafted</text>
 <text class="rtext" x="978" y="32120">in, with first-round picks not eligible.</text>
-<text class="spec" x="978" y="32153">league-draft · proposed</text>
+<text class="spec" x="978" y="32153">league-draft</text>
 <rect class="req" x="970" y="32176" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="32176.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="32189" text-anchor="middle">«requirement»</text>
@@ -3447,7 +3447,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="32240">first-round pick to keep again, unless he was</text>
 <text class="rtext" x="978" y="32254">also kept the season before, which makes him</text>
 <text class="rtext" x="978" y="32268">not eligible.</text>
-<text class="spec" x="978" y="32287">league-draft · proposed</text>
+<text class="spec" x="978" y="32287">league-draft</text>
 <rect class="req" x="970" y="32310" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="32310.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="32323" text-anchor="middle">«requirement»</text>
@@ -3456,7 +3456,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="32374">progress, the export SHALL list keeper</text>
 <text class="rtext" x="978" y="32388">eligibility through the latest week played and</text>
 <text class="rtext" x="978" y="32402">mark the list as not final.</text>
-<text class="spec" x="978" y="32421">league-draft · proposed</text>
+<text class="spec" x="978" y="32421">league-draft</text>
 <text class="col" x="40" y="32478">OTHER BRANCHES · «trace» (extra parents)</text>
 <rect class="ext" x="350" y="32494" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="350.7" y="32494.7" width="258.6" height="34" rx="2.5"/>
@@ -3697,7 +3697,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="7178" y="32558">hold each fantasy Player&#x27;s weekly IR, PUP and</text>
 <text class="rtext" x="7178" y="32572">Out statuses from nflverse, keyed by Sleeper</text>
 <text class="rtext" x="7178" y="32586">Player id.</text>
-<text class="spec" x="7178" y="32605">injury-history · proposed</text>
+<text class="spec" x="7178" y="32605">injury-history</text>
 <path class="trace" d="M1120.0,31222 V31235 H7300.0 V32494" marker-end="url(#openg)"/>
 <rect class="ext" x="7480" y="32494" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="7480.7" y="32494.7" width="258.6" height="34" rx="2.5"/>
@@ -3719,7 +3719,8 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="7798" y="32586">practice participation and depth-chart orde…</text>
 <text class="spec" x="7798" y="32605">injury-history</text>
 <path class="trace" d="M7920.0,32494 V16892 H770.0 V16884" marker-end="url(#openg)"/>
-<path class="trace" d="M5440.0,32494 V19041 H460.0 V19028" marker-end="url(#openg)"/>
+<path class="trace" d="M7300.0,32494 V31235 H1080.0 V31222" marker-end="url(#openg)"/>
+<path class="trace" d="M5440.0,32494 V19046 H460.0 V19028" marker-end="url(#openg)"/>
 <rect class="ext" x="8100" y="32494" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="8100.7" y="32494.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="8230.0" y="32507" text-anchor="middle">«requirement»</text>
@@ -3728,8 +3729,8 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="8108" y="32558">title game in which he was on the champion&#x27;s</text>
 <text class="rtext" x="8108" y="32572">roster, bench, IR and taxi squad included.</text>
 <text class="spec" x="8108" y="32605">league-records</text>
-<path class="trace" d="M8230.0,32494 V19448 H770.0 V19430" marker-end="url(#openg)"/>
-<path class="trace" d="M6990.0,32494 V29220 H770.0 V29212" marker-end="url(#openg)"/>
+<path class="trace" d="M8230.0,32494 V19438 H770.0 V19430" marker-end="url(#openg)"/>
+<path class="trace" d="M6990.0,32494 V29225 H770.0 V29212" marker-end="url(#openg)"/>
 <rect class="ext" x="8410" y="32494" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="8410.7" y="32494.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="8540.0" y="32507" text-anchor="middle">«requirement»</text>
@@ -3738,7 +3739,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="8418" y="32558">from the other sub-tabs, with former Managers</text>
 <text class="rtext" x="8418" y="32572">in the greys used elsewhere.</text>
 <text class="spec" x="8418" y="32605">positional-rankings-page</text>
-<path class="trace" d="M8540.0,32494 V1755 H1080.0 V1742" marker-end="url(#openg)"/>
+<path class="trace" d="M8540.0,32494 V1760 H1080.0 V1742" marker-end="url(#openg)"/>
 <rect class="ext" x="8720" y="32494" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="8720.7" y="32494.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="8850.0" y="32507" text-anchor="middle">«requirement»</text>
@@ -3747,7 +3748,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="8728" y="32558">linked to its Manager&#x27;s Sleeper user id,</text>
 <text class="rtext" x="8728" y="32572">display name and Team Name.</text>
 <text class="spec" x="8728" y="32605">sleeper-league-sync</text>
-<path class="trace" d="M8850.0,32494 V9666 H460.0 V9648" marker-end="url(#openg)"/>
+<path class="trace" d="M8850.0,32494 V9656 H460.0 V9648" marker-end="url(#openg)"/>
 <rect class="ext" x="9030" y="32494" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="9030.7" y="32494.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="9160.0" y="32507" text-anchor="middle">«requirement»</text>
@@ -3757,7 +3758,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="9038" y="32572">recent earlier Manager of that slot, else the</text>
 <text class="rtext" x="9038" y="32586">first later one, with that Manager&#x27;s last…</text>
 <text class="spec" x="9038" y="32605">sleeper-league-sync</text>
-<path class="trace" d="M9160.0,32494 V9656 H460.0 V9648" marker-end="url(#openg)"/>
+<path class="trace" d="M9160.0,32494 V9661 H460.0 V9648" marker-end="url(#openg)"/>
 <rect class="ext" x="9340" y="32494" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="9340.7" y="32494.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="9470.0" y="32507" text-anchor="middle">«requirement»</text>
@@ -3767,8 +3768,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="9348" y="32572">and failed waiver claims with their bids,</text>
 <text class="rtext" x="9348" y="32586">free-agent moves, trades with Players, pick…</text>
 <text class="spec" x="9348" y="32605">sleeper-league-sync</text>
-<path class="trace" d="M9470.0,32494 V12207 H770.0 V12194" marker-end="url(#openg)"/>
-<path class="trace" d="M7300.0,32494 V31240 H1080.0 V31222" marker-end="url(#openg)"/>
+<path class="trace" d="M9470.0,32494 V12212 H770.0 V12194" marker-end="url(#openg)"/>
 <rect class="ext" x="9650" y="32494" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="9650.7" y="32494.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="9780.0" y="32507" text-anchor="middle">«requirement»</text>
@@ -3777,7 +3777,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="9658" y="32558">the draft named in that season&#x27;s league</text>
 <text class="rtext" x="9658" y="32572">settings, with its settings, every pick and</text>
 <text class="rtext" x="9658" y="32586">every traded pick.</text>
-<text class="spec" x="9658" y="32605">sleeper-league-sync · proposed</text>
+<text class="spec" x="9658" y="32605">sleeper-league-sync</text>
 <path class="trace" d="M9780.0,32494 V30024 H460.0 V30016" marker-end="url(#openg)"/>
 <rect class="ext" x="9960" y="32494" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="9960.7" y="32494.7" width="258.6" height="34" rx="2.5"/>
@@ -3787,7 +3787,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="9968" y="32558">complete, the sync SHALL store Sleeper&#x27;s</text>
 <text class="rtext" x="9968" y="32572">preseason half-PPR and dynasty half-PPR ADP</text>
 <text class="rtext" x="9968" y="32586">for every Player once.</text>
-<text class="spec" x="9968" y="32605">sleeper-league-sync · proposed</text>
+<text class="spec" x="9968" y="32605">sleeper-league-sync</text>
 <path class="trace" d="M10090.0,32494 V30163 H770.0 V30150" marker-end="url(#openg)"/>
 <path class="derive" d="M40,32712 H86" marker-end="url(#open)"/><text class="lg" x="96" y="32716">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,32712 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="32716">«trace»: extra parent</text>
