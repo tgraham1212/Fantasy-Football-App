@@ -17,7 +17,7 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 |---|---|---|---|---|---|
 | 9.5.1 | Phone widths from statistics | `project-standards` | `openspec/config.yaml`, the dated StatCounter figures, next due 2027-10 | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 9.6 | Material Design 3 usability | `project-standards` | the live site, focus and pressed states and the type scale | 2026-11-25 | Pass (re-inspected after linked 4.9.3.1 was added by league-records; League page touch targets, focus and pressed states checked) |
-| 9.7 | Colour standard | `project-standards` | `site/styles.css`, adjusted tokens carry their OKLCH note | 2026-11-27 | Pass (re-inspected after linked 4.9.6.6 was added by league-strength-of-schedule: the --sos-* tokens carry their OKLCH notes; requirement unchanged) |
+| 9.7 | Colour standard | `project-standards` | `site/styles.css`, adjusted tokens carry their OKLCH note | 2026-11-27 | Pass (re-inspected after linked 4.9.7.6 and 4.9.7.6.1 were added by league-draft: the --draft-* and --war-* tokens carry their OKLCH notes; earlier: 4.9.6.6 by league-strength-of-schedule; requirement unchanged) |
 | 10.1 | Requirements standard recorded | `project-standards` | `openspec/config.yaml` (context and `rules.tasks`), `CLAUDE.md` | 2026-11-23 | Pass (inspected against the repository) |
 | 10.4 | Tolerances on values | `project-standards` | `openspec/inspection-checklist.md`, the spec's standard review | 2026-11-23 | Pass (the maintainer's review of every spec) |
 | 10.5 | Rationale where not obvious | `project-standards` | `openspec/inspection-checklist.md`, the spec's standard review | 2026-11-23 | Pass (the maintainer's review of every spec) |
@@ -72,7 +72,7 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 | 4.4.4.4 | Tile layout | `manager-pages` | the live site at 1280 px, the first lines of the seven tiles | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 4.4.4.7 | Tiles link to their source | `manager-pages` | the live site, each tile's link target | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 4.4.4.8 | Tiles on a phone | `manager-pages` | the live site at 360 px, the tile grid | 2026-11-23 | Pass (confirmed when the feature was built) |
-| 4.4.6 | Roster card | `manager-pages` | the live site, a dynasty Manager's Roster card | 2026-11-25 | Pass (re-inspected after linked 4.9.4 was added by league-records; shared picture and name helpers moved to site/people.js, Managers page unchanged) |
+| 4.4.6 | Roster card | `manager-pages` | the live site, a dynasty Manager's Roster card | 2026-11-27 | Pass (re-inspected after linked 4.4.6.5 was added by league-draft: the redraft roster's gold KE badge sits after the name on the same line; dynasty rosters unchanged; earlier: 4.9.4 by league-records) |
 | 4.4.6.2 | Slot pills | `manager-pages` | the live site, each kind of slot pill in both themes | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 4.4.6.3 | Status badges | `manager-pages` | the live site, an Out, a Doubtful and a Questionable Player | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 4.4.7.1 | History tab | `manager-pages` | the live site, a champion's History tab | 2026-11-24 | Pass (re-inspected after linked 4.5.3, 4.5.6 changed in approved batches; requirement unchanged) |
@@ -146,12 +146,12 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 | `site-copy` | 2026-11-23 | Pass | 6 requirements became 9 under 10.16 |
 | `calculation-docs` | 2026-11-23 | Pass | 3 requirements became 4 under 8.2 |
 | `start-percentage-snapshots` | 2026-11-23 | Pass | 5 requirements became 9 under 6.7 |
-| `injury-history` | 2026-11-23 | Pass | 3 requirements became 7 under 6.6 |
+| `injury-history` | 2026-11-27 | Pass | Re-reviewed: 6.6.5 to 6.6.5.2 added by league-draft, nflverse IR, PUP and Out statuses by Sleeper id, completed seasons once and the current season at most every 20 hours; earlier: 3 requirements became 7 under 6.6 |
 | `nfl-schedule` | 2026-11-23 | Pass | 3 requirements became 6 under 6.5; live clock kept in the rebuilt copy |
 | `player-stats` | 2026-11-23 | Pass | 4 requirements became 6 under 6.4 |
 | `player-projections` | 2026-11-23 | Pass | 7 requirements rewritten under 6.3 |
-| `sleeper-league-sync` | 2026-11-23 | Pass | 10 requirements became 16 under 6.2; simulation settings left to the specs that use them |
-| `data-storage-tiers` | 2026-11-23 | Pass | 7 requirements became 9 under 6.1 |
+| `sleeper-league-sync` | 2026-11-27 | Pass | Re-reviewed: 6.2.9 to 6.2.10.1 added by league-draft, the draft named in each season's settings fetched until complete, ADP once that season's drafts end, failures only warn; earlier: 10 requirements became 16 under 6.2; simulation settings left to the specs that use them |
+| `data-storage-tiers` | 2026-11-27 | Pass | Re-reviewed: 6.1 now lists drafts, ADP and nflverse injury reports (league-draft); earlier: 7 requirements became 9 under 6.1 |
 | `manual-refresh` | 2026-11-23 | Pass | 3 requirements became 10 under 5.4 |
 | `site-updates` | 2026-11-23 | Pass | 7 requirements (1 moved from league-odds-site) became 17 under 5.3; update cadence tested |
 | `live-refresh` | 2026-11-23 | Pass | 5 requirements became 9 under 5.2 and 11.2; relay tests now run from pytest |
@@ -167,7 +167,7 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 | `win-probability-added` | 2026-11-23 | Pass | 3 requirements became 9 under 2.9; baseline corrected to include the live week's provisional Forecast; two tested behaviours stated |
 | `live-scoring` | 2026-11-24 | Pass | Re-reviewed: 1.1.12.5's redundant 1.1.12.2 trace dropped to stay under 500 characters |
 | `game-predictions` | 2026-11-26 | Pass | Re-reviewed: 2.7.3 live week views use the set starters with no free-agent fills, rationale and two scenarios with exact values added; earlier: 2.8, 2.8.1 and 2.8.2 measure lineup choices against the roster's default lineup, to 0.1 point (Default lineup added to the glossary); earlier: 2.8.2 past-season lineup choices added by league-records; 12 requirements became 29 under needs 2 and 1 |
-| `manager-pages` | 2026-11-23 | Pass | 19 requirements became 51 under need 4; page logic covered by 6 layout tests; 20 inspections carried over from the feature work |
+| `manager-pages` | 2026-11-27 | Pass | Re-reviewed: 4.4.6.5 KE badge added by league-draft; earlier: 19 requirements became 51 under need 4; page logic covered by 6 layout tests; 20 inspections carried over from the feature work |
 | `war-leaderboard-page` | 2026-11-23 | Pass | 9 requirements became 28 under need 3; untested behaviours covered by 7 layout tests; 4 inspections carried over from the feature work |
 | `positional-rankings-page` | 2026-11-23 | Pass | 12 requirements became 26 under need 3; 7 gaps closed with layout tests; 6 inspections carried over from the feature work |
 | `games-page` | 2026-11-25 | Pass | Re-reviewed: 2.1.14 hover names the Sleeper Projections default; earlier: trace lines to 2.10 added in the approved group 4 batch |
@@ -177,3 +177,5 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 | `league-records-page` | 2026-11-26 | Pass | Re-reviewed: 4.9.2.2.2 Player games from this season added, exact width and tag text in its scenario; earlier: 4.9.2.1.3.4 lineup choices explained added, exact text in its scenario; earlier: 17 requirements under 4.9; values are exact counts, a 48 px minimum and a three-decimal format |
 | `strength-of-schedule` | 2026-11-27 | Pass | New: 11 requirements under 4.10 (league-strength-of-schedule); regular season only, ranks and win values exact, averages and the Schedule Difficulty Index to 0.01, upcoming weeks from the Forecast's win shares |
 | `strength-of-schedule-page` | 2026-11-27 | Pass | New: 15 requirements under 4.9.6 (league-strength-of-schedule); quartile colour buckets as exact boundaries, 48 px phone touch targets, the Manager column pinned at 360 to 440 px; Forecast weeks named per the glossary |
+| `league-draft` | 2026-11-27 | Pass | New: 18 requirements under 4.11 (league-draft); steal and reach at exactly 12 and 6 picks, hit and bust at 0.75 and 1.0 WAR, slot WAR to 0.01; Unlucky by injury (IR, PUP, Out); keeper price and second-year rules as exact rounds |
+| `league-draft-page` | 2026-11-27 | Pass | New: 19 requirements under 4.9.7 (league-draft); 4.5:1 badge and WAR text contrast, phone layouts at 360 to 440 px, the Keeper Eligible matrix; terms per the glossary |
