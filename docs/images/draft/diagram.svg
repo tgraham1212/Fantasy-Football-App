@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1604 728.5" width="1604" height="728.5" role="img" aria-labelledby="draft-t" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+<style>
+.grp { stroke-width: 1.5; } .g1 { fill: #efeeeb; stroke: #8c8a84; } .g2 { fill: #eef1f6; stroke: #93a0b8; }
+.g3 { fill: #fbf2e1; stroke: #c08a2c; } .g4 { fill: #e8f0fb; stroke: #4f7cc0; } .g5 { fill: #e8f5ea; stroke: #4f9a5c; }
+.gl { font-weight: 700; font-size: 13px; letter-spacing: 0.06em; fill: #4c5058; }
+.gs { font-size: 11.5px; fill: #4c5058; }
+.st { fill: #ffffff; stroke: #2b2f36; stroke-width: 1.4; } .st.rebuilt { stroke-dasharray: 5 3; }
+.stt { font-weight: 700; font-size: 12.5px; fill: #14161a; } .sd { font-size: 11.5px; fill: #4c5058; }
+.ref { font-size: 10.5px; font-weight: 700; fill: #b4530b; font-family: ui-monospace, Consolas, monospace; }
+.path { font-size: 11px; fill: #2b2f36; font-family: ui-monospace, Consolas, monospace; }
+.e { fill: none; stroke: #2b2f36; stroke-width: 1.5; } .ah { fill: #2b2f36; }
+.lg { font-size: 12.5px; fill: #2b2f36; } .lgn { font-weight: 800; }
+</style>
+<rect width="1604" height="728.5" fill="#ffffff"/>
+<title id="draft-t">How the draft grades are made: their sources, where the data is stored, the calculations in order, the draft file and the page that shows it</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="ah"/></marker></defs>
+<text x="24" y="34" class="gl" text-anchor="start">HOW THE DRAFT GRADES ARE MADE</text>
+<rect x="24" y="64" width="250" height="536.5" rx="10" class="grp g1"/>
+<text x="38" y="88" class="gl" text-anchor="start">1. WHERE IT COMES FROM</text>
+<text x="38" y="106" class="gs" text-anchor="start">Fetched by each cold run</text>
+<rect x="36" y="122" width="226" height="76.5" rx="8" class="st"/>
+<text x="48" y="142" class="stt" text-anchor="start">Sleeper: Drafts</text>
+<text x="48" y="159.5" class="sd" text-anchor="start">The draft named in each season&#x27;s</text>
+<text x="48" y="175.0" class="sd" text-anchor="start">league settings: picks, keepers and</text>
+<text x="48" y="190.5" class="sd" text-anchor="start">traded picks (until complete)</text>
+<rect x="36" y="210.5" width="226" height="76.5" rx="8" class="st"/>
+<text x="48" y="230.5" class="stt" text-anchor="start">Sleeper: ADP</text>
+<text x="48" y="248.0" class="sd" text-anchor="start">Preseason half-PPR and dynasty</text>
+<text x="48" y="263.5" class="sd" text-anchor="start">half-PPR ADP, once a season&#x27;s</text>
+<text x="48" y="279.0" class="sd" text-anchor="start">drafts are complete</text>
+<rect x="36" y="299.0" width="226" height="76.5" rx="8" class="st"/>
+<text x="48" y="319.0" class="stt" text-anchor="start">Player WAR and Stats</text>
+<text x="252" y="319.0" class="ref" text-anchor="end">Calc 2, 16</text>
+<text x="48" y="336.5" class="sd" text-anchor="start">Each Player&#x27;s WAR per season; weekly</text>
+<text x="48" y="352.0" class="sd" text-anchor="start">stats for games played and each</text>
+<text x="48" y="367.5" class="sd" text-anchor="start">NFL team&#x27;s games</text>
+<rect x="36" y="387.5" width="226" height="76.5" rx="8" class="st"/>
+<text x="48" y="407.5" class="stt" text-anchor="start">nflverse: Injury Reports</text>
+<text x="48" y="425.0" class="sd" text-anchor="start">Weekly IR, PUP and Out statuses by</text>
+<text x="48" y="440.5" class="sd" text-anchor="start">Sleeper id (completed seasons once,</text>
+<text x="48" y="456.0" class="sd" text-anchor="start">the current one daily at most)</text>
+<rect x="36" y="476.0" width="226" height="61.0" rx="8" class="st"/>
+<text x="48" y="496.0" class="stt" text-anchor="start">League Configuration</text>
+<text x="48" y="513.5" class="sd" text-anchor="start">The redraft league&#x27;s keepers from</text>
+<text x="48" y="529.0" class="sd" text-anchor="start">2025 on, by Sleeper id</text>
+<rect x="308" y="64" width="270" height="536.5" rx="10" class="grp g2"/>
+<text x="322" y="88" class="gl" text-anchor="start">2. WHERE IT IS STORED</text>
+<text x="322" y="106" class="gs" text-anchor="start">Records in git; rebuilt files in the build cache</text>
+<rect x="320" y="122" width="246" height="76.5" rx="8" class="st"/>
+<text x="332" y="142" class="stt" text-anchor="start">Drafts</text>
+<text x="332" y="159.5" class="path" text-anchor="start">data/leagues/&lt;league&gt;/&lt;season&gt;/</text>
+<text x="332" y="175.0" class="sd" text-anchor="start">draft.json: the draft, picks and</text>
+<text x="332" y="190.5" class="sd" text-anchor="start">traded picks as fetched</text>
+<rect x="320" y="210.5" width="246" height="61.0" rx="8" class="st"/>
+<text x="332" y="230.5" class="stt" text-anchor="start">ADP</text>
+<text x="332" y="248.0" class="path" text-anchor="start">data/adp/&lt;season&gt;.json</text>
+<text x="332" y="263.5" class="sd" text-anchor="start">Position and the two ADP figures</text>
+<rect x="320" y="283.5" width="246" height="61.0" rx="8" class="st"/>
+<text x="332" y="303.5" class="stt" text-anchor="start">WAR and Stats</text>
+<text x="556" y="303.5" class="ref" text-anchor="end">Calc 16</text>
+<text x="332" y="321.0" class="path" text-anchor="start">data/war/, data/stats/</text>
+<text x="332" y="336.5" class="sd" text-anchor="start">WAR rebuilt each run; stats are records</text>
+<rect x="320" y="356.5" width="246" height="61.0" rx="8" class="st"/>
+<text x="332" y="376.5" class="stt" text-anchor="start">Injury Reports</text>
+<text x="332" y="394.0" class="path" text-anchor="start">data/injury-reports/</text>
+<text x="332" y="409.5" class="sd" text-anchor="start">One file per season, by week</text>
+<rect x="612" y="64" width="290" height="536.5" rx="10" class="grp g3"/>
+<text x="626" y="88" class="gl" text-anchor="start">3. HOW IT IS CALCULATED</text>
+<text x="626" y="106" class="gs" text-anchor="start">In this order, every build</text>
+<rect x="624" y="122" width="266" height="76.5" rx="8" class="st"/>
+<text x="636" y="142" class="stt" text-anchor="start">Steal/Reach</text>
+<text x="880" y="142" class="ref" text-anchor="end">Calc 25</text>
+<text x="636" y="159.5" class="sd" text-anchor="start">Pick minus ADP (redraft) or ADP rank</text>
+<text x="636" y="175.0" class="sd" text-anchor="start">(rookie draft); +/-12 or +/-6 picks;</text>
+<text x="636" y="190.5" class="sd" text-anchor="start">best RB/WR left is never a reach</text>
+<rect x="624" y="216.5" width="266" height="76.5" rx="8" class="st"/>
+<text x="636" y="236.5" class="stt" text-anchor="start">Slot WAR</text>
+<text x="880" y="236.5" class="ref" text-anchor="end">Calc 25</text>
+<text x="636" y="254.0" class="sd" text-anchor="start">Mean window WAR of picks within 6</text>
+<text x="636" y="269.5" class="sd" text-anchor="start">(redraft) or 3 slots (rookie draft);</text>
+<text x="636" y="285.0" class="sd" text-anchor="start">scaled while the window is in progress</text>
+<path d="M757.0 199.5 V213.5" class="e" marker-end="url(#a)"/>
+<rect x="624" y="311.0" width="266" height="76.5" rx="8" class="st"/>
+<text x="636" y="331.0" class="stt" text-anchor="start">Hit/Bust and Unlucky</text>
+<text x="880" y="331.0" class="ref" text-anchor="end">Calc 25</text>
+<text x="636" y="348.5" class="sd" text-anchor="start">WAR minus slot WAR: +/-0.75 or +/-1.0;</text>
+<text x="636" y="364.0" class="sd" text-anchor="start">over half his team&#x27;s games missed</text>
+<text x="636" y="379.5" class="sd" text-anchor="start">injured (IR, PUP, Out): Unlucky</text>
+<path d="M757.0 294.0 V308.0" class="e" marker-end="url(#a)"/>
+<rect x="624" y="405.5" width="266" height="76.5" rx="8" class="st"/>
+<text x="636" y="425.5" class="stt" text-anchor="start">Keepers (Redraft)</text>
+<text x="880" y="425.5" class="ref" text-anchor="end">Calc 25</text>
+<text x="636" y="443.0" class="sd" text-anchor="start">Kept all season by the drafting</text>
+<text x="636" y="458.5" class="sd" text-anchor="start">Manager: eligible at one round higher;</text>
+<text x="636" y="474.0" class="sd" text-anchor="start">kept this year: a 1st; never a third</text>
+<path d="M757.0 388.5 V402.5" class="e" marker-end="url(#a)"/>
+<rect x="624" y="500.0" width="266" height="76.5" rx="8" class="st"/>
+<text x="636" y="520.0" class="stt" text-anchor="start">Managers Summary</text>
+<text x="880" y="520.0" class="ref" text-anchor="end">Calc 25</text>
+<text x="636" y="537.5" class="sd" text-anchor="start">Per draft and all drafts: picks, mean</text>
+<text x="636" y="553.0" class="sd" text-anchor="start">ADP difference and WAR above slot,</text>
+<text x="636" y="568.5" class="sd" text-anchor="start">total WAR, best pick, unlucky picks</text>
+<path d="M757.0 483.0 V497.0" class="e" marker-end="url(#a)"/>
+<rect x="936" y="64" width="310" height="536.5" rx="10" class="grp g4"/>
+<text x="950" y="88" class="gl" text-anchor="start">4. WHAT IT PRODUCES</text>
+<text x="950" y="106" class="gs" text-anchor="start">Derived data, deployed with the site</text>
+<rect x="948" y="122" width="286" height="76.5" rx="8" class="st rebuilt"/>
+<text x="960" y="142" class="stt" text-anchor="start">Draft File</text>
+<text x="1224" y="142" class="ref" text-anchor="end">Calc 25</text>
+<text x="960" y="159.5" class="path" text-anchor="start">site/data/&lt;league&gt;/draft.json</text>
+<text x="960" y="175.0" class="sd" text-anchor="start">Every stored draft&#x27;s graded picks</text>
+<text x="960" y="190.5" class="sd" text-anchor="start">and both Managers summaries</text>
+<rect x="1280" y="64" width="300" height="536.5" rx="10" class="grp g5"/>
+<text x="1294" y="88" class="gl" text-anchor="start">5. WHERE IT SHOWS</text>
+<text x="1294" y="106" class="gs" text-anchor="start">fantasyfoosball.net</text>
+<rect x="1292" y="122" width="276" height="107.5" rx="8" class="st"/>
+<text x="1304" y="142" class="stt" text-anchor="start">League Page: Draft</text>
+<text x="1304" y="159.5" class="sd" text-anchor="start">Board: rounds by slots, position</text>
+<text x="1304" y="175.0" class="sd" text-anchor="start">colours, Draft Day | Results badges</text>
+<text x="1304" y="190.5" class="sd" text-anchor="start">Table: every pick, ranks, WAR,</text>
+<text x="1304" y="206.0" class="sd" text-anchor="start">Slot WAR, Hit/Bust, Games Played</text>
+<text x="1304" y="221.5" class="sd" text-anchor="start">Managers card; Keeper Eligible matrix</text>
+<rect x="1292" y="241.5" width="276" height="61.0" rx="8" class="st"/>
+<text x="1304" y="261.5" class="stt" text-anchor="start">Managers Page: Roster Card</text>
+<text x="1304" y="279.0" class="sd" text-anchor="start">Gold KE badge on keeper-eligible</text>
+<text x="1304" y="294.5" class="sd" text-anchor="start">Players (redraft)</text>
+<path d="M277 332.25 H304" class="e" marker-end="url(#a)"/>
+<path d="M581 332.25 H608" class="e" marker-end="url(#a)"/>
+<path d="M905 332.25 H932" class="e" marker-end="url(#a)"/>
+<path d="M1249 332.25 H1276" class="e" marker-end="url(#a)"/>
+<rect x="26" y="619.5" width="22" height="13" rx="3" class="st"/>
+<text x="56" y="630.5" class="lg" text-anchor="start">Record: committed to git, kept forever</text>
+<rect x="366" y="619.5" width="22" height="13" rx="3" class="st rebuilt"/>
+<text x="396" y="630.5" class="lg" text-anchor="start">Rebuilt by each run (build cache, deployed site or relay), never committed</text>
+<text x="1580" y="630.5" class="ref" text-anchor="end">Calc N = section N of Calculations.txt</text>
+<text x="24" y="656.5" class="lg"><tspan class="lgn">Sync:</tspan> every cold run fetches a draft until it is complete, and each season&#x27;s ADP once its drafts are complete</text>
+<text x="24" y="680.5" class="lg"><tspan class="lgn">Build:</tspan> python -m ffapp build (and every cold run&#x27;s export) writes the draft file from the stored data</text>
+</svg>

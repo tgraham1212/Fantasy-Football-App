@@ -43,6 +43,7 @@ def build_parser() -> argparse.ArgumentParser:
     sched.add_argument("--all", action="store_true", help="Store every week of the current season")
     sub.add_parser("snapshot", help="Capture ESPN start-percentage snapshots and the player crosswalk into data/espn")
     sub.add_parser("trending", help="Save Sleeper's trending adds (last 24 hours) into data/trending")
+    sub.add_parser("injury-reports", help="Save nflverse's weekly IR, PUP and Out statuses into data/injury-reports")
     sub.add_parser("ratings", help="Rate every manager across all stored seasons and write data/ratings")
     sub.add_parser("replacement", help="Write replacement-level values for every stored season to data/replacement")
     sub.add_parser("war", help="Compute every player's Wins Above Replacement per league-season into data/war")
@@ -231,6 +232,22 @@ def cmd_trending(ctx: Context) -> int:
         return 1
     print(f"wrote    {path}")
     return 0
+
+
+def cmd_injury_reports(ctx: Context) -> int:
+    """Save nflverse's past injury reports for the draft grades (an optional refresh step): each
+    completed season once, the current season at most once every 20 hours."""
+    from ffapp.injury_reports import sync_reports
+
+    seasons = sorted({s for key in ctx.config.leagues for s in ctx.store.seasons(key)})
+    live = [s for key in ctx.config.leagues for s in ctx.store.seasons(key)
+            if (ctx.store.read_league(key, s) or {}).get("status") != "complete"]
+    run = sync_reports(ctx.client, ctx.store, seasons, max(live) if live else None)
+    for season in run.saved:
+        print(f"wrote    data/injury-reports/{season}.json")
+    for warning in run.warnings:
+        print(f"FAILED   {warning}", file=sys.stderr)
+    return 1 if run.warnings else 0
 
 
 def cmd_ratings(ctx: Context) -> int:
@@ -511,6 +528,7 @@ REFRESH_STEPS = (
     ("schedule", cmd_schedule),
     ("snapshot", cmd_snapshot),
     ("trending", cmd_trending),
+    ("injury-reports", cmd_injury_reports),
     ("ratings", cmd_ratings),
     ("replacement", cmd_replacement),
     ("war", cmd_war),
@@ -519,7 +537,7 @@ REFRESH_STEPS = (
     ("games", cmd_games),
     ("export", cmd_export),
 )
-OPTIONAL_STEPS = frozenset({"schedule", "snapshot", "trending"})
+OPTIONAL_STEPS = frozenset({"schedule", "snapshot", "trending", "injury-reports"})
 LIVE_SKIPS = frozenset({"simulate", "slates"})
 # Offline: no step here may call Sleeper or ESPN.
 BUILD_STEPS = (
@@ -538,6 +556,7 @@ HANDLERS = {
     "schedule": cmd_schedule,
     "snapshot": cmd_snapshot,
     "trending": cmd_trending,
+    "injury-reports": cmd_injury_reports,
     "ratings": cmd_ratings,
     "replacement": cmd_replacement,
     "war": cmd_war,

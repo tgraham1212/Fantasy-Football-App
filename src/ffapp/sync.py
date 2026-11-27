@@ -73,6 +73,8 @@ class SyncReport:
     errors: list[tuple[str, str]] = field(default_factory=list)  # (league_key, message)
     warnings: list[tuple[str, str]] = field(default_factory=list)  # (league_key, message): never fail the sync
     transactions: list[tuple[str, str]] = field(default_factory=list)  # (league_key, season) transactions saved
+    drafts: list[tuple[str, str]] = field(default_factory=list)  # (league_key, season) drafts saved
+    adp: list[str] = field(default_factory=list)  # seasons whose ADP was saved
 
     @property
     def ok(self) -> bool:
@@ -115,6 +117,8 @@ def sync_league(client: SleeperClient, store: Store, league: LeagueConfig, *, fu
             report.skipped.append((league.key, season))
             if not store.has_transactions(league.key, season):   # once, for seasons stored before transactions were kept
                 _transactions(client, store, league.key, raw, report)
+            if _draft_due(store, league.key, season):
+                _draft(client, store, league.key, raw, report)
             continue
         try:
             data = fetch_season(client, raw)
@@ -126,7 +130,94 @@ def sync_league(client: SleeperClient, store: Store, league: LeagueConfig, *, fu
         report.fetched.append((league.key, season))
         log.info("synced %s %s (%s)", league.key, season, data.status)
         _transactions(client, store, league.key, raw, report)
+        if _draft_due(store, league.key, season):
+            _draft(client, store, league.key, raw, report)
     return report
+
+
+def draft_complete(stored: dict | None) -> bool:
+    return bool(stored) and (stored.get("draft") or {}).get("status") == "complete"
+
+
+def _draft_due(store: Store, league_key: str, season: str) -> bool:
+    """A draft is fetched until a complete one is stored, then never again (6.2.9.1)."""
+    return not draft_complete(store.read_draft(league_key, season))
+
+
+def sync_draft(client: SleeperClient, store: Store, league_key: str, league: dict) -> str | None:
+    """Fetch and store the draft named in the season's league settings (``draft_id``), with its picks
+    and traded picks. Any other draft of the season, such as the dynasty league's 2022 startup draft
+    that moved rosters over from Yahoo, is never fetched. Everything is fetched before anything is
+    written, so a failure keeps the stored file. Returns a warning message on failure."""
+    season = str(league["season"])
+    draft_id = league.get("draft_id")
+    if not draft_id:
+        return None
+    try:
+        payload = {
+            "draft": client.draft(str(draft_id)),
+            "picks": client.draft_picks(str(draft_id)) or [],
+            "traded_picks": client.draft_traded_picks(str(draft_id)) or [],
+        }
+    except SleeperError as exc:
+        log.warning("draft %s %s failed: %s", league_key, season, exc)
+        return f"draft for season {season} not updated: {exc}"
+    settings = payload["draft"].get("settings") or {}
+    expected = int(settings.get("rounds") or 0) * int(settings.get("teams") or 0)
+    if draft_complete(payload) and expected and len(payload["picks"]) != expected:
+        log.warning("draft %s %s: %d picks, expected %d", league_key, season, len(payload["picks"]), expected)
+    store.write_draft(league_key, season, payload)
+    return None
+
+
+def _draft(client: SleeperClient, store: Store, league_key: str, raw: dict, report: SyncReport) -> None:
+    warning = sync_draft(client, store, league_key, raw)
+    if warning:
+        report.warnings.append((league_key, warning))
+    elif store.has_draft(league_key, str(raw["season"])):
+        report.drafts.append((league_key, str(raw["season"])))
+
+
+ADP_FIELDS = ("adp_half_ppr", "adp_dynasty_half_ppr")
+
+
+def adp_record(rows: list) -> dict[str, dict]:
+    """Player id -> position and the two ADP figures used, keeping values below Sleeper's 999 'unranked'."""
+    out: dict[str, dict] = {}
+    for row in rows or []:
+        stats = row.get("stats") or {}
+        values = {k: float(stats[k]) for k in ADP_FIELDS if stats.get(k) is not None and float(stats[k]) < 999}
+        if values and row.get("player_id"):
+            out[str(row["player_id"])] = {"position": (row.get("player") or {}).get("position"), **values}
+    return out
+
+
+def adp_seasons_due(store: Store, config: Config) -> list[str]:
+    """Seasons without stored ADP whose drafts are complete in every configured league that has the season (6.2.10)."""
+    seasons: dict[str, bool] = {}
+    for league in config.leagues.values():
+        for season in store.seasons(league.key):
+            if not (store.read_league(league.key, season) or {}).get("draft_id"):
+                continue
+            done = draft_complete(store.read_draft(league.key, season))
+            seasons[season] = seasons.get(season, True) and done
+    return sorted(s for s, done in seasons.items() if done and not store.has_adp(s))
+
+
+def sync_adp(client: SleeperClient, store: Store, config: Config, report: SyncReport) -> None:
+    """Store each due season's ADP once; a failure only warns and the next sync tries again (6.2.10.1)."""
+    for season in adp_seasons_due(store, config):
+        try:
+            record = adp_record(client.season_projections(season))
+        except SleeperError as exc:
+            log.warning("ADP %s failed: %s", season, exc)
+            report.warnings.append(("adp", f"ADP for season {season} not stored: {exc}"))
+            continue
+        if not record:
+            report.warnings.append(("adp", f"ADP for season {season} not stored: Sleeper returned none"))
+            continue
+        store.write_adp(season, record)
+        report.adp.append(season)
 
 
 def _transactions(client: SleeperClient, store: Store, league_key: str, raw: dict, report: SyncReport) -> None:
@@ -146,4 +237,6 @@ def sync_all(client: SleeperClient, store: Store, config: Config, *, full: bool 
         total.errors += part.errors
         total.warnings += part.warnings
         total.transactions += part.transactions
+        total.drafts += part.drafts
+    sync_adp(client, store, config, total)
     return total

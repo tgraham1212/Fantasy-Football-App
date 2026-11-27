@@ -29,6 +29,9 @@ TEXT_ON_ROWS = ("ink", "ink-2", "muted")  # the text used inside highlightable t
 TEXT_ON_SURFACES = ("ink", "ink-2", "muted", "accent", "good", "bad", "gold")
 # Strength of Schedule cells (4.9.6.6): each cell's text is a tint of its fill
 SOS_PAIRS = tuple((f"sos-r{k}-i", f"sos-r{k}-f") for k in range(1, 5)) + tuple((f"sos-r{k}-si", f"sos-r{k}-sf") for k in range(1, 5))     + tuple((f"sos-s{k}-i", f"sos-s{k}-f") for k in range(1, 5)) + (("ink", "score-f"), ("sos-s2-i", "surface"), ("sos-s3-i", "surface"))  # neutral swap cell; Index text
+# Draft tab (4.9.7.6, 4.9.7.6.1): badge text on its fill, the neutral Unlucky/Keeper badge, WAR text
+DRAFT_BADGES = tuple((f"draft-{k}-i", f"draft-{k}-f") for k in ("steal", "reach", "hit", "bust")) + (("ink-2", "score-f"),)
+DRAFT_WAR = tuple((fg, bg) for fg in ("war-pos", "war-neg") for bg in ("page", "surface"))
 TEXT_ON_FILLS = (  # (text, fill): text drawn on a coloured background
     ("accent-ink", "accent-fill"),  # selected league button
     ("win-ink", "win-hi"), ("win-ink", "win-mid"), ("win-ink", "win-lo"),  # Games win-probability bar
@@ -45,7 +48,7 @@ TEXT_ON_FILLS = (  # (text, fill): text drawn on a coloured background
     ("th-res-i", "th-res-f"), ("th-up-i", "th-up-f"), ("th-down-i", "th-down-f"), ("th-inj-i", "th-inj-f"),
     ("th-rec-i", "th-rec-f"), ("th-lg-i", "th-lg-f"), ("th-move-i", "th-move-f"),
     ("feat-i", "feat-a"), ("feat-i", "feat-b"),  # the feature picture's gradient, both ends
-) + SOS_PAIRS
+) + SOS_PAIRS + DRAFT_BADGES + DRAFT_WAR
 NON_TEXT = ("accent", "form-w", "form-l", "form-d", "rod")  # focus ring, form bars, banner rod; team lines added below
 EXEMPT = {
     "grid": "decorative gridlines; the data never depends on them",
@@ -146,3 +149,24 @@ def test_schedule_cells():
             assert fg in blocks[mode] and bg in blocks[mode], f"{mode}: --{fg} / --{bg} missing"
             assert contrast(blocks[mode][fg], blocks[mode][bg]) >= TEXT_RATIO, f"{mode}: --{fg} on --{bg}"
     assert not [p for p in problems(css) if "sos-" in p]
+
+
+def test_draft_badges():
+    """4.9.7.6: Steal, Reach, Hit and Bust badge text meets 4.5:1 on its fill, in light and dark modes."""
+    css = CSS.read_text(encoding="utf-8")
+    blocks = token_blocks(css)
+    for mode in ("light", "dark", "dark-toggle"):
+        for fg, bg in DRAFT_BADGES:
+            assert fg in blocks[mode] and bg in blocks[mode], f"{mode}: --{fg} / --{bg} missing"
+            assert contrast(blocks[mode][fg], blocks[mode][bg]) >= TEXT_RATIO, f"{mode}: --{fg} on --{bg}"
+    assert not [p for p in problems(css) if "draft-" in p]
+
+
+def test_draft_war_text():
+    """4.9.7.6.1: positive (blue) and negative (red) WAR text meets 4.5:1 on the page and cards, in both modes."""
+    css = CSS.read_text(encoding="utf-8")
+    blocks = token_blocks(css)
+    for mode in ("light", "dark", "dark-toggle"):
+        for fg, bg in DRAFT_WAR:
+            assert contrast(blocks[mode][fg], blocks[mode][bg]) >= TEXT_RATIO, f"{mode}: --{fg} on --{bg}"
+    assert not [p for p in problems(css) if "war-" in p]

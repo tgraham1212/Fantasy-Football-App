@@ -728,6 +728,8 @@ def managers_export(store: Store, config, league_key: str, league_payload: dict,
     position_now = {int(t["roster_id"]): i + 1 for i, t in enumerate(standings)}
     next_games = _next_games(games_payload)
     statuses, byes = _current_statuses_and_byes(store, current, next_games)
+    from ffapp.draft import keeper_eligible_ids
+    keeper_ids = keeper_eligible_ids(store, config, league_key)  # redraft only; empty for the dynasty league (4.4.6.5)
 
     out = []
     for uid, m in managers.items():
@@ -770,7 +772,8 @@ def managers_export(store: Store, config, league_key: str, league_payload: dict,
                 "top_projected": projected_top,
                 "forecast": {"playoffs": live.get("playoffs"), "change": live.get("change", {}).get("playoffs") if isinstance(live.get("change"), dict) else None} if live else None,
             },
-            "roster": _roster_rows(data, rid, team, statuses if m.current else {}, byes if m.current else set()),
+            "roster": [{**r, "keeper_eligible": True} if m.current and r["player_id"] in keeper_ids else r
+                       for r in _roster_rows(data, rid, team, statuses if m.current else {}, byes if m.current else set())],
             "replacement": {pos: info.get("replacement") for pos, info in team_file.get("positions", {}).items()},
             "week_points": _latest_week_points(data, rid),
             "history": {

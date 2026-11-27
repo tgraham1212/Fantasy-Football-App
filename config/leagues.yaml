@@ -17,6 +17,16 @@ leagues:
     rivals:
       pairs: [[1, 9], [11, 2], [3, 6], [4, 7], [10, 5], [12, 8]]
       rivalry_week: {"2021": 7, "2022": 7, "2023": 7, "2024": 7, "2025": 7, "2026": null}
+    # The league's own keepers, tracked outside Sleeper (from 2025; Sleeper's 2022-2024 keeper flags
+    # followed earlier rules). Each season lists the kept Players by Sleeper id. Read by the Draft tab:
+    # keepers are marked and not graded, and decide next season's keeper eligibility.
+    keepers:
+      "2026":
+        - "10229"   # Rashee Rice
+        - "7588"    # Javonte Williams
+        - "9488"    # Jaxon Smith-Njigba
+        - "12514"   # Emeka Egbuka
+        - "12481"   # Cam Skattebo
 site:
   refresh_url: https://ffapp-refresh.tgraham1212.workers.dev
 # Optional website settings. `refresh_url` is the address of the refresh relay (a Cloudflare

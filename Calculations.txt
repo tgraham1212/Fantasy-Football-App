@@ -43,6 +43,7 @@ Sections
  22. Game card states
  23. League records
  24. Strength of schedule
+ 25. Draft grades
 
 
 ================================================================
@@ -880,3 +881,94 @@ Assumptions and decisions:
     runs, so every cell holds a whole rank.
   - The two measures can disagree: Weekly Ranks ignores your own scores, while the swap depends
     on them (a team that loses to most schedules gains little from an easy one).
+
+
+================================================================
+25. DRAFT GRADES
+================================================================
+Code:          src/ffapp/draft.py (stored by src/ffapp/sync.py; injury reports by
+               src/ffapp/injury_reports.py)
+Data sources:  Each season's draft as Sleeper names it in the league settings, with its picks and
+               traded picks (data/leagues/<league>/<season>/draft.json); Sleeper's preseason ADP
+               per season (data/adp/<season>.json, half-PPR for redraft, dynasty half-PPR for the
+               dynasty league's rookie drafts); Player WAR (section 16, data/war/); weekly stats
+               for games played and each NFL team's games (section 2, data/stats/); nflverse's weekly
+               IR, PUP and Out statuses by Sleeper id (data/injury-reports/<season>.json, from its
+               weekly rosters and injury reports); the redraft league's keepers from 2025 on
+               (config/leagues.yaml `keepers`), its transactions and rosters. Exported as
+               site/data/<league>/draft.json (derived data), and the keeper-eligible ids to the
+               Managers page (site/data/<league>/managers.json).
+Depends on:    2, 16
+Formula:
+  draft type: the dynasty league (Sleeper settings.type 2) holds rookie drafts; the redraft league
+    a full draft. Only the season's named draft counts.
+  ADP difference d (to 0.1): redraft d = pick number - ADP; rookie draft d = pick number - ADP rank,
+    the Player's place among that draft's Players ordered by ADP (lowest first).
+  steal: d >= +12 (redraft, a full round) or d >= +6 (rookie draft, half a round).
+  reach: d <= -12 or d <= -6, unless the Player is an RB or WR and fewer than 2 Players of his
+    position with a lower ADP are still available (not yet picked, not keepers; the pool is every
+    Player with an ADP in redraft, the draft's Players in a rookie draft).
+  keepers and Players without an ADP: no Steal/Reach grade.
+  grading window: the draft season (redraft) or the draft season and the next (rookie draft);
+    window WAR = sum of the Player's WAR (section 16) over the window, on every roster.
+  slot WAR(n) = mean window WAR of the non-keeper picks numbered n-6 .. n+6 (redraft) or n-3 .. n+3
+    (rookie draft) in the league's drafts whose window is complete; while a pick's window is in
+    progress, slot WAR x (regular-season weeks played in the window / regular-season weeks in it).
+  gap = window WAR - slot WAR (to 0.01); hit: gap >= +0.75 (redraft) or +1.0 (rookie draft);
+    bust: gap <= -0.75 or -1.0.
+  unlucky: injured misses > half of the games his NFL team played in the window so far, where an
+    injured miss is a team game he did not play while listed IR (nflverse R01, R48), PUP (R04) or
+    Out (the week's injury report). A team's games are the regular-season weeks in which any of its
+    Players has a stats line with a game played; the Player's team each week is his own stats
+    line's team that week, else his nearest week's (earlier first), else his team at the draft. An
+    unlucky pick that is not a hit is graded Unlucky, in place of Bust.
+  keepers (redraft): the configured keepers from 2025 on, and Sleeper's is_keeper flags for 2022 to
+    2024, are keepers: no Steal/Reach, no Hit/Bust, left out of slot WAR.
+  keeper eligible, for the season after the latest redraft draft S: a pick of S made by roster R
+    whose Player had no completed move off R in S (a drop, a trade away or a commissioner move,
+    through the championship week) and is on R's stored roster. Price = round - 1 (round 1: not
+    eligible); a Player kept in S costs round 1, unless he was also kept in S - 1 (not eligible).
+    While S is in progress the list runs through the latest week and is marked not final.
+  ranks: overall and position rank among the draft's Players by ADP (lowest first) and by window
+    WAR (highest first).
+  Managers summary, per draft and across all of the league's drafts, each pick counted for the
+    Manager whose roster made it: picks; mean d over graded picks (0.1); mean gap (0.01); total
+    window WAR; best pick (highest gap); unlucky picks. Listed by mean gap, highest first.
+In plain English:
+  Every pick gets two grades. On draft day, was the Player taken well before or well after where
+  the wider market (ADP) took him? A steal went at least a round later than his ADP in redraft,
+  or half a round later in the 3-round rookie draft; a reach went as much earlier. In
+  retrospect, did he produce more or less than that draft spot usually does in this league?
+  "Slot WAR" is the WAR the picks around that spot have averaged here, so a first-rounder has to
+  beat a high bar and a late pick only a low one. A hit beat it by three-quarters of a win
+  (redraft) or a full win over two seasons (rookie draft); a bust fell as far short. A Player who
+  missed most of his team's games injured is Unlucky rather than a bust.
+  In redraft, a Manager may keep a Player he drafted and held all season, for a pick one round
+  higher than the one he used; keeping him a second year costs a first, and there is no third.
+Assumptions and decisions:
+  - The dynasty league's 2022 startup draft only moved rosters over from Yahoo; it is not the
+    season's named draft, so it is never stored or graded.
+  - Thresholds come from the league's own drafts (analysis 2026-11-27): about 21 steals and 35
+    reaches per redraft draft (reaches are common because this league takes running backs,
+    kickers and defences earlier than ADP), 2 to 7 of each per rookie draft; about 19 hits and 19
+    busts per redraft draft and 4 to 7 per rookie draft, spread across every round.
+  - The RB/WR exception: taking the best back or receiver left during a run on the position is
+    not a reach. It removes about 8 of the 43 redraft reaches per draft.
+  - Rank differences for Hit/Bust were rejected: WAR bunches near zero (0.2 WAR spans about two
+    rounds of ranks), early picks could only bust and late kickers and defences became "hits".
+  - A rookie pick is judged over two seasons on every roster, so drafts of different ages compare
+    like for like and a Player traded away still counts for the pick. The trade trees will show
+    who kept the value.
+  - Slot WAR rests on few rookie drafts (three complete windows in 2026, about 21 picks per slot)
+    and settles as drafts are added.
+  - ADP is the preseason figure fixed when the drafts end; for past seasons Sleeper still serves
+    the preseason values.
+  - Unlucky needs an injury (owner's rule): a healthy Player who is not playing, such as a rookie
+    behind a starter, is no excuse. Saved Sleeper statuses begin in 2026, so injuries come from
+    nflverse for every season; with them, Unlucky is 0 to 4 picks per rookie draft and 6 to 14 per
+    redraft draft (2026-11-27).
+  - The keeper rules are the league's own, tracked outside Sleeper, so the keepers are listed in
+    the configuration. Sleeper's 2022 to 2024 keeper flags followed earlier rules; they mark those
+    picks as keepers but take no part in eligibility, which is shown for the latest draft only.
+  - The price is a round, not a pick the Manager still owns: whether he holds that pick is his
+    business at the next draft.

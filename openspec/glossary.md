@@ -45,6 +45,14 @@ Style is APA, with title case for titles and headings.
 - **Weekly Ranks:** the Strength of Schedule view that averages the weekly ranks of each Manager's opponents; the lowest average is the hardest schedule.
 - **Schedule Swap:** the Strength of Schedule view giving each Manager's wins had they played every other Manager's schedule with their own weekly scores.
 - **Schedule Difficulty Index:** a Manager's average wins across every Manager's schedule, their own included, minus their wins on their own schedule; the highest is the hardest schedule.
+- **ADP:** average draft position; Sleeper's preseason figure for where Players are taken across its drafts (half-PPR for redraft, dynasty half-PPR for the dynasty league), stored once a season's drafts end.
+- **Rookie draft:** the dynasty league's 3-round draft each season, which may include free agents as well as rookies.
+- **Steal/Reach:** a pick taken at least a full round (redraft) or half a round (rookie draft) later / earlier than the Player's ADP; an RB or WR who was one of the two best left at his position is never a reach (`Calculations.txt`, section 25).
+- **Slot WAR:** the WAR the picks around a draft position have averaged in this league, the bar a pick is judged against.
+- **Hit/Bust:** a pick whose WAR beat / fell short of its slot WAR by at least 0.75 WAR (redraft) or 1.0 WAR over two seasons (rookie draft).
+- **Unlucky pick:** a pick whose Player missed more than half of his NFL team's games in the grading window while listed Out, on injured reserve or on PUP; graded Unlucky in place of Bust (a hit stays a hit).
+- **Keeper eligible:** a redraft Player his Manager drafted and kept on the roster through the championship week, who can be kept the next season for a pick one round higher (a first if he was kept this season; never a third season running).
+- **KE:** the gold badge on the Managers page's Roster card that marks a keeper-eligible Player.
 - **Card state:** which of eleven states a Games page card is in (F1, F2, C, P2, L1, L2, P1, O1, O2, O3, PW), set by whose games have started or finished; defined in the `game-card-states` spec and `docs/games-page-states.md`.
 - **Refresh mode:** how often data is refreshed: offseason, quiet (in season, no games in progress) or live (games in progress).
 - **Hot run:** the quick refresh of the current week (`hot.yml`), which writes the live bundle.

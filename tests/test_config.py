@@ -225,3 +225,25 @@ def test_bad_rivals_rejected(rivals, message):
     raw["leagues"]["redraft"]["rivals"] = rivals
     with pytest.raises(ConfigError, match=message):
         parse_config(raw)
+
+
+
+def test_repo_redraft_keepers():
+    """league-draft 4.11.5: the redraft league lists 2026's five keepers by Sleeper id."""
+    cfg = load_config()
+    assert set(cfg.leagues["redraft"].keepers["2026"]) == {"10229", "7588", "9488", "12514", "12481"}
+    assert cfg.leagues["dynasty"].keepers == {}
+
+
+@pytest.mark.parametrize("keepers, message", [
+    ({"26": ["1"]}, "4-digit seasons"),
+    ({"2026": "9488"}, "list of Sleeper Player ids"),
+    ({"2026": ["A. Name"]}, "list of Sleeper Player ids"),
+    ({"2026": ["9488", "9488"]}, "twice"),
+])
+def test_bad_keepers_rejected(tmp_path, keepers, message):
+    import yaml
+    path = tmp_path / "leagues.yaml"
+    path.write_text(yaml.safe_dump({"leagues": {"redraft": {"league_id": "1", "keepers": keepers}}}), encoding="utf-8")
+    with pytest.raises(ConfigError, match=message):
+        load_config(path)

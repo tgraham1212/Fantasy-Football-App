@@ -8,6 +8,11 @@ sleeper/league/<id>/winners_bracket.json GET /v1/league/<id>/winners_bracket
 sleeper/league/<id>/losers_bracket.json  GET /v1/league/<id>/losers_bracket
 sleeper/state/nfl.json                   GET /v1/state/nfl
 sleeper/projections/<season>/<week>.json GET projections/nfl/<season>/<week> (trimmed)
+sleeper/projections/<season>/season.json GET projections/nfl/<season> (season ADP, trimmed to drafted Players and ADP <= 200)
+sleeper/nflverse/<kind>.csv             nflverse release files (weekly_rosters, injuries): one tiny file served for every season
+sleeper/draft/<id>.json                  GET /v1/draft/<id> (each fixture league's named draft, recorded 2026-11-27)
+sleeper/draft/<id>/picks.json            GET /v1/draft/<id>/picks (Player metadata trimmed)
+sleeper/draft/<id>/traded_picks.json     GET /v1/draft/<id>/traded_picks
 sleeper/stats/<season>/<week>.json       GET stats/nfl/<season>/<week> (trimmed: fixture players + free agents)
 sleeper/players/nfl.json                 GET /v1/players/nfl (trimmed to the players the ESPN fixture names)
 sleeper/players/nfl/trending/add.json    GET /v1/players/nfl/trending/add (three of the fixture players)
@@ -48,9 +53,10 @@ def load(relative: str):
 
 
 class _FixtureResponse:
-    def __init__(self, status_code: int, payload=None):
+    def __init__(self, status_code: int, payload=None, text: str | None = None):
         self.status_code = status_code
         self._payload = payload
+        self.text = text
 
     def json(self):
         if self._payload is None:
@@ -91,8 +97,21 @@ class FixtureSession:
         if path.endswith("/sports/football/nfl/scoreboard"):
             week = parse_qs(urlparse(url).query).get("week", ["0"])[0]
             return f"espn/scoreboard/{week}.json"
+        if path.startswith("/nflverse/nflverse-data/releases/download/"):
+            kind = path.removeprefix("/nflverse/nflverse-data/releases/download/").split("/")[0]
+            return f"nflverse/{kind}.csv"
+        if path.startswith("/v1/draft/"):
+            parts = path.removeprefix("/v1/draft/").split("/")
+            if len(parts) == 1:
+                return f"draft/{parts[0]}.json"
+            if len(parts) == 2 and parts[1] in {"picks", "traded_picks"}:
+                return f"draft/{parts[0]}/{parts[1]}.json"
+            return None
         if path.startswith("/projections/nfl/"):
-            season, week = path.removeprefix("/projections/nfl/").split("/")
+            parts = path.removeprefix("/projections/nfl/").split("/")
+            if len(parts) == 1:
+                return f"projections/{parts[0]}/season.json"
+            season, week = parts
             return f"projections/{season}/{week}.json"
         if path.startswith("/stats/nfl/"):
             season, week = path.removeprefix("/stats/nfl/").split("/")
@@ -110,6 +129,8 @@ class FixtureSession:
                 return _FixtureResponse(payload)
             return _FixtureResponse(200, payload)
         file = SLEEPER_ROOT / relative
+        if relative.endswith(".csv"):
+            return _FixtureResponse(200, text=file.read_text(encoding="utf-8")) if file.exists() else _FixtureResponse(404)
         if not file.exists():
             # no recorded transactions for a week reads as a week without any, as Sleeper answers
             return _FixtureResponse(200, []) if "/transactions/" in relative else _FixtureResponse(404)

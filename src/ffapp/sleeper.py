@@ -86,8 +86,13 @@ class SleeperClient:
                 self._sleep(wait)
         self._last_request = self._clock()
 
-    def get_json(self, url: str, headers: dict[str, str] | None = None) -> Any:
-        """GET ``url`` and decode JSON, retrying transient failures. ``headers`` are merged over the defaults."""
+    def get_text(self, url: str) -> str:
+        """GET ``url`` as text (a CSV file, for example), with the same throttle and retries as JSON."""
+        return self.get_json(url, headers={"Accept": "text/csv, text/plain, */*"}, decode=lambda r: r.text)
+
+    def get_json(self, url: str, headers: dict[str, str] | None = None, decode: Callable[[Any], Any] | None = None) -> Any:
+        """GET ``url`` and decode JSON (or apply ``decode`` to the response), retrying transient failures.
+        ``headers`` are merged over the defaults."""
         headers = {"User-Agent": USER_AGENT, "Accept": "application/json", **(headers or {})}
         attempt = 0
         while True:
@@ -102,7 +107,7 @@ class SleeperClient:
                 status = response.status_code
                 if 200 <= status < 300:
                     try:
-                        return response.json()
+                        return decode(response) if decode else response.json()
                     except ValueError as exc:
                         raise SleeperError(f"invalid JSON from {url}: {exc}", url, status) from exc
                 if status not in RETRY_STATUSES:
@@ -139,6 +144,17 @@ class SleeperClient:
         free agents, trades and commissioner moves. Offseason moves are filed under week 1."""
         return self.get_json(f"{self._api_base}/league/{league_id}/transactions/{week}")
 
+    def draft(self, draft_id: str) -> dict:
+        """A draft's settings, type (snake or linear), status and ``slot_to_roster_id``."""
+        return self.get_json(f"{self._api_base}/draft/{draft_id}")
+
+    def draft_picks(self, draft_id: str) -> list:
+        """Every pick: ``pick_no``, ``round``, ``draft_slot``, ``roster_id`` (who made it), ``is_keeper``, Player metadata."""
+        return self.get_json(f"{self._api_base}/draft/{draft_id}/picks")
+
+    def draft_traded_picks(self, draft_id: str) -> list:
+        return self.get_json(f"{self._api_base}/draft/{draft_id}/traded_picks")
+
     def state(self, sport: str = "nfl") -> dict:
         return self.get_json(f"{self._api_base}/state/{sport}")
 
@@ -158,6 +174,14 @@ class SleeperClient:
             [("season_type", "regular")] + [("position[]", p) for p in PROJECTION_POSITIONS]
         )
         return self.get_json(f"{self._projections_base}/{season}/{week}?{query}")
+
+    def season_projections(self, season: str | int) -> Any:
+        """Season-long projections for the fantasy positions; each row's stats carry Sleeper's ADP
+        (``adp_half_ppr``, ``adp_dynasty_half_ppr``), preseason values for past seasons."""
+        query = urlencode(
+            [("season_type", "regular")] + [("position[]", p) for p in PROJECTION_POSITIONS]
+        )
+        return self.get_json(f"{self._projections_base}/{season}?{query}")
 
     def stats(self, season: str | int, week: int) -> Any:
         """Raw weekly actual stat lines for the fantasy positions (same shape as projections)."""

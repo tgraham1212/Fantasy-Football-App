@@ -48,6 +48,10 @@ FEATURE_DOCS = {
         "diagram": "tools/strength_of_schedule_diagram.py",
         "code": ("src/ffapp/schedule_strength.py", "site/schedule.js"),
     },
+    "draft.md": {
+        "diagram": "tools/draft_diagram.py",
+        "code": ("src/ffapp/draft.py", "src/ffapp/injury_reports.py", "site/draft.js"),
+    },
     "games-page-states.md": {
         "diagram": None,  # drawn by hand before the standard (baseline)
         "code": ("src/ffapp/card_states.py", "src/ffapp/games_export.py", "site/games.js"),

@@ -114,7 +114,15 @@ The cold run never reads the live bundle. It takes the truth from Sleeper and ES
 
 ### Committed
 
-- League data: rosters, users, matchups, brackets, transactions (`data/leagues/`).
+- League data: rosters, users, matchups, brackets, transactions, and each season's draft with its
+  picks and traded picks (`data/leagues/<league>/<season>/draft.json`, fetched until complete, then
+  kept).
+- Sleeper's preseason ADP for each season, half-PPR and dynasty half-PPR (`data/adp/`), stored once
+  when every league's draft for the season is complete.
+- nflverse's weekly injury history for each season from 2021 (`data/injury-reports/`): each fantasy
+  Player's IR, PUP and Out weeks by Sleeper id, for the draft grades' Unlucky picks. Completed seasons
+  are fetched once, the current season at most once every 20 hours (the fetch times are rebuilt data
+  in `data/refresh/`).
 - Stats for played weeks (`data/stats/`), injury statuses (`data/injuries/`), player details
   (`data/players/`), trending (`data/trending/`), ESPN snapshots and the crosswalk (`data/espn/`).
   Trending and the ESPN snapshots are running tallies: every cold run fetches them and the site shows

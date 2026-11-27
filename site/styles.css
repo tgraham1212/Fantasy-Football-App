@@ -75,6 +75,11 @@
   --sos-s2-f: #ffddc6; --sos-s2-i: #8a4517;  /* OKLCH .92 .05 55 / .47 .11 50 */
   --sos-s3-f: #d4ebff; --sos-s3-i: #255691;  /* OKLCH .93 .04 250 / .45 .11 255 */
   --sos-s4-f: #285e9f; --sos-s4-i: #ebf7ff;  /* OKLCH .48 .12 255 / .97 .02 250 */
+  --draft-steal-f: #d4ebff; --draft-steal-i: #255691;  /* OKLCH .93 .04 250 / .45 .11 255 (the swap's blue) */
+  --draft-reach-f: #ffddc6; --draft-reach-i: #8a4517;  /* OKLCH .92 .05 55 / .47 .11 50 (the swap's orange) */
+  --draft-hit-f: #064180; --draft-hit-i: #d7eafe;  /* OKLCH .38 .12 255 / .93 .04 250 */
+  --draft-bust-f: #831a1d; --draft-bust-i: #fee0dd;  /* OKLCH .40 .14 25 / .93 .04 25 */
+  --war-pos: #035798; --war-neg: #a5292b;  /* OKLCH .45 .13 250 / .48 .16 25: WAR text */
   --th-res-f: #e6eefa; --th-res-i: #0d3b75; --th-up-f: #dff2df; --th-up-i: #1c5a22; --th-down-f: #fbe1df; --th-down-i: #8a1f17;
   --th-inj-f: #fde2e2; --th-inj-i: #a32121; --th-rec-f: #fbefd2; --th-rec-i: #6e4d00; --th-lg-f: #ece8f8; --th-lg-i: #4a3a8a;
   --th-move-f: #e5f4f1; --th-move-i: #0f5348; --feat-a: #1b5aa3; --feat-b: #0d2f5c; --feat-i: #ffffff;
@@ -142,6 +147,11 @@
     --sos-r4-f: #102b17; --sos-r4-i: #abd8b3;  /* OKLCH .26 .05 150 / .84 .07 150 */
     --sos-s2-f: #442916; --sos-s2-i: #f4cbaf;  /* OKLCH .31 .05 55 / .87 .06 55 */
     --sos-s3-f: #1c3249; --sos-s3-i: #bcd8f5;  /* OKLCH .31 .05 250 / .87 .05 250 */
+    --draft-steal-f: #1c3249; --draft-steal-i: #bcd8f5;  /* OKLCH .31 .05 250 / .87 .05 250 */
+    --draft-reach-f: #442916; --draft-reach-i: #f4cbaf;  /* OKLCH .31 .05 55 / .87 .06 55 */
+    --draft-hit-f: #2e64a6; --draft-hit-i: #eef6fe;  /* OKLCH .50 .12 255 / .97 .02 250 */
+    --draft-bust-f: #a83634; --draft-bust-i: #fef2f1;  /* OKLCH .50 .15 25 / .97 .025 25 */
+    --war-pos: #85bcf5; --war-neg: #f58b84;  /* OKLCH .78 .10 250 / .75 .13 25: WAR text */
     --th-res-f: #16294a; --th-res-i: #cfe0fa; --th-up-f: #183a1b; --th-up-i: #cdeccf; --th-down-f: #4a1a17; --th-down-i: #fbd0cb;
     --th-inj-f: #4a1a1a; --th-inj-i: #ffb4b4; --th-rec-f: #3d2e08; --th-rec-i: #f3d68a; --th-lg-f: #2a2347; --th-lg-i: #d9d1fb;
     --th-move-f: #123a34; --th-move-i: #c4ece4; --feat-a: #1e4f8c; --feat-b: #0b1f3d; --feat-i: #ffffff;
@@ -209,6 +219,11 @@
   --sos-r4-f: #102b17; --sos-r4-i: #abd8b3;  /* OKLCH .26 .05 150 / .84 .07 150 */
   --sos-s2-f: #442916; --sos-s2-i: #f4cbaf;  /* OKLCH .31 .05 55 / .87 .06 55 */
   --sos-s3-f: #1c3249; --sos-s3-i: #bcd8f5;  /* OKLCH .31 .05 250 / .87 .05 250 */
+  --draft-steal-f: #1c3249; --draft-steal-i: #bcd8f5;  /* OKLCH .31 .05 250 / .87 .05 250 */
+  --draft-reach-f: #442916; --draft-reach-i: #f4cbaf;  /* OKLCH .31 .05 55 / .87 .06 55 */
+  --draft-hit-f: #2e64a6; --draft-hit-i: #eef6fe;  /* OKLCH .50 .12 255 / .97 .02 250 */
+  --draft-bust-f: #a83634; --draft-bust-i: #fef2f1;  /* OKLCH .50 .15 25 / .97 .025 25 */
+  --war-pos: #85bcf5; --war-neg: #f58b84;  /* OKLCH .78 .10 250 / .75 .13 25: WAR text */
   --th-res-f: #16294a; --th-res-i: #cfe0fa; --th-up-f: #183a1b; --th-up-i: #cdeccf; --th-down-f: #4a1a17; --th-down-i: #fbd0cb;
   --th-inj-f: #4a1a1a; --th-inj-i: #ffb4b4; --th-rec-f: #3d2e08; --th-rec-i: #f3d68a; --th-lg-f: #2a2347; --th-lg-i: #d9d1fb;
   --th-move-f: #123a34; --th-move-i: #c4ece4; --feat-a: #1e4f8c; --feat-b: #0b1f3d; --feat-i: #ffffff;
@@ -873,6 +888,8 @@ a.mgr-tile:hover { border-color: var(--axis); }
 .mgr-table .c-slot { width: 52px; padding-left: 10px; } .mgr-table .c-inf { width: 36px; } .mgr-table .c-pos { width: 38px; color: var(--ink-2); font-size: 0.74rem; }
 .mgr-table .c-ppg { width: 54px; text-align: right; padding-right: 8px; }
 .mgr-table .pname { display: block; font-weight: 650; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mgr-table .mgr-namerow { display: flex; align-items: center; min-width: 0; } .mgr-table .mgr-namerow .pname { flex: 0 1 auto; min-width: 0; } .mgr-namerow .mgr-ke { flex: none; }
+.mgr-ke { display: inline-flex; align-items: center; margin-left: 6px; padding: 0 5px; height: 17px; border-radius: 4px; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.02em; background: var(--rank1-f); color: var(--rank1-i); vertical-align: middle; }   /* keeper eligible (league-draft 4.4.6.5) */
 .mgr-pill { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 24px; border-radius: 6px; font-size: 0.68rem; font-weight: 800; }
 .mgr-pill.qb { background: var(--pos-qb-f); color: var(--pos-qb-i); } .mgr-pill.rb { background: var(--pos-rb-f); color: var(--pos-rb-i); }
 .mgr-pill.wr { background: var(--pos-wr-f); color: var(--pos-wr-i); } .mgr-pill.te { background: var(--pos-te-f); color: var(--pos-te-i); }
@@ -1227,4 +1244,96 @@ table.sos-table tbody tr { cursor: default; }
   .sos-controls .lg-views button { flex: 1; }
   .sos-season { width: 100%; justify-content: space-between; }
   .sos-season select { min-height: 48px; min-width: 120px; }
+}
+
+/* League page, Draft tab (site/draft.js): the board (rounds by draft slots, cells in the position
+   colours, the round column pinned), the table (a list on phones) and the Managers card. Badge colours
+   are the --draft-* tokens; WAR text is --war-pos / --war-neg. */
+.dr-controls .dr-off { visibility: hidden; }   /* the board-only grade switch in Table view */
+.dr-controls { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.dr-badge { display: inline-flex; align-items: center; gap: 3px; padding: 1px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 750; white-space: nowrap; line-height: 1.5; }
+.dr-badge.steal { background: var(--draft-steal-f); color: var(--draft-steal-i); }
+.dr-badge.reach { background: var(--draft-reach-f); color: var(--draft-reach-i); }
+.dr-badge.hit { background: var(--draft-hit-f); color: var(--draft-hit-i); }
+.dr-badge.bust { background: var(--draft-bust-f); color: var(--draft-bust-i); }
+.dr-badge.unlucky, .dr-badge.keeper, .dr-badge.fa { background: var(--score-f); color: var(--ink-2); }
+.dr-badge.unlucky svg { color: var(--th-inj-i); }
+.war-pos { color: var(--war-pos); } .war-neg { color: var(--war-neg); }
+.dr-pos { width: auto; min-width: 28px; height: 20px; padding: 0 5px; font-size: 0.66rem; }
+table.dr-board { border-collapse: separate; border-spacing: 0; min-width: 0; table-layout: fixed; font-variant-numeric: tabular-nums; }
+.dr-board thead th { text-transform: none; letter-spacing: 0; }
+.dr-mgr-list .dr-player { display: inline; }
+.dr-board th, .dr-board td { padding: 2px; border-bottom: 0; white-space: normal; }
+.dr-board thead th { vertical-align: bottom; padding-bottom: 6px; border-bottom: 2px solid var(--ink); }
+.dr-board .dr-rd { position: sticky; left: -18px; z-index: 1; width: 44px; background: var(--surface); box-shadow: 1px 0 0 var(--grid); text-align: center; font-size: 0.72rem; font-weight: 800; color: var(--ink-2); }
+.dr-board thead .dr-rd { z-index: 2; }
+.dr-board .dr-slot { width: 92px; text-align: center; font-weight: 700; }
+.dr-board .dr-slot .mgr-crest { margin: 0 auto 3px; }
+.dr-board .dr-slot .manager-link { display: block; font-size: 0.72rem; overflow-wrap: anywhere; }
+.dr-cell { box-sizing: border-box; height: 100%; min-height: 96px; padding: 5px 5px 6px; border-radius: 6px; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr minmax(14px, auto) 19px; justify-items: center; align-items: center; gap: 2px; text-align: center; }   /* fixed rows: every name sits at the same height, traded line and badge or not */
+.dr-cell .dr-name { width: 100%; min-width: 0; align-self: center; } .dr-cell > * { min-width: 0; max-width: 100%; } .dr-by-slot, .dr-badge-slot { display: flex; align-items: center; justify-content: center; min-width: 0; max-width: 100%; }
+.dr-cell.qb { background: var(--pos-qb-f); color: var(--pos-qb-i); } .dr-cell.rb { background: var(--pos-rb-f); color: var(--pos-rb-i); }
+.dr-cell.wr { background: var(--pos-wr-f); color: var(--pos-wr-i); } .dr-cell.te { background: var(--pos-te-f); color: var(--pos-te-i); }
+.dr-cell.k { background: var(--pos-k-f); color: var(--pos-k-i); } .dr-cell.def { background: var(--pos-def-f); color: var(--pos-def-i); }
+.dr-cell-top { display: flex; justify-content: space-between; width: 100%; font-size: 0.66rem; font-weight: 700; }
+.dr-cell .fitname { width: 100%; font-size: 0.8rem; font-weight: 800; line-height: 1.15; }
+.dr-cell .fitname.fit-wrap { font-size: 0.72rem; overflow-wrap: normal; hyphens: manual; }   /* a long surname: smaller, breaking at spaces and hyphens */
+.dr-by { display: inline-flex; align-items: center; gap: 1px; font-size: 0.6rem; max-width: 100%; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+.dr-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; font-size: 0.76rem; color: var(--ink-2); }
+.dr-legend .dr-key { display: inline-flex; align-items: center; gap: 5px; }
+table.dr-table td, table.dr-table th { white-space: nowrap; }
+.dr-table .dr-player { display: inline-flex; align-items: center; gap: 6px; }
+.dr-table .dr-pick b { font-weight: 800; }
+.dr-table .dr-pick span, .dr-sub { color: var(--muted); font-size: 0.78rem; }
+.dr-rank { display: inline-flex; align-items: center; gap: 6px; }
+.dr-rank > span:first-child { min-width: 1.6em; text-align: right; }
+.dr-games.unlucky { color: var(--war-neg); }
+.dr-list { display: none; list-style: none; margin: 0; padding: 0; }
+.dr-list li { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--grid); }
+.dr-list .dr-pick { display: flex; flex-direction: column; line-height: 1.2; }
+.dr-list .dr-pick b { font-size: 0.86rem; }
+.dr-list .dr-line { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; min-width: 0; }
+.dr-list .dr-line .fitname { font-weight: 750; font-size: 0.9rem; }
+.dr-list .dr-meta { font-size: 0.74rem; color: var(--muted); overflow-wrap: anywhere; }
+.dr-list .dr-grade { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+.dr-mgrs .dr-mgr-list { display: none; }
+table.dr-ke-matrix { width: auto; min-width: 100%; border-collapse: separate; border-spacing: 0; }
+.dr-ke-matrix th, .dr-ke-matrix td { white-space: normal; vertical-align: top; padding: 6px 4px; }
+.dr-ke-matrix thead th { text-transform: none; letter-spacing: 0; text-align: center; }
+.dr-ke-matrix .dr-ke-mgr { position: sticky; left: -18px; z-index: 1; background: var(--surface); box-shadow: 1px 0 0 var(--grid); text-align: left; white-space: nowrap; padding-right: 12px; }
+.dr-ke-matrix thead .dr-ke-mgr { z-index: 2; }
+.dr-ke-matrix .dr-ke-rd { min-width: 84px; font-size: 0.72rem; }
+.dr-ke-matrix td { min-width: 84px; }
+.dr-ke-chip { display: flex; align-items: center; gap: 3px; margin: 0 0 3px; padding: 3px 6px; border-radius: 6px; font-size: 0.74rem; font-weight: 700; }
+.dr-ke-chip .fitname { min-width: 0; }
+.dr-ke-chip.qb { background: var(--pos-qb-f); color: var(--pos-qb-i); } .dr-ke-chip.rb { background: var(--pos-rb-f); color: var(--pos-rb-i); }
+.dr-ke-chip.wr { background: var(--pos-wr-f); color: var(--pos-wr-i); } .dr-ke-chip.te { background: var(--pos-te-f); color: var(--pos-te-i); }
+.dr-ke-chip.k { background: var(--pos-k-f); color: var(--pos-k-i); } .dr-ke-chip.def { background: var(--pos-def-f); color: var(--pos-def-i); }
+.dr-ke-2 { flex: none; margin-left: auto; padding: 0 4px; border-radius: 3px; font-size: 0.62rem; font-weight: 800; background: var(--rank1-f); color: var(--rank1-i); }
+.dr-keepers .dr-ke-list { display: none; }
+.dr-ke-list li { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+.dr-ke-items { display: flex; flex-wrap: wrap; gap: 6px; }
+.dr-ke-item { display: inline-flex; align-items: center; gap: 4px; font-size: 0.74rem; }
+.dr-ke-item .dr-ke-chip { margin: 0; }
+.dr-mgr-list li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+.dr-mgr-list .dr-line { justify-content: space-between; }
+.dr-avg { display: inline-block; min-width: 46px; padding: 2px 6px; border-radius: 4px; text-align: center; font-weight: 750; background: var(--score-f); color: var(--ink); }
+.dr-avg.steal { background: var(--draft-steal-f); color: var(--draft-steal-i); } .dr-avg.reach { background: var(--draft-reach-f); color: var(--draft-reach-i); }
+.dr-avg.hit { background: var(--draft-hit-f); color: var(--draft-hit-i); } .dr-avg.bust { background: var(--draft-bust-f); color: var(--draft-bust-i); }
+@media (max-width: 600px) {
+  .dr-board .dr-rd { left: -14px; }
+}
+@media (max-width: 599.98px) {
+  .dr-controls { width: 100%; }
+  .dr-controls .lg-views { width: 100%; }
+  .dr-controls .lg-views button { flex: 1; min-height: 48px; }
+  .dr-controls .sos-season { width: 100%; justify-content: space-between; }
+  .dr-controls .sos-season select { min-height: 48px; min-width: 120px; }
+  .dr-wide { display: none; }
+  .dr-list { display: block; }
+  .dr-mgrs .dr-mgr-table { display: none; }
+  .dr-mgrs .dr-mgr-list { display: block; }
+  .dr-keepers .dr-ke-table { display: none; }
+  .dr-keepers .dr-ke-list { display: block; }
+  .dr-ke-matrix .dr-ke-mgr { left: -14px; }
 }

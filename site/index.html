@@ -197,6 +197,7 @@
         <div class="lg-tabs" id="lg-tabs" role="group" aria-label="League sections">
           <button type="button" data-lg-tab="records" aria-pressed="true">Records</button>
           <button type="button" data-lg-tab="schedule" aria-pressed="false">Strength of Schedule</button>
+          <button type="button" data-lg-tab="draft" aria-pressed="false">Draft</button>
         </div>
         <div class="lg-views" id="lg-views" role="group" aria-label="Records view">
           <button type="button" data-lg-view="managers" aria-pressed="true">Managers</button>
@@ -208,6 +209,17 @@
             <button type="button" data-sos-view="swap" aria-pressed="false">Schedule Swap</button>
           </div>
           <label class="sos-season"><span data-copy="LG-49">Season</span> <select id="sos-season"></select></label>
+        </div>
+        <div class="dr-controls" id="dr-controls" hidden>
+          <div class="lg-views" id="dr-views" role="group" aria-label="Draft view">
+            <button type="button" data-dr-view="board" aria-pressed="true">Board</button>
+            <button type="button" data-dr-view="table" aria-pressed="false">Table</button>
+          </div>
+          <div class="lg-views" id="dr-grades" role="group" aria-label="Grade shown on the board">
+            <button type="button" data-dr-grade="day" aria-pressed="true">Draft Day</button>
+            <button type="button" data-dr-grade="results" aria-pressed="false">Results</button>
+          </div>
+          <label class="sos-season"><span data-copy="LG-66">Season</span> <select id="dr-season"></select></label>
         </div>
       </div>
       <p data-copy="LG-01" class="explain card" id="lg-unavailable" hidden>League records are not yet available for this league: its records file has not been exported.</p>
@@ -243,6 +255,44 @@
           </div>
           <div class="table-wrap sos-wrap" tabindex="0" role="region" aria-labelledby="sos-swap-h"></div>
           <p class="hint sos-note" data-copy="LG-60">Each row is one Manager's weekly scores played against every Manager's schedule; forecast weeks count each game's win probability. Index = average wins across all schedules minus wins on your own; the highest index is the hardest schedule.</p>
+        </section>
+      </div>
+      <div id="dr-page" class="lg-stack" hidden>
+        <p data-copy="LG-67" class="explain card" id="dr-unavailable" hidden>The Draft tab is not yet available for this league: its draft file has not been exported.</p>
+        <section class="card lg-section" id="dr-draft" aria-labelledby="dr-draft-h">
+          <h2 id="dr-draft-h"></h2>
+          <div class="table-wrap dr-wrap" id="dr-board" tabindex="0" role="region" aria-labelledby="dr-draft-h"></div>
+          <div class="dr-tablebox" id="dr-table" hidden>
+            <div class="table-wrap dr-wrap dr-wide" tabindex="0" role="region" aria-labelledby="dr-draft-h"></div>
+            <ul class="dr-list"></ul>
+          </div>
+          <div class="dr-legend" id="dr-legend">
+            <span class="dr-key" data-grade="day"><span class="dr-badge steal" data-copy="LG-68">Steal</span><span class="dr-badge reach" data-copy="LG-69">Reach</span><span data-copy="LG-70">against ADP</span></span>
+            <span class="dr-key" data-grade="results"><span class="dr-badge hit" data-copy="LG-71">Hit</span><span class="dr-badge bust" data-copy="LG-72">Bust</span><span data-copy="LG-73">against slot WAR</span></span>
+            <span class="dr-key" data-grade="results"><span class="dr-badge unlucky" data-copy="LG-74">Unlucky</span><span data-copy="LG-75">missed most of his team's games</span></span>
+            <span class="dr-key" data-grade="day results"><svg width="13" height="11" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3h6M5 1l2 2-2 2M9 7H3M5 5L3 7l2 2" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span data-copy="LG-76">a traded pick, with the Manager who made it</span></span>
+          </div>
+          <p class="hint dr-note" id="dr-note-redraft" data-copy="LG-77">Draft Day compares each pick with the Player's ADP: a steal went a full round (12 picks) or more after his ADP, a reach as far before, though the best running back or wide receiver left at his position is never a reach. Results compares his WAR that season with what the picks around that spot have averaged in this league (Slot WAR): a hit beat it by 0.75 WAR or more, a bust fell as far short. Unlucky: he played fewer than half of his team's games. Keepers are not graded on Draft Day.</p>
+          <p class="hint dr-note" id="dr-note-rookie" data-copy="LG-78" hidden>Draft Day compares each pick with the Player's ADP rank among this draft's Players: a steal went half a round (6 picks) or more after it, a reach as far before, though the best running back or wide receiver left at his position is never a reach. Results compares his WAR over his first two seasons, on every roster, with what the picks around that spot have averaged in this league (Slot WAR): a hit beat it by 1.0 WAR or more, a bust fell as far short. Unlucky: he played fewer than half of his team's games.</p>
+        </section>
+        <section class="card lg-section dr-mgrs" id="dr-managers" aria-labelledby="dr-managers-h">
+          <div class="sos-head">
+            <h2 id="dr-managers-h" data-copy="LG-79">Managers</h2>
+            <div class="lg-views" id="dr-span" role="group" aria-label="Managers summary span">
+              <button type="button" data-dr-span="draft" aria-pressed="true">This Draft</button>
+              <button type="button" data-dr-span="all" aria-pressed="false">All Drafts</button>
+            </div>
+          </div>
+          <div class="table-wrap dr-mgr-table" tabindex="0" role="region" aria-labelledby="dr-managers-h"></div>
+          <ul class="dr-list dr-mgr-list"></ul>
+          <p class="hint dr-note" data-copy="LG-80">Averages per graded pick: Steal/Reach in draft positions, Hit/Bust in WAR against each pick's Slot WAR. WAR is the total for the Manager's picks. Each pick counts for the Manager who made it.</p>
+        </section>
+        <section class="card lg-section dr-keepers" id="dr-keepers" aria-labelledby="dr-keepers-h" hidden>
+          <h2 id="dr-keepers-h"></h2>
+          <div class="table-wrap dr-ke-table" tabindex="0" role="region" aria-labelledby="dr-keepers-h"></div>
+          <ul class="dr-list dr-ke-list"></ul>
+          <p class="hint dr-note" data-copy="LG-96">A Player can be kept when the Manager drafted him and he stayed on that roster through the championship week. His price is a pick one round higher than he was drafted in, so first-round picks can't be kept. A Player kept this season costs a first-round pick to keep again, and can't be kept a third season running.</p>
+          <p class="hint dr-note" id="dr-keepers-provisional" data-copy="LG-97" hidden>The season is still being played: this list is eligible so far, and a drop or trade before the championship week ends a Player's eligibility.</p>
         </section>
       </div>
     </div>

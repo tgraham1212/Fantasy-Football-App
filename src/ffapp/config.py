@@ -44,6 +44,7 @@ class LeagueConfig:
     league_id: str
     name: str
     rivals: Rivals | None = None
+    keepers: dict[str, tuple[str, ...]] = field(default_factory=dict)  # season -> Sleeper ids kept (rules tracked outside Sleeper)
 
 
 @dataclass(frozen=True)
@@ -90,7 +91,7 @@ class Config:
 
 _TOP_KEYS = {"leagues", "overrides", "simulation", "ratings", "site"}
 _SITE_KEYS = {"refresh_url"}
-_LEAGUE_KEYS = {"league_id", "name", "rivals"}
+_LEAGUE_KEYS = {"league_id", "name", "rivals", "keepers"}
 _RIVALS_KEYS = {"pairs", "rivalry_week"}
 _OVERRIDE_KEYS = {"league", "season", "from_week", "scoring"}
 _SIMULATION_KEYS = {"residual_scale", "replacement_top_n", "prior_weeks"}
@@ -124,7 +125,27 @@ def _parse_league(key: str, raw: Any) -> LeagueConfig:
     name = mapping.get("name", key)
     if not isinstance(name, str) or not name:
         raise ConfigError(f"{where}.name must be a non-empty string")
-    return LeagueConfig(key=key, league_id=league_id, name=name, rivals=_parse_rivals(mapping.get("rivals"), where))
+    return LeagueConfig(key=key, league_id=league_id, name=name, rivals=_parse_rivals(mapping.get("rivals"), where),
+                        keepers=_parse_keepers(mapping.get("keepers"), where))
+
+
+def _parse_keepers(raw: Any, where: str) -> dict[str, tuple[str, ...]]:
+    """``keepers: {"2026": ["9488", ...]}``: each season's kept Players by Sleeper id (league-draft 4.11.5)."""
+    if raw is None:
+        return {}
+    where = f"{where}.keepers"
+    mapping = _require_mapping(raw, where)
+    out: dict[str, tuple[str, ...]] = {}
+    for season, ids in mapping.items():
+        season = str(season)
+        if not (season.isdigit() and len(season) == 4):
+            raise ConfigError(f"{where} keys must be 4-digit seasons, got {season!r}")
+        if not isinstance(ids, list) or not all(isinstance(i, (str, int)) and not isinstance(i, bool) and str(i).isdigit() for i in ids):
+            raise ConfigError(f"{where}.{season} must be a list of Sleeper Player ids, got {ids!r}")
+        if len({str(i) for i in ids}) != len(ids):
+            raise ConfigError(f"{where}.{season} lists a Player twice")
+        out[season] = tuple(str(i) for i in ids)
+    return out
 
 
 def _parse_rivals(raw: Any, where: str) -> Rivals | None:

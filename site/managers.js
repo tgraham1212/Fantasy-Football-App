@@ -295,7 +295,7 @@ function rosterCard(m) {
     const status = r.status && STATUS_LABEL[r.status] ? `<span class="mgr-badge ${OUT_STATUS[r.status] ? "out" : "q"}" title="${escapeHtml(r.status)}">${STATUS_LABEL[r.status]}</span>`
       : r.bye ? '<span class="mgr-badge bye">Bye</span>' : "";
     const repl = (m.replacement || {})[r.position];
-    return `<tr${split}><td class="c-slot">${pill}</td><td class="c-inf">${status}</td><td class="c-name"><span class="pname">${shortName(r.name, r.position)}</span></td>
+    return `<tr${split}><td class="c-slot">${pill}</td><td class="c-inf">${status}</td><td class="c-name">${r.keeper_eligible ? `<span class="mgr-namerow"><span class="pname">${shortName(r.name, r.position)}</span><span class="mgr-ke" title="${/*copy:MGR-23*/"Keeper eligible for next season"}">KE</span></span>` : `<span class="pname">${shortName(r.name, r.position)}</span>`}</td>
       <td class="c-pos">${escapeHtml(r.position || "")}</td><td class="c-ppg">${r.ppg == null ? "–" : `<span class="mgr-chip ${tierOf(r.ppg, repl)}">${fmt1(r.ppg)}</span>`}</td></tr>`;
   }).join("");
   const wp = m.week_points;

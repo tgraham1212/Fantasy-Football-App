@@ -49,7 +49,7 @@ def test_schedule_tab_opens(open_page):
     page, _ = open_page(f"index.html#{LEAGUE}/league/records", 1280)
     page.wait_for_function("document.querySelector('#lg-champions .lg-body').children.length > 0")
     tabs = page.eval_on_selector_all("#lg-tabs button", "bs => bs.map(b => b.textContent.trim())")
-    assert tabs == ["Records", "Strength of Schedule"]
+    assert tabs[:2] == ["Records", "Strength of Schedule"]
     page.click("#lg-tabs [data-lg-tab=schedule]")
     page.wait_for_timeout(300)
     data = schedule(page)

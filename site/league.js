@@ -1,4 +1,4 @@
-/* League page: its tabs (Records here; Strength of Schedule in schedule.js) and the Records tab: the
+/* League page: its tabs (Records here; Strength of Schedule in schedule.js; Draft in draft.js) and the Records tab: the
    league's bests and worsts in two views. Managers: Champions, All-Time
    Standings, Weekly Records and Season Records. Players: Best Games, Best Bench Games, Career Scoring
    and Championships. Selecting a record opens its top 25. Every figure comes from
@@ -7,13 +7,15 @@
 
 import { crest, escapeHtml, fitNames, headshot, shortName, wireImages } from "./people.js?v=__BUILD__";
 import { initSchedule, loadSchedule, scheduleSlug } from "./schedule.js?v=__BUILD__";
+import { draftSlug, initDraft, loadDraft, showDraft } from "./draft.js?v=__BUILD__";
 
 const state = {
   leagueKey: null,
   leagueName: "",
   entry: null,      // index.leagues[i].records
   scheduleEntry: null, // index.leagues[i].schedule
-  tab: "records",   // "records" | "schedule"
+  draftEntry: null, // index.leagues[i].draft
+  tab: "records",   // "records" | "schedule" | "draft"
   data: null,       // data/<league>/records.json
   view: "managers", // "managers" | "players"
   filters: { best_games: "ALL", bench_games: "ALL", career: "ALL", championships: "ALL" },
@@ -69,19 +71,22 @@ async function fetchJson(path) {
 // -- loading, view and URL -------------------------------------------------------------------------
 
 /* Called by app.js whenever a league loads. `route` is the URL path after /league (null to keep the
-   current tab and views): "records" with an optional "players", or "schedule" with an optional "swap"
-   and season. `scheduleEntry` is the league's Strength of Schedule file. */
-export async function loadRecords(leagueKey, leagueName, entry, route, onChange, scheduleEntry = state.scheduleEntry) {
+   current tab and views): "records" with an optional "players", "schedule" with an optional "swap"
+   and season, or "draft" with an optional "table" and season. `scheduleEntry` and `draftEntry` are the
+   league's Strength of Schedule and draft files. */
+export async function loadRecords(leagueKey, leagueName, entry, route, onChange, scheduleEntry = state.scheduleEntry, draftEntry = state.draftEntry) {
   state.leagueKey = leagueKey;
   state.leagueName = leagueName;
   state.entry = entry || null;
   state.scheduleEntry = scheduleEntry || null;
+  state.draftEntry = draftEntry || null;
   state.onChange = onChange || state.onChange;
   if (route) {
-    state.tab = route[0] === "schedule" ? "schedule" : "records";
+    state.tab = route[0] === "schedule" || route[0] === "draft" ? route[0] : "records";
     if (state.tab === "records") state.view = route[1] === "players" ? "players" : "managers";
   }
   await loadSchedule(leagueKey, state.scheduleEntry, route && state.tab === "schedule" ? route.slice(1) : [], () => state.onChange());
+  await loadDraft(leagueKey, state.draftEntry, route && state.tab === "draft" ? route.slice(1) : [], () => state.onChange());
   state.data = state.entry ? await fetchJson(`data/${state.entry.file}`) : null;
   if (state.data) render();
   renderTab();
@@ -92,9 +97,11 @@ export async function reloadRecords() {
   await loadRecords(state.leagueKey, state.leagueName, state.entry, null, state.onChange);
 }
 
-/* The URL part after /league: the tab, then the Records view or the Strength of Schedule view and season. */
+/* The URL part after /league: the tab, then the Records view, the Strength of Schedule view and season,
+   or the Draft view and season. */
 export function leagueSlug() {
   if (state.tab === "schedule") return `schedule${scheduleSlug()}`;
+  if (state.tab === "draft") return `draft${draftSlug()}`;
   return `records${state.view === "players" ? "/players" : ""}`;
 }
 
@@ -104,13 +111,14 @@ function setTab(tab) {
   state.onChange();
 }
 
-/* Show the selected tab: Records (its view switch and cards) or Strength of Schedule. */
+/* Show the selected tab: Records (its view switch and cards), Strength of Schedule or Draft. */
 function renderTab() {
   const records = state.tab === "records";
   for (const b of $("lg-tabs").querySelectorAll("button")) b.setAttribute("aria-pressed", String(b.dataset.lgTab === state.tab));
   $("lg-views").hidden = !records;
-  $("sos-controls").hidden = records;
-  $("sos-page").hidden = records;
+  $("sos-controls").hidden = $("sos-page").hidden = state.tab !== "schedule";
+  $("dr-controls").hidden = $("dr-page").hidden = state.tab !== "draft";
+  if (state.tab === "draft") showDraft();
   $("lg-unavailable").hidden = !records || !!state.data;
   if (!state.data) $("lg-managers").hidden = $("lg-players").hidden = true;
   else renderView();
@@ -118,6 +126,7 @@ function renderTab() {
 
 export function showLeague() {
   if (state.data) fitNames($("page-league"));
+  showDraft();
 }
 
 function setView(view) {
@@ -132,6 +141,7 @@ export function initLeague() {
     if (b) setTab(b.dataset.lgTab);
   });
   initSchedule();
+  initDraft();
   $("lg-views").addEventListener("click", (e) => {
     const b = e.target.closest("[data-lg-view]");
     if (b) setView(b.dataset.lgView);

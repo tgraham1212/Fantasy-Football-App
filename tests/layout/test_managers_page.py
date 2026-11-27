@@ -168,3 +168,29 @@ def test_moves_card_cuts_nothing(open_page, width, wide):
         problems += [f"{label}: outside {o}" for o in page.evaluate(OUTSIDE_JS, ["#mgr-moves", ".mgr-mv > *, .mgr-trade, .mgr-trade .it, .mgr-meter .ms > *"])]
         problems += [f"{label}: sideways scroll" for _ in page.evaluate("() => [...document.querySelectorAll('#mgr-moves .mgr-scroll')].filter((e) => e.scrollWidth > e.clientWidth + 1).map(() => 1)")]
     assert not problems, f"{width}px: " + "; ".join(problems[:12])
+
+
+@pytest.mark.parametrize("width", (1280, 390))
+def test_keeper_eligible_badge(open_page, width):
+    """4.4.6.5: on the redraft Roster card a keeper-eligible Player has a gold KE badge after his name."""
+    page, _ = open_page("index.html#redraft/managers", width)
+    page.wait_for_function("document.querySelector('.mgr-roster tbody tr')")
+    data = page.evaluate("async () => (await fetch('data/redraft/managers.json')).json()")
+    m = next(m for m in data["managers"] if m["current"] and any(r.get("keeper_eligible") for r in m["roster"]))
+    page.goto(page.url.split("#")[0] + f"#redraft/managers/{m['name']}")
+    page.wait_for_function("document.querySelector('.mgr-roster tbody tr')")
+    page.wait_for_timeout(300)
+    flagged = [r["name"] for r in m["roster"] if r.get("keeper_eligible")]
+    badges = page.locator(".mgr-roster .mgr-ke")
+    assert badges.count() == len(flagged)
+    row = page.locator(".mgr-roster tbody tr", has=page.locator(".mgr-ke")).first
+    name_box = row.locator(".pname").bounding_box()
+    badge_box = row.locator(".mgr-ke").bounding_box()
+    assert badge_box["x"] >= name_box["x"] + name_box["width"] - 1, "after the name, on the same line"
+    assert abs((badge_box["y"] + badge_box["height"] / 2) - (name_box["y"] + name_box["height"] / 2)) < 6
+    assert page.locator(".mgr-roster .mgr-ke").first.inner_text() == "KE"
+    # the dynasty league has no keepers
+    page, _ = open_page("index.html#dynasty/managers", width)
+    page.wait_for_function("document.querySelector('.mgr-roster tbody tr')")
+    page.wait_for_timeout(300)
+    assert page.locator(".mgr-roster .mgr-ke").count() == 0

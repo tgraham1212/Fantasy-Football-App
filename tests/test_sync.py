@@ -121,8 +121,9 @@ def test_routine_sync_skips_complete_seasons_and_full_refetches(tmp_path):
     assert report.ok
     assert sorted(s for _, s in report.fetched) == ["2022", "2023", "2024", "2025", "2026"]
     first_run_calls = len(session.calls)
-    # 5 league objects + per season (users, rosters, 17 matchups, 2 brackets, 17 weeks of transactions)
-    assert first_run_calls == 5 + 5 * (2 + 17 + 2 + 17)
+    # 5 league objects + per season (users, rosters, 17 matchups, 2 brackets, 17 weeks of transactions,
+    # the draft, its picks and traded picks) + one ADP request per season
+    assert first_run_calls == 5 + 5 * (2 + 17 + 2 + 17 + 3) + 5
 
     client, session = make_client()
     report = sync_all(client, store, config)
@@ -134,7 +135,7 @@ def test_routine_sync_skips_complete_seasons_and_full_refetches(tmp_path):
     client, session = make_client()
     report = sync_all(client, store, config, full=True)
     assert report.ok and not report.skipped
-    assert len(session.calls) == first_run_calls
+    assert len(session.calls) == first_run_calls - 5 * 3 - 5, "complete drafts and stored ADP are kept"
 
 
 def test_in_progress_season_stores_unplayed_weeks(tmp_path):
@@ -195,3 +196,107 @@ def test_transactions_failure_keeps_files_and_only_warns(tmp_path):
     assert report.warnings and "2026" in report.warnings[0][1]
     assert ("dynasty", "2026") in report.fetched, "matchups still sync"
     assert tree_digest(tmp_path / "leagues" / "dynasty" / "2026" / "transactions") == before
+
+
+# -- league-draft: drafts and ADP -------------------------------------------------
+
+STARTUP_DRAFT = "780973042817171456"  # the 2022 dynasty startup draft (Yahoo roster transfer)
+
+
+def test_league_draft_stored(tmp_path):
+    store = Store(tmp_path)
+    client, session = make_client()
+    report = sync_league(client, store, DYNASTY_CFG)
+    assert report.ok
+    stored = store.read_draft("dynasty", "2022")
+    assert stored["draft"]["settings"]["rounds"] == 3 and len(stored["picks"]) == 36
+    assert stored["traded_picks"], "traded picks kept"
+    assert not any(STARTUP_DRAFT in c for c in session.calls), "the startup draft is never fetched"
+    assert ("dynasty", "2026") in report.drafts
+
+
+def test_complete_draft_fetched_once(tmp_path):
+    store = Store(tmp_path)
+    config = Config(leagues={"dynasty": DYNASTY_CFG})
+    client, _ = make_client()
+    assert sync_all(client, store, config).ok
+    (tmp_path / "leagues" / "dynasty" / "2023" / "draft.json").unlink()   # as stored before drafts were kept
+
+    client, session = make_client()
+    report = sync_all(client, store, config)
+    assert ("dynasty", "2023") in report.skipped and ("dynasty", "2023") in report.drafts
+    assert store.has_draft("dynasty", "2023")
+
+    client, session = make_client()
+    report = sync_all(client, store, config)
+    assert not any("/v1/draft/" in c for c in session.calls), "complete drafts are not fetched again"
+    assert report.drafts == []
+
+
+def test_incomplete_draft_fetched_every_sync(tmp_path):
+    store = Store(tmp_path)
+    config = Config(leagues={"dynasty": DYNASTY_CFG})
+    draft_id = str(load(f"league/{DYNASTY['2026']}.json")["draft_id"])
+    pending = dict(load(f"draft/{draft_id}.json"))
+    pending["status"] = "drafting"
+    client, _ = make_client({f"draft/{draft_id}.json": pending})
+    sync_all(client, store, config)
+    client, session = make_client()
+    report = sync_all(client, store, config)
+    assert any(f"/v1/draft/{draft_id}" in c for c in session.calls) and ("dynasty", "2026") in report.drafts
+
+
+def test_draft_failure_keeps_files_and_only_warns(tmp_path):
+    store = Store(tmp_path)
+    config = Config(leagues={"dynasty": DYNASTY_CFG})
+    draft_id = str(load(f"league/{DYNASTY['2026']}.json")["draft_id"])
+    pending = dict(load(f"draft/{draft_id}.json"))
+    pending["status"] = "drafting"
+    client, _ = make_client({f"draft/{draft_id}.json": pending})
+    assert sync_all(client, store, config).ok
+    before = (tmp_path / "leagues" / "dynasty" / "2026" / "draft.json").read_bytes()
+
+    failing, _ = make_client({f"draft/{draft_id}/picks.json": 500})
+    report = sync_all(failing, store, config)
+    assert report.ok, "a draft failure never fails the sync"
+    assert any("draft for season 2026" in w for _, w in report.warnings)
+    assert ("dynasty", "2026") in report.fetched, "matchups still sync"
+    assert (tmp_path / "leagues" / "dynasty" / "2026" / "draft.json").read_bytes() == before
+
+
+def test_adp_stored_once_after_drafts(tmp_path):
+    store = Store(tmp_path)
+    config = Config(leagues={"dynasty": DYNASTY_CFG})
+    client, _ = make_client()
+    report = sync_all(client, store, config)
+    assert report.adp == ["2022", "2023", "2024", "2025", "2026"]
+    adp = store.read_adp("2025")
+    jeanty = next(v for v in adp.values() if v.get("adp_dynasty_half_ppr") == 7.8)
+    assert jeanty["position"] == "RB" and all(v.get(k, 0) < 999 for v in adp.values() for k in v if k != "position")
+
+    client, session = make_client()
+    report = sync_all(client, store, config)
+    assert report.adp == [] and not any("/projections/nfl/2025?" in c for c in session.calls)
+
+
+def test_adp_waits_for_incomplete_draft(tmp_path):
+    store = Store(tmp_path)
+    config = Config(leagues={"dynasty": DYNASTY_CFG})
+    draft_id = str(load(f"league/{DYNASTY['2026']}.json")["draft_id"])
+    pending = dict(load(f"draft/{draft_id}.json"))
+    pending["status"] = "drafting"
+    client, _ = make_client({f"draft/{draft_id}.json": pending})
+    report = sync_all(client, store, config)
+    assert "2026" not in report.adp and not store.has_adp("2026")
+
+
+def test_adp_failure_only_warns(tmp_path):
+    store = Store(tmp_path)
+    config = Config(leagues={"dynasty": DYNASTY_CFG})
+    client, _ = make_client({"projections/2026/season.json": 500})
+    report = sync_all(client, store, config)
+    assert report.ok and not store.has_adp("2026")
+    assert any("2026" in w for k, w in report.warnings if k == "adp")
+    client, session = make_client()
+    report = sync_all(client, store, config)
+    assert report.adp == ["2026"], "the next sync tries again"

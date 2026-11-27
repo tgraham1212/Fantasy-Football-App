@@ -7,6 +7,8 @@ data/
                                 /brackets.json        {"winners": [...], "losers": [...]}
                                 /matchups/week_NN.json raw matchups list
                                 /transactions/week_NN.json raw transactions list
+                                /draft.json           {"draft", "picks", "traded_picks"} raw Sleeper draft
+  adp/<season>.json                                   {player_id: {position, adp_half_ppr, adp_dynasty_half_ppr}}
   projections/<season>/week_NN.json                   {player_id: projection record}
   odds/<league_key>/<season>/asof_NN.json             simulation results
   odds/<league_key>/<season>/slates_NN.json           forecast as each slate of week NN went final
@@ -300,6 +302,36 @@ class Store:
     def write_transactions(self, league_key: str, season: str, weeks: dict[int, list]) -> None:
         for week, rows in sorted(weeks.items()):
             write_json(self.transactions_path(league_key, season, week), rows)
+
+    # -- drafts and ADP --------------------------------------------------------
+
+    def draft_path(self, league_key: str, season: str) -> Path:
+        return self.season_dir(league_key, season) / "draft.json"
+
+    def has_draft(self, league_key: str, season: str) -> bool:
+        return self.draft_path(league_key, season).exists()
+
+    def read_draft(self, league_key: str, season: str) -> dict | None:
+        """``{draft, picks, traded_picks}`` as fetched from Sleeper, or None when not stored."""
+        path = self.draft_path(league_key, season)
+        return read_json(path) if path.exists() else None
+
+    def write_draft(self, league_key: str, season: str, payload: dict) -> None:
+        write_json(self.draft_path(league_key, season), payload)
+
+    def adp_path(self, season: str) -> Path:
+        return self.root / "adp" / f"{season}.json"
+
+    def has_adp(self, season: str) -> bool:
+        return self.adp_path(season).exists()
+
+    def read_adp(self, season: str) -> dict[str, dict]:
+        """Player id -> ``{position, adp_half_ppr, adp_dynasty_half_ppr}``; empty when not stored."""
+        path = self.adp_path(season)
+        return read_json(path) if path.exists() else {}
+
+    def write_adp(self, season: str, payload: dict[str, dict]) -> None:
+        write_json(self.adp_path(season), payload)
 
     def read_season(self, league_key: str, season: str) -> SeasonData:
         league = self.read_league(league_key, season)

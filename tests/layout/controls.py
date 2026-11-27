@@ -32,6 +32,7 @@ LANDMARKS = (
     "#outcome-switcher", "footer", "#positions-controls", ".pos-card",
     "#mgr-picker", ".mgr-bar", ".mgr-season", ".mgr-cardtabs", ".mgr-card",
     "#lg-tabs", "#lg-views", "#lg-dialog", "#lg-dialog .dialog-head", "#lg-dialog-close", "#sos-controls",
+    "#dr-controls",
 )
 # Elements that must stay inside the screen horizontally.
 INSIDE = ("header.top > *", "#refresh-note", "#version-note", "#subtabs")
@@ -106,6 +107,8 @@ VIEWS = {
     "league-dialog": View("league-dialog", f"index.html#{LEAGUE}/league/records", _league_dialog),
     "league-schedule": View("league-schedule", f"index.html#{LEAGUE}/league/schedule"),
     "league-swap": View("league-swap", f"index.html#{LEAGUE}/league/schedule/swap"),
+    "league-draft": View("league-draft", f"index.html#{LEAGUE}/league/draft"),
+    "league-draft-table": View("league-draft-table", f"index.html#{LEAGUE}/league/draft/table"),
 }
 
 
@@ -339,9 +342,11 @@ CONTROLS: tuple[Control, ...] = (
 
     # League page (Records)
     Control("league tabs", "league", "#lg-tabs button",
-            (State("schedule", click("#lg-tabs [data-lg-tab='schedule']", 600)), State("records", click("#lg-tabs [data-lg-tab='records']", 600))),
-            # the tab swaps the Records view switch for the Strength of Schedule controls and the page below
-            regions=("#lg-managers", "#lg-players", "#sos-page", "#lg-views", "#sos-controls", "#lg-unavailable"), below="#lg-tabs"),
+            (State("schedule", click("#lg-tabs [data-lg-tab='schedule']", 600)), State("draft", click("#lg-tabs [data-lg-tab='draft']", 900)),
+             State("records", click("#lg-tabs [data-lg-tab='records']", 600))),
+            # the tab swaps the Records view switch for the Strength of Schedule or Draft controls and the page below
+            regions=("#lg-managers", "#lg-players", "#sos-page", "#lg-views", "#sos-controls", "#dr-page", "#dr-controls", "#lg-unavailable"),
+            below="#lg-tabs"),
     Control("records view", "league", "#lg-views button",
             (State("players", click("#lg-views [data-lg-view='players']", 500)), State("managers", click("#lg-views [data-lg-view='managers']", 500))),
             regions=("#lg-managers", "#lg-players"), below="#lg-views"),
@@ -377,6 +382,28 @@ CONTROLS: tuple[Control, ...] = (
     Control("strength of schedule tables", "league-schedule", "#sos-page .sos-wrap"),
     Control("manager name links (schedule)", "league-schedule", "#sos-page a.manager-link"),
     Control("schedule swap table", "league-swap", "#sos-swap .sos-wrap"),
+
+    # League page (Draft)
+    Control("draft view", "league-draft", "#dr-views button",
+            (State("table", click("#dr-views [data-dr-view='table']", 600)), State("board", click("#dr-views [data-dr-view='board']", 600))),
+            # the table replaces the board, and the board-only grade switch hides
+            regions=("#dr-page", "#dr-grades"), below="#dr-controls"),
+    Control("draft grade", "league-draft", "#dr-grades button",
+            (State("results", click("#dr-grades [data-dr-grade='results']", 500)), State("day", click("#dr-grades [data-dr-grade='day']", 500))),
+            regions=("#dr-page",), below="#dr-controls"),
+    Control("draft season", "league-draft", "#dr-season",
+            (State("2024", select_value("#dr-season", "2024")),), regions=("#dr-page",), below="#dr-controls"),
+    Control("draft managers span", "league-draft", "#dr-span button",
+            (State("all", click("#dr-span [data-dr-span='all']", 500)), State("draft", click("#dr-span [data-dr-span='draft']", 500))),
+            regions=("#dr-managers",), below="#dr-span"),  # All Drafts lists former Managers too: the card and the footer below it grow
+    Control("draft table sort", "league-draft-table", "#dr-table thead button.sort",
+            (State("war", click("#dr-table thead [data-col='war'] button.sort")), State("flipped", click("#dr-table thead [data-col='war'] button.sort"))),
+            regions=("#dr-table",)),
+    Control("draft board", "league-draft", "#dr-board"),
+    Control("draft table", "league-draft-table", "#dr-table .dr-wide"),
+    Control("draft managers table", "league-draft", "#dr-managers .dr-mgr-table"),
+    Control("manager name links (draft)", "league-draft", "#dr-page a.manager-link"),
+    Control("manager name links (draft table)", "league-draft-table", "#dr-page a.manager-link"),
     Control("manager name links (swap)", "league-swap", "#sos-swap a.manager-link"),
     Control("record pop-up close", "league-dialog", "#lg-dialog-close", (State("closed", click("#lg-dialog-close")),),
             regions=("#lg-dialog",), self_moves=True),
