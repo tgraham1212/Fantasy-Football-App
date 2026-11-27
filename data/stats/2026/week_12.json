@@ -135,7 +135,7 @@
    "TE"
   ],
   "first_name": "Sam",
-  "last_modified": 1795730903362,
+  "last_modified": 1795788507695,
   "last_name": "LaPorta",
   "opponent": "CHI",
   "player_id": "10859",
@@ -148,6 +148,7 @@
    "gp": 1.0,
    "gs": 1.0,
    "h1_rec_yd": 11.0,
+   "off_snp": 67.0,
    "pos_rank_half_ppr": 1.0,
    "pos_rank_ppr": 1.0,
    "pos_rank_std": 1.0,
@@ -168,7 +169,10 @@
    "rec_yd": 44.0,
    "rec_ypr": 11.0,
    "rec_ypt": 8.8,
-   "rush_rec_yd": 44.0
+   "rush_rec_yd": 44.0,
+   "tm_def_snp": 75.0,
+   "tm_off_snp": 71.0,
+   "tm_st_snp": 31.0
   },
   "team": "DET"
  },
@@ -354,7 +358,7 @@
    "K"
   ],
   "first_name": "Jake",
-  "last_modified": 1795726315974,
+  "last_modified": 1795788507649,
   "last_name": "Bates",
   "opponent": "CHI",
   "player_id": "11539",
@@ -377,6 +381,10 @@
    "pts_half_ppr": 9.0,
    "pts_ppr": 9.0,
    "pts_std": 9.0,
+   "st_snp": 13.0,
+   "tm_def_snp": 75.0,
+   "tm_off_snp": 71.0,
+   "tm_st_snp": 31.0,
    "xpa": 4.0,
    "xpm": 3.0,
    "xpmiss": 1.0
@@ -450,7 +458,7 @@
    "QB"
   ],
   "first_name": "Caleb",
-  "last_modified": 1795728584501,
+  "last_modified": 1795788507769,
   "last_name": "Williams",
   "opponent": "DET",
   "player_id": "11560",
@@ -465,6 +473,7 @@
    "gp": 1.0,
    "gs": 1.0,
    "h1_pass_yd": 127.0,
+   "off_snp": 75.0,
    "pass_air_yd": 165.0,
    "pass_att": 44.0,
    "pass_cmp": 30.0,
@@ -483,9 +492,9 @@
    "pass_yd": 345.0,
    "pass_ypa": 7.84,
    "pass_ypc": 11.5,
-   "pos_rank_half_ppr": 1.0,
-   "pos_rank_ppr": 1.0,
-   "pos_rank_std": 1.0,
+   "pos_rank_half_ppr": 3.0,
+   "pos_rank_ppr": 3.0,
+   "pos_rank_std": 3.0,
    "pts_half_ppr": 25.3,
    "pts_ppr": 25.3,
    "pts_std": 25.3,
@@ -496,7 +505,10 @@
    "rush_lng": 8.0,
    "rush_rec_yd": 15.0,
    "rush_yd": 15.0,
-   "rush_ypa": 5.0
+   "rush_ypa": 5.0,
+   "tm_def_snp": 71.0,
+   "tm_off_snp": 75.0,
+   "tm_st_snp": 31.0
   },
   "team": "CHI"
  },
@@ -725,7 +737,7 @@
    "WR"
   ],
   "first_name": "Rome",
-  "last_modified": 1795730903488,
+  "last_modified": 1795788507764,
   "last_name": "Odunze",
   "opponent": "DET",
   "player_id": "11620",
@@ -738,9 +750,10 @@
    "gp": 1.0,
    "gs": 1.0,
    "h1_rec_yd": 9.0,
-   "pos_rank_half_ppr": 1.0,
-   "pos_rank_ppr": 1.0,
-   "pos_rank_std": 1.0,
+   "off_snp": 74.0,
+   "pos_rank_half_ppr": 2.0,
+   "pos_rank_ppr": 2.0,
+   "pos_rank_std": 2.0,
    "pts_half_ppr": 23.7,
    "pts_ppr": 26.7,
    "pts_std": 20.7,
@@ -761,7 +774,10 @@
    "rec_yd": 87.0,
    "rec_ypr": 14.5,
    "rec_ypt": 9.67,
-   "rush_rec_yd": 87.0
+   "rush_rec_yd": 87.0,
+   "tm_def_snp": 71.0,
+   "tm_off_snp": 75.0,
+   "tm_st_snp": 31.0
   },
   "team": "CHI"
  },
@@ -772,7 +788,7 @@
    "RB"
   ],
   "first_name": "Sione",
-  "last_modified": 1795727444124,
+  "last_modified": 1795788507637,
   "last_name": "Vaki",
   "opponent": "CHI",
   "player_id": "11729",
@@ -784,10 +800,11 @@
    "gp": 1.0,
    "h1_rec_yd": -4.0,
    "h1_rush_yd": 12.0,
+   "off_snp": 18.0,
    "pass_rush_yd": 19.0,
-   "pos_rank_half_ppr": 9.0,
-   "pos_rank_ppr": 9.0,
-   "pos_rank_std": 10.0,
+   "pos_rank_half_ppr": 13.0,
+   "pos_rank_ppr": 13.0,
+   "pos_rank_std": 15.0,
    "pts_half_ppr": 2.5,
    "pts_ppr": 3.5,
    "pts_std": 1.5,
@@ -809,7 +826,11 @@
    "rush_rec_yd": 15.0,
    "rush_yd": 19.0,
    "rush_ypa": 3.17,
-   "st_tkl_solo": 1.0
+   "st_snp": 20.0,
+   "st_tkl_solo": 1.0,
+   "tm_def_snp": 75.0,
+   "tm_off_snp": 71.0,
+   "tm_st_snp": 31.0
   },
   "team": "DET"
  },
@@ -1010,7 +1031,7 @@
    "TE"
   ],
   "first_name": "Colston",
-  "last_modified": 1795730903540,
+  "last_modified": 1795788507812,
   "last_name": "Loveland",
   "opponent": "DET",
   "player_id": "12517",
@@ -1023,9 +1044,10 @@
    "gp": 1.0,
    "gs": 1.0,
    "h1_rec_yd": 5.0,
-   "pos_rank_half_ppr": 10.0,
-   "pos_rank_ppr": 10.0,
-   "pos_rank_std": 10.0,
+   "off_snp": 7.0,
+   "pos_rank_half_ppr": 14.0,
+   "pos_rank_ppr": 14.0,
+   "pos_rank_std": 14.0,
    "pts_half_ppr": -1.0,
    "pts_ppr": -0.5,
    "pts_std": -1.5,
@@ -1039,7 +1061,10 @@
    "rec_yd": 5.0,
    "rec_ypr": 5.0,
    "rec_ypt": 5.0,
-   "rush_rec_yd": 5.0
+   "rush_rec_yd": 5.0,
+   "tm_def_snp": 71.0,
+   "tm_off_snp": 75.0,
+   "tm_st_snp": 31.0
   },
   "team": "CHI"
  },
@@ -1050,7 +1075,7 @@
    "WR"
   ],
   "first_name": "Luther",
-  "last_modified": 1795730903506,
+  "last_modified": 1795788507771,
   "last_name": "Burden III",
   "opponent": "DET",
   "player_id": "12519",
@@ -1062,10 +1087,11 @@
    "gp": 1.0,
    "gs": 1.0,
    "h1_rec_yd": 4.0,
+   "off_snp": 60.0,
    "pass_rush_yd": 1.0,
-   "pos_rank_half_ppr": 6.0,
-   "pos_rank_ppr": 6.0,
-   "pos_rank_std": 6.0,
+   "pos_rank_half_ppr": 12.0,
+   "pos_rank_ppr": 12.0,
+   "pos_rank_std": 12.0,
    "pts_half_ppr": 6.0,
    "pts_ppr": 7.5,
    "pts_std": 4.5,
@@ -1087,7 +1113,10 @@
    "rush_rec_yd": 45.0,
    "rush_rz_att": 1.0,
    "rush_yd": 1.0,
-   "rush_ypa": 1.0
+   "rush_ypa": 1.0,
+   "tm_def_snp": 71.0,
+   "tm_off_snp": 75.0,
+   "tm_st_snp": 31.0
   },
   "team": "CHI"
  },
@@ -1098,7 +1127,7 @@
    "RB"
   ],
   "first_name": "Kyle",
-  "last_modified": 1795725845228,
+  "last_modified": 1795788507779,
   "last_name": "Monangai",
   "opponent": "DET",
   "player_id": "12534",
@@ -1110,10 +1139,11 @@
    "gms_active": 1.0,
    "gp": 1.0,
    "h1_rush_yd": 5.0,
+   "off_snp": 27.0,
    "pass_rush_yd": 15.0,
-   "pos_rank_half_ppr": 3.0,
-   "pos_rank_ppr": 4.0,
-   "pos_rank_std": 3.0,
+   "pos_rank_half_ppr": 7.0,
+   "pos_rank_ppr": 8.0,
+   "pos_rank_std": 7.0,
    "pts_half_ppr": 15.4,
    "pts_ppr": 15.9,
    "pts_std": 14.9,
@@ -1137,7 +1167,10 @@
    "rush_tkl_loss": 2.0,
    "rush_tkl_loss_yd": -4.0,
    "rush_yd": 15.0,
-   "rush_ypa": 1.88
+   "rush_ypa": 1.88,
+   "tm_def_snp": 71.0,
+   "tm_off_snp": 75.0,
+   "tm_st_snp": 31.0
   },
   "team": "CHI"
  },
@@ -1281,7 +1314,7 @@
    "TE"
   ],
   "first_name": "Sam",
-  "last_modified": 1795730903540,
+  "last_modified": 1795788507811,
   "last_name": "Roush",
   "opponent": "DET",
   "player_id": "13322",
@@ -1293,9 +1326,10 @@
    "gp": 1.0,
    "gs": 1.0,
    "h1_rec_yd": 7.0,
-   "pos_rank_half_ppr": 2.0,
-   "pos_rank_ppr": 2.0,
-   "pos_rank_std": 2.0,
+   "off_snp": 68.0,
+   "pos_rank_half_ppr": 3.0,
+   "pos_rank_ppr": 3.0,
+   "pos_rank_std": 3.0,
    "pts_half_ppr": 5.6,
    "pts_ppr": 8.1,
    "pts_std": 3.1,
@@ -1311,7 +1345,11 @@
    "rec_yd": 31.0,
    "rec_ypr": 6.2,
    "rec_ypt": 6.2,
-   "rush_rec_yd": 31.0
+   "rush_rec_yd": 31.0,
+   "st_snp": 2.0,
+   "tm_def_snp": 71.0,
+   "tm_off_snp": 75.0,
+   "tm_st_snp": 31.0
   },
   "team": "CHI"
  },
@@ -1572,7 +1610,7 @@
    "K"
   ],
   "first_name": "Cairo",
-  "last_modified": 1795728590311,
+  "last_modified": 1795788507766,
   "last_name": "Santos",
   "opponent": "DET",
   "player_id": "2020",
@@ -1594,6 +1632,10 @@
    "pts_half_ppr": 8.0,
    "pts_ppr": 8.0,
    "pts_std": 8.0,
+   "st_snp": 13.0,
+   "tm_def_snp": 71.0,
+   "tm_off_snp": 75.0,
+   "tm_st_snp": 31.0,
    "xpa": 4.0,
    "xpm": 4.0
   },
@@ -1606,7 +1648,7 @@
    "QB"
   ],
   "first_name": "Jared",
-  "last_modified": 1795730903303,
+  "last_modified": 1795788507646,
   "last_name": "Goff",
   "opponent": "CHI",
   "player_id": "3163",
@@ -1622,6 +1664,7 @@
    "gs": 1.0,
    "h1_pass_yd": 193.0,
    "h1_rush_yd": 7.0,
+   "off_snp": 71.0,
    "pass_air_yd": 215.0,
    "pass_att": 36.0,
    "pass_cmp": 25.0,
@@ -1638,9 +1681,9 @@
    "pass_yd": 313.0,
    "pass_ypa": 8.69,
    "pass_ypc": 12.52,
-   "pos_rank_half_ppr": 2.0,
-   "pos_rank_ppr": 2.0,
-   "pos_rank_std": 2.0,
+   "pos_rank_half_ppr": 4.0,
+   "pos_rank_ppr": 4.0,
+   "pos_rank_std": 4.0,
    "pts_half_ppr": 16.82,
    "pts_ppr": 16.82,
    "pts_std": 16.82,
@@ -1653,7 +1696,10 @@
    "rush_lng": 5.0,
    "rush_rec_yd": 13.0,
    "rush_yd": 10.0,
-   "rush_ypa": 3.33
+   "rush_ypa": 3.33,
+   "tm_def_snp": 75.0,
+   "tm_off_snp": 71.0,
+   "tm_st_snp": 31.0
   },
   "team": "DET"
  },
@@ -1765,7 +1811,7 @@
    "WR"
   ],
   "first_name": "Kalif",
-  "last_modified": 1795728184213,
+  "last_modified": 1795788507776,
   "last_name": "Raymond",
   "opponent": "DET",
   "player_id": "3634",
@@ -1776,9 +1822,10 @@
    "gms_active": 1.0,
    "gp": 1.0,
    "h1_rec_yd": 17.0,
-   "pos_rank_half_ppr": 8.0,
-   "pos_rank_ppr": 7.0,
-   "pos_rank_std": 10.0,
+   "off_snp": 42.0,
+   "pos_rank_half_ppr": 15.0,
+   "pos_rank_ppr": 14.0,
+   "pos_rank_std": 17.0,
    "pts_half_ppr": 3.5,
    "pts_ppr": 5.0,
    "pts_std": 2.0,
@@ -1795,7 +1842,11 @@
    "rec_yd": 20.0,
    "rec_ypr": 6.67,
    "rec_ypt": 4.0,
-   "rush_rec_yd": 20.0
+   "rush_rec_yd": 20.0,
+   "st_snp": 3.0,
+   "tm_def_snp": 71.0,
+   "tm_off_snp": 75.0,
+   "tm_st_snp": 31.0
   },
   "team": "CHI"
  },
@@ -2150,7 +2201,7 @@
    "TE"
   ],
   "first_name": "Tyler",
-  "last_modified": 1795727074139,
+  "last_modified": 1795788507700,
   "last_name": "Conklin",
   "opponent": "CHI",
   "player_id": "5133",
@@ -2162,9 +2213,10 @@
    "h1_rec_yd": 9.0,
    "idp_tkl": 1.0,
    "idp_tkl_solo": 1.0,
-   "pos_rank_half_ppr": 7.0,
-   "pos_rank_ppr": 8.0,
-   "pos_rank_std": 6.0,
+   "off_snp": 9.0,
+   "pos_rank_half_ppr": 11.0,
+   "pos_rank_ppr": 12.0,
+   "pos_rank_std": 10.0,
    "pts_half_ppr": 1.4,
    "pts_idp": 2.0,
    "pts_ppr": 1.9,
@@ -2179,7 +2231,11 @@
    "rec_yd": 9.0,
    "rec_ypr": 9.0,
    "rec_ypt": 9.0,
-   "rush_rec_yd": 9.0
+   "rush_rec_yd": 9.0,
+   "st_snp": 1.0,
+   "tm_def_snp": 75.0,
+   "tm_off_snp": 71.0,
+   "tm_st_snp": 31.0
   },
   "team": "DET"
  },
@@ -2228,7 +2284,7 @@
    "TE"
   ],
   "first_name": "Stephen",
-  "last_modified": 1795727964872,
+  "last_modified": 1795788507817,
   "last_name": "Carlson",
   "opponent": "DET",
   "player_id": "6451",
@@ -2239,9 +2295,10 @@
    "gms_active": 1.0,
    "gp": 1.0,
    "h1_rec_yd": 30.0,
-   "pos_rank_half_ppr": 3.0,
-   "pos_rank_ppr": 3.0,
-   "pos_rank_std": 2.0,
+   "off_snp": 35.0,
+   "pos_rank_half_ppr": 4.0,
+   "pos_rank_ppr": 5.0,
+   "pos_rank_std": 4.0,
    "pts_half_ppr": 4.0,
    "pts_ppr": 5.0,
    "pts_std": 3.0,
@@ -2256,7 +2313,11 @@
    "rec_yd": 30.0,
    "rec_ypr": 15.0,
    "rec_ypt": 7.5,
-   "rush_rec_yd": 30.0
+   "rush_rec_yd": 30.0,
+   "st_snp": 14.0,
+   "tm_def_snp": 71.0,
+   "tm_off_snp": 75.0,
+   "tm_st_snp": 31.0
   },
   "team": "CHI"
  },
@@ -2315,7 +2376,7 @@
    "RB"
   ],
   "first_name": "D'Andre",
-  "last_modified": 1795730903518,
+  "last_modified": 1795788507780,
   "last_name": "Swift",
   "opponent": "DET",
   "player_id": "6790",
@@ -2330,10 +2391,11 @@
    "gs": 1.0,
    "h1_rec_yd": 55.0,
    "h1_rush_yd": 19.0,
+   "off_snp": 37.0,
    "pass_rush_yd": 65.0,
-   "pos_rank_half_ppr": 3.0,
-   "pos_rank_ppr": 2.0,
-   "pos_rank_std": 3.0,
+   "pos_rank_half_ppr": 4.0,
+   "pos_rank_ppr": 3.0,
+   "pos_rank_std": 4.0,
    "pts_half_ppr": 25.7,
    "pts_ppr": 29.2,
    "pts_std": 22.2,
@@ -2360,7 +2422,10 @@
    "rush_td": 1.0,
    "rush_td_lng": 30.0,
    "rush_yd": 65.0,
-   "rush_ypa": 7.22
+   "rush_ypa": 7.22,
+   "tm_def_snp": 71.0,
+   "tm_off_snp": 75.0,
+   "tm_st_snp": 31.0
   },
   "team": "CHI"
  },
@@ -2472,7 +2537,7 @@
    "RB"
   ],
   "first_name": "Salvon",
-  "last_modified": 1795728098777,
+  "last_modified": 1795788507813,
   "last_name": "Ahmed",
   "opponent": "DET",
   "player_id": "6918",
@@ -2483,10 +2548,11 @@
    "gms_active": 1.0,
    "gp": 1.0,
    "h1_rush_yd": 46.0,
+   "off_snp": 10.0,
    "pass_rush_yd": 50.0,
-   "pos_rank_half_ppr": 6.0,
-   "pos_rank_ppr": 6.0,
-   "pos_rank_std": 6.0,
+   "pos_rank_half_ppr": 9.0,
+   "pos_rank_ppr": 9.0,
+   "pos_rank_std": 9.0,
    "pts_half_ppr": 7.7,
    "pts_ppr": 8.7,
    "pts_std": 6.7,
@@ -2508,7 +2574,10 @@
    "rush_tkl_loss": 1.0,
    "rush_tkl_loss_yd": -1.0,
    "rush_yd": 50.0,
-   "rush_ypa": 16.67
+   "rush_ypa": 16.67,
+   "tm_def_snp": 71.0,
+   "tm_off_snp": 75.0,
+   "tm_st_snp": 31.0
   },
   "team": "CHI"
  },
@@ -2604,7 +2673,7 @@
    "WR"
   ],
   "first_name": "Amon-Ra",
-  "last_modified": 1795730903365,
+  "last_modified": 1795788507697,
   "last_name": "St. Brown",
   "opponent": "CHI",
   "player_id": "7547",
@@ -2618,9 +2687,10 @@
    "gp": 1.0,
    "gs": 1.0,
    "h1_rec_yd": 97.0,
-   "pos_rank_half_ppr": 2.0,
-   "pos_rank_ppr": 2.0,
-   "pos_rank_std": 2.0,
+   "off_snp": 61.0,
+   "pos_rank_half_ppr": 3.0,
+   "pos_rank_ppr": 3.0,
+   "pos_rank_std": 3.0,
    "pts_half_ppr": 18.1,
    "pts_ppr": 21.6,
    "pts_std": 14.6,
@@ -2637,7 +2707,10 @@
    "rec_yd": 146.0,
    "rec_ypr": 20.86,
    "rec_ypt": 14.6,
-   "rush_rec_yd": 146.0
+   "rush_rec_yd": 146.0,
+   "tm_def_snp": 75.0,
+   "tm_off_snp": 71.0,
+   "tm_st_snp": 31.0
   },
   "team": "DET"
  },
@@ -2933,7 +3006,7 @@
    "WR"
   ],
   "first_name": "Jameson",
-  "last_modified": 1795730903339,
+  "last_modified": 1795788507658,
   "last_name": "Williams",
   "opponent": "CHI",
   "player_id": "8148",
@@ -2946,10 +3019,11 @@
    "gs": 1.0,
    "h1_rec_yd": 39.0,
    "h1_rush_yd": 12.0,
+   "off_snp": 66.0,
    "pass_rush_yd": 12.0,
-   "pos_rank_half_ppr": 4.0,
-   "pos_rank_ppr": 4.0,
-   "pos_rank_std": 4.0,
+   "pos_rank_half_ppr": 7.0,
+   "pos_rank_ppr": 7.0,
+   "pos_rank_std": 8.0,
    "pts_half_ppr": 11.0,
    "pts_ppr": 14.0,
    "pts_std": 8.0,
@@ -2972,7 +3046,10 @@
    "rush_lng": 12.0,
    "rush_rec_yd": 80.0,
    "rush_yd": 12.0,
-   "rush_ypa": 12.0
+   "rush_ypa": 12.0,
+   "tm_def_snp": 75.0,
+   "tm_off_snp": 71.0,
+   "tm_st_snp": 31.0
   },
   "team": "DET"
  },
@@ -3236,7 +3313,7 @@
    "RB"
   ],
   "first_name": "Jahmyr",
-  "last_modified": 1795730903285,
+  "last_modified": 1795788507640,
   "last_name": "Gibbs",
   "opponent": "CHI",
   "player_id": "9221",
@@ -3254,6 +3331,7 @@
    "gs": 1.0,
    "h1_rec_yd": 41.0,
    "h1_rush_yd": 57.0,
+   "off_snp": 53.0,
    "pass_rush_yd": 205.0,
    "penalty": 1.0,
    "pos_rank_half_ppr": 1.0,
@@ -3290,7 +3368,10 @@
    "rush_tkl_loss": 3.0,
    "rush_tkl_loss_yd": -6.0,
    "rush_yd": 205.0,
-   "rush_ypa": 9.76
+   "rush_ypa": 9.76,
+   "tm_def_snp": 75.0,
+   "tm_off_snp": 71.0,
+   "tm_st_snp": 31.0
   },
   "team": "DET"
  },
