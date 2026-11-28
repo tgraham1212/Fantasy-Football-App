@@ -17,7 +17,7 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 |---|---|---|---|---|---|
 | 9.5.1 | Phone widths from statistics | `project-standards` | `openspec/config.yaml`, the dated StatCounter figures, next due 2027-10 | 2026-11-23 | Pass (confirmed when the feature was built) |
 | 9.6 | Material Design 3 usability | `project-standards` | the live site, focus and pressed states and the type scale | 2026-11-25 | Pass (re-inspected after linked 4.9.3.1 was added by league-records; League page touch targets, focus and pressed states checked) |
-| 9.7 | Colour standard | `project-standards` | `site/styles.css`, adjusted tokens carry their OKLCH note | 2026-11-27 | Pass (re-inspected after linked 4.9.7.6 and 4.9.7.6.1 were added by league-draft: the --draft-* and --war-* tokens carry their OKLCH notes; earlier: 4.9.6.6 by league-strength-of-schedule; requirement unchanged) |
+| 9.7 | Colour standard | `project-standards` | `site/styles.css`, adjusted tokens carry their OKLCH note | 2026-11-28 | Pass (re-inspected after linked 4.9.8.4 was added by league-preseason: the 13 --grade-* and 3 --ps-* bar tokens carry their OKLCH notes; earlier: 4.9.7.6 and 4.9.7.6.1 by league-draft, 4.9.6.6 by league-strength-of-schedule; requirement unchanged) |
 | 10.1 | Requirements standard recorded | `project-standards` | `openspec/config.yaml` (context and `rules.tasks`), `CLAUDE.md` | 2026-11-23 | Pass (inspected against the repository) |
 | 10.4 | Tolerances on values | `project-standards` | `openspec/inspection-checklist.md`, the spec's standard review | 2026-11-23 | Pass (the maintainer's review of every spec) |
 | 10.5 | Rationale where not obvious | `project-standards` | `openspec/inspection-checklist.md`, the spec's standard review | 2026-11-23 | Pass (the maintainer's review of every spec) |
@@ -151,7 +151,7 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 | `player-stats` | 2026-11-23 | Pass | 4 requirements became 6 under 6.4 |
 | `player-projections` | 2026-11-23 | Pass | 7 requirements rewritten under 6.3 |
 | `sleeper-league-sync` | 2026-11-27 | Pass | Re-reviewed: 6.2.9 to 6.2.10.1 added by league-draft, the draft named in each season's settings fetched until complete, ADP once that season's drafts end, failures only warn; earlier: 10 requirements became 16 under 6.2; simulation settings left to the specs that use them |
-| `data-storage-tiers` | 2026-11-27 | Pass | Re-reviewed: 6.1 now lists drafts, ADP and nflverse injury reports (league-draft); earlier: 7 requirements became 9 under 6.1 |
+| `data-storage-tiers` | 2026-11-28 | Pass | Re-reviewed: 6.1 now also lists preseason Forecasts (league-preseason); earlier: drafts, ADP and nflverse injury reports (league-draft); earlier: 7 requirements became 9 under 6.1 |
 | `manual-refresh` | 2026-11-23 | Pass | 3 requirements became 10 under 5.4 |
 | `site-updates` | 2026-11-23 | Pass | 7 requirements (1 moved from league-odds-site) became 17 under 5.3; update cadence tested |
 | `live-refresh` | 2026-11-23 | Pass | 5 requirements became 9 under 5.2 and 11.2; relay tests now run from pytest |
@@ -179,3 +179,5 @@ A spec not yet brought to the standard has no row; its "no standard review" find
 | `strength-of-schedule-page` | 2026-11-27 | Pass | New: 15 requirements under 4.9.6 (league-strength-of-schedule); quartile colour buckets as exact boundaries, 48 px phone touch targets, the Manager column pinned at 360 to 440 px; Forecast weeks named per the glossary |
 | `league-draft` | 2026-11-27 | Pass | New: 18 requirements under 4.11 (league-draft); steal and reach at exactly 12 and 6 picks, hit and bust at 0.75 and 1.0 WAR, slot WAR to 0.01; Unlucky by injury (IR, PUP, Out); keeper price and second-year rules as exact rounds |
 | `league-draft-page` | 2026-11-27 | Pass | New: 19 requirements under 4.9.7 (league-draft); 4.5:1 badge and WAR text contrast, phone layouts at 360 to 440 px, the Keeper Eligible matrix; terms per the glossary |
+| `preseason-forecast` | 2026-11-28 | Pass | New: 18 requirements under 1.5 (league-preseason); values to 0.01 with a worked line (304.0 / 17 = 17.88), injury rates to 0.1%, shares to 0.001, Wins Saved to 0.01, the grade order and plus/minus bands as exact thresholds; sources by season and the in-season case each their own requirement |
+| `preseason-page` | 2026-11-28 | Pass | New: 10 requirements under 4.9.8 (league-preseason); share bars within 1 px, 13 grade colours at 4.5:1 or better in both modes, redraft Draft Strength column, phone rows at 360 to 440 px; terms per the glossary |
