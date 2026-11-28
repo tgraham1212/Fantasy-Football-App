@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10000 9704" width="10000" height="9704">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11240 9704" width="11240" height="9704">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,7 +33,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="10000" height="9704"/>
+<rect class="bg" width="11240" height="9704"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 6, Durable Record</text>
 <text class="sub" x="40" y="66">68 requirements derived from need 6 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
@@ -461,7 +461,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="358" y="348">drafts and transactions; stats for played</text>
 <text class="rtext" x="358" y="362">weeks, injury statuses, Player details,</text>
 <text class="rtext" x="358" y="376">trending, ADP and ESPN snapshots; nflverse…</text>
-<text class="spec" x="358" y="395">data-storage-tiers</text>
+<text class="spec" x="358" y="395">data-storage-tiers · proposed</text>
 <rect class="req" x="660" y="418" width="260" height="118" rx="3"/>
 <rect class="hdr" x="660.7" y="418.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="790.0" y="431" text-anchor="middle">«requirement»</text>
@@ -1345,6 +1345,44 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="9658" y="9524">hours, with the time saved.</text>
 <text class="spec" x="9658" y="9557">team-news</text>
 <path class="trace" d="M9780.0,9446 V286 H150.0 V268" marker-end="url(#openg)"/>
+<rect class="ext" x="9960" y="9446" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="9960.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="10090.0" y="9459" text-anchor="middle">«requirement»</text>
+<text x="10090.0" y="9474" text-anchor="middle"><tspan class="rid">4.12.1.2</tspan><tspan class="rname" dx="6">Third-party pages kept local</tspan></text>
+<text class="rtext" x="9968" y="9496">Pages from third-party sites SHALL be fetched</text>
+<text class="rtext" x="9968" y="9510">only by a command run by hand into a cache</text>
+<text class="rtext" x="9968" y="9524">kept out of git.</text>
+<text class="spec" x="9968" y="9557">rookie-pick-values · proposed</text>
+<path class="trace" d="M10090.0,9446 V410 H460.0 V402" marker-end="url(#openg)"/>
+<rect class="ext" x="10270" y="9446" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="10270.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="10400.0" y="9459" text-anchor="middle">«requirement»</text>
+<text x="10400.0" y="9474" text-anchor="middle"><tspan class="rid">4.12.1.3</tspan><tspan class="rname" dx="6">Rookie order record</tspan></text>
+<text class="rtext" x="10278" y="9496">The 2013–2021 rookie order SHALL be kept as a</text>
+<text class="rtext" x="10278" y="9510">record listing each class&#x27;s slots with each</text>
+<text class="rtext" x="10278" y="9524">rookie&#x27;s Sleeper id, rookies without one</text>
+<text class="rtext" x="10278" y="9538">flagged.</text>
+<text class="spec" x="10278" y="9557">rookie-pick-values · proposed</text>
+<path class="trace" d="M10400.0,9446 V415 H460.0 V402" marker-end="url(#openg)"/>
+<rect class="ext" x="10580" y="9446" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="10580.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="10710.0" y="9459" text-anchor="middle">«requirement»</text>
+<text x="10710.0" y="9474" text-anchor="middle"><tspan class="rid">4.12.2.1</tspan><tspan class="rname" dx="6">History records</tspan></text>
+<text class="rtext" x="10588" y="9496">The 2013–2021 Sleeper weekly stats, slimmed to</text>
+<text class="rtext" x="10588" y="9510">the fields scoring and WAR read, and the ESPN</text>
+<text class="rtext" x="10588" y="9524">season start percentages SHALL be kept as</text>
+<text class="rtext" x="10588" y="9538">records apart from the league seasons.</text>
+<text class="spec" x="10588" y="9557">rookie-pick-values · proposed</text>
+<path class="trace" d="M10710.0,9446 V420 H460.0 V402" marker-end="url(#openg)"/>
+<rect class="ext" x="10890" y="9446" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="10890.7" y="9446.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="11020.0" y="9459" text-anchor="middle">«requirement»</text>
+<text x="11020.0" y="9474" text-anchor="middle"><tspan class="rid">4.12.5</tspan><tspan class="rname" dx="6">Model record</tspan></text>
+<text class="rtext" x="10898" y="9496">The pick value model SHALL be written from</text>
+<text class="rtext" x="10898" y="9510">committed records alone by a command and kept</text>
+<text class="rtext" x="10898" y="9524">as a record that cold runs only read.</text>
+<text class="spec" x="10898" y="9557">rookie-pick-values · proposed</text>
+<path class="trace" d="M11020.0,9446 V410 H460.0 V402" marker-end="url(#openg)"/>
 <path class="derive" d="M40,9664 H86" marker-end="url(#open)"/><text class="lg" x="96" y="9668">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,9664 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="9668">«trace»: extra parent</text>
 <path class="verify" d="M680,9664 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="9668">«verify»: test, inspection or analysis</text>

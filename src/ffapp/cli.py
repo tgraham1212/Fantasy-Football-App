@@ -45,6 +45,9 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("trending", help="Save Sleeper's trending adds (last 24 hours) into data/trending")
     sub.add_parser("injury-reports", help="Save nflverse's weekly IR, PUP and Out statuses into data/injury-reports")
     sub.add_parser("preseason", help="Make each season's preseason Forecast once its draft is complete (data/preseason)")
+    sub.add_parser("history-fetch", help="By hand, once: 2013-2021 Sleeper stats (slimmed) and ESPN season snapshots into data/history for pick values")
+    sub.add_parser("rookie-adp-fetch", help="By hand, once: cache the 2013-2021 DLF rookie ADP pages locally and write data/pick-values/rookie-order.json")
+    sub.add_parser("pick-values", help="Build the rookie pick value model from committed records into data/pick-values/model.json")
     sub.add_parser("ratings", help="Rate every manager across all stored seasons and write data/ratings")
     sub.add_parser("replacement", help="Write replacement-level values for every stored season to data/replacement")
     sub.add_parser("war", help="Compute every player's Wins Above Replacement per league-season into data/war")
@@ -249,6 +252,44 @@ def cmd_injury_reports(ctx: Context) -> int:
     for warning in run.warnings:
         print(f"FAILED   {warning}", file=sys.stderr)
     return 1 if run.warnings else 0
+
+
+def cmd_history_fetch(ctx: Context) -> int:
+    """By hand, never in a cold run: the history records pick values need."""
+    from ffapp.espn import EspnClient
+    from ffapp.pick_values import history_fetch
+
+    report = history_fetch(ctx.client, EspnClient(ctx.client), ctx.store,
+                           progress=lambda season, weeks: print(f"history  {season}: {len(weeks)} weeks stored"))
+    print(f"fetched  {report.weeks} stat weeks, {report.snapshots} ESPN snapshots ({report.skipped} weeks already stored)")
+    return 0
+
+
+def cmd_rookie_adp_fetch(ctx: Context) -> int:
+    """By hand, never in a cold run: cache the DLF pages locally, then write the rookie order record."""
+    from ffapp.mizelle import CACHE, fetch_pages, write_rookie_order
+    from ffapp.pick_values import rookie_order_path
+
+    fetched = fetch_pages(ctx.client)
+    record = write_rookie_order(ctx.store)
+    print(f"cached   {fetched} new files in {CACHE}")
+    print(f"wrote    {rookie_order_path(ctx.store)} ({len(record['classes'])} classes, {len(record['flagged'])} rookies without a Sleeper id)")
+    return 0
+
+
+def cmd_pick_values(ctx: Context) -> int:
+    """Build the pick value model from committed records alone (no network)."""
+    from ffapp.pick_values import model_path, write_model
+
+    try:
+        model = write_model(ctx.store, ctx.config)
+    except FileNotFoundError as exc:
+        print(f"FAILED   pick-values: {exc}", file=sys.stderr)
+        return 1
+    for key, g in model["groups"].items():
+        print(f"group    {key:10s} value {g['value']:+.2f}  measured {g['measured']:+.2f}  80% {g['range'][0]:+.2f} to {g['range'][1]:+.2f}  picks {g['picks']}")
+    print(f"wrote    {model_path(ctx.store)} (through {model['through_season']}, {len(model['flagged'])} flagged rookies)")
+    return 0
 
 
 def cmd_preseason(ctx: Context) -> int:
@@ -593,6 +634,9 @@ HANDLERS = {
     "build": cmd_build,
     "hot": cmd_hot,
     "calibrate": cmd_calibrate,
+    "history-fetch": cmd_history_fetch,
+    "rookie-adp-fetch": cmd_rookie_adp_fetch,
+    "pick-values": cmd_pick_values,
 }
 
 

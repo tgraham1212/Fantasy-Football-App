@@ -57,6 +57,8 @@ Style is APA, with title case for titles and headings.
 - **Preseason grade:** a team's A+ to F grade from its preseason Forecast title, playoff and last-place shares (`Calculations.txt`, section 26).
 - **Wins Saved:** the Forecast wins a team's bench saves over the season, against replacement-level fill-ins for its injured starters.
 - **Draft strength:** a redraft team's rank by preseason points per week, its draft on paper.
+- **Pick value:** the WAR a dynasty rookie pick in its pick group has been worth over its Players' first 8 seasons, from the 2013 classes on; a pick not yet used counts its pick value (`Calculations.txt`, section 27).
+- **Pick group:** the round and third of the round a rookie pick falls in: Early (picks 1 to 4), Middle (5 to 8) or Late (9 to 12).
 - **Card state:** which of eleven states a Games page card is in (F1, F2, C, P2, L1, L2, P1, O1, O2, O3, PW), set by whose games have started or finished; defined in the `game-card-states` spec and `docs/games-page-states.md`.
 - **Refresh mode:** how often data is refreshed: offseason, quiet (in season, no games in progress) or live (games in progress).
 - **Hot run:** the quick refresh of the current week (`hot.yml`), which writes the live bundle.

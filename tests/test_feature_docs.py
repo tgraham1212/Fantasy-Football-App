@@ -48,6 +48,10 @@ FEATURE_DOCS = {
         "diagram": "tools/strength_of_schedule_diagram.py",
         "code": ("src/ffapp/schedule_strength.py", "site/schedule.js"),
     },
+    "pick-values.md": {
+        "diagram": "tools/pick_values_diagram.py",
+        "code": ("src/ffapp/pick_values.py", "src/ffapp/mizelle.py", "site/pick-values.js"),
+    },
     "preseason.md": {
         "diagram": "tools/preseason_diagram.py",
         "code": ("src/ffapp/preseason.py", "site/preseason.js"),

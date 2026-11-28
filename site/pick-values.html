@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-copy="PV-01">How Pick Values Work</title>
+  <meta name="description" content="What a dynasty rookie pick has been worth over its Player's first eight seasons, by round and third of the round.">
+  <link rel="stylesheet" href="styles.css?v=__BUILD__">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <h1 data-copy="PV-02">How Pick Values Work</h1>
+      <p data-copy="PV-03" class="sub">What a rookie pick has been worth over its Player's first eight seasons</p>
+    </div>
+    <nav class="pages" aria-label="Pages"><a class="nav-link" href="./">&larr; Forecasts</a></nav>
+    <div class="refresh" id="refresh-box" hidden>
+      <button type="button" class="nav-link refresh-btn" id="refresh-btn">Refresh Data</button>
+      <span class="refresh-note" id="refresh-note" aria-live="polite"></span>
+    </div>
+    <button class="theme" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span aria-hidden="true">&#9680;</span>
+    </button>
+  </header>
+
+  <main id="main" hidden>
+    <section class="card summary">
+      <h2 data-copy="PV-04">What a Pick Is Worth</h2>
+      <p class="fresh" id="pv-meta"></p>
+      <p data-copy="PV-05" class="explain">Every dynasty rookie pick is valued by the WAR its Players have produced over the eight seasons after their draft, wherever they played. Picks are grouped by round and by third of the round: early (picks 1 to 4), middle (5 to 8) and late (9 to 12). A pick not used yet is worth its group's value; the Trades tab uses these values.</p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Pick group values"><table class="plain" id="pv-groups"></table></div>
+      <p data-copy="PV-06" class="hint">Measured: the average of every pick in the group. Model value: the same, with any group worth more than the group before it averaged with it, so an earlier pick is never worth less than a later one. The range is where the group's average falls 80% of the time when the picks are resampled; single picks vary far more.</p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2 data-copy="PV-07">Total WAR Over Eight Seasons</h2>
+        <div class="metrics" id="pv-round-switcher" role="group" aria-label="Round"></div>
+      </div>
+      <div class="chart-wrap pv-chart-wrap">
+        <canvas id="pv-total-chart" role="img" aria-label="Line chart of total WAR by season since the draft for each third of the chosen round"></canvas>
+      </div>
+      <p data-copy="PV-08" class="hint">The running total of the average pick in each third of the round. Later seasons rest on fewer classes: season eight on the 2013 to 2018 classes alone. Hover a season for the totals and the number of picks.</p>
+      <details class="pv-table-view"><summary>Table view</summary>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Total WAR by season table"><table class="plain" id="pv-total-table"></table></div>
+      </details>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2 data-copy="PV-09">WAR in Each Season</h2>
+      </div>
+      <div class="chart-wrap pv-chart-wrap">
+        <canvas id="pv-season-chart" role="img" aria-label="Line chart of average WAR in each season since the draft for each round"></canvas>
+      </div>
+      <p data-copy="PV-10" class="hint">The same picks by round, one season at a time. First-round Players add the most in their third season and little by their eighth. Second- and third-round Players score below replacement level as rookies and rarely make it back.</p>
+      <details class="pv-table-view"><summary>Table view</summary>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="WAR in each season table"><table class="plain" id="pv-season-table"></table></div>
+      </details>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2 data-copy="PV-11">Value by Draft Slot</h2>
+      </div>
+      <div class="chart-wrap pv-chart-wrap">
+        <canvas id="pv-slot-chart" role="img" aria-label="Bar chart of average WAR through three and eight seasons at each draft slot"></canvas>
+      </div>
+      <p data-copy="PV-12" class="hint">The average pick at each slot through three seasons and through eight. Single slots swing with one Player, which is why the values are set by thirds of the round instead.</p>
+      <details class="pv-table-view"><summary>Table view</summary>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Value by draft slot table"><table class="plain" id="pv-slot-table"></table></div>
+      </details>
+    </section>
+
+    <section class="card" id="pv-method">
+      <h2 data-copy="PV-13">How the Values Are Made</h2>
+      <ol class="steps">
+        <li data-copy="PV-14"><strong>Rookie order.</strong> The 2013 to 2021 classes are ranked by each rookie's average pick in <a href="https://dynastyleaguefootball.com/">Dynasty League Football</a> startup mock drafts held from May to August, after the NFL draft, as collected by <a href="https://mizelle.net/mfl/">mizelle.net</a>. From 2022 the classes are this league's own rookie drafts. Where both exist, the two orders agree closely.</li>
+        <li data-copy="PV-15"><strong>WAR.</strong> Every season uses this site's Player WAR with the dynasty league's scoring and lineup, over weeks 1 to 14. A season a Player did not play counts zero.</li>
+        <li data-copy="PV-16"><strong>Eight seasons.</strong> A group's value adds up the average WAR of its picks in each of the eight seasons after the draft, using every class that has reached that season.</li>
+        <li data-copy="PV-17"><strong>Picks not used yet.</strong> A pick whose draft order is set takes its group's value. A pick in the next draft takes the third of the round its team's place in the current Forecast gives it, worst finish first. A pick further away takes its round's average.</li>
+        <li data-copy="PV-18"><strong>Updates.</strong> The values are rebuilt once a year, after a season ends, as each class adds a season.</li>
+      </ol>
+    </section>
+  </main>
+
+  <section class="card not-run" id="not-run" hidden>
+    <h2 data-copy="PV-19">Pick values have not been built yet</h2>
+    <p data-copy="PV-20" class="explain">The league pages work as usual. This page fills in once <code>python -m ffapp pick-values</code> has been run and its model committed.</p>
+  </section>
+
+  <p data-copy="MSG-20" class="status" id="status">Loading&hellip;</p>
+
+  <footer>
+    <p data-copy="PV-21">Data from the Sleeper API and ESPN. 2013 to 2021 rookie order from Dynasty League Football mock drafts via mizelle.net. <a href="./">Back to the forecasts</a>.</p>
+  </footer>
+
+  <script src="vendor/chart.umd.js?v=__BUILD__"></script>
+  <script type="module" src="pick-values.js?v=__BUILD__"></script>
+</body>
+</html>

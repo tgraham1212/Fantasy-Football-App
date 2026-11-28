@@ -441,6 +441,16 @@ table.plain thead th { border-bottom: 2px solid var(--ink); vertical-align: bott
 table.plain tbody th { font-weight: 600; }
 .not-run { margin-top: 8px; }
 .not-run h2 { font-size: 1.2rem; }
+/* How Pick Values Work page */
+.pv-chart-wrap { height: 340px; }
+.pv-range { color: var(--ink-2); font-size: 0.82em; white-space: nowrap; }
+.pv-table-view { margin-top: 8px; }
+.pv-table-view summary { cursor: pointer; font-weight: 600; min-height: 44px; display: flex; align-items: center; }
+#pv-groups td.num, #pv-total-table td.num, #pv-season-table td.num, #pv-slot-table td.num { font-variant-numeric: tabular-nums; }
+@media (max-width: 560px) {
+  #pv-groups th:nth-child(2), #pv-groups td:nth-child(2) { display: none; } /* the pick name already says the third */
+  #pv-groups .pv-range { display: block; }
+}
 code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.9em; }
 @media (max-width: 700px) {
   .split { grid-template-columns: minmax(0, 1fr); }

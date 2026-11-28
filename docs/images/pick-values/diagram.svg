@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1604 587.5" width="1604" height="587.5" role="img" aria-labelledby="pv-t" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+<style>
+.grp { stroke-width: 1.5; } .g1 { fill: #efeeeb; stroke: #8c8a84; } .g2 { fill: #eef1f6; stroke: #93a0b8; }
+.g3 { fill: #fbf2e1; stroke: #c08a2c; } .g4 { fill: #e8f0fb; stroke: #4f7cc0; } .g5 { fill: #e8f5ea; stroke: #4f9a5c; }
+.gl { font-weight: 700; font-size: 13px; letter-spacing: 0.06em; fill: #4c5058; }
+.gs { font-size: 11.5px; fill: #4c5058; }
+.st { fill: #ffffff; stroke: #2b2f36; stroke-width: 1.4; } .st.rebuilt { stroke-dasharray: 5 3; }
+.stt { font-weight: 700; font-size: 12.5px; fill: #14161a; } .sd { font-size: 11.5px; fill: #4c5058; }
+.ref { font-size: 10.5px; font-weight: 700; fill: #b4530b; font-family: ui-monospace, Consolas, monospace; }
+.path { font-size: 11px; fill: #2b2f36; font-family: ui-monospace, Consolas, monospace; }
+.e { fill: none; stroke: #2b2f36; stroke-width: 1.5; } .ah { fill: #2b2f36; }
+.lg { font-size: 12.5px; fill: #2b2f36; } .lgn { font-weight: 800; }
+</style>
+<rect width="1604" height="587.5" fill="#ffffff"/>
+<title id="pv-t">How the rookie pick values are made: their sources, where the data is stored, the calculations in order, the pick values file and the page that shows it</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="ah"/></marker></defs>
+<text x="24" y="34" class="gl" text-anchor="start">HOW THE ROOKIE PICK VALUES ARE MADE</text>
+<rect x="24" y="64" width="250" height="395.5" rx="10" class="grp g1"/>
+<text x="38" y="88" class="gl" text-anchor="start">1. WHERE IT COMES FROM</text>
+<text x="38" y="106" class="gs" text-anchor="start">Fetched once, by hand</text>
+<rect x="36" y="122" width="226" height="76.5" rx="8" class="st"/>
+<text x="48" y="142" class="stt" text-anchor="start">DLF Mock Drafts (mizelle.net)</text>
+<text x="48" y="159.5" class="sd" text-anchor="start">2013-2021 rookie ADP pages and the</text>
+<text x="48" y="175.0" class="sd" text-anchor="start">DynastyProcess ID map, fetched once</text>
+<text x="48" y="190.5" class="sd" text-anchor="start">by hand into a local cache</text>
+<rect x="36" y="210.5" width="226" height="61.0" rx="8" class="st"/>
+<text x="48" y="230.5" class="stt" text-anchor="start">Sleeper: Stats and Drafts</text>
+<text x="252" y="230.5" class="ref" text-anchor="end">Calc 1</text>
+<text x="48" y="248.0" class="sd" text-anchor="start">Weekly stats 2013-2021 (slimmed);</text>
+<text x="48" y="263.5" class="sd" text-anchor="start">this league&#x27;s rookie drafts</text>
+<rect x="36" y="283.5" width="226" height="61.0" rx="8" class="st"/>
+<text x="48" y="303.5" class="stt" text-anchor="start">ESPN: Start Percentages</text>
+<text x="252" y="303.5" class="ref" text-anchor="end">Calc 16</text>
+<text x="48" y="321.0" class="sd" text-anchor="start">Season-long start percentages</text>
+<text x="48" y="336.5" class="sd" text-anchor="start">2013-2021 for the yearly cut</text>
+<rect x="308" y="64" width="270" height="395.5" rx="10" class="grp g2"/>
+<text x="322" y="88" class="gl" text-anchor="start">2. WHERE IT IS STORED</text>
+<text x="322" y="106" class="gs" text-anchor="start">Records in git</text>
+<rect x="320" y="122" width="246" height="76.5" rx="8" class="st"/>
+<text x="332" y="142" class="stt" text-anchor="start">Rookie Order</text>
+<text x="556" y="142" class="ref" text-anchor="end">Calc 27</text>
+<text x="332" y="159.5" class="path" text-anchor="start">data/pick-values/rookie-order.json</text>
+<text x="332" y="175.0" class="sd" text-anchor="start">The 2013-2021 classes, slots</text>
+<text x="332" y="190.5" class="sd" text-anchor="start">1.01-3.12 with Sleeper ids</text>
+<rect x="320" y="210.5" width="246" height="76.5" rx="8" class="st"/>
+<text x="332" y="230.5" class="stt" text-anchor="start">History Records</text>
+<text x="556" y="230.5" class="ref" text-anchor="end">Calc 27</text>
+<text x="332" y="248.0" class="path" text-anchor="start">data/history/</text>
+<text x="332" y="263.5" class="sd" text-anchor="start">Stats and ESPN snapshots 2013-2021,</text>
+<text x="332" y="279.0" class="sd" text-anchor="start">apart from the league seasons</text>
+<rect x="320" y="299.0" width="246" height="76.5" rx="8" class="st"/>
+<text x="332" y="319.0" class="stt" text-anchor="start">Pick Value Model</text>
+<text x="556" y="319.0" class="ref" text-anchor="end">Calc 27</text>
+<text x="332" y="336.5" class="path" text-anchor="start">data/pick-values/model.json</text>
+<text x="332" y="352.0" class="sd" text-anchor="start">Rebuilt by hand from committed</text>
+<text x="332" y="367.5" class="sd" text-anchor="start">records; cold runs only read it</text>
+<rect x="612" y="64" width="290" height="395.5" rx="10" class="grp g3"/>
+<text x="626" y="88" class="gl" text-anchor="start">3. HOW IT IS CALCULATED</text>
+<text x="626" y="106" class="gs" text-anchor="start">In this order, when the model is rebuilt</text>
+<rect x="624" y="122" width="266" height="61.0" rx="8" class="st"/>
+<text x="636" y="142" class="stt" text-anchor="start">History WAR</text>
+<text x="880" y="142" class="ref" text-anchor="end">Calc 16, 27</text>
+<text x="636" y="159.5" class="sd" text-anchor="start">Player WAR with dynasty settings,</text>
+<text x="636" y="175.0" class="sd" text-anchor="start">weeks 1-14, yearly cut</text>
+<rect x="624" y="201.0" width="266" height="61.0" rx="8" class="st"/>
+<text x="636" y="221.0" class="stt" text-anchor="start">Eight-Season Value</text>
+<text x="880" y="221.0" class="ref" text-anchor="end">Calc 27</text>
+<text x="636" y="238.5" class="sd" text-anchor="start">Mean WAR of each group&#x27;s picks in</text>
+<text x="636" y="254.0" class="sd" text-anchor="start">seasons 1-8 after the draft, added up</text>
+<path d="M757.0 184.0 V198.0" class="e" marker-end="url(#a)"/>
+<rect x="624" y="280.0" width="266" height="76.5" rx="8" class="st"/>
+<text x="636" y="300.0" class="stt" text-anchor="start">Groups, Never Rising</text>
+<text x="880" y="300.0" class="ref" text-anchor="end">Calc 27</text>
+<text x="636" y="317.5" class="sd" text-anchor="start">Early, Middle, Late per round;</text>
+<text x="636" y="333.0" class="sd" text-anchor="start">neighbours that break the order</text>
+<text x="636" y="348.5" class="sd" text-anchor="start">are averaged</text>
+<path d="M757.0 263.0 V277.0" class="e" marker-end="url(#a)"/>
+<rect x="624" y="374.5" width="266" height="61.0" rx="8" class="st"/>
+<text x="636" y="394.5" class="stt" text-anchor="start">Unused Picks</text>
+<text x="880" y="394.5" class="ref" text-anchor="end">Calc 27</text>
+<text x="636" y="412.0" class="sd" text-anchor="start">Group value; next draft: Forecast</text>
+<text x="636" y="427.5" class="sd" text-anchor="start">third; later: round average</text>
+<path d="M757.0 357.5 V371.5" class="e" marker-end="url(#a)"/>
+<rect x="936" y="64" width="310" height="395.5" rx="10" class="grp g4"/>
+<text x="950" y="88" class="gl" text-anchor="start">4. WHAT IT PRODUCES</text>
+<text x="950" y="106" class="gs" text-anchor="start">Derived data, deployed with the site</text>
+<rect x="948" y="122" width="286" height="76.5" rx="8" class="st rebuilt"/>
+<text x="960" y="142" class="stt" text-anchor="start">Pick Values File</text>
+<text x="1224" y="142" class="ref" text-anchor="end">Calc 27</text>
+<text x="960" y="159.5" class="path" text-anchor="start">site/data/pick-values.json</text>
+<text x="960" y="175.0" class="sd" text-anchor="start">Group values, curves by season,</text>
+<text x="960" y="190.5" class="sd" text-anchor="start">values by slot, picks, sources</text>
+<rect x="1280" y="64" width="300" height="395.5" rx="10" class="grp g5"/>
+<text x="1294" y="88" class="gl" text-anchor="start">5. WHERE IT SHOWS</text>
+<text x="1294" y="106" class="gs" text-anchor="start">fantasyfoosball.net</text>
+<rect x="1292" y="122" width="276" height="76.5" rx="8" class="st"/>
+<text x="1304" y="142" class="stt" text-anchor="start">How Pick Values Work</text>
+<text x="1304" y="159.5" class="sd" text-anchor="start">Group table with ranges, total WAR</text>
+<text x="1304" y="175.0" class="sd" text-anchor="start">and season WAR charts, value by</text>
+<text x="1304" y="190.5" class="sd" text-anchor="start">slot, method and source credits</text>
+<path d="M277 261.75 H304" class="e" marker-end="url(#a)"/>
+<path d="M581 261.75 H608" class="e" marker-end="url(#a)"/>
+<path d="M905 261.75 H932" class="e" marker-end="url(#a)"/>
+<path d="M1249 261.75 H1276" class="e" marker-end="url(#a)"/>
+<rect x="26" y="478.5" width="22" height="13" rx="3" class="st"/>
+<text x="56" y="489.5" class="lg" text-anchor="start">Record: committed to git, kept forever</text>
+<rect x="366" y="478.5" width="22" height="13" rx="3" class="st rebuilt"/>
+<text x="396" y="489.5" class="lg" text-anchor="start">Rebuilt by each run (build cache, deployed site or relay), never committed</text>
+<text x="1580" y="489.5" class="ref" text-anchor="end">Calc N = section N of Calculations.txt</text>
+<text x="24" y="515.5" class="lg"><tspan class="lgn">By hand, once:</tspan> history-fetch and rookie-adp-fetch write the history records and the rookie order</text>
+<text x="24" y="539.5" class="lg"><tspan class="lgn">By hand, yearly:</tspan> pick-values rebuilds the model from committed records; python -m ffapp build exports it</text>
+</svg>

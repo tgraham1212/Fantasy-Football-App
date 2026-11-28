@@ -140,6 +140,14 @@ The cold run never reads the live bundle. It takes the truth from Sleeper and ES
 - Each game file's log and prediction of record (`data/games/<league>/<season>/week_NN.json`, keys `log`
   and `record`). The log covers the current week only.
 - The calibration report and rows (`data/calibration/`), which change only when run by hand.
+- History records for the rookie pick values (`data/history/`): Sleeper's weekly stats for 2013-2021,
+  weeks 1-14, slimmed to the fields scoring and WAR read, and ESPN's season start percentages. They
+  are fetched once by hand (`ffapp history-fetch`) and kept apart from `data/stats/` so the Forecasts
+  never see them.
+- The rookie pick values (`data/pick-values/`): `rookie-order.json`, the 2013-2021 rookie order
+  written once by `ffapp rookie-adp-fetch` from DLF pages cached locally (`.cache/third-party/`, never
+  committed), and `model.json`, the pick value model, rebuilt by hand with `ffapp pick-values` from
+  committed records alone. Cold runs only read it.
 
 ### Rebuilt, Never Committed
 

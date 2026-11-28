@@ -1033,3 +1033,66 @@ Assumptions and decisions:
     sit within about 2 points a week of each other. Roster drift and a per-league calibration were
     tried; the owner kept the model unchanged, added the redraft Draft Strength rank and put a
     redraft revision (positional and starter / bench draft rankings) in the backlog.
+
+
+================================================================
+27. ROOKIE PICK VALUES
+================================================================
+Code:          src/ffapp/pick_values.py (the 2013-2021 rookie order: src/ffapp/mizelle.py)
+Data sources:  The 2013-2021 rookie order record (data/pick-values/rookie-order.json), written once
+               by `ffapp rookie-adp-fetch` from Dynasty League Football mock draft pages collected
+               by mizelle.net and DynastyProcess's player-ID map, both cached locally in
+               .cache/third-party/ and never committed; this league's rookie drafts
+               (data/leagues/dynasty/<s>/draft.json); the history records for 2013-2021
+               (data/history/: Sleeper weekly stats, weeks 1-14, slimmed, and ESPN season start
+               percentages); the league WAR files (section 16). The model is a record,
+               data/pick-values/model.json, rebuilt by hand with `ffapp pick-values` from committed
+               records alone, exported as site/data/pick-values.json (derived data).
+Depends on:    16
+Formula:
+  rookie order of a 2013-2021 class: the QB, RB, WR and TE rookies on the class's mizelle.net page
+    ranked by mean pick in the DLF startup mock drafts held May to August, ties to the lower MFL id;
+    the first 36 take slots 1.01-3.12 (slot = rank). From 2022, this league's rookie draft in pick
+    order; 2022 uses the startup draft's rookies (years_exp 0) in pick order.
+  history WAR of a 2013-2021 season = section 16 with the dynasty league's latest scoring, lineup
+    and team count, regular-season weeks 1-14 and the yearly cut (the season-long ESPN start
+    percentages). ESPN Players the crosswalk misses are matched by normalised name and position
+    among that season's stat lines (history only).
+  WAR of a pick in season k (k = 1..8) = its Player's WAR in season class + k - 1, 0 if he played no
+    game; a Player with no Sleeper id counts 0 in every season.
+  group: Early = picks 1-4, Middle = 5-8, Late = 9-12 of each round.
+  measured value of a group = sum over k = 1..8 of mean(WAR in season k over the group's picks whose
+    class has reached season k, i.e. class + k - 1 <= the last finished season).
+  80% range = the 10th and 90th percentiles of the measured value over 2,000 bootstrap draws,
+    resampling the group's picks within each season.
+  model value: the measured values in pick order (1st Early ... 3rd Late) made non-increasing by
+    pooling adjacent violators with equal weights.
+  value of a pick not yet used:
+    draft order set (Sleeper's slot_to_roster_id) -> its group's model value;
+    the next draft, order not set -> the model value of the third the original team's place in the
+      latest as-of Forecast gives it: teams sorted by playoff, semifinal, final and title shares, then
+      projected wins, ascending (worst first); places 1-4 Early, 5-8 Middle, 9-12 Late;
+    any later draft -> the round's average of its three model values.
+In plain English:
+  A rookie pick is worth what Players taken there have produced over their first eight seasons,
+  measured with this site's own WAR. Thirteen classes give the history: the 2013-2021 classes in the
+  order Dynasty League Football mock drafters took them, the 2022 onward classes from this league's
+  own drafts. Picks are valued by round and third of the round, and an earlier pick is never worth
+  less than a later one.
+Assumptions and decisions:
+  - Eight seasons: a first-round career runs about eight seasons, and first-round WAR per season is
+    near zero by the eighth (+0.14 in season 7, -0.04 in season 8).
+  - Every class counts equally: the newer classes worth less through four seasons (2018-2022 against
+    2013-2017) is treated as chance, not modelled.
+  - Thirds, not single slots: trade analyzers name picks this way, and single slots swing with one
+    Player (1.03 +0.57 against 1.04 +1.24 through three seasons).
+  - Rounds 2 and 3 show no real order by slot (an early 2nd measured below a middle or late 2nd);
+    pooling makes each one value.
+  - WAR counts bench weeks, as section 16 does: a rookie on the bench scoring below replacement
+    level lowers his value, which is why 2nd and 3rd round picks are below zero.
+  - The DLF rookie order agrees with this league's rookie drafts at 0.79-0.90 rank correlation for
+    2022-2026; the NFL draft order agreed at only 0.50-0.66.
+  - History seasons are kept apart from data/stats/ so the Forecasts' error pools and replacement
+    levels never use them.
+  - The model is rebuilt by hand once a year, after a season ends; it needs no third-party page, so
+    a later change can run it automatically.

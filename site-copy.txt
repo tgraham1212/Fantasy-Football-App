@@ -35,7 +35,7 @@ Monte Carlo Forecast & Statistics for Fantasy Football
 [HDR-04] paragraph
 WHERE: site/index.html line 344
 TEXT:
-Data from the Sleeper API. Projections by Rotowire via Sleeper. Refreshed daily. <a href="calibration.html">How Good Are These Forecasts?</a>
+Data from the Sleeper API. Projections by Rotowire via Sleeper. Refreshed daily. <a href="calibration.html">How Good Are These Forecasts?</a> · <a href="pick-values.html">How Pick Values Work</a>
 
 
 ##############################################################################
@@ -1224,6 +1224,121 @@ stayed out of the bottom two
 
 
 ##############################################################################
+# PICK VALUES PAGE
+##############################################################################
+
+[PV-01] browser tab title
+WHERE: site/pick-values.html line 6
+TEXT:
+How Pick Values Work
+
+[PV-02] page title
+WHERE: site/pick-values.html line 13
+TEXT:
+How Pick Values Work
+
+[PV-03] paragraph
+WHERE: site/pick-values.html line 14
+TEXT:
+What a rookie pick has been worth over its Player's first eight seasons
+
+[PV-04] heading
+WHERE: site/pick-values.html line 28
+TEXT:
+What a Pick Is Worth
+
+[PV-05] paragraph
+WHERE: site/pick-values.html line 30
+TEXT:
+Every dynasty rookie pick is valued by the WAR its Players have produced over the eight seasons after their draft, wherever they played. Picks are grouped by round and by third of the round: early (picks 1 to 4), middle (5 to 8) and late (9 to 12). A pick not used yet is worth its group's value; the Trades tab uses these values.
+
+[PV-06] paragraph
+WHERE: site/pick-values.html line 32
+TEXT:
+Measured: the average of every pick in the group. Model value: the same, with any group worth more than the group before it averaged with it, so an earlier pick is never worth less than a later one. The range is where the group's average falls 80% of the time when the picks are resampled; single picks vary far more.
+
+[PV-07] heading
+WHERE: site/pick-values.html line 37
+TEXT:
+Total WAR Over Eight Seasons
+
+[PV-08] paragraph
+WHERE: site/pick-values.html line 43
+TEXT:
+The running total of the average pick in each third of the round. Later seasons rest on fewer classes: season eight on the 2013 to 2018 classes alone. Hover a season for the totals and the number of picks.
+
+[PV-09] heading
+WHERE: site/pick-values.html line 51
+TEXT:
+WAR in Each Season
+
+[PV-10] paragraph
+WHERE: site/pick-values.html line 56
+TEXT:
+The same picks by round, one season at a time. First-round Players add the most in their third season and little by their eighth. Second- and third-round Players score below replacement level as rookies and rarely make it back.
+
+[PV-11] heading
+WHERE: site/pick-values.html line 64
+TEXT:
+Value by Draft Slot
+
+[PV-12] paragraph
+WHERE: site/pick-values.html line 69
+TEXT:
+The average pick at each slot through three seasons and through eight. Single slots swing with one Player, which is why the values are set by thirds of the round instead.
+
+[PV-13] heading
+WHERE: site/pick-values.html line 76
+TEXT:
+How the Values Are Made
+
+[PV-14] list item
+WHERE: site/pick-values.html line 78
+TEXT:
+<strong>Rookie order.</strong> The 2013 to 2021 classes are ranked by each rookie's average pick in <a href="https://dynastyleaguefootball.com/">Dynasty League Football</a> startup mock drafts held from May to August, after the NFL draft, as collected by <a href="https://mizelle.net/mfl/">mizelle.net</a>. From 2022 the classes are this league's own rookie drafts. Where both exist, the two orders agree closely.
+
+[PV-15] list item
+WHERE: site/pick-values.html line 79
+TEXT:
+<strong>WAR.</strong> Every season uses this site's Player WAR with the dynasty league's scoring and lineup, over weeks 1 to 14. A season a Player did not play counts zero.
+
+[PV-16] list item
+WHERE: site/pick-values.html line 80
+TEXT:
+<strong>Eight seasons.</strong> A group's value adds up the average WAR of its picks in each of the eight seasons after the draft, using every class that has reached that season.
+
+[PV-17] list item
+WHERE: site/pick-values.html line 81
+TEXT:
+<strong>Picks not used yet.</strong> A pick whose draft order is set takes its group's value. A pick in the next draft takes the third of the round its team's place in the current Forecast gives it, worst finish first. A pick further away takes its round's average.
+
+[PV-18] list item
+WHERE: site/pick-values.html line 82
+TEXT:
+<strong>Updates.</strong> The values are rebuilt once a year, after a season ends, as each class adds a season.
+
+[PV-19] heading
+WHERE: site/pick-values.html line 88
+TEXT:
+Pick values have not been built yet
+
+[PV-20] paragraph
+WHERE: site/pick-values.html line 89
+TEXT:
+The league pages work as usual. This page fills in once <code>python -m ffapp pick-values</code> has been run and its model committed.
+
+[PV-21] paragraph
+WHERE: site/pick-values.html line 95
+TEXT:
+Data from the Sleeper API and ESPN. 2013 to 2021 rookie order from Dynasty League Football mock drafts via mizelle.net. <a href="./">Back to the forecasts</a>.
+
+[PV-22] generated text
+WHERE: site/pick-values.js line 76 (generated)
+TEXT:
+${picks} picks from the ${classes[0]}–${classes[classes.length - 1]} rookie classes · WAR through the ${M.through_season} season · built ${formatDate(M.built_at)}
+
+
+##############################################################################
 # MESSAGES
 ##############################################################################
 
@@ -1321,6 +1436,11 @@ Started, back in ~5 min
 WHERE: site/refresh.js line 97 (generated)
 TEXT:
 Refresh started. The new data shows here by itself in about 5 minutes.
+
+[MSG-20] paragraph
+WHERE: site/pick-values.html line 92
+TEXT:
+Loading&hellip;
 
 
 ##############################################################################

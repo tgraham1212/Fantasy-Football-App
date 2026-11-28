@@ -98,6 +98,7 @@ VIEWS = {
     "war-all": View("war-all", f"index.html#{LEAGUE}/war", _war_all),
     "war-dialog": View("war-dialog", f"index.html#{LEAGUE}/war", _war_dialog),
     "calibration": View("calibration", "calibration.html"),
+    "pick-values": View("pick-values", "pick-values.html"),
     "managers": View("managers", f"index.html#{LEAGUE}/managers"),
     "managers-retired": View("managers-retired", f"index.html#{LEAGUE}/managers/{RETIRED}"),
     "managers-redraft": View("managers-redraft", "index.html#redraft/managers"),
@@ -264,6 +265,11 @@ CONTROLS: tuple[Control, ...] = (
     Control("refresh (calibration)", "calibration", "#refresh-btn", REFRESH_STATES),
     Control("theme", "predictions", "#theme-toggle", (State("toggled", click("#theme-toggle")), State("back", click("#theme-toggle")))),
     Control("theme (calibration)", "calibration", "#theme-toggle", (State("toggled", click("#theme-toggle")),)),
+    Control("refresh (pick values)", "pick-values", "#refresh-btn", REFRESH_STATES),
+    Control("theme (pick values)", "pick-values", "#theme-toggle", (State("toggled", click("#theme-toggle")),)),
+    Control("odds link (pick values)", "pick-values", ".pages a.nav-link"),
+    Control("footer links (pick values)", "pick-values", "footer a, #pv-method a"),
+    Control("update check (pick values)", "pick-values", "body", UPDATE_STATES, regions=("#version-note",)),
     Control("league switcher", "predictions", "#league-switcher button",
             (State("other league", click("#league-switcher button[aria-pressed='false']", 900)),),
             regions=("#page-predictions", "#page-games", "#page-positions", "#page-managers", "#page-war"), below="#subtabs"),
@@ -462,6 +468,15 @@ CONTROLS: tuple[Control, ...] = (
     Control("outcome", "calibration", "#outcome-switcher button",
             (State("other outcome", click("#outcome-switcher button[aria-pressed='false']", 600)),),
             grow=("main section.card",), below="#outcome-switcher"),
+
+    # How Pick Values Work page
+    Control("pick value round", "pick-values", "#pv-round-switcher button",
+            (State("2nd round", click("#pv-round-switcher button:nth-child(2)", 600)),),
+            grow=("main section.card",), below="#pv-round-switcher"),
+    Control("pick value table views", "pick-values", ".pv-table-view summary",
+            (State("opened", click(".pv-table-view summary", 400)),),
+            grow=("main section.card",), below="self"),
+    Control("pick value table scroll", "pick-values", ".table-wrap[tabindex]"),
 )
 
 

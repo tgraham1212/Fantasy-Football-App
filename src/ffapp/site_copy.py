@@ -25,7 +25,7 @@ from pathlib import Path
 
 COPY_FILE = "site-copy.txt"
 LOCK_FILE = "site-copy.lock.json"
-HTML_FILES = ("index.html", "calibration.html")
+HTML_FILES = ("index.html", "calibration.html", "pick-values.html")
 SECTIONS = {  # ID prefix -> section heading, in file order
     "HDR": "Header and footer (every page)",
     "PRED": "Predictions tab",
@@ -34,6 +34,7 @@ SECTIONS = {  # ID prefix -> section heading, in file order
     "WAR": "Player WAR tab",
     "LG": "League tab",
     "CAL": "Calibration page",
+    "PV": "Pick values page",
     "MSG": "Messages",
 }
 BLOCK_TAGS = ("p", "li", "h1", "h2", "h3", "title")
@@ -44,6 +45,11 @@ MIN_WORDS = 4
 EXEMPT = (
     ("app.js", "Could not load the odds data"),  # developer error text
     ("calibration.js", "Could not load the calibration data"),
+    ("pick-values.js", "Could not load the pick values"),
+    ("pick-values.js", "Through 3 seasons</th>"),  # table column labels
+    ("pick-values.js", "Seasons since the draft"),  # chart axis titles
+    ("pick-values.js", "WAR in the season"),
+    ("pick-values.js", "Season since the draft"),
     ("positions.js", "points per game${extra"),  # screen-reader label built from the entries
     ("positions.js", "fill: color-mix("),  # inline CSS
     ("games.js", "background: color-mix("),

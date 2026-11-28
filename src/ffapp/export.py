@@ -13,6 +13,7 @@ from ffapp.ratings import read_ratings
 from ffapp.replacement import read_replacement
 from ffapp.store import Store, read_json, write_json
 from ffapp.games_export import games_export
+from ffapp.pick_values import pick_values_export
 from ffapp.positions import positions_export
 from ffapp.war import read_war, war_seasons
 
@@ -20,6 +21,7 @@ log = logging.getLogger(__name__)
 
 DEFAULT_SITE_DATA = Path("site") / "data"
 CALIBRATION_FILE = "calibration.json"
+PICK_VALUES_FILE = "pick-values.json"
 BOTTOM_TWO_KEY = "avoid_losers_bye"
 RATE_KEYS = ("playoffs", "bye", "semifinal", "final", "title", "losers_bracket", "last", BOTTOM_TWO_KEY)
 HISTORY_KEYS = ("playoffs", "bye", "final", "title", "last", BOTTOM_TWO_KEY)
@@ -399,6 +401,13 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
         write_json(path, report)
         written.append(path)
         index["calibration"] = {"generated_at": report.get("generated_at"), "file": path.name}
+    index["pick_values"] = None
+    picks = pick_values_export(store)
+    if picks is not None:
+        path = out_dir / PICK_VALUES_FILE
+        write_json(path, picks)
+        written.append(path)
+        index["pick_values"] = {"built_at": picks.get("built_at"), "file": path.name}
     index_path = out_dir / "index.json"
     write_json(index_path, index)
     written.append(index_path)

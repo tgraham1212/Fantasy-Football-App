@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11550 34092" width="11550" height="34092">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13100 35968" width="13100" height="35968">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,9 +33,9 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="11550" height="34092"/>
+<rect class="bg" width="13100" height="35968"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 4, Manager History</text>
-<text class="sub" x="40" y="66">250 requirements derived from need 4 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
+<text class="sub" x="40" y="66">264 requirements derived from need 4 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
 <text class="col" x="350" y="132">LEVEL 1</text>
 <text class="col" x="660" y="132">LEVEL 2</text>
@@ -293,6 +293,20 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <path class="derive" d="M970,33441.0 H945 V33307.0 H920" marker-end="url(#open)"/>
 <path class="derive" d="M970,33575.0 H945 V33307.0 H920" marker-end="url(#open)"/>
 <path class="derive" d="M970,33709.0 H945 V33307.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M350,33843.0 H325 V209.0 H300" marker-end="url(#open)"/>
+<path class="derive" d="M660,33977.0 H635 V33843.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,34111.0 H945 V33977.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,34245.0 H945 V33977.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,34379.0 H945 V33977.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,34513.0 H635 V33843.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,34647.0 H945 V34513.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,34781.0 H635 V33843.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,34915.0 H945 V34781.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M970,35049.0 H945 V34781.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,35183.0 H635 V33843.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M970,35317.0 H945 V35183.0 H920" marker-end="url(#open)"/>
+<path class="derive" d="M660,35451.0 H635 V33843.0 H610" marker-end="url(#open)"/>
+<path class="derive" d="M660,35585.0 H635 V33843.0 H610" marker-end="url(#open)"/>
 <text class="elab" x="322" y="337.0" text-anchor="end">«deriveReqt»</text>
 <rect class="tc" x="1920" y="312" width="320" height="60" rx="3"/>
 <text class="ster" x="1928" y="327">«testCase»</text>
@@ -1492,6 +1506,68 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="tctext" x="1928" y="33710">test_draft.py::test_keeper_eligible_in_progres</text>
 <text class="tctext" x="1928" y="33724">s</text>
 <path class="verify" d="M1920,33708 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1920" y="33812" width="320" height="60" rx="3"/>
+<text class="ster" x="1928" y="33827">«testCase»</text>
+<text class="tctext" x="1928" y="33844">test_pick_values.py::test_model_values</text>
+<path class="verify" d="M1920,33842 H610" marker-end="url(#openv)"/>
+<rect class="tc" x="1920" y="33946" width="320" height="60" rx="3"/>
+<text class="ster" x="1928" y="33961">«testCase»</text>
+<text class="tctext" x="1928" y="33978">test_pick_values.py::test_rookie_order_sources</text>
+<path class="verify" d="M1920,33976 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1920" y="34080" width="320" height="60" rx="3"/>
+<text class="ster" x="1928" y="34095">«testCase»</text>
+<text class="tctext" x="1928" y="34112">test_pick_values.py::test_dlf_rookie_order</text>
+<path class="verify" d="M1920,34110 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1920" y="34214" width="320" height="60" rx="3"/>
+<text class="ster" x="1928" y="34229">«testCase»</text>
+<text class="tctext" x="1928" y="34246">test_pick_values.py::test_third_party_cache_no</text>
+<text class="tctext" x="1928" y="34260">t_committed</text>
+<path class="verify" d="M1920,34244 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1920" y="34348" width="320" height="60" rx="3"/>
+<text class="ster" x="1928" y="34363">«testCase»</text>
+<text class="tctext" x="1928" y="34380">test_pick_values.py::test_rookie_order_record</text>
+<path class="verify" d="M1920,34378 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1920" y="34482" width="320" height="60" rx="3"/>
+<text class="ster" x="1928" y="34497">«testCase»</text>
+<text class="tctext" x="1928" y="34514">test_pick_values.py::test_history_war_matches_</text>
+<text class="tctext" x="1928" y="34528">stored_war</text>
+<path class="verify" d="M1920,34512 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1920" y="34616" width="320" height="60" rx="3"/>
+<text class="ster" x="1928" y="34631">«testCase»</text>
+<text class="tctext" x="1928" y="34648">test_pick_values.py::test_history_records_apar</text>
+<text class="tctext" x="1928" y="34662">t</text>
+<path class="verify" d="M1920,34646 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1920" y="34750" width="320" height="60" rx="3"/>
+<text class="ster" x="1928" y="34765">«testCase»</text>
+<text class="tctext" x="1928" y="34782">test_pick_values.py::test_eight_season_value</text>
+<path class="verify" d="M1920,34780 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1920" y="34884" width="320" height="60" rx="3"/>
+<text class="ster" x="1928" y="34899">«testCase»</text>
+<text class="tctext" x="1928" y="34916">test_pick_values.py::test_pick_groups</text>
+<path class="verify" d="M1920,34914 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1920" y="35018" width="320" height="60" rx="3"/>
+<text class="ster" x="1928" y="35033">«testCase»</text>
+<text class="tctext" x="1928" y="35050">test_pick_values.py::test_values_never_rise</text>
+<path class="verify" d="M1920,35048 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1920" y="35152" width="320" height="60" rx="3"/>
+<text class="ster" x="1928" y="35167">«testCase»</text>
+<text class="tctext" x="1928" y="35184">test_pick_values.py::test_unused_pick_value</text>
+<path class="verify" d="M1920,35182 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1920" y="35286" width="320" height="60" rx="3"/>
+<text class="ster" x="1928" y="35301">«testCase»</text>
+<text class="tctext" x="1928" y="35318">test_pick_values.py::test_next_draft_from_fore</text>
+<text class="tctext" x="1928" y="35332">cast</text>
+<path class="verify" d="M1920,35316 H1230" marker-end="url(#openv)"/>
+<rect class="tc" x="1920" y="35420" width="320" height="60" rx="3"/>
+<text class="ster" x="1928" y="35435">«testCase»</text>
+<text class="tctext" x="1928" y="35452">test_pick_values.py::test_model_record_not_rew</text>
+<text class="tctext" x="1928" y="35466">ritten;</text>
+<path class="verify" d="M1920,35450 H920" marker-end="url(#openv)"/>
+<rect class="tc" x="1920" y="35554" width="320" height="60" rx="3"/>
+<text class="ster" x="1928" y="35569">«testCase»</text>
+<text class="tctext" x="1928" y="35586">test_pick_values.py::test_export_writes_pick_v</text>
+<text class="tctext" x="1928" y="35600">alues_file</text>
+<path class="verify" d="M1920,35584 H920" marker-end="url(#openv)"/>
 <rect class="need" x="40" y="150" width="260" height="118" rx="3"/>
 <rect class="needhdr" x="40.7" y="150.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="170.0" y="163" text-anchor="middle">«need»</text>
@@ -3598,381 +3674,555 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="33728">eligibility through the latest week played and</text>
 <text class="rtext" x="978" y="33742">mark the list as not final.</text>
 <text class="spec" x="978" y="33761">league-draft</text>
-<text class="col" x="40" y="33818">OTHER BRANCHES · «trace» (extra parents)</text>
-<rect class="ext" x="350" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="350.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="480.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="480.0" y="33862" text-anchor="middle"><tspan class="rid">1.3</tspan><tspan class="rname" dx="6">Forecast table</tspan></text>
-<text class="rtext" x="358" y="33884">The Forecasts sub-tab SHALL show a table with</text>
-<text class="rtext" x="358" y="33898">one row per team and these columns, in order:</text>
-<text class="rtext" x="358" y="33912">ELO, 1-week ELO change, Manager, projected</text>
-<text class="rtext" x="358" y="33926">final record, the league&#x27;s bottom column, M…</text>
-<text class="spec" x="358" y="33945">league-odds-site</text>
-<path class="trace" d="M500.0,402 V410 H480.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="660" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="660.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="790.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="790.0" y="33862" text-anchor="middle"><tspan class="rid">1.4.3</tspan><tspan class="rname" dx="6">Team colours</tspan></text>
-<text class="rtext" x="668" y="33884">Each team SHALL keep one distinct line colour</text>
-<text class="rtext" x="668" y="33898">across weeks, metrics, sorts and highlighting,</text>
-<text class="rtext" x="668" y="33912">shown as a swatch on its table row.</text>
-<text class="spec" x="668" y="33945">league-odds-site</text>
-<path class="trace" d="M810.0,1608 V1621 H790.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="970" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="970.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="1100.0" y="33847" text-anchor="middle">«need»</text>
-<text x="1100.0" y="33862" text-anchor="middle"><tspan class="rid">9</tspan><tspan class="rname" dx="6">Usable by Every Manager</tspan></text>
-<text class="rtext" x="978" y="33884">The site SHALL be usable by every Manager: on</text>
-<text class="rtext" x="978" y="33898">the supported browsers and phone widths, and</text>
-<text class="rtext" x="978" y="33912">to WCAG 2.2 AA.</text>
-<text class="spec" x="978" y="33945">needs</text>
-<path class="trace" d="M1120.0,1742 V1760 H1100.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="1280" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="1280.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="1410.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="1410.0" y="33862" text-anchor="middle"><tspan class="rid">1.4.4</tspan><tspan class="rname" dx="6">Highlight a team</tspan></text>
-<text class="rtext" x="1288" y="33884">Picking a team in the chart or the table SHALL</text>
-<text class="rtext" x="1288" y="33898">keep its line at full strength and dim every</text>
-<text class="rtext" x="1288" y="33912">other line.</text>
-<text class="spec" x="1288" y="33945">league-odds-site</text>
-<path class="trace" d="M810.0,1876 V1884 H1410.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="1590" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="1590.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="1720.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="1720.0" y="33862" text-anchor="middle"><tspan class="rid">9.1.1</tspan><tspan class="rname" dx="6">Sub-tabs</tspan></text>
-<text class="rtext" x="1598" y="33884">Each league page SHALL have six sub-tabs, in</text>
-<text class="rtext" x="1598" y="33898">this order: Forecasts, Games, Positions,</text>
-<text class="rtext" x="1598" y="33912">Managers, Player WAR and League.</text>
-<text class="spec" x="1598" y="33945">league-odds-site</text>
-<path class="trace" d="M500.0,2680 V2693 H1720.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="1900" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="1900.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="2030.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="2030.0" y="33862" text-anchor="middle"><tspan class="rid">9.1.1.1</tspan><tspan class="rname" dx="6">Sub-tab in the URL</tspan></text>
-<text class="rtext" x="1908" y="33884">The page URL SHALL name the league and the</text>
-<text class="rtext" x="1908" y="33898">selected sub-tab, so that opening a link shows</text>
-<text class="rtext" x="1908" y="33912">that league and sub-tab.</text>
-<text class="spec" x="1908" y="33945">league-odds-site</text>
-<path class="trace" d="M1120.0,2948 V2966 H2030.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="2210" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="2210.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="2340.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="2340.0" y="33862" text-anchor="middle"><tspan class="rid">9.1.1.2</tspan><tspan class="rname" dx="6">Sub-tab kept across leagues</tspan></text>
-<text class="rtext" x="2218" y="33884">Switching league SHALL keep the selected sub-</text>
-<text class="rtext" x="2218" y="33898">tab.</text>
-<text class="spec" x="2218" y="33945">league-odds-site</text>
-<path class="trace" d="M1120.0,3082 V3090 H2340.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M810.0,3216 V3229 H1100.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M1120.0,3484 V3502 H1100.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M1430.0,4154 V4162 H1100.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="2520" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="2520.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="2650.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="2650.0" y="33862" text-anchor="middle"><tspan class="rid">9.2</tspan><tspan class="rname" dx="6">Fits a phone</tspan></text>
-<text class="rtext" x="2528" y="33884">Every league page SHALL fit each tested phone</text>
-<text class="rtext" x="2528" y="33898">width, down to 360 px, without the page</text>
-<text class="rtext" x="2528" y="33912">scrolling sideways.</text>
-<text class="spec" x="2528" y="33945">league-odds-site</text>
-<path class="trace" d="M1120.0,4958 V4971 H2650.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M1120.0,5360 V5378 H2650.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M810.0,5494 V5502 H2650.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="2830" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="2830.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="2960.0" y="33847" text-anchor="middle">«need»</text>
-<text x="2960.0" y="33862" text-anchor="middle"><tspan class="rid">3</tspan><tspan class="rname" dx="6">Player Value</tspan></text>
-<text class="rtext" x="2838" y="33884">The site SHALL show how much each Player is</text>
-<text class="rtext" x="2838" y="33898">worth to a league, by position and season,</text>
-<text class="rtext" x="2838" y="33912">measured against what a free agent would</text>
-<text class="rtext" x="2838" y="33926">provide.</text>
-<text class="spec" x="2838" y="33945">needs</text>
-<path class="trace" d="M1120.0,5762 V5775 H2960.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="3140" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="3140.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="3270.0" y="33847" text-anchor="middle">«need»</text>
-<text x="3270.0" y="33862" text-anchor="middle"><tspan class="rid">1</tspan><tspan class="rname" dx="6">Season Forecasts</tspan></text>
-<text class="rtext" x="3148" y="33884">The site SHALL show each team&#x27;s Forecast for</text>
-<text class="rtext" x="3148" y="33898">the rest of its league&#x27;s season and how that</text>
-<text class="rtext" x="3148" y="33912">Forecast changed week by week.</text>
-<text class="spec" x="3148" y="33945">needs</text>
-<path class="trace" d="M1430.0,7236 V7254 H3270.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M1120.0,7638 V7646 H2650.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M1120.0,9112 V9125 H2650.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M1120.0,9380 V9398 H2650.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M810.0,9514 V9522 H1100.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="3450" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="3450.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="3580.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="3580.0" y="33862" text-anchor="middle"><tspan class="rid">3.3</tspan><tspan class="rname" dx="6">Wins above replacement</tspan></text>
-<text class="rtext" x="3458" y="33884">A Player&#x27;s WAR for a league-season SHALL be</text>
-<text class="rtext" x="3458" y="33898">his expected wins over the regular-season</text>
-<text class="rtext" x="3458" y="33912">weeks he was active, minus the expected wins</text>
-<text class="rtext" x="3458" y="33926">of a Player scoring the position&#x27;s replacem…</text>
-<text class="spec" x="3458" y="33945">player-war</text>
-<path class="trace" d="M810.0,11390 V11403 H3580.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="3760" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="3760.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="3890.0" y="33847" text-anchor="middle">«need»</text>
-<text x="3890.0" y="33862" text-anchor="middle"><tspan class="rid">6</tspan><tspan class="rname" dx="6">Durable Record</tspan></text>
-<text class="rtext" x="3768" y="33884">The project SHALL keep a complete, lasting</text>
-<text class="rtext" x="3768" y="33898">copy of each league&#x27;s history and of the</text>
-<text class="rtext" x="3768" y="33912">Player data the Forecasts use, so every past</text>
-<text class="rtext" x="3768" y="33926">figure can be reproduced without Sleeper or…</text>
-<text class="spec" x="3768" y="33945">needs</text>
-<path class="trace" d="M810.0,15544 V15562 H3890.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="4070" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="4070.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="4200.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="4200.0" y="33862" text-anchor="middle"><tspan class="rid">1.2</tspan><tspan class="rname" dx="6">Forecast history</tspan></text>
-<text class="rtext" x="4078" y="33884">Each as-of Forecast SHALL be stored by league,</text>
-<text class="rtext" x="4078" y="33898">season and as-of week, for current and</text>
-<text class="rtext" x="4078" y="33912">replayed seasons alike, keeping every other</text>
-<text class="rtext" x="4078" y="33926">week&#x27;s and season&#x27;s Forecast.</text>
-<text class="spec" x="4078" y="33945">playoff-odds-simulation</text>
-<path class="trace" d="M810.0,16482 V16490 H4200.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M810.0,17152 V17165 H3580.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="4380" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="4380.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="4510.0" y="33847" text-anchor="middle">«need»</text>
-<text x="4510.0" y="33862" text-anchor="middle"><tspan class="rid">10</tspan><tspan class="rname" dx="6">Maintainable Project</tspan></text>
-<text class="rtext" x="4388" y="33884">The project SHALL stay understandable and safe</text>
-<text class="rtext" x="4388" y="33898">to change: its standards, text, calculations,</text>
-<text class="rtext" x="4388" y="33912">features and requirements documented and</text>
-<text class="rtext" x="4388" y="33926">checked automatically.</text>
-<text class="spec" x="4388" y="33945">needs</text>
-<path class="trace" d="M810.0,18224 V18242 H4510.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M810.0,18760 V18768 H3890.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="4690" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="4690.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="4820.0" y="33847" text-anchor="middle">«need»</text>
-<text x="4820.0" y="33862" text-anchor="middle"><tspan class="rid">5</tspan><tspan class="rname" dx="6">Current Data</tspan></text>
-<text class="rtext" x="4698" y="33884">During the NFL season, the site SHALL show</text>
-<text class="rtext" x="4698" y="33898">Sleeper&#x27;s league data no more than 2 minutes</text>
-<text class="rtext" x="4698" y="33912">old while games are in progress and no more</text>
-<text class="rtext" x="4698" y="33926">than 20 minutes old otherwise, age measured…</text>
-<text class="spec" x="4698" y="33945">needs</text>
-<path class="trace" d="M1120.0,18894 V18907 H4820.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M500.0,21306 V21324 H1720.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M810.0,21440 V21448 H2030.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="5000" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="5000.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="5130.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="5130.0" y="33862" text-anchor="middle"><tspan class="rid">2.8</tspan><tspan class="rname" dx="6">Lineup choices</tspan></text>
-<text class="rtext" x="5008" y="33884">For each team in a finished or live game, the</text>
-<text class="rtext" x="5008" y="33898">system SHALL compute lineup choices to 0.1</text>
-<text class="rtext" x="5008" y="33912">point: its starters&#x27; points minus those of the</text>
-<text class="rtext" x="5008" y="33926">best legal lineup of its rostered Players a…</text>
-<text class="spec" x="5008" y="33945">game-predictions</text>
-<path class="trace" d="M1740.0,22780 V22793 H5130.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="5310" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="5310.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="5440.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="5440.0" y="33862" text-anchor="middle"><tspan class="rid">3.6</tspan><tspan class="rname" dx="6">Player league records</tspan></text>
-<text class="rtext" x="5318" y="33884">The export SHALL give four Player league</text>
-<text class="rtext" x="5318" y="33898">records per league (best games, best bench</text>
-<text class="rtext" x="5318" y="33912">games, career scoring and championships), each</text>
-<text class="rtext" x="5318" y="33926">available for every position and for all…</text>
-<text class="spec" x="5318" y="33945">league-records</text>
-<path class="trace" d="M1120.0,22914 V22932 H5440.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M1430.0,23048 V23056 H5440.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="5620" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="5620.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="5750.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="5750.0" y="33862" text-anchor="middle"><tspan class="rid">9.6</tspan><tspan class="rname" dx="6">Material Design 3 usability</tspan></text>
-<text class="rtext" x="5628" y="33884">Interactive controls SHALL follow Material</text>
-<text class="rtext" x="5628" y="33898">Design 3&#x27;s usability rules, touch targets of</text>
-<text class="rtext" x="5628" y="33912">at least 48 × 48 px on phones, visible focus</text>
-<text class="rtext" x="5628" y="33926">and pressed states, and a consistent type…</text>
-<text class="spec" x="5628" y="33945">project-standards</text>
-<path class="trace" d="M1120.0,23450 V23463 H5750.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M810.0,23718 V23736 H2650.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="5930" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="5930.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="6060.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="6060.0" y="33862" text-anchor="middle"><tspan class="rid">9.7</tspan><tspan class="rname" dx="6">Colour standard</tspan></text>
-<text class="rtext" x="5938" y="33884">Site colours SHALL be chosen and adjusted in</text>
-<text class="rtext" x="5938" y="33898">OKLCH, a contrast fix changing only lightness</text>
-<text class="rtext" x="5938" y="33912">and keeping hue and chroma, and a new colour</text>
-<text class="rtext" x="5938" y="33926">derived from an existing hue where one fits.</text>
-<text class="spec" x="5938" y="33945">project-standards</text>
-<path class="trace" d="M1120.0,25192 V25200 H6060.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="6240" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="6240.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="6370.0" y="33847" text-anchor="middle">«need»</text>
-<text x="6370.0" y="33862" text-anchor="middle"><tspan class="rid">8</tspan><tspan class="rname" dx="6">Open Methods</tspan></text>
-<text class="rtext" x="6248" y="33884">The project SHALL publish how every figure on</text>
-<text class="rtext" x="6248" y="33898">the site is calculated: its formula, inputs,</text>
-<text class="rtext" x="6248" y="33912">assumptions and decisions.</text>
-<text class="spec" x="6248" y="33945">needs</text>
-<path class="trace" d="M1120.0,25460 V25473 H6370.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="6550" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="6550.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="6680.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="6680.0" y="33862" text-anchor="middle"><tspan class="rid">9.2.1</tspan><tspan class="rname" dx="6">Pinned Manager column</tspan></text>
-<text class="rtext" x="6558" y="33884">On screens narrower than 600 px, the Forecast</text>
-<text class="rtext" x="6558" y="33898">table SHALL scroll sideways inside its own</text>
-<text class="rtext" x="6558" y="33912">container with the Manager column pinned at</text>
-<text class="rtext" x="6558" y="33926">its left edge.</text>
-<text class="spec" x="6558" y="33945">league-odds-site</text>
-<path class="trace" d="M1120.0,25594 V25612 H6680.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M1430.0,26800 V26808 H6680.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M1430.0,27604 V27617 H6680.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M1120.0,27738 V27756 H6060.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M1430.0,27872 V27880 H6060.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M1430.0,28408 V28421 H6680.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="6860" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="6860.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="6990.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="6990.0" y="33862" text-anchor="middle"><tspan class="rid">1.5</tspan><tspan class="rname" dx="6">Preseason Forecast</tspan></text>
-<text class="rtext" x="6868" y="33884">For each league-season with a complete draft,</text>
-<text class="rtext" x="6868" y="33898">the system SHALL make one preseason Forecast</text>
-<text class="rtext" x="6868" y="33912">and keep it unchanged as a record.</text>
-<text class="spec" x="6868" y="33945">preseason-forecast</text>
-<path class="trace" d="M810.0,28542 V28560 H6990.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="7170" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="7170.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="7300.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="7300.0" y="33862" text-anchor="middle"><tspan class="rid">1.5.4</tspan><tspan class="rname" dx="6">Preseason outcomes</tspan></text>
-<text class="rtext" x="7178" y="33884">For each team, the preseason Forecast SHALL</text>
-<text class="rtext" x="7178" y="33898">give the title, playoff and last-place shares</text>
-<text class="rtext" x="7178" y="33912">to 0.001, the forecast wins and losses to 0.1</text>
-<text class="rtext" x="7178" y="33926">and the points per week to 0.1.</text>
-<text class="spec" x="7178" y="33945">preseason-forecast</text>
-<path class="trace" d="M1120.0,28944 V28952 H7300.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M1430.0,29346 V29359 H6680.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="7480" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="7480.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="7610.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="7610.0" y="33862" text-anchor="middle"><tspan class="rid">1.5.6.1</tspan><tspan class="rname" dx="6">Draft strength</tspan></text>
-<text class="rtext" x="7488" y="33884">For a redraft season, the preseason Forecast</text>
-<text class="rtext" x="7488" y="33898">export SHALL give each team&#x27;s draft strength:</text>
-<text class="rtext" x="7488" y="33912">its rank by preseason points per week, 1 for</text>
-<text class="rtext" x="7488" y="33926">the highest, equal values sharing a rank.</text>
-<text class="spec" x="7488" y="33945">preseason-forecast</text>
-<path class="trace" d="M1430.0,29480 V29498 H7610.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M1120.0,29614 V29622 H6060.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="7790" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="7790.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="7920.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="7920.0" y="33862" text-anchor="middle"><tspan class="rid">1.5.5</tspan><tspan class="rname" dx="6">Preseason grade</tspan></text>
-<text class="rtext" x="7798" y="33884">Each team SHALL be graded, in this order: A</text>
-<text class="rtext" x="7798" y="33898">for a title share of 15% or more; B for 11% or</text>
-<text class="rtext" x="7798" y="33912">more, or a playoff share of 65% or more; F for</text>
-<text class="rtext" x="7798" y="33926">a last-place share of 20% or more; C for a…</text>
-<text class="spec" x="7798" y="33945">preseason-forecast</text>
-<path class="trace" d="M1120.0,29748 V29761 H7920.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="8100" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="8100.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="8230.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="8230.0" y="33862" text-anchor="middle"><tspan class="rid">1.1.9.3</tspan><tspan class="rname" dx="6">Upcoming pairings</tspan></text>
-<text class="rtext" x="8108" y="33884">For each upcoming regular-season week, a</text>
-<text class="rtext" x="8108" y="33898">Forecast SHALL report every team&#x27;s mean</text>
-<text class="rtext" x="8108" y="33912">simulated score and, for every pair of teams,</text>
-<text class="rtext" x="8108" y="33926">the share of runs in which each outscores t…</text>
-<text class="spec" x="8108" y="33945">playoff-odds-simulation</text>
-<path class="trace" d="M810.0,30552 V30570 H8230.0 V33834" marker-end="url(#openg)"/>
-<path class="trace" d="M1120.0,30954 V30962 H8230.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="8410" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="8410.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="8540.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="8540.0" y="33862" text-anchor="middle"><tspan class="rid">6.6.5</tspan><tspan class="rname" dx="6">Past injury reports</tspan></text>
-<text class="rtext" x="8418" y="33884">For each season from 2021, the store SHALL</text>
-<text class="rtext" x="8418" y="33898">hold each fantasy Player&#x27;s weekly IR, PUP and</text>
-<text class="rtext" x="8418" y="33912">Out statuses from nflverse, keyed by Sleeper</text>
-<text class="rtext" x="8418" y="33926">Player id.</text>
-<text class="spec" x="8418" y="33945">injury-history</text>
-<path class="trace" d="M1120.0,32562 V32575 H8540.0 V33834" marker-end="url(#openg)"/>
-<rect class="ext" x="8720" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="8720.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="8850.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="8850.0" y="33862" text-anchor="middle"><tspan class="rid">2.8.2</tspan><tspan class="rname" dx="6">Lineup choices for past seaso…</tspan></text>
-<text class="rtext" x="8728" y="33884">For every finished week of a past season, the</text>
-<text class="rtext" x="8728" y="33898">system SHALL compute each team&#x27;s lineup</text>
-<text class="rtext" x="8728" y="33912">choices from the stored weekly Projections and</text>
-<text class="rtext" x="8728" y="33926">the stored matchup rosters and starters.</text>
-<text class="spec" x="8728" y="33945">game-predictions</text>
-<path class="trace" d="M8850.0,33834 V20520 H770.0 V20502" marker-end="url(#openg)"/>
-<rect class="ext" x="9030" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="9030.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="9160.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="9160.0" y="33862" text-anchor="middle"><tspan class="rid">6.6.4</tspan><tspan class="rname" dx="6">Weekly Player details saved</tspan></text>
-<text class="rtext" x="9038" y="33884">Alongside each week&#x27;s statuses, each run SHALL</text>
-<text class="rtext" x="9038" y="33898">save, for every fantasy-position Player on a</text>
-<text class="rtext" x="9038" y="33912">league roster, Sleeper&#x27;s injury body part,</text>
-<text class="rtext" x="9038" y="33926">practice participation and depth-chart orde…</text>
-<text class="spec" x="9038" y="33945">injury-history</text>
-<path class="trace" d="M9160.0,33834 V16892 H770.0 V16884" marker-end="url(#openg)"/>
-<path class="trace" d="M8540.0,33834 V32575 H1080.0 V32562" marker-end="url(#openg)"/>
-<path class="trace" d="M5440.0,33834 V19046 H460.0 V19028" marker-end="url(#openg)"/>
-<rect class="ext" x="9340" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="9340.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="9470.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="9470.0" y="33862" text-anchor="middle"><tspan class="rid">3.6.3</tspan><tspan class="rname" dx="6">Championships</tspan></text>
-<text class="rtext" x="9348" y="33884">A Player SHALL earn one championship for each</text>
-<text class="rtext" x="9348" y="33898">title game in which he was on the champion&#x27;s</text>
-<text class="rtext" x="9348" y="33912">roster, bench, IR and taxi squad included.</text>
-<text class="spec" x="9348" y="33945">league-records</text>
-<path class="trace" d="M9470.0,33834 V19438 H770.0 V19430" marker-end="url(#openg)"/>
-<path class="trace" d="M8230.0,33834 V30565 H770.0 V30552" marker-end="url(#openg)"/>
-<rect class="ext" x="9650" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="9650.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="9780.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="9780.0" y="33862" text-anchor="middle"><tspan class="rid">3.1.5.1</tspan><tspan class="rname" dx="6">Shared Manager colours</tspan></text>
-<text class="rtext" x="9658" y="33884">Dot colours SHALL be each Manager&#x27;s colours</text>
-<text class="rtext" x="9658" y="33898">from the other sub-tabs, with former Managers</text>
-<text class="rtext" x="9658" y="33912">in the greys used elsewhere.</text>
-<text class="spec" x="9658" y="33945">positional-rankings-page</text>
-<path class="trace" d="M9780.0,33834 V1760 H1080.0 V1742" marker-end="url(#openg)"/>
-<rect class="ext" x="9960" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="9960.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="10090.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="10090.0" y="33862" text-anchor="middle"><tspan class="rid">6.2.5</tspan><tspan class="rname" dx="6">Managers by user id</tspan></text>
-<text class="rtext" x="9968" y="33884">Each roster in each league-season SHALL be</text>
-<text class="rtext" x="9968" y="33898">linked to its Manager&#x27;s Sleeper user id,</text>
-<text class="rtext" x="9968" y="33912">display name and Team Name.</text>
-<text class="spec" x="9968" y="33945">sleeper-league-sync</text>
-<path class="trace" d="M10090.0,33834 V9656 H460.0 V9648" marker-end="url(#openg)"/>
-<rect class="ext" x="10270" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="10270.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="10400.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="10400.0" y="33862" text-anchor="middle"><tspan class="rid">6.2.5.1</tspan><tspan class="rname" dx="6">Vacant rosters inherit</tspan></text>
-<text class="rtext" x="10278" y="33884">Every reader of stored rosters SHALL see a</text>
-<text class="rtext" x="10278" y="33898">roster without a Manager as held by the most</text>
-<text class="rtext" x="10278" y="33912">recent earlier Manager of that slot, else the</text>
-<text class="rtext" x="10278" y="33926">first later one, with that Manager&#x27;s last…</text>
-<text class="spec" x="10278" y="33945">sleeper-league-sync</text>
-<path class="trace" d="M10400.0,33834 V9661 H460.0 V9648" marker-end="url(#openg)"/>
-<rect class="ext" x="10580" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="10580.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="10710.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="10710.0" y="33862" text-anchor="middle"><tspan class="rid">6.2.8</tspan><tspan class="rname" dx="6">Transactions stored</tspan></text>
-<text class="rtext" x="10588" y="33884">For each league-season, the sync SHALL store</text>
-<text class="rtext" x="10588" y="33898">Sleeper&#x27;s transactions, one file per week: won</text>
-<text class="rtext" x="10588" y="33912">and failed waiver claims with their bids,</text>
-<text class="rtext" x="10588" y="33926">free-agent moves, trades with Players, pick…</text>
-<text class="spec" x="10588" y="33945">sleeper-league-sync</text>
-<path class="trace" d="M10710.0,33834 V12212 H770.0 V12194" marker-end="url(#openg)"/>
-<rect class="ext" x="10890" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="10890.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="11020.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="11020.0" y="33862" text-anchor="middle"><tspan class="rid">6.2.9</tspan><tspan class="rname" dx="6">Drafts stored</tspan></text>
-<text class="rtext" x="10898" y="33884">For each league-season, the sync SHALL store</text>
-<text class="rtext" x="10898" y="33898">the draft named in that season&#x27;s league</text>
-<text class="rtext" x="10898" y="33912">settings, with its settings, every pick and</text>
-<text class="rtext" x="10898" y="33926">every traded pick.</text>
-<text class="spec" x="10898" y="33945">sleeper-league-sync</text>
-<path class="trace" d="M11020.0,33834 V31364 H460.0 V31356" marker-end="url(#openg)"/>
-<rect class="ext" x="11200" y="33834" width="260" height="118" rx="3"/>
-<rect class="exthdr" x="11200.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
-<text class="ster" x="11330.0" y="33847" text-anchor="middle">«requirement»</text>
-<text x="11330.0" y="33862" text-anchor="middle"><tspan class="rid">6.2.10</tspan><tspan class="rname" dx="6">ADP stored</tspan></text>
-<text class="rtext" x="11208" y="33884">For each season whose league drafts are all</text>
-<text class="rtext" x="11208" y="33898">complete, the sync SHALL store Sleeper&#x27;s</text>
-<text class="rtext" x="11208" y="33912">preseason half-PPR and dynasty half-PPR ADP</text>
-<text class="rtext" x="11208" y="33926">for every Player once.</text>
-<text class="spec" x="11208" y="33945">sleeper-league-sync</text>
-<path class="trace" d="M11330.0,33834 V31503 H770.0 V31490" marker-end="url(#openg)"/>
-<path class="derive" d="M40,34052 H86" marker-end="url(#open)"/><text class="lg" x="96" y="34056">«deriveReqt»: primary parent (sets the ID)</text>
-<path class="trace" d="M360,34052 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="34056">«trace»: extra parent</text>
-<path class="verify" d="M680,34052 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="34056">«verify»: test, inspection or analysis</text>
-<path class="vgap" d="M1000,34052 H1046" marker-end="url(#openr)"/><text class="lg" x="1056" y="34056">verification gap</text>
+<rect class="req" x="350" y="33784" width="260" height="118" rx="3"/>
+<rect class="hdr" x="350.7" y="33784.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="33797" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="33812" text-anchor="middle"><tspan class="rid">4.12</tspan><tspan class="rname" dx="6">Rookie pick values</tspan></text>
+<text class="rtext" x="358" y="33834">The system SHALL keep a pick value model</text>
+<text class="rtext" x="358" y="33848">giving each dynasty rookie pick group the WAR</text>
+<text class="rtext" x="358" y="33862">its Players have averaged over the 8 seasons</text>
+<text class="rtext" x="358" y="33876">from their draft.</text>
+<text class="spec" x="358" y="33895">rookie-pick-values · proposed</text>
+<rect class="req" x="660" y="33918" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="33918.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="33931" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="33946" text-anchor="middle"><tspan class="rid">4.12.1</tspan><tspan class="rname" dx="6">Rookie order sources</tspan></text>
+<text class="rtext" x="668" y="33968">A rookie class&#x27;s draft order SHALL be its DLF</text>
+<text class="rtext" x="668" y="33982">post-draft mock ADP for 2013–2021 and this</text>
+<text class="rtext" x="668" y="33996">league&#x27;s rookie draft from 2022, the 2022</text>
+<text class="rtext" x="668" y="34010">startup draft&#x27;s rookies counting in pick…</text>
+<text class="spec" x="668" y="34029">rookie-pick-values · proposed</text>
+<rect class="req" x="970" y="34052" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="34052.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="34065" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="34080" text-anchor="middle"><tspan class="rid">4.12.1.1</tspan><tspan class="rname" dx="6">DLF rookie order</tspan></text>
+<text class="rtext" x="978" y="34102">A 2013–2021 rookie&#x27;s slot SHALL be his rank</text>
+<text class="rtext" x="978" y="34116">among that class&#x27;s QB, RB, WR and TE rookies</text>
+<text class="rtext" x="978" y="34130">by his mean pick in the DLF mock drafts held</text>
+<text class="rtext" x="978" y="34144">May to August.</text>
+<text class="spec" x="978" y="34163">rookie-pick-values · proposed</text>
+<rect class="req" x="970" y="34186" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="34186.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="34199" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="34214" text-anchor="middle"><tspan class="rid">4.12.1.2</tspan><tspan class="rname" dx="6">Third-party pages kept local</tspan></text>
+<text class="rtext" x="978" y="34236">Pages from third-party sites SHALL be fetched</text>
+<text class="rtext" x="978" y="34250">only by a command run by hand into a cache</text>
+<text class="rtext" x="978" y="34264">kept out of git.</text>
+<text class="spec" x="978" y="34297">rookie-pick-values · proposed</text>
+<rect class="req" x="970" y="34320" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="34320.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="34333" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="34348" text-anchor="middle"><tspan class="rid">4.12.1.3</tspan><tspan class="rname" dx="6">Rookie order record</tspan></text>
+<text class="rtext" x="978" y="34370">The 2013–2021 rookie order SHALL be kept as a</text>
+<text class="rtext" x="978" y="34384">record listing each class&#x27;s slots with each</text>
+<text class="rtext" x="978" y="34398">rookie&#x27;s Sleeper id, rookies without one</text>
+<text class="rtext" x="978" y="34412">flagged.</text>
+<text class="spec" x="978" y="34431">rookie-pick-values · proposed</text>
+<rect class="req" x="660" y="34454" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="34454.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="34467" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="34482" text-anchor="middle"><tspan class="rid">4.12.2</tspan><tspan class="rname" dx="6">History WAR</tspan></text>
+<text class="rtext" x="668" y="34504">WAR for 2013–2021 SHALL follow the Player WAR</text>
+<text class="rtext" x="668" y="34518">method with the dynasty league&#x27;s scoring and</text>
+<text class="rtext" x="668" y="34532">lineup, regular-season weeks 1 to 14 and the</text>
+<text class="rtext" x="668" y="34546">season-long ESPN start-percentage cut.</text>
+<text class="spec" x="668" y="34565">rookie-pick-values · proposed</text>
+<rect class="req" x="970" y="34588" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="34588.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="34601" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="34616" text-anchor="middle"><tspan class="rid">4.12.2.1</tspan><tspan class="rname" dx="6">History records</tspan></text>
+<text class="rtext" x="978" y="34638">The 2013–2021 Sleeper weekly stats, slimmed to</text>
+<text class="rtext" x="978" y="34652">the fields scoring and WAR read, and the ESPN</text>
+<text class="rtext" x="978" y="34666">season start percentages SHALL be kept as</text>
+<text class="rtext" x="978" y="34680">records apart from the league seasons.</text>
+<text class="spec" x="978" y="34699">rookie-pick-values · proposed</text>
+<rect class="req" x="660" y="34722" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="34722.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="34735" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="34750" text-anchor="middle"><tspan class="rid">4.12.3</tspan><tspan class="rname" dx="6">Eight-season value</tspan></text>
+<text class="rtext" x="668" y="34772">A pick group&#x27;s value SHALL be the sum over</text>
+<text class="rtext" x="668" y="34786">seasons 1 to 8 after the draft of the mean WAR</text>
+<text class="rtext" x="668" y="34800">of the group&#x27;s picks that have reached that</text>
+<text class="rtext" x="668" y="34814">season, a season without games counting 0.</text>
+<text class="spec" x="668" y="34833">rookie-pick-values · proposed</text>
+<rect class="req" x="970" y="34856" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="34856.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="34869" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="34884" text-anchor="middle"><tspan class="rid">4.12.3.1</tspan><tspan class="rname" dx="6">Pick groups</tspan></text>
+<text class="rtext" x="978" y="34906">Each round&#x27;s picks SHALL form three groups:</text>
+<text class="rtext" x="978" y="34920">Early (picks 1 to 4), Middle (5 to 8) and Late</text>
+<text class="rtext" x="978" y="34934">(9 to 12).</text>
+<text class="spec" x="978" y="34967">rookie-pick-values · proposed</text>
+<rect class="req" x="970" y="34990" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="34990.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="35003" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="35018" text-anchor="middle"><tspan class="rid">4.12.3.2</tspan><tspan class="rname" dx="6">Values never rise</tspan></text>
+<text class="rtext" x="978" y="35040">Group values in pick order from 1st Early to</text>
+<text class="rtext" x="978" y="35054">3rd Late SHALL be non-increasing, any group</text>
+<text class="rtext" x="978" y="35068">above the one before it being averaged with</text>
+<text class="rtext" x="978" y="35082">it, with equal weights, until none is.</text>
+<text class="spec" x="978" y="35101">rookie-pick-values · proposed</text>
+<rect class="req" x="660" y="35124" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="35124.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="35137" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="35152" text-anchor="middle"><tspan class="rid">4.12.4</tspan><tspan class="rname" dx="6">Unused pick value</tspan></text>
+<text class="rtext" x="668" y="35174">A pick not yet used SHALL be worth its group&#x27;s</text>
+<text class="rtext" x="668" y="35188">value when its draft order is known, else the</text>
+<text class="rtext" x="668" y="35202">value of its round&#x27;s group from 4.12.4.1, else</text>
+<text class="rtext" x="668" y="35216">its round&#x27;s average group value.</text>
+<text class="spec" x="668" y="35235">rookie-pick-values · proposed</text>
+<rect class="req" x="970" y="35258" width="260" height="118" rx="3"/>
+<rect class="hdr" x="970.7" y="35258.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="35271" text-anchor="middle">«requirement»</text>
+<text x="1100.0" y="35286" text-anchor="middle"><tspan class="rid">4.12.4.1</tspan><tspan class="rname" dx="6">Next draft from the Forecast</tspan></text>
+<text class="rtext" x="978" y="35308">A next-draft pick before its order is known</text>
+<text class="rtext" x="978" y="35322">SHALL take the third of the round its original</text>
+<text class="rtext" x="978" y="35336">team&#x27;s place in the current Forecast&#x27;s</text>
+<text class="rtext" x="978" y="35350">projected finish gives it, worst finish first.</text>
+<text class="spec" x="978" y="35369">rookie-pick-values · proposed</text>
+<rect class="req" x="660" y="35392" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="35392.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="35405" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="35420" text-anchor="middle"><tspan class="rid">4.12.5</tspan><tspan class="rname" dx="6">Model record</tspan></text>
+<text class="rtext" x="668" y="35442">The pick value model SHALL be written from</text>
+<text class="rtext" x="668" y="35456">committed records alone by a command and kept</text>
+<text class="rtext" x="668" y="35470">as a record that cold runs only read.</text>
+<text class="spec" x="668" y="35503">rookie-pick-values · proposed</text>
+<rect class="req" x="660" y="35526" width="260" height="118" rx="3"/>
+<rect class="hdr" x="660.7" y="35526.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="35539" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="35554" text-anchor="middle"><tspan class="rid">4.12.6</tspan><tspan class="rname" dx="6">Pick values export</tspan></text>
+<text class="rtext" x="668" y="35576">The export SHALL write one pick values file</text>
+<text class="rtext" x="668" y="35590">with the group values, each group&#x27;s WAR by</text>
+<text class="rtext" x="668" y="35604">season since the draft, each slot&#x27;s mean WAR,</text>
+<text class="rtext" x="668" y="35618">the sample sizes and the sources.</text>
+<text class="spec" x="668" y="35637">rookie-pick-values · proposed</text>
+<text class="col" x="40" y="35694">OTHER BRANCHES · «trace» (extra parents)</text>
+<rect class="ext" x="350" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="350.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="480.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="480.0" y="35738" text-anchor="middle"><tspan class="rid">1.3</tspan><tspan class="rname" dx="6">Forecast table</tspan></text>
+<text class="rtext" x="358" y="35760">The Forecasts sub-tab SHALL show a table with</text>
+<text class="rtext" x="358" y="35774">one row per team and these columns, in order:</text>
+<text class="rtext" x="358" y="35788">ELO, 1-week ELO change, Manager, projected</text>
+<text class="rtext" x="358" y="35802">final record, the league&#x27;s bottom column, M…</text>
+<text class="spec" x="358" y="35821">league-odds-site</text>
+<path class="trace" d="M500.0,402 V410 H480.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="660" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="660.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="790.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="790.0" y="35738" text-anchor="middle"><tspan class="rid">1.4.3</tspan><tspan class="rname" dx="6">Team colours</tspan></text>
+<text class="rtext" x="668" y="35760">Each team SHALL keep one distinct line colour</text>
+<text class="rtext" x="668" y="35774">across weeks, metrics, sorts and highlighting,</text>
+<text class="rtext" x="668" y="35788">shown as a swatch on its table row.</text>
+<text class="spec" x="668" y="35821">league-odds-site</text>
+<path class="trace" d="M810.0,1608 V1621 H790.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="970" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="970.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1100.0" y="35723" text-anchor="middle">«need»</text>
+<text x="1100.0" y="35738" text-anchor="middle"><tspan class="rid">9</tspan><tspan class="rname" dx="6">Usable by Every Manager</tspan></text>
+<text class="rtext" x="978" y="35760">The site SHALL be usable by every Manager: on</text>
+<text class="rtext" x="978" y="35774">the supported browsers and phone widths, and</text>
+<text class="rtext" x="978" y="35788">to WCAG 2.2 AA.</text>
+<text class="spec" x="978" y="35821">needs</text>
+<path class="trace" d="M1120.0,1742 V1760 H1100.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="1280" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1280.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1410.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="1410.0" y="35738" text-anchor="middle"><tspan class="rid">1.4.4</tspan><tspan class="rname" dx="6">Highlight a team</tspan></text>
+<text class="rtext" x="1288" y="35760">Picking a team in the chart or the table SHALL</text>
+<text class="rtext" x="1288" y="35774">keep its line at full strength and dim every</text>
+<text class="rtext" x="1288" y="35788">other line.</text>
+<text class="spec" x="1288" y="35821">league-odds-site</text>
+<path class="trace" d="M810.0,1876 V1884 H1410.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="1590" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1590.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="1720.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="1720.0" y="35738" text-anchor="middle"><tspan class="rid">9.1.1</tspan><tspan class="rname" dx="6">Sub-tabs</tspan></text>
+<text class="rtext" x="1598" y="35760">Each league page SHALL have six sub-tabs, in</text>
+<text class="rtext" x="1598" y="35774">this order: Forecasts, Games, Positions,</text>
+<text class="rtext" x="1598" y="35788">Managers, Player WAR and League.</text>
+<text class="spec" x="1598" y="35821">league-odds-site</text>
+<path class="trace" d="M500.0,2680 V2693 H1720.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="1900" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="1900.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2030.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="2030.0" y="35738" text-anchor="middle"><tspan class="rid">9.1.1.1</tspan><tspan class="rname" dx="6">Sub-tab in the URL</tspan></text>
+<text class="rtext" x="1908" y="35760">The page URL SHALL name the league and the</text>
+<text class="rtext" x="1908" y="35774">selected sub-tab, so that opening a link shows</text>
+<text class="rtext" x="1908" y="35788">that league and sub-tab.</text>
+<text class="spec" x="1908" y="35821">league-odds-site</text>
+<path class="trace" d="M1120.0,2948 V2966 H2030.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="2210" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="2210.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2340.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="2340.0" y="35738" text-anchor="middle"><tspan class="rid">9.1.1.2</tspan><tspan class="rname" dx="6">Sub-tab kept across leagues</tspan></text>
+<text class="rtext" x="2218" y="35760">Switching league SHALL keep the selected sub-</text>
+<text class="rtext" x="2218" y="35774">tab.</text>
+<text class="spec" x="2218" y="35821">league-odds-site</text>
+<path class="trace" d="M1120.0,3082 V3090 H2340.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,3216 V3229 H1100.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,3484 V3502 H1100.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M1430.0,4154 V4162 H1100.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="2520" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="2520.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2650.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="2650.0" y="35738" text-anchor="middle"><tspan class="rid">9.2</tspan><tspan class="rname" dx="6">Fits a phone</tspan></text>
+<text class="rtext" x="2528" y="35760">Every league page SHALL fit each tested phone</text>
+<text class="rtext" x="2528" y="35774">width, down to 360 px, without the page</text>
+<text class="rtext" x="2528" y="35788">scrolling sideways.</text>
+<text class="spec" x="2528" y="35821">league-odds-site</text>
+<path class="trace" d="M1120.0,4958 V4971 H2650.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,5360 V5378 H2650.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,5494 V5502 H2650.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="2830" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="2830.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="2960.0" y="35723" text-anchor="middle">«need»</text>
+<text x="2960.0" y="35738" text-anchor="middle"><tspan class="rid">3</tspan><tspan class="rname" dx="6">Player Value</tspan></text>
+<text class="rtext" x="2838" y="35760">The site SHALL show how much each Player is</text>
+<text class="rtext" x="2838" y="35774">worth to a league, by position and season,</text>
+<text class="rtext" x="2838" y="35788">measured against what a free agent would</text>
+<text class="rtext" x="2838" y="35802">provide.</text>
+<text class="spec" x="2838" y="35821">needs</text>
+<path class="trace" d="M1120.0,5762 V5775 H2960.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="3140" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="3140.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="3270.0" y="35723" text-anchor="middle">«need»</text>
+<text x="3270.0" y="35738" text-anchor="middle"><tspan class="rid">1</tspan><tspan class="rname" dx="6">Season Forecasts</tspan></text>
+<text class="rtext" x="3148" y="35760">The site SHALL show each team&#x27;s Forecast for</text>
+<text class="rtext" x="3148" y="35774">the rest of its league&#x27;s season and how that</text>
+<text class="rtext" x="3148" y="35788">Forecast changed week by week.</text>
+<text class="spec" x="3148" y="35821">needs</text>
+<path class="trace" d="M1430.0,7236 V7254 H3270.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,7638 V7646 H2650.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,9112 V9125 H2650.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,9380 V9398 H2650.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,9514 V9522 H1100.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="3450" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="3450.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="3580.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="3580.0" y="35738" text-anchor="middle"><tspan class="rid">3.3</tspan><tspan class="rname" dx="6">Wins above replacement</tspan></text>
+<text class="rtext" x="3458" y="35760">A Player&#x27;s WAR for a league-season SHALL be</text>
+<text class="rtext" x="3458" y="35774">his expected wins over the regular-season</text>
+<text class="rtext" x="3458" y="35788">weeks he was active, minus the expected wins</text>
+<text class="rtext" x="3458" y="35802">of a Player scoring the position&#x27;s replacem…</text>
+<text class="spec" x="3458" y="35821">player-war</text>
+<path class="trace" d="M810.0,11390 V11403 H3580.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="3760" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="3760.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="3890.0" y="35723" text-anchor="middle">«need»</text>
+<text x="3890.0" y="35738" text-anchor="middle"><tspan class="rid">6</tspan><tspan class="rname" dx="6">Durable Record</tspan></text>
+<text class="rtext" x="3768" y="35760">The project SHALL keep a complete, lasting</text>
+<text class="rtext" x="3768" y="35774">copy of each league&#x27;s history and of the</text>
+<text class="rtext" x="3768" y="35788">Player data the Forecasts use, so every past</text>
+<text class="rtext" x="3768" y="35802">figure can be reproduced without Sleeper or…</text>
+<text class="spec" x="3768" y="35821">needs</text>
+<path class="trace" d="M810.0,15544 V15562 H3890.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="4070" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="4070.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="4200.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="4200.0" y="35738" text-anchor="middle"><tspan class="rid">1.2</tspan><tspan class="rname" dx="6">Forecast history</tspan></text>
+<text class="rtext" x="4078" y="35760">Each as-of Forecast SHALL be stored by league,</text>
+<text class="rtext" x="4078" y="35774">season and as-of week, for current and</text>
+<text class="rtext" x="4078" y="35788">replayed seasons alike, keeping every other</text>
+<text class="rtext" x="4078" y="35802">week&#x27;s and season&#x27;s Forecast.</text>
+<text class="spec" x="4078" y="35821">playoff-odds-simulation</text>
+<path class="trace" d="M810.0,16482 V16490 H4200.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,17152 V17165 H3580.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="4380" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="4380.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="4510.0" y="35723" text-anchor="middle">«need»</text>
+<text x="4510.0" y="35738" text-anchor="middle"><tspan class="rid">10</tspan><tspan class="rname" dx="6">Maintainable Project</tspan></text>
+<text class="rtext" x="4388" y="35760">The project SHALL stay understandable and safe</text>
+<text class="rtext" x="4388" y="35774">to change: its standards, text, calculations,</text>
+<text class="rtext" x="4388" y="35788">features and requirements documented and</text>
+<text class="rtext" x="4388" y="35802">checked automatically.</text>
+<text class="spec" x="4388" y="35821">needs</text>
+<path class="trace" d="M810.0,18224 V18242 H4510.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,18760 V18768 H3890.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="4690" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="4690.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="4820.0" y="35723" text-anchor="middle">«need»</text>
+<text x="4820.0" y="35738" text-anchor="middle"><tspan class="rid">5</tspan><tspan class="rname" dx="6">Current Data</tspan></text>
+<text class="rtext" x="4698" y="35760">During the NFL season, the site SHALL show</text>
+<text class="rtext" x="4698" y="35774">Sleeper&#x27;s league data no more than 2 minutes</text>
+<text class="rtext" x="4698" y="35788">old while games are in progress and no more</text>
+<text class="rtext" x="4698" y="35802">than 20 minutes old otherwise, age measured…</text>
+<text class="spec" x="4698" y="35821">needs</text>
+<path class="trace" d="M1120.0,18894 V18907 H4820.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M500.0,21306 V21324 H1720.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,21440 V21448 H2030.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="5000" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="5000.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="5130.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="5130.0" y="35738" text-anchor="middle"><tspan class="rid">2.8</tspan><tspan class="rname" dx="6">Lineup choices</tspan></text>
+<text class="rtext" x="5008" y="35760">For each team in a finished or live game, the</text>
+<text class="rtext" x="5008" y="35774">system SHALL compute lineup choices to 0.1</text>
+<text class="rtext" x="5008" y="35788">point: its starters&#x27; points minus those of the</text>
+<text class="rtext" x="5008" y="35802">best legal lineup of its rostered Players a…</text>
+<text class="spec" x="5008" y="35821">game-predictions</text>
+<path class="trace" d="M1740.0,22780 V22793 H5130.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="5310" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="5310.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="5440.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="5440.0" y="35738" text-anchor="middle"><tspan class="rid">3.6</tspan><tspan class="rname" dx="6">Player league records</tspan></text>
+<text class="rtext" x="5318" y="35760">The export SHALL give four Player league</text>
+<text class="rtext" x="5318" y="35774">records per league (best games, best bench</text>
+<text class="rtext" x="5318" y="35788">games, career scoring and championships), each</text>
+<text class="rtext" x="5318" y="35802">available for every position and for all…</text>
+<text class="spec" x="5318" y="35821">league-records</text>
+<path class="trace" d="M1120.0,22914 V22932 H5440.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M1430.0,23048 V23056 H5440.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="5620" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="5620.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="5750.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="5750.0" y="35738" text-anchor="middle"><tspan class="rid">9.6</tspan><tspan class="rname" dx="6">Material Design 3 usability</tspan></text>
+<text class="rtext" x="5628" y="35760">Interactive controls SHALL follow Material</text>
+<text class="rtext" x="5628" y="35774">Design 3&#x27;s usability rules, touch targets of</text>
+<text class="rtext" x="5628" y="35788">at least 48 × 48 px on phones, visible focus</text>
+<text class="rtext" x="5628" y="35802">and pressed states, and a consistent type…</text>
+<text class="spec" x="5628" y="35821">project-standards</text>
+<path class="trace" d="M1120.0,23450 V23463 H5750.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,23718 V23736 H2650.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="5930" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="5930.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="6060.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="6060.0" y="35738" text-anchor="middle"><tspan class="rid">9.7</tspan><tspan class="rname" dx="6">Colour standard</tspan></text>
+<text class="rtext" x="5938" y="35760">Site colours SHALL be chosen and adjusted in</text>
+<text class="rtext" x="5938" y="35774">OKLCH, a contrast fix changing only lightness</text>
+<text class="rtext" x="5938" y="35788">and keeping hue and chroma, and a new colour</text>
+<text class="rtext" x="5938" y="35802">derived from an existing hue where one fits.</text>
+<text class="spec" x="5938" y="35821">project-standards</text>
+<path class="trace" d="M1120.0,25192 V25200 H6060.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="6240" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="6240.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="6370.0" y="35723" text-anchor="middle">«need»</text>
+<text x="6370.0" y="35738" text-anchor="middle"><tspan class="rid">8</tspan><tspan class="rname" dx="6">Open Methods</tspan></text>
+<text class="rtext" x="6248" y="35760">The project SHALL publish how every figure on</text>
+<text class="rtext" x="6248" y="35774">the site is calculated: its formula, inputs,</text>
+<text class="rtext" x="6248" y="35788">assumptions and decisions.</text>
+<text class="spec" x="6248" y="35821">needs</text>
+<path class="trace" d="M1120.0,25460 V25473 H6370.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="6550" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="6550.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="6680.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="6680.0" y="35738" text-anchor="middle"><tspan class="rid">9.2.1</tspan><tspan class="rname" dx="6">Pinned Manager column</tspan></text>
+<text class="rtext" x="6558" y="35760">On screens narrower than 600 px, the Forecast</text>
+<text class="rtext" x="6558" y="35774">table SHALL scroll sideways inside its own</text>
+<text class="rtext" x="6558" y="35788">container with the Manager column pinned at</text>
+<text class="rtext" x="6558" y="35802">its left edge.</text>
+<text class="spec" x="6558" y="35821">league-odds-site</text>
+<path class="trace" d="M1120.0,25594 V25612 H6680.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M1430.0,26800 V26808 H6680.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M1430.0,27604 V27617 H6680.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,27738 V27756 H6060.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M1430.0,27872 V27880 H6060.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M1430.0,28408 V28421 H6680.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="6860" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="6860.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="6990.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="6990.0" y="35738" text-anchor="middle"><tspan class="rid">1.5</tspan><tspan class="rname" dx="6">Preseason Forecast</tspan></text>
+<text class="rtext" x="6868" y="35760">For each league-season with a complete draft,</text>
+<text class="rtext" x="6868" y="35774">the system SHALL make one preseason Forecast</text>
+<text class="rtext" x="6868" y="35788">and keep it unchanged as a record.</text>
+<text class="spec" x="6868" y="35821">preseason-forecast</text>
+<path class="trace" d="M810.0,28542 V28560 H6990.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="7170" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="7170.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="7300.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="7300.0" y="35738" text-anchor="middle"><tspan class="rid">1.5.4</tspan><tspan class="rname" dx="6">Preseason outcomes</tspan></text>
+<text class="rtext" x="7178" y="35760">For each team, the preseason Forecast SHALL</text>
+<text class="rtext" x="7178" y="35774">give the title, playoff and last-place shares</text>
+<text class="rtext" x="7178" y="35788">to 0.001, the forecast wins and losses to 0.1</text>
+<text class="rtext" x="7178" y="35802">and the points per week to 0.1.</text>
+<text class="spec" x="7178" y="35821">preseason-forecast</text>
+<path class="trace" d="M1120.0,28944 V28952 H7300.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M1430.0,29346 V29359 H6680.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="7480" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="7480.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="7610.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="7610.0" y="35738" text-anchor="middle"><tspan class="rid">1.5.6.1</tspan><tspan class="rname" dx="6">Draft strength</tspan></text>
+<text class="rtext" x="7488" y="35760">For a redraft season, the preseason Forecast</text>
+<text class="rtext" x="7488" y="35774">export SHALL give each team&#x27;s draft strength:</text>
+<text class="rtext" x="7488" y="35788">its rank by preseason points per week, 1 for</text>
+<text class="rtext" x="7488" y="35802">the highest, equal values sharing a rank.</text>
+<text class="spec" x="7488" y="35821">preseason-forecast</text>
+<path class="trace" d="M1430.0,29480 V29498 H7610.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,29614 V29622 H6060.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="7790" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="7790.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="7920.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="7920.0" y="35738" text-anchor="middle"><tspan class="rid">1.5.5</tspan><tspan class="rname" dx="6">Preseason grade</tspan></text>
+<text class="rtext" x="7798" y="35760">Each team SHALL be graded, in this order: A</text>
+<text class="rtext" x="7798" y="35774">for a title share of 15% or more; B for 11% or</text>
+<text class="rtext" x="7798" y="35788">more, or a playoff share of 65% or more; F for</text>
+<text class="rtext" x="7798" y="35802">a last-place share of 20% or more; C for a…</text>
+<text class="spec" x="7798" y="35821">preseason-forecast</text>
+<path class="trace" d="M1120.0,29748 V29761 H7920.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="8100" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="8100.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="8230.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="8230.0" y="35738" text-anchor="middle"><tspan class="rid">1.1.9.3</tspan><tspan class="rname" dx="6">Upcoming pairings</tspan></text>
+<text class="rtext" x="8108" y="35760">For each upcoming regular-season week, a</text>
+<text class="rtext" x="8108" y="35774">Forecast SHALL report every team&#x27;s mean</text>
+<text class="rtext" x="8108" y="35788">simulated score and, for every pair of teams,</text>
+<text class="rtext" x="8108" y="35802">the share of runs in which each outscores t…</text>
+<text class="spec" x="8108" y="35821">playoff-odds-simulation</text>
+<path class="trace" d="M810.0,30552 V30570 H8230.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,30954 V30962 H8230.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="8410" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="8410.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="8540.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="8540.0" y="35738" text-anchor="middle"><tspan class="rid">6.6.5</tspan><tspan class="rname" dx="6">Past injury reports</tspan></text>
+<text class="rtext" x="8418" y="35760">For each season from 2021, the store SHALL</text>
+<text class="rtext" x="8418" y="35774">hold each fantasy Player&#x27;s weekly IR, PUP and</text>
+<text class="rtext" x="8418" y="35788">Out statuses from nflverse, keyed by Sleeper</text>
+<text class="rtext" x="8418" y="35802">Player id.</text>
+<text class="spec" x="8418" y="35821">injury-history</text>
+<path class="trace" d="M1120.0,32562 V32575 H8540.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="8720" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="8720.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="8850.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="8850.0" y="35738" text-anchor="middle"><tspan class="rid">6.1</tspan><tspan class="rname" dx="6">Records committed</tspan></text>
+<text class="rtext" x="8728" y="35760">Git SHALL hold the records: league data,</text>
+<text class="rtext" x="8728" y="35774">drafts and transactions; stats for played</text>
+<text class="rtext" x="8728" y="35788">weeks, injury statuses, Player details,</text>
+<text class="rtext" x="8728" y="35802">trending, ADP and ESPN snapshots; nflverse…</text>
+<text class="spec" x="8728" y="35821">data-storage-tiers · proposed</text>
+<path class="trace" d="M1120.0,34304 V34322 H8850.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,34438 V34446 H8850.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,34572 V34585 H3580.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M1120.0,34706 V34724 H8850.0 V35710" marker-end="url(#openg)"/>
+<path class="trace" d="M810.0,35510 V35518 H8850.0 V35710" marker-end="url(#openg)"/>
+<rect class="ext" x="9030" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="9030.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="9160.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="9160.0" y="35738" text-anchor="middle"><tspan class="rid">2.8.2</tspan><tspan class="rname" dx="6">Lineup choices for past seaso…</tspan></text>
+<text class="rtext" x="9038" y="35760">For every finished week of a past season, the</text>
+<text class="rtext" x="9038" y="35774">system SHALL compute each team&#x27;s lineup</text>
+<text class="rtext" x="9038" y="35788">choices from the stored weekly Projections and</text>
+<text class="rtext" x="9038" y="35802">the stored matchup rosters and starters.</text>
+<text class="spec" x="9038" y="35821">game-predictions</text>
+<path class="trace" d="M9160.0,35710 V20515 H770.0 V20502" marker-end="url(#openg)"/>
+<rect class="ext" x="9340" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="9340.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="9470.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="9470.0" y="35738" text-anchor="middle"><tspan class="rid">6.6.4</tspan><tspan class="rname" dx="6">Weekly Player details saved</tspan></text>
+<text class="rtext" x="9348" y="35760">Alongside each week&#x27;s statuses, each run SHALL</text>
+<text class="rtext" x="9348" y="35774">save, for every fantasy-position Player on a</text>
+<text class="rtext" x="9348" y="35788">league roster, Sleeper&#x27;s injury body part,</text>
+<text class="rtext" x="9348" y="35802">practice participation and depth-chart orde…</text>
+<text class="spec" x="9348" y="35821">injury-history</text>
+<path class="trace" d="M9470.0,35710 V16902 H770.0 V16884" marker-end="url(#openg)"/>
+<path class="trace" d="M8540.0,35710 V32570 H1080.0 V32562" marker-end="url(#openg)"/>
+<path class="trace" d="M5440.0,35710 V19041 H460.0 V19028" marker-end="url(#openg)"/>
+<rect class="ext" x="9650" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="9650.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="9780.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="9780.0" y="35738" text-anchor="middle"><tspan class="rid">3.6.3</tspan><tspan class="rname" dx="6">Championships</tspan></text>
+<text class="rtext" x="9658" y="35760">A Player SHALL earn one championship for each</text>
+<text class="rtext" x="9658" y="35774">title game in which he was on the champion&#x27;s</text>
+<text class="rtext" x="9658" y="35788">roster, bench, IR and taxi squad included.</text>
+<text class="spec" x="9658" y="35821">league-records</text>
+<path class="trace" d="M9780.0,35710 V19448 H770.0 V19430" marker-end="url(#openg)"/>
+<path class="trace" d="M8230.0,35710 V30560 H770.0 V30552" marker-end="url(#openg)"/>
+<rect class="ext" x="9960" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="9960.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="10090.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="10090.0" y="35738" text-anchor="middle"><tspan class="rid">3.1.5.1</tspan><tspan class="rname" dx="6">Shared Manager colours</tspan></text>
+<text class="rtext" x="9968" y="35760">Dot colours SHALL be each Manager&#x27;s colours</text>
+<text class="rtext" x="9968" y="35774">from the other sub-tabs, with former Managers</text>
+<text class="rtext" x="9968" y="35788">in the greys used elsewhere.</text>
+<text class="spec" x="9968" y="35821">positional-rankings-page</text>
+<path class="trace" d="M10090.0,35710 V1755 H1080.0 V1742" marker-end="url(#openg)"/>
+<rect class="ext" x="10270" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="10270.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="10400.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="10400.0" y="35738" text-anchor="middle"><tspan class="rid">6.2.5</tspan><tspan class="rname" dx="6">Managers by user id</tspan></text>
+<text class="rtext" x="10278" y="35760">Each roster in each league-season SHALL be</text>
+<text class="rtext" x="10278" y="35774">linked to its Manager&#x27;s Sleeper user id,</text>
+<text class="rtext" x="10278" y="35788">display name and Team Name.</text>
+<text class="spec" x="10278" y="35821">sleeper-league-sync</text>
+<path class="trace" d="M10400.0,35710 V9666 H460.0 V9648" marker-end="url(#openg)"/>
+<rect class="ext" x="10580" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="10580.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="10710.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="10710.0" y="35738" text-anchor="middle"><tspan class="rid">6.2.5.1</tspan><tspan class="rname" dx="6">Vacant rosters inherit</tspan></text>
+<text class="rtext" x="10588" y="35760">Every reader of stored rosters SHALL see a</text>
+<text class="rtext" x="10588" y="35774">roster without a Manager as held by the most</text>
+<text class="rtext" x="10588" y="35788">recent earlier Manager of that slot, else the</text>
+<text class="rtext" x="10588" y="35802">first later one, with that Manager&#x27;s last…</text>
+<text class="spec" x="10588" y="35821">sleeper-league-sync</text>
+<path class="trace" d="M10710.0,35710 V9656 H460.0 V9648" marker-end="url(#openg)"/>
+<rect class="ext" x="10890" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="10890.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="11020.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="11020.0" y="35738" text-anchor="middle"><tspan class="rid">6.2.8</tspan><tspan class="rname" dx="6">Transactions stored</tspan></text>
+<text class="rtext" x="10898" y="35760">For each league-season, the sync SHALL store</text>
+<text class="rtext" x="10898" y="35774">Sleeper&#x27;s transactions, one file per week: won</text>
+<text class="rtext" x="10898" y="35788">and failed waiver claims with their bids,</text>
+<text class="rtext" x="10898" y="35802">free-agent moves, trades with Players, pick…</text>
+<text class="spec" x="10898" y="35821">sleeper-league-sync</text>
+<path class="trace" d="M11020.0,35710 V12207 H770.0 V12194" marker-end="url(#openg)"/>
+<rect class="ext" x="11200" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="11200.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="11330.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="11330.0" y="35738" text-anchor="middle"><tspan class="rid">6.2.9</tspan><tspan class="rname" dx="6">Drafts stored</tspan></text>
+<text class="rtext" x="11208" y="35760">For each league-season, the sync SHALL store</text>
+<text class="rtext" x="11208" y="35774">the draft named in that season&#x27;s league</text>
+<text class="rtext" x="11208" y="35788">settings, with its settings, every pick and</text>
+<text class="rtext" x="11208" y="35802">every traded pick.</text>
+<text class="spec" x="11208" y="35821">sleeper-league-sync</text>
+<path class="trace" d="M11330.0,35710 V31374 H460.0 V31356" marker-end="url(#openg)"/>
+<rect class="ext" x="11510" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="11510.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="11640.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="11640.0" y="35738" text-anchor="middle"><tspan class="rid">6.2.10</tspan><tspan class="rname" dx="6">ADP stored</tspan></text>
+<text class="rtext" x="11518" y="35760">For each season whose league drafts are all</text>
+<text class="rtext" x="11518" y="35774">complete, the sync SHALL store Sleeper&#x27;s</text>
+<text class="rtext" x="11518" y="35788">preseason half-PPR and dynasty half-PPR ADP</text>
+<text class="rtext" x="11518" y="35802">for every Player once.</text>
+<text class="spec" x="11518" y="35821">sleeper-league-sync</text>
+<path class="trace" d="M11640.0,35710 V31498 H770.0 V31490" marker-end="url(#openg)"/>
+<rect class="ext" x="11820" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="11820.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="11950.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="11950.0" y="35738" text-anchor="middle"><tspan class="rid">8.3</tspan><tspan class="rname" dx="6">Pick values page</tspan></text>
+<text class="rtext" x="11828" y="35760">The site SHALL have a page titled &quot;How Pick</text>
+<text class="rtext" x="11828" y="35774">Values Work&quot;, linked from every league page.</text>
+<text class="spec" x="11828" y="35821">pick-values-page · proposed</text>
+<path class="trace" d="M11950.0,35710 V33915 H460.0 V33902" marker-end="url(#openg)"/>
+<rect class="ext" x="12130" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="12130.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="12260.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="12260.0" y="35738" text-anchor="middle"><tspan class="rid">8.3.1</tspan><tspan class="rname" dx="6">Group values table</tspan></text>
+<text class="rtext" x="12138" y="35760">The page SHALL show a table of the nine pick</text>
+<text class="rtext" x="12138" y="35774">groups with each group&#x27;s slots, measured</text>
+<text class="rtext" x="12138" y="35788">8-season WAR, 80% range of the mean, pick</text>
+<text class="rtext" x="12138" y="35802">counts and model value.</text>
+<text class="spec" x="12138" y="35821">pick-values-page · proposed</text>
+<path class="trace" d="M12260.0,35710 V35126 H1080.0 V35108" marker-end="url(#openg)"/>
+<rect class="ext" x="12440" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="12440.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="12570.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="12570.0" y="35738" text-anchor="middle"><tspan class="rid">8.3.2</tspan><tspan class="rname" dx="6">Pick value charts</tspan></text>
+<text class="rtext" x="12448" y="35760">The page SHALL chart total WAR by season since</text>
+<text class="rtext" x="12448" y="35774">the draft for each group, WAR in each season</text>
+<text class="rtext" x="12448" y="35788">by round, and mean WAR by slot, each with a</text>
+<text class="rtext" x="12448" y="35802">legend, a hover value and a table view.</text>
+<text class="spec" x="12448" y="35821">pick-values-page · proposed</text>
+<path class="trace" d="M12570.0,35710 V35652 H770.0 V35644" marker-end="url(#openg)"/>
+<rect class="ext" x="12750" y="35710" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="12750.7" y="35710.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="12880.0" y="35723" text-anchor="middle">«requirement»</text>
+<text x="12880.0" y="35738" text-anchor="middle"><tspan class="rid">8.3.3</tspan><tspan class="rname" dx="6">Method and sources</tspan></text>
+<text class="rtext" x="12758" y="35760">The page SHALL state how the values are made</text>
+<text class="rtext" x="12758" y="35774">and credit Dynasty League Football and</text>
+<text class="rtext" x="12758" y="35788">mizelle.net for the 2013–2021 rookie order.</text>
+<text class="spec" x="12758" y="35821">pick-values-page · proposed</text>
+<path class="trace" d="M12880.0,35710 V34049 H770.0 V34036" marker-end="url(#openg)"/>
+<path class="derive" d="M40,35928 H86" marker-end="url(#open)"/><text class="lg" x="96" y="35932">«deriveReqt»: primary parent (sets the ID)</text>
+<path class="trace" d="M360,35928 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="35932">«trace»: extra parent</text>
+<path class="verify" d="M680,35928 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="35932">«verify»: test, inspection or analysis</text>
+<path class="vgap" d="M1000,35928 H1046" marker-end="url(#openr)"/><text class="lg" x="1056" y="35932">verification gap</text>
 </svg>
