@@ -44,6 +44,7 @@ Sections
  23. League records
  24. Strength of schedule
  25. Draft grades
+ 26. Preseason Forecast
 
 
 ================================================================
@@ -972,3 +973,63 @@ Assumptions and decisions:
     picks as keepers but take no part in eligibility, which is shown for the latest draft only.
   - The price is a round, not a pick the Manager still owns: whether he holds that pick is his
     business at the next draft.
+
+
+================================================================
+26. PRESEASON FORECAST
+================================================================
+Code:          src/ffapp/preseason.py (the hook in src/ffapp/simulate.py)
+Data sources:  ESPN's season projections (seasons/<s>/players, the entry with statSourceId 1 and
+               statSplitTypeId 0: the preseason season stat line); Sleeper's season projections
+               (2023 only); week-1 Projections (data/projections/<s>/week_01.json); the drafts and
+               week-1 matchups for rosters; weekly stats and the NFL schedule for byes; the
+               residual pools (section 4). Each Forecast is a record in
+               data/preseason/<league>/<season>.json with every value it used, exported as
+               site/data/<league>/preseason.json (derived data).
+Depends on:    1, 4, 7, 8, 9
+Formula:
+  value of a Player (per game) = his season stat line scored with the league-season's scoring / 17,
+    and 0 in his NFL team's bye week. Lines come from ESPN; kickers and defences, and any season
+    already under way when its Forecast is made, use the week-1 Projection; 2023 uses Sleeper's season
+    projections, else the week-1 Projection. ESPN Players match Sleeper Players by normalised name
+    (lower case, punctuation and the suffixes Jr, Sr, II, III, IV, V removed) and position, NFL team
+    breaking ties; defences by team.
+  rosters: the drafted roster (redraft); the week-1 roster without taxi Players (dynasty).
+  preseason replacement level by position = mean value of the 3 best Players on no roster.
+  each simulated week, every rostered Player misses the game with probability
+    QB 0.106, RB 0.119, WR 0.114, TE 0.102, K 0.044, DEF 0 (byes always miss); slots are filled in
+    lineup order by the highest-valued available eligible Player worth at least the slot's
+    replacement level (FLEX: the lowest of its positions' levels), else replacement level; each
+    filled slot scores its value + a residual from the section 4 pools (replacement level too).
+  10,000 runs on the season's real schedule; standings, seeds and both brackets as sections 7 and 8.
+  outcomes per team: title, playoff and last-place shares (0.001); wins and losses (0.1); points per
+    week = mean regular-season points / regular weeks (0.1).
+  Wins Saved of team T = mean wins of T - mean wins of T in a run on the same seed where only T's
+    absent starters are replaced at replacement level (every other team keeps its bench) (0.01).
+  grade, in this order: A if title >= 15% (A+ >= 25%, A- < 18%); B+ if title >= 11%; B if
+    playoffs >= 65% (B- < 72%); F if last >= 20%; C if playoffs >= 35% (C+ >= 58%, C- < 42%);
+    else D (D- if last >= 13%, D+ if playoffs >= 28%).
+  draft strength (redraft): rank by points per week, 1 for the highest, equal values sharing.
+In plain English:
+  Right after the draft, every team's drafted roster is played through the real schedule ten
+  thousand times. Each Player is worth his preseason projection per game, and any Player can get
+  hurt in any week at the usual rate for his position, when the best healthy bench Player steps in.
+  The share of runs in which a team wins the title, makes the playoffs or finishes last gives its
+  grade. Wins Saved is how many wins that team's bench is worth over the season.
+Assumptions and decisions:
+  - Full-season lines carry no week-to-week matchup effect; week-1 Projections are used only where
+    no honest season line exists (kickers and defences, 2023 gaps, a season already under way, when
+    both ESPN's and Sleeper's lines are live and know about injuries since).
+  - Injury rates are the share of team games preseason starters missed while IR, PUP or Out
+    (nflverse, 2021 to 2025), pooled across seasons; DEF never miss.
+  - Replacement level comes from the same projections as the values, so the two share a scale; the
+    in-season levels (section 14) made many drafted QBs worth less than replacement.
+  - A bench Player worth less than replacement level never plays: the Manager would pick up a free
+    agent instead.
+  - Wins Saved removes one team's bench at a time; removing all benches at once made a team's
+    relative wins fall when rivals' benches were deeper.
+  - Backtest (2026-11-27): preseason points per week predict actual points per week in dynasty
+    (correlation 0.55, slope 1.02) but not in redraft (-0.13, slope -0.72), where drafted rosters
+    sit within about 2 points a week of each other. Roster drift and a per-league calibration were
+    tried; the owner kept the model unchanged, added the redraft Draft Strength rank and put a
+    redraft revision (positional and starter / bench draft rankings) in the backlog.

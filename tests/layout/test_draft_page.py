@@ -31,7 +31,7 @@ def test_draft_tab_opens(open_page):
     page, _ = open_page(f"index.html#{LEAGUE}/league/records", 1280)
     page.wait_for_function("document.querySelector('#lg-champions .lg-body').children.length > 0")
     tabs = page.eval_on_selector_all("#lg-tabs button", "bs => bs.map(b => b.textContent.trim())")
-    assert tabs == ["Records", "Strength of Schedule", "Draft"]
+    assert tabs[:3] == ["Records", "Strength of Schedule", "Draft"]
     page.click("#lg-tabs [data-lg-tab=draft]")
     page.wait_for_function("document.querySelector('#dr-board table')")
     data = draft(page)

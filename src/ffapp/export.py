@@ -357,6 +357,16 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
                 write_json(draft_path, draft)
                 written.append(draft_path)
                 draft_entry = {"file": f"{key}/draft.json"}
+        preseason_entry = None
+        if store.seasons(key):
+            from ffapp.preseason import preseason_export
+
+            preseason = preseason_export(store, config, key)
+            if preseason["seasons"]:
+                preseason_path = out_dir / key / "preseason.json"
+                write_json(preseason_path, preseason)
+                written.append(preseason_path)
+                preseason_entry = {"file": f"{key}/preseason.json"}
         index["leagues"].append(
             {
                 "key": key,
@@ -372,6 +382,7 @@ def export_site(store: Store, config: Config, out_dir: Path | str = DEFAULT_SITE
                 "records": records_entry,
                 "schedule": schedule_entry,
                 "draft": draft_entry,
+                "preseason": preseason_entry,
             }
         )
     index["refresh_url"] = config.site.refresh_url

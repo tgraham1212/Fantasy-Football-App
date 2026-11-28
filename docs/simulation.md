@@ -82,6 +82,11 @@ Each simulating run does these steps in order.
 The hot run does steps 1 to 6 for the current week only. Cold runs during games skip the simulation
 (the hot runs own the live Forecast), then simulate afresh when a slate goes final.
 
+The same simulation also makes each season's preseason Forecast (`docs/preseason.md`). There, an
+optional `scores_for_week` hook in `simulate()` supplies each week's team scores in place of the fixed
+lineups, so that injured Players can be replaced from the bench run by run. Standings, seeding and
+both brackets run exactly as above.
+
 ## 4. What It Produces
 
 | Output | Path | Tier |

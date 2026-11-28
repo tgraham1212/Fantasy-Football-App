@@ -80,6 +80,21 @@
   --draft-hit-f: #064180; --draft-hit-i: #d7eafe;  /* OKLCH .38 .12 255 / .93 .04 250 */
   --draft-bust-f: #831a1d; --draft-bust-i: #fee0dd;  /* OKLCH .40 .14 25 / .93 .04 25 */
   --war-pos: #035798; --war-neg: #a5292b;  /* OKLCH .45 .13 250 / .48 .16 25: WAR text */
+  /* Preseason grades (league-preseason): one hue per letter, lightness stepping toward A+ and D-; both modes */
+  --grade-ap-f: #012d5d; --grade-ap-i: #e3f0fe;  /* OKLCH .30 .13 255 / .95 .03 250 */
+  --grade-a-f: #064180; --grade-a-i: #e3f0fe;  /* OKLCH .38 .12 255 / .95 .03 250 */
+  --grade-am-f: #2b5c97; --grade-am-i: #eef6fe;  /* OKLCH .47 .11 255 / .97 .02 250 */
+  --grade-bp-f: #97c2f0; --grade-bp-i: #01346b;  /* OKLCH .80 .08 250 / .33 .11 255 */
+  --grade-b-f: #b7d8fb; --grade-b-i: #083c75;  /* OKLCH .87 .06 250 / .36 .11 255 */
+  --grade-bm-f: #d7eaff; --grade-bm-i: #1d487c;  /* OKLCH .93 .035 250 / .40 .10 255 */
+  --grade-cp-f: #cccac6; --grade-cp-i: #2f2e2a;  /* OKLCH .84 .006 95 / .30 .006 95 */
+  --grade-c-f: #e2e1de; --grade-c-i: #363532;  /* OKLCH .91 .005 95 / .33 .006 95 */
+  --grade-cm-f: #f2f2ef; --grade-cm-i: #494844;  /* OKLCH .96 .004 95 / .40 .006 95 */
+  --grade-dp-f: #feeadd; --grade-dp-i: #813c0b;  /* OKLCH .95 .03 55 / .44 .11 50 */
+  --grade-d-f: #fed4b9; --grade-d-i: #7b3702;  /* OKLCH .90 .06 55 / .42 .11 50 */
+  --grade-dm-f: #f7b791; --grade-dm-i: #682b01;  /* OKLCH .83 .09 52 / .37 .11 48 */
+  --grade-f-f: #831a1d; --grade-f-i: #fee4e1;  /* OKLCH .40 .14 25 / .94 .035 25 */
+  --ps-title: #2b5c97; --ps-playoffs: #4c73a5; --ps-last: #aa5830;  /* OKLCH .47 .11 255 / .55 .09 255 / .55 .12 45: share bars */
   --th-res-f: #e6eefa; --th-res-i: #0d3b75; --th-up-f: #dff2df; --th-up-i: #1c5a22; --th-down-f: #fbe1df; --th-down-i: #8a1f17;
   --th-inj-f: #fde2e2; --th-inj-i: #a32121; --th-rec-f: #fbefd2; --th-rec-i: #6e4d00; --th-lg-f: #ece8f8; --th-lg-i: #4a3a8a;
   --th-move-f: #e5f4f1; --th-move-i: #0f5348; --feat-a: #1b5aa3; --feat-b: #0d2f5c; --feat-i: #ffffff;
@@ -152,6 +167,7 @@
     --draft-hit-f: #2e64a6; --draft-hit-i: #eef6fe;  /* OKLCH .50 .12 255 / .97 .02 250 */
     --draft-bust-f: #a83634; --draft-bust-i: #fef2f1;  /* OKLCH .50 .15 25 / .97 .025 25 */
     --war-pos: #85bcf5; --war-neg: #f58b84;  /* OKLCH .78 .10 250 / .75 .13 25: WAR text */
+    --ps-title: #79a7e2; --ps-playoffs: #9bc1f1; --ps-last: #e28b63;  /* OKLCH .72 .10 255 / .80 .08 255 / .72 .12 45: share bars */
     --th-res-f: #16294a; --th-res-i: #cfe0fa; --th-up-f: #183a1b; --th-up-i: #cdeccf; --th-down-f: #4a1a17; --th-down-i: #fbd0cb;
     --th-inj-f: #4a1a1a; --th-inj-i: #ffb4b4; --th-rec-f: #3d2e08; --th-rec-i: #f3d68a; --th-lg-f: #2a2347; --th-lg-i: #d9d1fb;
     --th-move-f: #123a34; --th-move-i: #c4ece4; --feat-a: #1e4f8c; --feat-b: #0b1f3d; --feat-i: #ffffff;
@@ -224,6 +240,7 @@
   --draft-hit-f: #2e64a6; --draft-hit-i: #eef6fe;  /* OKLCH .50 .12 255 / .97 .02 250 */
   --draft-bust-f: #a83634; --draft-bust-i: #fef2f1;  /* OKLCH .50 .15 25 / .97 .025 25 */
   --war-pos: #85bcf5; --war-neg: #f58b84;  /* OKLCH .78 .10 250 / .75 .13 25: WAR text */
+  --ps-title: #79a7e2; --ps-playoffs: #9bc1f1; --ps-last: #e28b63;  /* OKLCH .72 .10 255 / .80 .08 255 / .72 .12 45: share bars */
   --th-res-f: #16294a; --th-res-i: #cfe0fa; --th-up-f: #183a1b; --th-up-i: #cdeccf; --th-down-f: #4a1a17; --th-down-i: #fbd0cb;
   --th-inj-f: #4a1a1a; --th-inj-i: #ffb4b4; --th-rec-f: #3d2e08; --th-rec-i: #f3d68a; --th-lg-f: #2a2347; --th-lg-i: #d9d1fb;
   --th-move-f: #123a34; --th-move-i: #c4ece4; --feat-a: #1e4f8c; --feat-b: #0b1f3d; --feat-i: #ffffff;
@@ -1042,7 +1059,7 @@ a.mgr-tile:hover { border-color: var(--axis); }
 #page-league, .lg-stack { display: grid; gap: 16px; min-width: 0; }
 #page-league > * { min-width: 0; }
 .lg-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
-.lg-tabs { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; }   /* as tall as the view toggles, so the row keeps its height when they wrap */
+.lg-tabs { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px; min-height: 44px; max-width: 100%; }   /* as tall as the view toggles, so the row keeps its height when they wrap */
 .lg-tabs button {
   appearance: none; border: 1px solid var(--border); background: transparent; color: var(--ink-2); font: inherit;
   font-size: 0.88rem; font-weight: 700; padding: 0 14px; min-height: 40px; border-radius: 999px; cursor: pointer;
@@ -1296,6 +1313,33 @@ table.dr-table td, table.dr-table th { white-space: nowrap; }
 .dr-list .dr-line .fitname { font-weight: 750; font-size: 0.9rem; }
 .dr-list .dr-meta { font-size: 0.74rem; color: var(--muted); overflow-wrap: anywhere; }
 .dr-list .dr-grade { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+/* League page, Preseason tab (site/preseason.js) */
+.ps-grade { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 30px; padding: 0 4px; border-radius: 7px; font-weight: 850; font-size: 0.95rem; letter-spacing: 0.02em; box-sizing: border-box; }
+.ps-grade.g-ap { background: var(--grade-ap-f); color: var(--grade-ap-i); } .ps-grade.g-a { background: var(--grade-a-f); color: var(--grade-a-i); }
+.ps-grade.g-am { background: var(--grade-am-f); color: var(--grade-am-i); } .ps-grade.g-bp { background: var(--grade-bp-f); color: var(--grade-bp-i); }
+.ps-grade.g-b { background: var(--grade-b-f); color: var(--grade-b-i); } .ps-grade.g-bm { background: var(--grade-bm-f); color: var(--grade-bm-i); }
+.ps-grade.g-cp { background: var(--grade-cp-f); color: var(--grade-cp-i); } .ps-grade.g-c { background: var(--grade-c-f); color: var(--grade-c-i); }
+.ps-grade.g-cm { background: var(--grade-cm-f); color: var(--grade-cm-i); } .ps-grade.g-dp { background: var(--grade-dp-f); color: var(--grade-dp-i); }
+.ps-grade.g-d { background: var(--grade-d-f); color: var(--grade-d-i); } .ps-grade.g-dm { background: var(--grade-dm-f); color: var(--grade-dm-i); }
+.ps-grade.g-f { background: var(--grade-f-f); color: var(--grade-f-i); }
+table.ps-table td, table.ps-table th { white-space: nowrap; }
+.ps-table .ps-gcol { text-align: center; width: 64px; }
+.ps-share { display: inline-flex; align-items: center; gap: 8px; justify-content: flex-end; }
+.ps-num { min-width: 3em; text-align: right; font-weight: 700; }
+.ps-track { display: inline-block; width: 72px; height: 8px; border-radius: 4px; background: var(--score-f); overflow: hidden; }
+.ps-fill { display: block; height: 100%; }
+.ps-fill.title { background: var(--ps-title); } .ps-fill.playoffs { background: var(--ps-playoffs); } .ps-fill.last { background: var(--ps-last); }
+.ps-saved { color: var(--war-pos); font-weight: 700; }
+.ps-tag { margin-left: 6px; padding: 1px 6px; border-radius: 4px; font-size: 0.68rem; font-weight: 750; }
+.ps-tag.champ { background: var(--rank1-f); color: var(--rank1-i); } .ps-tag.last { background: var(--pos-def-f); color: var(--pos-def-i); }
+.ps-key { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; font-size: 0.76rem; color: var(--ink-2); }
+.ps-keyitem { display: inline-flex; align-items: center; gap: 6px; }
+.ps-key .ps-grade { min-width: 30px; height: 24px; font-size: 0.8rem; }
+.ps-list li { grid-template-columns: 46px minmax(0, 1fr); gap: 10px; }
+.ps-row { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.ps-line { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-width: 0; }
+.ps-shares { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; font-size: 0.74rem; color: var(--muted); }
+.ps-shares b { color: var(--ink); }
 .dr-mgrs .dr-mgr-list { display: none; }
 table.dr-ke-matrix { width: auto; min-width: 100%; border-collapse: separate; border-spacing: 0; }
 .dr-ke-matrix th, .dr-ke-matrix td { white-space: normal; vertical-align: top; padding: 6px 4px; }
@@ -1334,6 +1378,8 @@ table.dr-ke-matrix { width: auto; min-width: 100%; border-collapse: separate; bo
   .dr-mgrs .dr-mgr-table { display: none; }
   .dr-mgrs .dr-mgr-list { display: block; }
   .dr-keepers .dr-ke-table { display: none; }
+  .ps-wide { display: none; }
+  #ps-controls .sos-season select { min-height: 48px; }
   .dr-keepers .dr-ke-list { display: block; }
   .dr-ke-matrix .dr-ke-mgr { left: -14px; }
 }

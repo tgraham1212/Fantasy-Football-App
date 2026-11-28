@@ -198,6 +198,7 @@
           <button type="button" data-lg-tab="records" aria-pressed="true">Records</button>
           <button type="button" data-lg-tab="schedule" aria-pressed="false">Strength of Schedule</button>
           <button type="button" data-lg-tab="draft" aria-pressed="false">Draft</button>
+          <button type="button" data-lg-tab="preseason" aria-pressed="false">Preseason</button>
         </div>
         <div class="lg-views" id="lg-views" role="group" aria-label="Records view">
           <button type="button" data-lg-view="managers" aria-pressed="true">Managers</button>
@@ -220,6 +221,9 @@
             <button type="button" data-dr-grade="results" aria-pressed="false">Results</button>
           </div>
           <label class="sos-season"><span data-copy="LG-66">Season</span> <select id="dr-season"></select></label>
+        </div>
+        <div class="dr-controls" id="ps-controls" hidden>
+          <label class="sos-season"><span data-copy="LG-105">Season</span> <select id="ps-season"></select></label>
         </div>
       </div>
       <p data-copy="LG-01" class="explain card" id="lg-unavailable" hidden>League records are not yet available for this league: its records file has not been exported.</p>
@@ -293,6 +297,23 @@
           <ul class="dr-list dr-ke-list"></ul>
           <p class="hint dr-note" data-copy="LG-96">A Player can be kept when the Manager drafted him and he stayed on that roster through the championship week. His price is a pick one round higher than he was drafted in, so first-round picks can't be kept. A Player kept this season costs a first-round pick to keep again, and can't be kept a third season running.</p>
           <p class="hint dr-note" id="dr-keepers-provisional" data-copy="LG-97" hidden>The season is still being played: this list is eligible so far, and a drop or trade before the championship week ends a Player's eligibility.</p>
+        </section>
+      </div>
+      <div id="ps-page" class="lg-stack" hidden>
+        <p data-copy="LG-106" class="explain card" id="ps-unavailable" hidden>The Preseason tab is not yet available for this league: its preseason file has not been exported.</p>
+        <section class="card lg-section" id="ps-card" aria-labelledby="ps-h">
+          <h2 id="ps-h"></h2>
+          <div class="table-wrap ps-wide" tabindex="0" role="region" aria-labelledby="ps-h"></div>
+          <ul class="dr-list ps-list"></ul>
+          <div class="ps-key" id="ps-key">
+            <span class="ps-keyitem"><span class="ps-grade g-a" aria-hidden="true">A</span><span data-copy="LG-107">Title Contender: title 15%+</span></span>
+            <span class="ps-keyitem"><span class="ps-grade g-b" aria-hidden="true">B</span><span data-copy="LG-108">Playoff Team: playoffs 65%+ or title 11%+</span></span>
+            <span class="ps-keyitem"><span class="ps-grade g-c" aria-hidden="true">C</span><span data-copy="LG-109">Playoff Bubble: playoffs 35–65%</span></span>
+            <span class="ps-keyitem"><span class="ps-grade g-d" aria-hidden="true">D</span><span data-copy="LG-110">Unlikely Playoffs: playoffs under 35%</span></span>
+            <span class="ps-keyitem"><span class="ps-grade g-f" aria-hidden="true">F</span><span data-copy="LG-111">Last Place: last place 20%+</span></span>
+          </div>
+          <p class="hint dr-note" data-copy="LG-112">The preseason Forecast is made once, when the draft is complete: each team's drafted roster plays the real schedule 10,000 times, every Player valued from his preseason projected stat line under this league's scoring. In every simulated week any Player can miss the game at his position's injury rate (about 1 in 10), and the best healthy bench Player fills in, so depth counts. Wins Saved: the Forecast wins a team's bench saves over the season. A + or − marks a team near the top or bottom of its band.</p>
+          <p class="hint dr-note" id="ps-redraft-note" data-copy="LG-113" hidden>Draft Strength ranks each team by its preseason points per week, its draft on paper. In this league, preseason strength has not lined up with how seasons went so far: in-season injuries, moves and luck have mattered more than the draft.</p>
         </section>
       </div>
     </div>

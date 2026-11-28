@@ -53,6 +53,10 @@ Style is APA, with title case for titles and headings.
 - **Unlucky pick:** a pick whose Player missed more than half of his NFL team's games in the grading window while listed Out, on injured reserve or on PUP; graded Unlucky in place of Bust (a hit stays a hit).
 - **Keeper eligible:** a redraft Player his Manager drafted and kept on the roster through the championship week, who can be kept the next season for a pick one round higher (a first if he was kept this season; never a third season running).
 - **KE:** the gold badge on the Managers page's Roster card that marks a keeper-eligible Player.
+- **Preseason Forecast:** the season Forecast made once when the draft is complete, from the drafted rosters and preseason projections, with injury absences filled from the bench.
+- **Preseason grade:** a team's A+ to F grade from its preseason Forecast title, playoff and last-place shares (`Calculations.txt`, section 26).
+- **Wins Saved:** the Forecast wins a team's bench saves over the season, against replacement-level fill-ins for its injured starters.
+- **Draft strength:** a redraft team's rank by preseason points per week, its draft on paper.
 - **Card state:** which of eleven states a Games page card is in (F1, F2, C, P2, L1, L2, P1, O1, O2, O3, PW), set by whose games have started or finished; defined in the `game-card-states` spec and `docs/games-page-states.md`.
 - **Refresh mode:** how often data is refreshed: offseason, quiet (in season, no games in progress) or live (games in progress).
 - **Hot run:** the quick refresh of the current week (`hot.yml`), which writes the live bundle.

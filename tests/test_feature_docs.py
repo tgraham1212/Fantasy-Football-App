@@ -48,6 +48,10 @@ FEATURE_DOCS = {
         "diagram": "tools/strength_of_schedule_diagram.py",
         "code": ("src/ffapp/schedule_strength.py", "site/schedule.js"),
     },
+    "preseason.md": {
+        "diagram": "tools/preseason_diagram.py",
+        "code": ("src/ffapp/preseason.py", "site/preseason.js"),
+    },
     "draft.md": {
         "diagram": "tools/draft_diagram.py",
         "code": ("src/ffapp/draft.py", "src/ffapp/injury_reports.py", "site/draft.js"),

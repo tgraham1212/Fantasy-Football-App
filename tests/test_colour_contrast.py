@@ -32,6 +32,9 @@ SOS_PAIRS = tuple((f"sos-r{k}-i", f"sos-r{k}-f") for k in range(1, 5)) + tuple((
 # Draft tab (4.9.7.6, 4.9.7.6.1): badge text on its fill, the neutral Unlucky/Keeper badge, WAR text
 DRAFT_BADGES = tuple((f"draft-{k}-i", f"draft-{k}-f") for k in ("steal", "reach", "hit", "bust")) + (("ink-2", "score-f"),)
 DRAFT_WAR = tuple((fg, bg) for fg in ("war-pos", "war-neg") for bg in ("page", "surface"))
+# Preseason grades (4.9.8.4): each grade's text on its fill
+GRADES = ("ap", "a", "am", "bp", "b", "bm", "cp", "c", "cm", "dp", "d", "dm", "f")
+PRESEASON_GRADES = tuple((f"grade-{g}-i", f"grade-{g}-f") for g in GRADES)
 TEXT_ON_FILLS = (  # (text, fill): text drawn on a coloured background
     ("accent-ink", "accent-fill"),  # selected league button
     ("win-ink", "win-hi"), ("win-ink", "win-mid"), ("win-ink", "win-lo"),  # Games win-probability bar
@@ -48,8 +51,8 @@ TEXT_ON_FILLS = (  # (text, fill): text drawn on a coloured background
     ("th-res-i", "th-res-f"), ("th-up-i", "th-up-f"), ("th-down-i", "th-down-f"), ("th-inj-i", "th-inj-f"),
     ("th-rec-i", "th-rec-f"), ("th-lg-i", "th-lg-f"), ("th-move-i", "th-move-f"),
     ("feat-i", "feat-a"), ("feat-i", "feat-b"),  # the feature picture's gradient, both ends
-) + SOS_PAIRS + DRAFT_BADGES + DRAFT_WAR
-NON_TEXT = ("accent", "form-w", "form-l", "form-d", "rod")  # focus ring, form bars, banner rod; team lines added below
+) + SOS_PAIRS + DRAFT_BADGES + DRAFT_WAR + PRESEASON_GRADES
+NON_TEXT = ("accent", "form-w", "form-l", "form-d", "rod", "ps-title", "ps-playoffs", "ps-last")  # focus ring, form bars, banner rod; team lines added below
 EXEMPT = {
     "grid": "decorative gridlines; the data never depends on them",
     "axis": "decorative axis rules and chip outlines next to text",
@@ -170,3 +173,13 @@ def test_draft_war_text():
         for fg, bg in DRAFT_WAR:
             assert contrast(blocks[mode][fg], blocks[mode][bg]) >= TEXT_RATIO, f"{mode}: --{fg} on --{bg}"
     assert not [p for p in problems(css) if "war-" in p]
+
+
+def test_preseason_grade_badges():
+    """4.9.8.4: every grade badge's text meets 4.5:1 on its fill, in light and dark modes."""
+    css = CSS.read_text(encoding="utf-8")
+    blocks = token_blocks(css)
+    for mode in ("light", "dark", "dark-toggle"):
+        for fg, bg in PRESEASON_GRADES:
+            assert contrast(blocks[mode][fg], blocks[mode][bg]) >= TEXT_RATIO, f"{mode}: --{fg} on --{bg}"
+    assert not [p for p in problems(css) if "grade-" in p or "ps-" in p]

@@ -123,6 +123,9 @@ The cold run never reads the live bundle. It takes the truth from Sleeper and ES
   Player's IR, PUP and Out weeks by Sleeper id, for the draft grades' Unlucky picks. Completed seasons
   are fetched once, the current season at most once every 20 hours (the fetch times are rebuilt data
   in `data/refresh/`).
+- Each league-season's preseason Forecast (`data/preseason/<league>/<season>.json`): made once by the
+  cold run's `preseason` step after the draft is complete, with every Player value it used, and never
+  rewritten.
 - Stats for played weeks (`data/stats/`), injury statuses (`data/injuries/`), player details
   (`data/players/`), trending (`data/trending/`), ESPN snapshots and the crosswalk (`data/espn/`).
   Trending and the ESPN snapshots are running tallies: every cold run fetches them and the site shows

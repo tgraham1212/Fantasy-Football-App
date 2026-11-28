@@ -75,6 +75,7 @@ def test_exported_schema(seeded_store, dynasty_config, tmp_path):
         "records": {"file": "dynasty/records.json"},
         "schedule": {"file": "dynasty/schedule.json"},
         "draft": {"file": "dynasty/draft.json"},
+        "preseason": None,
     }
 
     payload = json.loads((out / "dynasty.json").read_text(encoding="utf-8"))

@@ -9,7 +9,7 @@ document follows the data from where it comes from to where it shows. The formul
 - **Code:** `src/ffapp/league_records.py` (the league records and the export), `src/ffapp/views.py`
   (`season_lineup_choices`, lineup choices for past seasons), `site/league.js` (the page, and the League
   sub-tab's tabs and URL, which also open the Strength of Schedule tab in `docs/strength-of-schedule.md`
-  and the Draft tab in `docs/draft.md`)
+  the Draft tab in `docs/draft.md` and the Preseason tab in `docs/preseason.md`)
   and `site/people.js` (logos, avatars, Player photos and names, shared with the Managers page).
 - **Runs:** `python -m ffapp build`, and the export at the end of every cold run, write
   `site/data/<league>/records.json`. See `docs/refresh-modes.md` for when cold runs happen.

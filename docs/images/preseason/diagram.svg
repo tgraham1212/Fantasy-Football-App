@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1604 634.0" width="1604" height="634.0" role="img" aria-labelledby="pre-t" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+<style>
+.grp { stroke-width: 1.5; } .g1 { fill: #efeeeb; stroke: #8c8a84; } .g2 { fill: #eef1f6; stroke: #93a0b8; }
+.g3 { fill: #fbf2e1; stroke: #c08a2c; } .g4 { fill: #e8f0fb; stroke: #4f7cc0; } .g5 { fill: #e8f5ea; stroke: #4f9a5c; }
+.gl { font-weight: 700; font-size: 13px; letter-spacing: 0.06em; fill: #4c5058; }
+.gs { font-size: 11.5px; fill: #4c5058; }
+.st { fill: #ffffff; stroke: #2b2f36; stroke-width: 1.4; } .st.rebuilt { stroke-dasharray: 5 3; }
+.stt { font-weight: 700; font-size: 12.5px; fill: #14161a; } .sd { font-size: 11.5px; fill: #4c5058; }
+.ref { font-size: 10.5px; font-weight: 700; fill: #b4530b; font-family: ui-monospace, Consolas, monospace; }
+.path { font-size: 11px; fill: #2b2f36; font-family: ui-monospace, Consolas, monospace; }
+.e { fill: none; stroke: #2b2f36; stroke-width: 1.5; } .ah { fill: #2b2f36; }
+.lg { font-size: 12.5px; fill: #2b2f36; } .lgn { font-weight: 800; }
+</style>
+<rect width="1604" height="634.0" fill="#ffffff"/>
+<title id="pre-t">How the preseason Forecast is made: its sources, where the data is stored, the calculations in order, the preseason file and the page that shows it</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="ah"/></marker></defs>
+<text x="24" y="34" class="gl" text-anchor="start">HOW THE PRESEASON FORECAST IS MADE</text>
+<rect x="24" y="64" width="250" height="442.0" rx="10" class="grp g1"/>
+<text x="38" y="88" class="gl" text-anchor="start">1. WHERE IT COMES FROM</text>
+<text x="38" y="106" class="gs" text-anchor="start">Fetched by each cold run</text>
+<rect x="36" y="122" width="226" height="61.0" rx="8" class="st"/>
+<text x="48" y="142" class="stt" text-anchor="start">ESPN: Season Projections</text>
+<text x="48" y="159.5" class="sd" text-anchor="start">Each Player&#x27;s preseason season stat</text>
+<text x="48" y="175.0" class="sd" text-anchor="start">line (finished seasons keep it)</text>
+<rect x="36" y="195.0" width="226" height="76.5" rx="8" class="st"/>
+<text x="48" y="215.0" class="stt" text-anchor="start">Sleeper: Projections</text>
+<text x="252" y="215.0" class="ref" text-anchor="end">Calc 2</text>
+<text x="48" y="232.5" class="sd" text-anchor="start">Week-1 Projections (kickers, defences,</text>
+<text x="48" y="248.0" class="sd" text-anchor="start">a season under way); 2023 season</text>
+<text x="48" y="263.5" class="sd" text-anchor="start">projections</text>
+<rect x="36" y="283.5" width="226" height="61.0" rx="8" class="st"/>
+<text x="48" y="303.5" class="stt" text-anchor="start">League Data and Drafts</text>
+<text x="48" y="321.0" class="sd" text-anchor="start">Drafted rosters (redraft), week-1</text>
+<text x="48" y="336.5" class="sd" text-anchor="start">rosters (dynasty), the schedule</text>
+<rect x="308" y="64" width="270" height="442.0" rx="10" class="grp g2"/>
+<text x="322" y="88" class="gl" text-anchor="start">2. WHERE IT IS STORED</text>
+<text x="322" y="106" class="gs" text-anchor="start">Records in git; rebuilt files in the build cache</text>
+<rect x="320" y="122" width="246" height="76.5" rx="8" class="st"/>
+<text x="332" y="142" class="stt" text-anchor="start">Preseason Forecasts</text>
+<text x="556" y="142" class="ref" text-anchor="end">Calc 26</text>
+<text x="332" y="159.5" class="path" text-anchor="start">data/preseason/&lt;league&gt;/</text>
+<text x="332" y="175.0" class="sd" text-anchor="start">One record per season, made once,</text>
+<text x="332" y="190.5" class="sd" text-anchor="start">with every Player value it used</text>
+<rect x="320" y="210.5" width="246" height="45.5" rx="8" class="st"/>
+<text x="332" y="230.5" class="stt" text-anchor="start">Residual Pools</text>
+<text x="556" y="230.5" class="ref" text-anchor="end">Calc 4</text>
+<text x="332" y="248.0" class="sd" text-anchor="start">The Forecasts&#x27; score error</text>
+<rect x="612" y="64" width="290" height="442.0" rx="10" class="grp g3"/>
+<text x="626" y="88" class="gl" text-anchor="start">3. HOW IT IS CALCULATED</text>
+<text x="626" y="106" class="gs" text-anchor="start">In this order, every build</text>
+<rect x="624" y="122" width="266" height="76.5" rx="8" class="st"/>
+<text x="636" y="142" class="stt" text-anchor="start">Values and Replacement</text>
+<text x="880" y="142" class="ref" text-anchor="end">Calc 26</text>
+<text x="636" y="159.5" class="sd" text-anchor="start">Season line in league scoring / 17,</text>
+<text x="636" y="175.0" class="sd" text-anchor="start">0 on bye; replacement = 3 best</text>
+<text x="636" y="190.5" class="sd" text-anchor="start">unrostered at the position</text>
+<rect x="624" y="216.5" width="266" height="76.5" rx="8" class="st"/>
+<text x="636" y="236.5" class="stt" text-anchor="start">Absences and Bench</text>
+<text x="880" y="236.5" class="ref" text-anchor="end">Calc 26</text>
+<text x="636" y="254.0" class="sd" text-anchor="start">Any Player misses a week at his</text>
+<text x="636" y="269.5" class="sd" text-anchor="start">position&#x27;s rate (~1 in 10); the best</text>
+<text x="636" y="285.0" class="sd" text-anchor="start">healthy bench Player fills in</text>
+<path d="M757.0 199.5 V213.5" class="e" marker-end="url(#a)"/>
+<rect x="624" y="311.0" width="266" height="76.5" rx="8" class="st"/>
+<text x="636" y="331.0" class="stt" text-anchor="start">Season Simulation</text>
+<text x="880" y="331.0" class="ref" text-anchor="end">Calc 7, 8</text>
+<text x="636" y="348.5" class="sd" text-anchor="start">10,000 runs on the real schedule:</text>
+<text x="636" y="364.0" class="sd" text-anchor="start">title, playoff and last shares,</text>
+<text x="636" y="379.5" class="sd" text-anchor="start">record, points per week</text>
+<path d="M757.0 294.0 V308.0" class="e" marker-end="url(#a)"/>
+<rect x="624" y="405.5" width="266" height="76.5" rx="8" class="st"/>
+<text x="636" y="425.5" class="stt" text-anchor="start">Wins Saved and Grades</text>
+<text x="880" y="425.5" class="ref" text-anchor="end">Calc 26</text>
+<text x="636" y="443.0" class="sd" text-anchor="start">Same draws, one bench removed;</text>
+<text x="636" y="458.5" class="sd" text-anchor="start">grades A+ to F from the shares;</text>
+<text x="636" y="474.0" class="sd" text-anchor="start">redraft Draft Strength rank</text>
+<path d="M757.0 388.5 V402.5" class="e" marker-end="url(#a)"/>
+<rect x="936" y="64" width="310" height="442.0" rx="10" class="grp g4"/>
+<text x="950" y="88" class="gl" text-anchor="start">4. WHAT IT PRODUCES</text>
+<text x="950" y="106" class="gs" text-anchor="start">Derived data, deployed with the site</text>
+<rect x="948" y="122" width="286" height="76.5" rx="8" class="st rebuilt"/>
+<text x="960" y="142" class="stt" text-anchor="start">Preseason File</text>
+<text x="1224" y="142" class="ref" text-anchor="end">Calc 26</text>
+<text x="960" y="159.5" class="path" text-anchor="start">site/data/&lt;league&gt;/preseason.json</text>
+<text x="960" y="175.0" class="sd" text-anchor="start">Every season&#x27;s grades and shares,</text>
+<text x="960" y="190.5" class="sd" text-anchor="start">with each team&#x27;s final place</text>
+<rect x="1280" y="64" width="300" height="442.0" rx="10" class="grp g5"/>
+<text x="1294" y="88" class="gl" text-anchor="start">5. WHERE IT SHOWS</text>
+<text x="1294" y="106" class="gs" text-anchor="start">fantasyfoosball.net</text>
+<rect x="1292" y="122" width="276" height="92.0" rx="8" class="st"/>
+<text x="1304" y="142" class="stt" text-anchor="start">League Page: Preseason</text>
+<text x="1304" y="159.5" class="sd" text-anchor="start">Grade, shares with bars, forecast,</text>
+<text x="1304" y="175.0" class="sd" text-anchor="start">points per week, Wins Saved,</text>
+<text x="1304" y="190.5" class="sd" text-anchor="start">finished; Draft Strength (redraft)</text>
+<text x="1304" y="206.0" class="sd" text-anchor="start">Season picker; list rows on phones</text>
+<path d="M277 285.0 H304" class="e" marker-end="url(#a)"/>
+<path d="M581 285.0 H608" class="e" marker-end="url(#a)"/>
+<path d="M905 285.0 H932" class="e" marker-end="url(#a)"/>
+<path d="M1249 285.0 H1276" class="e" marker-end="url(#a)"/>
+<rect x="26" y="525.0" width="22" height="13" rx="3" class="st"/>
+<text x="56" y="536.0" class="lg" text-anchor="start">Record: committed to git, kept forever</text>
+<rect x="366" y="525.0" width="22" height="13" rx="3" class="st rebuilt"/>
+<text x="396" y="536.0" class="lg" text-anchor="start">Rebuilt by each run (build cache, deployed site or relay), never committed</text>
+<text x="1580" y="536.0" class="ref" text-anchor="end">Calc N = section N of Calculations.txt</text>
+<text x="24" y="562.0" class="lg"><tspan class="lgn">Cold run:</tspan> the preseason step makes each season&#x27;s Forecast once its draft is complete, and never again</text>
+<text x="24" y="586.0" class="lg"><tspan class="lgn">Build:</tspan> python -m ffapp build (and every cold run&#x27;s export) writes the preseason file from the stored records</text>
+</svg>

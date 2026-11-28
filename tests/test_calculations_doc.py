@@ -15,7 +15,7 @@ CALCULATION_MODULES = (
     "scoring.py", "stats.py", "projections.py", "injuries.py", "noise.py", "lineup.py", "drift.py",
     "simulate.py", "odds.py", "standings.py", "bracket.py", "forecast.py", "games.py", "views.py",
     "live.py", "replacement.py", "ratings.py", "war.py", "espn.py", "positions.py", "calibrate.py", "managers.py", "news.py", "moves.py", "card_states.py",
-    "league_records.py", "schedule_strength.py", "draft.py", "injury_reports.py",
+    "league_records.py", "schedule_strength.py", "draft.py", "injury_reports.py", "preseason.py",
 )
 HEADINGS = ("Code:", "Data sources:", "Depends on:", "Formula:", "In plain English:", "Assumptions and decisions:")
 

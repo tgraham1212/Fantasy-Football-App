@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass, field
 
 import numpy as np
@@ -74,7 +75,11 @@ def starter_score(starter: Starter, noise: NoiseModel, rng: np.random.Generator,
     return starter.fixed + share * (starter.projected + bias) + np.sqrt(share) * (residual - bias)
 
 
-def simulate(inputs: SimInputs, noise: NoiseModel, *, runs: int = 10_000, seed: int = 0) -> SimResult:
+def simulate(inputs: SimInputs, noise: NoiseModel, *, runs: int = 10_000, seed: int = 0,
+             scores_for_week: Callable[[int, np.random.Generator], np.ndarray] | None = None) -> SimResult:
+    """``scores_for_week``, when given, supplies each week's (runs, teams) simulated scores in place of
+    the fixed weekly lineups (the preseason Forecast's absences, league-preseason); standings, seeds and
+    brackets are the same either way."""
     rng = np.random.default_rng(seed)
     ids = inputs.team_ids
     n = len(ids)
@@ -102,6 +107,8 @@ def simulate(inputs: SimInputs, noise: NoiseModel, *, runs: int = 10_000, seed: 
         return scores + shrink[None, :] + drift_walk
 
     def simulated_scores(week: int) -> np.ndarray:
+        if scores_for_week is not None:
+            return drifted(week, scores_for_week(week, rng))
         scores = np.zeros((runs, n))
         for rid, by_week in inputs.starters.items():
             total = np.zeros(runs)

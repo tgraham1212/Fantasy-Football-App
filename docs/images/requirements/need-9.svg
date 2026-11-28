@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16200 4210" width="16200" height="4210">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16820 4210" width="16820" height="4210">
 <style>
 text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bg { fill: #ffffff; }
@@ -33,7 +33,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 .bt { fill: #4f9a5c; } .bi { fill: #4f7cc0; } .ba { fill: #8a6fc0; } .bd { fill: #2fa3a3; } .bgp { fill: #c0392b; } .bempty { fill: #e4e2dc; }
 </style>
 <defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b2f36" stroke-width="1.4"/></marker><marker id="openg" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8a8880" stroke-width="1.4"/></marker><marker id="openv" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#4f9a5c" stroke-width="1.4"/></marker><marker id="openr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c0392b" stroke-width="1.4"/></marker></defs>
-<rect class="bg" width="16200" height="4210"/>
+<rect class="bg" width="16820" height="4210"/>
 <text class="title" x="40" y="44">Requirements Diagram: Need 9, Usable by Every Manager</text>
 <text class="sub" x="40" y="66">27 requirements derived from need 9 · drawn from the specs by tools/requirements_diagram.py · level = number of dots in the ID</text>
 <text class="col" x="40" y="132">NEED · LEVEL 0</text>
@@ -922,6 +922,26 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="15858" y="4030">while the table scrolls sideways.</text>
 <text class="spec" x="15858" y="4063">war-leaderboard-page</text>
 <path class="trace" d="M15980.0,3952 V956 H460.0 V938" marker-end="url(#openg)"/>
+<rect class="ext" x="16160" y="3952" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="16160.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="16290.0" y="3965" text-anchor="middle">«requirement»</text>
+<text x="16290.0" y="3980" text-anchor="middle"><tspan class="rid">4.9.8.4</tspan><tspan class="rname" dx="6">Grade colours</tspan></text>
+<text class="rtext" x="16168" y="4002">Each of the 13 grades SHALL have its own badge</text>
+<text class="rtext" x="16168" y="4016">colour, the same hue within a letter and</text>
+<text class="rtext" x="16168" y="4030">darker toward A+ and toward D-, with text</text>
+<text class="rtext" x="16168" y="4044">contrast of at least 4.5:1 in light and dar…</text>
+<text class="spec" x="16168" y="4063">preseason-page · proposed</text>
+<path class="trace" d="M16290.0,3952 V3492 H460.0 V3484" marker-end="url(#openg)"/>
+<rect class="ext" x="16470" y="3952" width="260" height="118" rx="3"/>
+<rect class="exthdr" x="16470.7" y="3952.7" width="258.6" height="34" rx="2.5"/>
+<text class="ster" x="16600.0" y="3965" text-anchor="middle">«requirement»</text>
+<text x="16600.0" y="3980" text-anchor="middle"><tspan class="rid">4.9.8.3.3</tspan><tspan class="rname" dx="6">Preseason table on phones</tspan></text>
+<text class="rtext" x="16478" y="4002">On screens narrower than 600 px, the tab SHALL</text>
+<text class="rtext" x="16478" y="4016">show each team as a list row with its grade,</text>
+<text class="rtext" x="16478" y="4030">Manager, final place, the three shares,</text>
+<text class="rtext" x="16478" y="4044">forecast record and Wins Saved.</text>
+<text class="spec" x="16478" y="4063">preseason-page · proposed</text>
+<path class="trace" d="M16600.0,3952 V1085 H770.0 V1072" marker-end="url(#openg)"/>
 <path class="derive" d="M40,4170 H86" marker-end="url(#open)"/><text class="lg" x="96" y="4174">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,4170 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="4174">«trace»: extra parent</text>
 <path class="verify" d="M680,4170 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="4174">«verify»: test, inspection or analysis</text>

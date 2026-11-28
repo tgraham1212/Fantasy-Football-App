@@ -877,7 +877,7 @@ async function loadLeague(key, { keep = false, week = null, manager = null, leag
   await loadPositions(entry.key, entry.positions, ownerColor);
   await loadManagers(entry.key, payload.league_name, entry.managers, ownerColor, manager, () => writeHash(), (page) => showPage(page));
   await loadWar(entry.key, payload.league_name, entry.war);
-  await loadRecords(entry.key, payload.league_name, entry.records, leagueView, () => writeHash(), entry.schedule, entry.draft);
+  await loadRecords(entry.key, payload.league_name, entry.records, leagueView, () => writeHash(), entry.schedule, entry.draft, entry.preseason);
 }
 
 async function main() {

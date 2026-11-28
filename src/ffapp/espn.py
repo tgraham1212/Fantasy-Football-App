@@ -15,6 +15,7 @@ by team. Anyone unmatched is reported rather than guessed.
 
 from __future__ import annotations
 
+import json
 import logging
 import re
 from dataclasses import dataclass, field
@@ -63,6 +64,13 @@ class EspnClient:
     def players(self, season: str | int, scoring_period: int = 1) -> list:
         url = f"{self._base}/seasons/{season}/players?scoringPeriodId={int(scoring_period)}&view=kona_player_info"
         return self.http.get_json(url, headers=FILTER_HEADER)
+
+    def season_projections(self, season: str | int) -> list:
+        """Every Player with ESPN's season lines for ``season`` (the preseason projection is the entry
+        with statSourceId 1, statSplitTypeId 0), the most-owned first so no rostered Player is cut off."""
+        url = f"{self._base}/seasons/{season}/players?scoringPeriodId=0&view=kona_player_info"
+        flt = {"players": {"limit": 3000, "sortPercOwned": {"sortPriority": 1, "sortAsc": False}}}
+        return self.http.get_json(url, headers={"X-Fantasy-Filter": json.dumps(flt)})
 
 
 # -- snapshots -------------------------------------------------------------------------

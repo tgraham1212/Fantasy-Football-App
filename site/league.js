@@ -8,6 +8,7 @@
 import { crest, escapeHtml, fitNames, headshot, shortName, wireImages } from "./people.js?v=__BUILD__";
 import { initSchedule, loadSchedule, scheduleSlug } from "./schedule.js?v=__BUILD__";
 import { draftSlug, initDraft, loadDraft, showDraft } from "./draft.js?v=__BUILD__";
+import { initPreseason, loadPreseason, preseasonSlug } from "./preseason.js?v=__BUILD__";
 
 const state = {
   leagueKey: null,
@@ -15,7 +16,8 @@ const state = {
   entry: null,      // index.leagues[i].records
   scheduleEntry: null, // index.leagues[i].schedule
   draftEntry: null, // index.leagues[i].draft
-  tab: "records",   // "records" | "schedule" | "draft"
+  preseasonEntry: null, // index.leagues[i].preseason
+  tab: "records",   // "records" | "schedule" | "draft" | "preseason"
   data: null,       // data/<league>/records.json
   view: "managers", // "managers" | "players"
   filters: { best_games: "ALL", bench_games: "ALL", career: "ALL", championships: "ALL" },
@@ -74,19 +76,22 @@ async function fetchJson(path) {
    current tab and views): "records" with an optional "players", "schedule" with an optional "swap"
    and season, or "draft" with an optional "table" and season. `scheduleEntry` and `draftEntry` are the
    league's Strength of Schedule and draft files. */
-export async function loadRecords(leagueKey, leagueName, entry, route, onChange, scheduleEntry = state.scheduleEntry, draftEntry = state.draftEntry) {
+export async function loadRecords(leagueKey, leagueName, entry, route, onChange, scheduleEntry = state.scheduleEntry, draftEntry = state.draftEntry,
+  preseasonEntry = state.preseasonEntry) {
   state.leagueKey = leagueKey;
   state.leagueName = leagueName;
   state.entry = entry || null;
   state.scheduleEntry = scheduleEntry || null;
   state.draftEntry = draftEntry || null;
+  state.preseasonEntry = preseasonEntry || null;
   state.onChange = onChange || state.onChange;
   if (route) {
-    state.tab = route[0] === "schedule" || route[0] === "draft" ? route[0] : "records";
+    state.tab = ["schedule", "draft", "preseason"].includes(route[0]) ? route[0] : "records";
     if (state.tab === "records") state.view = route[1] === "players" ? "players" : "managers";
   }
   await loadSchedule(leagueKey, state.scheduleEntry, route && state.tab === "schedule" ? route.slice(1) : [], () => state.onChange());
   await loadDraft(leagueKey, state.draftEntry, route && state.tab === "draft" ? route.slice(1) : [], () => state.onChange());
+  await loadPreseason(leagueKey, state.preseasonEntry, route && state.tab === "preseason" ? route.slice(1) : [], () => state.onChange());
   state.data = state.entry ? await fetchJson(`data/${state.entry.file}`) : null;
   if (state.data) render();
   renderTab();
@@ -102,6 +107,7 @@ export async function reloadRecords() {
 export function leagueSlug() {
   if (state.tab === "schedule") return `schedule${scheduleSlug()}`;
   if (state.tab === "draft") return `draft${draftSlug()}`;
+  if (state.tab === "preseason") return `preseason${preseasonSlug()}`;
   return `records${state.view === "players" ? "/players" : ""}`;
 }
 
@@ -118,6 +124,7 @@ function renderTab() {
   $("lg-views").hidden = !records;
   $("sos-controls").hidden = $("sos-page").hidden = state.tab !== "schedule";
   $("dr-controls").hidden = $("dr-page").hidden = state.tab !== "draft";
+  $("ps-controls").hidden = $("ps-page").hidden = state.tab !== "preseason";
   if (state.tab === "draft") showDraft();
   $("lg-unavailable").hidden = !records || !!state.data;
   if (!state.data) $("lg-managers").hidden = $("lg-players").hidden = true;
@@ -142,6 +149,7 @@ export function initLeague() {
   });
   initSchedule();
   initDraft();
+  initPreseason();
   $("lg-views").addEventListener("click", (e) => {
     const b = e.target.closest("[data-lg-view]");
     if (b) setView(b.dataset.lgView);

@@ -100,7 +100,7 @@ def test_refresh_steps_in_order():
     from ffapp.cli import REFRESH_STEPS
 
     assert [name for name, _ in REFRESH_STEPS] == [
-        "sync", "projections", "stats", "schedule", "snapshot", "trending", "injury-reports", "ratings", "replacement", "war", "simulate", "slates", "games", "export",
+        "sync", "projections", "stats", "schedule", "snapshot", "trending", "injury-reports", "ratings", "replacement", "preseason", "war", "simulate", "slates", "games", "export",
     ]
 
 

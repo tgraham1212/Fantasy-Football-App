@@ -32,7 +32,7 @@ LANDMARKS = (
     "#outcome-switcher", "footer", "#positions-controls", ".pos-card",
     "#mgr-picker", ".mgr-bar", ".mgr-season", ".mgr-cardtabs", ".mgr-card",
     "#lg-tabs", "#lg-views", "#lg-dialog", "#lg-dialog .dialog-head", "#lg-dialog-close", "#sos-controls",
-    "#dr-controls",
+    "#dr-controls", "#ps-controls",
 )
 # Elements that must stay inside the screen horizontally.
 INSIDE = ("header.top > *", "#refresh-note", "#version-note", "#subtabs")
@@ -109,6 +109,8 @@ VIEWS = {
     "league-swap": View("league-swap", f"index.html#{LEAGUE}/league/schedule/swap"),
     "league-draft": View("league-draft", f"index.html#{LEAGUE}/league/draft"),
     "league-draft-table": View("league-draft-table", f"index.html#{LEAGUE}/league/draft/table"),
+    "league-preseason": View("league-preseason", f"index.html#{LEAGUE}/league/preseason"),
+    "league-preseason-redraft": View("league-preseason-redraft", "index.html#redraft/league/preseason"),
 }
 
 
@@ -343,9 +345,10 @@ CONTROLS: tuple[Control, ...] = (
     # League page (Records)
     Control("league tabs", "league", "#lg-tabs button",
             (State("schedule", click("#lg-tabs [data-lg-tab='schedule']", 600)), State("draft", click("#lg-tabs [data-lg-tab='draft']", 900)),
-             State("records", click("#lg-tabs [data-lg-tab='records']", 600))),
+             State("preseason", click("#lg-tabs [data-lg-tab='preseason']", 900)), State("records", click("#lg-tabs [data-lg-tab='records']", 600))),
             # the tab swaps the Records view switch for the Strength of Schedule or Draft controls and the page below
-            regions=("#lg-managers", "#lg-players", "#sos-page", "#lg-views", "#sos-controls", "#dr-page", "#dr-controls", "#lg-unavailable"),
+            regions=("#lg-managers", "#lg-players", "#sos-page", "#lg-views", "#sos-controls", "#dr-page", "#dr-controls", "#ps-page", "#ps-controls",
+                     "#lg-unavailable"),
             below="#lg-tabs"),
     Control("records view", "league", "#lg-views button",
             (State("players", click("#lg-views [data-lg-view='players']", 500)), State("managers", click("#lg-views [data-lg-view='managers']", 500))),
@@ -404,6 +407,17 @@ CONTROLS: tuple[Control, ...] = (
     Control("draft managers table", "league-draft", "#dr-managers .dr-mgr-table"),
     Control("manager name links (draft)", "league-draft", "#dr-page a.manager-link"),
     Control("manager name links (draft table)", "league-draft-table", "#dr-page a.manager-link"),
+
+    # League page (Preseason)
+    Control("preseason season", "league-preseason", "#ps-season",
+            (State("2024", select_value("#ps-season", "2024")),), regions=("#ps-page",), below="#ps-controls"),
+    Control("preseason sort", "league-preseason", "#ps-card thead button.sort",
+            (State("saved", click("#ps-card thead [data-col='saved'] button.sort")), State("flipped", click("#ps-card thead [data-col='saved'] button.sort"))),
+            regions=("#ps-card .ps-wide",)),
+    Control("preseason table", "league-preseason", "#ps-card .ps-wide"),
+    Control("preseason table (redraft)", "league-preseason-redraft", "#ps-card .ps-wide"),
+    Control("manager name links (preseason)", "league-preseason", "#ps-page a.manager-link"),
+    Control("manager name links (preseason redraft)", "league-preseason-redraft", "#ps-page a.manager-link"),
     Control("manager name links (swap)", "league-swap", "#sos-swap a.manager-link"),
     Control("record pop-up close", "league-dialog", "#lg-dialog-close", (State("closed", click("#lg-dialog-close")),),
             regions=("#lg-dialog",), self_moves=True),

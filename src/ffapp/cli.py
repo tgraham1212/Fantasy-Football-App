@@ -44,6 +44,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("snapshot", help="Capture ESPN start-percentage snapshots and the player crosswalk into data/espn")
     sub.add_parser("trending", help="Save Sleeper's trending adds (last 24 hours) into data/trending")
     sub.add_parser("injury-reports", help="Save nflverse's weekly IR, PUP and Out statuses into data/injury-reports")
+    sub.add_parser("preseason", help="Make each season's preseason Forecast once its draft is complete (data/preseason)")
     sub.add_parser("ratings", help="Rate every manager across all stored seasons and write data/ratings")
     sub.add_parser("replacement", help="Write replacement-level values for every stored season to data/replacement")
     sub.add_parser("war", help="Compute every player's Wins Above Replacement per league-season into data/war")
@@ -248,6 +249,28 @@ def cmd_injury_reports(ctx: Context) -> int:
     for warning in run.warnings:
         print(f"FAILED   {warning}", file=sys.stderr)
     return 1 if run.warnings else 0
+
+
+def cmd_preseason(ctx: Context) -> int:
+    """Make every due preseason Forecast (an optional refresh step after replacement): one per
+    league-season with a complete draft and no record yet, kept as a record."""
+    from ffapp.noise import build_pools
+    from ffapp.preseason import due_seasons, make_due
+
+    due = {key: due_seasons(ctx.store, key) for key in ctx.config.leagues}
+    if not any(due.values()):
+        print("preseason: nothing due")
+        return 0
+    noise = build_pools(ctx.store, ctx.config)
+    failed = False
+    for key in ctx.config.leagues:
+        made, warnings = make_due(ctx.store, ctx.client, ctx.config, key, noise)
+        for season in made:
+            print(f"wrote    data/preseason/{key}/{season}.json")
+        for warning in warnings:
+            print(f"FAILED   {warning}", file=sys.stderr)
+            failed = True
+    return 1 if failed else 0
 
 
 def cmd_ratings(ctx: Context) -> int:
@@ -531,13 +554,14 @@ REFRESH_STEPS = (
     ("injury-reports", cmd_injury_reports),
     ("ratings", cmd_ratings),
     ("replacement", cmd_replacement),
+    ("preseason", cmd_preseason),
     ("war", cmd_war),
     ("simulate", cmd_simulate),
     ("slates", cmd_slates),
     ("games", cmd_games),
     ("export", cmd_export),
 )
-OPTIONAL_STEPS = frozenset({"schedule", "snapshot", "trending", "injury-reports"})
+OPTIONAL_STEPS = frozenset({"schedule", "snapshot", "trending", "injury-reports", "preseason"})
 LIVE_SKIPS = frozenset({"simulate", "slates"})
 # Offline: no step here may call Sleeper or ESPN.
 BUILD_STEPS = (
@@ -557,6 +581,7 @@ HANDLERS = {
     "snapshot": cmd_snapshot,
     "trending": cmd_trending,
     "injury-reports": cmd_injury_reports,
+    "preseason": cmd_preseason,
     "ratings": cmd_ratings,
     "replacement": cmd_replacement,
     "war": cmd_war,
