@@ -3268,7 +3268,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="668" y="28474">The League sub-tab SHALL have a Preseason tab,</text>
 <text class="rtext" x="668" y="28488">after Draft, showing each season&#x27;s preseason</text>
 <text class="rtext" x="668" y="28502">Forecast.</text>
-<text class="spec" x="668" y="28535">preseason-page · proposed</text>
+<text class="spec" x="668" y="28535">preseason-page</text>
 <rect class="req" x="970" y="28558" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="28558.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="28571" text-anchor="middle">«requirement»</text>
@@ -3276,14 +3276,14 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="28608">The tab SHALL offer every season with a</text>
 <text class="rtext" x="978" y="28622">preseason Forecast in a Season picker, the</text>
 <text class="rtext" x="978" y="28636">latest first and selected on opening.</text>
-<text class="spec" x="978" y="28669">preseason-page · proposed</text>
+<text class="spec" x="978" y="28669">preseason-page</text>
 <rect class="req" x="970" y="28692" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="28692.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="28705" text-anchor="middle">«requirement»</text>
 <text x="1100.0" y="28720" text-anchor="middle"><tspan class="rid">4.9.8.2</tspan><tspan class="rname" dx="6">Preseason season in the URL</tspan></text>
 <text class="rtext" x="978" y="28742">The page URL SHALL name the Preseason season,</text>
 <text class="rtext" x="978" y="28756">so that opening a link shows it.</text>
-<text class="spec" x="978" y="28803">preseason-page · proposed</text>
+<text class="spec" x="978" y="28803">preseason-page</text>
 <rect class="req" x="970" y="28826" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="28826.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="28839" text-anchor="middle">«requirement»</text>
@@ -3292,7 +3292,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="28890">columns Grade, Manager, Title, Playoffs, Last,</text>
 <text class="rtext" x="978" y="28904">Forecast, Pts/Wk, Wins Saved and Finished,</text>
 <text class="rtext" x="978" y="28918">ordered by title share, highest first, on…</text>
-<text class="spec" x="978" y="28937">preseason-page · proposed</text>
+<text class="spec" x="978" y="28937">preseason-page</text>
 <rect class="req" x="1280" y="28960" width="260" height="118" rx="3"/>
 <rect class="hdr" x="1280.7" y="28960.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="28973" text-anchor="middle">«requirement»</text>
@@ -3301,14 +3301,14 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="1288" y="29024">SHALL show its share as a number and as a bar</text>
 <text class="rtext" x="1288" y="29038">whose length is the share of the full width,</text>
 <text class="rtext" x="1288" y="29052">0% to 100%.</text>
-<text class="spec" x="1288" y="29071">preseason-page · proposed</text>
+<text class="spec" x="1288" y="29071">preseason-page</text>
 <rect class="req" x="1280" y="29094" width="260" height="118" rx="3"/>
 <rect class="hdr" x="1280.7" y="29094.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="29107" text-anchor="middle">«requirement»</text>
 <text x="1410.0" y="29122" text-anchor="middle"><tspan class="rid">4.9.8.3.2</tspan><tspan class="rname" dx="6">Sortable preseason table</tspan></text>
 <text class="rtext" x="1288" y="29144">Each column of the preseason table SHALL sort</text>
 <text class="rtext" x="1288" y="29158">the table when its header is pressed.</text>
-<text class="spec" x="1288" y="29205">preseason-page · proposed</text>
+<text class="spec" x="1288" y="29205">preseason-page</text>
 <rect class="req" x="1280" y="29228" width="260" height="118" rx="3"/>
 <rect class="hdr" x="1280.7" y="29228.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="29241" text-anchor="middle">«requirement»</text>
@@ -3317,7 +3317,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="1288" y="29292">show each team as a list row with its grade,</text>
 <text class="rtext" x="1288" y="29306">Manager, final place, the three shares,</text>
 <text class="rtext" x="1288" y="29320">forecast record and Wins Saved.</text>
-<text class="spec" x="1288" y="29339">preseason-page · proposed</text>
+<text class="spec" x="1288" y="29339">preseason-page</text>
 <rect class="req" x="1280" y="29362" width="260" height="118" rx="3"/>
 <rect class="hdr" x="1280.7" y="29362.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1410.0" y="29375" text-anchor="middle">«requirement»</text>
@@ -3326,7 +3326,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="1288" y="29426">SHALL add a Draft Strength column after Pts/Wk</text>
 <text class="rtext" x="1288" y="29440">giving each team&#x27;s draft strength rank as an</text>
 <text class="rtext" x="1288" y="29454">ordinal.</text>
-<text class="spec" x="1288" y="29473">preseason-page · proposed</text>
+<text class="spec" x="1288" y="29473">preseason-page</text>
 <rect class="req" x="970" y="29496" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="29496.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="29509" text-anchor="middle">«requirement»</text>
@@ -3335,7 +3335,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="29560">colour, the same hue within a letter and</text>
 <text class="rtext" x="978" y="29574">darker toward A+ and toward D-, with text</text>
 <text class="rtext" x="978" y="29588">contrast of at least 4.5:1 in light and dar…</text>
-<text class="spec" x="978" y="29607">preseason-page · proposed</text>
+<text class="spec" x="978" y="29607">preseason-page</text>
 <rect class="req" x="970" y="29630" width="260" height="118" rx="3"/>
 <rect class="hdr" x="970.7" y="29630.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="1100.0" y="29643" text-anchor="middle">«requirement»</text>
@@ -3343,7 +3343,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="978" y="29680">The tab SHALL show a key of the grade letters</text>
 <text class="rtext" x="978" y="29694">with their bands and a note on how the</text>
 <text class="rtext" x="978" y="29708">preseason Forecast is made, below the table.</text>
-<text class="spec" x="978" y="29741">preseason-page · proposed</text>
+<text class="spec" x="978" y="29741">preseason-page</text>
 <rect class="req" x="350" y="29764" width="260" height="118" rx="3"/>
 <rect class="hdr" x="350.7" y="29764.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="480.0" y="29777" text-anchor="middle">«requirement»</text>
@@ -3826,7 +3826,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="6868" y="33884">For each league-season with a complete draft,</text>
 <text class="rtext" x="6868" y="33898">the system SHALL make one preseason Forecast</text>
 <text class="rtext" x="6868" y="33912">and keep it unchanged as a record.</text>
-<text class="spec" x="6868" y="33945">preseason-forecast · proposed</text>
+<text class="spec" x="6868" y="33945">preseason-forecast</text>
 <path class="trace" d="M810.0,28542 V28560 H6990.0 V33834" marker-end="url(#openg)"/>
 <rect class="ext" x="7170" y="33834" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="7170.7" y="33834.7" width="258.6" height="34" rx="2.5"/>
@@ -3836,7 +3836,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="7178" y="33898">give the title, playoff and last-place shares</text>
 <text class="rtext" x="7178" y="33912">to 0.001, the forecast wins and losses to 0.1</text>
 <text class="rtext" x="7178" y="33926">and the points per week to 0.1.</text>
-<text class="spec" x="7178" y="33945">preseason-forecast · proposed</text>
+<text class="spec" x="7178" y="33945">preseason-forecast</text>
 <path class="trace" d="M1120.0,28944 V28952 H7300.0 V33834" marker-end="url(#openg)"/>
 <path class="trace" d="M1430.0,29346 V29359 H6680.0 V33834" marker-end="url(#openg)"/>
 <rect class="ext" x="7480" y="33834" width="260" height="118" rx="3"/>
@@ -3847,7 +3847,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="7488" y="33898">export SHALL give each team&#x27;s draft strength:</text>
 <text class="rtext" x="7488" y="33912">its rank by preseason points per week, 1 for</text>
 <text class="rtext" x="7488" y="33926">the highest, equal values sharing a rank.</text>
-<text class="spec" x="7488" y="33945">preseason-forecast · proposed</text>
+<text class="spec" x="7488" y="33945">preseason-forecast</text>
 <path class="trace" d="M1430.0,29480 V29498 H7610.0 V33834" marker-end="url(#openg)"/>
 <path class="trace" d="M1120.0,29614 V29622 H6060.0 V33834" marker-end="url(#openg)"/>
 <rect class="ext" x="7790" y="33834" width="260" height="118" rx="3"/>
@@ -3858,7 +3858,7 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <text class="rtext" x="7798" y="33898">for a title share of 15% or more; B for 11% or</text>
 <text class="rtext" x="7798" y="33912">more, or a playoff share of 65% or more; F for</text>
 <text class="rtext" x="7798" y="33926">a last-place share of 20% or more; C for a…</text>
-<text class="spec" x="7798" y="33945">preseason-forecast · proposed</text>
+<text class="spec" x="7798" y="33945">preseason-forecast</text>
 <path class="trace" d="M1120.0,29748 V29761 H7920.0 V33834" marker-end="url(#openg)"/>
 <rect class="ext" x="8100" y="33834" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="8100.7" y="33834.7" width="258.6" height="34" rx="2.5"/>

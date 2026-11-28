@@ -1759,52 +1759,52 @@ text { font-family: 'Segoe UI', system-ui, sans-serif; }
 <rect class="ext" x="5620" y="14806" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="5620.7" y="14806.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="5750.0" y="14819" text-anchor="middle">«requirement»</text>
-<text x="5750.0" y="14834" text-anchor="middle"><tspan class="rid">6.7</tspan><tspan class="rname" dx="6">Season snapshot</tspan></text>
-<text class="rtext" x="5628" y="14856">For every season a configured league has</text>
-<text class="rtext" x="5628" y="14870">stored, the system SHALL store one start-</text>
-<text class="rtext" x="5628" y="14884">percentage snapshot holding, per ESPN Player,</text>
-<text class="rtext" x="5628" y="14898">the ESPN id, name, position, NFL team, perc…</text>
-<text class="spec" x="5628" y="14917">start-percentage-snapshots</text>
-<path class="trace" d="M5750.0,14806 V8326 H770.0 V8308" marker-end="url(#openg)"/>
+<text x="5750.0" y="14834" text-anchor="middle"><tspan class="rid">1.5.2.1</tspan><tspan class="rname" dx="6">Missing kicker or defence</tspan></text>
+<text class="rtext" x="5628" y="14856">A team with no kicker or no defence on its</text>
+<text class="rtext" x="5628" y="14870">preseason roster SHALL score that position&#x27;s</text>
+<text class="rtext" x="5628" y="14884">preseason replacement level in that slot each</text>
+<text class="rtext" x="5628" y="14898">week: the mean value of the 3 best unroster…</text>
+<text class="spec" x="5628" y="14917">preseason-forecast</text>
+<path class="trace" d="M5750.0,14806 V12748 H460.0 V12730" marker-end="url(#openg)"/>
 <rect class="ext" x="5930" y="14806" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="5930.7" y="14806.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="6060.0" y="14819" text-anchor="middle">«requirement»</text>
-<text x="6060.0" y="14834" text-anchor="middle"><tspan class="rid">6.7.2</tspan><tspan class="rname" dx="6">Weekly snapshot</tspan></text>
-<text class="rtext" x="5938" y="14856">Every run during a season SHALL store a</text>
-<text class="rtext" x="5938" y="14870">snapshot for the current NFL week as Sleeper</text>
-<text class="rtext" x="5938" y="14884">reports it, replacing that week&#x27;s earlier</text>
-<text class="rtext" x="5938" y="14898">snapshot and keeping past weeks.</text>
+<text x="6060.0" y="14834" text-anchor="middle"><tspan class="rid">6.7</tspan><tspan class="rname" dx="6">Season snapshot</tspan></text>
+<text class="rtext" x="5938" y="14856">For every season a configured league has</text>
+<text class="rtext" x="5938" y="14870">stored, the system SHALL store one start-</text>
+<text class="rtext" x="5938" y="14884">percentage snapshot holding, per ESPN Player,</text>
+<text class="rtext" x="5938" y="14898">the ESPN id, name, position, NFL team, perc…</text>
 <text class="spec" x="5938" y="14917">start-percentage-snapshots</text>
-<path class="trace" d="M6060.0,14806 V9388 H1080.0 V9380" marker-end="url(#openg)"/>
+<path class="trace" d="M6060.0,14806 V8316 H770.0 V8308" marker-end="url(#openg)"/>
 <rect class="ext" x="6240" y="14806" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="6240.7" y="14806.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="6370.0" y="14819" text-anchor="middle">«requirement»</text>
-<text x="6370.0" y="14834" text-anchor="middle"><tspan class="rid">6.7.4</tspan><tspan class="rname" dx="6">Player crosswalk</tspan></text>
-<text class="rtext" x="6248" y="14856">Each ESPN Player SHALL be mapped to a Sleeper</text>
-<text class="rtext" x="6248" y="14870">Player id by, in order, Sleeper&#x27;s stored ESPN</text>
-<text class="rtext" x="6248" y="14884">id, an alias table of known name differences,</text>
-<text class="rtext" x="6248" y="14898">then a normalised name and position match w…</text>
+<text x="6370.0" y="14834" text-anchor="middle"><tspan class="rid">6.7.2</tspan><tspan class="rname" dx="6">Weekly snapshot</tspan></text>
+<text class="rtext" x="6248" y="14856">Every run during a season SHALL store a</text>
+<text class="rtext" x="6248" y="14870">snapshot for the current NFL week as Sleeper</text>
+<text class="rtext" x="6248" y="14884">reports it, replacing that week&#x27;s earlier</text>
+<text class="rtext" x="6248" y="14898">snapshot and keeping past weeks.</text>
 <text class="spec" x="6248" y="14917">start-percentage-snapshots</text>
-<path class="trace" d="M6370.0,14806 V8321 H770.0 V8308" marker-end="url(#openg)"/>
+<path class="trace" d="M6370.0,14806 V9393 H1080.0 V9380" marker-end="url(#openg)"/>
 <rect class="ext" x="6550" y="14806" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="6550.7" y="14806.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="6680.0" y="14819" text-anchor="middle">«requirement»</text>
-<text x="6680.0" y="14834" text-anchor="middle"><tspan class="rid">4.7.8</tspan><tspan class="rname" dx="6">WAR milestone stories</tspan></text>
-<text class="rtext" x="6558" y="14856">A story SHALL appear each time a rostered</text>
-<text class="rtext" x="6558" y="14870">Player&#x27;s WAR for the team passes a whole</text>
-<text class="rtext" x="6558" y="14884">number.</text>
-<text class="spec" x="6558" y="14917">team-news</text>
-<path class="trace" d="M6680.0,14806 V7656 H460.0 V7638" marker-end="url(#openg)"/>
+<text x="6680.0" y="14834" text-anchor="middle"><tspan class="rid">6.7.4</tspan><tspan class="rname" dx="6">Player crosswalk</tspan></text>
+<text class="rtext" x="6558" y="14856">Each ESPN Player SHALL be mapped to a Sleeper</text>
+<text class="rtext" x="6558" y="14870">Player id by, in order, Sleeper&#x27;s stored ESPN</text>
+<text class="rtext" x="6558" y="14884">id, an alias table of known name differences,</text>
+<text class="rtext" x="6558" y="14898">then a normalised name and position match w…</text>
+<text class="spec" x="6558" y="14917">start-percentage-snapshots</text>
+<path class="trace" d="M6680.0,14806 V8326 H770.0 V8308" marker-end="url(#openg)"/>
 <rect class="ext" x="6860" y="14806" width="260" height="118" rx="3"/>
 <rect class="exthdr" x="6860.7" y="14806.7" width="258.6" height="34" rx="2.5"/>
 <text class="ster" x="6990.0" y="14819" text-anchor="middle">«requirement»</text>
-<text x="6990.0" y="14834" text-anchor="middle"><tspan class="rid">1.5.2.1</tspan><tspan class="rname" dx="6">Missing kicker or defence</tspan></text>
-<text class="rtext" x="6868" y="14856">A team with no kicker or no defence on its</text>
-<text class="rtext" x="6868" y="14870">preseason roster SHALL score that position&#x27;s</text>
-<text class="rtext" x="6868" y="14884">preseason replacement level in that slot each</text>
-<text class="rtext" x="6868" y="14898">week: the mean value of the 3 best unroster…</text>
-<text class="spec" x="6868" y="14917">preseason-forecast · proposed</text>
-<path class="trace" d="M6990.0,14806 V12738 H460.0 V12730" marker-end="url(#openg)"/>
+<text x="6990.0" y="14834" text-anchor="middle"><tspan class="rid">4.7.8</tspan><tspan class="rname" dx="6">WAR milestone stories</tspan></text>
+<text class="rtext" x="6868" y="14856">A story SHALL appear each time a rostered</text>
+<text class="rtext" x="6868" y="14870">Player&#x27;s WAR for the team passes a whole</text>
+<text class="rtext" x="6868" y="14884">number.</text>
+<text class="spec" x="6868" y="14917">team-news</text>
+<path class="trace" d="M6990.0,14806 V7646 H460.0 V7638" marker-end="url(#openg)"/>
 <path class="derive" d="M40,15024 H86" marker-end="url(#open)"/><text class="lg" x="96" y="15028">«deriveReqt»: primary parent (sets the ID)</text>
 <path class="trace" d="M360,15024 H406" marker-end="url(#openg)"/><text class="lg" x="416" y="15028">«trace»: extra parent</text>
 <path class="verify" d="M680,15024 H726" marker-end="url(#openv)"/><text class="lg" x="736" y="15028">«verify»: test, inspection or analysis</text>

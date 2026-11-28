@@ -38,7 +38,7 @@
 ## 6. Requirements and Final Checks
 
 - [x] 6.1 Run `python -X utf8 tools/requirements_impact.py 6.1`, redraw the requirement diagrams, and confirm `pytest tests/test_requirements.py` reports no findings for the new requirements
-- [ ] 6.2 Run the full suite and a local build, and check the Preseason tab in the browser at 1280 and 360 px against the canvas mockups
+- [x] 6.2 Run the full suite and a local build, and check the Preseason tab in the browser at 1280 and 360 px against the canvas mockups
 
 ## Workflow follow-up
 
